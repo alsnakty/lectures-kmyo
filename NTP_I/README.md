@@ -24,4 +24,4 @@ Uygulamalı testlerde işlenen ana konu başlıkları şunlardır:
 * **`Python_variables_1.html`**: Python veri tipleri ve yapılarını baz alan HTML tabanlı pratik modülü.
   - Sürükle-bırak, boşluk doldurma ve çoktan seçmeli sorulardan oluşur.
 
-
+* **`Python_variables_2.html`**: Temel çıktı işlemleri, tip dönüşümleri (casting), kullanıcı etkileşimi (input) ve string metotlarını (dilimleme, replace vb.) 
