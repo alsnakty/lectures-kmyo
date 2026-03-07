@@ -1,4 +1,4 @@
-#  Nesne Tabanlı Programlama (OOP) ve Python Temelleri
+#  Nesne Tabanlı Programlama I
 
 Bu bölüm, Python programlama dilinin temellerini ve Nesne Tabanlı Programlama (OOP) kavramlarını öğrenmek amacıyla hazırlanmış ders notlarını ve interaktif test araçlarını içerir.
 
