@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Python Temelleri</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090f;
+      --card: #0f1117;
+      --card2: #161820;
+      --green: #00c96a;
+      --blue: #4dabf7;
+      --purple: #cc5de8;
+      --yellow: #ffd43b;
+      --red: #ff6b6b;
+      --text: #e8eaf0;
+      --muted: #6c7085;
+      --border: #1e2030;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      background-color: var(--bg);
+      /* Arka plan noise (kumlanma) yoğunluğunu asagidaki opacity='0.08' degerinden degistirebilirsiniz. 
+         (0.04 = cok hafif, 0.08 = dengeli, 0.15 = cok yogun) */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      padding: 20px 16px 60px
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto
+    }
+
+    header {
+      text-align: center;
+      padding: 28px 0 32px
+    }
+
+    .ey {
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px
+    }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px
+    }
+
+    .tgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 24px
+    }
+
+    .tc {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center
+    }
+
+    .tci {
+      font-size: 24px;
+      margin-bottom: 6px
+    }
+
+    .tcn {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text)
+    }
+
+    .tcd {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      transition: .15s
+    }
+
+    .btng {
+      background: var(--green);
+      color: #001a0a;
+      padding: 11px 28px;
+      font-size: 14px
+    }
+
+    .btng:hover {
+      background: #00e87a;
+      transform: translateY(-1px)
+    }
+
+    #start-screen {
+      text-align: center;
+      padding: 8px 0 40px
+    }
+
+    /* PROGRESS */
+    .pbar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px
+    }
+
+    .plbl {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      font-family: 'Space Mono', monospace
+    }
+
+    .ptrack {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden
+    }
+
+    .pfill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+      border-radius: 3px;
+      transition: .4s
+    }
+
+    .spill {
+      font-size: 12px;
+      color: var(--yellow);
+      font-family: 'Space Mono', monospace;
+      white-space: nowrap
+    }
+
+    #game-screen {
+      display: none
+    }
+
+    /* CARD */
+    .qmeta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px
+    }
+
+    .badge {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-family: 'Space Mono', monospace
+    }
+
+    .bmc {
+      background: #1a2f1a;
+      color: var(--green)
+    }
+
+    .bfil {
+      background: #1a2040;
+      color: var(--blue)
+    }
+
+    .bdrg {
+      background: #2a1a40;
+      color: var(--purple)
+    }
+
+    .btf {
+      background: #2a2010;
+      color: var(--yellow)
+    }
+
+    .btopic {
+      background: var(--card2);
+      color: var(--muted);
+      border: 1px solid var(--border)
+    }
+
+    .qnum {
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: auto;
+      font-family: 'Space Mono', monospace
+    }
+
+    .qt {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 18px
+    }
+
+    .qt code,
+    .fbb code {
+      background: #1e2030;
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--blue)
+    }
+
+    /* CODE BLOCK */
+    .cb {
+      background: #050508;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin-bottom: 18px;
+      color: var(--text)
+    }
+
+    .kw {
+      color: #cc5de8
+    }
+
+    .st {
+      color: #ffd43b
+    }
+
+    .nm {
+      color: #69db7c
+    }
+
+    .cm {
+      color: #5c6480
+    }
+
+    .fn {
+      color: #4dabf7
+    }
+
+    /* OPTIONS */
+    .opts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 4px
+    }
+
+    .opt {
+      background: var(--card2);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: .15s
+    }
+
+    .opt:hover:not(.lk) {
+      border-color: var(--blue);
+      background: #161c2e
+    }
+
+    .opt.sel {
+      border-color: var(--blue);
+      background: #101829
+    }
+
+    .opt.ok {
+      border-color: var(--green) !important;
+      background: #0a1f10 !important
+    }
+
+    .opt.bad {
+      border-color: var(--red) !important;
+      background: #1f0a0a !important
+    }
+
+    .opt.lk {
+      cursor: default
+    }
+
+    .okey {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Space Mono', monospace;
+      flex-shrink: 0
+    }
+
+    .opt.ok .okey {
+      background: var(--green);
+      color: #001a0a
+    }
+
+    .opt.bad .okey {
+      background: var(--red);
+      color: #fff
+    }
+
+    .otxt {
+      font-size: 14px;
+      line-height: 1.4
+    }
+
+    .mono {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px
+    }
+
+    /* TRUE/FALSE */
+    .tf-row {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 8px
+    }
+
+    .tf-stmt {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 10px
+    }
+
+    .tf-btns {
+      display: flex;
+      gap: 8px
+    }
+
+    .tfb {
+      flex: 1;
+      padding: 8px;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      background: none;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--muted);
+      transition: .15s
+    }
+
+    .tfb:hover:not(.lk) {
+      border-color: var(--blue);
+      color: var(--text)
+    }
+
+    .tfb.sel {
+      border-color: var(--blue);
+      color: var(--blue)
+    }
+
+    .tfb.ok {
+      border-color: var(--green) !important;
+      background: #0a1f10 !important;
+      color: var(--green) !important
+    }
+
+    .tfb.bad {
+      border-color: var(--red) !important;
+      background: #1f0a0a !important;
+      color: var(--red) !important
+    }
+
+    .tfb.lk {
+      cursor: default
+    }
+
+    /* FILL */
+    .fill-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      background: #050508;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px
+    }
+
+    .fill-wrap code {
+      color: var(--text)
+    }
+
+    #blank {
+      background: none;
+      border: none;
+      border-bottom: 2px solid var(--blue);
+      color: var(--yellow);
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      width: 120px;
+      text-align: center;
+      outline: none;
+      padding: 2px 4px
+    }
+
+    #blank.ok {
+      border-color: var(--green);
+      color: var(--green)
+    }
+
+    #blank.bad {
+      border-color: var(--red);
+      color: var(--red)
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      background: var(--card2);
+      border-radius: 8px;
+      border-left: 3px solid var(--blue)
+    }
+
+    /* DRAG */
+    .dragboard {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 4px
+    }
+
+    .dragleft,
+    .dragright {
+      flex: 1
+    }
+
+    .dtitle {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-family: 'Space Mono', monospace
+    }
+
+    .poolbox {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .ditem {
+      background: var(--card2);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      cursor: grab;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--blue);
+      transition: .15s
+    }
+
+    .ditem:hover:not(.dragging) {
+      border-color: var(--blue)
+    }
+
+    .ditem.dragging {
+      opacity: .4
+    }
+
+    .dropcol {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .droprow {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .dlbl {
+      font-size: 12px;
+      color: var(--muted);
+      width: 110px;
+      flex-shrink: 0;
+      text-align: right;
+      font-family: 'Space Mono', monospace
+    }
+
+    .dzone {
+      flex: 1;
+      min-height: 40px;
+      background: var(--card2);
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      transition: .15s
+    }
+
+    .dzone.over {
+      border-color: var(--purple);
+      background: #1a1028
+    }
+
+    .dzone.ok {
+      border-color: var(--green) !important;
+      background: #0a1f10 !important
+    }
+
+    .dzone.bad {
+      border-color: var(--red) !important;
+      background: #1f0a0a !important
+    }
+
+    /* FEEDBACK */
+    .fb {
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-top: 14px;
+      font-size: 13px;
+      line-height: 1.8;
+      display: none
+    }
+
+    .fb.show {
+      display: block
+    }
+
+    .fbok {
+      background: #0a1f10;
+      border: 1px solid var(--green)
+    }
+
+    .fbbad {
+      background: #1f0a0a;
+      border: 1px solid var(--red)
+    }
+
+    .fbh {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px
+    }
+
+    .fbok .fbh {
+      color: var(--green)
+    }
+
+    .fbbad .fbh {
+      color: var(--red)
+    }
+
+    .fbb {
+      color: var(--text);
+      opacity: .9;
+      line-height: 1.8
+    }
+
+    .fbb strong {
+      color: var(--yellow)
+    }
+
+    .fbb br {
+      display: block;
+      margin: 2px 0
+    }
+
+    /* ACTIONS */
+    .actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px
+    }
+
+    .btnb {
+      background: var(--card2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 11px 20px;
+      font-size: 13px;
+      flex: 1
+    }
+
+    /* RESULTS */
+    #results-screen {
+      display: none
+    }
+
+    .rpts {
+      font-size: 70px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center
+    }
+
+    .rof {
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 6px;
+      font-family: 'Space Mono', monospace
+    }
+
+    .rttl {
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 6px
+    }
+
+    .rsub {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 20px
+    }
+
+    .rgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px
+    }
+
+    .rbox {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center
+    }
+
+    .rn {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--green)
+    }
+
+    .rl {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'Space Mono', monospace
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="ey">Temel Çıktı ve Değişken Tipleri</div>
+      <h1>Python Temel İşlemler</h1>
+
+    </header>
+
+    <div id="start-screen">
+      <div class="card">
+        <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px">
+          Konular</div>
+        <div class="tgrid">
+          <div class="tc">
+            <div class="tci">📦</div>
+            <div class="tcn">Temel Çıktı</div>
+            <div class="tcd">type(), print(), operatörler</div>
+          </div>
+          <div class="tc">
+            <div class="tci">📋</div>
+            <div class="tcn">Listeler</div>
+            <div class="tcd">append, pop, sort, slice</div>
+          </div>
+          <div class="tc">
+            <div class="tci">🗂️</div>
+            <div class="tcn">Dictionary</div>
+            <div class="tcd">key-value, keys/values/items</div>
+          </div>
+          <div class="tc">
+            <div class="tci">🔒</div>
+            <div class="tcn">Etkileşim</div>
+            <div class="tcd">input(), casting</div>
+          </div>
+          <div class="tc">
+            <div class="tci">🔵</div>
+            <div class="tcn">String İşlemleri</div>
+            <div class="tcd">dilimleme, upper, replace</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btng" style="font-size:16px;padding:15px 44px;margin-top:24px" onclick="startGame()">🚀 Testi
+        Başlat</button>
+    </div>
+
+    <div id="game-screen">
+      <div class="pbar-wrap">
+        <span class="plbl" id="qctr">Soru 1/17</span>
+        <div class="ptrack">
+          <div class="pfill" id="pfill" style="width:0%"></div>
+        </div>
+        <span class="spill">⭐ <span id="scorenum">0</span> puan</span>
+      </div>
+      <div id="qarea"></div>
+      <div style="text-align: center; margin-top: 20px;">
+        <button class="btn"
+          style="background: transparent; color: var(--muted); border: 1px solid var(--border); font-size: 13px; padding: 8px 16px; transition: 0.2s;"
+          onmouseover="this.style.color='var(--red)'; this.style.borderColor='var(--red)'"
+          onmouseout="this.style.color='var(--muted)'; this.style.borderColor='var(--border)'"
+          onclick="if(confirm('Testi erken bitirmek istediğinize emin misiniz?')) showResults()">⏹ Testi Bitir</button>
+      </div>
+    </div>
+
+    <div id="results-screen">
+      <div class="card" style="text-align:center">
+        <div class="rpts" id="rpts">0</div>
+        <div class="rof">/ 250 PUAN</div>
+        <div class="rttl" id="rttl"></div>
+        <div class="rsub" id="rsub"></div>
+        <div class="rgrid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="rbox">
+            <div class="rn" id="rok">0</div>
+            <div class="rl">Doğru</div>
+          </div>
+          <div class="rbox">
+            <div class="rn" id="rbad">0</div>
+            <div class="rl">Yanlış</div>
+          </div>
+          <div class="rbox">
+            <div class="rn" id="remp">0</div>
+            <div class="rl" style="color: var(--yellow);">Boş</div>
+          </div>
+          <div class="rbox">
+            <div class="rn" id="rpct" style="color: var(--blue);">0%</div>
+            <div class="rl">Başarı</div>
+          </div>
+        </div>
+        <button class="btn btng" style="width:100%;font-size:15px;padding:14px" onclick="restartGame()">🔄
+          Tekrar</button>
+      </div>
+    </div>
+
+  </div><!-- .wrap -->
+
+  <script>
+    const QS = [
+{ "type": "fill", "topic": "Temel Çıktı", "q": "Ekrana isminizi yazdıran Python kodunu yazınız.", "before": "", "after": "(\"Ahmet\")", "hint": "Ekrana yazdırma fonksiyonu.", "ans": "print", "exp": "<code>print()</code> fonksiyonu ekrana çıktı vermek için kullanılır." },
+{ "type": "drag", "topic": "Değişken Tipleri", "q": "Aşağıdaki değerleri doğru veri tipleriyle eşleştiriniz.", "items": ["int", "float", "str", "bool", "list"], "zones": [ { "lbl": "5.0", "ans": "float" }, { "lbl": "\"False\"", "ans": "str" }, { "lbl": "[1, 2, 3]", "ans": "list" }, { "lbl": "10 > 2", "ans": "bool" }, { "lbl": "2024", "ans": "int" } ], "exp": "Tırnak içindeki ifadeler metindir (<code>str</code>). Ondalıklı sayılar <code>float</code>, mantıksal sonuçlar <code>bool</code>, köşeli parantez ise liste veri yapısıdır." },
+{ "type": "mc", "topic": "Matematiksel İşlemler", "q": "Kullanıcıdan iki farklı tam sayı (int) alan ve bu sayıların toplamını, farkını ve çarpımını ekrana yazdıran <strong>doğru</strong> Python kodu hangisidir?", "opts": [ { "t": "a = int(input())\nb = int(input())\nprint(a+b, a-b, a*b)", "m": 1 }, { "t": "a = input()\\nb = input()\\nprint(a+b, a-b, a*b)", "m": 0 }, { "t": "a = float(input())\\nb = int(input())\\nprint(a+b, a-b, a*b)", "m": 0 }, { "t": "a = int(input())\\nb = str(input())\\nprint(a+b, a-b, a*b)", "m": 0 } ], "ans": 0, "exp": "<code>input()</code> fonksiyonu her zaman <strong>string (str)</strong> döndürür. Matematiksel işlemler yapabilmek için <code>int()</code> veya <code>float()</code> gibi fonksiyonlarla tip dönüşümü (casting) yapılmalıdır." },
+{ "type": "mc", "topic": "Matematiksel İşlemler", "q": "Aşağıdaki kodun ekran çıktısı ne olur?", "code": "sayi1 = 15\nsayi2 = 4\nsonuc = sayi1 / sayi2\nprint(type(sonuc))\nprint(sonuc)", "opts": [ { "t": "<class 'float'>\\n3.75", "m": 1 }, { "t": "<class 'int'>\\n3", "m": 1 }, { "t": "<class 'float'>\\n3.0", "m": 1 }, { "t": "Hata", "m": 0 } ], "ans": 0, "exp": "Python 3'te <code>/</code> operatörü her zaman <code>float</code> (ondalıklı sayı) döndürür.<br><code>15 / 4 = 3.75</code>. Eğer tam kısmı istenseydi <code>15 // 4 = 3</code> kullanılırdı." },
+{ "type": "fill", "topic": "Tip Dönüşümleri", "q": "x = \"100\" ve y = 20 değişkenlerini kullanarak 120 sonucuna ulaşmak için tip dönüşümü yaparak boşluğu doldurunuz.", "before": "x = \"100\"\ny = 20\nsonuc = ", "after": "(x) + y\nprint(sonuc)", "hint": "Metni tam sayıya çeviren fonksiyon.", "ans": "int", "exp": "<code>\"100\"</code> bir metindir (string). Matematiksel olarak toplanabilmesi için <code>int(\"100\")</code> şeklinde tam sayıya dönüştürülmesi gerekir." },
+{ "type": "fill", "topic": "Tip Dönüşümleri", "q": "Kullanıcının girdiği ondalıklı sayıyı tam sayıya dönüştürerek ekrana yazdıran kodu tamamlayınız.", "before": "sayi = float(input(\"Ondalıklı sayı: \"))\ntam_k = ", "after": "(sayi)\nprint(\"Tam kısmı:\", tam_k)", "hint": "Float'ı Integer'a çeviren fonksiyon.", "ans": "int", "exp": "<code>int(3.8)</code> gibi bir kullanım sayının ondalıklı kısmını atarak tam kısmını (3) elde etmemizi sağlar." },
+{ "type": "mc", "topic": "Tip Dönüşümleri", "q": "Kullanıcıdan yaşını alıp 5 yıl önce kaç yaşında olduğunu hesaplayan <strong>doğru</strong> kod satırı hangisidir?", "opts": [ { "t": "yas = int(input(\"Yaşınız:\"))\\nprint(\"5 yıl önce:\", yas - 5)", "m": 1 }, { "t": "yas = input(\"Yaşınız:\")\\nprint(\"5 yıl önce:\", yas - 5)", "m": 0 }, { "t": "yas = int(input(\"Yaşınız:\"))\\nprint(\"5 yıl önce:\" + yas - 5)", "m": 0 }, { "t": "yas = input(int(\"Yaşınız:\"))\\nprint(yas - 5)", "m": 0 } ], "ans": 0, "exp": "Kullanıcıdan veri almak için <code>input()</code> kullanılır ve sonucunda dönen <strong>string</strong>'den matematiksel çıkarma yapmak için önce <code>int()</code> ile tam sayıya dönüştürülmesi şarttır." },
+{ "type": "mc", "topic": "Matematiksel Algoritmalar", "q": "Ödev (%30), Vize (%30) ve Final (%40) notlarından yılsonu notunu hesaplayan doğru ifade aşağıdakilerden hangisidir?", "opts": [ { "t": "sonuc = odev*0.3 + vize*0.3 + final*0.4", "m": 1 }, { "t": "sonuc = (odev + vize + final) / 3", "m": 0 }, { "t": "sonuc = odev*30 + vize*30 + final*40", "m": 0 }, { "t": "sonuc = (odev*0.3) * (vize*0.3) * (final*0.4)", "m": 0 } ], "ans": 0, "exp": "Yüzdelik hesaplamalarda notları ilgili yüzdelik oranlarıyla çarparak (örneğin %30 için 0.3) toplamamız gerekir." },
+{ "type": "fill", "topic": "Metin İşlemleri", "q": "İsim ve soyismi aralarına boşluk koyarak birleştiren kodu boşluğu doldurarak tamamlayınız.", "before": "isim = \"Ahmet\"\nsoyisim = \"Yılmaz\"\nmetin = isim ", "after": " \" \" + soyisim\nprint(\"Hoş geldin\", metin)", "hint": "Artı operatörü ile stringleri birleştirebilirsiniz.", "ans": "+", "exp": "Metin birleştirme işleminde <code>+</code> operatörü kullanılır. Aralarına boşluk karakteri eklemek için <code>+ \" \" +</code> kullanmak gereklidir." },
+{ "type": "mc", "topic": "Metin İşlemleri", "q": "Öğrenci numarasından (ogr_no) `numara@cu.edu.tr` şeklinde e-posta adresi üreten doğru f-string kullanımı hangisidir?", "opts": [ { "t": "mail = f\"{ogr_no}@cu.edu.tr\"", "m": 1 }, { "t": "mail = \"ogr_no@cu.edu.tr\"", "m": 0 }, { "t": "mail = f\"ogr_no@cu.edu.tr\"", "m": 0 }, { "t": "mail = {ogr_no} + \"@cu.edu.tr\"", "m": 0 } ], "ans": 0, "exp": "<strong>f-string</strong> formatında değişkenleri süslü parantez <code>{}</code> içine alarak bir metne doğrudan dahil edebiliriz." },
+{ "type": "fill", "topic": "Metin İşlemleri", "q": "Bir sayının kaç basamaklı olduğunu bulmak için sayıyı önce metne çevirip sonra uzunluğunu ölçmek gerekir.", "before": "sayi = 12345\nbasamak = len(", "after": "(sayi))\nprint(basamak)", "hint": "Sayıyı metne çeviren tip dönüşümü fonksiyonu.", "ans": "str", "exp": "<code>len()</code> fonksiyonu sayıların (int/float) uzunluğunu hesaplayamaz. Bu yüzden <code>len(str(12345))</code> şeklinde sayıyı önce yazıya dönüştürürüz." },
+{ "type": "drag", "topic": "Metin Metotları", "q": "<code>metin = \"Python Programlama\"</code> için istenen çıktıları verecek kod satırlarını eşleştiriniz.", "items": ["metin[0:6]", "metin.upper()", "metin.replace('a','4')"], "zones": [ { "lbl": "\"Python\"", "ans": "metin[0:6]" }, { "lbl": "\"PYTHON PROGRAMLAMA\"", "ans": "metin.upper()" }, { "lbl": "\"Python Progr4ml4m4\"", "ans": "metin.replace('a','4')" } ], "exp": "<code>metin[başlangıç:bitiş]</code> dilimleme (slicing) sağlar. <code>upper()</code> hepsini büyütür, <code>replace(eski, yeni)</code> hedefleri yenisiyle yer değiştirir." },
+{ "type": "drag", "topic": "Metin Metotları", "q": "Metin fonksiyonlarını işlevleriyle eşleştiriniz.", "items": ["len()", "lower()", "strip()", "title()", "type()"], "zones": [ { "lbl": "Karakter sayısını verir", "ans": "len()" }, { "lbl": "Tüm harfleri küçük yapar", "ans": "lower()" }, { "lbl": "Baş/sondaki boşluğu siler", "ans": "strip()" }, { "lbl": "İlk harfleri büyütür", "ans": "title()" }, { "lbl": "Değişken veri tipini verir", "ans": "type()" } ], "exp": "Bunlar Python'un en çok kullanılan metin manipülasyon metotlarıdır." },
+{ "type": "fill", "topic": "Metin Şifreleme (Replace)", "q": "Şifreleme uygulamasında a->1, b->9, ş->3 yapılıyor. Şifrelemeyi uygulayan kodda ilk boşluğu tamamlayın.", "before": "cumle = \"başarı\"\nsifreli = cumle.", "after": "('a', '1').replace('b', '9').replace('ş', '3')\nprint(sifreli)", "hint": "Karakteri başka bir karakterle değiştiren string metodu.", "ans": "replace", "exp": "Zincirleme <code>.replace()</code> metotları ile sırasıyla belirtilen harfler dönüştürülür." },
+{ "type": "mc", "topic": "Listeler", "q": "Boş bir listeye eleman ekleyen doğru metot aşağıdakilerden hangisidir?", "opts": [ { "t": "liste.append(\"Elma\")", "m": 1 }, { "t": "liste.add(\"Elma\")", "m": 0 }, { "t": "liste.insert(\"Elma\")", "m": 0 }, { "t": "liste.push(\"Elma\")", "m": 0 } ], "ans": 0, "exp": "Python'da listelerin sonuna yeni bir eleman eklemek için <strong><code>append()</code></strong> metodu kullanılır. `add` kümelerde (set) kullanılır." },
+{ "type": "drag", "topic": "Listeler", "q": "<code>liste = [10, 20, 30, 40, 50]</code> için istenen işlemleri yapan kodları eşleştiriniz.", "items": ["liste.append(60)", "liste.pop(1)", "len(liste)"], "zones": [ { "lbl": "Sonuna 60 ekle", "ans": "liste.append(60)" }, { "lbl": "İkinci elemanı (20) sil", "ans": "liste.pop(1)" }, { "lbl": "Listenin eleman sayısı", "ans": "len(liste)" } ], "exp": "<code>.append()</code> elemanı sona ekler. <code>.pop(index)</code> o indexteki elemanı siler (20 sayısı 1. indexte yer alır). <code>len()</code> uzunluğu ölçer." },
+{ "type": "mc", "topic": "Teori ve Analiz", "q": "Aşağıdaki ifadelerden hangisi <strong>yanlıştır</strong>?", "opts": [ { "t": "type: Veri tipi değiştirmek (casting) amacıyla kullanılır.", "m": 1 }, { "t": "input: Kullanıcıdan veri almak için kullanılır.", "m": 0 }, { "t": "print: Ekrana veri yazmak için kullanılır.", "m": 0 }, { "t": "split: String ifadeyi belirli bir karaktere göre bölmeye yarar.", "m": 0 } ], "ans": 0, "exp": "<code>type()</code> fonksiyonu bir değişkenin veri tipini <strong>öğrenmek (çözümlemek)</strong> için kullanılır, değiştirmek için değil. Değiştirmek (casting) için <code>int()</code>, <code>float()</code> vs. kullanılır." }
+]
+;
+
+    let qi = 0, score = 0, okN = 0, badN = 0, empN = 0;
+    let answered = false, tfSt = {}, dragSt = {};
+    let ansHistory = [];
+    let savedAnswers = []; // Kullanici cevap hafizasi
+
+    function startGame() {
+      document.getElementById('start-screen').style.display = 'none';
+      document.getElementById('game-screen').style.display = 'block';
+      qi = 0; score = 0; okN = 0; badN = 0; empN = 0;
+      ansHistory = new Array(QS.length).fill(0);
+      savedAnswers = new Array(QS.length).fill(null);
+      recalcScore();
+      render();
+    }
+
+    function recalcScore() {
+      score = 0; okN = 0; badN = 0; empN = 0;
+      for (let i = 0; i < QS.length; i++) {
+        if (ansHistory[i] === 1) { okN++; score += 10; }
+        else if (ansHistory[i] === -1) { badN++; }
+        else if (ansHistory[i] === 2) { empN++; }
+      }
+      document.getElementById('scorenum').textContent = score;
+    }
+
+    function restartGame() {
+      document.getElementById('results-screen').style.display = 'none';
+      document.getElementById('start-screen').style.display = 'block';
+    }
+
+    /* ── RENDER ── */
+    function render() {
+      answered = false; tfSt = {}; dragSt = {};
+      const q = QS[qi];
+      document.getElementById('qctr').textContent = 'Soru ' + (qi + 1) + '/' + QS.length;
+      document.getElementById('pfill').style.width = ((qi / QS.length) * 100) + '%';
+
+      const area = document.getElementById('qarea');
+      const tn = { mc: 'Çoktan Seçmeli', fill: 'Kod Tamamla', drag: 'Eşleştir', tf: 'Doğru / Yanlış' };
+      const tc = { mc: 'bmc', fill: 'bfil', drag: 'bdrg', tf: 'btf' };
+      const L = ['A', 'B', 'C', 'D'];
+
+      let h = '<div class="card">';
+      h += '<div class="qmeta">';
+      h += '<span class="badge ' + tc[q.type] + '">' + tn[q.type] + '</span>';
+      h += '<span class="badge btopic">' + q.topic + '</span>';
+      h += '<span class="qnum">' + (qi + 1) + ' / ' + QS.length + '</span>';
+      h += '</div>';
+      h += '<div class="qt">' + q.q + '</div>';
+
+      if (q.code) h += '<pre class="cb">' + hl(q.code) + '</pre>';
+
+      if (q.type === 'mc') {
+        h += '<div class="opts">';
+        q.opts.forEach(function (o, i) {
+          h += '<div class="opt" data-i="' + i + '" onclick="pickMC(' + i + ')">';
+          h += '<span class="okey">' + L[i] + '</span>';
+          h += '<span class="otxt' + (o.m ? ' mono' : '') + '">' + o.t.replace(/\\n/g, '<br>') + '</span>';
+          h += '</div>';
+        });
+        h += '</div>';
+      }
+
+      if (q.type === 'tf') {
+        q.stmts.forEach(function (s, i) {
+          h += '<div class="tf-row">';
+          h += '<div class="tf-stmt">' + s.t + '</div>';
+          h += '<div class="tf-btns">';
+          h += '<button class="tfb" data-si="' + i + '" data-val="true" onclick="pickTF(' + i + ',true)">✅ Doğru</button>';
+          h += '<button class="tfb" data-si="' + i + '" data-val="false" onclick="pickTF(' + i + ',false)">❌ Yanlış</button>';
+          h += '</div></div>';
+          tfSt[i] = null;
+        });
+      }
+
+      if (q.type === 'fill') {
+        h += '<div class="hint">💡 İpucu: ' + q.hint + '</div>';
+        h += '<div class="fill-wrap">';
+        h += '<code>' + esc(q.before) + '</code>';
+        h += '<input id="blank" type="text" placeholder="?" autocomplete="off" spellcheck="false">';
+        h += '<code>' + esc(q.after) + '</code>';
+        h += '</div>';
+      }
+
+      if (q.type === 'drag') {
+        h += '<div class="hint" style="border-left-color: var(--purple);">💡 İpucu: Sol taraftaki ifadeleri farenizle basılı tutarak sürükleyip, sağ taraftaki uygun boşluklara bırakın.</div>';
+        const shuf = q.items.slice().sort(function () { return Math.random() - 0.5; });
+        h += '<div class="dragboard">';
+        h += '<div class="dragleft"><div class="dtitle">İfadeler / Metotlar</div><div class="poolbox" id="pool">';
+        shuf.forEach(function (v) {
+          const ev = v.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+          h += '<div class="ditem" draggable="true" data-val="' + ev + '">' + esc(v) + '</div>';
+        });
+        h += '</div></div>';
+        h += '<div class="dragright"><div class="dtitle">Açıklama / Tip</div><div class="dropcol">';
+        q.zones.forEach(function (z) {
+          const zid = 'dz_' + z.lbl.replace(/[^a-z0-9]/gi, '_');
+          dragSt[z.lbl] = null;
+          const evlbl = z.lbl.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+          h += '<div class="droprow">';
+          h += '<span class="dlbl">' + esc(z.lbl) + '</span>';
+          h += '<div class="dzone" id="' + zid + '" data-zone="' + evlbl + '"></div>';
+          h += '</div>';
+        });
+        h += '</div></div></div>';
+      }
+
+      h += '<div class="fb" id="fb"></div>';
+      h += '<div class="actions">';
+      if (qi > 0) {
+        h += '<button class="btn btnb" onclick="prevQ()">← Geri</button>';
+      }
+      h += '<button class="btn btnb" style="flex: 1; border-color: var(--yellow); color: var(--yellow);" onclick="skipQ()">Boş Bırak</button>';
+      h += '<button class="btn btng" style="flex: 2" id="chk" onclick="checkAns()">Kontrol Et ✓</button>';
+      if (ansHistory[qi] !== 0) {
+        h += '<button class="btn btnb" id="btn-next-gray" onclick="nextQ()">İleri →</button>';
+      }
+      h += '</div>';
+      h += '</div>'; // .card
+
+      area.innerHTML = h;
+
+      if (q.type === 'fill') {
+        document.getElementById('blank').addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') checkAns();
+        });
+      }
+
+      if (q.type === 'drag') initDrag();
+
+      // Hafızadan cevapları geri yükle
+      if (savedAnswers[qi] !== null) {
+        let ans = savedAnswers[qi];
+        if (q.type === 'mc' && ans !== null) {
+          setTimeout(function () { pickMC(ans); }, 0);
+        } else if (q.type === 'tf') {
+          setTimeout(function () {
+            Object.keys(ans).forEach(function (k) {
+              if (ans[k] !== null) pickTF(k, ans[k]);
+            });
+          }, 0);
+        } else if (q.type === 'fill' && ans !== null) {
+          setTimeout(function () { document.getElementById('blank').value = ans; }, 0);
+        } else if (q.type === 'drag') {
+          setTimeout(function () {
+            Object.keys(ans).forEach(function (k) {
+              if (ans[k] !== null) {
+                let items = document.querySelectorAll('.ditem');
+                let el = null;
+                for (let i = 0; i < items.length; i++) {
+                  if (items[i].dataset.val === ans[k]) { el = items[i]; break; }
+                }
+                let zn = document.getElementById('dz_' + k.replace(/[^a-z0-9]/gi, '_'));
+                if (el && zn) { zn.appendChild(el); dragSt[k] = ans[k]; }
+              }
+            });
+          }, 0);
+        }
+      }
+    }
+
+    /* ── PICK ── */
+    function pickMC(i) {
+      if (answered) return;
+      document.querySelectorAll('.opt[data-i]').forEach(function (el) { el.classList.remove('sel'); });
+      document.querySelector('.opt[data-i="' + i + '"]').classList.add('sel');
+    }
+
+    function pickTF(si, val) {
+      if (answered) return;
+      document.querySelectorAll('.tfb[data-si="' + si + '"]').forEach(function (e) { e.classList.remove('sel'); });
+      document.querySelectorAll('.tfb[data-si="' + si + '"][data-val="' + val + '"]').forEach(function (e) { e.classList.add('sel'); });
+      tfSt[si] = val;
+    }
+
+    /* ── DRAG INIT ── */
+    function initDrag() {
+      let dragged = null;
+      document.querySelectorAll('.ditem').forEach(function (item) {
+        item.addEventListener('dragstart', function () {
+          dragged = item;
+          setTimeout(function () { item.classList.add('dragging'); }, 0);
+        });
+        item.addEventListener('dragend', function () { item.classList.remove('dragging'); });
+      });
+      document.querySelectorAll('.dzone').forEach(function (zone) {
+        zone.addEventListener('dragover', function (e) { e.preventDefault(); zone.classList.add('over'); });
+        zone.addEventListener('dragleave', function () { zone.classList.remove('over'); });
+        zone.addEventListener('drop', function (e) {
+          e.preventDefault();
+          zone.classList.remove('over');
+          const zn = zone.dataset.zone;
+          if (zone.children.length > 0) {
+            document.getElementById('pool').appendChild(zone.firstChild);
+            dragSt[zn] = null;
+          }
+          zone.appendChild(dragged);
+          dragSt[zn] = dragged.dataset.val;
+        });
+      });
+    }
+
+    /* ── SAVE STATE ── */
+    function saveCurrentState() {
+      const q = QS[qi];
+      let currentAnswer = null;
+      if (q.type === 'mc') {
+        const sel = document.querySelector('.opt[data-i].sel');
+        if (sel) currentAnswer = parseInt(sel.dataset.i);
+      } else if (q.type === 'tf') {
+        currentAnswer = { ...tfSt };
+      } else if (q.type === 'fill') {
+        const inp = document.getElementById('blank');
+        if (inp) currentAnswer = inp.value;
+      } else if (q.type === 'drag') {
+        currentAnswer = { ...dragSt };
+      }
+      savedAnswers[qi] = currentAnswer;
+    }
+
+    /* ── CHECK & SKIP ── */
+    function skipQ() {
+      if (answered) { nextQ(); return; }
+      saveCurrentState();
+      answered = true;
+      ansHistory[qi] = 2; // 2 means skipped
+      recalcScore();
+
+      const fb = document.getElementById('fb');
+      fb.className = 'fb show';
+      fb.style.background = '#1a1a0f';
+      fb.style.borderColor = 'var(--yellow)';
+      fb.innerHTML = '<div class="fbh" style="color: var(--yellow);">⏸ Boş Bırakıldı</div><div class="fbb">' + QS[qi].exp + '</div>';
+
+      const chk = document.getElementById('chk');
+      chk.textContent = qi < QS.length - 1 ? 'Sonraki Soru →' : 'Sonuçları Gör 🏆';
+      const greyBtn = document.getElementById('btn-next-gray');
+      if (greyBtn) greyBtn.style.display = 'none';
+    }
+
+    function checkAns() {
+      if (answered) { nextQ(); return; }
+      saveCurrentState();
+      const q = QS[qi];
+      let ok = false;
+
+      if (q.type === 'mc') {
+        const sel = document.querySelector('.opt[data-i].sel');
+        if (!sel) return;
+        const idx = parseInt(sel.dataset.i);
+        ok = (idx === q.ans);
+        document.querySelectorAll('.opt[data-i]').forEach(function (el, i) {
+          el.classList.add('lk');
+          if (i === q.ans) el.classList.add('ok');
+          else if (el.classList.contains('sel')) el.classList.add('bad');
+        });
+      }
+
+      if (q.type === 'tf') {
+        const vals = Object.values(tfSt);
+        if (vals.some(function (v) { return v === null; })) return;
+        let allOk = true;
+        q.stmts.forEach(function (s, i) {
+          const given = (tfSt[i] === true || tfSt[i] === 'true');
+          const correct = s.ans;
+          const rowOk = (given === correct);
+          if (!rowOk) allOk = false;
+          document.querySelectorAll('.tfb[data-si="' + i + '"]').forEach(function (el) {
+            el.classList.add('lk');
+            const elVal = (el.dataset.val === 'true');
+            if (elVal === correct) el.classList.add('ok');
+            else if (el.classList.contains('sel')) el.classList.add('bad');
+          });
+        });
+        ok = allOk;
+      }
+
+      if (q.type === 'fill') {
+        const inp = document.getElementById('blank');
+        const given = inp.value.trim();
+        ok = (given === q.ans);
+        inp.classList.add(ok ? 'ok' : 'bad');
+        inp.disabled = true;
+      }
+
+      if (q.type === 'drag') {
+        let allOk = true;
+        q.zones.forEach(function (z) {
+          const placed = dragSt[z.lbl];
+          const rowOk = (placed === z.ans);
+          if (!rowOk) allOk = false;
+          const zid = 'dz_' + z.lbl.replace(/[^a-z0-9]/gi, '_');
+          const zone = document.getElementById(zid);
+          if (zone) zone.classList.add(rowOk ? 'ok' : 'bad');
+        });
+        // check all zones have something
+        const allFilled = q.zones.every(function (z) { return dragSt[z.lbl] !== null; });
+        if (!allFilled) return;
+        ok = allOk;
+      }
+
+      answered = true;
+      ansHistory[qi] = ok ? 1 : -1;
+      recalcScore();
+
+      const fb = document.getElementById('fb');
+      fb.style.background = '';
+      fb.style.borderColor = '';
+      fb.className = 'fb show ' + (ok ? 'fbok' : 'fbbad');
+      fb.innerHTML = '<div class="fbh">' + (ok ? '✅ Doğru!' : '❌ Yanlış') + '</div><div class="fbb">' + q.exp + '</div>';
+
+      const chk = document.getElementById('chk');
+      chk.textContent = qi < QS.length - 1 ? 'Sonraki Soru →' : 'Sonuçları Gör 🏆';
+      const greyBtn = document.getElementById('btn-next-gray');
+      if (greyBtn) greyBtn.style.display = 'none';
+    }
+
+    /* ── NEXT & PREV ── */
+    function nextQ() {
+      if (!answered) saveCurrentState();
+      qi++;
+      if (qi >= QS.length) { showResults(); return; }
+      render();
+    }
+
+    function prevQ() {
+      if (qi > 0) {
+        if (!answered) saveCurrentState();
+        qi--;
+        render();
+      }
+    }
+
+    /* ── RESULTS ── */
+    function showResults() {
+      document.getElementById('game-screen').style.display = 'none';
+      document.getElementById('results-screen').style.display = 'block';
+      document.getElementById('pfill').style.width = '100%';
+      const totalAnswered = okN + badN + empN;
+      const pct = Math.round((okN / QS.length) * 100);
+      document.getElementById('rpts').textContent = score;
+      document.querySelector('.rof').textContent = '/ ' + (QS.length * 10) + ' PUAN';
+      document.getElementById('rok').textContent = okN;
+      document.getElementById('rbad').textContent = badN;
+      document.getElementById('remp').textContent = empN;
+      document.getElementById('rpct').textContent = pct + '%';
+      const titles = [
+        [90, '🏆 Mükemmel! Python ustasısın!'],
+        [70, '⭐ Harika! Konuya hakimsin.'],
+        [50, '💪 İyi iş! Biraz daha pratik yapman yeterli.'],
+        [0, '📚 Notlara bir daha bak, başarabilirsin!']
+      ];
+      const t = titles.find(function (x) { return pct >= x[0]; });
+      document.getElementById('rttl').textContent = t[1];
+      document.getElementById('rsub').textContent = okN + ' doğru · ' + badN + ' yanlış · ' + empN + ' boş · ' + pct + '% başarı';
+    }
+
+    /* ── HELPERS ── */
+    function esc(t) {
+      return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function hl(raw) {
+      const KWS = new Set(['True', 'False', 'None', 'if', 'else', 'elif', 'for', 'in', 'while', 'not', 'and', 'or', 'def', 'return', 'import', 'from', 'class', 'lambda', 'with', 'as', 'pass', 'break', 'continue']);
+      const FNS = new Set(['print', 'len', 'type', 'int', 'float', 'str', 'list', 'dict', 'set', 'tuple', 'range', 'append', 'get', 'keys', 'values', 'items', 'pop', 'remove', 'copy', 'sort', 'reverse', 'extend', 'clear', 'add', 'update', 'count', 'index', 'input']);
+      let out = '', i = 0, src = raw;
+      while (i < src.length) {
+        if (src[i] === '#') {
+          let j = i; while (j < src.length && src[j] !== '\n') j++;
+          out += '<span class="cm">' + esc(src.slice(i, j)) + '</span>'; i = j; continue;
+        }
+        if (src[i] === '"') {
+          let j = i + 1; while (j < src.length && src[j] !== '"') j++;
+          out += '<span class="st">' + esc(src.slice(i, j + 1)) + '</span>'; i = j + 1; continue;
+        }
+        if (src[i] === "'") {
+          let j = i + 1; while (j < src.length && src[j] !== "'") j++;
+          out += '<span class="st">' + esc(src.slice(i, j + 1)) + '</span>'; i = j + 1; continue;
+        }
+        if (src[i] >= '0' && src[i] <= '9') {
+          let j = i; while (j < src.length && (src[j] >= '0' && src[j] <= '9' || src[j] === '.')) j++;
+          out += '<span class="nm">' + esc(src.slice(i, j)) + '</span>'; i = j; continue;
+        }
+        if (/[a-zA-Z_]/.test(src[i])) {
+          let j = i; while (j < src.length && /[a-zA-Z0-9_]/.test(src[j])) j++;
+          const word = src.slice(i, j);
+          if (KWS.has(word)) out += '<span class="kw">' + esc(word) + '</span>';
+          else if (src[j] === '(' && FNS.has(word)) out += '<span class="fn">' + esc(word) + '</span>';
+          else out += esc(word);
+          i = j; continue;
+        }
+        out += esc(src[i]); i++;
+      }
+      return out;
+    }
+  </script>
+</body>
+
+</html>
