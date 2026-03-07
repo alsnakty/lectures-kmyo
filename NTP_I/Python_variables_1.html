@@ -30,7 +30,10 @@
     }
 
     body {
-      background: var(--bg);
+      background-color: var(--bg);
+      /* Arka plan noise (kumlanma) yoğunluğunu asagidaki opacity='0.08' degerinden degistirebilirsiniz. 
+         (0.04 = cok hafif, 0.08 = dengeli, 0.15 = cok yogun) */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
       color: var(--text);
       font-family: 'Syne', sans-serif;
       min-height: 100vh;
@@ -802,12 +805,14 @@
     let qi = 0, score = 0, okN = 0, badN = 0, empN = 0;
     let answered = false, tfSt = {}, dragSt = {};
     let ansHistory = [];
+    let savedAnswers = []; // Kullanici cevap hafizasi
 
     function startGame() {
       document.getElementById('start-screen').style.display = 'none';
       document.getElementById('game-screen').style.display = 'block';
       qi = 0; score = 0; okN = 0; badN = 0; empN = 0;
       ansHistory = new Array(QS.length).fill(0);
+      savedAnswers = new Array(QS.length).fill(null);
       recalcScore();
       render();
     }
@@ -911,7 +916,7 @@
       h += '<button class="btn btnb" style="flex: 1; border-color: var(--yellow); color: var(--yellow);" onclick="skipQ()">Boş Bırak</button>';
       h += '<button class="btn btng" style="flex: 2" id="chk" onclick="checkAns()">Kontrol Et ✓</button>';
       if (ansHistory[qi] !== 0) {
-        h += '<button class="btn btnb" onclick="nextQ()">İleri →</button>';
+        h += '<button class="btn btnb" id="btn-next-gray" onclick="nextQ()">İleri →</button>';
       }
       h += '</div>';
       h += '</div>'; // .card
@@ -925,6 +930,36 @@
       }
 
       if (q.type === 'drag') initDrag();
+
+      // Hafızadan cevapları geri yükle
+      if (savedAnswers[qi] !== null) {
+        let ans = savedAnswers[qi];
+        if (q.type === 'mc' && ans !== null) {
+          setTimeout(function () { pickMC(ans); }, 0);
+        } else if (q.type === 'tf') {
+          setTimeout(function () {
+            Object.keys(ans).forEach(function (k) {
+              if (ans[k] !== null) pickTF(k, ans[k]);
+            });
+          }, 0);
+        } else if (q.type === 'fill' && ans !== null) {
+          setTimeout(function () { document.getElementById('blank').value = ans; }, 0);
+        } else if (q.type === 'drag') {
+          setTimeout(function () {
+            Object.keys(ans).forEach(function (k) {
+              if (ans[k] !== null) {
+                let items = document.querySelectorAll('.ditem');
+                let el = null;
+                for (let i = 0; i < items.length; i++) {
+                  if (items[i].dataset.val === ans[k]) { el = items[i]; break; }
+                }
+                let zn = document.getElementById('dz_' + k.replace(/[^a-z0-9]/gi, '_'));
+                if (el && zn) { zn.appendChild(el); dragSt[k] = ans[k]; }
+              }
+            });
+          }, 0);
+        }
+      }
     }
 
     /* ── PICK ── */
@@ -968,9 +1003,28 @@
       });
     }
 
+    /* ── SAVE STATE ── */
+    function saveCurrentState() {
+      const q = QS[qi];
+      let currentAnswer = null;
+      if (q.type === 'mc') {
+        const sel = document.querySelector('.opt[data-i].sel');
+        if (sel) currentAnswer = parseInt(sel.dataset.i);
+      } else if (q.type === 'tf') {
+        currentAnswer = { ...tfSt };
+      } else if (q.type === 'fill') {
+        const inp = document.getElementById('blank');
+        if (inp) currentAnswer = inp.value;
+      } else if (q.type === 'drag') {
+        currentAnswer = { ...dragSt };
+      }
+      savedAnswers[qi] = currentAnswer;
+    }
+
     /* ── CHECK & SKIP ── */
     function skipQ() {
       if (answered) { nextQ(); return; }
+      saveCurrentState();
       answered = true;
       ansHistory[qi] = 2; // 2 means skipped
       recalcScore();
@@ -983,10 +1037,13 @@
 
       const chk = document.getElementById('chk');
       chk.textContent = qi < QS.length - 1 ? 'Sonraki Soru →' : 'Sonuçları Gör 🏆';
+      const greyBtn = document.getElementById('btn-next-gray');
+      if (greyBtn) greyBtn.style.display = 'none';
     }
 
     function checkAns() {
       if (answered) { nextQ(); return; }
+      saveCurrentState();
       const q = QS[qi];
       let ok = false;
 
@@ -1057,10 +1114,13 @@
 
       const chk = document.getElementById('chk');
       chk.textContent = qi < QS.length - 1 ? 'Sonraki Soru →' : 'Sonuçları Gör 🏆';
+      const greyBtn = document.getElementById('btn-next-gray');
+      if (greyBtn) greyBtn.style.display = 'none';
     }
 
     /* ── NEXT & PREV ── */
     function nextQ() {
+      if (!answered) saveCurrentState();
       qi++;
       if (qi >= QS.length) { showResults(); return; }
       render();
@@ -1068,6 +1128,7 @@
 
     function prevQ() {
       if (qi > 0) {
+        if (!answered) saveCurrentState();
         qi--;
         render();
       }
@@ -1079,9 +1140,9 @@
       document.getElementById('results-screen').style.display = 'block';
       document.getElementById('pfill').style.width = '100%';
       const totalAnswered = okN + badN + empN;
-      const pct = totalAnswered > 0 ? Math.round((okN / totalAnswered) * 100) : 0;
+      const pct = Math.round((okN / QS.length) * 100);
       document.getElementById('rpts').textContent = score;
-      document.querySelector('.rof').textContent = '/ ' + (totalAnswered * 10) + ' PUAN';
+      document.querySelector('.rof').textContent = '/ ' + (QS.length * 10) + ' PUAN';
       document.getElementById('rok').textContent = okN;
       document.getElementById('rbad').textContent = badN;
       document.getElementById('remp').textContent = empN;
