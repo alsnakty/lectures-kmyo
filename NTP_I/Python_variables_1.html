@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Python Temelleri</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090f;
+      --card: #0f1117;
+      --card2: #161820;
+      --green: #00c96a;
+      --blue: #4dabf7;
+      --purple: #cc5de8;
+      --yellow: #ffd43b;
+      --red: #ff6b6b;
+      --text: #e8eaf0;
+      --muted: #6c7085;
+      --border: #1e2030;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      padding: 20px 16px 60px
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto
+    }
+
+    header {
+      text-align: center;
+      padding: 28px 0 32px
+    }
+
+    .ey {
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px
+    }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px
+    }
+
+    .tgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 24px
+    }
+
+    .tc {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center
+    }
+
+    .tci {
+      font-size: 24px;
+      margin-bottom: 6px
+    }
+
+    .tcn {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text)
+    }
+
+    .tcd {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      transition: .15s
+    }
+
+    .btng {
+      background: var(--green);
+      color: #001a0a;
+      padding: 11px 28px;
+      font-size: 14px
+    }
+
+    .btng:hover {
+      background: #00e87a;
+      transform: translateY(-1px)
+    }
+
+    #start-screen {
+      text-align: center;
+      padding: 8px 0 40px
+    }
+
+    /* PROGRESS */
+    .pbar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px
+    }
+
+    .plbl {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      font-family: 'Space Mono', monospace
+    }
+
+    .ptrack {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden
+    }
+
+    .pfill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+      border-radius: 3px;
+      transition: .4s
+    }
+
+    .spill {
+      font-size: 12px;
+      color: var(--yellow);
+      font-family: 'Space Mono', monospace;
+      white-space: nowrap
+    }
+
+    #game-screen {
+      display: none
+    }
+
+    /* CARD */
+    .qmeta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px
+    }
+
+    .badge {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-family: 'Space Mono', monospace
+    }
+
+    .bmc {
+      background: #1a2f1a;
+      color: var(--green)
+    }
+
+    .bfil {
+      background: #1a2040;
+      color: var(--blue)
+    }
+
+    .bdrg {
+      background: #2a1a40;
+      color: var(--purple)
+    }
+
+    .btf {
+      background: #2a2010;
+      color: var(--yellow)
+    }
+
+    .btopic {
+      background: var(--card2);
+      color: var(--muted);
+      border: 1px solid var(--border)
+    }
+
+    .qnum {
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: auto;
+      font-family: 'Space Mono', monospace
+    }
+
+    .qt {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 18px
+    }
+
+    .qt code,
+    .fbb code {
+      background: #1e2030;
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--blue)
+    }
+
+    /* CODE BLOCK */
+    .cb {
+      background: #050508;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin-bottom: 18px;
+      color: var(--text)
+    }
+
+    .kw {
+      color: #cc5de8
+    }
+
+    .st {
+      color: #ffd43b
+    }
+
+    .nm {
+      color: #69db7c
+    }
+
+    .cm {
+      color: #5c6480
+    }
+
+    .fn {
+      color: #4dabf7
+    }
+
+    /* OPTIONS */
+    .opts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 4px
+    }
+
+    .opt {
+      background: var(--card2);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: .15s
+    }
+
+    .opt:hover:not(.lk) {
+      border-color: var(--blue);
+      background: #161c2e
+    }
+
+    .opt.sel {
+      border-color: var(--blue);
+      background: #101829
+    }
+
+    .opt.ok {
+      border-color: var(--green) !important;
+      background: #0a1f10 !important
+    }
+
+    .opt.bad {
+      border-color: var(--red) !important;
+      background: #1f0a0a !important
+    }
+
+    .opt.lk {
+      cursor: default
+    }
+
+    .okey {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Space Mono', monospace;
+      flex-shrink: 0
+    }
+
+    .opt.ok .okey {
+      background: var(--green);
+      color: #001a0a
+    }
+
+    .opt.bad .okey {
+      background: var(--red);
+      color: #fff
+    }
+
+    .otxt {
+      font-size: 14px;
+      line-height: 1.4
+    }
+
+    .mono {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px
+    }
+
+    /* TRUE/FALSE */
+    .tf-row {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 8px
+    }
+
+    .tf-stmt {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 10px
+    }
+
+    .tf-btns {
+      display: flex;
+      gap: 8px
+    }
+
+    .tfb {
+      flex: 1;
+      padding: 8px;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      background: none;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--muted);
+      transition: .15s
+    }
+
+    .tfb:hover:not(.lk) {
+      border-color: var(--blue);
+      color: var(--text)
+    }
+
+    .tfb.sel {
+      border-color: var(--blue);
+      color: var(--blue)
+    }
+
+    .tfb.ok {
+      border-color: var(--green) !important;
+      background: #0a1f10 !important;
+      color: var(--green) !important
+    }
+
+    .tfb.bad {
+      border-color: var(--red) !important;
+      background: #1f0a0a !important;
+      color: var(--red) !important
+    }
+
+    .tfb.lk {
+      cursor: default
+    }
+
+    /* FILL */
+    .fill-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      background: #050508;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px
+    }
+
+    .fill-wrap code {
+      color: var(--text)
+    }
+
+    #blank {
+      background: none;
+      border: none;
+      border-bottom: 2px solid var(--blue);
+      color: var(--yellow);
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      width: 120px;
+      text-align: center;
+      outline: none;
+      padding: 2px 4px
+    }
+
+    #blank.ok {
+      border-color: var(--green);
+      color: var(--green)
+    }
+
+    #blank.bad {
+      border-color: var(--red);
+      color: var(--red)
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      background: var(--card2);
+      border-radius: 8px;
+      border-left: 3px solid var(--blue)
+    }
+
+    /* DRAG */
+    .dragboard {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 4px
+    }
+
+    .dragleft,
+    .dragright {
+      flex: 1
+    }
+
+    .dtitle {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-family: 'Space Mono', monospace
+    }
+
+    .poolbox {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .ditem {
+      background: var(--card2);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      cursor: grab;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--blue);
+      transition: .15s
+    }
+
+    .ditem:hover:not(.dragging) {
+      border-color: var(--blue)
+    }
+
+    .ditem.dragging {
+      opacity: .4
+    }
+
+    .dropcol {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .droprow {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .dlbl {
+      font-size: 12px;
+      color: var(--muted);
+      width: 110px;
+      flex-shrink: 0;
+      text-align: right;
+      font-family: 'Space Mono', monospace
+    }
+
+    .dzone {
+      flex: 1;
+      min-height: 40px;
+      background: var(--card2);
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      transition: .15s
+    }
+
+    .dzone.over {
+      border-color: var(--purple);
+      background: #1a1028
+    }
+
+    .dzone.ok {
+      border-color: var(--green) !important;
+      background: #0a1f10 !important
+    }
+
+    .dzone.bad {
+      border-color: var(--red) !important;
+      background: #1f0a0a !important
+    }
+
+    /* FEEDBACK */
+    .fb {
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-top: 14px;
+      font-size: 13px;
+      line-height: 1.8;
+      display: none
+    }
+
+    .fb.show {
+      display: block
+    }
+
+    .fbok {
+      background: #0a1f10;
+      border: 1px solid var(--green)
+    }
+
+    .fbbad {
+      background: #1f0a0a;
+      border: 1px solid var(--red)
+    }
+
+    .fbh {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px
+    }
+
+    .fbok .fbh {
+      color: var(--green)
+    }
+
+    .fbbad .fbh {
+      color: var(--red)
+    }
+
+    .fbb {
+      color: var(--text);
+      opacity: .9;
+      line-height: 1.8
+    }
+
+    .fbb strong {
+      color: var(--yellow)
+    }
+
+    .fbb br {
+      display: block;
+      margin: 2px 0
+    }
+
+    /* ACTIONS */
+    .actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px
+    }
+
+    .btnb {
+      background: var(--card2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 11px 20px;
+      font-size: 13px;
+      flex: 1
+    }
+
+    /* RESULTS */
+    #results-screen {
+      display: none
+    }
+
+    .rpts {
+      font-size: 70px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center
+    }
+
+    .rof {
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 6px;
+      font-family: 'Space Mono', monospace
+    }
+
+    .rttl {
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 6px
+    }
+
+    .rsub {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 20px
+    }
+
+    .rgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px
+    }
+
+    .rbox {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center
+    }
+
+    .rn {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--green)
+    }
+
+    .rl {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'Space Mono', monospace
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="ey">Python Programlama</div>
+      <h1>Nesne Tabanlı Programlama I</h1>
+
+    </header>
+
+    <div id="start-screen">
+      <div class="card">
+        <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px">
+          Konular</div>
+        <div class="tgrid">
+          <div class="tc">
+            <div class="tci">📦</div>
+            <div class="tcn">Değişkenler</div>
+            <div class="tcd">type(), print(), operatörler</div>
+          </div>
+          <div class="tc">
+            <div class="tci">📋</div>
+            <div class="tcn">Listeler</div>
+            <div class="tcd">append, pop, sort, slice</div>
+          </div>
+          <div class="tc">
+            <div class="tci">🗂️</div>
+            <div class="tcn">Dictionary</div>
+            <div class="tcd">key-value, keys/values/items</div>
+          </div>
+          <div class="tc">
+            <div class="tci">🔒</div>
+            <div class="tcn">Tuple</div>
+            <div class="tcd">Değiştirilemez, count, index</div>
+          </div>
+          <div class="tc">
+            <div class="tci">🔵</div>
+            <div class="tcn">Set</div>
+            <div class="tcd">Tekrarsız küme, add, remove</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btng" style="font-size:16px;padding:15px 44px;margin-top:24px" onclick="startGame()">🚀 Testi
+        Başlat</button>
+    </div>
+
+    <div id="game-screen">
+      <div class="pbar-wrap">
+        <span class="plbl" id="qctr">Soru 1/25</span>
+        <div class="ptrack">
+          <div class="pfill" id="pfill" style="width:0%"></div>
+        </div>
+        <span class="spill">⭐ <span id="scorenum">0</span> puan</span>
+      </div>
+      <div id="qarea"></div>
+      <div style="text-align: center; margin-top: 20px;">
+        <button class="btn"
+          style="background: transparent; color: var(--muted); border: 1px solid var(--border); font-size: 13px; padding: 8px 16px; transition: 0.2s;"
+          onmouseover="this.style.color='var(--red)'; this.style.borderColor='var(--red)'"
+          onmouseout="this.style.color='var(--muted)'; this.style.borderColor='var(--border)'"
+          onclick="if(confirm('Testi erken bitirmek istediğinize emin misiniz?')) showResults()">⏹ Testi Bitir</button>
+      </div>
+    </div>
+
+    <div id="results-screen">
+      <div class="card" style="text-align:center">
+        <div class="rpts" id="rpts">0</div>
+        <div class="rof">/ 250 PUAN</div>
+        <div class="rttl" id="rttl"></div>
+        <div class="rsub" id="rsub"></div>
+        <div class="rgrid">
+          <div class="rbox">
+            <div class="rn" id="rok">0</div>
+            <div class="rl">Doğru</div>
+          </div>
+          <div class="rbox">
+            <div class="rn" id="rbad">0</div>
+            <div class="rl">Yanlış</div>
+          </div>
+          <div class="rbox">
+            <div class="rn" id="rpct">0%</div>
+            <div class="rl">Başarı</div>
+          </div>
+        </div>
+        <button class="btn btng" style="width:100%;font-size:15px;padding:14px" onclick="restartGame()">🔄 Tekrar
+          Oyna</button>
+      </div>
+    </div>
+
+  </div><!-- .wrap -->
+
+  <script>
+    const QS = [{ "type": "mc", "topic": "Değişkenler", "q": "Aşağıdaki kodun çıktısı ne olur?", "code": "sayi = 8\nprint(sayi**3)", "opts": [{ "t": "24", "m": 1 }, { "t": "512", "m": 1 }, { "t": "83", "m": 1 }, { "t": "Hata", "m": 0 }], "ans": 1, "exp": "<code>**</code> üs alma operatörüdür. <code>8**3 = 512</code>.<br><br>🔢 <strong>Python Matematik Operatörleri:</strong><br>• <code>+</code> toplama → <code>5+3 = 8</code><br>• <code>-</code> çıkarma → <code>5-3 = 2</code><br>• <code>*</code> çarpma → <code>5*3 = 15</code><br>• <code>/</code> bölme → <code>8/3 = 2.666...</code> (her zaman float)<br>• <code>//</code> tam bölme → <code>8//3 = 2</code> (ondalık atılır)<br>• <code>%</code> mod/kalan → <code>8%3 = 2</code> (bölümden kalan)<br>• <code>**</code> üs alma → <code>2**10 = 1024</code>" }, { "type": "mc", "topic": "Değişkenler", "q": "<code>type(\"Merhaba\")</code> ifadesi ne döndürür?", "opts": [{ "t": "&lt;class 'int'&gt;", "m": 1 }, { "t": "&lt;class 'str'&gt;", "m": 1 }, { "t": "&lt;class 'list'&gt;", "m": 1 }, { "t": "&lt;class 'bool'&gt;", "m": 1 }], "ans": 1, "exp": "Tırnak içindeki ifadeler <code>str</code> tipindedir.<br><br>📦 <strong>Temel veri tipleri ve type() sonuçları:</strong><br>• <code>type(\"Merhaba\")</code> → <code>&lt;class 'str'&gt;</code><br>• <code>type(42)</code> → <code>&lt;class 'int'&gt;</code><br>• <code>type(3.14)</code> → <code>&lt;class 'float'&gt;</code><br>• <code>type(True)</code> → <code>&lt;class 'bool'&gt;</code><br>• <code>type([1,2,3])</code> → <code>&lt;class 'list'&gt;</code><br>• <code>type({\"a\":1})</code> → <code>&lt;class 'dict'&gt;</code><br>• <code>type((1,2))</code> → <code>&lt;class 'tuple'&gt;</code><br>• <code>type({1,2})</code> → <code>&lt;class 'set'&gt;</code>" }, { "type": "mc", "topic": "Değişkenler", "q": "Aşağıdaki atamalardan hangisi Python'da <strong>hata verir</strong>?", "opts": [{ "t": "sayi_2 = 10", "m": 1 }, { "t": "_gizli = 5", "m": 1 }, { "t": "2sayi = 10", "m": 1 }, { "t": "sayi2 = 10", "m": 1 }], "ans": 2, "exp": "Python'da değişken adları rakamla başlayamaz.<br><br>📋 <strong>Değişken adlandırma kuralları:</strong><br>✅ Geçerli: <code>sayi</code>, <code>sayi2</code>, <code>_gizli</code>, <code>ogrenci_adi</code><br>❌ Geçersiz: <code>2sayi</code> (rakamla başlar), <code>sayi-2</code> (tire içerir), <code>sayi 2</code> (boşluk içerir)<br>❌ Keyword kullanılamaz: <code>for</code>, <code>if</code>, <code>class</code>, <code>def</code>...<br><br>💡 Python büyük/küçük harfe duyarlıdır: <code>sayi</code> ≠ <code>Sayi</code> ≠ <code>SAYI</code>" }, { "type": "tf", "topic": "Değişkenler", "q": "Doğru mu, Yanlış mı?", "stmts": [{ "t": "\"true\" ve \"True\" Python'da aynı anlama gelir — ikisi de boolean True'dur", "ans": false }, { "t": "Python'da üç tür sayısal veri tipi vardır: int, float ve complex", "ans": true }], "exp": "\"true\" küçük harfle yazılmış bir string'dir ve hata verir. Geçerli boolean değerleri <code>True</code> ve <code>False</code> (büyük harfle) yazılır.<br><br>🔵 <strong>Bool ve Sayı Tipleri:</strong><br>• <code>True</code> / <code>False</code> → mantıksal (bool)<br>• <code>bool(0)</code> → <code>False</code> | <code>bool(1)</code> → <code>True</code><br>• <code>int</code> → tam sayı: <code>42</code>, <code>-5</code><br>• <code>float</code> → ondalık: <code>3.14</code>, <code>-0.5</code><br>• <code>complex</code> → karmaşık: <code>1+2j</code>" }, { "type": "fill", "topic": "Değişkenler", "q": "Boşluğu doldurun: Bölme işleminin sonucu <code>float</code> tipinde olur.", "before": "sayi = 8\nsonuc = sayi", "after": " 3\nprint(type(sonuc))  # float", "hint": "Python 3'te tam sayı bölme operatörü float döndürür.", "ans": "/", "exp": "<code>/</code> operatörü Python 3'te her zaman <code>float</code> döndürür.<br><br>➗ <strong>Bölme Operatörleri Karşılaştırması:</strong><br>• <code>8 / 3</code> → <code>2.6666...</code> (float, normal bölme)<br>• <code>8 // 3</code> → <code>2</code> (int, tam bölme — kayan nokta atılır)<br>• <code>8 % 3</code> → <code>2</code> (mod — bölümden kalan)<br>• <code>9 / 3</code> → <code>3.0</code> (tam bölünse bile float!)<br>• <code>9 // 3</code> → <code>3</code> (tam bölme → int)" }, { "type": "mc", "topic": "Değişkenler", "q": "<code>print(8 % 3)</code> ifadesinin çıktısı nedir?", "opts": [{ "t": "2", "m": 1 }, { "t": "2.66", "m": 1 }, { "t": "5", "m": 1 }, { "t": "0", "m": 1 }], "ans": 0, "exp": "<code>%</code> mod operatörü bölümden kalanı verir.<br><br>🧮 <strong>% Operatörü Örnekleri:</strong><br>• <code>8 % 3</code> → <code>2</code> (8 = 3×2 + 2)<br>• <code>10 % 2</code> → <code>0</code> (çift sayı kontrolü!)<br>• <code>7 % 2</code> → <code>1</code> (tek sayı kontrolü)<br>• <code>15 % 4</code> → <code>3</code><br><br>💡 <strong>Yaygın kullanımlar:</strong><br>• Çift/tek kontrolü: <code>sayi % 2 == 0</code> → çift<br>• Saat hesaplama: <code>26 % 24</code> → <code>2</code> (saat 2)" }, { "type": "mc", "topic": "Listeler", "q": "Bu kodun çıktısı ne olur?", "code": "ogrenci_listesi = [\"ahmet\", \"mehmet\", \"ayse\"]\nprint(ogrenci_listesi[0])", "opts": [{ "t": "\"mehmet\"", "m": 1 }, { "t": "\"ahmet\"", "m": 1 }, { "t": "\"ayse\"", "m": 1 }, { "t": "Hata", "m": 0 }], "ans": 1, "exp": "Liste indeksi 0'dan başlar.<br><br>📋 <strong>Liste İndeksleme:</strong><br><code>liste = [\"ahmet\", \"mehmet\", \"ayse\"]</code><br>• <code>liste[0]</code> → <code>\"ahmet\"</code> (ilk eleman)<br>• <code>liste[1]</code> → <code>\"mehmet\"</code><br>• <code>liste[2]</code> → <code>\"ayse\"</code> (son eleman)<br>• <code>liste[-1]</code> → <code>\"ayse\"</code> (sondan 1.)<br>• <code>liste[-2]</code> → <code>\"mehmet\"</code> (sondan 2.)<br><br>⚠️ <code>liste[3]</code> → <code>IndexError</code>! (indeks aşımı)" }, { "type": "mc", "topic": "Listeler", "q": "Bu kodun çıktısı ne olur?", "code": "aList = [0, 5, 10, 15, 20, 25, 30, 35, 40]\nprint(aList[1:3])", "opts": [{ "t": "[0, 5]", "m": 1 }, { "t": "[5, 10]", "m": 1 }, { "t": "[5, 10, 15]", "m": 1 }, { "t": "[0, 5, 10]", "m": 1 }], "ans": 1, "exp": "Slice: başlangıç dahil, bitiş hariçtir.<br><br>✂️ <strong>Slice Sözdizimi: liste[başlangıç:bitiş:adım]</strong><br><code>aList = [0, 5, 10, 15, 20, 25, 30]</code><br>• <code>aList[1:3]</code> → <code>[5, 10]</code><br>• <code>aList[:4]</code> → <code>[0, 5, 10, 15]</code><br>• <code>aList[3:]</code> → <code>[15, 20, 25, 30]</code><br>• <code>aList[-3:]</code> → son 3 eleman<br>• <code>aList[::2]</code> → her 2. eleman" }, { "type": "fill", "topic": "Listeler", "q": "Listeye yeni bir eleman eklemek için hangi metot kullanılır?", "before": "aList = [\"elma\", \"armut\", \"vişne\"]\naList.", "after": "(\"Havuç\")\nprint(aList)", "hint": "Listenin sonuna eleman ekler.", "ans": "append", "exp": "<code>append()</code> listenin sonuna eleman ekler.<br><br>📝 <strong>Liste Ekleme ve Silme Metodları:</strong><br>• <code>liste.append(\"elma\")</code> → sona ekler<br>• <code>liste.insert(0, \"elma\")</code> → 0. konuma ekler<br>• <code>liste.extend([4,5,6])</code> → birden fazla ekler<br>• <code>liste.pop()</code> → son elemanı siler ve döndürür<br>• <code>liste.pop(0)</code> → 0. elemanı siler<br>• <code>liste.remove(\"elma\")</code> → değeri bulup siler<br>• <code>liste.clear()</code> → tüm elemanları siler" }, { "type": "mc", "topic": "Listeler", "q": "Bu kodun çıktısı ne olur?", "code": "aList = [0, 5, 10, 15, 20]\naList.pop(0)\nprint(aList)", "opts": [{ "t": "[0, 5, 10, 15]", "m": 1 }, { "t": "[5, 10, 15, 20]", "m": 1 }, { "t": "[0, 5, 10, 15, 20]", "m": 1 }, { "t": "[10, 15, 20]", "m": 1 }], "ans": 1, "exp": "<code>pop(0)</code> listenin 0. indeksindeki elemanı çıkarır.<br><br>🗑️ <strong>pop() vs remove() farkı:</strong><br>• <code>liste.pop()</code> → son eleman silinir, değer döndürülür<br>• <code>liste.pop(0)</code> → 0. eleman silinir<br>• <code>liste.remove(10)</code> → 10 değerini bulup siler (indeks değil değer!)<br><br>🔀 <strong>Diğer metodlar:</strong><br>• <code>liste.sort()</code> → küçükten büyüğe sıralar<br>• <code>liste.sort(reverse=True)</code> → büyükten küçüğe<br>• <code>liste.reverse()</code> → sırayı tersine çevirir<br>• <code>liste.copy()</code> → kopya oluşturur" }, { "type": "tf", "topic": "Listeler", "q": "Doğru mu, Yanlış mı?", "stmts": [{ "t": "Python'da liste elemanları değiştirilebilir (mutable), string elemanları değiştirilemez (immutable)", "ans": true }, { "t": "liste.sort() metodu sıralanmış yeni bir kopya döndürür, asıl listeyi değiştirmez", "ans": false }], "exp": "Listeler değiştirilebilir, stringler değiştirilemez.<br><br>🔄 <strong>Mutable vs Immutable:</strong><br>• <code>liste[0] = \"yeni\"</code> → ✅ çalışır<br>• <code>metin[0] = \"Y\"</code> → ❌ TypeError!<br><br>⚠️ <strong>sort() vs sorted() farkı:</strong><br>• <code>liste.sort()</code> → listeyi yerinde sıralar, None döndürür<br>• <code>sorted(liste)</code> → yeni sıralı liste döndürür, orijinal değişmez<br><br>💡 <strong>Kopya tuzağı:</strong><br>• <code>b = a</code> → aynı listeyi işaret eder!<br>• <code>b = a.copy()</code> → gerçek kopya" }, { "type": "mc", "topic": "Listeler", "q": "Bu kodun çıktısı ne olur?", "code": "liste = [[3,6,9],[12,21,24],[33,36,39]]\nprint(liste[1][2])", "opts": [{ "t": "12", "m": 1 }, { "t": "24", "m": 1 }, { "t": "21", "m": 1 }, { "t": "33", "m": 1 }], "ans": 1, "exp": "İç içe listede önce dış, sonra iç indeks belirtilir.<br><br>🗂️ <strong>İç İçe Liste Erişimi:</strong><br><code>liste = [[3,6,9], [12,21,24], [33,36,39]]</code><br>• <code>liste[0]</code> → <code>[3, 6, 9]</code><br>• <code>liste[1]</code> → <code>[12, 21, 24]</code><br>• <code>liste[0][0]</code> → <code>3</code><br>• <code>liste[1][2]</code> → <code>24</code><br>• <code>liste[2][-1]</code> → <code>39</code> (sondan 1.)" }, { "type": "mc", "topic": "Dictionary", "q": "Bu kodun çıktısı ne olur?", "code": "ogrenci = {\n    \"ad\": \"ahmet\",\n    \"soyad\": \"kara\",\n    \"yas\": 19\n}\nprint(ogrenci[\"ad\"] + \" \" + ogrenci[\"soyad\"])", "opts": [{ "t": "\"ahmet\"", "m": 1 }, { "t": "\"ahmet kara\"", "m": 1 }, { "t": "\"kara ahmet\"", "m": 1 }, { "t": "Hata", "m": 0 }], "ans": 1, "exp": "Dict'de key ile değere ulaşılır, string birleştirmede <code>+</code> kullanılır.<br><br>🗂️ <strong>Dictionary Erişim Yöntemleri:</strong><br>• <code>ogrenci[\"ad\"]</code> → key ile erişim (key yoksa KeyError!)<br>• <code>ogrenci.get(\"ad\")</code> → güvenli erişim (key yoksa None)<br>• <code>ogrenci.get(\"ad\", \"bilinmiyor\")</code> → varsayılan değer ile<br><br>✏️ <strong>String Birleştirme:</strong><br>• <code>\"ahmet\" + \" \" + \"kara\"</code> → <code>\"ahmet kara\"</code><br>• <code>f\"{ogrenci['ad']} {ogrenci['soyad']}\"</code> → f-string (modern)" }, { "type": "mc", "topic": "Dictionary", "q": "Aşağıdaki kodda <code>ogrenci[\"kara\"]</code> ne döndürür?", "code": "ogrenci = {\"ad\": \"ahmet\", \"soyad\": \"kara\", \"yas\": 19}", "opts": [{ "t": "\"ahmet\"", "m": 1 }, { "t": "\"kara\"", "m": 1 }, { "t": "KeyError hatası", "m": 0 }, { "t": "None", "m": 1 }], "ans": 2, "exp": "Dictionary erişimi key ile yapılır, value ile aramak mümkün değildir.<br><br>🔑 <strong>KeyError'dan Kaçınma Yöntemleri:</strong><br>• <code>ogrenci[\"olmayan\"]</code> → ❌ KeyError fırlatır<br>• <code>ogrenci.get(\"olmayan\")</code> → ✅ None döndürür<br>• <code>ogrenci.get(\"olmayan\", \"yok\")</code> → ✅ varsayılan değer<br>• <code>\"ad\" in ogrenci</code> → ✅ True/False ile kontrol<br><br>📌 <code>\"kara\"</code> bir key değil, \"soyad\" key'inin value'sudur." }, { "type": "fill", "topic": "Dictionary", "q": "Sözlüğe yeni bir key-value çifti ekleyin.", "before": "ogrenci = {\"ad\": \"ahmet\", \"yas\": 19}\nogrenci", "after": " = \"kmyo\"\n# ogrenci artık okul anahtarını içerir", "hint": "Dict'e yeni anahtar eklemek için köşeli parantez ve eşittir kullanılır.", "ans": "[\"okul\"]", "exp": "<code>sozluk[\"anahtar\"] = değer</code> hem ekler hem günceller.<br><br>✏️ <strong>Dictionary Güncelleme Yöntemleri:</strong><br>• <code>ogrenci[\"okul\"] = \"kmyo\"</code> → yeni key-value ekler<br>• <code>ogrenci[\"yas\"] = 20</code> → mevcut değeri günceller<br>• <code>ogrenci.update({\"yas\":20, \"sehir\":\"adana\"})</code> → toplu güncelleme<br><br>🗑️ <strong>Eleman Silme:</strong><br>• <code>del ogrenci[\"yas\"]</code> → key'i tamamen siler<br>• <code>ogrenci.pop(\"yas\")</code> → siler ve değeri döndürür<br>• <code>ogrenci.clear()</code> → tüm elemanları siler" }, { "type": "mc", "topic": "Dictionary", "q": "<code>ogrenci.keys()</code> neyi döndürür?", "code": "ogrenci = {\"ad\":\"ahmet\",\"soyad\":\"kara\",\"yas\":19,\"durum\":True,\"notlar\":[55,60]}", "opts": [{ "t": "dict_keys([\"ahmet\",\"kara\",19,True,[55,60]])", "m": 1 }, { "t": "dict_keys([\"ad\",\"soyad\",\"yas\",\"durum\",\"notlar\"])", "m": 1 }, { "t": "[\"ad\",\"soyad\",\"yas\",\"durum\",\"notlar\"]", "m": 1 }, { "t": "Hata", "m": 0 }], "ans": 1, "exp": "<code>.keys()</code>, <code>.values()</code>, <code>.items()</code> dict'in içeriğine farklı açılardan erişir.<br><br>🔍 <strong>Üç Temel Dict Metodu:</strong><br><code>ogrenci = {\"ad\":\"ahmet\", \"yas\":19}</code><br>• <code>ogrenci.keys()</code> → <code>dict_keys([\"ad\", \"yas\"])</code><br>• <code>ogrenci.values()</code> → <code>dict_values([\"ahmet\", 19])</code><br>• <code>ogrenci.items()</code> → <code>dict_items([(\"ad\",\"ahmet\"), (\"yas\",19)])</code><br><br>💡 Liste'ye çevirmek için: <code>list(ogrenci.keys())</code>" }, { "type": "tf", "topic": "Dictionary", "q": "Doğru mu, Yanlış mı?", "stmts": [{ "t": "Bir dictionary'de value (değer) olarak liste kullanılabilir: {\"notlar\": [55, 60]}", "ans": true }, { "t": "Dictionary'de indeksleme tamsayı indeksle yapılır: ogrenci[0] ilk elemanı döndürür", "ans": false }], "exp": "Dict'de value her tipte olabilir; erişim her zaman key ile yapılır.<br><br>📦 <strong>Dict'de Farklı Value Tipleri:</strong><br><code>ogrenci = {</code><br>&nbsp;&nbsp;<code>\"ad\": \"ahmet\"</code>&nbsp;&nbsp;(str)<br>&nbsp;&nbsp;<code>\"yas\": 19</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(int)<br>&nbsp;&nbsp;<code>\"durum\": True</code>&nbsp;&nbsp;(bool)<br>&nbsp;&nbsp;<code>\"notlar\": [55, 60]</code>&nbsp;(list!)<br><code>}</code><br><br>• <code>ogrenci[\"notlar\"][0]</code> → <code>55</code><br>• <code>ogrenci[0]</code> → ❌ KeyError!" }, { "type": "drag", "topic": "Dictionary", "q": "Her metodu doğru açıklamasıyla eşleştirin.", "items": ["keys()", "values()", "items()", "get()", "update()"], "zones": [{ "lbl": "Tüm anahtarlar", "ans": "keys()" }, { "lbl": "Tüm değerler", "ans": "values()" }, { "lbl": "Anahtar+değer", "ans": "items()" }, { "lbl": "Güvenli okuma", "ans": "get()" }, { "lbl": "Toplu güncelle", "ans": "update()" }], "exp": "<code>keys()</code> anahtarları, <code>values()</code> değerleri, <code>items()</code> (k,v) çiftlerini döndürür. <code>get(k,varsayılan)</code> KeyError vermez. <code>update()</code> başka dict ile günceller.<br><br>🛠️ <strong>Dict Metodları Özet:</strong><br>• <code>d.pop(\"k\")</code> → key'i siler, değerini döndürür<br>• <code>d.clear()</code> → dict'i tamamen boşaltır<br>• <code>len(d)</code> → anahtar-değer çifti sayısı" }, { "type": "mc", "topic": "Tuple", "q": "Bu kodun sonucu ne olur?", "code": "dlist = (0, 1, 2, 3, 4)\ndlist[0] = 1515", "opts": [{ "t": "dlist[0] artık 1515 olur", "m": 0 }, { "t": "TypeError: tuple object does not support item assignment", "m": 1 }, { "t": "(1515, 1, 2, 3, 4)", "m": 0 }, { "t": "Hiçbir şey olmaz", "m": 0 }], "ans": 1, "exp": "Tuple'lar <strong>değiştirilemez (immutable)</strong>. Bir tuple elemanına atama yapmaya çalışırsanız <code>TypeError</code> alırsınız.<br><br>🔒 <strong>Tuple vs Liste Farkı:</strong><br>• <code>liste = [0,1,2,3,4]</code> → değiştirilebilir<br>• <code>demet = (0,1,2,3,4)</code> → değiştirilemez<br>• <code>liste[0] = 99</code> → ✅ çalışır<br>• <code>demet[0] = 99</code> → ❌ TypeError!<br><br>📌 Tuple'ın yalnızca 2 metodu vardır: <code>count()</code> ve <code>index()</code>" }, { "type": "mc", "topic": "Tuple", "q": "<code>dlist.count(0)</code> ne döndürür?", "code": "dlist = (0, 1, 2, 3, 4)", "opts": [{ "t": "0", "m": 1 }, { "t": "1", "m": 1 }, { "t": "5", "m": 1 }, { "t": "Hata", "m": 0 }], "ans": 1, "exp": "<code>count()</code> bir değerin kaç kez tekrar ettiğini sayar.<br><br>🔢 <strong>Tuple count() ve index():</strong><br><code>dlist = (0, 1, 2, 3, 4)</code><br>• <code>dlist.count(0)</code> → <code>1</code> (0 bir kez var)<br>• <code>dlist.count(9)</code> → <code>0</code> (9 hiç yok)<br>• <code>dlist.index(1)</code> → <code>1</code> (1'in indeksi)<br>• <code>dlist.index(4)</code> → <code>4</code> (4'ün indeksi)<br><br>💡 Aynı metodlar listelerde de çalışır:<br><code>liste = [1, 2, 2, 3, 2]</code> → <code>liste.count(2)</code> → <code>3</code>" }, { "type": "tf", "topic": "Tuple", "q": "Doğru mu, Yanlış mı?", "stmts": [{ "t": "Tek elemanlı bir tuple şöyle oluşturulur: t = (5,) — virgül zorunludur", "ans": true }, { "t": "Tuple'lar listeden daha yavaş çalışır çünkü değiştirilemezler", "ans": false }], "exp": "Tek elemanlı tuple için virgül zorunludur.<br><br>🔒 <strong>Tuple Oluşturma Yöntemleri:</strong><br>• <code>t = (1, 2, 3)</code> → standart tuple<br>• <code>t = 1, 2, 3</code> → parantez olmadan da olur<br>• <code>t = (5,)</code> → tek elemanlı tuple ✅<br>• <code>t = (5)</code> → sadece int 5! ❌ tuple değil<br>• <code>t = tuple()</code> → boş tuple<br><br>⚡ Tuple'lar read-only olduğundan listelerden biraz <strong>daha hızlı</strong> çalışır." }, { "type": "mc", "topic": "Set", "q": "Bu kodun çıktısı ne olur?", "code": "kume = {1, 2, 2, 3, 3, 3}\nprint(len(kume))", "opts": [{ "t": "6", "m": 1 }, { "t": "3", "m": 1 }, { "t": "2", "m": 1 }, { "t": "Hata", "m": 0 }], "ans": 1, "exp": "Set tekrar eden elemanları otomatik siler.<br><br>🔵 <strong>Set Özellikleri:</strong><br>• Tekrar yok: <code>{1,2,2,3,3}</code> → <code>{1,2,3}</code><br>• Sırasız: elemanların sırası garanti değildir<br>• İndeks yok: <code>kume[0]</code> → ❌ TypeError!<br><br>🛠️ <strong>Set Metodları:</strong><br>• <code>kume.add(4)</code> → eleman ekle<br>• <code>kume.remove(2)</code> → eleman sil (yoksa hata!)<br>• <code>kume.discard(2)</code> → eleman sil (yoksa hata vermez)<br>• <code>kume.update({5,6})</code> → toplu ekle" }, { "type": "fill", "topic": "Set", "q": "Set'e yeni eleman eklemek için hangi metot kullanılır?", "before": "kume = {1, 2, 3}\nkume.", "after": "(4)\nprint(kume)", "hint": "Liste için append, set için farklı bir metot.", "ans": "add", "exp": "Set'e eleman eklemek için <code>add()</code> kullanılır.<br><br>🔵 <strong>Set Operasyonları (Küme İşlemleri):</strong><br><code>a = {1,2,3,4}</code> &nbsp; <code>b = {3,4,5,6}</code><br>• <code>a | b</code> veya <code>a.union(b)</code> → birleşim → <code>{1,2,3,4,5,6}</code><br>• <code>a &amp; b</code> veya <code>a.intersection(b)</code> → kesişim → <code>{3,4}</code><br>• <code>a - b</code> veya <code>a.difference(b)</code> → fark → <code>{1,2}</code><br><br>💡 Tekrar engelleme: <code>list(set([1,1,2,2,3]))</code> → <code>[1,2,3]</code>" }, { "type": "tf", "topic": "Set", "q": "Doğru mu, Yanlış mı?", "stmts": [{ "t": "Set elemanlarına indeksle erişilemez: kume[0] hata verir", "ans": true }, { "t": "x.update(y) metodu x setini y ile günceller (y'nin elemanlarını ekler)", "ans": true }], "exp": "Set'ler sırasız ve indekssizdir; <code>update()</code> toplu ekleme yapar.<br><br>🔵 <strong>Set vs Liste vs Tuple Karşılaştırması:</strong><br>• Sıralı mı? → Liste ✅ | Tuple ✅ | Set ❌<br>• İndeks var mı? → Liste ✅ | Tuple ✅ | Set ❌<br>• Değiştirilebilir mi? → Liste ✅ | Tuple ❌ | Set ✅<br>• Tekrar var mı? → Liste ✅ | Tuple ✅ | Set ❌<br><br>🛠️ <code>x.update(y)</code>: x seti y'nin elemanlarıyla genişler." }, { "type": "drag", "topic": "Veri Yapıları", "q": "Her ifadeyi doğru veri yapısıyla eşleştirin.", "items": ["{\"a\":1}", "[1,2,3]", "{1,2,3}", "(4,5,6)", "set()"], "zones": [{ "lbl": "dict", "ans": "{\"a\":1}" }, { "lbl": "list", "ans": "[1,2,3]" }, { "lbl": "set", "ans": "{1,2,3}" }, { "lbl": "tuple", "ans": "(4,5,6)" }, { "lbl": "boş set", "ans": "set()" }], "exp": "Veri yapılarinin sözdizimleri birbirine karışabilir — dikkatli olmak gerekir!<br><br>📦 <strong>Veri Yapilari Özet:</strong><br>• <code>[1,2,3]</code> → list — sıralı, değiştirilebilir, tekrar var<br>• <code>(0,1,2)</code> → tuple — sıralı, değiştirilemez, tekrar var<br>• <code>{1,2,3}</code> → set — sırasız, tekrar yok<br>• <code>{\"ad\":\"ahmet\"}</code> → dict — key:value çiftleri<br>• <code>{}</code> → boş DICT! Boş set için <code>set()</code> yazılmalı" }];
+
+    let qi = 0, score = 0, okN = 0, badN = 0;
+    let answered = false, tfSt = {}, dragSt = {};
+    let ansHistory = [];
+
+    function startGame() {
+      document.getElementById('start-screen').style.display = 'none';
+      document.getElementById('game-screen').style.display = 'block';
+      qi = 0; score = 0; okN = 0; badN = 0;
+      ansHistory = new Array(QS.length).fill(0);
+      recalcScore();
+      render();
+    }
+
+    function recalcScore() {
+      score = 0; okN = 0; badN = 0;
+      for (let i = 0; i < QS.length; i++) {
+        if (ansHistory[i] === 1) { okN++; score += 10; }
+        else if (ansHistory[i] === -1) { badN++; }
+      }
+      document.getElementById('scorenum').textContent = score;
+    }
+
+    function restartGame() {
+      document.getElementById('results-screen').style.display = 'none';
+      document.getElementById('start-screen').style.display = 'block';
+    }
+
+    /* ── RENDER ── */
+    function render() {
+      answered = false; tfSt = {}; dragSt = {};
+      const q = QS[qi];
+      document.getElementById('qctr').textContent = 'Soru ' + (qi + 1) + '/' + QS.length;
+      document.getElementById('pfill').style.width = ((qi / QS.length) * 100) + '%';
+
+      const area = document.getElementById('qarea');
+      const tn = { mc: 'Çoktan Seçmeli', fill: 'Kod Tamamla', drag: 'Eşleştir', tf: 'Doğru / Yanlış' };
+      const tc = { mc: 'bmc', fill: 'bfil', drag: 'bdrg', tf: 'btf' };
+      const L = ['A', 'B', 'C', 'D'];
+
+      let h = '<div class="card">';
+      h += '<div class="qmeta">';
+      h += '<span class="badge ' + tc[q.type] + '">' + tn[q.type] + '</span>';
+      h += '<span class="badge btopic">' + q.topic + '</span>';
+      h += '<span class="qnum">' + (qi + 1) + ' / ' + QS.length + '</span>';
+      h += '</div>';
+      h += '<div class="qt">' + q.q + '</div>';
+
+      if (q.code) h += '<pre class="cb">' + hl(q.code) + '</pre>';
+
+      if (q.type === 'mc') {
+        h += '<div class="opts">';
+        q.opts.forEach(function (o, i) {
+          h += '<div class="opt" data-i="' + i + '" onclick="pickMC(' + i + ')">';
+          h += '<span class="okey">' + L[i] + '</span>';
+          h += '<span class="otxt' + (o.m ? ' mono' : '') + '">' + o.t + '</span>';
+          h += '</div>';
+        });
+        h += '</div>';
+      }
+
+      if (q.type === 'tf') {
+        q.stmts.forEach(function (s, i) {
+          h += '<div class="tf-row">';
+          h += '<div class="tf-stmt">' + s.t + '</div>';
+          h += '<div class="tf-btns">';
+          h += '<button class="tfb" data-si="' + i + '" data-val="true" onclick="pickTF(' + i + ',true)">✅ Doğru</button>';
+          h += '<button class="tfb" data-si="' + i + '" data-val="false" onclick="pickTF(' + i + ',false)">❌ Yanlış</button>';
+          h += '</div></div>';
+          tfSt[i] = null;
+        });
+      }
+
+      if (q.type === 'fill') {
+        h += '<div class="hint">💡 İpucu: ' + q.hint + '</div>';
+        h += '<div class="fill-wrap">';
+        h += '<code>' + esc(q.before) + '</code>';
+        h += '<input id="blank" type="text" placeholder="?" autocomplete="off" spellcheck="false">';
+        h += '<code>' + esc(q.after) + '</code>';
+        h += '</div>';
+      }
+
+      if (q.type === 'drag') {
+        const shuf = q.items.slice().sort(function () { return Math.random() - 0.5; });
+        h += '<div class="dragboard">';
+        h += '<div class="dragleft"><div class="dtitle">İfadeler / Metotlar</div><div class="poolbox" id="pool">';
+        shuf.forEach(function (v) {
+          const ev = v.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+          h += '<div class="ditem" draggable="true" data-val="' + ev + '">' + esc(v) + '</div>';
+        });
+        h += '</div></div>';
+        h += '<div class="dragright"><div class="dtitle">Açıklama / Tip</div><div class="dropcol">';
+        q.zones.forEach(function (z) {
+          const zid = 'dz_' + z.lbl.replace(/[^a-z0-9]/gi, '_');
+          dragSt[z.lbl] = null;
+          h += '<div class="droprow">';
+          h += '<span class="dlbl">' + z.lbl + '</span>';
+          h += '<div class="dzone" id="' + zid + '" data-zone="' + z.lbl + '"></div>';
+          h += '</div>';
+        });
+        h += '</div></div></div>';
+      }
+
+      h += '<div class="fb" id="fb"></div>';
+      h += '<div class="actions">';
+      if (qi > 0) {
+        h += '<button class="btn btnb" onclick="prevQ()">← Geri</button>';
+      }
+      h += '<button class="btn btng" style="flex: 2" id="chk" onclick="checkAns()">Kontrol Et ✓</button>';
+      if (ansHistory[qi] !== 0) {
+        h += '<button class="btn btnb" onclick="nextQ()">İleri →</button>';
+      }
+      h += '</div>';
+      h += '</div>'; // .card
+
+      area.innerHTML = h;
+
+      if (q.type === 'fill') {
+        document.getElementById('blank').addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') checkAns();
+        });
+      }
+
+      if (q.type === 'drag') initDrag();
+    }
+
+    /* ── PICK ── */
+    function pickMC(i) {
+      if (answered) return;
+      document.querySelectorAll('.opt[data-i]').forEach(function (el) { el.classList.remove('sel'); });
+      document.querySelector('.opt[data-i="' + i + '"]').classList.add('sel');
+    }
+
+    function pickTF(si, val) {
+      if (answered) return;
+      document.querySelectorAll('.tfb[data-si="' + si + '"]').forEach(function (e) { e.classList.remove('sel'); });
+      document.querySelectorAll('.tfb[data-si="' + si + '"][data-val="' + val + '"]').forEach(function (e) { e.classList.add('sel'); });
+      tfSt[si] = val;
+    }
+
+    /* ── DRAG INIT ── */
+    function initDrag() {
+      let dragged = null;
+      document.querySelectorAll('.ditem').forEach(function (item) {
+        item.addEventListener('dragstart', function () {
+          dragged = item;
+          setTimeout(function () { item.classList.add('dragging'); }, 0);
+        });
+        item.addEventListener('dragend', function () { item.classList.remove('dragging'); });
+      });
+      document.querySelectorAll('.dzone').forEach(function (zone) {
+        zone.addEventListener('dragover', function (e) { e.preventDefault(); zone.classList.add('over'); });
+        zone.addEventListener('dragleave', function () { zone.classList.remove('over'); });
+        zone.addEventListener('drop', function (e) {
+          e.preventDefault();
+          zone.classList.remove('over');
+          const zn = zone.dataset.zone;
+          if (zone.children.length > 0) {
+            document.getElementById('pool').appendChild(zone.firstChild);
+            dragSt[zn] = null;
+          }
+          zone.appendChild(dragged);
+          dragSt[zn] = dragged.dataset.val;
+        });
+      });
+    }
+
+    /* ── CHECK ── */
+    function checkAns() {
+      if (answered) { nextQ(); return; }
+      const q = QS[qi];
+      let ok = false;
+
+      if (q.type === 'mc') {
+        const sel = document.querySelector('.opt[data-i].sel');
+        if (!sel) return;
+        const idx = parseInt(sel.dataset.i);
+        ok = (idx === q.ans);
+        document.querySelectorAll('.opt[data-i]').forEach(function (el, i) {
+          el.classList.add('lk');
+          if (i === q.ans) el.classList.add('ok');
+          else if (el.classList.contains('sel')) el.classList.add('bad');
+        });
+      }
+
+      if (q.type === 'tf') {
+        const vals = Object.values(tfSt);
+        if (vals.some(function (v) { return v === null; })) return;
+        let allOk = true;
+        q.stmts.forEach(function (s, i) {
+          const given = (tfSt[i] === true || tfSt[i] === 'true');
+          const correct = s.ans;
+          const rowOk = (given === correct);
+          if (!rowOk) allOk = false;
+          document.querySelectorAll('.tfb[data-si="' + i + '"]').forEach(function (el) {
+            el.classList.add('lk');
+            const elVal = (el.dataset.val === 'true');
+            if (elVal === correct) el.classList.add('ok');
+            else if (el.classList.contains('sel')) el.classList.add('bad');
+          });
+        });
+        ok = allOk;
+      }
+
+      if (q.type === 'fill') {
+        const inp = document.getElementById('blank');
+        const given = inp.value.trim();
+        ok = (given === q.ans);
+        inp.classList.add(ok ? 'ok' : 'bad');
+        inp.disabled = true;
+      }
+
+      if (q.type === 'drag') {
+        let allOk = true;
+        q.zones.forEach(function (z) {
+          const placed = dragSt[z.lbl];
+          const rowOk = (placed === z.ans);
+          if (!rowOk) allOk = false;
+          const zid = 'dz_' + z.lbl.replace(/[^a-z0-9]/gi, '_');
+          const zone = document.getElementById(zid);
+          if (zone) zone.classList.add(rowOk ? 'ok' : 'bad');
+        });
+        // check all zones have something
+        const allFilled = q.zones.every(function (z) { return dragSt[z.lbl] !== null; });
+        if (!allFilled) return;
+        ok = allOk;
+      }
+
+      answered = true;
+      ansHistory[qi] = ok ? 1 : -1;
+      recalcScore();
+
+      const fb = document.getElementById('fb');
+      fb.className = 'fb show ' + (ok ? 'fbok' : 'fbbad');
+      fb.innerHTML = '<div class="fbh">' + (ok ? '✅ Doğru!' : '❌ Yanlış') + '</div><div class="fbb">' + q.exp + '</div>';
+
+      const chk = document.getElementById('chk');
+      chk.textContent = qi < QS.length - 1 ? 'Sonraki Soru →' : 'Sonuçları Gör 🏆';
+    }
+
+    /* ── NEXT & PREV ── */
+    function nextQ() {
+      qi++;
+      if (qi >= QS.length) { showResults(); return; }
+      render();
+    }
+
+    function prevQ() {
+      if (qi > 0) {
+        qi--;
+        render();
+      }
+    }
+
+    /* ── RESULTS ── */
+    function showResults() {
+      document.getElementById('game-screen').style.display = 'none';
+      document.getElementById('results-screen').style.display = 'block';
+      document.getElementById('pfill').style.width = '100%';
+      const totalAnswered = okN + badN;
+      const pct = totalAnswered > 0 ? Math.round((okN / totalAnswered) * 100) : 0;
+      document.getElementById('rpts').textContent = score;
+      document.querySelector('.rof').textContent = '/ ' + (totalAnswered * 10) + ' PUAN';
+      document.getElementById('rok').textContent = okN;
+      document.getElementById('rbad').textContent = badN;
+      document.getElementById('rpct').textContent = pct + '%';
+      const titles = [
+        [90, '🏆 Mükemmel! Python ustasısın!'],
+        [70, '⭐ Harika! Konuya hakimsin.'],
+        [50, '💪 İyi iş! Biraz daha pratik yapman yeterli.'],
+        [0, '📚 Notlara bir daha bak, başarabilirsin!']
+      ];
+      const t = titles.find(function (x) { return pct >= x[0]; });
+      document.getElementById('rttl').textContent = t[1];
+      document.getElementById('rsub').textContent = okN + ' doğru · ' + badN + ' yanlış · ' + pct + '% başarı';
+    }
+
+    /* ── HELPERS ── */
+    function esc(t) {
+      return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function hl(raw) {
+      const KWS = new Set(['True', 'False', 'None', 'if', 'else', 'elif', 'for', 'in', 'while', 'not', 'and', 'or', 'def', 'return', 'import', 'from', 'class', 'lambda', 'with', 'as', 'pass', 'break', 'continue']);
+      const FNS = new Set(['print', 'len', 'type', 'int', 'float', 'str', 'list', 'dict', 'set', 'tuple', 'range', 'append', 'get', 'keys', 'values', 'items', 'pop', 'remove', 'copy', 'sort', 'reverse', 'extend', 'clear', 'add', 'update', 'count', 'index', 'input']);
+      let out = '', i = 0, src = raw;
+      while (i < src.length) {
+        if (src[i] === '#') {
+          let j = i; while (j < src.length && src[j] !== '\n') j++;
+          out += '<span class="cm">' + esc(src.slice(i, j)) + '</span>'; i = j; continue;
+        }
+        if (src[i] === '"') {
+          let j = i + 1; while (j < src.length && src[j] !== '"') j++;
+          out += '<span class="st">' + esc(src.slice(i, j + 1)) + '</span>'; i = j + 1; continue;
+        }
+        if (src[i] === "'") {
+          let j = i + 1; while (j < src.length && src[j] !== "'") j++;
+          out += '<span class="st">' + esc(src.slice(i, j + 1)) + '</span>'; i = j + 1; continue;
+        }
+        if (src[i] >= '0' && src[i] <= '9') {
+          let j = i; while (j < src.length && (src[j] >= '0' && src[j] <= '9' || src[j] === '.')) j++;
+          out += '<span class="nm">' + esc(src.slice(i, j)) + '</span>'; i = j; continue;
+        }
+        if (/[a-zA-Z_]/.test(src[i])) {
+          let j = i; while (j < src.length && /[a-zA-Z0-9_]/.test(src[j])) j++;
+          const word = src.slice(i, j);
+          if (KWS.has(word)) out += '<span class="kw">' + esc(word) + '</span>';
+          else if (src[j] === '(' && FNS.has(word)) out += '<span class="fn">' + esc(word) + '</span>';
+          else out += esc(word);
+          i = j; continue;
+        }
+        out += esc(src[i]); i++;
+      }
+      return out;
+    }
+  </script>
+</body>
+
+</html>
