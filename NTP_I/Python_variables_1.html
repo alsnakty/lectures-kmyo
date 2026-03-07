@@ -708,9 +708,10 @@
 
 <body>
   <div class="wrap">
+            <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/" style="color:var(--muted); text-decoration:none; font-size:14px; display:inline-flex; align-items:center; gap:6px; margin-bottom:16px; transition:0.2s; font-family:'Space Mono', monospace;" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--muted)'">🏠 Ana Sayfaya Dön</a>
     <header>
       <div class="ey">Python Programlama</div>
-      <h1>Modül 1: Veri Tipleri ve Yapıları</h1>
+      <h1>Veri Tipleri ve Yapıları</h1>
 
     </header>
 
@@ -859,7 +860,7 @@
         q.opts.forEach(function (o, i) {
           h += '<div class="opt" data-i="' + i + '" onclick="pickMC(' + i + ')">';
           h += '<span class="okey">' + L[i] + '</span>';
-          h += '<span class="otxt' + (o.m ? ' mono' : '') + '">' + o.t + '</span>';
+          h += '<span class="otxt' + (o.m ? ' mono' : '') + '">' + esc(o.t).replace(/\n/g, '<br>') + '</span>';
           h += '</div>';
         });
         h += '</div>';

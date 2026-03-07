@@ -708,9 +708,10 @@
 
 <body>
   <div class="wrap">
+            <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/" style="color:var(--muted); text-decoration:none; font-size:14px; display:inline-flex; align-items:center; gap:6px; margin-bottom:16px; transition:0.2s; font-family:'Space Mono', monospace;" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--muted)'">🏠 Ana Sayfaya Dön</a>
     <header>
       <div class="ey">Python Programlama</div>
-      <h1>Modül 2: Operatörler ve Etkileşim</h1>
+      <h1>Operatörler ve Etkileşim</h1>
 
     </header>
 
@@ -817,7 +818,13 @@
 { "type": "fill", "topic": "Metin Şifreleme (Replace)", "q": "Şifreleme uygulamasında a->1, b->9, ş->3 yapılıyor. Şifrelemeyi uygulayan kodda ilk boşluğu tamamlayın.", "before": "cumle = \"başarı\"\nsifreli = cumle.", "after": "('a', '1').replace('b', '9').replace('ş', '3')\nprint(sifreli)", "hint": "Karakteri başka bir karakterle değiştiren string metodu.", "ans": "replace", "exp": "Zincirleme <code>.replace()</code> metotları ile sırasıyla belirtilen harfler dönüştürülür." },
 { "type": "mc", "topic": "Listeler", "q": "Boş bir listeye eleman ekleyen doğru metot aşağıdakilerden hangisidir?", "opts": [ { "t": "liste.append(\"Elma\")", "m": 1 }, { "t": "liste.add(\"Elma\")", "m": 0 }, { "t": "liste.insert(\"Elma\")", "m": 0 }, { "t": "liste.push(\"Elma\")", "m": 0 } ], "ans": 0, "exp": "Python'da listelerin sonuna yeni bir eleman eklemek için <strong><code>append()</code></strong> metodu kullanılır. `add` kümelerde (set) kullanılır." },
 { "type": "drag", "topic": "Listeler", "q": "<code>liste = [10, 20, 30, 40, 50]</code> için istenen işlemleri yapan kodları eşleştiriniz.", "items": ["liste.append(60)", "liste.pop(1)", "len(liste)"], "zones": [ { "lbl": "Sonuna 60 ekle", "ans": "liste.append(60)" }, { "lbl": "İkinci elemanı (20) sil", "ans": "liste.pop(1)" }, { "lbl": "Listenin eleman sayısı", "ans": "len(liste)" } ], "exp": "<code>.append()</code> elemanı sona ekler. <code>.pop(index)</code> o indexteki elemanı siler (20 sayısı 1. indexte yer alır). <code>len()</code> uzunluğu ölçer." },
-{ "type": "mc", "topic": "Teori ve Analiz", "q": "Aşağıdaki ifadelerden hangisi <strong>yanlıştır</strong>?", "opts": [ { "t": "type: Veri tipi değiştirmek (casting) amacıyla kullanılır.", "m": 1 }, { "t": "input: Kullanıcıdan veri almak için kullanılır.", "m": 0 }, { "t": "print: Ekrana veri yazmak için kullanılır.", "m": 0 }, { "t": "split: String ifadeyi belirli bir karaktere göre bölmeye yarar.", "m": 0 } ], "ans": 0, "exp": "<code>type()</code> fonksiyonu bir değişkenin veri tipini <strong>öğrenmek (çözümlemek)</strong> için kullanılır, değiştirmek için değil. Değiştirmek (casting) için <code>int()</code>, <code>float()</code> vs. kullanılır." }
+{ "type": "mc", "topic": "Teori ve Analiz", "q": "Aşağıdaki ifadelerden hangisi <strong>yanlıştır</strong>?", "opts": [ { "t": "type: Veri tipi değiştirmek (casting) amacıyla kullanılır.", "m": 1 }, { "t": "input: Kullanıcıdan veri almak için kullanılır.", "m": 0 }, { "t": "print: Ekrana veri yazmak için kullanılır.", "m": 0 }, { "t": "split: String ifadeyi belirli bir karaktere göre bölmeye yarar.", "m": 0 } ], "ans": 0, "exp": "<code>type()</code> fonksiyonu bir değişkenin veri tipini <strong>öğrenmek (çözümlemek)</strong> için kullanılır, değiştirmek için değil. Değiştirmek (casting) için <code>int()</code>, <code>float()</code> vs. kullanılır." },
+{ "type": "mc", "topic": "String İşlemleri", "q": "<code>\"merhaba dünya\".split()</code> ifadesinin sonucu nedir?", "opts": [ { "t": "[\"merhaba dünya\"]", "m": 0 }, { "t": "[\"merhaba\", \"dünya\"]", "m": 1 }, { "t": "\"merhaba\", \"dünya\"", "m": 0 }, { "t": "Hata", "m": 0 } ], "ans": 1, "exp": "<code>split()</code> bir metni boşluklardan bölerek liste döndürür.<br><br>✂️ <strong>split() Kullanım Örnekleri:</strong><br>• <code>\"a b c\".split()</code> → <code>[\"a\", \"b\", \"c\"]</code><br>• <code>\"a,b,c\".split(\",\")</code> → <code>[\"a\", \"b\", \"c\"]</code><br>• <code>\"a::b\".split(\":\")</code> → <code>[\"a\", \"\", \"b\"]</code><br><br>💡 <code>split(\",\", 1)</code> → en fazla 1 kez böler." },
+{ "type": "fill", "topic": "String İşlemleri", "q": "\"ad soyad\" formatındaki bir metni boşluktan bölerek parçalara ayırın.", "before": "isim_soyisim = \"Ahmet Yılmaz\"\nparça = isim_soyisim.", "after": "()\nprint(parça[0], parça[1])", "hint": "Metni belirli bir karaktere göre parçalara ayıran string metodu.", "ans": "split", "exp": "<code>split()</code> varsayılan olarak boşluktan böler.<br><br>📝 <strong>split() + indeks:</strong><br><code>\"Ahmet Yılmaz\".split()</code> → <code>[\"Ahmet\", \"Yılmaz\"]</code><br><code>parça[0]</code> → <code>\"Ahmet\"</code>, <code>parça[1]</code> → <code>\"Yılmaz\"</code>" },
+{ "type": "mc", "topic": "F-String", "q": "Aşağıdaki f-string kullanımlarından hangisi <strong>hatalıdır</strong>?", "opts": [ { "t": "f\"Merhaba {isim}!\"", "m": 0 }, { "t": "f\"Sonuç: {3 * 5}\"", "m": 0 }, { "t": "f\"isim\"", "m": 1 }, { "t": "f\"Pi: {3.14:.2f}\"", "m": 0 } ], "ans": 2, "exp": "f-string'de değişkenler ve ifadeler <code>{}</code> içine yazılmalıdır.<br><br>🔤 <strong>f-string Sözdizimi:</strong><br>• <code>f\"{isim}\"</code> → değişken<br>• <code>f\"{3*5}\"</code> → <code>\"15\"</code> (doğrudan ifade)<br>• <code>f\"{sayi:.2f}\"</code> → 2 basamak ondalık<br>❌ <code>f\"isim\"</code> → sadece düz metin, değişken değil!" },
+{ "type": "fill", "topic": "F-String", "q": "Öğrencinin adını ve notunu f-string ile ekrana yazdırın.", "before": "ad = \"Mehmet\"\nnot_ = 85\nprint(", "after": "\"Öğrenci: {ad}, Not: {not_}\")", "hint": "F-string için string'in başına bir harf eklenir.", "ans": "f", "exp": "<code>f\"metin {değişken}\"</code> sözdizimi f-string'dir.<br><br>📌 <strong>f-string karşılaştırması:</strong><br>• <code>f\"{ad}: {not_}\"</code> → ✅ modern<br>• <code>ad + \": \" + str(not_)</code> → eski tip (casting gerekir!)<br><br>💡 f-string sayısal değerleri otomatik string'e çevirir." },
+{ "type": "tf", "topic": "Casting", "q": "Doğru mu, Yanlış mı?", "stmts": [ { "t": "round(3.7) ifadesi 4 sonucunu verir ve tipi int'tir.", "ans": true }, { "t": "int(\"3.14\") ifadesi 3 sonucunu verir.", "ans": false } ], "exp": "<code>round()</code> en yakın tam sayıya yuvarlar, <code>int()</code> ondalığı keser.<br><br>🔢 <strong>Yuvarlama vs Kesme:</strong><br>• <code>int(3.9)</code> → <code>3</code> (kesiyor!)<br>• <code>round(3.9)</code> → <code>4</code> (yuvarlıyor)<br>❌ <code>int(\"3.14\")</code> → ValueError!<br>✅ <code>int(float(\"3.14\"))</code> → <code>3</code>" },
+{ "type": "drag", "topic": "String İşlemleri", "q": "Her string metodunu doğru işleviyle eşleştirin.", "items": ["split()", "join()", "strip()", "replace()"], "zones": [ { "lbl": "Listeyi birleştirir", "ans": "join()" }, { "lbl": "Metni böler", "ans": "split()" }, { "lbl": "Baş/son boşluğu siler", "ans": "strip()" }, { "lbl": "Karakter değiştirir", "ans": "replace()" } ], "exp": "Bu 4 metot Python'da en sık kullanılan string işlemleridir.<br><br>📚 <strong>Örnekler:</strong><br>• <code>\"a,b\".split(\",\")</code> → <code>[\"a\",\"b\"]</code><br>• <code>\",\".join([\"a\",\"b\"])</code> → <code>\"a,b\"</code><br>• <code>\"  hi  \".strip()</code> → <code>\"hi\"</code><br>• <code>\"abc\".replace(\"a\",\"A\")</code> → <code>\"Abc\"</code>" }
 ]
 ;
 
@@ -878,7 +885,7 @@
         q.opts.forEach(function (o, i) {
           h += '<div class="opt" data-i="' + i + '" onclick="pickMC(' + i + ')">';
           h += '<span class="okey">' + L[i] + '</span>';
-          h += '<span class="otxt' + (o.m ? ' mono' : '') + '">' + o.t.replace(/\\n/g, '<br>') + '</span>';
+          h += '<span class="otxt' + (o.m ? ' mono' : '') + '">' + esc(o.t).replace(/\n/g, '<br>') + '</span>';
           h += '</div>';
         });
         h += '</div>';
@@ -1220,3 +1227,4 @@
 </body>
 
 </html>
+
