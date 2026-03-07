@@ -21,7 +21,10 @@ Uygulamalı testlerde işlenen ana konu başlıkları şunlardır:
 
 ##  İnteraktif Eğitim Araçları
 
-* **`Python_variables_1.html`**: Python veri tipleri ve yapılarını baz alan HTML tabanlı pratik modülü.
-  - Sürükle-bırak, boşluk doldurma ve çoktan seçmeli sorulardan oluşur.
+* [**`Python_variables_1.html`**](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_variables_1.html): Python veri tipleri ve yapılarını baz alan HTML tabanlı pratik modülü.
 
-* **`Python_variables_2.html`**: Temel çıktı işlemleri, tip dönüşümleri (casting), kullanıcı etkileşimi (input) ve string metotlarını (dilimleme, replace vb.) 
+* [**`Python_variables_2.html`**](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_variables_2.html): Temel çıktı işlemleri, tip dönüşümleri (casting), kullanıcı etkileşimi (input) ve string metotlarını (dilimleme, replace vb.) pekiştiren interaktif HTML modülü.
+
+* [**`Python_modul_3.html`**](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_3.html): Kontrol Yapıları (If - Elif - Else) *(Hazırlık Aşamasında)*
+* [**`Python_modul_4.html`**](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_4.html): Döngüler (For & While) *(Hazırlık Aşamasında)*
+* [**`Python_modul_5.html`**](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_5.html): Fonksiyonlar ve Modüller *(Hazırlık Aşamasında)*
