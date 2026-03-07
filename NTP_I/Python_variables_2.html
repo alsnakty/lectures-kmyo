@@ -422,21 +422,27 @@
 
     /* FILL */
     .fill-wrap {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      flex-wrap: wrap;
+      display: block;
       margin-bottom: 18px;
       font-family: 'Space Mono', monospace;
       font-size: 13px;
       background: #050508;
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 14px
+      padding: 14px;
+      line-height: 1.9
+    }
+
+    .fill-line {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap
     }
 
     .fill-wrap code {
-      color: var(--text)
+      color: var(--text);
+      white-space: pre
     }
 
     #blank {
@@ -905,10 +911,22 @@
 
       if (q.type === 'fill') {
         h += '<div class="hint">💡 İpucu: ' + q.hint + '</div>';
+        var beforeLines = q.before.split('\n');
+        var afterLines = q.after.split('\n');
+        var beforeLast = beforeLines.pop();
+        var afterFirst = afterLines.shift();
         h += '<div class="fill-wrap">';
-        h += '<code>' + esc(q.before) + '</code>';
+        if (beforeLines.length > 0) {
+          h += '<code>' + esc(beforeLines.join('\n')) + '\n</code>';
+        }
+        h += '<div class="fill-line">';
+        h += '<code>' + esc(beforeLast) + '</code>';
         h += '<input id="blank" type="text" placeholder="?" autocomplete="off" spellcheck="false">';
-        h += '<code>' + esc(q.after) + '</code>';
+        h += '<code>' + esc(afterFirst) + '</code>';
+        h += '</div>';
+        if (afterLines.length > 0) {
+          h += '<code>\n' + esc(afterLines.join('\n')) + '</code>';
+        }
         h += '</div>';
       }
 
