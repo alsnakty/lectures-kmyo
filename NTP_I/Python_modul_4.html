@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 
 <head>
@@ -710,7 +710,7 @@
   <div class="wrap">
     <header>
       <div class="ey">Python Programlama</div>
-      <h1>Modül 2: Operatörler ve Etkileşim</h1>
+      <h1>Modül 4: Döngüler (For & While)</h1>
 
     </header>
 
@@ -752,7 +752,7 @@
 
     <div id="game-screen">
       <div class="pbar-wrap">
-        <span class="plbl" id="qctr">Soru 1/17</span>
+        <span class="plbl" id="qctr">Soru 1/2</span>
         <div class="ptrack">
           <div class="pfill" id="pfill" style="width:0%"></div>
         </div>
@@ -800,30 +800,7 @@
   </div><!-- .wrap -->
 
   <script>
-    const QS = [
-{ "type": "fill", "topic": "Temel Çıktı", "q": "Ekrana isminizi yazdıran Python kodunu yazınız.", "before": "", "after": "(\"Ahmet\")", "hint": "Ekrana yazdırma fonksiyonu.", "ans": "print", "exp": "<code>print()</code> fonksiyonu ekrana çıktı vermek için kullanılır." },
-{ "type": "drag", "topic": "Değişken Tipleri", "q": "Aşağıdaki değerleri doğru veri tipleriyle eşleştiriniz.", "items": ["int", "float", "str", "bool", "list"], "zones": [ { "lbl": "5.0", "ans": "float" }, { "lbl": "\"False\"", "ans": "str" }, { "lbl": "[1, 2, 3]", "ans": "list" }, { "lbl": "10 > 2", "ans": "bool" }, { "lbl": "2024", "ans": "int" } ], "exp": "Tırnak içindeki ifadeler metindir (<code>str</code>). Ondalıklı sayılar <code>float</code>, mantıksal sonuçlar <code>bool</code>, köşeli parantez ise liste veri yapısıdır." },
-{ "type": "mc", "topic": "Matematiksel İşlemler", "q": "Kullanıcıdan iki farklı tam sayı (int) alan ve bu sayıların toplamını, farkını ve çarpımını ekrana yazdıran <strong>doğru</strong> Python kodu hangisidir?", "opts": [ { "t": "a = int(input())\nb = int(input())\nprint(a+b, a-b, a*b)", "m": 1 }, { "t": "a = input()\\nb = input()\\nprint(a+b, a-b, a*b)", "m": 0 }, { "t": "a = float(input())\\nb = int(input())\\nprint(a+b, a-b, a*b)", "m": 0 }, { "t": "a = int(input())\\nb = str(input())\\nprint(a+b, a-b, a*b)", "m": 0 } ], "ans": 0, "exp": "<code>input()</code> fonksiyonu her zaman <strong>string (str)</strong> döndürür. Matematiksel işlemler yapabilmek için <code>int()</code> veya <code>float()</code> gibi fonksiyonlarla tip dönüşümü (casting) yapılmalıdır." },
-{ "type": "mc", "topic": "Matematiksel İşlemler", "q": "Aşağıdaki kodun ekran çıktısı ne olur?", "code": "sayi1 = 15\nsayi2 = 4\nsonuc = sayi1 / sayi2\nprint(type(sonuc))\nprint(sonuc)", "opts": [ { "t": "<class 'float'>\\n3.75", "m": 1 }, { "t": "<class 'int'>\\n3", "m": 1 }, { "t": "<class 'float'>\\n3.0", "m": 1 }, { "t": "Hata", "m": 0 } ], "ans": 0, "exp": "Python 3'te <code>/</code> operatörü her zaman <code>float</code> (ondalıklı sayı) döndürür.<br><code>15 / 4 = 3.75</code>. Eğer tam kısmı istenseydi <code>15 // 4 = 3</code> kullanılırdı." },
-{ "type": "fill", "topic": "Tip Dönüşümleri", "q": "x = \"100\" ve y = 20 değişkenlerini kullanarak 120 sonucuna ulaşmak için tip dönüşümü yaparak boşluğu doldurunuz.", "before": "x = \"100\"\ny = 20\nsonuc = ", "after": "(x) + y\nprint(sonuc)", "hint": "Metni tam sayıya çeviren fonksiyon.", "ans": "int", "exp": "<code>\"100\"</code> bir metindir (string). Matematiksel olarak toplanabilmesi için <code>int(\"100\")</code> şeklinde tam sayıya dönüştürülmesi gerekir." },
-{ "type": "fill", "topic": "Tip Dönüşümleri", "q": "Kullanıcının girdiği ondalıklı sayıyı tam sayıya dönüştürerek ekrana yazdıran kodu tamamlayınız.", "before": "sayi = float(input(\"Ondalıklı sayı: \"))\ntam_k = ", "after": "(sayi)\nprint(\"Tam kısmı:\", tam_k)", "hint": "Float'ı Integer'a çeviren fonksiyon.", "ans": "int", "exp": "<code>int(3.8)</code> gibi bir kullanım sayının ondalıklı kısmını atarak tam kısmını (3) elde etmemizi sağlar." },
-{ "type": "mc", "topic": "Tip Dönüşümleri", "q": "Kullanıcıdan yaşını alıp 5 yıl önce kaç yaşında olduğunu hesaplayan <strong>doğru</strong> kod satırı hangisidir?", "opts": [ { "t": "yas = int(input(\"Yaşınız:\"))\\nprint(\"5 yıl önce:\", yas - 5)", "m": 1 }, { "t": "yas = input(\"Yaşınız:\")\\nprint(\"5 yıl önce:\", yas - 5)", "m": 0 }, { "t": "yas = int(input(\"Yaşınız:\"))\\nprint(\"5 yıl önce:\" + yas - 5)", "m": 0 }, { "t": "yas = input(int(\"Yaşınız:\"))\\nprint(yas - 5)", "m": 0 } ], "ans": 0, "exp": "Kullanıcıdan veri almak için <code>input()</code> kullanılır ve sonucunda dönen <strong>string</strong>'den matematiksel çıkarma yapmak için önce <code>int()</code> ile tam sayıya dönüştürülmesi şarttır." },
-{ "type": "mc", "topic": "Matematiksel Algoritmalar", "q": "Ödev (%30), Vize (%30) ve Final (%40) notlarından yılsonu notunu hesaplayan doğru ifade aşağıdakilerden hangisidir?", "opts": [ { "t": "sonuc = odev*0.3 + vize*0.3 + final*0.4", "m": 1 }, { "t": "sonuc = (odev + vize + final) / 3", "m": 0 }, { "t": "sonuc = odev*30 + vize*30 + final*40", "m": 0 }, { "t": "sonuc = (odev*0.3) * (vize*0.3) * (final*0.4)", "m": 0 } ], "ans": 0, "exp": "Yüzdelik hesaplamalarda notları ilgili yüzdelik oranlarıyla çarparak (örneğin %30 için 0.3) toplamamız gerekir." },
-{ "type": "fill", "topic": "Metin İşlemleri", "q": "İsim ve soyismi aralarına boşluk koyarak birleştiren kodu boşluğu doldurarak tamamlayınız.", "before": "isim = \"Ahmet\"\nsoyisim = \"Yılmaz\"\nmetin = isim ", "after": " \" \" + soyisim\nprint(\"Hoş geldin\", metin)", "hint": "Artı operatörü ile stringleri birleştirebilirsiniz.", "ans": "+", "exp": "Metin birleştirme işleminde <code>+</code> operatörü kullanılır. Aralarına boşluk karakteri eklemek için <code>+ \" \" +</code> kullanmak gereklidir." },
-{ "type": "mc", "topic": "Metin İşlemleri", "q": "Öğrenci numarasından (ogr_no) `numara@cu.edu.tr` şeklinde e-posta adresi üreten doğru f-string kullanımı hangisidir?", "opts": [ { "t": "mail = f\"{ogr_no}@cu.edu.tr\"", "m": 1 }, { "t": "mail = \"ogr_no@cu.edu.tr\"", "m": 0 }, { "t": "mail = f\"ogr_no@cu.edu.tr\"", "m": 0 }, { "t": "mail = {ogr_no} + \"@cu.edu.tr\"", "m": 0 } ], "ans": 0, "exp": "<strong>f-string</strong> formatında değişkenleri süslü parantez <code>{}</code> içine alarak bir metne doğrudan dahil edebiliriz." },
-{ "type": "fill", "topic": "Metin İşlemleri", "q": "Bir sayının kaç basamaklı olduğunu bulmak için sayıyı önce metne çevirip sonra uzunluğunu ölçmek gerekir.", "before": "sayi = 12345\nbasamak = len(", "after": "(sayi))\nprint(basamak)", "hint": "Sayıyı metne çeviren tip dönüşümü fonksiyonu.", "ans": "str", "exp": "<code>len()</code> fonksiyonu sayıların (int/float) uzunluğunu hesaplayamaz. Bu yüzden <code>len(str(12345))</code> şeklinde sayıyı önce yazıya dönüştürürüz." },
-{ "type": "drag", "topic": "Metin Metotları", "q": "<code>metin = \"Python Programlama\"</code> için istenen çıktıları verecek kod satırlarını eşleştiriniz.", "items": ["metin[0:6]", "metin.upper()", "metin.replace('a','4')"], "zones": [ { "lbl": "\"Python\"", "ans": "metin[0:6]" }, { "lbl": "\"PYTHON PROGRAMLAMA\"", "ans": "metin.upper()" }, { "lbl": "\"Python Progr4ml4m4\"", "ans": "metin.replace('a','4')" } ], "exp": "<code>metin[başlangıç:bitiş]</code> dilimleme (slicing) sağlar. <code>upper()</code> hepsini büyütür, <code>replace(eski, yeni)</code> hedefleri yenisiyle yer değiştirir." },
-{ "type": "drag", "topic": "Metin Metotları", "q": "Metin fonksiyonlarını işlevleriyle eşleştiriniz.", "items": ["len()", "lower()", "strip()", "title()", "type()"], "zones": [ { "lbl": "Karakter sayısını verir", "ans": "len()" }, { "lbl": "Tüm harfleri küçük yapar", "ans": "lower()" }, { "lbl": "Baş/sondaki boşluğu siler", "ans": "strip()" }, { "lbl": "İlk harfleri büyütür", "ans": "title()" }, { "lbl": "Değişken veri tipini verir", "ans": "type()" } ], "exp": "Bunlar Python'un en çok kullanılan metin manipülasyon metotlarıdır." },
-{ "type": "fill", "topic": "Metin Şifreleme (Replace)", "q": "Şifreleme uygulamasında a->1, b->9, ş->3 yapılıyor. Şifrelemeyi uygulayan kodda ilk boşluğu tamamlayın.", "before": "cumle = \"başarı\"\nsifreli = cumle.", "after": "('a', '1').replace('b', '9').replace('ş', '3')\nprint(sifreli)", "hint": "Karakteri başka bir karakterle değiştiren string metodu.", "ans": "replace", "exp": "Zincirleme <code>.replace()</code> metotları ile sırasıyla belirtilen harfler dönüştürülür." },
-{ "type": "mc", "topic": "Listeler", "q": "Boş bir listeye eleman ekleyen doğru metot aşağıdakilerden hangisidir?", "opts": [ { "t": "liste.append(\"Elma\")", "m": 1 }, { "t": "liste.add(\"Elma\")", "m": 0 }, { "t": "liste.insert(\"Elma\")", "m": 0 }, { "t": "liste.push(\"Elma\")", "m": 0 } ], "ans": 0, "exp": "Python'da listelerin sonuna yeni bir eleman eklemek için <strong><code>append()</code></strong> metodu kullanılır. `add` kümelerde (set) kullanılır." },
-{ "type": "drag", "topic": "Listeler", "q": "<code>liste = [10, 20, 30, 40, 50]</code> için istenen işlemleri yapan kodları eşleştiriniz.", "items": ["liste.append(60)", "liste.pop(1)", "len(liste)"], "zones": [ { "lbl": "Sonuna 60 ekle", "ans": "liste.append(60)" }, { "lbl": "İkinci elemanı (20) sil", "ans": "liste.pop(1)" }, { "lbl": "Listenin eleman sayısı", "ans": "len(liste)" } ], "exp": "<code>.append()</code> elemanı sona ekler. <code>.pop(index)</code> o indexteki elemanı siler (20 sayısı 1. indexte yer alır). <code>len()</code> uzunluğu ölçer." },
-{ "type": "mc", "topic": "Teori ve Analiz", "q": "Aşağıdaki ifadelerden hangisi <strong>yanlıştır</strong>?", "opts": [ { "t": "type: Veri tipi değiştirmek (casting) amacıyla kullanılır.", "m": 1 }, { "t": "input: Kullanıcıdan veri almak için kullanılır.", "m": 0 }, { "t": "print: Ekrana veri yazmak için kullanılır.", "m": 0 }, { "t": "split: String ifadeyi belirli bir karaktere göre bölmeye yarar.", "m": 0 } ], "ans": 0, "exp": "<code>type()</code> fonksiyonu bir değişkenin veri tipini <strong>öğrenmek (çözümlemek)</strong> için kullanılır, değiştirmek için değil. Değiştirmek (casting) için <code>int()</code>, <code>float()</code> vs. kullanılır." }
-]
-;
-
-    let qi = 0, score = 0, okN = 0, badN = 0, empN = 0;
-    let answered = false, tfSt = {}, dragSt = {};
-    let ansHistory = [];
+    const QS = [{"type":"fill","topic":"For Döngüsü","q":"Taslak Soru 1: Boşluğu doldurun.","before":"for i in ","after":"(10):\n  print(i)","hint":"Belirli bir aralıkta sayı üretir.","ans":"range","exp":"İleride buraya Döngü soruları eklenecektir."},{"type":"tf","topic":"While Döngüsü","q":"Taslak Soru 2: Doğru mu, Yanlış mı?","stmts":[{"t":"While döngüsü bir koşul True olduğu sürece çalışır.","ans":true},{"t":"Sonsuz döngü tehlikesi sadece for döngüsünde vardır.","ans":false}],"exp":"Sorgu koşulu güncellenmezse while döngüsü sonsuza girer."}];
     let savedAnswers = []; // Kullanici cevap hafizasi
 
     function startGame() {
@@ -1220,3 +1197,4 @@
 </body>
 
 </html>
+

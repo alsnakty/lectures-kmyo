@@ -710,7 +710,7 @@
   <div class="wrap">
     <header>
       <div class="ey">Python Programlama</div>
-      <h1>Nesne Tabanlı Programlama I</h1>
+      <h1>Modül 1: Veri Tipleri ve Yapıları</h1>
 
     </header>
 
@@ -900,9 +900,10 @@
         q.zones.forEach(function (z) {
           const zid = 'dz_' + z.lbl.replace(/[^a-z0-9]/gi, '_');
           dragSt[z.lbl] = null;
+          const evlbl = z.lbl.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
           h += '<div class="droprow">';
-          h += '<span class="dlbl">' + z.lbl + '</span>';
-          h += '<div class="dzone" id="' + zid + '" data-zone="' + z.lbl + '"></div>';
+          h += '<span class="dlbl">' + esc(z.lbl) + '</span>';
+          h += '<div class="dzone" id="' + zid + '" data-zone="' + evlbl + '"></div>';
           h += '</div>';
         });
         h += '</div></div></div>';
