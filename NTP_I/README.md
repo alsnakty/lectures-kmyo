@@ -25,6 +25,6 @@ Uygulamalı testlerde işlenen ana konu başlıkları şunlardır:
 
 * <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_variables_2.html" target="_blank"><strong><code>Python_variables_2.html</code></strong></a>: Temel çıktı işlemleri, tip dönüşümleri (casting), kullanıcı etkileşimi (input) ve string metotlarını (dilimleme, replace vb.) pekiştiren interaktif HTML modülü.
 
-* <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_3.html" target="_blank"><strong><code>Python_modul_3.html</code></strong></a>: Kontrol Yapıları (If - Elif - Else) *(Hazırlık Aşamasında)*
+* <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_3.html" target="_blank"><strong><code>Python_modul_3.html</code></strong></a>: Kontrol Yapıları (If - Elif - Else)
 * <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_4.html" target="_blank"><strong><code>Python_modul_4.html</code></strong></a>: Döngüler (For & While) *(Hazırlık Aşamasında)*
 * <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_5.html" target="_blank"><strong><code>Python_modul_5.html</code></strong></a>: Fonksiyonlar ve Modüller *(Hazırlık Aşamasında)*
