@@ -1,30 +1,23 @@
-#  Nesne Tabanlı Programlama I
+# Nesne Tabanlı Programlama I
 
-Bu bölüm, Python programlama dilinin temellerini ve Nesne Tabanlı Programlama (OOP) kavramlarını öğrenmek amacıyla hazırlanmış ders notlarını ve interaktif test araçlarını içerir.
+Python'ın temellerini ve nesne tabanlı programlamaya giriş kavramlarını işleyen, çözümlü interaktif testlerden oluşur. Testler tarayıcıda açılır, herhangi bir kurulum gerektirmez.
 
-##  Ders İzlencesi (İçerik)
+## İçerik
 
-Uygulamalı testlerde işlenen ana konu başlıkları şunlardır:
+Beş modülden oluşur:
 
-1. **Değişkenler ve Temel Veri Tipleri**
-   - Tam Sayılar (`int`), Ondalıklar (`float`)
-   - Metinler (`str`) ve Mantıksal Değerler (`bool` - True/False)
-   - `type()` Fonksiyonu ve Değişken İsimlendirme Kuralları
-2. **Matematiksel Algoritmalar**
-   - Temel İşlemler (`+, -, *, /`)
-   - Tam Bölme (`//`), Mod Alma (`%`) ve Üs Alma (`**`)
-3. **Koleksiyonlar ve Veri Yapıları**
-   - **Listeler (Lists):** İndeksleme, dilimleme, metotlar (`append`, `pop`)
-   - **Sözlükler (Dictionaries):** Anahtar-değer (Key-Value) erişimi (`get`, `update`, `keys`, `values`)
-   - **Demetler (Tuples):** Değiştirilemezlik (Immutability) 
-   - **Kümeler (Sets):** Benzersiz elemanlar ve ekleme metotları (`add`)
+1. Veri tipleri ve yapıları — `int`, `float`, `str`, `bool`, `type()`, değişken isimlendirme kuralları; listeler, sözlükler, demetler ve kümeler
+2. Operatörler ve etkileşim — aritmetik, karşılaştırma ve mantıksal operatörler, tip dönüşümü (casting), `input` ile kullanıcı etkileşimi ve string metotları (dilimleme, `replace`, `split` vb.)
+3. Kontrol yapıları — `if` / `elif` / `else`, karşılaştırma ve mantıksal operatörler
+4. Döngüler — `for`, `while`, `range()`, `break` / `continue` ve iç içe döngüler
+5. Fonksiyonlar — tanımlama, parametre ve argüman, `return` ve değişken kapsamı (yerel/global)
 
-##  İnteraktif Eğitim Araçları
+## Testler
 
-* <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_variables_1.html" target="_blank"><strong><code>Python_variables_1.html</code></strong></a>: Python veri tipleri ve yapılarını baz alan HTML tabanlı pratik modülü.
+Bağlantılar doğrudan tarayıcıda çalışır:
 
-* <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_variables_2.html" target="_blank"><strong><code>Python_variables_2.html</code></strong></a>: Temel çıktı işlemleri, tip dönüşümleri (casting), kullanıcı etkileşimi (input) ve string metotlarını (dilimleme, replace vb.) pekiştiren interaktif HTML modülü.
-
-* <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_3.html" target="_blank"><strong><code>Python_modul_3.html</code></strong></a>: Kontrol Yapıları (If - Elif - Else)
-* <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_4.html" target="_blank"><strong><code>Python_modul_4.html</code></strong></a>: Döngüler (For & While) *(Hazırlık Aşamasında)*
-* <a href="https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_5.html" target="_blank"><strong><code>Python_modul_5.html</code></strong></a>: Fonksiyonlar ve Modüller *(Hazırlık Aşamasında)*
+- [Modül 1 — Veri tipleri ve yapıları](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_variables_1.html)
+- [Modül 2 — Operatörler ve etkileşim](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_variables_2.html)
+- [Modül 3 — Kontrol yapıları](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_3.html)
+- [Modül 4 — Döngüler](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_4.html)
+- [Modül 5 — Fonksiyonlar](https://alsnakty.github.io/lectures-kmyo/NTP_I/Python_modul_5.html)
