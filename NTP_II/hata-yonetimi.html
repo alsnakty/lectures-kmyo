@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hata Yönetimi — NTP II Ders Notları</title>
+<meta name="description" content="Bir program çalışırken beklenmedik durumlarla karşılaşır: kullanıcı yanlış veri girer, dosya bulunamaz, bir sayı sıfıra bölünür. Bu sayfa, programın...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hata Yönetimi — NTP II Ders Notları">
+<meta property="og:description" content="Bir program çalışırken beklenmedik durumlarla karşılaşır: kullanıcı yanlış veri girer, dosya bulunamaz, bir sayı sıfıra bölünür. Bu sayfa, programın...">
+<script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Hata Yönetimi</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="hata-yonetimi.html" class="etkin" aria-current="page"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="moduller.html"><span class="mh">12</span>Modüller</a>
+          <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+        </nav>
+      </details>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Hata Yönetimi</span></div>
+
+<div class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 3. Hafta</div>
+    <h1>Python'da Hata Yönetimi</h1>
+    <p class="lede">Bir program çalışırken beklenmedik durumlarla karşılaşır: kullanıcı yanlış veri girer, dosya bulunamaz, bir sayı sıfıra bölünür. Bu sayfa, programın çökmeden bu durumları yönetmesini sağlayan <code class="inline">try</code>, <code class="inline">except</code>, <code class="inline">else</code>, <code class="inline">finally</code> ve <code class="inline">raise</code> yapılarını anlatır.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#neden"><span class="n">1</span>Neden vardır?</a>
+        <a href="#onlem"><span class="n">2</span>Önlem alınmazsa</a>
+        <a href="#try-except"><span class="n">3</span>try ve except</a>
+        <a href="#belirli"><span class="n">4</span>Belirli hatalar</a>
+        <a href="#as"><span class="n">5</span>as ile yakalama</a>
+        <a href="#else-finally"><span class="n">6</span>else ve finally</a>
+        <a href="#raise"><span class="n">7</span>raise</a>
+        <a href="#karar"><span class="n">8</span>Karar tablosu</a>
+        <a href="#test"><span class="n">9</span>Konu sonu testi</a>
+      </nav>
+    </details>
+
+<h2 id="neden"><span class="num">1</span>Hata yönetimi neden vardır?</h2>
+    <p>Bir program çalışırken her şeyin yolunda gideceğini varsaymak iyimser ama gerçekçi olmayan bir yaklaşımdır. Kullanıcı sayı yerine harf girer, açılmak istenen dosya silinmiştir ya da bir sayı sıfıra bölünür. Bu durumların hepsi <strong>çalışma zamanında</strong> ortaya çıkar ve hiçbir önlem alınmamışsa program <strong>çöker</strong> — yani aniden durur ve geri kalan satırlar hiç çalışmaz.</p>
+    <p>Amaç hataları yok etmek değildir; amaç, bir hata oluştuğunda programın ne yapacağına <em>bizim</em> karar verebilmemizdir. Bunu üç şey için kullanırız: programın çökmesini engellemek, kullanıcıya anlamlı geri bildirim vermek ve riskli işlemleri güvenli kılmak.</p>
+
+    <h3 id="iki-tur">1.1 İki tür hata</h3>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Tür</th><th>Ne zaman oluşur</th><th>Yakalanabilir mi?</th><th>Örnek</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Söz Dizimi Hatası</strong><br>(SyntaxError)</td><td>Kod çalışmadan önce, yazım kurallarına aykırı kod yazıldığında</td><td class="no">✕ Hayır — kodu düzeltmek gerekir</td><td><code>print("merhaba"</code></td></tr>
+          <tr><td><strong>Çalışma Zamanı Hatası</strong><br>(Exception)</td><td>Kod çalışırken, beklenmedik bir durumla karşılaşıldığında</td><td class="yes">✓ Evet — <code>try/except</code> ile</td><td><code>10 / 0</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><span class="tag">İp Cambazı</span><p>Cambaz düşmeyi planlamaz ama düşme ihtimaline karşı ağ kurar. <code class="inline">try</code> ipin üzerinde yürümek, <code class="inline">except</code> alttaki güvenlik ağı, <code class="inline">finally</code> ise gösteri sonunda ağın her hâlükârda toplanmasıdır.</p></div>
+
+    <h2 id="onlem"><span class="num">2</span>Önlem alınmazsa ne olur?</h2>
+    <p>Bir hatayı yakalamadığımızda Python o hatayı yukarı doğru fırlatır ve program çöker. Çöktüğü andan sonraki hiçbir satır çalışmaz.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">ornek.py</span></div>
+<pre>print("Program başladı")
+
+sayi = int(input("Bir sayı giriniz: "))   <span class="c"># Kullanıcı "abc" girerse...</span>
+print("Girdiğiniz sayı:", sayi)            <span class="no"># buraya hiç gelinmez</span>
+print("Program bitti")                     <span class="no"># bu da çalışmaz</span></pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı — kullanıcı "abc" girerse</div>
+<pre>Program başladı
+Bir sayı giriniz: abc
+Traceback (most recent call last):
+  ...
+<span class="err">ValueError: invalid literal for int() with base 10: 'abc'</span></pre>
+    </div>
+    <p><code class="inline">"Program bitti"</code> satırı hiç çalışmadı. Program ortasında, kontrolsüz bir şekilde durdu. Hata yönetiminin amacı bu kontrolsüz duruşu önlemektir.</p>
+
+    <h3 id="tipler">2.1 Sık karşılaşılan hata türleri</h3>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hata tipi</th><th>Ne zaman oluşur</th><th>Örnek</th></tr></thead>
+        <tbody>
+          <tr><td><code>ValueError</code></td><td>Tip doğru ama değer uygunsuz</td><td><code>int("abc")</code></td></tr>
+          <tr><td><code>TypeError</code></td><td>İşlem yanlış tiplerle yapılır</td><td><code>"2" + 2</code></td></tr>
+          <tr><td><code>ZeroDivisionError</code></td><td>Bir sayı sıfıra bölünür</td><td><code>10 / 0</code></td></tr>
+          <tr><td><code>IndexError</code></td><td>Listede olmayan indekse erişilir</td><td><code>[1,2,3][5]</code></td></tr>
+          <tr><td><code>KeyError</code></td><td>Sözlükte olmayan anahtar istenir</td><td><code>{"a":1}["b"]</code></td></tr>
+          <tr><td><code>FileNotFoundError</code></td><td>Var olmayan bir dosya açılır</td><td><code>open("yok.txt")</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note ok"><span class="tag">İpucu</span><p>Hata mesajının son satırı her zaman hata tipiyle başlar. <code class="inline">ValueError: ...</code> satırını gördüğünüzde, yakalamanız gereken hata <code class="inline">ValueError</code>'dır.</p></div>
+
+    <h2 id="try-except"><span class="num">3</span>try ve except yapısı</h2>
+    <p>Başarısız olma ihtimali olan kodu <code class="inline">try</code> bloğuna, hata oluştuğunda ne yapılacağını ise <code class="inline">except</code> bloğuna yazarız. <code class="inline">try</code> içinde hata oluşmazsa <code class="inline">except</code> hiç çalışmaz; bir hata oluşursa kontrol doğrudan <code class="inline">except</code> bloğuna geçer.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">en_basit.py</span></div>
+<pre>try:
+    sayi = int(input("Bir sayı giriniz: "))
+    print("Girdiğiniz sayı:", sayi)
+except:
+    print("Geçersiz giriş! Lütfen bir sayı giriniz.")
+
+print("Program devam ediyor...")   <span class="ok"># artık her durumda çalışır</span></pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı — kullanıcı "abc" girerse</div>
+<pre>Geçersiz giriş! Lütfen bir sayı giriniz.
+Program devam ediyor...</pre>
+    </div>
+    <p>Artık program hangi durumda olursa olsun çökmüyor, son satıra kadar çalışmaya devam ediyor.</p>
+
+    <h2 id="belirli"><span class="num">4</span>Belirli hataları yakalamak</h2>
+    <p>Boş <code class="inline">except:</code> her türlü hatayı yakalar; bu, beklemediğimiz bir hatayı da yutar ve gerçek sorunu gizler. <code class="inline">except</code> yanına hata tipini yazarak yalnızca o hatayı yakalarız.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">belirli_hata.py</span></div>
+<pre>try:
+    sayi = int(input("Bir sayı giriniz: "))
+    sonuc = 100 / sayi
+    print("Sonuç:", sonuc)
+except ValueError:
+    print("Lütfen harf değil, sayı giriniz.")
+except ZeroDivisionError:
+    print("Bir sayıyı sıfıra bölemezsiniz.")</pre>
+    </div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Kullanıcı girişi</th><th>Oluşan hata</th><th>Çalışan blok</th><th>Ekran</th></tr></thead>
+        <tbody>
+          <tr><td><code>abc</code></td><td><code>ValueError</code></td><td>birinci</td><td>Lütfen harf değil, sayı giriniz.</td></tr>
+          <tr><td><code>0</code></td><td><code>ZeroDivisionError</code></td><td>ikinci</td><td>Bir sayıyı sıfıra bölemezsiniz.</td></tr>
+          <tr><td><code>5</code></td><td>—</td><td>hiçbiri</td><td>Sonuç: 20.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn"><span class="tag">Kural</span><p><code class="inline">except</code> bloklarında en özel hatayı en üste, en genel hatayı (<code class="inline">Exception</code>) en alta yazın. Aksi hâlde alttaki özel bloklar ölü kod olur.</p></div>
+
+    <h2 id="as"><span class="num">5</span>Hata nesnesini yakalamak: as</h2>
+    <p>Bir hata oluştuğunda Python, o hatayla ilgili bilgileri içeren bir hata nesnesi üretir. Bu nesneyi <code class="inline">as</code> ile bir değişkene alıp hata mesajını okuyabiliriz.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">as_kullanimi.py</span></div>
+<pre>try:
+    sayi = int("abc")
+except ValueError as hata:
+    print("Bir hata oluştu:", hata)
+    print("Hata tipi:", type(hata))</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı</div>
+<pre>Bir hata oluştu: invalid literal for int() with base 10: 'abc'
+Hata tipi: &lt;class 'ValueError'&gt;</pre>
+    </div>
+
+    <h2 id="else-finally"><span class="num">6</span>else ve finally blokları</h2>
+    <p><code class="inline">else</code> yalnızca <code class="inline">try</code> içinde hiç hata oluşmazsa çalışır. <code class="inline">finally</code> ise hata oluşsa da oluşmasa da her durumda çalışır; genellikle dosya kapatma gibi temizlik işleri için kullanılır.</p>
+    <figure class="diagram"><img alt="try, except, else ve finally bloklarının çalışma sırasını gösteren şema" src="images/hata_yonetimi.png" width="1212" height="690" loading="lazy" decoding="async"><figcaption>Dört bloğun çalışma sırası: try denenir, hata olursa except, hata olmazsa else, her durumda finally.</figcaption></figure>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">dort_blok.py</span></div>
+<pre>try:
+    print("1) try: riskli işlem deneniyor")
+    sayi = int("123")
+except ValueError:
+    print("2) except: yalnızca hata olursa çalışır")
+else:
+    print("3) else: yalnızca hata OLMAZSA çalışır")
+finally:
+    print("4) finally: HER durumda çalışır")</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı — hata oluşmadığı için</div>
+<pre>1) try: riskli işlem deneniyor
+3) else: yalnızca hata OLMAZSA çalışır
+4) finally: HER durumda çalışır</pre>
+    </div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Blok</th><th>Ne zaman çalışır?</th></tr></thead>
+        <tbody>
+          <tr><td><code>try</code></td><td>Her zaman başlar (riskli kod buraya yazılır)</td></tr>
+          <tr><td><code>except</code></td><td>Yalnızca hata oluşursa</td></tr>
+          <tr><td><code>else</code></td><td>Yalnızca hata oluşmazsa</td></tr>
+          <tr><td><code>finally</code></td><td>Her durumda (hata olsa da olmasa da)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="raise"><span class="num">7</span>raise ile hata fırlatmak</h2>
+    <p>Şimdiye kadar hataları yakaladık. Bazen ise hatayı bilerek biz oluşturmak isteriz — örneğin bir fonksiyona negatif yaş gibi mantıksız bir değer geldiğinde. Bunun için <code class="inline">raise</code> kullanılır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">raise_ornek.py</span></div>
+<pre>def yas_kontrol(yas):
+    if yas &lt; 0:
+        raise ValueError("Yaş negatif olamaz!")
+    print("Yaş geçerli:", yas)
+
+yas_kontrol(25)      <span class="ok"># Yaş geçerli: 25</span>
+yas_kontrol(-3)      <span class="no"># ValueError: Yaş negatif olamaz!</span></pre>
+    </div>
+    <p><code class="inline">raise</code> ifadesi de tıpkı <code class="inline">return</code> gibi fonksiyonu anında durdurur; <code class="inline">raise</code>'den sonraki satırlar çalışmaz.</p>
+
+    <hr class="hr">
+
+    <h2 id="karar"><span class="num">8</span>Hangi yapıyı ne zaman kullanmalı?</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Durum</th><th>Önerilen yapı</th></tr></thead>
+        <tbody>
+          <tr><td>Bir kodun hata verme ihtimali var, çökmesini istemiyorum</td><td><code>try / except</code></td></tr>
+          <tr><td>Her hataya farklı mesaj vermek istiyorum</td><td>Birden çok <code>except &lt;HataTipi&gt;</code></td></tr>
+          <tr><td>Hatanın açıklamasını okumak / kaydetmek istiyorum</td><td><code>except ... as hata</code></td></tr>
+          <tr><td>Riskli işlem başarılı olursa devamında bir şey yapacağım</td><td><code>else</code> bloğu</td></tr>
+          <tr><td>Hata olsa da olmasa da çalışacak kod var</td><td><code>finally</code> bloğu</td></tr>
+          <tr><td>Uygunsuz değer gelince hata oluşturmak istiyorum</td><td><code>raise</code></td></tr>
+          <tr><td>Hata bir yazım hatası (SyntaxError)</td><td>try/except değil — <strong>kodu düzelt</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="hr">
+
+    <h2 id="test"><span class="num">9</span>Konu sonu testi</h2>
+    <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
+    <ol class="quiz">
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru1.py</span></div>
+<pre>try:
+    print("A")
+    sonuc = 10 / 0
+    print("B")
+except ZeroDivisionError:
+    print("C")</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">A</code> ve <code class="inline">B</code></li>
+          <li><b>B)</b> <code class="inline">A</code> ve <code class="inline">C</code></li>
+          <li><b>C)</b> <code class="inline">A</code>, <code class="inline">B</code> ve <code class="inline">C</code></li>
+          <li><b>D)</b> Yalnızca <code class="inline">C</code></li>
+          <li><b>E)</b> Hata verir</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">B</span><code class="inline">A</code> yazılır, sonra <code class="inline">10 / 0</code> hata verir → <code class="inline">print("B")</code> atlanır, <code class="inline">except</code> çalışıp <code class="inline">C</code> yazar. <code class="inline">B</code> hiç çalışmaz.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">int("merhaba")</code> ifadesi hangi hatayı oluşturur?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">TypeError</code></li>
+          <li><b>B)</b> <code class="inline">ZeroDivisionError</code></li>
+          <li><b>C)</b> <code class="inline">NameError</code></li>
+          <li><b>D)</b> <code class="inline">SyntaxError</code></li>
+          <li><b>E)</b> <code class="inline">ValueError</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">E</span><code class="inline">"merhaba"</code> bir string olarak doğru tiptedir ama sayıya çevrilemeyecek bir değerdir; bu yüzden <code class="inline">ValueError</code> oluşur.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru3.py</span></div>
+<pre>try:
+    sayi = int("50")
+except ValueError:
+    print("Hata")
+else:
+    print("Başarılı")
+finally:
+    print("Bitti")</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">Başarılı</code> ve <code class="inline">Bitti</code></li>
+          <li><b>B)</b> <code class="inline">Hata</code></li>
+          <li><b>C)</b> <code class="inline">Başarılı</code></li>
+          <li><b>D)</b> <code class="inline">Hata</code> ve <code class="inline">Bitti</code></li>
+          <li><b>E)</b> Yalnızca <code class="inline">Bitti</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">A</span><code class="inline">int("50")</code> hatasız çalışır → <code class="inline">except</code> atlanır, <code class="inline">else</code> "Başarılı" yazar, ardından <code class="inline">finally</code> "Bitti" yazar.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">finally</code> bloğu ile ilgili hangisi doğrudur?</p>
+        <ul class="opts">
+          <li><b>A)</b> Yalnızca hata oluşursa çalışır</li>
+          <li><b>B)</b> Yalnızca hata oluşmazsa çalışır</li>
+          <li><b>C)</b> Yalnızca <code class="inline">except</code> bloğu yoksa çalışır</li>
+          <li><b>D)</b> Hata oluşsa da oluşmasa da her durumda çalışır</li>
+          <li><b>E)</b> Hiçbir zaman çalışmaz</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">D</span><code class="inline">finally</code> bloğunun tanımı: hata olsun ya da olmasın her durumda çalışır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru5.py</span></div>
+<pre>def kontrol(sayi):
+    if sayi &lt; 0:
+        raise ValueError("Negatif!")
+    return "Pozitif"
+
+try:
+    print(kontrol(-5))
+except ValueError as e:
+    print("Yakalandı:", e)</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">Pozitif</code></li>
+          <li><b>B)</b> <code class="inline">Negatif!</code></li>
+          <li><b>C)</b> <code class="inline">Yakalandı: Negatif!</code></li>
+          <li><b>D)</b> <code class="inline">ValueError</code></li>
+          <li><b>E)</b> Hiçbir şey yazmaz</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">C</span><code class="inline">kontrol(-5)</code> çağrısı <code class="inline">raise ValueError("Negatif!")</code> ile hata fırlatır; bu hata <code class="inline">except</code>'te yakalanır ve mesajıyla yazdırılır.</div>
+        </details>
+      </li>
+    </ol>
+
+    <div class="note"><span class="tag">Özet</span><p>Hata bir araçtır, düşman değildir. Python'un fırlattığı hata mesajları sorunun ne olduğunu ve nerede oluştuğunu söyler. Mesajı okumak, çözümün ilk adımıdır.</p></div>
+
+    <div class="aside-card mobil">
+      <div class="k">İlgili konu</div>
+      <p>Dosya İşlemleri — 4-5. hafta. Dosya açarken <code class="inline">FileNotFoundError</code> ve <code class="inline">finally</code> ile kapatma burada tekrar karşınıza çıkar.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="fonksiyonlar.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">2. Hafta</span>
+        <span class="kb">Fonksiyonlar</span>
+      </a>
+      <a class="komsu-kart sonraki" href="dosya-islemleri.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">4-5. Hafta</span>
+        <span class="kb">Dosya İşlemleri</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#neden"><span class="n">1</span>Neden vardır?</a>
+      <a href="#onlem"><span class="n">2</span>Önlem alınmazsa</a>
+      <a href="#try-except"><span class="n">3</span>try ve except</a>
+      <a href="#belirli"><span class="n">4</span>Belirli hatalar</a>
+      <a href="#as"><span class="n">5</span>as ile yakalama</a>
+      <a href="#else-finally"><span class="n">6</span>else ve finally</a>
+      <a href="#raise"><span class="n">7</span>raise</a>
+      <a href="#karar"><span class="n">8</span>Karar tablosu</a>
+      <a href="#test"><span class="n">9</span>Konu sonu testi</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">İlgili konu</div>
+      <p>Dosya İşlemleri — 4-5. hafta. Dosya açarken <code class="inline">FileNotFoundError</code> ve <code class="inline">finally</code> ile kapatma burada tekrar karşınıza çıkar.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
+    <p class="alt-kisi"><!-- AD SOYAD --></p>
+      <nav class="alt-bag" aria-label="Alt bağlantılar">
+        <a href="index.html">Ders ana sayfası</a>
+        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

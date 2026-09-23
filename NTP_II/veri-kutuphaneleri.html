@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veri Kütüphaneleri — NTP II Ders Notları</title>
+<meta name="description" content="Python&#x27;un en güçlü olduğu alanlardan biri veri analizidir. Bu sayfa üç kütüphaneyi tanıtır: sayısal temel için NumPy, tablo hâlinde veri için Pandas...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Veri Kütüphaneleri — NTP II Ders Notları">
+<meta property="og:description" content="Python&#x27;un en güçlü olduğu alanlardan biri veri analizidir. Bu sayfa üç kütüphaneyi tanıtır: sayısal temel için NumPy, tablo hâlinde veri için Pandas...">
+<script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Veri Kütüphaneleri</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="moduller.html"><span class="mh">12</span>Modüller</a>
+          <a href="veri-kutuphaneleri.html" class="etkin" aria-current="page"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+        </nav>
+      </details>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Veri Kütüphaneleri</span></div>
+
+<div class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 13. Hafta</div>
+    <h1>Veriyle Çalışmak: NumPy, Pandas ve Matplotlib</h1>
+    <p class="lede">Python'un en güçlü olduğu alanlardan biri veri analizidir. Bu sayfa üç kütüphaneyi tanıtır: sayısal temel için <strong>NumPy</strong>, tablo hâlinde veri için <strong>Pandas</strong>, görselleştirme için <strong>Matplotlib</strong>. Amaç uzman olmak değil; bu araçların ne işe yaradığını görüp küçük örneklerle el alıştırmaktır.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#neden"><span class="n">1</span>Neden bu üçü?</a>
+        <a href="#numpy"><span class="n">2</span>NumPy</a>
+        <a href="#pandas"><span class="n">3</span>Pandas</a>
+        <a href="#matplotlib"><span class="n">4</span>Matplotlib</a>
+        <a href="#test"><span class="n">5</span>Konu sonu testi</a>
+      </nav>
+    </details>
+
+<h2 id="neden"><span class="num">1</span>Neden bu üç kütüphane?</h2>
+    <p>Python'un veri biliminde bu kadar popüler olmasının arkasında birbiriyle uyum içinde çalışan birkaç kütüphane vardır. Sade Python listeleriyle binlerce sayıyı işlemek hem yavaştır hem zahmetlidir; bir Excel tablosu gibi satır-sütun veriyi yönetmek için liste yeterli değildir; ve sonuçları göstermek için bir grafik aracına ihtiyaç duyarsınız. İşte bu üç ihtiyaca üç kütüphane karşılık gelir.</p>
+    <figure class="diagram"><img alt="NumPy sayısal temeli, Pandas tabloyu, Matplotlib görselleştirmeyi sağlar" src="images/veri_akisi.png" width="1230" height="480" loading="lazy" decoding="async">
+      <figcaption>Tipik bir veri işinde akış</figcaption>
+    </figure>
+    <p>Tipik bir veri işinde akış genellikle soldan sağa ilerler: veriyi <strong>NumPy</strong> ve <strong>Pandas</strong> ile yükler, temizler ve işlersiniz; sonra <strong>Matplotlib</strong> ile görselleştirip anlamlandırırsınız. Bu üçü ayrı kurulur (<code class="inline">pip install numpy pandas matplotlib</code>) ve genellikle şu kısaltmalarla içe aktarılır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">import_kalibi.py</span></div>
+<pre>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</pre>
+    </div>
+    <p>Bu takma adlar (<code class="inline">np</code>, <code class="inline">pd</code>, <code class="inline">plt</code>) neredeyse evrensel bir gelenektir; dünyanın her yerinde aynı yazılır.</p>
+
+    <h2 id="numpy"><span class="num">2</span>NumPy — sayısal temel</h2>
+    <p>NumPy'nin kalbinde <strong>dizi (array)</strong> vardır. Bir NumPy dizisi, Python listesine benzer ama çok daha hızlıdır ve üzerinde tüm elemanlara aynı anda işlem yapılabilir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">numpy_dizi.py</span></div>
+<pre>import numpy as np
+
+a = np.array([1, 2, 3, 4, 5])
+print(a * 2)        <span class="c"># [ 2  4  6  8 10]   — her elemanı 2 ile çarpar</span>
+print(a + 10)       <span class="c"># [11 12 13 14 15]</span></pre>
+    </div>
+    <p>Dikkat edin: <code class="inline">a * 2</code> yazdığınızda döngü kurmanıza gerek kalmadan <strong>tüm dizi</strong> birden çarpılır. Sade bir Python listesinde <code class="inline">[1,2,3] * 2</code> size <code class="inline">[1,2,3,1,2,3]</code> verirdi; NumPy'de ise gerçek bir matematiksel işlem yapılır. İşte NumPy'nin gücü budur.</p>
+    <p>NumPy hazır hesaplama işlevleriyle de gelir; diziler tek boyutlu olmak zorunda değildir, satır-sütun biçiminde <strong>matrisler</strong> de oluşturabilirsiniz:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">numpy_islemler.py</span></div>
+<pre>a = np.array([1, 2, 3, 4, 5])
+print(a.mean())     <span class="c"># 3.0   — ortalama</span>
+print(a.sum())      <span class="c"># 15    — toplam</span>
+print(a.max())      <span class="c"># 5     — en büyük</span>
+print(a.min())      <span class="c"># 1     — en küçük</span>
+
+m = np.array([[1, 2, 3],
+              [4, 5, 6]])
+print(m.shape)      <span class="c"># (2, 3)   — 2 satır, 3 sütun</span></pre>
+    </div>
+    <p>Sık kullanılan birkaç hazır dizi üreteci de vardır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">numpy_uretecler.py</span></div>
+<pre>print(np.arange(0, 10, 2))   <span class="c"># [0 2 4 6 8]   — 0'dan 10'a 2'şer</span>
+print(np.zeros(3))           <span class="c"># [0. 0. 0.]    — sıfırlardan oluşan dizi</span>
+print(np.ones(2))            <span class="c"># [1. 1.]       — birlerden oluşan dizi</span></pre>
+    </div>
+    <div class="note ok"><span class="tag">Aklınızda kalsın</span><p>NumPy, büyük miktarda sayıyı hızlı ve toplu işlemek için vardır. Pandas ve Matplotlib dahil pek çok kütüphane, arka planda NumPy'yi kullanır; yani NumPy bu ekosistemin temelidir.</p></div>
+
+    <h2 id="pandas"><span class="num">3</span>Pandas — tablo hâlinde veri</h2>
+    <p>Gerçek veriler çoğu zaman bir tablo biçimindedir: satırlar kayıtları (kişiler, ürünler), sütunlar özellikleri (ad, yaş, fiyat) tutar. Pandas tam da bunun için iki veri yapısı sunar: tek boyutlu <strong>Series</strong> ve iki boyutlu (tablo) <strong>DataFrame</strong>. Bir <code class="inline">Series</code>, her elemanına bir etiket (index) verilebilen bir dizidir:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">series.py</span></div>
+<pre>import pandas as pd
+
+s = pd.Series([10, 20, 30], index=['a', 'b', 'c'])
+print(s['b'])       <span class="c"># 20   — etikete göre erişim</span></pre>
+    </div>
+
+    <h3 id="dataframe">3.1 DataFrame — tablo</h3>
+    <p><code class="inline">DataFrame</code>, Pandas'ın asıl yıldızıdır; bir Excel tablosu gibi satır ve sütunlardan oluşur. En sık, sütun adlarını anahtar yapan bir sözlükten oluşturulur:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">dataframe.py</span></div>
+<pre>data = {
+    'Ad':    ['Ali', 'Ayşe', 'Mehmet'],
+    'Yas':   [25, 30, 22],
+    'Sehir': ['İstanbul', 'Ankara', 'İzmir']
+}
+df = pd.DataFrame(data)
+print(df)</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı</div>
+<pre>       Ad  Yas     Sehir
+0     Ali   25  İstanbul
+1    Ayşe   30    Ankara
+2  Mehmet   22     İzmir</pre>
+    </div>
+    <p>Pandas, bir tabloyu hızlıca tanımanız için hazır metotlar sunar: <code class="inline">head()</code> ilk satırları, <code class="inline">info()</code> sütun türlerini ve dolu/boş durumunu, <code class="inline">describe()</code> ise sayısal sütunların istatistiksel özetini verir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">inceleme.py</span></div>
+<pre>print(df.head())        <span class="c"># ilk 5 satır</span>
+df.info()               <span class="c"># sütun türleri ve genel bilgi (kendisi yazdırır)</span>
+print(df.describe())    <span class="c"># sayısal özet (ortalama, std, min, max...)</span></pre>
+    </div>
+
+    <h3 id="filtreleme">3.2 Seçme, filtreleme ve sütun ekleme</h3>
+    <p>Bir sütunu adıyla, bir satırı konumuyla seçebilir; bir koşula uyan satırları süzebilirsiniz. Yeni bir sütun eklemek de bir atama kadar kolaydır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">secme_filtreleme.py</span></div>
+<pre>print(df['Ad'])                  <span class="c"># yalnızca Ad sütunu</span>
+print(df.iloc[0])                <span class="c"># ilk satır (konuma göre)</span>
+print(df[df['Yas'] &gt; 24])        <span class="c"># yaşı 24'ten büyük olan satırlar</span>
+
+df['Gelir'] = [4000, 5000, 4500] <span class="c"># yeni sütun ekle</span>
+print(df['Gelir'].mean())        <span class="c"># 4500.0</span></pre>
+    </div>
+    <p>Buradaki <code class="inline">df[df['Yas'] &gt; 24]</code> ifadesi, Pandas mantığının güzel bir örneğidir: önce her satır için "yaşı 24'ten büyük mü?" sorusunun cevabını (<code class="inline">True</code>/<code class="inline">False</code>) üretir, sonra yalnızca <code class="inline">True</code> olan satırları getirir.</p>
+
+    <h3 id="csv-groupby">3.3 Dosya okuma, yazma ve gruplama</h3>
+    <p>Pandas'ın en pratik yanlarından biri, CSV gibi dosyaları tek satırda okuyup yazabilmesidir. Daha önce dosya işlemleri konusunda satır satır yaptığımız işler, burada hazır gelir. <code class="inline">groupby</code> ise bir sütuna göre satırları gruplayıp her grup için hesap yapmanızı sağlar:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">csv_groupby.py</span></div>
+<pre>df.to_csv('veri.csv', index=False)     <span class="c"># tabloyu CSV'ye yaz</span>
+okunan = pd.read_csv('veri.csv')       <span class="c"># CSV'yi tabloya oku</span>
+
+print(df.groupby('Sehir')['Gelir'].mean())</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı — her şehrin ortalama geliri</div>
+<pre>Sehir
+Ankara      5000.0
+İstanbul    4000.0
+İzmir       4500.0
+Name: Gelir, dtype: float64</pre>
+    </div>
+    <div class="note ok"><span class="tag">Aklınızda kalsın</span><p>Pandas, tablo hâlindeki veriyi yüklemek, temizlemek, süzmek ve özetlemek için vardır. Excel'de fareyle yaptığınız işlerin neredeyse tamamı, Pandas'ta tek satır koda dönüşür ve binlerce satıra aynı anda uygulanır.</p></div>
+
+    <h2 id="matplotlib"><span class="num">4</span>Matplotlib — görselleştirme</h2>
+    <p>Veriyi hazırladıktan sonra onu <strong>göstermek</strong> istersiniz; bir grafik, yüzlerce satırlık tablodan çok daha hızlı anlaşılır. Matplotlib, Python'un en yaygın çizim kütüphanesidir. Temel kullanımı şaşırtıcı derecede kısadır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">sutun_grafigi.py</span></div>
+<pre>import matplotlib.pyplot as plt
+
+sehirler = ['İstanbul', 'Ankara', 'İzmir']
+gelirler = [4000, 5000, 4500]
+
+plt.bar(sehirler, gelirler)        <span class="c"># sütun grafiği</span>
+plt.title('Şehirlere Göre Gelir')
+plt.ylabel('Gelir (TL)')
+plt.show()                         <span class="c"># grafiği ekrana getir</span></pre>
+    </div>
+    <p>Çizgi grafiği de aynı kolaylıktadır; örneğin NumPy ile bir sinüs eğrisi çizelim:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">cizgi_grafigi.py</span></div>
+<pre>import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 10, 100)        <span class="c"># 0-10 arası 100 nokta</span>
+y = np.sin(x)
+
+plt.plot(x, y)                     <span class="c"># çizgi grafiği</span>
+plt.title('np.sin(x) Grafiği')
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.show()</pre>
+    </div>
+    <figure class="diagram"><img alt="Matplotlib ile üretilmiş bir sütun grafiği ve bir sinüs eğrisi" src="images/matplotlib_ornek.png" width="1198" height="448" loading="lazy" decoding="async">
+      <figcaption>Yukarıdaki iki kodun ürettiği grafikler</figcaption>
+    </figure>
+    <p>En çok kullanılan grafik türleri: sütun için <code class="inline">plt.bar()</code>, çizgi için <code class="inline">plt.plot()</code>, dağılım için <code class="inline">plt.scatter()</code>, histogram için <code class="inline">plt.hist()</code>. Hepsinin kullanımı benzerdir: veriyi verir, başlık/etiket eklersiniz, <code class="inline">plt.show()</code> ile gösterirsiniz.</p>
+
+    <h3 id="birlikte">4.1 Pandas ile Matplotlib birlikte</h3>
+    <p>İşin güzel yanı, Pandas'ın Matplotlib ile doğrudan konuşabilmesidir. Bir DataFrame ya da gruplama sonucunu <code class="inline">.plot()</code> ile tek satırda çizebilirsiniz:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">pandas_plot.py</span></div>
+<pre>df.groupby('Sehir')['Gelir'].mean().plot(kind='bar')
+plt.show()</pre>
+    </div>
+    <p>İşte bu noktada üç kütüphane bir araya gelir: NumPy sayısal temeli sağlar, Pandas veriyi tabloya döker ve özetler, Matplotlib sonucu görselleştirir.</p>
+    <div class="note ok"><span class="tag">Aklınızda kalsın</span><p>Matplotlib grafiği üç adımdır — veriyi ver, başlık/etiket ekle, <code class="inline">plt.show()</code> ile göster. Grafik türünü değiştirmek (<code class="inline">bar</code>, <code class="inline">plot</code>, <code class="inline">scatter</code>) çoğu zaman tek kelimeyi değiştirmek kadar basittir.</p></div>
+
+    <hr class="hr">
+
+    <h2 id="test"><span class="num">5</span>Konu sonu testi</h2>
+    <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
+    <ol class="quiz">
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru1.py</span></div>
+<pre>import numpy as np
+
+a = np.array([1, 2, 3, 4, 5])
+print(a * 2)</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">[ 2  4  6  8 10]</code></li>
+          <li><b>B)</b> <code class="inline">[1 2 3 4 5 1 2 3 4 5]</code></li>
+          <li><b>C)</b> <code class="inline">[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]</code></li>
+          <li><b>D)</b> <code class="inline">30</code></li>
+          <li><b>E)</b> Hata verir</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">A</span>NumPy dizisinde <code class="inline">*</code> gerçek bir matematiksel çarpmadır; döngü kurmadan her eleman 2 ile çarpılır. Sade bir Python listesinde ise <code class="inline">[1, 2, 3] * 2</code> listeyi tekrarlar.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">df[df['Yas'] &gt; 24]</code> ifadesi ne döndürür?</p>
+        <ul class="opts">
+          <li><b>A)</b> Yaş sütununun ortalamasını</li>
+          <li><b>B)</b> Yalnızca <code class="inline">True</code> ve <code class="inline">False</code> değerlerinden oluşan bir sütun</li>
+          <li><b>C)</b> Yaşı 24'ten büyük olan satırları</li>
+          <li><b>D)</b> Tablonun yalnızca ilk satırını</li>
+          <li><b>E)</b> Hata verir</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">C</span>Pandas önce her satır için "yaşı 24'ten büyük mü?" sorusunun cevabını (<code class="inline">True</code>/<code class="inline">False</code>) üretir, sonra yalnızca <code class="inline">True</code> olan satırları getirir. Sayfadaki tabloda bunlar Ali ve Ayşe satırlarıdır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Pandas'ta <code class="inline">groupby</code> ne işe yarar?</p>
+        <ul class="opts">
+          <li><b>A)</b> Tablodaki satırları küçükten büyüğe sıralar</li>
+          <li><b>B)</b> Eksik verileri otomatik doldurur</li>
+          <li><b>C)</b> İki ayrı tabloyu tek tabloda birleştirir</li>
+          <li><b>D)</b> Sütun adlarını değiştirir</li>
+          <li><b>E)</b> Bir sütuna göre satırları gruplayıp her grup için hesap yapar</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">E</span><code class="inline">df.groupby('Sehir')['Gelir'].mean()</code> satırları şehre göre gruplar ve her şehrin ortalama gelirini verir.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Bu üç kütüphane için yerleşik olan içe aktarma kısaltmaları hangi satırda doğru yazılmıştır?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">import pandas as np</code> · <code class="inline">import numpy as pd</code></li>
+          <li><b>B)</b> <code class="inline">import numpy as np</code> · <code class="inline">import pandas as pd</code> · <code class="inline">import matplotlib.pyplot as plt</code></li>
+          <li><b>C)</b> <code class="inline">import numpy as nm</code> · <code class="inline">import pandas as pnd</code></li>
+          <li><b>D)</b> <code class="inline">import np</code> · <code class="inline">import pd</code> · <code class="inline">import plt</code></li>
+          <li><b>E)</b> <code class="inline">from numpy import np</code> · <code class="inline">from pandas import pd</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">B</span><code class="inline">np</code>, <code class="inline">pd</code> ve <code class="inline">plt</code> kısaltmaları neredeyse evrensel bir gelenektir; dünyanın her yerinde aynı yazılır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">plt.show()</code> satırının görevi nedir?</p>
+        <ul class="opts">
+          <li><b>A)</b> Grafiği bir görsel dosyasına kaydeder</li>
+          <li><b>B)</b> Grafiğin başlığını belirler</li>
+          <li><b>C)</b> Veriyi tabloya çevirir</li>
+          <li><b>D)</b> Hazırlanan grafiği ekranda gösterir</li>
+          <li><b>E)</b> Açık olan bütün grafikleri kapatır</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">D</span>Matplotlib grafiği üç adımdır: veriyi ver, başlık ve etiket ekle, <code class="inline">plt.show()</code> ile göster.</div>
+        </details>
+      </li>
+    </ol>
+
+    <hr class="hr">
+
+    <div class="note"><span class="tag">Özet</span><p>Bu hafta bir tanışma haftasıdır: üçünün de yüzlerce işlevi vardır, hedef hepsini ezberlemek değil "hangi iş için hangi araç" mantığını kavramaktır. Takma adlar (<code class="inline">np</code>, <code class="inline">pd</code>, <code class="inline">plt</code>) standarttır. NumPy ekosistemin temelidir, Pandas Excel'in koddaki hâlidir. Daha fazlası için resmî belgeler: numpy.org, pandas.pydata.org, matplotlib.org.</p></div>
+
+    <div class="aside-card mobil">
+      <div class="k">İlgili konu</div>
+      <p>Modüller — 12. hafta. Bu üç kütüphane harici modüldür; <code class="inline">pip install</code> veya <code class="inline">conda install</code> ile kurulur ve <code class="inline">import ... as ...</code> ile içe aktarılır.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="moduller.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">12. Hafta</span>
+        <span class="kb">Modüller</span>
+      </a>
+      <a class="komsu-kart sonraki" href="neler-yapilir.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">14. Hafta</span>
+        <span class="kb">Python ile Başka Neler Yapılır</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#neden"><span class="n">1</span>Neden bu üçü?</a>
+      <a href="#numpy"><span class="n">2</span>NumPy</a>
+      <a href="#pandas"><span class="n">3</span>Pandas</a>
+      <a href="#matplotlib"><span class="n">4</span>Matplotlib</a>
+      <a href="#test"><span class="n">5</span>Konu sonu testi</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">İlgili konu</div>
+      <p>Modüller — 12. hafta. Bu üç kütüphane harici modüldür; <code class="inline">pip install</code> veya <code class="inline">conda install</code> ile kurulur ve <code class="inline">import ... as ...</code> ile içe aktarılır.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
+    <p class="alt-kisi"><!-- AD SOYAD --></p>
+      <nav class="alt-bag" aria-label="Alt bağlantılar">
+        <a href="index.html">Ders ana sayfası</a>
+        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

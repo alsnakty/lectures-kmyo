@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modüller — NTP II Ders Notları</title>
+<meta name="description" content="Bir modül, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Bu sayfa import&#x27;un biçimlerini, sık...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Modüller — NTP II Ders Notları">
+<meta property="og:description" content="Bir modül, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Bu sayfa import&#x27;un biçimlerini, sık...">
+<script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Modüller</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="moduller.html" class="etkin" aria-current="page"><span class="mh">12</span>Modüller</a>
+          <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+        </nav>
+      </details>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Modüller</span></div>
+
+<div class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 12. Hafta</div>
+    <h1>Python'da Modüller</h1>
+    <p class="lede">Bir modül, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Bu sayfa <code class="inline">import</code>'un biçimlerini, sık kullanılan standart kütüphane modüllerini, kendi modülünüzü yazmayı ve harici modül kurmayı anlatır.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#nedir"><span class="n">1</span>Modül nedir?</a>
+        <a href="#import"><span class="n">2</span>import yöntemleri</a>
+        <a href="#standart"><span class="n">3</span>Standart modüller</a>
+        <a href="#kesif"><span class="n">4</span>help() ve dir()</a>
+        <a href="#kendi"><span class="n">5</span>Kendi modülünüz</a>
+        <a href="#kurulum"><span class="n">6</span>Harici modül kurmak</a>
+        <a href="#test"><span class="n">7</span>Konu sonu testi</a>
+      </nav>
+    </details>
+
+<h2 id="nedir"><span class="num">1</span>Modül nedir, neden vardır?</h2>
+    <p>Bir program büyüdükçe, her şeyi tek bir dosyaya yığmak zorlaşır. Üstelik kare kök almak, rastgele sayı üretmek, tarih hesaplamak gibi işleri her seferinde sıfırdan yazmak hem zaman kaybıdır hem de hataya açıktır. Bu işlerin pek çoğunu sizden önce birileri yazmış ve test etmiştir; tek yapmanız gereken onları kullanmaktır.</p>
+    <p>İşte bir <strong>modül</strong>, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Python "modüler" bir dil olarak tasarlanmıştır: belirli işleri yapan pek çok modül ya doğrudan Python'la birlikte gelir ya da dışarıdan eklenebilir. Bir modülü programınıza dahil etmek için <code class="inline">import</code> anahtar kelimesini kullanırsınız.</p>
+    <p>Modüllerin bize kazandırdığı şey nettir: hazır ve denenmiş kodu <strong>yeniden kullanırız</strong>, böylece tekerleği yeniden icat etmeyiz; kodumuzu konularına göre ayrı dosyalara bölerek <strong>düzenli</strong> tutarız; ve binlerce hazır işleve erişerek işimizi <strong>hızlandırırız</strong>. Python'un kurulumla birlikte gelen bu hazır modüller bütününe <strong>standart kütüphane</strong> denir — <code class="inline">math</code>, <code class="inline">random</code>, <code class="inline">datetime</code> bunlardan yalnızca birkaçıdır.</p>
+
+    <h2 id="import"><span class="num">2</span>import yöntemleri</h2>
+    <p>Bir modülü kullanmadan önce onu içe aktarmanız gerekir. Bunun üç biçimi vardır ve üçü de aynı işlevi getirir; yalnızca onu hangi adla çağırdığınız değişir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">import_bicimleri.py</span></div>
+<pre><span class="c"># 1) Tüm modülü içe aktar</span>
+import random
+rastgele_sayi = random.randint(1, 100)
+
+<span class="c"># 2) Takma ad (alias) ver</span>
+import random as rnd
+print(rnd.choice(['kırmızı', 'mavi', 'yeşil']))
+
+<span class="c"># 3) Yalnızca istenen işlevi al</span>
+from random import randint
+sayi = randint(1, 50)          <span class="c"># random.randint değil, doğrudan randint</span></pre>
+    </div>
+    <p>Birinci biçimde modülün işlevlerine <code class="inline">random.randint</code> gibi, <strong>başına modül adını koyarak</strong> ulaşırız. Buradaki nokta, "random modülünün içindeki randint işlevi" demektir. Bu yazım biraz uzun görünebilir ama büyük bir avantajı vardır: kodu okuyan herkes <code class="inline">randint</code>'in nereden geldiğini anında anlar.</p>
+    <p>İkinci biçimde <code class="inline">as</code> anahtar kelimesiyle modüle kısa bir <strong>takma ad</strong> veririz. Bu, özellikle veri biliminde sık görülür; örneğin birçok programcı <code class="inline">import numpy as np</code> yazar. Bir modülü yalnızca <code class="inline">import random as rnd</code> biçiminde içe aktarırsanız, o programda <code class="inline">random</code> adı tanımlı olmaz; modüle yalnızca takma adıyla ulaşırsınız. Yukarıdaki örnekte üç biçim ayrı ayrı gösterildiği için her iki ad da kullanılabilir durumdadır. Üçüncü biçimde ise modülün içinden yalnızca istediğiniz adı alır ve onu <strong>doğrudan</strong>, başına modül adı koymadan kullanırsınız.</p>
+    <figure class="diagram"><img alt="import, import as ve from import yöntemleri ve kullanım biçimleri" src="images/import_yontemleri.png" width="1230" height="540" loading="lazy" decoding="async">
+      <figcaption>Üç içe aktarma yöntemi ve kullanım biçimleri</figcaption>
+    </figure>
+    <p>Hangisini ne zaman kullanmalı? Modülden çok sayıda işlev kullanacaksanız <code class="inline">import math</code> (tüm modül) en okunaklısıdır. Yalnızca bir-iki işlev kullanacaksanız <code class="inline">from math import sqrt</code> daha pratiktir. Ad uzunsa ya da çakışma varsa <code class="inline">import ... as ...</code> işinizi görür.</p>
+    <div class="note warn"><span class="tag">Kaçının</span><p><code class="inline">from math import *</code> yazımı modüldeki <strong>her şeyi</strong> isim alanınıza döker. Bu, hangi adın nereden geldiğini belirsizleştirir ve farklı modüllerdeki aynı isimli işlevlerin birbirini ezmesine yol açabilir. Genel kural: <code class="inline">import *</code> kullanmayın.</p></div>
+
+    <h2 id="standart"><span class="num">3</span>Sık kullanılan standart kütüphane modülleri</h2>
+    <p><code class="inline">math</code> modülü; kare kök, faktöriyel, üs, trigonometri gibi matematiksel işlevleri ve <code class="inline">pi</code> gibi sabitleri içerir:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">math_ornek.py</span></div>
+<pre>import math
+
+print(math.sqrt(16))        <span class="c"># 4.0   — kare kök</span>
+print(math.factorial(5))    <span class="c"># 120   — faktöriyel</span>
+print(math.pi)              <span class="c"># 3.141592653589793</span>
+print(math.ceil(4.2))       <span class="c"># 5     — yukarı yuvarlama</span>
+print(math.floor(4.8))      <span class="c"># 4     — aşağı yuvarlama</span></pre>
+    </div>
+    <p><code class="inline">random</code> modülü, rastgele sayılar üretmek ve rastgele seçimler yapmak için kullanılır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">random_ornek.py</span></div>
+<pre>import random
+
+print(random.randint(1, 6))                      <span class="c"># 1-6 arası rastgele tamsayı (zar)</span>
+print(random.choice(['elma', 'armut', 'kiraz'])) <span class="c"># listeden rastgele bir öğe</span>
+
+liste = [1, 2, 3, 4, 5]
+random.shuffle(liste)                            <span class="c"># listeyi yerinde karıştırır</span>
+print(liste)</pre>
+    </div>
+    <div class="note"><span class="tag">Not</span><p>Bu işlevler her çalıştırmada farklı sonuç verir; bu yüzden örnek çıktıları sabit yazmadık. <code class="inline">randint(1, 6)</code> aralığın <strong>her iki ucunu da</strong> (1 ve 6 dahil) içerir.</p></div>
+    <p><code class="inline">datetime</code> modülü tarih ve saat işlemlerini yapar:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">datetime_ornek.py</span></div>
+<pre>from datetime import datetime
+
+su_an = datetime.now()
+print(f"Bugünün tarihi ve saati: {su_an}")
+print(su_an.year)       <span class="c"># yalnızca yıl</span>
+print(su_an.day)        <span class="c"># yalnızca gün</span></pre>
+    </div>
+    <p>Burada ince bir ayrıntı var: <code class="inline">datetime</code>, hem bir <strong>modülün</strong> adıdır hem de o modülün içindeki bir <strong>sınıfın</strong> adı. <code class="inline">from datetime import datetime</code> satırı, "datetime modülünün içinden datetime sınıfını al" demektir; biraz kafa karıştırıcı görünse de yaygın bir kalıptır.</p>
+
+    <h2 id="kesif"><span class="num">4</span>Bir modülü keşfetmek: help() ve dir()</h2>
+    <p>Bir modülün neler sunduğunu merak ettiğinizde Python'a sorabilirsiniz. <code class="inline">help()</code> işlevi bir modül ya da fonksiyon hakkında ayrıntılı açıklama verir; <code class="inline">dir()</code> ise bir modülün içindeki tüm adların (işlev, sınıf, sabit) listesini verir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">kesif.py</span></div>
+<pre>import random
+help(random)            <span class="c"># random modülünün tüm açıklamasını gösterir</span>
+help(random.randint)    <span class="c"># yalnızca randint hakkında bilgi</span>
+
+import math
+print(dir(math))        <span class="c"># math modülündeki her şeyin adı</span></pre>
+    </div>
+    <p>Bu iki işlev, internete bakmadan, doğrudan kod içinden bir modülü tanımanın en hızlı yoludur.</p>
+
+    <h2 id="kendi"><span class="num">5</span>Kendi modülünüzü yazmak</h2>
+    <p>Modüller yalnızca Python'la gelenlerle sınırlı değildir; <strong>kendi modülünüzü</strong> de yazabilirsiniz. Aslında bir modül, içinde fonksiyon ve sınıf bulunan sıradan bir <code class="inline">.py</code> dosyasından ibarettir. Örneğin <code class="inline">islemler.py</code> adında bir dosya oluşturup içine şunu yazdığınızı düşünün:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">islemler.py</span></div>
+<pre>def topla(a, b):
+    return a + b
+
+def carp(a, b):
+    return a * b</pre>
+    </div>
+    <p>Aynı klasördeki başka bir dosyadan bu modülü, dosya adıyla (<code class="inline">.py</code> uzantısı olmadan) içe aktarıp kullanabilirsiniz:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">main.py</span></div>
+<pre>import islemler
+
+print(islemler.topla(3, 5))    <span class="c"># 8</span>
+print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
+    </div>
+    <p>Gördüğünüz gibi kendi yazdığınız modülü de tıpkı <code class="inline">math</code> ya da <code class="inline">random</code> gibi kullanırsınız. Projeniz büyüdükçe, ilgili fonksiyonları ayrı modüllere bölmek kodunuzu çok daha düzenli ve yönetilebilir kılar.</p>
+    <div class="note warn"><span class="tag">Dikkat</span><p>Kendi dosyanıza <code class="inline">random.py</code> ya da <code class="inline">math.py</code> gibi bir ad vermeyin. Python gerçek modül yerine sizin dosyanızı içe aktarmaya çalışır ve beklenmedik hatalar oluşur.</p></div>
+
+    <h2 id="kurulum"><span class="num">6</span>Harici modül kurmak: pip, conda ve Anaconda Navigator</h2>
+    <p>Standart kütüphane modülleri (<code class="inline">math</code>, <code class="inline">random</code>, <code class="inline">datetime</code>) Python ile birlikte gelir; kurulum gerektirmez. Ancak <code class="inline">pandas</code>, <code class="inline">matplotlib</code>, <code class="inline">requests</code> gibi pek çok kullanışlı modül Python'la gelmez; bunları önce <strong>kurmanız</strong> gerekir. Kurulum bir kez yapılır; sonra normal modüller gibi <code class="inline">import</code> edersiniz.</p>
+    <p><strong>1. <code class="inline">pip</code> ile (komut istemi).</strong> Python'un standart kurulum aracıdır. Komut istemine (terminale) şunu yazarsınız:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">komut istemi</span></div>
+<pre>pip install pandas</pre>
+    </div>
+    <p><strong>2. <code class="inline">conda</code> ile (Anaconda Prompt).</strong> Anaconda kuruluysa, "Anaconda Prompt" penceresini açıp şunu yazabilirsiniz:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Anaconda Prompt</span></div>
+<pre>conda install pandas</pre>
+    </div>
+    <p><strong>3. Anaconda Navigator arayüzü ile.</strong> Komut yazmak istemeyenler için Anaconda Navigator uygulamasında <strong>Environments</strong> bölümünden paket adını aratıp kutucuğunu işaretleyerek fareyle de kurulum yapılabilir.</p>
+    <p>Hangi yolu seçerseniz seçin, kurulum bittikten sonra modülü her zamanki gibi <code class="inline">import pandas</code> yazarak kullanırsınız.</p>
+    <div class="note"><span class="tag">Not</span><p>Anaconda kurulu bir bilgisayarda genellikle <code class="inline">conda install</code> (veya Navigator), sade Python kurulumunda ise <code class="inline">pip install</code> tercih edilir. Bir modülü kurmadan <code class="inline">import</code> etmeye çalışırsanız <code class="inline">ModuleNotFoundError</code> alırsınız — bu, "önce kurman gerekiyor" demektir.</p></div>
+
+    <hr class="hr">
+
+    <h2 id="test"><span class="num">7</span>Konu sonu testi</h2>
+    <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
+    <ol class="quiz">
+      <li>
+        <p class="q">Bir modülü programa dahil etmek için hangi anahtar kelime kullanılır?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">import</code></li>
+          <li><b>B)</b> <code class="inline">include</code></li>
+          <li><b>C)</b> <code class="inline">using</code></li>
+          <li><b>D)</b> <code class="inline">require</code></li>
+          <li><b>E)</b> <code class="inline">module</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">A</span>Python'da modüller <code class="inline">import</code> anahtar kelimesiyle dahil edilir.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">import math</code> yaptıktan sonra kare kök işlevi nasıl çağrılır?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">sqrt(16)</code></li>
+          <li><b>B)</b> <code class="inline">math:sqrt(16)</code></li>
+          <li><b>C)</b> <code class="inline">math-&gt;sqrt(16)</code></li>
+          <li><b>D)</b> <code class="inline">import sqrt(16)</code></li>
+          <li><b>E)</b> <code class="inline">math.sqrt(16)</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">E</span><code class="inline">import math</code> sonrası işlevler modül adıyla çağrılır: <code class="inline">math.sqrt(16)</code>.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">from random import randint</code> satırından sonra <code class="inline">randint</code> nasıl çağrılır?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">random.randint(1, 10)</code></li>
+          <li><b>B)</b> <code class="inline">import.randint(1, 10)</code></li>
+          <li><b>C)</b> <code class="inline">randint(1, 10)</code></li>
+          <li><b>D)</b> <code class="inline">from randint(1, 10)</code></li>
+          <li><b>E)</b> Çağrılamaz</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">C</span><code class="inline">from random import randint</code>, <code class="inline">randint</code>'i doğrudan kullanılabilir kılar; başına <code class="inline">random.</code> gerekmez.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">import math as m</code> satırı ne işe yarar?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">math</code> modülünü siler</li>
+          <li><b>B)</b> <code class="inline">math</code> modülüne <code class="inline">m</code> adında bir takma ad verir</li>
+          <li><b>C)</b> Yalnızca <code class="inline">m</code> işlevini alır</li>
+          <li><b>D)</b> Yeni bir modül oluşturur</li>
+          <li><b>E)</b> Hata verir</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">B</span><code class="inline">as</code>, modüle bir takma ad verir; artık <code class="inline">math</code> yerine <code class="inline">m</code> kullanılır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Kendi yazdığınız <code class="inline">islemler.py</code> dosyasını başka bir dosyadan kullanmak için ne yazarsınız?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">import islemler.py</code></li>
+          <li><b>B)</b> <code class="inline">include islemler</code></li>
+          <li><b>C)</b> <code class="inline">from islemler.py</code></li>
+          <li><b>D)</b> <code class="inline">import islemler</code></li>
+          <li><b>E)</b> <code class="inline">load islemler</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">D</span>Kendi modülünüzü dosya adıyla, <code class="inline">.py</code> uzantısı olmadan içe aktarırsınız: <code class="inline">import islemler</code>.</div>
+        </details>
+      </li>
+    </ol>
+
+    <div class="note"><span class="tag">Özet</span><p><code class="inline">import</code> satırlarını dosyanın en üstüne yazın; böylece hangi modüllere bağımlı olduğunuz tek bakışta görünür. Bir iş yapmadan önce "bunun için hazır bir modül var mı?" diye sormak iyi bir alışkanlıktır. <code class="inline">help()</code> ve <code class="inline">dir()</code> cebinizdeki kılavuzdur.</p></div>
+
+    <div class="aside-card mobil">
+      <div class="k">İlgili konu</div>
+      <p>Veri Kütüphaneleri — 13. hafta. <code class="inline">pandas</code> ve <code class="inline">matplotlib</code> gibi harici modüller, bu sayfadaki kurulum ve <code class="inline">import ... as ...</code> bilgisinin üzerine kurulur.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="polimorfizm.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">11. Hafta</span>
+        <span class="kb">Polimorfizm ve Kapsülleme</span>
+      </a>
+      <a class="komsu-kart sonraki" href="veri-kutuphaneleri.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">13. Hafta</span>
+        <span class="kb">Veri Kütüphaneleri</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#nedir"><span class="n">1</span>Modül nedir?</a>
+      <a href="#import"><span class="n">2</span>import yöntemleri</a>
+      <a href="#standart"><span class="n">3</span>Standart modüller</a>
+      <a href="#kesif"><span class="n">4</span>help() ve dir()</a>
+      <a href="#kendi"><span class="n">5</span>Kendi modülünüz</a>
+      <a href="#kurulum"><span class="n">6</span>Harici modül kurmak</a>
+      <a href="#test"><span class="n">7</span>Konu sonu testi</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">İlgili konu</div>
+      <p>Veri Kütüphaneleri — 13. hafta. <code class="inline">pandas</code> ve <code class="inline">matplotlib</code> gibi harici modüller, bu sayfadaki kurulum ve <code class="inline">import ... as ...</code> bilgisinin üzerine kurulur.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
+    <p class="alt-kisi"><!-- AD SOYAD --></p>
+      <nav class="alt-bag" aria-label="Alt bağlantılar">
+        <a href="index.html">Ders ana sayfası</a>
+        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

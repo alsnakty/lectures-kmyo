@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fonksiyonlar — NTP II Ders Notları</title>
+<meta name="description" content="Bir fonksiyon, bir kez tanımlayıp sonra istediğiniz zaman, istediğiniz veriyle yeniden çağırabildiğiniz bir kod bloğudur. Bu sayfa def ile fonksiyon...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fonksiyonlar — NTP II Ders Notları">
+<meta property="og:description" content="Bir fonksiyon, bir kez tanımlayıp sonra istediğiniz zaman, istediğiniz veriyle yeniden çağırabildiğiniz bir kod bloğudur. Bu sayfa def ile fonksiyon...">
+<script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Fonksiyonlar</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="fonksiyonlar.html" class="etkin" aria-current="page"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="moduller.html"><span class="mh">12</span>Modüller</a>
+          <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+        </nav>
+      </details>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Fonksiyonlar</span></div>
+
+<div class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 2. Hafta</div>
+    <h1>Python'da Fonksiyonlar</h1>
+    <p class="lede">Bir fonksiyon, bir kez tanımlayıp sonra istediğiniz zaman, istediğiniz veriyle yeniden çağırabildiğiniz bir kod bloğudur. Bu sayfa <code class="inline">def</code> ile fonksiyon tanımlamayı, parametre ve argümanları, <code class="inline">return</code> ile değer döndürmeyi ve değişkenlerin yerel/global kapsamını anlatır.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#neden"><span class="n">1</span>Neden vardır?</a>
+        <a href="#tanimlama"><span class="n">2</span>Tanımlama</a>
+        <a href="#kullanim"><span class="n">3</span>Çağırma</a>
+        <a href="#parametre"><span class="n">4</span>Parametre ve argüman</a>
+        <a href="#return"><span class="n">5</span>return</a>
+        <a href="#kapsam"><span class="n">6</span>Değişken kapsamı</a>
+        <a href="#karar"><span class="n">7</span>Karar tablosu</a>
+        <a href="#test"><span class="n">8</span>Konu sonu testi</a>
+      </nav>
+    </details>
+
+<h2 id="neden"><span class="num">1</span>Fonksiyonlar neden vardır?</h2>
+    <p>Bir öğrencinin not ortalamasını hesapladığınızı düşünün: notları topluyor, sayıya bölüyor, sonucu ekrana yazıyorsunuz. Sonra ikinci bir öğrenci geliyor ve aynı işlemi baştan yapmanız gerekiyor. Her seferinde aynı satırları tekrar tekrar yazmak hem yorucudur hem de her kopyalamada yeni bir hata yapma ihtimaliniz artar. Bir hata fark ettiğinizde ise onu kodun her bir kopyasında ayrı ayrı düzeltmeniz gerekir.</p>
+    <p>İşte fonksiyonlar tam da bu sıkıntıyı ortadan kaldırmak için vardır. Bir fonksiyon, <strong>bir kez tanımladığınız ve sonra istediğiniz zaman, istediğiniz veriyle yeniden çağırabildiğiniz</strong> bir kod bloğudur. Fonksiyonların bize kazandırdığı üç şey vardır: <strong>kod tekrarını engellerler</strong>, karmaşık bir işlemi tek bir anlamlı isim altında toplayarak <strong>soyutlama</strong> sağlarlar ve bir değişiklik gerektiğinde tek bir yeri düzeltmek yettiği için <strong>bakım kolaylığı</strong> getirirler.</p>
+
+    <h3 id="iki-tur">1.1 İki tür fonksiyon</h3>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Tür</th><th>Açıklama</th><th>Örnekler</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Gömülü Fonksiyonlar</strong><br>(built-in functions)</td><td>Python'un hazır olarak sunduğu fonksiyonlar</td><td><code>print()</code>, <code>type()</code>, <code>len()</code>, <code>int()</code>, <code>range()</code></td></tr>
+          <tr><td><strong>Kullanıcı Tanımlı Fonksiyonlar</strong><br>(user-defined functions)</td><td>Programcının kendi ihtiyacına göre <code>def</code> ile yazdığı fonksiyonlar</td><td><code>topla()</code>, <code>selamla()</code>, <code>alan_hesapla()</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><code class="inline">print()</code> ya da <code class="inline">len()</code> gibi gömülü fonksiyonları çağırmak için onları tanımlamanıza gerek yoktur; Python sizin için hazır vermiştir. Bu bölümde öğreneceğimiz şey ise ikinci gruptur: <strong>kendi fonksiyonlarımızı nasıl yazacağımız.</strong></p>
+    <div class="note"><span class="tag">Kahve Makinesi</span><p>Makineyi bir kez kurarsınız; sonra her kahve istediğinizde sıfırdan bir makine yapmazsınız, sadece düğmeye basarsınız. İçinde suyun nasıl ısıtıldığını bilmek zorunda değilsiniz. Düğmeye basmak fonksiyonu çağırmak, koyduğunuz malzeme parametre, çıkan kahve ise geri dönüş değeridir.</p></div>
+
+    <h2 id="tanimlama"><span class="num">2</span>Fonksiyonların tanımlanması</h2>
+    <p>Bir fonksiyonu tanımlamak için <code class="inline">def</code> anahtar kelimesiyle başlarız. Genel kalıp şudur:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">kalıp</span></div>
+<pre>def fonksiyon_adi(parametre1, parametre2, ... ):
+    <span class="c"># Fonksiyon bloğu</span>
+    <span class="c"># Yapılacak işlemler</span>
+    return deger      <span class="c"># opsiyonel (geri dönüş değeri)</span></pre>
+    </div>
+    <p><code class="inline">def</code> anahtar kelimesi Python'a "burada bir fonksiyon tanımlıyorum" der. Hemen ardından gelen fonksiyon adı, değişken adlandırma kurallarına uyar. Parantezlerin içine <strong>parametreleri</strong> yazarsınız; fonksiyon dışarıdan veri almayacaksa parantez boş kalır. Satır sonundaki <strong>iki nokta</strong> zorunludur ve onu <strong>girintili</strong> yazılan fonksiyon gövdesi takip eder. En sondaki <code class="inline">return</code> ise isteğe bağlıdır.</p>
+    <figure class="diagram"><img alt="Bir fonksiyonun anatomisi: def anahtar kelimesi, fonksiyon adı, parametre, iki nokta ve return geri dönüş değeri" src="images/fonksiyon_anatomi.png" width="1230" height="570" loading="lazy" decoding="async">
+      <figcaption>Bir fonksiyonun anatomisi</figcaption>
+    </figure>
+
+    <h3 id="once-tanim">2.1 Önce tanım, sonra çağrı</h3>
+    <p>Bir fonksiyonu yalnızca tanımladığınızda ekranda hiçbir şey görmezsiniz; tanım fonksiyonu <em>çalıştırmaz</em>, sadece hazırlar. Tıpkı kahve makinesini kurmuş ama henüz düğmesine basmamış olmanız gibi. Üstelik Python kodu yukarıdan aşağıya okur; henüz tanımını görmediği bir fonksiyonu çağırırsanız onu tanımaz ve hata verir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">sira.py</span></div>
+<pre>merhaba("hasan")           <span class="no"># ❌ NameError: name 'merhaba' is not defined</span>
+
+def merhaba(ad):
+    print("merhaba {}".format(ad))
+
+merhaba("hasan")           <span class="ok"># ✅ Ekran: merhaba hasan</span></pre>
+    </div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Yazım</th><th>Anlamı</th></tr></thead>
+        <tbody>
+          <tr><td><code>merhaba</code></td><td>Fonksiyonun <strong>kendisi</strong> (bir nesne)</td></tr>
+          <tr><td><code>merhaba()</code></td><td>Fonksiyonun <strong>çağrılması</strong> (çalışması)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn"><span class="tag">Dikkat</span><p>Parantezsiz yazım fonksiyonu çalıştırmaz, yalnızca ona bir referans verir. Fonksiyonun gerçekten çalışması için sonuna parantez koymanız gerekir.</p></div>
+
+    <h2 id="kullanim"><span class="num">3</span>Fonksiyonların çağrılması</h2>
+    <p>Bir fonksiyonu çağırmak, adını yazıp parantez içinde ona gerekli değerleri vermekten ibarettir: <code class="inline">fonksiyon_adi(argüman1, argüman2, ... )</code>. Şimdi iki sayıyı toplayıp sonucu geri döndüren bir fonksiyon yazalım:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">topla.py</span></div>
+<pre>def topla(sayi1, sayi2):
+    toplam = sayi1 + sayi2
+    return toplam
+
+topla(3, 5)              <span class="c"># 8</span>
+sonuc = topla(3, 5)
+print(sonuc)             <span class="c"># 8</span></pre>
+    </div>
+    <p><code class="inline">topla(3, 5)</code> çağrısı geriye <code class="inline">8</code> değerini döndürür. Bu değeri bir değişkene atayıp programın başka yerlerinde kullanabilirsiniz. İşte <code class="inline">return</code>'ün gücü budur: fonksiyonun ürettiği sonucu dışarı taşır.</p>
+    <p>Küçük bir ayrıntı: <code class="inline">+</code> operatörü hem sayılarda hem metinlerde çalıştığı için aynı fonksiyon <code class="inline">topla("python", "programlama")</code> çağrısında birleştirme yapar ve <code class="inline">"pythonprogramlama"</code> üretir. Ama bu esneklik her operatörde yoktur; çarpma yapan bir fonksiyona iki metin verilirse <code class="inline">TypeError: can't multiply sequence by non-int of type 'str'</code> hatası alınır. Fonksiyona gönderdiğiniz verinin tipi önemlidir.</p>
+
+    <h2 id="parametre"><span class="num">4</span>Parametreler ve argümanlar</h2>
+    <p><strong>Parametre</strong>, fonksiyonu <em>tanımlarken</em> parantez içine yazdığınız değişkendir; fonksiyonun dışarıdan ne tür veri beklediğini söyleyen yer tutuculardır. <strong>Argüman</strong> ise fonksiyonu <em>çağırırken</em> o parametrelere karşılık verdiğiniz gerçek değerdir. Kısacası parametre tanımda, argüman çağrıda yer alır: <code class="inline">def topla(sayi1, sayi2)</code> tanımındaki <code class="inline">sayi1</code> ve <code class="inline">sayi2</code> birer parametre, <code class="inline">topla(3, 5)</code> çağrısındaki <code class="inline">3</code> ve <code class="inline">5</code> ise birer argümandır.</p>
+
+    <h3 id="konumsal">4.1 Konumsal ve isimli argümanlar</h3>
+    <p>Argümanları sırayla yazdığınızda, bunlar parametrelere <strong>tanımlandıkları sırayla</strong> eşleşir: ilk argüman ilk parametreye, ikinci argüman ikinci parametreye gider.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">konumsal.py</span></div>
+<pre>def personel_yazdir(ad, soyad, yas):
+    print("personelin adi :", ad)
+    print("personelin soyadı :", soyad)
+    print("personelin yas :", yas)
+
+personel_yazdir("hasan", "karaisalı", 12)
+
+personel_yazdir("hasan", 12, "karaisalı")   <span class="no"># ⚠ sıra bozuk → yaş yerine "karaisalı" yazılır!</span></pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı — ilk çağrı</div>
+<pre>personelin adi : hasan
+personelin soyadı : karaisalı
+personelin yas : 12</pre>
+    </div>
+    <p>Son satırda sıranın bozulduğuna dikkat edin: <code class="inline">12</code> artık <code class="inline">soyad</code>'a, <code class="inline">"karaisalı"</code> ise <code class="inline">yas</code>'a gitmiştir. Python bunu hata olarak görmez, çünkü teknik olarak geçerlidir; ama sonuç mantıksız olur. Bu karışıklıktan kurtulmanın yolu, argümanı <strong>parametre adıyla birlikte</strong> vermektir. <code class="inline">personel_yazdir(ad="hasan", soyad="karaisalı", yas=12)</code> ile <code class="inline">personel_yazdir(ad="hasan", yas=12, soyad="karaisalı")</code> aynı sonucu verir; isimli argümanda sıra önemini kaybeder.</p>
+
+    <h3 id="varsayilan">4.2 Varsayılan parametre değerleri</h3>
+    <p>Bir parametreye varsayılan bir değer atanmamışsa, fonksiyonu çağırırken o argümanı <strong>mutlaka</strong> vermeniz gerekir; eksik bırakırsanız <code class="inline">TypeError: missing 1 required positional argument</code> gibi bir hata alırsınız. Oysa bir parametrenin çoğu zaman aynı değeri alacağını biliyorsanız ona <strong>varsayılan değer</strong> atayabilirsiniz; çağrıda o argüman verilmezse Python varsayılanı kullanır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">varsayilan.py</span></div>
+<pre>def personel_yazdir2(ad='ahmet', soyad='taşçı', yas=12):
+    print("personelin adi :", ad)
+    print("personelin soyadı :", soyad)
+    print("personelin yas :", yas)
+
+personel_yazdir2()          <span class="c"># tüm varsayılanlar kullanılır</span>
+personel_yazdir2("mehmet")  <span class="c"># sadece ad değişir</span>
+personel_yazdir2(yas=25)    <span class="c"># sadece yas değişir</span></pre>
+    </div>
+    <div class="note warn"><span class="tag">Kural</span><p>Varsayılan değerli parametreler her zaman sona yazılır. Örneğin <code class="inline">def hatali(mesaj="Merhaba", isim):</code> yazımı <code class="inline">SyntaxError</code> verir; doğrusu, varsayılansız parametreyi öne almaktır: <code class="inline">def dogru(isim, mesaj="Merhaba"):</code></p></div>
+
+    <h2 id="return"><span class="num">5</span>return ile değer döndürmek</h2>
+    <p><code class="inline">return</code> ifadesi, fonksiyon işini bitirdiğinde ürettiği değeri <strong>çağrıldığı yere geri göndermesini</strong> sağlar. Bu sayede sonucu bir değişkende saklayabilir, programın başka yerlerinde kullanabilirsiniz. <code class="inline">return</code> olmasaydı, fonksiyon içinde hesapladığınız değer fonksiyon bitince yok olur, dışarı çıkamazdı.</p>
+    <p>Bir fonksiyon birden fazla değeri aynı anda da döndürebilir; değerleri virgülle ayırmanız yeterlidir. Bu durumda geriye tek bir <strong>tuple (demet)</strong> döner: <code class="inline">return a + b, a * b</code> yazan bir fonksiyon <code class="inline">(7, 12)</code> gibi bir demet verir. Bu değerleri <code class="inline">toplam, carpim = topla_carp(3, 4)</code> biçiminde tek tek değişkenlere de ayırabilirsiniz; buna <strong>tuple unpacking</strong> (demet ayrıştırma) denir.</p>
+
+    <h3 id="print-return">5.1 print ile return aynı şey değildir</h3>
+    <p>Yeni başlayanların en çok karıştırdığı konu budur. <code class="inline">print</code> bir değeri <strong>ekrana yazar</strong> ama onu geri döndürmez; <code class="inline">return</code> ise değeri <strong>geri döndürür</strong> ama ekrana hiçbir şey yazmaz.</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th></th><th><code>print(x)</code></th><th><code>return x</code></th></tr></thead>
+        <tbody>
+          <tr><td>Ekrana yazar mı?</td><td class="yes">✅ Evet</td><td class="no">❌ Hayır</td></tr>
+          <tr><td>Değer döndürür mü?</td><td class="no">❌ Hayır</td><td class="yes">✅ Evet</td></tr>
+          <tr><td>Fonksiyon devam eder mi?</td><td class="yes">✅ Evet, sonraki satıra geçer</td><td class="no">❌ Hayır, fonksiyon <strong>biter</strong></td></tr>
+          <tr><td>Sonucu başka yerde kullanılabilir mi?</td><td class="no">❌ Hayır</td><td class="yes">✅ Evet</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">kare.py</span></div>
+<pre>def kare_v1(x):
+    print(x * x)        <span class="c"># ekrana yazar (void fonksiyon)</span>
+
+def kare_v2(x):
+    return x * x        <span class="c"># değer döndürür</span>
+
+a = kare_v1(5)          <span class="c"># Ekran: 25</span>
+b = kare_v2(5)          <span class="c"># Ekran: (hiçbir şey)</span>
+
+print("a:", a)
+print("b:", b)</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı — programın tamamı</div>
+<pre>25
+a: None
+b: 25</pre>
+    </div>
+    <p>İçinde hiç <code class="inline">return</code> bulunmayan fonksiyona <strong>void fonksiyon</strong> denir. Böyle bir fonksiyon bittiğinde Python sanki orada görünmez bir <code class="inline">return None</code> varmış gibi davranır; bu yüzden <code class="inline">kare_v1</code> ekrana <code class="inline">25</code> yazdığı hâlde <code class="inline">a</code> değişkeni <code class="inline">None</code> olur. <code class="inline">kare_v2</code> ise ekrana hiçbir şey yazmaz ama geriye <code class="inline">25</code> döndürür. Kısacası: bir değeri sadece görmek istiyorsanız <code class="inline">print</code>, o değeri sonradan kullanacaksanız <code class="inline">return</code> kullanırsınız.</p>
+
+    <h3 id="bitirir">5.2 return fonksiyonu bitirir</h3>
+    <p><code class="inline">return</code> çalıştığı anda fonksiyon <strong>tamamen sona erer.</strong> Ondan sonra yazılmış satırlar asla çalışmaz; bunlara "ölü kod" denir. Bu özellik aslında çok işe yarar; fonksiyondan <strong>erken çıkmak</strong> için kullanılır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">erken_cikis.py</span></div>
+<pre>def kontrol(yas):
+    if yas &lt; 18:
+        return "Reşit değil"
+    return "Reşit"            <span class="c"># ilk return çalıştıysa buraya hiç gelinmez</span>
+
+print(kontrol(15))            <span class="c"># Reşit değil</span>
+print(kontrol(20))            <span class="c"># Reşit</span></pre>
+    </div>
+
+    <h2 id="kapsam"><span class="num">6</span>Değişken kapsamı: yerel ve global</h2>
+    <p>Bir değişkenin programın her yerinden mi yoksa yalnızca belirli bir yerden mi görünür olduğu, o değişkenin <strong>kapsamı (scope)</strong> ile belirlenir. Bir fonksiyonun içinde tanımlanan değişkenler <strong>yerel</strong> değişkenlerdir: yalnızca o fonksiyona aittirler ve fonksiyon bitince bellekten silinirler. Bu yüzden fonksiyon içinde tanımlanan bir <code class="inline">a</code> değişkenine dışarıdan <code class="inline">print(a)</code> ile erişmeye çalışırsanız <code class="inline">NameError</code> alırsınız. Fonksiyonun parametreleri de yereldir.</p>
+    <p>Fonksiyonun dışında, programın ana gövdesinde tanımlanan değişkenler ise <strong>global</strong> değişkenlerdir; bunlara programın her yerinden erişebilirsiniz. Peki fonksiyonun içinde, dışarıdaki global bir değişkenle <strong>aynı isimde</strong> bir değişken tanımlarsanız ne olur? İçerideki yerel değişken, dışarıdaki globali <strong>etkilemez.</strong> İkisi farklı isim alanlarında yaşayan, sadece adları aynı olan iki ayrı değişkendir:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">ayni_isim.py</span></div>
+<pre>b = 5
+
+def function_name2():
+    b = 6             <span class="c"># bu b yereldir, dışarıdaki b'yi değiştirmez</span>
+    print(b)
+
+function_name2()      <span class="c"># 6</span>
+print(b)              <span class="c"># 5  (global b değişmedi!)</span></pre>
+    </div>
+
+    <h3 id="global-kelime">6.1 global anahtar kelimesi</h3>
+    <p>Bir global değişkeni fonksiyonun içinden <strong>gerçekten değiştirmek</strong> istiyorsanız, Python'a bu niyetinizi <code class="inline">global</code> anahtar kelimesiyle bildirmeniz gerekir:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">global_ornek.py</span></div>
+<pre>og_numarasi = 20211122121
+
+def change_stu_num():
+    global og_numarasi      <span class="c"># globali kullanacağımı bildiriyorum</span>
+    og_numarasi = 123
+    print(og_numarasi)
+
+print(og_numarasi)          <span class="c"># 20211122121</span>
+change_stu_num()            <span class="c"># 123</span>
+print(og_numarasi)          <span class="c"># 123  (artık global de değişti!)</span></pre>
+    </div>
+    <div class="note ok"><span class="tag">Pratik kural</span><p>Mümkün olduğunca <code class="inline">global</code> kullanmaktan kaçının. Fonksiyona parametreyle veri verip <code class="inline">return</code> ile sonuç almak çok daha temiz, anlaşılır ve hataya kapalı bir yaklaşımdır.</p></div>
+
+    <hr class="hr">
+
+    <h2 id="karar"><span class="num">7</span>print mi return mi? — Karar tablosu</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Durum</th><th>Önerilen yapı</th></tr></thead>
+        <tbody>
+          <tr><td>Bir değeri hesaplayıp başka yerde kullanacağım</td><td><code>return</code> kullan</td></tr>
+          <tr><td>Sadece ekrana bir şey yazdıracağım</td><td><code>print</code> kullan (void fonksiyon)</td></tr>
+          <tr><td>Hem hesap yapıp hem ekrana göstermek istiyorum</td><td><code>return</code> ile döndür, çağıran yerde <code>print</code> et</td></tr>
+          <tr><td>Bir parametrenin çoğu zaman aynı değeri olacak</td><td>varsayılan parametre</td></tr>
+          <tr><td>Fonksiyon kontrolde erken çıkmalı</td><td><code>return</code> ile çık</td></tr>
+          <tr><td>Global değişkeni değiştirmem gerekiyor</td><td><code>global</code> yerine <code>return</code> ile döndür, dışarıda yeniden ata</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="hr">
+
+    <h2 id="test"><span class="num">8</span>Konu sonu testi</h2>
+    <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
+    <ol class="quiz">
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru1.py</span></div>
+<pre>def selamla(isim):
+    print(f"Merhaba {isim}")
+
+sonuc = selamla("Hasan")
+print(sonuc)</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">Merhaba Hasan</code> ve <code class="inline">None</code> (iki satır)</li>
+          <li><b>B)</b> <code class="inline">Merhaba Hasan</code> (tek satır)</li>
+          <li><b>C)</b> <code class="inline">Merhaba Hasan</code> ve <code class="inline">Merhaba Hasan</code> (iki satır)</li>
+          <li><b>D)</b> <code class="inline">None</code> (tek satır)</li>
+          <li><b>E)</b> Hata verir</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">A</span>İçerideki <code class="inline">print</code> "Merhaba Hasan" yazar; fonksiyon <code class="inline">return</code> yapmadığı için <code class="inline">sonuc = None</code> olur ve son satırda <code class="inline">None</code> yazılır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki fonksiyonlardan <strong>hangisi geçerli</strong> bir tanımdır?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">def topla(a=5, b):</code></li>
+          <li><b>B)</b> <code class="inline">def topla(a, b=5):</code></li>
+          <li><b>C)</b> <code class="inline">def topla(a=, b=5):</code></li>
+          <li><b>D)</b> <code class="inline">def topla(=5, =10):</code></li>
+          <li><b>E)</b> Hiçbiri</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">B</span>Varsayılan değerli parametreler, varsayılansızların <strong>sonrasına</strong> yazılmalıdır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru3.py</span></div>
+<pre>def islem(x):
+    if x &gt; 0:
+        return "pozitif"
+    return "negatif veya sıfır"
+    print("Bu satır?")
+
+print(islem(5))</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">pozitif</code> ve <code class="inline">Bu satır?</code></li>
+          <li><b>B)</b> <code class="inline">negatif veya sıfır</code></li>
+          <li><b>C)</b> <code class="inline">Bu satır?</code></li>
+          <li><b>D)</b> <code class="inline">pozitif</code></li>
+          <li><b>E)</b> Hiçbir şey yazmaz</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">D</span><code class="inline">x = 5</code> pozitif olduğundan ilk <code class="inline">return</code> çalışır ve fonksiyon biter. Sonraki <code class="inline">return</code> ve <code class="inline">print</code> satırlarına hiç gelinmez (ölü kod).</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru4.py</span></div>
+<pre>x = 10
+
+def degistir(x=None):
+    x = 99
+    print(x)
+
+degistir()
+print(x)</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">99</code> ve <code class="inline">99</code></li>
+          <li><b>B)</b> <code class="inline">10</code> ve <code class="inline">10</code></li>
+          <li><b>C)</b> <code class="inline">99</code> ve <code class="inline">10</code></li>
+          <li><b>D)</b> <code class="inline">10</code> ve <code class="inline">99</code></li>
+          <li><b>E)</b> Hata verir</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">C</span>Fonksiyon içindeki <code class="inline">x</code> yereldir, dışarıdaki global <code class="inline">x</code>'i etkilemez. Fonksiyon <code class="inline">99</code> yazar, dış <code class="inline">print</code> <code class="inline">10</code> yazar.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru5.py</span></div>
+<pre>def topla_carp(a, b):
+    return a + b, a * b
+
+sonuc = topla_carp(3, 4)
+print(sonuc)</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">7</code></li>
+          <li><b>B)</b> <code class="inline">12</code></li>
+          <li><b>C)</b> <code class="inline">[7, 12]</code></li>
+          <li><b>D)</b> Hata verir</li>
+          <li><b>E)</b> <code class="inline">(7, 12)</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">E</span>Birden fazla değer döndürüldüğünde Python bunları bir <strong>tuple</strong> olarak paketler: <code class="inline">(7, 12)</code>.</div>
+        </details>
+      </li>
+    </ol>
+
+    <div class="note"><span class="tag">Özet</span><p>Fonksiyon isimleri bir eylem belirtmelidir (<code class="inline">hesapla_ortalama</code>, <code class="inline">alan_hesapla</code>) ve bir fonksiyonun tek bir işi olmalıdır. Bir değeri sadece görmek istiyorsanız <code class="inline">print</code>, o değeri sonradan kullanacaksanız <code class="inline">return</code> kullanın.</p></div>
+
+    <div class="aside-card mobil">
+      <div class="k">İlgili konu</div>
+      <p>Hata Yönetimi — 3. hafta. Fonksiyona uygunsuz bir değer geldiğinde <code class="inline">raise</code> ile hata fırlatmak, bu konunun doğrudan devamıdır.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="giris.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">1. Hafta</span>
+        <span class="kb">Giriş: Python ile Neler Yapılır</span>
+      </a>
+      <a class="komsu-kart sonraki" href="hata-yonetimi.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">3. Hafta</span>
+        <span class="kb">Hata Yönetimi</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#neden"><span class="n">1</span>Neden vardır?</a>
+      <a href="#tanimlama"><span class="n">2</span>Tanımlama</a>
+      <a href="#kullanim"><span class="n">3</span>Çağırma</a>
+      <a href="#parametre"><span class="n">4</span>Parametre ve argüman</a>
+      <a href="#return"><span class="n">5</span>return</a>
+      <a href="#kapsam"><span class="n">6</span>Değişken kapsamı</a>
+      <a href="#karar"><span class="n">7</span>Karar tablosu</a>
+      <a href="#test"><span class="n">8</span>Konu sonu testi</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">İlgili konu</div>
+      <p>Hata Yönetimi — 3. hafta. Fonksiyona uygunsuz bir değer geldiğinde <code class="inline">raise</code> ile hata fırlatmak, bu konunun doğrudan devamıdır.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
+    <p class="alt-kisi"><!-- AD SOYAD --></p>
+      <nav class="alt-bag" aria-label="Alt bağlantılar">
+        <a href="index.html">Ders ana sayfası</a>
+        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

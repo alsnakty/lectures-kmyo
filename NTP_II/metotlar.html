@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metotlar ve Dunder Metotlar — NTP II Ders Notları</title>
+<meta name="description" content="Geçen hafta nesnelere veri vermeyi öğrendik. Bu sayfa nesnelere davranış kazandırmayı anlatır: sınıf içinde metot tanımlamayı, self ile nesnenin verisine...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metotlar ve Dunder Metotlar — NTP II Ders Notları">
+<meta property="og:description" content="Geçen hafta nesnelere veri vermeyi öğrendik. Bu sayfa nesnelere davranış kazandırmayı anlatır: sınıf içinde metot tanımlamayı, self ile nesnenin verisine...">
+<script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Metotlar</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="metotlar.html" class="etkin" aria-current="page"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="moduller.html"><span class="mh">12</span>Modüller</a>
+          <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+        </nav>
+      </details>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Metotlar</span></div>
+
+<div class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 7. Hafta</div>
+    <h1>Metotlar ve Özel (Dunder) Metotlar</h1>
+    <p class="lede">Geçen hafta nesnelere veri vermeyi öğrendik. Bu sayfa nesnelere <strong>davranış</strong> kazandırmayı anlatır: sınıf içinde metot tanımlamayı, <code class="inline">self</code> ile nesnenin verisine ulaşmayı ve Python'un <code class="inline">print</code>, <code class="inline">len</code>, <code class="inline">==</code> gibi işlemlerde kendisi çağırdığı özel metotları.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#metot"><span class="n">1</span>Metot nedir?</a>
+        <a href="#ilk-metot"><span class="n">2</span>İlk metot ve self</a>
+        <a href="#donduren"><span class="n">3</span>Değer döndüren metotlar</a>
+        <a href="#durum"><span class="n">4</span>Durumu değiştiren metotlar</a>
+        <a href="#dunder"><span class="n">5</span>Özel (dunder) metotlar</a>
+        <a href="#test"><span class="n">6</span>Konu sonu testi</a>
+      </nav>
+    </details>
+
+<h2 id="metot"><span class="num">1</span>Metot nedir?</h2>
+    <p>Geçen modülde bir nesneye veri verdik: <code class="inline">araba1</code>'in modeli, rengi, beygir gücü vardı. Ama bir araba sadece veriden ibaret değildir; <strong>bir şeyler yapar</strong> da — hızlanır, korna çalar, durur. İşte bir nesnenin yapabildiği bu işlere <strong>metot</strong> denir.</p>
+    <p>Metot, aslında bir sınıfın içinde tanımlanmış bir fonksiyondur. Sıradan bir fonksiyondan tek farkı, bir nesneye ait olması ve o nesnenin verisine erişebilmesidir. Bir öğrencinin notlarını ekleyen, ortalamasını hesaplayan, bilgilerini ekrana yazan işlemler hep metot olarak yazılır. Böylece bir nesnenin verisi (özellikler) ile davranışları (metotlar) tek bir çatı altında toplanır — nesne tabanlı programlamanın asıl gücü buradadır.</p>
+
+    <h2 id="ilk-metot"><span class="num">2</span>İlk metot ve self</h2>
+    <p>Bir metodu, sınıfın içinde <code class="inline">def</code> ile tanımlarız ve ilk parametresi her zaman <code class="inline">self</code> olur. <code class="inline">self</code> sayesinde metot, "üzerinde çalıştığı nesnenin" verisine ulaşır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">ilk_metot.py</span></div>
+<pre>class Ogrenci:
+    def __init__(self, ad, soyad, numara):
+        self.ad = ad
+        self.soyad = soyad
+        self.numara = numara
+
+    def bilgileri_goster(self):
+        print(f"Ad: {self.ad}\nSoyad: {self.soyad}\nNumara: {self.numara}")
+
+og1 = Ogrenci("Ali", "Veli", 123)
+og1.bilgileri_goster()</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı</div>
+<pre>Ad: Ali
+Soyad: Veli
+Numara: 123</pre>
+    </div>
+    <p><code class="inline">bilgileri_goster</code> metodunu çağırırken <code class="inline">og1.bilgileri_goster()</code> yazdığımıza dikkat edin; parantezin içine <code class="inline">self</code> yazmayız. Çünkü <code class="inline">og1.</code> kısmı zaten Python'a "self bu nesnedir" der. Metodun içindeyse <code class="inline">self.ad</code>, <code class="inline">self.soyad</code> diyerek o nesnenin verisine ulaşırız.</p>
+
+    <h2 id="donduren"><span class="num">3</span>Parametre alan ve değer döndüren metotlar</h2>
+    <p>Metotlar, tıpkı fonksiyonlar gibi dışarıdan parametre alabilir ve <code class="inline">return</code> ile değer döndürebilir. Aşağıdaki <code class="inline">ortalama</code> metodu hiç parametre almaz ama nesnenin notlarını kullanarak bir sonuç döndürür:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">ortalama.py</span></div>
+<pre>class Ogrenci:
+    def __init__(self, ad, vize, final):
+        self.ad = ad
+        self.vize = vize
+        self.final = final
+
+    def ortalama(self):
+        return self.vize * 0.4 + self.final * 0.6
+
+og = Ogrenci("Ayşe", 70, 80)
+print(og.ortalama())          <span class="c"># 76.0</span></pre>
+    </div>
+    <p>Burada <code class="inline">ortalama</code> metodu, nesnenin <code class="inline">vize</code> ve <code class="inline">final</code> özelliklerini okuyup ağırlıklı ortalamayı hesaplar ve geri döndürür. Sonucu istediğimiz yerde kullanabiliriz.</p>
+
+    <h2 id="durum"><span class="num">4</span>Nesnenin durumunu değiştiren metotlar</h2>
+    <p>Bir metot yalnızca bilgi okumakla kalmaz; nesnenin verisini <strong>değiştirebilir</strong> de. Bunu yine <code class="inline">self.</code> üzerinden yaparız. Aşağıdaki <code class="inline">not_ekle</code> metodu, aldığı notları nesnenin yeni bir özelliğine yazar:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">durum_degistirme.py</span></div>
+<pre>class Ogrenci:
+    def __init__(self, ad, soyad, numara):
+        self.ad = ad
+        self.soyad = soyad
+        self.numara = numara
+
+    def not_ekle(self, vize, final):
+        self.notlar = [vize, final]        <span class="c"># nesneye yeni bir özellik eklenir</span>
+
+    def notlari_goster(self):
+        print(f"Notlar: {self.notlar}")
+
+    def gecme_durumu(self):
+        ortalama = self.notlar[0] * 0.4 + self.notlar[1] * 0.6
+        if ortalama &gt;= 60:
+            print(f"Ortalama: {ortalama} - Geçti")
+        else:
+            print(f"Ortalama: {ortalama} - Kaldı")
+
+og = Ogrenci("Ali", "Veli", 123)
+og.not_ekle(70, 80)
+og.notlari_goster()      <span class="c"># Notlar: [70, 80]</span>
+og.gecme_durumu()        <span class="c"># Ortalama: 76.0 - Geçti</span></pre>
+    </div>
+    <p>Burada üç metot bir nesnenin durumu üzerinde sırayla çalışıyor: <code class="inline">not_ekle</code> veriyi yazıyor, <code class="inline">notlari_goster</code> okuyup gösteriyor, <code class="inline">gecme_durumu</code> ise o veriyi işleyip bir karar veriyor. Bir öğrenciyle ilgili tüm davranışlar tek bir sınıfın içinde toplanmış oldu.</p>
+    <div class="note warn"><span class="tag">Önemli</span><p><code class="inline">gecme_durumu</code> metodu çalışmadan önce <code class="inline">not_ekle</code> çağrılmış olmalıdır; aksi hâlde <code class="inline">self.notlar</code> henüz var olmadığından hata alırsınız. Metotların hangi sırayla çağrılacağı, sınıf tasarımının bir parçasıdır.</p></div>
+
+    <h2 id="dunder"><span class="num">5</span>Özel (dunder) metotlar</h2>
+    <p>Python'da bazı metotların adı iki alt çizgiyle başlayıp biter: <code class="inline">__init__</code>, <code class="inline">__str__</code>, <code class="inline">__len__</code>. Bunlara <strong>özel metotlar</strong> ya da kısaca <strong>dunder</strong> (double underscore) metotlar denir. Bu metotların ortak özelliği, <strong>doğrudan sizin çağırmamanız</strong>dır; Python onları belirli durumlarda kendisi çağırır. Örneğin bir nesneyi <code class="inline">print()</code>'e verdiğinizde Python arka planda o nesnenin <code class="inline">__str__</code> metodunu çalıştırır.</p>
+    <figure class="diagram"><img alt="Sıradan Python işlemleri ve tetikledikleri özel (dunder) metotlar" src="images/dunder_eslesme.png" width="1230" height="645" loading="lazy" decoding="async">
+      <figcaption>Sıradan işlemler ve tetikledikleri özel metotlar</figcaption>
+    </figure>
+    <p>Bu metotları kendi sınıfımızda tanımlayarak, nesnelerimizin bu sıradan işlemlere nasıl tepki vereceğini biz belirleriz. Şimdi bir <code class="inline">Kitap</code> sınıfı üzerinden en sık kullanılanları görelim.</p>
+
+    <h3 id="str">5.1 __str__ — print() çıktısını belirler</h3>
+    <p>Bir nesneyi olduğu gibi <code class="inline">print()</code>'e verirseniz, Python varsayılan olarak <code class="inline">&lt;__main__.Kitap object at 0x...&gt;</code> gibi okunması zor bir çıktı verir. <code class="inline">__str__</code> metodu, bunun yerine <strong>kendi belirlediğimiz</strong> okunaklı bir metin döndürmemizi sağlar:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">str_ornek.py</span></div>
+<pre>class Kitap:
+    def __init__(self, isim, yazar, sayfa):
+        self.isim = isim
+        self.yazar = yazar
+        self.sayfa = sayfa
+
+    def __str__(self):
+        return f"Kitap: {self.isim} / {self.yazar} ({self.sayfa} sayfa)"
+
+kitap = Kitap("Sefiller", "Victor Hugo", 1488)
+print(kitap)      <span class="c"># Kitap: Sefiller / Victor Hugo (1488 sayfa)</span></pre>
+    </div>
+
+    <h3 id="len">5.2 __len__ — len() davranışını belirler</h3>
+    <p><code class="inline">__len__</code> metodu, nesneniz <code class="inline">len()</code> fonksiyonuna verildiğinde dönecek değeri belirler. Bir kitabın "uzunluğu" olarak sayfa sayısını döndürmek mantıklıdır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">len_ornek.py</span></div>
+<pre>class Kitap:
+    def __init__(self, isim, sayfa):
+        self.isim = isim
+        self.sayfa = sayfa
+
+    def __len__(self):
+        return self.sayfa
+
+kitap = Kitap("1984", 352)
+print(len(kitap))     <span class="c"># 352</span></pre>
+    </div>
+
+    <h3 id="eq">5.3 __eq__ — == ile eşitlik karşılaştırması</h3>
+    <p>İki nesnenin ne zaman "eşit" sayılacağına siz karar verebilirsiniz. <code class="inline">__eq__</code> metodu, <code class="inline">==</code> operatörünün davranışını belirler. Örneğin iki kitabı ISBN numaraları aynıysa eşit kabul edebiliriz:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">eq_ornek.py</span></div>
+<pre>class Kitap:
+    def __init__(self, isim, isbn):
+        self.isim = isim
+        self.isbn = isbn
+
+    def __eq__(self, other):
+        return self.isbn == other.isbn
+
+k1 = Kitap("Savaş ve Barış", "9786053605111")
+k2 = Kitap("Anna Karenina", "9786053605111")
+print(k1 == k2)      <span class="c"># True  (isimleri farklı ama ISBN'leri aynı)</span></pre>
+    </div>
+    <p>Buradaki <code class="inline">other</code>, karşılaştırılan diğer nesnedir. <code class="inline">k1 == k2</code> yazdığınızda Python <code class="inline">k1.__eq__(k2)</code> çağırır; <code class="inline">self</code> k1'i, <code class="inline">other</code> k2'yi temsil eder.</p>
+    <div class="note ok"><span class="tag">İpucu</span><p>Dunder metotları siz çağırmazsınız; Python <code class="inline">print</code>, <code class="inline">len</code>, <code class="inline">==</code> gibi işlemlerde kendisi tetikler. Siz yalnızca onları tanımlarsınız. Nesnelerinizi <code class="inline">print</code> ile incelemek için neredeyse her sınıfa okunaklı bir <code class="inline">__str__</code> eklemek iyi bir alışkanlıktır.</p></div>
+
+    <hr class="hr">
+
+    <h2 id="test"><span class="num">6</span>Konu sonu testi</h2>
+    <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
+    <ol class="quiz">
+      <li>
+        <p class="q">Bir metodun ilk parametresi geleneksel olarak ne olmalıdır?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">this</code></li>
+          <li><b>B)</b> <code class="inline">init</code></li>
+          <li><b>C)</b> <code class="inline">self</code></li>
+          <li><b>D)</b> <code class="inline">class</code></li>
+          <li><b>E)</b> <code class="inline">object</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">C</span>Metodun ilk parametresi geleneksel olarak <code class="inline">self</code>'tir; üzerinde çalışılan nesneyi temsil eder.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">og.bilgileri_goster()</code> çağrısında <code class="inline">self</code>'e ne karşılık gelir?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">bilgileri_goster</code> metodu</li>
+          <li><b>B)</b> <code class="inline">Ogrenci</code> sınıfı</li>
+          <li><b>C)</b> Boş bir değer</li>
+          <li><b>D)</b> Metodun parametreleri</li>
+          <li><b>E)</b> <code class="inline">og</code> nesnesi</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">E</span><code class="inline">og.metot()</code> çağrısında <code class="inline">og</code> nesnesi <code class="inline">self</code>'e karşılık gelir.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Hangi özel metot, bir nesne <code class="inline">print()</code>'e verildiğinde çağrılır?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">__str__</code></li>
+          <li><b>B)</b> <code class="inline">__init__</code></li>
+          <li><b>C)</b> <code class="inline">__len__</code></li>
+          <li><b>D)</b> <code class="inline">__eq__</code></li>
+          <li><b>E)</b> <code class="inline">__add__</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">A</span><code class="inline">print()</code>, nesnenin <code class="inline">__str__</code> metodunu çağırır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru4.py</span></div>
+<pre>class Kutu:
+    def __init__(self, adet):
+        self.adet = adet
+    def __len__(self):
+        return self.adet
+
+k = Kutu(7)
+print(len(k))</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">Kutu</code></li>
+          <li><b>B)</b> <code class="inline">7</code></li>
+          <li><b>C)</b> <code class="inline">&lt;Kutu object&gt;</code></li>
+          <li><b>D)</b> <code class="inline">1</code></li>
+          <li><b>E)</b> Hata verir</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">B</span><code class="inline">__len__</code> adet değerini döndürür; <code class="inline">len(k)</code> → <code class="inline">7</code>.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodda neden hata oluşur?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru5.py</span></div>
+<pre>class Sayac:
+    def __init__(self):
+        self.deger = 0
+    def arttir():
+        self.deger += 1
+
+s = Sayac()
+s.arttir()</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">__init__</code> yanlış yazılmış</li>
+          <li><b>B)</b> <code class="inline">self.deger</code> tanımsız</li>
+          <li><b>C)</b> Nesne oluşturulamaz</li>
+          <li><b>D)</b> <code class="inline">arttir</code> metodunda <code class="inline">self</code> parametresi eksik</li>
+          <li><b>E)</b> Hata oluşmaz</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">D</span><code class="inline">arttir</code> metodu <code class="inline">self</code> parametresi almadığından, <code class="inline">s.arttir()</code> çağrısı <code class="inline">TypeError</code> verir. Doğrusu <code class="inline">def arttir(self):</code>'tir.</div>
+        </details>
+      </li>
+    </ol>
+
+    <div class="note"><span class="tag">Özet</span><p>Özellik veriyi, metot davranışı belirler. Metot içinde nesneye her zaman <code class="inline">self.</code> ile ulaşın; çağırırken <code class="inline">self</code> yazmayın, Python'un kendisi geçer. <code class="inline">__str__</code>'de çıktıyı <code class="inline">return</code> ile döndürün, ekrana yazmayın.</p></div>
+
+    <div class="aside-card mobil">
+      <div class="k">Dizi bilgisi</div>
+      <p>Sınıflar dizisinin ikinci modülü. Önceki: Sınıflara Giriş (6. hafta, <code class="inline">__init__</code> ve <code class="inline">self</code>). Sonraki: Kalıtım (10. hafta).</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="siniflar.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">6. Hafta</span>
+        <span class="kb">Sınıflara Giriş</span>
+      </a>
+      <a class="komsu-kart sonraki" href="kalitim.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">10. Hafta</span>
+        <span class="kb">Kalıtım</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#metot"><span class="n">1</span>Metot nedir?</a>
+      <a href="#ilk-metot"><span class="n">2</span>İlk metot ve self</a>
+      <a href="#donduren"><span class="n">3</span>Değer döndüren metotlar</a>
+      <a href="#durum"><span class="n">4</span>Durumu değiştiren metotlar</a>
+      <a href="#dunder"><span class="n">5</span>Özel (dunder) metotlar</a>
+      <a href="#test"><span class="n">6</span>Konu sonu testi</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Dizi bilgisi</div>
+      <p>Sınıflar dizisinin ikinci modülü. Önceki: Sınıflara Giriş (6. hafta, <code class="inline">__init__</code> ve <code class="inline">self</code>). Sonraki: Kalıtım (10. hafta).</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
+    <p class="alt-kisi"><!-- AD SOYAD --></p>
+      <nav class="alt-bag" aria-label="Alt bağlantılar">
+        <a href="index.html">Ders ana sayfası</a>
+        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sınıflara Giriş — NTP II Ders Notları</title>
+<meta name="description" content="Nesne tabanlı programlama, gerçek dünyadaki bir varlığı (öğrenci, araba, banka hesabı) hem verisiyle hem davranışıyla tek bir bütün olarak modellememizi...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sınıflara Giriş — NTP II Ders Notları">
+<meta property="og:description" content="Nesne tabanlı programlama, gerçek dünyadaki bir varlığı (öğrenci, araba, banka hesabı) hem verisiyle hem davranışıyla tek bir bütün olarak modellememizi...">
+<script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Sınıflara Giriş</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="siniflar.html" class="etkin" aria-current="page"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="moduller.html"><span class="mh">12</span>Modüller</a>
+          <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+        </nav>
+      </details>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Sınıflara Giriş</span></div>
+
+<div class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 6. Hafta</div>
+    <h1>Sınıflar, Nesneler ve __init__</h1>
+    <p class="lede">Nesne tabanlı programlama, gerçek dünyadaki bir varlığı (öğrenci, araba, banka hesabı) hem verisiyle hem davranışıyla tek bir bütün olarak modellememizi sağlar. Bu sayfa <code class="inline">class</code> ile sınıf tanımlamayı, nesne oluşturmayı ve <code class="inline">__init__</code> ile <code class="inline">self</code>'i anlatır.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#neden"><span class="n">1</span>Neden vardır?</a>
+        <a href="#class"><span class="n">2</span>Sınıf tanımlama</a>
+        <a href="#init"><span class="n">3</span>__init__ ve self</a>
+        <a href="#guncelleme"><span class="n">4</span>Özellik güncelleme</a>
+        <a href="#degisken"><span class="n">5</span>Sınıf / nesne değişkeni</a>
+        <a href="#test"><span class="n">6</span>Konu sonu testi</a>
+      </nav>
+    </details>
+
+<h2 id="neden"><span class="num">1</span>Nesne tabanlı programlama neden vardır?</h2>
+    <p>Bir okul otomasyonu yazdığınızı düşünün. Tek bir öğrenciyi tutmak kolay: bir ad, bir soyad, bir numara, birkaç not. Ama ikinci öğrenci gelince ikinci bir ad, ikinci bir soyad, ikinci bir not listesi açmanız gerekir. Yüz öğrenci olunca ortaya <code class="inline">ad1</code>, <code class="inline">ad2</code>, <code class="inline">ad3</code> gibi yüzlerce dağınık değişken çıkar ve bunları birlikte yönetmek imkânsızlaşır.</p>
+    <p>Asıl sorun şudur: bizim kafamızda "öğrenci" tek bir bütündür — adı, numarası ve davranışları (not ekleme, ortalama hesaplama) bir aradadır. Oysa düz programlamada bu bütünü parçalara bölmek zorunda kalırız. <strong>Nesne tabanlı programlama (NTP / OOP)</strong>, tam da bu kopukluğu giderir ve karmaşık sistemleri <strong>daha modüler, anlaşılır ve sürdürülebilir</strong> kılar. NTP'nin üzerine kurulduğu dört temel ilke vardır — <strong>kapsülleme, kalıtım, çok biçimlilik ve soyutlama</strong> — ama bunlara sırası geldiğinde, ilerleyen haftalarda gireceğiz. Bu hafta önce temeli atıyoruz: sınıf ve nesne.</p>
+    <p>Aslında nesnelerle ilk günden beri çalışıyorsunuz. Python'da bir liste, bir metin, bir sayı — hepsi birer nesnedir ve her birinin kendi metotları vardır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">her_sey_nesne.py</span></div>
+<pre>liste = [1, 2, 3, 4, 5]
+print(type(liste))    <span class="c"># &lt;class 'list'&gt;</span></pre>
+    </div>
+    <p><code class="inline">type(liste)</code> size <code class="inline">list</code> der; yani <code class="inline">liste</code>, <code class="inline">list</code> adındaki sınıfın bir <strong>örneğidir (nesnesidir)</strong>. <code class="inline">liste.append(6)</code> ya da <code class="inline">liste.sort()</code> yazabilmenizin sebebi de budur: <code class="inline">append</code> ve <code class="inline">sort</code>, <code class="inline">list</code> sınıfının metotlarıdır. Bu bölümde öğreneceğimiz şey, işte bu hazır sınıflar gibi <strong>kendi sınıflarımızı</strong> yazmaktır.</p>
+    <div class="note"><span class="tag">Kurabiye Kalıbı</span><p>Bir <strong>sınıfı</strong> kurabiye kalıbı gibi düşünün: kalıp, kurabiyenin nasıl olacağını tanımlar ama kendisi yenilebilir bir kurabiye değildir. <strong>Nesne</strong> ise o kalıptan üretilen somut kurabiyedir. Bir kalıptan istediğiniz kadar kurabiye çıkarabilirsiniz; her biri aynı biçimdedir ama biri çikolatalı, biri sade olabilir.</p></div>
+    <figure class="diagram"><img alt="Sınıf bir kalıptır; nesneler o kalıptan üretilir ve her biri kendi verisine sahiptir" src="images/sinif_vs_nesne.png" width="1230" height="660" loading="lazy" decoding="async">
+      <figcaption>Sınıf kalıptır, nesneler o kalıptan üretilir</figcaption>
+    </figure>
+    <p>Görselde <code class="inline">Araba</code> sınıfı kalıptır; <code class="inline">araba1</code>, <code class="inline">araba2</code>, <code class="inline">araba3</code> ise bu kalıptan üretilmiş, her biri kendi verisini taşıyan nesnelerdir. Kalıbı bir kez yazarız, ondan dilediğimiz kadar nesne üretiriz.</p>
+
+    <h2 id="class"><span class="num">2</span>Sınıf tanımlama: class</h2>
+    <p>Bir sınıf tanımlamak için <code class="inline">class</code> anahtar kelimesini kullanırız. Sınıf adları, geleneksel olarak büyük harfle başlar (<code class="inline">Araba</code>, <code class="inline">Ogrenci</code>, <code class="inline">BankaHesabi</code>). Sınıf yalnızca kalıptır; ondan gerçek bir nesne üretmek için sınıf adını parantezle çağırırız. Bir nesnenin özelliklerine ise <strong>nokta</strong> (<code class="inline">.</code>) ile erişiriz.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">basit_sinif.py</span></div>
+<pre>class Araba:
+    model = 'Bmw 3.20i'
+    renk = 'Gümüş'
+    max_hiz = 220
+    yakit = 'Benzin'
+
+arabam = Araba()        <span class="c"># nesne oluşturma</span>
+
+print(arabam.model)     <span class="c"># Bmw 3.20i</span>
+print(arabam.renk)      <span class="c"># Gümüş</span></pre>
+    </div>
+    <p>Buraya kadar her şey iyi, ama bir sorun var: bu kalıptan üreteceğimiz <strong>her</strong> araba aynı modelde, aynı renkte olur. Çünkü değerleri sınıfın içine sabit yazdık. Oysa biz farklı nesnelerin farklı verilere sahip olmasını istiyoruz. İşte burada <code class="inline">__init__</code> devreye girer.</p>
+
+    <h2 id="init"><span class="num">3</span>__init__ yapıcı metodu ve self</h2>
+    <p><code class="inline">__init__</code>, Python'da özel bir metottur ve bir nesne oluşturulduğu anda <strong>otomatik olarak</strong> çalışır. Görevi, yeni doğan nesneye başlangıç verilerini yerleştirmektir. Sayesinde her nesneye kendine özgü değerler verebiliriz; artık tüm arabalar aynı olmak zorunda değildir. İsmi iki alt çizgiyle başlayıp iki alt çizgiyle biter; bu tür özel metotlara "dunder" (double underscore) metotlar denir ve Python bunları belirli durumlarda kendisi çağırır.</p>
+    <p><code class="inline">__init__</code> metodunun ilk parametresi her zaman <code class="inline">self</code>'tir. <code class="inline">self</code>, üzerinde çalışılan <strong>nesnenin kendisini</strong> temsil eder. Yani <code class="inline">self.model = model</code> yazdığınızda, "şu an oluşturulan nesnenin <code class="inline">model</code> özelliğine, dışarıdan gelen <code class="inline">model</code> değerini ata" demiş olursunuz. <code class="inline">self</code> sayesinde her nesne kendi verisini kendi içinde tutar.</p>
+    <figure class="diagram"><img alt="class, __init__, self ve self.model = model satırının anatomisi" src="images/init_self_anatomi.png" width="1230" height="593" loading="lazy" decoding="async">
+      <figcaption>Yapıcı metodun anatomisi ve <code>self</code>'in rolü</figcaption>
+    </figure>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">init_ornek.py</span></div>
+<pre>class Araba:
+    def __init__(self, model, renk, beygir_gucu):
+        self.model = model
+        self.renk = renk
+        self.beygir_gucu = beygir_gucu
+
+<span class="c"># Yeni bir nesne oluşturma</span>
+araba1 = Araba('Mercedes C180', 'Siyah', 156)
+print(araba1.model, araba1.renk, araba1.beygir_gucu)</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı</div>
+<pre>Mercedes C180 Siyah 156</pre>
+    </div>
+    <p><code class="inline">Araba('Mercedes C180', 'Siyah', 156)</code> yazdığınız anda Python arka planda <code class="inline">__init__</code>'i çağırır; <code class="inline">self</code> yeni nesneyi, <code class="inline">model</code>/<code class="inline">renk</code>/<code class="inline">beygir_gucu</code> ise verdiğiniz değerleri temsil eder. <code class="inline">self.model = model</code> satırları bu değerleri nesneye kalıcı olarak yazar.</p>
+    <p>Aynı sınıftan istediğiniz kadar nesne üretebilirsiniz; her birinin verileri birbirinden tamamen bağımsızdır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">bagimsiz_nesneler.py</span></div>
+<pre>araba1 = Araba('Mercedes C180', 'Siyah', 156)
+araba2 = Araba('Audi A4', 'Beyaz', 190)
+
+print(araba1.model)    <span class="c"># Mercedes C180</span>
+print(araba2.model)    <span class="c"># Audi A4</span></pre>
+    </div>
+    <p><code class="inline">araba1</code> ile <code class="inline">araba2</code> aynı kalıptan çıkmıştır ama biri Mercedes, diğeri Audi'dir. Birinin verisini değiştirmek diğerini etkilemez.</p>
+    <div class="note warn"><span class="tag">Kural</span><p><code class="inline">__init__</code> içinde <code class="inline">self.</code> ön ekini unutmayın. <code class="inline">model = model</code> yazarsanız değer nesneye kaydedilmez; yerel bir değişken olur ve fonksiyon bitince yok olur. Doğrusu <code class="inline">self.model = model</code>'dir.</p></div>
+
+    <h2 id="guncelleme"><span class="num">4</span>Özellikleri güncelleme</h2>
+    <p>Bir nesnenin özelliğini, oluşturduktan sonra da değiştirebilirsiniz. Yine nokta gösterimini kullanırız:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">guncelleme.py</span></div>
+<pre>araba1 = Araba('Mercedes C180', 'Siyah', 156)
+print(araba1.beygir_gucu)    <span class="c"># 156</span>
+
+araba1.beygir_gucu = 180     <span class="c"># özelliği güncelle</span>
+print(araba1.beygir_gucu)    <span class="c"># 180</span></pre>
+    </div>
+    <p>Bu değişiklik yalnızca <code class="inline">araba1</code>'i etkiler; aynı sınıftan üretilmiş başka nesneler eski değerlerini korur.</p>
+
+    <h2 id="degisken"><span class="num">5</span>Sınıf değişkeni ile nesne değişkeni</h2>
+    <p>İlk <code class="inline">Araba</code> sınıfında <code class="inline">model = 'Bmw 3.20i'</code> gibi değerleri doğrudan sınıfın gövdesine yazmıştık. Bunlara <strong>sınıf değişkeni</strong> denir ve o sınıftan üretilen tüm nesneler için ortaktır. Sonra değerleri <code class="inline">self.model = model</code> ile <code class="inline">__init__</code> içinde tanımladık; bunlara <strong>nesne (örnek) değişkeni</strong> denir ve her nesneye özeldir.</p>
+    <p>Pratikte neredeyse her zaman ikincisini, yani <code class="inline">__init__</code> içinde <code class="inline">self</code> ile tanımlanan nesne değişkenlerini kullanırız; çünkü asıl istediğimiz, her nesnenin kendi verisine sahip olmasıdır. Sınıf değişkenleri ise tüm nesneler için sabit kalması gereken bilgilerde (örneğin tüm dairelerin paylaştığı <code class="inline">pi = 3.14</code>) işe yarar.</p>
+    <div class="note ok"><span class="tag">İpucu</span><p><code class="inline">self</code>'i bir köprü gibi düşünün: metodun "şu an hangi nesne üzerinde çalışıyorum?" sorusunun cevabıdır; nesnenin verisine <code class="inline">self.</code> üzerinden ulaşırsınız.</p></div>
+
+    <hr class="hr">
+
+    <h2 id="test"><span class="num">6</span>Konu sonu testi</h2>
+    <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
+    <ol class="quiz">
+      <li>
+        <p class="q">Bir sınıftan nesne oluşturmak için aşağıdakilerden hangisi kullanılır?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">arabam = Araba()</code></li>
+          <li><b>B)</b> <code class="inline">arabam = Araba</code></li>
+          <li><b>C)</b> <code class="inline">arabam = new Araba()</code></li>
+          <li><b>D)</b> <code class="inline">arabam = class Araba</code></li>
+          <li><b>E)</b> <code class="inline">arabam = init Araba</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">A</span>Nesne, sınıf adının parantezle çağrılmasıyla oluşturulur: <code class="inline">Araba()</code>. Parantezsiz yazım yalnızca referans verir.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">__init__</code> metodu ne zaman çalışır?</p>
+        <ul class="opts">
+          <li><b>A)</b> Program kapanırken</li>
+          <li><b>B)</b> Bir nesne oluşturulduğu anda otomatik olarak</li>
+          <li><b>C)</b> Yalnızca elle çağrılırsa</li>
+          <li><b>D)</b> Sınıf tanımlandığı anda</li>
+          <li><b>E)</b> Hiçbir zaman</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">B</span><code class="inline">__init__</code>, nesne oluşturulduğu anda Python tarafından otomatik çağrılır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">self</code> neyi temsil eder?</p>
+        <ul class="opts">
+          <li><b>A)</b> Sınıfın adını</li>
+          <li><b>B)</b> Bir global değişkeni</li>
+          <li><b>C)</b> Python'un kendisini</li>
+          <li><b>D)</b> Son oluşturulan değişkeni</li>
+          <li><b>E)</b> Üzerinde çalışılan nesnenin kendisini</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">E</span><code class="inline">self</code>, metodun üzerinde çalıştığı nesnenin kendisini temsil eder.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru4.py</span></div>
+<pre>class Kalem:
+    def __init__(self, renk):
+        renk = renk     <span class="c"># dikkat!</span>
+
+k = Kalem("mavi")
+print(k.renk)</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">mavi</code></li>
+          <li><b>B)</b> <code class="inline">renk</code></li>
+          <li><b>C)</b> <code class="inline">None</code></li>
+          <li><b>D)</b> <code class="inline">AttributeError</code> (renk özelliği yok)</li>
+          <li><b>E)</b> <code class="inline">mavi mavi</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">D</span><code class="inline">renk = renk</code> yazımı yerel bir değişkendir; <code class="inline">self.renk</code> olmadığı için nesnenin <code class="inline">renk</code> özelliği oluşmaz, erişim <code class="inline">AttributeError</code> verir.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru5.py</span></div>
+<pre>class Sayac:
+    def __init__(self, deger):
+        self.deger = deger
+
+a = Sayac(10)
+b = Sayac(20)
+a.deger = 99
+print(a.deger, b.deger)</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">99 99</code></li>
+          <li><b>B)</b> <code class="inline">10 20</code></li>
+          <li><b>C)</b> <code class="inline">99 20</code></li>
+          <li><b>D)</b> <code class="inline">10 99</code></li>
+          <li><b>E)</b> Hata verir</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">C</span><code class="inline">a</code> ve <code class="inline">b</code> bağımsız nesnelerdir. <code class="inline">a.deger = 99</code> yalnızca <code class="inline">a</code>'yı etkiler; <code class="inline">b.deger</code> hâlâ <code class="inline">20</code>'dir.</div>
+        </details>
+      </li>
+    </ol>
+
+    <div class="note"><span class="tag">Özet</span><p>Sınıf adlarını büyük harfle başlatın. Her nesne kendi verisini taşır; aynı sınıftan üretilseler de nesnelerin özellikleri birbirinden bağımsızdır. Nesne oluştururken parantezi, <code class="inline">__init__</code> içinde ise <code class="inline">self.</code> ön ekini unutmayın.</p></div>
+
+    <div class="aside-card mobil">
+      <div class="k">Dizi bilgisi</div>
+      <p>Bu, dört haftalık Sınıflar dizisinin ilk modülüdür. Sırada metotlar ve dunder metotlar (7. hafta), kalıtım (10. hafta), polimorfizm ve kapsülleme (11. hafta) var.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="dosya-islemleri.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">4-5. Hafta</span>
+        <span class="kb">Dosya İşlemleri</span>
+      </a>
+      <a class="komsu-kart sonraki" href="metotlar.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">7. Hafta</span>
+        <span class="kb">Metotlar ve Dunder</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#neden"><span class="n">1</span>Neden vardır?</a>
+      <a href="#class"><span class="n">2</span>Sınıf tanımlama</a>
+      <a href="#init"><span class="n">3</span>__init__ ve self</a>
+      <a href="#guncelleme"><span class="n">4</span>Özellik güncelleme</a>
+      <a href="#degisken"><span class="n">5</span>Sınıf / nesne değişkeni</a>
+      <a href="#test"><span class="n">6</span>Konu sonu testi</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Dizi bilgisi</div>
+      <p>Bu, dört haftalık Sınıflar dizisinin ilk modülüdür. Sırada metotlar ve dunder metotlar (7. hafta), kalıtım (10. hafta), polimorfizm ve kapsülleme (11. hafta) var.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
+    <p class="alt-kisi"><!-- AD SOYAD --></p>
+      <nav class="alt-bag" aria-label="Alt bağlantılar">
+        <a href="index.html">Ders ana sayfası</a>
+        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

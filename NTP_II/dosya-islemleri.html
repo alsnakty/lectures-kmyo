@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dosya İşlemleri — NTP II Ders Notları</title>
+<meta name="description" content="Bir değişken yalnızca program çalıştığı sürece bellekte durur; program kapandığında her şey silinir. Bu sayfa veriyi diske kalıcı olarak yazmayı, geri...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dosya İşlemleri — NTP II Ders Notları">
+<meta property="og:description" content="Bir değişken yalnızca program çalıştığı sürece bellekte durur; program kapandığında her şey silinir. Bu sayfa veriyi diske kalıcı olarak yazmayı, geri...">
+<script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Dosya İşlemleri</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="dosya-islemleri.html" class="etkin" aria-current="page"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="moduller.html"><span class="mh">12</span>Modüller</a>
+          <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+        </nav>
+      </details>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Dosya İşlemleri</span></div>
+
+<div class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 4-5. Hafta</div>
+    <h1>Python'da Dosya İşlemleri</h1>
+    <p class="lede">Bir değişken yalnızca program çalıştığı sürece bellekte durur; program kapandığında her şey silinir. Bu sayfa veriyi diske kalıcı olarak yazmayı, geri okumayı, <code class="inline">with</code> bloğunu ve yapılı veri için JSON kullanmayı anlatır.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#neden"><span class="n">1</span>Neden vardır?</a>
+        <a href="#acma"><span class="n">2</span>Dosya açma: open()</a>
+        <a href="#modlar"><span class="n">3</span>Dosya modları</a>
+        <a href="#yazma"><span class="n">4</span>Dosyaya yazma</a>
+        <a href="#okuma"><span class="n">5</span>Dosyadan okuma</a>
+        <a href="#with"><span class="n">6</span>with bloğu</a>
+        <a href="#imlec"><span class="n">7</span>Dosya imleci</a>
+        <a href="#hata"><span class="n">8</span>Hata yönetimi ve encoding</a>
+        <a href="#json"><span class="n">9</span>JSON dosyaları</a>
+        <a href="#karar"><span class="n">10</span>Karar tablosu</a>
+        <a href="#test"><span class="n">11</span>Konu sonu testi</a>
+      </nav>
+    </details>
+
+<h2 id="neden"><span class="num">1</span>Dosya işlemleri neden vardır?</h2>
+    <p>Şimdiye kadar yazdığımız programlarda verileri <strong>değişkenlerde</strong> tuttuk. Ama bir değişken yalnızca program çalıştığı sürece bellekte (RAM) durur; program kapandığında <strong>her şey silinir</strong>. Bir sonraki çalıştırmada kullanıcı bilgileri, oyun skorları ya da hesaplanan sonuçlar yok olmuştur. Veriyi <strong>kalıcı</strong> bir yere yazmamız gerekir; işte bu noktada <strong>dosyalar</strong> devreye girer.</p>
+    <p>Bir dosya bize başlıca üç şey kazandırır. İlki <strong>kalıcılıktır</strong>: program kapansa, hatta bilgisayar yeniden başlasa bile dosyaya yazdığınız veri yerinde durur. İkincisi <strong>veri paylaşımıdır</strong>: bir programın ürettiği dosyayı bambaşka bir program okuyabilir. Üçüncüsü ise <strong>büyük veriyle çalışabilmektir</strong>: belleğe sığmayacak kadar büyük verileri parça parça dosyadan okuyabilirsiniz.</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th></th><th>Bellek (Değişkenler)</th><th>Dosya (Disk)</th></tr></thead>
+        <tbody>
+          <tr><td>Kalıcılık</td><td>Program kapanınca <strong>silinir</strong></td><td><strong>Kalıcıdır</strong>, silinmez</td></tr>
+          <tr><td>Hız</td><td>Çok hızlı</td><td>Daha yavaş</td></tr>
+          <tr><td>Kapasite</td><td>Sınırlı (RAM kadar)</td><td>Çok büyük olabilir</td></tr>
+          <tr><td>Kullanım</td><td>Geçici hesaplamalar</td><td>Saklanması gereken veriler</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><span class="tag">Defter</span><p>Defteri açmak <code class="inline">open()</code>, bir şeyler yazmak <code class="inline">write()</code>, yazılanları okumak <code class="inline">read()</code>, defteri kapatmak ise <code class="inline">close()</code> demektir. Aklınızda tuttuğunuz bir telefon numarasını unutursunuz; ama deftere yazarsanız yıllar sonra bile okuyabilirsiniz. RAM "akıl", dosya ise "defter" gibidir.</p></div>
+
+    <h2 id="acma"><span class="num">2</span>Dosya açma: open()</h2>
+    <p>Bir dosyayla çalışmadan önce onu <strong>açmamız</strong> gerekir. Bunun için yerleşik <code class="inline">open()</code> fonksiyonunu kullanırız: <code class="inline">open("dosya_adi.txt", "mod", encoding="utf-8")</code>. Birinci parametre açılacak dosyanın adı ya da yolu, ikincisi dosyayı ne amaçla açtığımızı belirten <strong>mod</strong>, üçüncüsü ise Türkçe karakterlerin doğru işlenmesini sağlayan <strong>encoding</strong> ayarıdır. <code class="inline">open()</code> bize bir <strong>dosya nesnesi</strong> döndürür; bütün okuma ve yazma işlemlerini bu nesne üzerinden yaparız.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">ilk_dosya.py</span></div>
+<pre>dosya = open("notlar.txt", "w", encoding="utf-8")   <span class="c"># dosyayı yazma modunda aç</span>
+dosya.write("Merhaba dünya")                        <span class="c"># içine yaz</span>
+dosya.close()                                       <span class="c"># dosyayı kapat</span></pre>
+    </div>
+    <p>Bu üç adım — <strong>aç, işle, kapat</strong> — bütün dosya işlemlerinin temelidir.</p>
+    <figure class="diagram"><img alt="Dosya işleminin yaşam döngüsü: aç, işle, kapat. with bloğu kapatmayı otomatik yapar." src="images/dosya_yasam_dongusu.png" width="1200" height="645" loading="lazy" decoding="async">
+      <figcaption>Dosya işleminin yaşam döngüsü</figcaption>
+    </figure>
+    <p>Soldaki <strong>elle yönetim</strong> yönteminde <code class="inline">close()</code>'u biz çağırırız ve bunu <strong>unutmak çok yaygın bir hatadır</strong>. Sağdaki <code class="inline">with</code> bloğu ise kapatmayı bizim yerimize otomatik yapar; bu yüzden modern Python'da tercih edilen yöntemdir.</p>
+
+    <h2 id="modlar"><span class="num">3</span>Dosya modları</h2>
+    <p><code class="inline">open()</code> fonksiyonuna verdiğimiz mod, dosyayla ne yapacağımızı belirler. En sık kullanılan üç mod şunlardır:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Mod</th><th>Adı</th><th>Ne yapar</th><th>Dosya yoksa</th></tr></thead>
+        <tbody>
+          <tr><td><code>"r"</code></td><td>read (okuma)</td><td>Dosyayı okur, <strong>değiştirmez</strong></td><td class="no">❌ Hata verir (<code>FileNotFoundError</code>)</td></tr>
+          <tr><td><code>"w"</code></td><td>write (yazma)</td><td>Yazar; dosya varsa <strong>içeriğini siler</strong></td><td class="yes">✅ Yeni dosya oluşturur</td></tr>
+          <tr><td><code>"a"</code></td><td>append (ekleme)</td><td>Var olan içeriğin <strong>sonuna ekler</strong></td><td class="yes">✅ Yeni dosya oluşturur</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="diagram"><img alt="r, w ve a modlarının dosya üzerindeki etkisi" src="images/dosya_modlari.png" width="1230" height="600" loading="lazy" decoding="async">
+      <figcaption><code>r</code>, <code>w</code> ve <code>a</code> modlarının dosya üzerindeki etkisi</figcaption>
+    </figure>
+    <p>Görsel en kritik ayrımı gösterir: <strong><code class="inline">"w"</code> modu mevcut içeriği tamamen siler</strong>, <code class="inline">"a"</code> modu ise korur ve sonuna ekler.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">w_ve_a.py</span></div>
+<pre><span class="c"># Önce "w" ile yazalım</span>
+with open("test.txt", "w", encoding="utf-8") as f:
+    f.write("birinci\n")
+
+<span class="c"># Tekrar "w" ile açarsak ÖNCEKİ İÇERİK SİLİNİR</span>
+with open("test.txt", "w", encoding="utf-8") as f:
+    f.write("ikinci\n")
+<span class="no"># Dosyada artık sadece "ikinci" var, "birinci" silindi!</span>
+
+<span class="c"># "a" ile açarsak SONUNA EKLENİR</span>
+with open("test.txt", "a", encoding="utf-8") as f:
+    f.write("ucuncu\n")
+<span class="ok"># Dosyada artık: "ikinci" ve "ucuncu"</span></pre>
+    </div>
+    <div class="note warn"><span class="tag">Dikkat</span><p><code class="inline">"w"</code> modunu var olan bir dosyaya yanlışlıkla uygularsanız, içindeki tüm veriyi <strong>geri dönüşü olmadan</strong> silersiniz. Veri eklemek istiyorsanız <code class="inline">"a"</code> kullanın.</p></div>
+    <p>Bunların dışında bilgi olarak bilinmesi gereken modlar da vardır: <code class="inline">"x"</code> yeni dosya oluşturur ama dosya zaten varsa hata verir; <code class="inline">"r+"</code> hem okuma hem yazmaya izin verir; <code class="inline">"rb"</code> ve <code class="inline">"wb"</code> ise resim, ses, video gibi metin olmayan dosyalar için kullanılan ikili (binary) modlardır.</p>
+
+    <h2 id="yazma"><span class="num">4</span>Dosyaya yazma</h2>
+    <p><code class="inline">write()</code> metodu, verilen metni dosyaya yazar. Ancak <code class="inline">print()</code>'ten önemli bir farkı vardır: <strong>otomatik olarak alt satıra geçmez.</strong> Her yazıdan sonra alt satıra geçmek istiyorsak sonuna <code class="inline">\n</code> (yeni satır karakteri) eklemeliyiz.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">yazma.py</span></div>
+<pre>with open("sehirler.txt", "w", encoding="utf-8") as f:
+    f.write("Ankara")
+    f.write("Adana")
+<span class="no"># Dosyada: AnkaraAdana  (yan yana!)</span>
+
+with open("sehirler.txt", "w", encoding="utf-8") as f:
+    f.write("Ankara\n")
+    f.write("Adana\n")
+<span class="ok"># Dosyada: Ankara ve Adana  (alt alta)</span></pre>
+    </div>
+    <p>Bir listenin tüm elemanlarını tek seferde yazmak için <code class="inline">writelines()</code> kullanılır; ancak bu metot da <code class="inline">\n</code> eklemez, satır sonlarını biz koymalıyız. Var olan bir dosyanın sonuna ekleme yapmak istediğimizde ise dosyayı <code class="inline">"a"</code> modunda açarız; bu işlem eski satırları <strong>korur</strong>.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">liste_ve_ekleme.py</span></div>
+<pre>sehirler = ["Ankara\n", "Adana\n", "İzmir\n"]
+with open("sehirler.txt", "w", encoding="utf-8") as f:
+    f.writelines(sehirler)
+
+<span class="c"># Var olan dosyanın sonuna yeni satır ekle</span>
+with open("sehirler.txt", "a", encoding="utf-8") as f:
+    f.write("Mersin\n")</pre>
+    </div>
+
+    <h2 id="okuma"><span class="num">5</span>Dosyadan okuma</h2>
+    <p>Bir dosyayı okumanın birkaç farklı yolu vardır. Hangisini seçeceğiniz, dosyayı <strong>bütün olarak mı yoksa satır satır mı</strong> işlemek istediğinize bağlıdır. Aşağıdaki örneklerde dosyanın içeriğinin <code class="inline">Ankara</code>, <code class="inline">Adana</code>, <code class="inline">İzmir</code> satırları olduğunu varsayalım.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">okuma.py</span></div>
+<pre><span class="c"># read() — tümünü tek string olarak okur</span>
+with open("sehirler.txt", "r", encoding="utf-8") as f:
+    icerik = f.read()
+print(type(icerik))      <span class="c"># &lt;class 'str'&gt;</span>
+
+<span class="c"># readline() — her çağrıda bir sonraki satırı okur</span>
+with open("sehirler.txt", "r", encoding="utf-8") as f:
+    print(f.readline().strip())  <span class="c"># Ankara</span>
+    print(f.readline().strip())  <span class="c"># Adana</span>
+
+<span class="c"># readlines() — satırları liste olarak okur</span>
+with open("sehirler.txt", "r", encoding="utf-8") as f:
+    satirlar = f.readlines()
+print(satirlar)          <span class="c"># ['Ankara\n', 'Adana\n', 'İzmir\n']</span></pre>
+    </div>
+    <p>Bir dosyayı satır satır işlemenin en temiz ve <strong>belleğe en dostça</strong> yolu ise dosya nesnesi üzerinde doğrudan döngü kurmaktır. Bu yöntem dosyanın tamamını belleğe yüklemez, satırları tek tek alır; bu yüzden çok büyük dosyalarda bile güvenle çalışır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">satir_satir.py</span></div>
+<pre>with open("sehirler.txt", "r", encoding="utf-8") as f:
+    for satir in f:
+        print(satir.strip())    <span class="c"># strip() satır sonundaki \n'i temizler</span></pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı</div>
+<pre>Ankara
+Adana
+İzmir</pre>
+    </div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Metot</th><th>Ne döndürür</th><th>Ne zaman kullanılır</th></tr></thead>
+        <tbody>
+          <tr><td><code>read()</code></td><td>Tek string (tüm dosya)</td><td>Dosya küçük ve tümünü birden işleyeceksek</td></tr>
+          <tr><td><code>readline()</code></td><td>Tek satır (string)</td><td>Satırları teker teker, kontrollü okumak istiyorsak</td></tr>
+          <tr><td><code>readlines()</code></td><td>Satırların listesi</td><td>Satırlara liste gibi (indeksle) erişmek istiyorsak</td></tr>
+          <tr><td><code>for satir in f</code></td><td>Her turda bir satır</td><td><strong>Çoğu durumda en iyisi</strong>; büyük dosyalarda da güvenli</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="with"><span class="num">6</span>with bloğu (bağlam yöneticisi)</h2>
+    <p>Bir dosyayı açtıktan sonra <strong>kapatmazsak</strong> sorunlar çıkar: yazdığımız veri diske tam olarak kaydedilmeyebilir, dosya başka programlar tarafından kilitli kalabilir ve sistem kaynakları boşa harcanır. Klasik yöntemde kapatmayı biz hatırlamalıyız; <code class="inline">with</code> bloğu ise blok bittiğinde dosyayı <strong>otomatik olarak kapatır</strong>.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">elle_ve_with.py</span></div>
+<pre><span class="c"># Elle yönetim</span>
+f = open("notlar.txt", "w", encoding="utf-8")
+f.write("merhaba")
+f.close()    <span class="no"># ← unutulması çok kolay!</span>
+
+<span class="c"># with bloğu</span>
+with open("notlar.txt", "w", encoding="utf-8") as f:
+    f.write("merhaba")
+<span class="ok"># Blok bitti → dosya otomatik kapandı</span></pre>
+    </div>
+    <p>Üstelik blok içinde bir <strong>hata oluşsa bile</strong> dosya yine de güvenle kapatılır. Bu davranış, hata yönetimindeki <code class="inline">finally</code> bloğunun yaptığı işin aynısıdır — <code class="inline">with</code>, bunu bizim için arka planda halleder. Blok içinde istediğimiz kadar okuma ve yazma işlemi yapabiliriz.</p>
+    <p>İki dosyayla aynı anda çalışmak gerektiğinde (örneğin birinden okuyup diğerine yazmak), hepsini <strong>tek <code class="inline">with</code> satırında</strong> virgülle açabiliriz:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">iki_dosya.py</span></div>
+<pre>with open("tek.txt", "a", encoding="utf-8") as tek, \
+     open("cift.txt", "a", encoding="utf-8") as cift:
+    for sayi in range(1, 101):
+        if sayi % 2 == 0:
+            cift.write(str(sayi) + "\n")
+        else:
+            tek.write(str(sayi) + "\n")</pre>
+    </div>
+    <p>Buradaki ters bölü (<code class="inline">\</code>) satırı bir alt satırda sürdürmek içindir; iki dosya da blok bitince otomatik kapanır.</p>
+    <div class="note warn"><span class="tag">Kural</span><p>Özel bir nedeniniz yoksa dosya işlemlerini <strong>her zaman <code class="inline">with</code> ile</strong> yapın. Hem daha kısa, hem daha güvenli, hem de <code class="inline">close()</code> unutma riskini ortadan kaldırır.</p></div>
+
+    <h2 id="imlec"><span class="num">7</span>Dosya imleci: seek, tell ve r+ modu</h2>
+    <p>Bir dosyayı okurken Python, dosyanın <strong>neresinde olduğumuzu</strong> takip eden bir <strong>imleç (cursor)</strong> tutar. Tıpkı bir kitabı okurken parmağınızın bulunduğu yer gibi: her okuma, imleci ileri taşır. <code class="inline">tell()</code> imlecin o anki konumunu döndürür, <code class="inline">seek(offset)</code> ise imleci istediğimiz konuma götürür. En sık kullanımı <code class="inline">seek(0)</code>'dır: imleci dosyanın başına döndürür.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">imlec.py</span></div>
+<pre>with open("sehirler.txt", "r", encoding="utf-8") as f:
+    icerik = f.read()       <span class="c"># tüm dosyayı oku → imleç SONA gitti</span>
+    print(f.read())         <span class="no"># '' (boş! çünkü imleç sonda)</span>
+    f.seek(0)               <span class="c"># başa dön</span>
+    print(f.read())         <span class="ok"># tekrar tüm içerik</span></pre>
+    </div>
+    <div class="note"><span class="tag">Neden önemli</span><p>Bir dosyayı <code class="inline">read()</code> ile baştan sona okuduğunuzda imleç <strong>sonda</strong> kalır; tekrar okumak isterseniz önce <code class="inline">seek(0)</code> ile başa dönmelisiniz. Bu, yeni başlayanların "neden ikinci <code class="inline">read()</code> boş döndü?" sorusunun cevabıdır.</p></div>
+    <p><code class="inline">"w"</code> modu dosyayı silip baştan yazar, <code class="inline">"a"</code> yalnızca sona ekler. Peki bir dosyanın <strong>başına</strong> ya da <strong>ortasına</strong> ekleme yapmak istersek? Bunun için içeriği silmeden hem okumaya hem yazmaya izin veren <code class="inline">"r+"</code> modunu kullanırız. İzlenecek yöntem üç adımdır: <strong>oku → bellekte değiştir → başa dönüp geri yaz.</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">r_arti.py</span></div>
+<pre><span class="c"># Dosyanın başına ekleme</span>
+with open("kisiler.txt", "r+", encoding="utf-8") as f:
+    icerik = f.read()                  <span class="c"># mevcut içeriği oku</span>
+    f.seek(0)                          <span class="c"># başa dön</span>
+    f.write("Derman Kaya\n" + icerik)  <span class="c"># yeniyi öne koyup tümünü yaz</span>
+
+<span class="c"># Dosyanın ortasına ekleme</span>
+with open("kisiler.txt", "r+", encoding="utf-8") as f:
+    satirlar = f.readlines()           <span class="c"># ['Ali\n', 'Ayşe\n', ...]</span>
+    satirlar.insert(2, "Yeni Kişi\n")  <span class="c"># 3. sıraya ekle (indeks 2)</span>
+    f.seek(0)
+    f.writelines(satirlar)             <span class="c"># listeyi geri yaz</span></pre>
+    </div>
+    <div class="note warn"><span class="tag">Uyarı</span><p><code class="inline">tell()</code> ve <code class="inline">seek()</code> <strong>bayt</strong> sayar, karakter değil; Türkçe karakterler UTF-8'de 2 bayt yer kaplar. Ayrıca <code class="inline">"r+"</code> ile geri yazarken yeni içerik eskisinden <strong>kısaysa</strong> dosyanın sonunda eski karakterlerden artıklar kalabilir; bunu önlemek için yazımdan sonra <code class="inline">f.truncate()</code> çağırabilirsiniz.</p></div>
+
+    <h2 id="hata"><span class="num">8</span>Hata yönetimi ve Türkçe karakter</h2>
+    <p>Dosya işlemleri başarısız olabilir: dosya yoktur, izniniz yoktur ya da disk doludur. Bu yüzden dosya kodları, hata yönetimi (<code class="inline">try/except</code>) ile çok iyi anlaşır. Var olmayan bir dosyayı <code class="inline">"r"</code> modunda açmaya çalışmak <code class="inline">FileNotFoundError</code> fırlatır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">guvenli_okuma.py</span></div>
+<pre>try:
+    with open("olmayan.txt", "r", encoding="utf-8") as f:
+        print(f.read())
+except FileNotFoundError:
+    print("Dosya bulunamadı.")</pre>
+    </div>
+    <p>Alternatif olarak <code class="inline">os</code> modülüyle dosyanın var olup olmadığını açmadan önce de kontrol edebilirsiniz: <code class="inline">if os.path.exists("sehirler.txt"):</code>. Genel kural şudur: "önce kontrol et" yerine "dene, hata olursa yakala" çoğu zaman daha güvenlidir; çünkü kontrol ettiğiniz an ile dosyayı açtığınız an arasında dosya silinebilir.</p>
+    <p>Türkçe karakterler (ç, ğ, ı, ö, ş, ü ve büyük hâlleri) bazı sistemlerde bozuk görünebilir veya <code class="inline">UnicodeDecodeError</code> hatası verebilir. Çözüm, dosyayı açarken <code class="inline">encoding="utf-8"</code> belirtmektir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">encoding.py</span></div>
+<pre><span class="ok"># ✅ Doğru: Türkçe karakterler güvende</span>
+with open("isimler.txt", "w", encoding="utf-8") as f:
+    f.write("Şükrü, Çağla, Iğdır, Öztürk\n")
+
+<span class="no"># ⚠ Riskli: encoding belirtilmezse sistemin varsayılanına bağlı kalır</span>
+with open("isimler.txt", "w") as f:
+    f.write("Şükrü")    <span class="c"># bazı Windows sistemlerinde sorun çıkabilir</span></pre>
+    </div>
+    <div class="note warn"><span class="tag">Kural</span><p>Türkçe içerikli dosyalarda <strong>her zaman</strong> <code class="inline">encoding="utf-8"</code> kullanın. Bu, hem okurken hem yazarken alışkanlık hâline getirilmesi gereken bir ayardır.</p></div>
+
+    <h2 id="json"><span class="num">9</span>JSON dosyaları: yapılı veri saklama</h2>
+    <p>Şimdiye kadar düz metin (<code class="inline">.txt</code>) dosyalarıyla çalıştık. Ama gerçek programlar genellikle <strong>yapılı</strong> veri saklar: bir öğrencinin adı, yaşı, aldığı dersler ve mezuniyet durumu hep birlikte. Ürün bilgilerini virgülle ayırıp <code class="inline">.txt</code> dosyasında tuttuğunuzu düşünün; okurken her satırı <code class="inline">split(",")</code> ile elle ayrıştırmanız gerekir, <strong>her şey string olur</strong>, bir alanın içinde virgül geçerse ayrıştırma bozulur ve iç içe veriyi saklamak neredeyse imkânsızdır.</p>
+    <p><strong>JSON</strong> (JavaScript Object Notation), verinin insan tarafından okunabilir, yapılı ve dilden bağımsız bir biçimde saklandığı metin formatıdır ve bu sorunların hepsini çözer. Python sözlüklerine ve listelerine çok benzer göründüğü için öğrenmesi kolaydır. Hava durumu, harita, ödeme gibi neredeyse tüm web servisleri veriyi JSON olarak gönderir; VS Code'un <code class="inline">settings.json</code>'ı gibi sayısız ayar dosyası da JSON'dır.</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Fonksiyon</th><th>Ne yapar</th></tr></thead>
+        <tbody>
+          <tr><td><code>json.dump(veri, dosya)</code></td><td>Python nesnesini <strong>dosyaya</strong> yazar</td></tr>
+          <tr><td><code>json.load(dosya)</code></td><td><strong>Dosyadan</strong> okuyup Python nesnesine çevirir</td></tr>
+          <tr><td><code>json.dumps(veri)</code></td><td>Python nesnesini bir <strong>string'e</strong> çevirir</td></tr>
+          <tr><td><code>json.loads(metin)</code></td><td>Bir JSON <strong>string'ini</strong> Python nesnesine çevirir</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Aklınızda tutması kolay olsun: sonundaki <strong><code class="inline">s</code> "string"</strong> demektir.</p>
+    <figure class="diagram"><img alt="Python sözlüğü ile JSON dosyası arasındaki json.dump / json.load dönüşümü ve tip eşlemesi" src="images/json_donusum.png" width="1230" height="705" loading="lazy" decoding="async">
+      <figcaption>Python sözlüğü ile JSON dosyası arasındaki dönüşüm</figcaption>
+    </figure>
+    <p>Görseldeki en kritik ayrıntı: Python'daki <code class="inline">True</code>/<code class="inline">False</code>/<code class="inline">None</code>, JSON'da küçük harfli <code class="inline">true</code>/<code class="inline">false</code>/<code class="inline">null</code> olur. Bu çeviriyi <code class="inline">json</code> modülü sizin yerinize yapar.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">json_yazma.py</span></div>
+<pre>import json
+
+ogrenci = {
+    "ad": "Şükrü",
+    "yas": 21,
+    "dersler": ["Python", "Veritabanı"],
+    "mezun": False
+}
+
+with open("ogrenci.json", "w", encoding="utf-8") as f:
+    json.dump(ogrenci, f, ensure_ascii=False, indent=4)</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Oluşan ogrenci.json dosyası</div>
+<pre>{
+    "ad": "Şükrü",
+    "yas": 21,
+    "dersler": [
+        "Python",
+        "Veritabanı"
+    ],
+    "mezun": false
+}</pre>
+    </div>
+    <p>İki ayar önemlidir. <code class="inline">ensure_ascii=False</code> sayesinde Türkçe karakterler olduğu gibi yazılır; bunu yazmazsanız <code class="inline">json</code> Türkçe harfleri <code class="inline">"\u015e\u00fckr\u00fc"</code> gibi kaçış kodlarına çevirir (bozuk değildir, ama okunmaz). <code class="inline">indent=4</code> ise dosyayı girintili ve okunabilir yapar; bu ayar olmazsa her şey tek satıra sıkışır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">json_okuma.py</span></div>
+<pre>import json
+
+with open("ogrenci.json", "r", encoding="utf-8") as f:
+    veri = json.load(f)
+
+print(type(veri))        <span class="c"># &lt;class 'dict'&gt;  — gerçek bir sözlük!</span>
+print(veri["ad"])        <span class="c"># Şükrü</span>
+print(veri["dersler"])   <span class="c"># ['Python', 'Veritabanı']</span>
+print(veri["mezun"])     <span class="c"># False  (tekrar Python bool'una döndü)</span></pre>
+    </div>
+    <p>Dikkat edin: <code class="inline">json.load()</code> bize <strong>gerçek bir sözlük</strong> döndürdü. Düz metindeki gibi <code class="inline">split()</code> ile uğraşmadık; veriye doğrudan anahtarıyla eriştik ve tipler korundu. JSON bazen bir dosyada değil, bir <strong>string</strong> içinde gelir (örneğin bir web API'sinden); o zaman <code class="inline">json.dumps()</code> ve <code class="inline">json.loads()</code> kullanılır.</p>
+    <div class="note ok"><span class="tag">Özet</span><p><code class="inline">.txt</code> insan için basit notlar tutmaya uygundur; <strong><code class="inline">.json</code> ise programlar arasında yapılı veri taşımanın standart yoludur.</strong> Bir veriyi daha sonra programınızda yeniden kullanacaksanız (ayarlar, kayıtlar, API verisi), JSON neredeyse her zaman doğru tercihtir.</p></div>
+
+    <hr class="hr">
+
+    <h2 id="karar"><span class="num">10</span>Hangi modu, hangi yöntemi? — Karar tablosu</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Durum</th><th>Önerilen yapı</th></tr></thead>
+        <tbody>
+          <tr><td>Var olan bir dosyayı okuyacağım</td><td><code>open(..., "r")</code></td></tr>
+          <tr><td>Sıfırdan yeni dosya yazacağım (eskisi silinsin)</td><td><code>open(..., "w")</code></td></tr>
+          <tr><td>Var olan dosyanın sonuna ekleyeceğim</td><td><code>open(..., "a")</code></td></tr>
+          <tr><td>Dosyayı satır satır işleyeceğim</td><td><code>for satir in f</code></td></tr>
+          <tr><td>Tüm dosyayı tek seferde alacağım</td><td><code>f.read()</code></td></tr>
+          <tr><td>Satırlara liste gibi erişeceğim</td><td><code>f.readlines()</code></td></tr>
+          <tr><td>Dosyayı her durumda güvenle kapatmak istiyorum</td><td><code>with</code> bloğu</td></tr>
+          <tr><td>Dosya olmayabilir, çökmesin istiyorum</td><td><code>try / except FileNotFoundError</code></td></tr>
+          <tr><td>İçerikte Türkçe karakter var</td><td><code>encoding="utf-8"</code></td></tr>
+          <tr><td>Yapılı / iç içe veri saklayacağım (sözlük, liste)</td><td>JSON — <code>json.dump</code> / <code>json.load</code></td></tr>
+          <tr><td>Türkçe JSON yazacağım</td><td><code>ensure_ascii=False, indent=4</code></td></tr>
+          <tr><td>Dosyada belirli bir konuma gideceğim</td><td><code>seek()</code> / <code>tell()</code></td></tr>
+          <tr><td>Dosyayı silmeden başına/ortasına ekleyeceğim</td><td><code>"r+"</code> modu + <code>seek(0)</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="hr">
+
+    <h2 id="test"><span class="num">11</span>Konu sonu testi</h2>
+    <p>Aşağıdaki altı soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
+    <ol class="quiz">
+      <li>
+        <p class="q">Var olan ve içinde veri bulunan bir dosyayı <code class="inline">"w"</code> modunda açarsak ne olur?</p>
+        <ul class="opts">
+          <li><b>A)</b> Yeni veriler dosyanın sonuna eklenir</li>
+          <li><b>B)</b> Hata verir, çünkü dosya zaten vardır</li>
+          <li><b>C)</b> Dosyanın eski içeriği silinir, yenisi yazılır</li>
+          <li><b>D)</b> Hiçbir şey olmaz, dosya değişmez</li>
+          <li><b>E)</b> Dosya ikiye bölünür</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">C</span><code class="inline">"w"</code> modu var olan dosyanın içeriğini siler ve baştan yazar. Veri eklemek için <code class="inline">"a"</code> kullanılmalıdır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun dosyaya yazdığı içerik nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru2.py</span></div>
+<pre>with open("a.txt", "w", encoding="utf-8") as f:
+    f.write("bir")
+    f.write("iki")</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">biriki</code> (yan yana)</li>
+          <li><b>B)</b> <code class="inline">bir iki</code> (aralarında boşlukla)</li>
+          <li><b>C)</b> <code class="inline">bir</code> ve <code class="inline">iki</code> (alt alta)</li>
+          <li><b>D)</b> <code class="inline">bir,iki</code></li>
+          <li><b>E)</b> Hata verir</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">A</span><code class="inline">write()</code> otomatik alt satıra geçmez. <code class="inline">\n</code> konmadığı için "bir" ve "iki" yan yana yazılır: <code class="inline">biriki</code>.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">f.readlines()</code> metodu ne döndürür?</p>
+        <ul class="opts">
+          <li><b>A)</b> Dosyanın tamamını tek bir string olarak</li>
+          <li><b>B)</b> Satırların bulunduğu bir liste</li>
+          <li><b>C)</b> Sadece ilk satırı</li>
+          <li><b>D)</b> Satır sayısını (sayı)</li>
+          <li><b>E)</b> Hiçbir şey döndürmez</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">B</span><code class="inline">readlines()</code> her satırı bir eleman olarak içeren bir <strong>liste</strong> döndürür (ör. <code class="inline">['bir\n', 'iki\n']</code>).</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">with open(...) as f:</code> yapısının en önemli avantajı nedir?</p>
+        <ul class="opts">
+          <li><b>A)</b> Dosyayı daha hızlı açar</li>
+          <li><b>B)</b> Türkçe karakterleri otomatik düzeltir</li>
+          <li><b>C)</b> Dosyayı şifreler</li>
+          <li><b>D)</b> Dosyayı iki kez açar</li>
+          <li><b>E)</b> Blok bitince dosyayı otomatik kapatır</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">E</span><code class="inline">with</code> bloğu, blok bittiğinde (hata olsa bile) dosyayı otomatik olarak kapatır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Var olmayan bir dosyayı <code class="inline">"r"</code> modunda açmaya çalışırsak hangi hata oluşur?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">ValueError</code></li>
+          <li><b>B)</b> <code class="inline">TypeError</code></li>
+          <li><b>C)</b> <code class="inline">ZeroDivisionError</code></li>
+          <li><b>D)</b> <code class="inline">FileNotFoundError</code></li>
+          <li><b>E)</b> Hata oluşmaz, boş dosya açılır</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">D</span>Okuma modunda (<code class="inline">"r"</code>) var olmayan dosya <code class="inline">FileNotFoundError</code> fırlatır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q"><code class="inline">json.load(f)</code> bir JSON dosyasını okuduğunda Python tarafında genellikle hangi tipte veri döndürür?</p>
+        <ul class="opts">
+          <li><b>A)</b> Sözlük (dict) ya da liste gibi yapılı bir nesne</li>
+          <li><b>B)</b> Her zaman string</li>
+          <li><b>C)</b> Her zaman sayı</li>
+          <li><b>D)</b> Dosya nesnesi</li>
+          <li><b>E)</b> Hiçbir şey döndürmez</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">A</span><code class="inline">json.load()</code>, JSON'daki yapıyı Python nesnesine çevirir; bir nesne ise <code class="inline">dict</code>, bir dizi ise <code class="inline">list</code> döndürür. Veriye doğrudan anahtar/indeksle erişilebilir.</div>
+        </details>
+      </li>
+    </ol>
+
+    <div class="note"><span class="tag">Özet</span><p>Dosya işlemlerini her zaman <code class="inline">with</code> ile yapın, Türkçe içerikte <code class="inline">encoding="utf-8"</code> kullanın ve mod seçerken iki kez düşünün: <code class="inline">"w"</code> veri siler, <code class="inline">"a"</code> veri ekler. Birden fazla alanı olan kayıtları düz metinde saklamak yerine JSON kullanın.</p></div>
+
+    <div class="aside-card mobil">
+      <div class="k">İlgili konu</div>
+      <p>Hata Yönetimi — 3. hafta. Dosya açma her zaman başarısız olabilir; <code class="inline">try / except FileNotFoundError</code> bu konuda sürekli karşınıza çıkar.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="hata-yonetimi.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">3. Hafta</span>
+        <span class="kb">Hata Yönetimi</span>
+      </a>
+      <a class="komsu-kart sonraki" href="siniflar.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">6. Hafta</span>
+        <span class="kb">Sınıflara Giriş</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#neden"><span class="n">1</span>Neden vardır?</a>
+      <a href="#acma"><span class="n">2</span>Dosya açma: open()</a>
+      <a href="#modlar"><span class="n">3</span>Dosya modları</a>
+      <a href="#yazma"><span class="n">4</span>Dosyaya yazma</a>
+      <a href="#okuma"><span class="n">5</span>Dosyadan okuma</a>
+      <a href="#with"><span class="n">6</span>with bloğu</a>
+      <a href="#imlec"><span class="n">7</span>Dosya imleci</a>
+      <a href="#hata"><span class="n">8</span>Hata yönetimi ve encoding</a>
+      <a href="#json"><span class="n">9</span>JSON dosyaları</a>
+      <a href="#karar"><span class="n">10</span>Karar tablosu</a>
+      <a href="#test"><span class="n">11</span>Konu sonu testi</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">İlgili konu</div>
+      <p>Hata Yönetimi — 3. hafta. Dosya açma her zaman başarısız olabilir; <code class="inline">try / except FileNotFoundError</code> bu konuda sürekli karşınıza çıkar.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
+    <p class="alt-kisi"><!-- AD SOYAD --></p>
+      <nav class="alt-bag" aria-label="Alt bağlantılar">
+        <a href="index.html">Ders ana sayfası</a>
+        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

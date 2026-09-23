@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polimorfizm, Kapsülleme, Soyutlama — NTP II Ders Notları</title>
+<meta name="description" content="Nesne tabanlı programlamanın dört temel ilkesinden kalıtımı geçen hafta gördük. Bu sayfa kalan üçünü anlatır: aynı komutun farklı nesnelerde farklı...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Polimorfizm, Kapsülleme, Soyutlama — NTP II Ders Notları">
+<meta property="og:description" content="Nesne tabanlı programlamanın dört temel ilkesinden kalıtımı geçen hafta gördük. Bu sayfa kalan üçünü anlatır: aynı komutun farklı nesnelerde farklı...">
+<script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Polimorfizm ve Kapsülleme</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="polimorfizm.html" class="etkin" aria-current="page"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="moduller.html"><span class="mh">12</span>Modüller</a>
+          <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+        </nav>
+      </details>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Polimorfizm ve Kapsülleme</span></div>
+
+<div class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 11. Hafta</div>
+    <h1>Çok Biçimlilik, Kapsülleme ve Soyutlama</h1>
+    <p class="lede">Nesne tabanlı programlamanın dört temel ilkesinden kalıtımı geçen hafta gördük. Bu sayfa kalan üçünü anlatır: aynı komutun farklı nesnelerde farklı çalışması, bir nesnenin verisini dış dünyadan koruma ve gereksiz ayrıntıları gizleyip yalnızca iskeleti ortaya koyma.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#giris"><span class="n">1</span>Bu modülde ne var?</a>
+        <a href="#polimorfizm"><span class="n">2</span>Çok biçimlilik</a>
+        <a href="#kapsulleme"><span class="n">3</span>Kapsülleme</a>
+        <a href="#soyutlama"><span class="n">4</span>Soyutlama</a>
+        <a href="#test"><span class="n">5</span>Konu sonu testi</a>
+      </nav>
+    </details>
+
+<h2 id="giris"><span class="num">1</span>Bu modülde ne var?</h2>
+    <p>Nesne tabanlı programlamanın dört temel ilkesinden birini, <strong>kalıtımı</strong>, geçen hafta gördük. Bu hafta kalan üçünü işliyoruz. Bunlar birbirinden bağımsız konular değil; üçü de aynı amaca hizmet eder: gerçek dünyayı daha sadık modellemek ve büyük projelerde kodu yönetilebilir tutmak.</p>
+    <p><strong>Çok biçimlilik</strong> aynı komutun farklı nesnelerde farklı çalışmasını, <strong>kapsülleme</strong> bir nesnenin verisini dış dünyadan koruyup yalnızca izin verilen yollarla erişilmesini, <strong>soyutlama</strong> ise gereksiz ayrıntıları gizleyip yalnızca gerekli iskeleti ortaya koymayı sağlar.</p>
+
+    <h2 id="polimorfizm"><span class="num">2</span>Çok biçimlilik (polymorphism)</h2>
+    <p>Geçen modülde override'ı <code class="inline">Arac</code> ve <code class="inline">Araba</code> sınıfları üzerinde görmüştük: alt sınıf, ana sınıftan miras aldığı <code class="inline">ses_cikar</code> metodunu kendine göre yeniden tanımlıyordu. <strong>Çok biçimlilik</strong>, bu fikrin doğal sonucudur: aynı isimli bir metot, hangi nesne üzerinde çağrıldığına göre farklı davranır. "Polimorfizm" kelimesi zaten "çok biçim" demektir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">hayvanlar.py</span></div>
+<pre>class Hayvan:
+    def ses_cikar(self):
+        print("Hayvan bir ses çıkarıyor.")
+
+class Kedi(Hayvan):
+    def ses_cikar(self):
+        print("Miyav!")
+
+class Kopek(Hayvan):
+    def ses_cikar(self):
+        print("Hav!")</pre>
+    </div>
+
+    <h3 id="tek-fonksiyon">2.1 Tek fonksiyon, çok tür</h3>
+    <p>Çok biçimliliğin asıl değeri, <strong>aynı kodun farklı türlerle çalışabilmesidir.</strong> Aşağıdaki <code class="inline">seslendir</code> fonksiyonu, kendisine gelen nesnenin hangi sınıftan olduğunu bilmek zorunda değildir; yalnızca <code class="inline">ses_cikar</code> metodunu çağırır. Nesne kediyse miyavlar, köpekse havlar:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">seslendir.py</span></div>
+<pre>def seslendir(hayvan):
+    hayvan.ses_cikar()
+
+hayvanlar = [Kedi(), Kopek(), Kedi()]
+for h in hayvanlar:
+    seslendir(h)</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı</div>
+<pre>Miyav!
+Hav!
+Miyav!</pre>
+    </div>
+    <p>Burada <code class="inline">seslendir</code> fonksiyonu içinde tek bir <code class="inline">if</code> bile yok. Yeni bir hayvan türü (örneğin <code class="inline">Kus</code>) eklemek isterseniz, bu fonksiyona dokunmanıza gerek kalmaz; yeni sınıf kendi <code class="inline">ses_cikar</code>'ını getirir, fonksiyon onu da olduğu gibi çalıştırır. İşte çok biçimlilik kodu bu yüzden <strong>esnek ve genişletilebilir</strong> kılar: yeni türler eklemek, var olan kodu değiştirmeyi gerektirmez.</p>
+
+    <h2 id="kapsulleme"><span class="num">3</span>Kapsülleme (encapsulation)</h2>
+    <p>Bir banka hesabı nesnesi düşünün. Bakiyenin dışarıdan, hiçbir kontrol olmadan, <code class="inline">hesap.bakiye = -5000</code> gibi doğrudan değiştirilebilmesi tehlikelidir. Oysa para çekme işleminin "yeterli bakiye var mı?" kontrolünden geçmesini isteriz. <strong>Kapsülleme</strong>, tam da bunu sağlar: bir nesnenin verisini dış dünyadan gizler ve ona yalnızca belirlenen metotlar üzerinden erişilmesine izin verir.</p>
+    <div class="note"><span class="tag">ATM</span><p>Bir ATM'de hesabınıza erişir, bakiye görür, para çeker veya yatırırsınız. Ama arka planda kimlik doğrulama, yetki kontrolü, bakiye güncelleme gibi pek çok işlem döner ve siz bunlarla doğrudan ilgilenmezsiniz. ATM size yalnızca gerekli düğmeleri sunar, geri kalan her şeyi gizler. Hem güvenlik sağlanır hem de kullanım basitleşir.</p></div>
+
+    <h3 id="erisim">3.1 Üç erişim düzeyi</h3>
+    <p>Python'da kapsülleme, özelliklerin önüne konan alt çizgilerle ifade edilir. Üç düzey vardır:</p>
+    <figure class="diagram"><img alt="Public, protected ve private erişim düzeyleri" src="images/erisim_belirleyiciler.png" width="1230" height="645" loading="lazy" decoding="async">
+      <figcaption>Public, protected ve private erişim düzeyleri</figcaption>
+    </figure>
+    <p><strong>Public (genel):</strong> Python'da bir özellik varsayılan olarak public'tir; önüne hiçbir ek konmaz, sınıfın dışından serbestçe erişilebilir. <strong>Protected (korumalı):</strong> önüne <strong>tek alt çizgi</strong> konur; teknik olarak dışarıdan erişilebilir, ama bu adlandırma "bu özelliğe dışarıdan dokunma, yalnızca sınıf ve alt sınıflar içinde kullan" anlamına gelen bir uyarıdır. <strong>Private (özel):</strong> önüne <strong>çift alt çizgi</strong> konur; bu özelliğe sınıfın dışından doğrudan erişilemez.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">erisim_duzeyleri.py</span></div>
+<pre>class Araba:
+    def __init__(self, model):
+        self.model = model          <span class="c"># public</span>
+        self._yakit = "Benzin"      <span class="c"># protected</span>
+        self.__sasi_no = "ABC123"   <span class="c"># private</span>
+
+araba = Araba("Toyota")
+print(araba.model)       <span class="ok"># Toyota — erişim serbest</span>
+print(araba._yakit)      <span class="c"># erişilebilir ama önerilmez</span>
+print(araba.__sasi_no)   <span class="no"># ❌ AttributeError</span></pre>
+    </div>
+    <div class="note warn"><span class="tag">Dikkat</span><p>Protected ile private'ı karıştırmayın. Tek alt çizgi (<code class="inline">_</code>) yalnızca bir uyarıdır, erişimi gerçekten engellemez; erişimi fiilen kısıtlayan çift alt çizgidir (<code class="inline">__</code>). Yine de private tam bir kilit değildir: Python bunu <strong>name mangling</strong> denen bir yeniden adlandırmayla yapar ve özelliğe <code class="inline">araba._Araba__sasi_no</code> yazımıyla hâlâ erişilebilir. Yani çift alt çizgi, engelden çok güçlü bir uyarıdır.</p></div>
+
+    <h3 id="getter-setter">3.2 Getter ve setter: kontrollü erişim</h3>
+    <p>Private bir özelliğe erişmek tamamen yasak değildir; sadece <strong>kontrollü</strong> olması gerekir. Bunun için sınıfın içinde, o özelliği okuyan bir <strong>getter</strong> ve değiştiren bir <strong>setter</strong> metodu yazarız. Böylece her erişim bizim koyduğumuz kuralın içinden geçer:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">getter_setter.py</span></div>
+<pre>class Araba:
+    def __init__(self, sasi_no):
+        self.__sasi_no = sasi_no
+
+    def get_sasi_no(self):          <span class="c"># getter: okur</span>
+        return self.__sasi_no
+
+    def set_sasi_no(self, yeni):    <span class="c"># setter: değiştirir</span>
+        self.__sasi_no = yeni
+
+araba = Araba("ABC123")
+print(araba.get_sasi_no())          <span class="c"># ABC123  — getter ile okuduk</span>
+araba.set_sasi_no("XYZ999")         <span class="c"># setter ile değiştirdik</span>
+print(araba.get_sasi_no())          <span class="c"># XYZ999</span></pre>
+    </div>
+    <p>Bu yaklaşımın değeri, setter içine <strong>kontrol</strong> koyabilmenizdir. Örneğin bir bakiye setter'ında "negatif değer kabul etme" kuralını yazabilir, böylece nesnenin verisinin her zaman geçerli kalmasını garanti edebilirsiniz. Python'da bu işin daha yaygın yolu <code class="inline">@property</code> kullanmaktır; bu dersin kapsamı dışında kaldığı için burada getter/setter metotlarıyla ilerliyoruz.</p>
+
+    <h2 id="soyutlama"><span class="num">4</span>Soyutlama (abstraction)</h2>
+    <p><strong>Soyutlama</strong>, bir nesnenin yalnızca gerekli olan kısmını ortaya koyup gereksiz ayrıntıları gizlemektir. Büyük projelerde, "her şeklin bir alanı vardır" gibi ortak bir kuralı önce bir <strong>iskele</strong> olarak tanımlar, ayrıntıları sonra her sınıfa bırakırız.</p>
+    <p>Python'da soyutlama, <strong>soyut sınıflar</strong> ve <strong>soyut metotlar</strong> ile yapılır. Bunun için <code class="inline">abc</code> (Abstract Base Classes) modülündeki <code class="inline">ABC</code> sınıfı ve <code class="inline">@abstractmethod</code> dekoratörü kullanılır. Soyut bir metot, yalnızca ismi belirtilmiş, içi boş bir metottur; ondan türeyen sınıfların bu metodu <strong>mutlaka</strong> kendine göre tanımlaması gerekir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">sekiller.py</span></div>
+<pre>from abc import ABC, abstractmethod
+
+class Sekil(ABC):
+    @abstractmethod
+    def alan_hesapla(self):
+        pass                        <span class="c"># içi boş — kuralı koyar, uygulamayı alt sınıfa bırakır</span>
+
+class Dikdortgen(Sekil):
+    def __init__(self, genislik, yukseklik):
+        self.genislik = genislik
+        self.yukseklik = yukseklik
+    def alan_hesapla(self):
+        return self.genislik * self.yukseklik
+
+class Daire(Sekil):
+    def __init__(self, yaricap):
+        self.yaricap = yaricap
+    def alan_hesapla(self):
+        return 3.14 * self.yaricap ** 2
+
+print("Dikdörtgen alanı:", Dikdortgen(4, 5).alan_hesapla())   <span class="c"># 20</span>
+print("Daire alanı:", Daire(3).alan_hesapla())                <span class="c"># 28.26</span></pre>
+    </div>
+
+    <h3 id="soyut-nesne">4.1 Soyut sınıftan nesne oluşturulamaz</h3>
+    <p>Soyut sınıfın amacı, doğrudan kullanılmak değil, <strong>bir kalıp dayatmaktır.</strong> Bu yüzden <code class="inline">Sekil</code> sınıfından doğrudan nesne oluşturmaya çalışırsanız Python izin vermez:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soyut_nesne.py</span></div>
+<pre>s = Sekil()
+<span class="no"># ❌ TypeError: Can't instantiate abstract class Sekil</span>
+<span class="no">#    without an implementation for abstract method 'alan_hesapla'</span></pre>
+    </div>
+    <p>Bu, soyutlamanın getirdiği güvencedir: <code class="inline">Sekil</code>'den türeyen her sınıf <code class="inline">alan_hesapla</code>'yı tanımlamak <strong>zorundadır</strong>; tanımlamazsa o sınıftan da nesne oluşturulamaz. Böylece "her şeklin bir alan hesabı olmalı" kuralı koda gömülmüş olur.</p>
+
+    <hr class="hr">
+
+    <h2 id="test"><span class="num">5</span>Konu sonu testi</h2>
+    <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
+    <ol class="quiz">
+      <li>
+        <p class="q">Çok biçimlilik (polimorfizm) ne anlama gelir?</p>
+        <ul class="opts">
+          <li><b>A)</b> Bir sınıfın birden çok ana sınıftan miras alması</li>
+          <li><b>B)</b> Bir nesnenin birden çok kopyasının olması</li>
+          <li><b>C)</b> Aynı isimli bir metodun farklı sınıflarda farklı davranması</li>
+          <li><b>D)</b> Private özelliklerin gizlenmesi</li>
+          <li><b>E)</b> Soyut sınıf oluşturma</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">C</span>Çok biçimlilik, aynı isimli metodun farklı sınıflarda farklı davranmasıdır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Python'da bir özelliği private yapmak için önüne ne konur?</p>
+        <ul class="opts">
+          <li><b>A)</b> Hiçbir şey</li>
+          <li><b>B)</b> Tek alt çizgi <code class="inline">_</code></li>
+          <li><b>C)</b> <code class="inline">private</code> anahtar kelimesi</li>
+          <li><b>D)</b> Çift alt çizgi <code class="inline">__</code></li>
+          <li><b>E)</b> Yıldız <code class="inline">*</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">D</span>Private özellik, önüne çift alt çizgi (<code class="inline">__</code>) konarak tanımlanır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Bir private özelliğe sınıf dışından güvenli erişim için ne kullanılır?</p>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">global</code></li>
+          <li><b>B)</b> getter / setter metotları</li>
+          <li><b>C)</b> <code class="inline">super()</code></li>
+          <li><b>D)</b> <code class="inline">@abstractmethod</code></li>
+          <li><b>E)</b> <code class="inline">__str__</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">B</span>Private özelliğe kontrollü erişim, getter ve setter metotlarıyla sağlanır.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kod neden hata verir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru4.py</span></div>
+<pre>from abc import ABC, abstractmethod
+
+class Sekil(ABC):
+    @abstractmethod
+    def alan(self):
+        pass
+
+s = Sekil()</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">abc</code> modülü içe aktarılmadı</li>
+          <li><b>B)</b> <code class="inline">alan</code> metodu yanlış yazılmış</li>
+          <li><b>C)</b> <code class="inline">@abstractmethod</code> gereksizdir</li>
+          <li><b>D)</b> Hata oluşmaz</li>
+          <li><b>E)</b> <code class="inline">Sekil</code> soyut bir sınıftır; doğrudan nesne oluşturulamaz</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">E</span><code class="inline">@abstractmethod</code> içeren soyut sınıftan doğrudan nesne oluşturulamaz; <code class="inline">TypeError</code> verir.</div>
+        </details>
+      </li>
+
+      <li>
+        <p class="q">Aşağıdaki kodun çıktısı nedir?</p>
+        <div class="code">
+          <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">soru5.py</span></div>
+<pre>class Araba:
+    def __init__(self):
+        self.__hiz = 120
+    def hiz_goster(self):
+        return self.__hiz
+
+a = Araba()
+print(a.hiz_goster())</pre>
+        </div>
+        <ul class="opts">
+          <li><b>A)</b> <code class="inline">120</code></li>
+          <li><b>B)</b> <code class="inline">AttributeError</code></li>
+          <li><b>C)</b> <code class="inline">__hiz</code></li>
+          <li><b>D)</b> <code class="inline">None</code></li>
+          <li><b>E)</b> <code class="inline">0</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">A</span><code class="inline">hiz_goster</code>, sınıfın <strong>içinden</strong> private <code class="inline">__hiz</code>'e erişebilir; çıktı <code class="inline">120</code>'dir. Hata yalnızca sınıf dışından doğrudan erişimde oluşur.</div>
+        </details>
+      </li>
+    </ol>
+
+    <div class="note"><span class="tag">Özet</span><p>Çok biçimlilik yeni türler eklemeyi kolaylaştırır: ortak metot adı aynı kaldığı sürece var olan kodu değiştirmeniz gerekmez. Kapsülleme veriyi kontrollü kapıların arkasına alır. Soyutlama ise alt sınıflara uyulması zorunlu bir iskelet dayatır.</p></div>
+
+    <div class="aside-card mobil">
+      <div class="k">Dizi bilgisi</div>
+      <p>Sınıflar dizisinin dördüncü ve son modülü. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). Bu modüldeki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="kalitim.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">10. Hafta</span>
+        <span class="kb">Kalıtım</span>
+      </a>
+      <a class="komsu-kart sonraki" href="moduller.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">12. Hafta</span>
+        <span class="kb">Modüller</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#giris"><span class="n">1</span>Bu modülde ne var?</a>
+      <a href="#polimorfizm"><span class="n">2</span>Çok biçimlilik</a>
+      <a href="#kapsulleme"><span class="n">3</span>Kapsülleme</a>
+      <a href="#soyutlama"><span class="n">4</span>Soyutlama</a>
+      <a href="#test"><span class="n">5</span>Konu sonu testi</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Dizi bilgisi</div>
+      <p>Sınıflar dizisinin dördüncü ve son modülü. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). Bu modüldeki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
+    <p class="alt-kisi"><!-- AD SOYAD --></p>
+      <nav class="alt-bag" aria-label="Alt bağlantılar">
+        <a href="index.html">Ders ana sayfası</a>
+        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

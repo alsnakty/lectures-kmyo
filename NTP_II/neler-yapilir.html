@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python ile Neler Yapılır — NTP II Ders Notları</title>
+<meta name="description" content="Bu sayfa Python&#x27;un dört farklı dünyasına kısa bir tur atar: masaüstü uygulamaları, oyun geliştirme, web&#x27;den veri toplama ve web/sunucu geliştirme. Amaç...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python ile Neler Yapılır — NTP II Ders Notları">
+<meta property="og:description" content="Bu sayfa Python&#x27;un dört farklı dünyasına kısa bir tur atar: masaüstü uygulamaları, oyun geliştirme, web&#x27;den veri toplama ve web/sunucu geliştirme. Amaç...">
+<script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Python ile Neler Yapılır</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="moduller.html"><span class="mh">12</span>Modüller</a>
+          <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="neler-yapilir.html" class="etkin" aria-current="page"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+        </nav>
+      </details>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Python ile Neler Yapılır</span></div>
+
+<div class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 14. Hafta</div>
+    <h1>Python ile Başka Neler Yapılır?</h1>
+    <p class="lede">Bu sayfa Python'un dört farklı dünyasına kısa bir tur atar: masaüstü uygulamaları, oyun geliştirme, web'den veri toplama ve web/sunucu geliştirme. Amaç bunları öğrenmek değil, var olduklarını bilmek — her biri başlı başına bir derstir.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#giris"><span class="n">1</span>Giriş</a>
+        <a href="#gui"><span class="n">2</span>Masaüstü uygulamaları</a>
+        <a href="#oyun"><span class="n">3</span>Oyun geliştirme</a>
+        <a href="#scraping"><span class="n">4</span>Web'den veri toplama</a>
+        <a href="#web"><span class="n">5</span>Web sitesi ve API</a>
+        <a href="#vibecoding"><span class="n">6</span>Yapay zekâ ile kodlama</a>
+      </nav>
+    </details>
+
+<h2 id="giris"><span class="num">1</span>Python yalnızca konsol değildir</h2>
+    <p>Şimdiye kadar yazdığımız programlar hep aynı şekilde çalıştı: çalıştırırsınız, ekrana (konsola) yazı basar, biter. Oysa Python'la çok daha fazlası yapılabilir — tıklanabilir pencereler, hareket eden oyunlar, internetten veri toplayan botlar, milyonlarca kullanıcıya hizmet veren web siteleri. Bunların hepsi, bir işi kolaylaştırmak için yazılmış <strong>kütüphaneler</strong> sayesinde mümkün olur; siz sıfırdan yazmazsınız, hazır araçları kullanırsınız.</p>
+    <figure class="diagram"><img alt="Python'un dört kullanım alanı ve kütüphaneleri" src="images/python_harita.png" width="1230" height="705" loading="lazy" decoding="async">
+      <figcaption>Python'un dört kullanım alanı ve kütüphaneleri</figcaption>
+    </figure>
+
+    <h2 id="gui"><span class="num">2</span>Masaüstü uygulamaları (GUI)</h2>
+    <p><strong>GUI</strong> (Graphical User Interface — grafik kullanıcı arayüzü), pencereli, düğmeli, kutucuklu programlar demektir. Word, hesap makinesi, bir giriş ekranı; hepsi birer GUI uygulamasıdır. Python'da bunları yazmak için en yaygın iki seçenek Tkinter ve PyQt'tir.</p>
+    <p><strong>Tkinter</strong>, Python ile birlikte gelir (ayrı kurulum gerektirmez) ve basit arayüzler için idealdir. Aşağıdaki örnek, bir etiket ve bir düğmeden oluşan küçük bir pencere oluşturur; düğmeye tıklanınca etiketin yazısı değişir:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">tkinter_ornek.py</span></div>
+<pre>import tkinter as tk
+
+def selamla():
+    label.config(text="Düğmeye tıklandı!")
+
+pencere = tk.Tk()
+pencere.title("Tkinter Örneği")
+
+label = tk.Label(pencere, text="Merhaba!")
+label.pack()
+
+buton = tk.Button(pencere, text="Tıkla", command=selamla)
+buton.pack()
+
+pencere.mainloop()</pre>
+    </div>
+    <div class="note warn"><span class="tag">Dikkat</span><p>Düğmeye <code class="inline">command=selamla</code> veriyoruz, <code class="inline">command=selamla()</code> değil. Yani fonksiyonun <strong>kendisini</strong> veriyoruz; Python onu düğmeye basıldığında çağırsın diye. Parantez koyarsanız fonksiyon pencere daha açılırken hemen bir kez çalışır ve düğme işlevini yitirir — yeni başlayanların en sık yaptığı GUI hatasıdır.</p></div>
+    <p>Son satırdaki <code class="inline">pencere.mainloop()</code> ise pencereyi açık tutan ve tıklamaları dinleyen döngüdür. Daha modern, şık ve karmaşık uygulamalar için ise <strong>PyQt</strong> (ya da kardeşi <strong>PySide</strong>) kullanılır; bunlar güçlü Qt arayüz kütüphanesini Python'a taşır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">pyqt_ornek.py</span></div>
+<pre>from PyQt5.QtWidgets import QApplication, QLabel, QPushButton, QVBoxLayout, QWidget
+
+app = QApplication([])
+
+pencere = QWidget()
+pencere.setWindowTitle("PyQt Örneği")
+
+yerlesim = QVBoxLayout()
+label = QLabel("Merhaba!")
+yerlesim.addWidget(label)
+
+buton = QPushButton("Tıkla")
+buton.clicked.connect(lambda: label.setText("Tıklandı!"))
+yerlesim.addWidget(buton)
+
+pencere.setLayout(yerlesim)
+pencere.show()
+app.exec()</pre>
+    </div>
+    <p><strong>Hangisi ne zaman?</strong> Küçük bir araç, basit bir form için Tkinter fazlasıyla yeter ve kurulum gerektirmez. Büyük, görsel olarak zengin, profesyonel bir uygulama hedefliyorsanız PyQt/PySide daha uygundur (<code class="inline">pip install pyqt5</code>).</p>
+    <div class="note"><span class="tag">Nereye bakmalı</span><p>Tkinter için Python'un resmî belgeleri (docs.python.org), PyQt için riverbankcomputing.com, PySide için doc.qt.io.</p></div>
+
+    <h2 id="oyun"><span class="num">3</span>Oyun geliştirme</h2>
+    <p>Python, büyük ticari oyunların dili olmasa da, oyun <strong>mantığını</strong> öğrenmek ve 2D/3D prototipler yapmak için harika bir başlangıçtır. <strong>Pygame</strong>, 2D oyunlar için en yaygın kütüphanedir. Her oyunun kalbinde bir <strong>oyun döngüsü</strong> (game loop) vardır: ekranı temizle, nesneleri çiz, kullanıcı girişini dinle, ekranı güncelle — ve bunu saniyede onlarca kez tekrarla. Aşağıdaki örnek, W/A/S/D tuşlarıyla hareket eden bir daire çizer:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">pygame_ornek.py</span></div>
+<pre>import pygame
+
+pygame.init()
+ekran = pygame.display.set_mode((640, 480))
+saat = pygame.time.Clock()
+calisiyor = True
+konum = pygame.Vector2(320, 240)
+
+while calisiyor:
+    for olay in pygame.event.get():
+        if olay.type == pygame.QUIT:      <span class="c"># pencere kapatıldı mı?</span>
+            calisiyor = False
+
+    ekran.fill("purple")                  <span class="c"># arka planı temizle</span>
+    pygame.draw.circle(ekran, "red", konum, 40)
+
+    tuslar = pygame.key.get_pressed()     <span class="c"># tuşları dinle</span>
+    if tuslar[pygame.K_w]: konum.y -= 5
+    if tuslar[pygame.K_s]: konum.y += 5
+    if tuslar[pygame.K_a]: konum.x -= 5
+    if tuslar[pygame.K_d]: konum.x += 5
+
+    pygame.display.flip()                 <span class="c"># ekranı güncelle</span>
+    saat.tick(60)                         <span class="c"># saniyede 60 kare</span>
+
+pygame.quit()</pre>
+    </div>
+    <p>Buradaki <code class="inline">while</code> döngüsü oyun döngüsüdür; pencere kapatılana kadar sürekli döner. Bu mantık (döngü + olay dinleme + çizim) hemen hemen tüm oyunlarda aynıdır (<code class="inline">pip install pygame</code>). <strong>Arcade</strong> ise Pygame'e benzer ama daha modern ve nesne tabanlı bir 2D kütüphanedir; her oyun bir sınıf olarak yazılır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">arcade_ornek.py</span></div>
+<pre>import arcade
+
+class Oyun(arcade.Window):
+    def __init__(self):
+        super().__init__(400, 300, "Arcade Örneği")
+        self.background_color = arcade.color.SKY_BLUE
+
+    def on_draw(self):
+        self.clear()
+        arcade.draw_circle_filled(200, 150, 30, arcade.color.RED)
+
+oyun = Oyun()
+arcade.run()</pre>
+    </div>
+    <p>Burada geçen modüllerde öğrendiğimiz <strong>sınıf</strong> ve <strong>kalıtım</strong> kavramlarını görüyorsunuz: <code class="inline">Oyun</code> sınıfı <code class="inline">arcade.Window</code>'dan miras alıyor ve <code class="inline">on_draw</code> metodunu override ediyor. Yani OOP bilginiz burada doğrudan işe yarıyor. Basit 3D prototipleri için ise <strong>Ursina</strong> kullanılır.</p>
+    <div class="note"><span class="tag">Nereye bakmalı</span><p>pygame.org, api.arcade.academy, ursinaengine.org.</p></div>
+
+    <h2 id="scraping"><span class="num">4</span>Web'den veri toplama (web scraping)</h2>
+    <p><strong>Web scraping</strong>, bir web sitesindeki bilgileri otomatik olarak toplama işlemidir. Fiyat takibi, haber toplama, akademik veri seti oluşturma gibi pek çok alanda kullanılır. Python'da iki temel araç vardır: statik sayfalar için BeautifulSoup, etkileşim gerektiren sayfalar için Selenium.</p>
+    <p><strong>BeautifulSoup</strong>, bir HTML sayfasının içinden istediğiniz parçaları (başlıklar, tarihler, bağlantılar) ayıklamanızı sağlar. Mantığını görmek için, elimizdeki bir HTML metnini ayrıştıralım:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">bs4_ornek.py</span></div>
+<pre>from bs4 import BeautifulSoup
+
+html = """
+&lt;div class="duyuru"&gt;&lt;h2&gt;Kayıt tarihleri açıklandı&lt;/h2&gt;&lt;span class="tarih"&gt;2025-09-01&lt;/span&gt;&lt;/div&gt;
+&lt;div class="duyuru"&gt;&lt;h2&gt;Vize programı yayımlandı&lt;/h2&gt;&lt;span class="tarih"&gt;2025-11-10&lt;/span&gt;&lt;/div&gt;
+"""
+
+soup = BeautifulSoup(html, "html.parser")
+for duyuru in soup.find_all("div", class_="duyuru"):
+    baslik = duyuru.find("h2").text
+    tarih = duyuru.find("span", class_="tarih").text
+    print(f"Duyuru: {baslik} | Tarih: {tarih}")</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Çıktı</div>
+<pre>Duyuru: Kayıt tarihleri açıklandı | Tarih: 2025-09-01
+Duyuru: Vize programı yayımlandı | Tarih: 2025-11-10</pre>
+    </div>
+    <p><code class="inline">find_all</code> belirli etikete/sınıfa uyan tüm öğeleri, <code class="inline">find</code> ise ilkini bulur; <code class="inline">.text</code> ise öğenin içindeki yazıyı verir. Gerçek bir siteden veri çekerken önce sayfayı <code class="inline">requests</code> ile indirir, sonra aynı şekilde ayrıştırırsınız. Bazı siteler ise içeriğini JavaScript ile sonradan yükler; bu durumda <code class="inline">requests</code> boş sayfa görür. <strong>Selenium</strong>, gerçek bir tarayıcıyı (Chrome gibi) kod ile yöneterek bu sorunu çözer: sayfayı açar, butona tıklar, formu doldurur, sonra içeriği okur.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">selenium_ornek.py</span></div>
+<pre>from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+surucu = webdriver.Chrome()
+surucu.get("https://example.com")
+
+basliklar = surucu.find_elements(By.TAG_NAME, "h1")
+for b in basliklar:
+    print(b.text)
+
+surucu.quit()</pre>
+    </div>
+    <div class="note warn"><span class="tag">Etik ve yasal</span><p>Web scraping güçlü bir araçtır ama sorumlulukla kullanılmalıdır. Bir siteyi kazımadan önce o sitenin <strong>kullanım şartlarını</strong> ve <code class="inline">robots.txt</code> dosyasını kontrol edin; kişisel verileri toplamaktan kaçının; siteye çok sık istek göndererek sunucusunu yormayın. Çoğu site makul ve saygılı kullanıma açıktır; ama izinsiz, aşırı veya ticari kötüye kullanım hem etik dışıdır hem de yasal sorun doğurabilir.</p></div>
+    <div class="note"><span class="tag">Nereye bakmalı</span><p>crummy.com/software/BeautifulSoup, selenium.dev.</p></div>
+
+    <h2 id="web"><span class="num">5</span>Web sitesi ve API geliştirme</h2>
+    <p>Bir web sitesinin arka planında (backend), istekleri karşılayan ve cevap üreten bir sunucu programı çalışır. Python, bu iş için dünyanın en popüler dillerinden biridir. <strong>Flask</strong>, öğrenmesi en kolay çerçevedir; az kodla bir web sunucusu ayağa kaldırabilirsiniz. Aşağıdaki program, tarayıcıdan ana sayfa istendiğinde bir mesaj döndürür:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">flask_ornek.py</span></div>
+<pre>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")           <span class="c"># ana adres istenince</span>
+def ana_sayfa():
+    return "Merhaba, dünya!"
+
+app.run(debug=True)       <span class="c"># sunucuyu başlat</span></pre>
+    </div>
+    <p>Buradaki <code class="inline">@app.route("/")</code>, daha önce görmediğimiz bir yapı: bir <strong>dekoratör</strong>. "Birisi <code class="inline">/</code> adresini ziyaret ederse, hemen altındaki fonksiyonu çalıştır" anlamına gelir (<code class="inline">pip install flask</code>).</p>
+    <p><strong>Django</strong>, büyük ve kurumsal projeler için "her şey dahil" bir çerçevedir; veritabanı yönetimi, kullanıcı girişi, yönetim paneli gibi pek çok şey hazır gelir. <strong>FastAPI</strong> ise özellikle <strong>API</strong> (uygulamaların birbiriyle veri alışverişi yaptığı arayüzler) yazmak için tasarlanmış, modern ve hızlı bir çerçevedir; otomatik dokümantasyon üretmesiyle ünlüdür:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">django_ve_fastapi.py</span></div>
+<pre><span class="c"># Django — bir görünüm (view) fonksiyonu</span>
+from django.http import HttpResponse
+
+def ana_sayfa(request):
+    return HttpResponse("Django sunucusuna hoş geldiniz.")
+
+
+<span class="c"># FastAPI — bir uç nokta</span>
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def ana_sayfa():
+    return {"mesaj": "FastAPI ile hızlı bir API"}
+
+<span class="c"># Çalıştırmak için terminalden: uvicorn dosya_adi:app --reload</span></pre>
+    </div>
+    <p><strong>Hangisi ne zaman?</strong> Hızlı bir prototip ya da küçük site için Flask; veritabanı ve panel isteyen büyük bir proje için Django; modern bir API için FastAPI.</p>
+    <div class="note"><span class="tag">Nereye bakmalı</span><p>flask.palletsprojects.com, djangoproject.com, fastapi.tiangolo.com.</p></div>
+
+    <h2 id="vibecoding"><span class="num">6</span>Yapay zekâ ile kodlama (vibecoding)</h2>
+    <p>Son yıllarda kod yazma biçimi değişti. Artık pek çok kişi, ne yapmak istediğini bir <strong>yapay zekâ aracına</strong> günlük dille anlatıyor; araç da buna uygun kodu üretiyor. Bu çalışma biçimine, İngilizce "vibe" (hava, sezgi) sözcüğünden gelen <strong>vibecoding</strong> deniyor: kodu satır satır kendiniz yazmak yerine, isteğinizi tarif edip üretilen kodu yönlendirerek ilerlersiniz.</p>
+    <p>Bu alanda yaygın araçlar arasında ChatGPT, Claude, Gemini gibi sohbet tabanlı yapay zekâlar ve GitHub Copilot, Cursor gibi doğrudan kod editörüne yerleşen yardımcılar sayılabilir. Hepsinin ortak yanı, sizden bir istek (bir soru, bir hata mesajı, bir örnek talebi) alıp kod önermeleridir.</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Nasıl faydalanmalı?</th><th>Açıklama</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Açıklama isteyin</strong></td><td>Anlamadığınız bir kodu ya da hata mesajını yapıştırıp "bunu bana açıkla" diyebilirsiniz.</td></tr>
+          <tr><td><strong>Örnek isteyin</strong></td><td>"Tkinter ile iki düğmeli bir pencere nasıl yapılır" gibi bir soruya çalışan bir başlangıç kodu üretir; siz de üzerine ekleyerek öğrenirsiniz.</td></tr>
+          <tr><td><strong>Tekrarlayan işi devredin</strong></td><td>Sık yazılan kalıpları (dosya okuma iskeleti, basit bir döngü) üretmesi zaman kazandırır.</td></tr>
+          <tr><td><strong>Hatanızı buldurun</strong></td><td>Çalışmayan kodunuzu verip "neden hata veriyor" diye sorabilirsiniz.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Nelere dikkat etmeli?</th><th>Açıklama</th></tr></thead>
+        <tbody>
+          <tr><td class="no">❌ <strong>Anlamadan kopyalamak</strong></td><td>Üretilen kodu anlamadan yapıştırırsanız, kod çalışsa bile siz öğrenmemiş olursunuz. Amaç kodu <strong>anlamaktır</strong>, yalnızca çalıştırmak değil.</td></tr>
+          <tr><td>⚠ <strong>Her zaman doğru değildir</strong></td><td>Yapay zekâ bazen çalışmayan, hatalı ya da var olmayan işlevlere dayanan kod üretebilir. Ürettiği kodu mutlaka çalıştırıp doğrulayın.</td></tr>
+          <tr><td>⚠ <strong>Temeli atlamayın</strong></td><td>Döngü, fonksiyon, sınıf gibi temelleri kendiniz bilmezseniz, aracın verdiği kodu ne düzeltebilir ne de geliştirebilirsiniz.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn"><span class="tag">Ders kuralı</span><p>Yapay zekâdan yardım alabilirsiniz; ancak teslim ettiğiniz kodu <strong>kendiniz anlamalı ve açıklayabilmelisiniz.</strong> Proje sunumunda kodunuzun nasıl çalıştığını açıklamanız beklenir; "yapay zekâ yazdı, ben bilmiyorum" geçerli bir cevap değildir. Yapay zekâ, sizin yerinize düşünen değil, size yardımcı olan bir araçtır.</p></div>
+
+    <hr class="hr">
+
+    <div class="note"><span class="tag">Özet</span><p>Bu hafta bir keşif turudur; hiçbirini ezberlemeniz gerekmiyor, "şu işi Python'la şu kütüphane yapar" eşleşmesini kavramak yeterli. OOP bilginiz burada doğrudan işe yarıyor. Tkinter dışındaki kütüphaneler Python'la gelmez, <code class="inline">pip</code> ile kurulur. Bu kodlar konsol programı değildir; ayrı bir pencere açar ya da sunucu başlatır.</p></div>
+
+    <div class="aside-card mobil">
+      <div class="k">Çalıştırma notu</div>
+      <p>Buradaki kodlar kısa birer tanıtım örneğidir. Çoğu ayrı bir pencere ya da sunucu açtığı için not defterinde değil, kendi dosyasında (<code class="inline">.py</code>) çalıştırılır.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="veri-kutuphaneleri.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">13. Hafta</span>
+        <span class="kb">Veri Kütüphaneleri</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#giris"><span class="n">1</span>Giriş</a>
+      <a href="#gui"><span class="n">2</span>Masaüstü uygulamaları</a>
+      <a href="#oyun"><span class="n">3</span>Oyun geliştirme</a>
+      <a href="#scraping"><span class="n">4</span>Web'den veri toplama</a>
+      <a href="#web"><span class="n">5</span>Web sitesi ve API</a>
+      <a href="#vibecoding"><span class="n">6</span>Yapay zekâ ile kodlama</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Çalıştırma notu</div>
+      <p>Buradaki kodlar kısa birer tanıtım örneğidir. Çoğu ayrı bir pencere ya da sunucu açtığı için not defterinde değil, kendi dosyasında (<code class="inline">.py</code>) çalıştırılır.</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
+    <p class="alt-kisi"><!-- AD SOYAD --></p>
+      <nav class="alt-bag" aria-label="Alt bağlantılar">
+        <a href="index.html">Ders ana sayfası</a>
+        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      </nav>
+  </div>
+</footer>
+
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>
