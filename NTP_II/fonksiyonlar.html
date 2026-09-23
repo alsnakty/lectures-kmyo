@@ -95,7 +95,7 @@
     return deger      <span class="c"># opsiyonel (geri dönüş değeri)</span></pre>
     </div>
     <p><code class="inline">def</code> anahtar kelimesi Python'a "burada bir fonksiyon tanımlıyorum" der. Hemen ardından gelen fonksiyon adı, değişken adlandırma kurallarına uyar. Parantezlerin içine <strong>parametreleri</strong> yazarsınız; fonksiyon dışarıdan veri almayacaksa parantez boş kalır. Satır sonundaki <strong>iki nokta</strong> zorunludur ve onu <strong>girintili</strong> yazılan fonksiyon gövdesi takip eder. En sondaki <code class="inline">return</code> ise isteğe bağlıdır.</p>
-    <figure class="diagram"><img alt="Bir fonksiyonun anatomisi: def anahtar kelimesi, fonksiyon adı, parametre, iki nokta ve return geri dönüş değeri" src="images/fonksiyon_anatomi.png" width="1230" height="570" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="Bir fonksiyonun anatomisi: def anahtar kelimesi, fonksiyon adı, parametre, iki nokta ve return geri dönüş değeri" src="images/fonksiyon_anatomi.png" width="1230" height="570" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Bir fonksiyonun anatomisi</figcaption>
     </figure>
 
@@ -133,7 +133,7 @@ topla(3, 5)              <span class="c"># 8</span>
 sonuc = topla(3, 5)
 print(sonuc)             <span class="c"># 8</span></pre>
     </div>
-    <p><code class="inline">topla(3, 5)</code> çağrısı geriye <code class="inline">8</code> değerini döndürür. Bu değeri bir değişkene atayıp programın başka yerlerinde kullanabilirsiniz. İşte <code class="inline">return</code>'ün gücü budur: fonksiyonun ürettiği sonucu dışarı taşır.</p>
+    <p><code class="inline">topla(3, 5)</code> çağrısı geriye <code class="inline">8</code> değerini döndürür. Bu değeri bir değişkene atayıp programın başka yerlerinde kullanabilirsiniz. <code class="inline">return</code>, fonksiyonun ürettiği sonucu dışarı taşır.</p>
     <p>Küçük bir ayrıntı: <code class="inline">+</code> operatörü hem sayılarda hem metinlerde çalıştığı için aynı fonksiyon <code class="inline">topla("python", "programlama")</code> çağrısında birleştirme yapar ve <code class="inline">"pythonprogramlama"</code> üretir. Ama bu esneklik her operatörde yoktur; çarpma yapan bir fonksiyona iki metin verilirse <code class="inline">TypeError: can't multiply sequence by non-int of type 'str'</code> hatası alınır. Fonksiyona gönderdiğiniz verinin tipi önemlidir.</p>
 
     <h2 id="parametre"><span class="num">4</span>Parametreler ve argümanlar</h2>
@@ -212,7 +212,7 @@ print("b:", b)</pre>
 a: None
 b: 25</pre>
     </div>
-    <p>İçinde hiç <code class="inline">return</code> bulunmayan fonksiyona <strong>void fonksiyon</strong> denir. Böyle bir fonksiyon bittiğinde Python sanki orada görünmez bir <code class="inline">return None</code> varmış gibi davranır; bu yüzden <code class="inline">kare_v1</code> ekrana <code class="inline">25</code> yazdığı hâlde <code class="inline">a</code> değişkeni <code class="inline">None</code> olur. <code class="inline">kare_v2</code> ise ekrana hiçbir şey yazmaz ama geriye <code class="inline">25</code> döndürür. Kısacası: bir değeri sadece görmek istiyorsanız <code class="inline">print</code>, o değeri sonradan kullanacaksanız <code class="inline">return</code> kullanırsınız.</p>
+    <p>İçinde hiç <code class="inline">return</code> bulunmayan fonksiyona <strong>void fonksiyon</strong> denir (Python'un resmî terimi değildir; diğer dillerden gelen gayriresmî bir addır). Böyle bir fonksiyon bittiğinde Python sanki orada görünmez bir <code class="inline">return None</code> varmış gibi davranır; bu yüzden <code class="inline">kare_v1</code> ekrana <code class="inline">25</code> yazdığı hâlde <code class="inline">a</code> değişkeni <code class="inline">None</code> olur. <code class="inline">kare_v2</code> ise ekrana hiçbir şey yazmaz ama geriye <code class="inline">25</code> döndürür. Kısacası: bir değeri sadece görmek istiyorsanız <code class="inline">print</code>, o değeri sonradan kullanacaksanız <code class="inline">return</code> kullanırsınız.</p>
 
     <h3 id="bitirir">5.2 return fonksiyonu bitirir</h3>
     <p><code class="inline">return</code> çalıştığı anda fonksiyon <strong>tamamen sona erer.</strong> Ondan sonra yazılmış satırlar asla çalışmaz; bunlara "ölü kod" denir. Bu özellik aslında çok işe yarar; fonksiyondan <strong>erken çıkmak</strong> için kullanılır.</p>
@@ -234,11 +234,11 @@ print(kontrol(20))            <span class="c"># Reşit</span></pre>
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">ayni_isim.py</span></div>
 <pre>b = 5
 
-def function_name2():
+def degistir_b():
     b = 6             <span class="c"># bu b yereldir, dışarıdaki b'yi değiştirmez</span>
     print(b)
 
-function_name2()      <span class="c"># 6</span>
+degistir_b()          <span class="c"># 6</span>
 print(b)              <span class="c"># 5  (global b değişmedi!)</span></pre>
     </div>
 
@@ -248,13 +248,13 @@ print(b)              <span class="c"># 5  (global b değişmedi!)</span></pre>
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">global_ornek.py</span></div>
 <pre>og_numarasi = 20211122121
 
-def change_stu_num():
+def numara_degistir():
     global og_numarasi      <span class="c"># globali kullanacağımı bildiriyorum</span>
     og_numarasi = 123
     print(og_numarasi)
 
 print(og_numarasi)          <span class="c"># 20211122121</span>
-change_stu_num()            <span class="c"># 123</span>
+numara_degistir()           <span class="c"># 123</span>
 print(og_numarasi)          <span class="c"># 123  (artık global de değişti!)</span></pre>
     </div>
     <div class="note ok"><span class="tag">Pratik kural</span><p>Mümkün olduğunca <code class="inline">global</code> kullanmaktan kaçının. Fonksiyona parametreyle veri verip <code class="inline">return</code> ile sonuç almak çok daha temiz, anlaşılır ve hataya kapalı bir yaklaşımdır.</p></div>

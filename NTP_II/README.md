@@ -49,7 +49,6 @@ giris.html … neler-yapilir.html   konu sayfaları
 css/ders.css                ortak stil
 js/ders.js                  ortak betik
 images/                     şemalar
-404.html                    bulunamadı sayfası
 NTP_II_Proje_Yonergesi.pdf  dönem projesi yönergesi
 ```
 

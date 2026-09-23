@@ -365,6 +365,7 @@
 
 
 
+
   /* ==== site bilesenleri ==== */
 
   /* ---- icerige gec ---- */
@@ -478,13 +479,16 @@
   .kopyala.oldu { color: #7FD8A0; border-color: #7FD8A0; }
 
   /* ---- gorsel buyutme ---- */
-  figure.diagram img { cursor: zoom-in; }
+  figure.diagram img, figure.diagram svg { cursor: zoom-in; }
+  figure.diagram img:focus-visible, figure.diagram svg:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
   .kutu {
     position: fixed; inset: 0; z-index: 60; padding: 20px;
     background: rgba(0, 0, 0, .82);
     display: flex; align-items: center; justify-content: center;
   }
-  .kutu img {
+  .kutu img, .kutu svg {
     max-width: 100%; max-height: 92vh; width: auto; height: auto;
     background: #fff; padding: 12px; border-radius: 12px;
   }
@@ -548,7 +552,8 @@
     .mn-ikon { display: block; }
     .konu-menu > summary { padding: 7px 10px; }
     .konu-listesi { position: fixed; right: 12px; left: 12px; top: 62px; min-width: 0; }
-    figure.diagram img + figcaption::after {
+    figure.diagram img + figcaption::after,
+    figure.diagram svg + figcaption::after {
       content: "Büyütmek için dokunun"; display: block; margin-top: 5px;
       font-family: var(--sans); font-size: 11.5px; color: var(--accent);
     }
@@ -600,7 +605,7 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Ders Notları</span></a>
+    <a class="brand" href="/lectures-kmyo/NTP_II/index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Ders Notları</span></a>
     <div class="ust-araclar">
       <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
         <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
@@ -616,21 +621,21 @@
     <h1>Sayfa bulunamadı</h1>
     <p class="lede">Aradığınız sayfa bulunamadı. Adres yanlış yazılmış ya da sayfa taşınmış olabilir. Aşağıdaki listeden istediğiniz konuya doğrudan gidebilirsiniz.</p>
 
-    <p><a class="geri" href="index.html">← Ders ana sayfasına dön</a></p>
+    <p><a class="geri" href="/lectures-kmyo/NTP_II/index.html">← Ders ana sayfasına dön</a></p>
 
     <h2 id="konular"><span class="num">§</span>Konular</h2>
     <nav class="konu-listesi durgun" aria-label="Tüm konular">
-          <a href="giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
-          <a href="fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
-          <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
-          <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
-          <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
-          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
-          <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
-          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
-          <a href="moduller.html"><span class="mh">12</span>Modüller</a>
-          <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
-          <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
+          <a href="/lectures-kmyo/NTP_II/giris.html"><span class="mh">1</span>Giriş: Python ile Neler Yapılır</a>
+          <a href="/lectures-kmyo/NTP_II/fonksiyonlar.html"><span class="mh">2</span>Fonksiyonlar</a>
+          <a href="/lectures-kmyo/NTP_II/hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
+          <a href="/lectures-kmyo/NTP_II/dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
+          <a href="/lectures-kmyo/NTP_II/siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
+          <a href="/lectures-kmyo/NTP_II/metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="/lectures-kmyo/NTP_II/kalitim.html"><span class="mh">10</span>Kalıtım</a>
+          <a href="/lectures-kmyo/NTP_II/polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="/lectures-kmyo/NTP_II/moduller.html"><span class="mh">12</span>Modüller</a>
+          <a href="/lectures-kmyo/NTP_II/veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
+          <a href="/lectures-kmyo/NTP_II/neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
     </nav>
   </article>
 </div>
@@ -640,8 +645,8 @@
     <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
     <p class="alt-kisi"><!-- AD SOYAD --></p>
     <nav class="alt-bag" aria-label="Alt bağlantılar">
-      <a href="index.html">Ders ana sayfası</a>
-      <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+      <a href="/lectures-kmyo/NTP_II/index.html">Ders ana sayfası</a>
+      <a href="/lectures-kmyo/NTP_II/NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
     </nav>
   </div>
 </footer>
@@ -768,9 +773,9 @@
     });
   })();
 
-  /* ---------- 6) gorseli tam ekran ac ---------- */
+  /* ---------- 6) gorseli tam ekran ac (img ve svg) ---------- */
   (function () {
-    var gorseller = hepsi("figure.diagram img");
+    var gorseller = hepsi("figure.diagram img, figure.diagram svg");
     if (!gorseller.length) return;
     var acik = null, oncekiOdak = null;
 
@@ -782,18 +787,32 @@
       if (oncekiOdak) oncekiOdak.focus();
     }
 
-    function ac(img) {
+    function etiketi(oge) {
+      if (oge.tagName.toLowerCase() === "svg") {
+        var b = oge.querySelector("title");
+        return b ? b.textContent : "Görsel";
+      }
+      return oge.alt || "Görsel";
+    }
+
+    function ac(oge) {
       kapat();
       oncekiOdak = document.activeElement;
       var kutu = document.createElement("div");
       kutu.className = "kutu";
       kutu.setAttribute("role", "dialog");
       kutu.setAttribute("aria-modal", "true");
-      kutu.setAttribute("aria-label", img.alt || "Görsel");
+      kutu.setAttribute("aria-label", etiketi(oge));
 
-      var buyuk = document.createElement("img");
-      buyuk.src = img.currentSrc || img.src;
-      buyuk.alt = img.alt || "";
+      var buyuk;
+      if (oge.tagName.toLowerCase() === "svg") {
+        buyuk = oge.cloneNode(true);
+        buyuk.removeAttribute("tabindex");
+      } else {
+        buyuk = document.createElement("img");
+        buyuk.src = oge.currentSrc || oge.src;
+        buyuk.alt = oge.alt || "";
+      }
 
       var kapatDugme = document.createElement("button");
       kapatDugme.type = "button";
@@ -813,8 +832,14 @@
       kapatDugme.focus();
     }
 
-    gorseller.forEach(function (img) {
-      img.addEventListener("click", function () { ac(img); });
+    gorseller.forEach(function (oge) {
+      oge.addEventListener("click", function () { ac(oge); });
+      oge.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          ac(oge);
+        }
+      });
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") kapat();

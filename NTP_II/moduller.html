@@ -70,10 +70,10 @@
 <h2 id="nedir"><span class="num">1</span>Modül nedir, neden vardır?</h2>
     <p>Bir program büyüdükçe, her şeyi tek bir dosyaya yığmak zorlaşır. Üstelik kare kök almak, rastgele sayı üretmek, tarih hesaplamak gibi işleri her seferinde sıfırdan yazmak hem zaman kaybıdır hem de hataya açıktır. Bu işlerin pek çoğunu sizden önce birileri yazmış ve test etmiştir; tek yapmanız gereken onları kullanmaktır.</p>
     <p>İşte bir <strong>modül</strong>, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Python "modüler" bir dil olarak tasarlanmıştır: belirli işleri yapan pek çok modül ya doğrudan Python'la birlikte gelir ya da dışarıdan eklenebilir. Bir modülü programınıza dahil etmek için <code class="inline">import</code> anahtar kelimesini kullanırsınız.</p>
-    <p>Modüllerin bize kazandırdığı şey nettir: hazır ve denenmiş kodu <strong>yeniden kullanırız</strong>, böylece tekerleği yeniden icat etmeyiz; kodumuzu konularına göre ayrı dosyalara bölerek <strong>düzenli</strong> tutarız; ve binlerce hazır işleve erişerek işimizi <strong>hızlandırırız</strong>. Python'un kurulumla birlikte gelen bu hazır modüller bütününe <strong>standart kütüphane</strong> denir — <code class="inline">math</code>, <code class="inline">random</code>, <code class="inline">datetime</code> bunlardan yalnızca birkaçıdır.</p>
+    <p>Modüllerin bize kazandırdığı şey nettir: hazır ve denenmiş kodu <strong>yeniden kullanırız</strong>, böylece tekerleği yeniden icat etmeyiz; kodumuzu konularına göre ayrı dosyalara bölerek <strong>düzenli</strong> tutarız; ve binlerce hazır fonksiyona erişerek işimizi <strong>hızlandırırız</strong>. Python'un kurulumla birlikte gelen bu hazır modüller bütününe <strong>standart kütüphane</strong> denir — <code class="inline">math</code>, <code class="inline">random</code>, <code class="inline">datetime</code> bunlardan yalnızca birkaçıdır.</p>
 
     <h2 id="import"><span class="num">2</span>import yöntemleri</h2>
-    <p>Bir modülü kullanmadan önce onu içe aktarmanız gerekir. Bunun üç biçimi vardır ve üçü de aynı işlevi getirir; yalnızca onu hangi adla çağırdığınız değişir.</p>
+    <p>Bir modülü kullanmadan önce onu içe aktarmanız gerekir. Bunun üç biçimi vardır ve üçü de aynı işi görür; yalnızca onu hangi adla çağırdığınız değişir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">import_bicimleri.py</span></div>
 <pre><span class="c"># 1) Tüm modülü içe aktar</span>
@@ -84,20 +84,20 @@ rastgele_sayi = random.randint(1, 100)
 import random as rnd
 print(rnd.choice(['kırmızı', 'mavi', 'yeşil']))
 
-<span class="c"># 3) Yalnızca istenen işlevi al</span>
+<span class="c"># 3) Yalnızca istenen fonksiyonu al</span>
 from random import randint
 sayi = randint(1, 50)          <span class="c"># random.randint değil, doğrudan randint</span></pre>
     </div>
-    <p>Birinci biçimde modülün işlevlerine <code class="inline">random.randint</code> gibi, <strong>başına modül adını koyarak</strong> ulaşırız. Buradaki nokta, "random modülünün içindeki randint işlevi" demektir. Bu yazım biraz uzun görünebilir ama büyük bir avantajı vardır: kodu okuyan herkes <code class="inline">randint</code>'in nereden geldiğini anında anlar.</p>
+    <p>Birinci biçimde modülün fonksiyonlarına <code class="inline">random.randint</code> gibi, <strong>başına modül adını koyarak</strong> ulaşırız. Buradaki nokta, "random modülünün içindeki randint fonksiyonu" demektir. Bu yazım biraz uzun görünebilir ama büyük bir avantajı vardır: kodu okuyan herkes <code class="inline">randint</code>'in nereden geldiğini anında anlar.</p>
     <p>İkinci biçimde <code class="inline">as</code> anahtar kelimesiyle modüle kısa bir <strong>takma ad</strong> veririz. Bu, özellikle veri biliminde sık görülür; örneğin birçok programcı <code class="inline">import numpy as np</code> yazar. Bir modülü yalnızca <code class="inline">import random as rnd</code> biçiminde içe aktarırsanız, o programda <code class="inline">random</code> adı tanımlı olmaz; modüle yalnızca takma adıyla ulaşırsınız. Yukarıdaki örnekte üç biçim ayrı ayrı gösterildiği için her iki ad da kullanılabilir durumdadır. Üçüncü biçimde ise modülün içinden yalnızca istediğiniz adı alır ve onu <strong>doğrudan</strong>, başına modül adı koymadan kullanırsınız.</p>
-    <figure class="diagram"><img alt="import, import as ve from import yöntemleri ve kullanım biçimleri" src="images/import_yontemleri.png" width="1230" height="540" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="import, import as ve from import yöntemleri ve kullanım biçimleri" src="images/import_yontemleri.png" width="1230" height="540" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Üç içe aktarma yöntemi ve kullanım biçimleri</figcaption>
     </figure>
-    <p>Hangisini ne zaman kullanmalı? Modülden çok sayıda işlev kullanacaksanız <code class="inline">import math</code> (tüm modül) en okunaklısıdır. Yalnızca bir-iki işlev kullanacaksanız <code class="inline">from math import sqrt</code> daha pratiktir. Ad uzunsa ya da çakışma varsa <code class="inline">import ... as ...</code> işinizi görür.</p>
-    <div class="note warn"><span class="tag">Kaçının</span><p><code class="inline">from math import *</code> yazımı modüldeki <strong>her şeyi</strong> isim alanınıza döker. Bu, hangi adın nereden geldiğini belirsizleştirir ve farklı modüllerdeki aynı isimli işlevlerin birbirini ezmesine yol açabilir. Genel kural: <code class="inline">import *</code> kullanmayın.</p></div>
+    <p>Hangisini ne zaman kullanmalı? Modülden çok sayıda fonksiyon kullanacaksanız <code class="inline">import math</code> (tüm modül) en okunaklısıdır. Yalnızca bir-iki fonksiyon kullanacaksanız <code class="inline">from math import sqrt</code> daha pratiktir. Ad uzunsa ya da çakışma varsa <code class="inline">import ... as ...</code> işinizi görür.</p>
+    <div class="note warn"><span class="tag">Kaçının</span><p><code class="inline">from math import *</code> yazımı modüldeki <strong>her şeyi</strong> isim alanınıza döker. Bu, hangi adın nereden geldiğini belirsizleştirir ve farklı modüllerdeki aynı isimli fonksiyonların birbirini ezmesine yol açabilir. Genel kural: <code class="inline">import *</code> kullanmayın.</p></div>
 
     <h2 id="standart"><span class="num">3</span>Sık kullanılan standart kütüphane modülleri</h2>
-    <p><code class="inline">math</code> modülü; kare kök, faktöriyel, üs, trigonometri gibi matematiksel işlevleri ve <code class="inline">pi</code> gibi sabitleri içerir:</p>
+    <p><code class="inline">math</code> modülü; kare kök, faktöriyel, üs, trigonometri gibi matematiksel fonksiyonları ve <code class="inline">pi</code> gibi sabitleri içerir:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">math_ornek.py</span></div>
 <pre>import math
@@ -120,7 +120,7 @@ liste = [1, 2, 3, 4, 5]
 random.shuffle(liste)                            <span class="c"># listeyi yerinde karıştırır</span>
 print(liste)</pre>
     </div>
-    <div class="note"><span class="tag">Not</span><p>Bu işlevler her çalıştırmada farklı sonuç verir; bu yüzden örnek çıktıları sabit yazmadık. <code class="inline">randint(1, 6)</code> aralığın <strong>her iki ucunu da</strong> (1 ve 6 dahil) içerir.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Bu fonksiyonlar her çalıştırmada farklı sonuç verir; bu yüzden örnek çıktıları sabit yazmadık. <code class="inline">randint(1, 6)</code> aralığın <strong>her iki ucunu da</strong> (1 ve 6 dahil) içerir.</p></div>
     <p><code class="inline">datetime</code> modülü tarih ve saat işlemlerini yapar:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">datetime_ornek.py</span></div>
@@ -134,7 +134,7 @@ print(su_an.day)        <span class="c"># yalnızca gün</span></pre>
     <p>Burada ince bir ayrıntı var: <code class="inline">datetime</code>, hem bir <strong>modülün</strong> adıdır hem de o modülün içindeki bir <strong>sınıfın</strong> adı. <code class="inline">from datetime import datetime</code> satırı, "datetime modülünün içinden datetime sınıfını al" demektir; biraz kafa karıştırıcı görünse de yaygın bir kalıptır.</p>
 
     <h2 id="kesif"><span class="num">4</span>Bir modülü keşfetmek: help() ve dir()</h2>
-    <p>Bir modülün neler sunduğunu merak ettiğinizde Python'a sorabilirsiniz. <code class="inline">help()</code> işlevi bir modül ya da fonksiyon hakkında ayrıntılı açıklama verir; <code class="inline">dir()</code> ise bir modülün içindeki tüm adların (işlev, sınıf, sabit) listesini verir.</p>
+    <p>Bir modülün neler sunduğunu merak ettiğinizde Python'a sorabilirsiniz. <code class="inline">help()</code> fonksiyonu bir modül ya da fonksiyon hakkında ayrıntılı açıklama verir; <code class="inline">dir()</code> ise bir modülün içindeki tüm adların (fonksiyon, sınıf, sabit) listesini verir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">kesif.py</span></div>
 <pre>import random
@@ -144,7 +144,7 @@ help(random.randint)    <span class="c"># yalnızca randint hakkında bilgi</spa
 import math
 print(dir(math))        <span class="c"># math modülündeki her şeyin adı</span></pre>
     </div>
-    <p>Bu iki işlev, internete bakmadan, doğrudan kod içinden bir modülü tanımanın en hızlı yoludur.</p>
+    <p>Bu iki fonksiyon, internete bakmadan, doğrudan kod içinden bir modülü tanımanın en hızlı yoludur.</p>
 
     <h2 id="kendi"><span class="num">5</span>Kendi modülünüzü yazmak</h2>
     <p>Modüller yalnızca Python'la gelenlerle sınırlı değildir; <strong>kendi modülünüzü</strong> de yazabilirsiniz. Aslında bir modül, içinde fonksiyon ve sınıf bulunan sıradan bir <code class="inline">.py</code> dosyasından ibarettir. Örneğin <code class="inline">islemler.py</code> adında bir dosya oluşturup içine şunu yazdığınızı düşünün:</p>
@@ -203,7 +203,7 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
       </li>
 
       <li>
-        <p class="q"><code class="inline">import math</code> yaptıktan sonra kare kök işlevi nasıl çağrılır?</p>
+        <p class="q"><code class="inline">import math</code> yaptıktan sonra kare kök fonksiyonu nasıl çağrılır?</p>
         <ul class="opts">
           <li><b>A)</b> <code class="inline">sqrt(16)</code></li>
           <li><b>B)</b> <code class="inline">math:sqrt(16)</code></li>
@@ -212,7 +212,7 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
           <li><b>E)</b> <code class="inline">math.sqrt(16)</code></li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">E</span><code class="inline">import math</code> sonrası işlevler modül adıyla çağrılır: <code class="inline">math.sqrt(16)</code>.</div>
+          <div class="ans"><span class="letter">E</span><code class="inline">import math</code> sonrası fonksiyonlar modül adıyla çağrılır: <code class="inline">math.sqrt(16)</code>.</div>
         </details>
       </li>
 
@@ -235,7 +235,7 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
         <ul class="opts">
           <li><b>A)</b> <code class="inline">math</code> modülünü siler</li>
           <li><b>B)</b> <code class="inline">math</code> modülüne <code class="inline">m</code> adında bir takma ad verir</li>
-          <li><b>C)</b> Yalnızca <code class="inline">m</code> işlevini alır</li>
+          <li><b>C)</b> Yalnızca <code class="inline">m</code> fonksiyonunu alır</li>
           <li><b>D)</b> Yeni bir modül oluşturur</li>
           <li><b>E)</b> Hata verir</li>
         </ul>

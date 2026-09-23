@@ -96,7 +96,7 @@ dosya.write("Merhaba dünya")                        <span class="c"># içine ya
 dosya.close()                                       <span class="c"># dosyayı kapat</span></pre>
     </div>
     <p>Bu üç adım — <strong>aç, işle, kapat</strong> — bütün dosya işlemlerinin temelidir.</p>
-    <figure class="diagram"><img alt="Dosya işleminin yaşam döngüsü: aç, işle, kapat. with bloğu kapatmayı otomatik yapar." src="images/dosya_yasam_dongusu.png" width="1200" height="645" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="Dosya işleminin yaşam döngüsü: aç, işle, kapat. with bloğu kapatmayı otomatik yapar." src="images/dosya_yasam_dongusu.png" width="1200" height="645" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Dosya işleminin yaşam döngüsü</figcaption>
     </figure>
     <p>Soldaki <strong>elle yönetim</strong> yönteminde <code class="inline">close()</code>'u biz çağırırız ve bunu <strong>unutmak çok yaygın bir hatadır</strong>. Sağdaki <code class="inline">with</code> bloğu ise kapatmayı bizim yerimize otomatik yapar; bu yüzden modern Python'da tercih edilen yöntemdir.</p>
@@ -113,7 +113,7 @@ dosya.close()                                       <span class="c"># dosyayı k
         </tbody>
       </table>
     </div>
-    <figure class="diagram"><img alt="r, w ve a modlarının dosya üzerindeki etkisi" src="images/dosya_modlari.png" width="1230" height="600" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="r, w ve a modlarının dosya üzerindeki etkisi" src="images/dosya_modlari.png" width="1230" height="600" loading="lazy" decoding="async" tabindex="0">
       <figcaption><code>r</code>, <code>w</code> ve <code>a</code> modlarının dosya üzerindeki etkisi</figcaption>
     </figure>
     <p>Görsel en kritik ayrımı gösterir: <strong><code class="inline">"w"</code> modu mevcut içeriği tamamen siler</strong>, <code class="inline">"a"</code> modu ise korur ve sonuna ekler.</p>
@@ -163,7 +163,7 @@ with open("sehirler.txt", "a", encoding="utf-8") as f:
     </div>
 
     <h2 id="okuma"><span class="num">5</span>Dosyadan okuma</h2>
-    <p>Bir dosyayı okumanın birkaç farklı yolu vardır. Hangisini seçeceğiniz, dosyayı <strong>bütün olarak mı yoksa satır satır mı</strong> işlemek istediğinize bağlıdır. Aşağıdaki örneklerde dosyanın içeriğinin <code class="inline">Ankara</code>, <code class="inline">Adana</code>, <code class="inline">İzmir</code> satırları olduğunu varsayalım.</p>
+    <p>Bir dosyayı okumanın birkaç farklı yolu vardır. Hangisini seçeceğiniz, dosyayı <strong>bütün olarak mı yoksa satır satır mı</strong> işlemek istediğinize bağlıdır. Aşağıdaki örneklerde dosyanın içeriğinin, bir önceki örnekte oluşturduğumuz <code class="inline">Ankara</code>, <code class="inline">Adana</code>, <code class="inline">İzmir</code>, <code class="inline">Mersin</code> satırları olduğunu varsayalım.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">okuma.py</span></div>
 <pre><span class="c"># read() — tümünü tek string olarak okur</span>
@@ -179,7 +179,7 @@ with open("sehirler.txt", "r", encoding="utf-8") as f:
 <span class="c"># readlines() — satırları liste olarak okur</span>
 with open("sehirler.txt", "r", encoding="utf-8") as f:
     satirlar = f.readlines()
-print(satirlar)          <span class="c"># ['Ankara\n', 'Adana\n', 'İzmir\n']</span></pre>
+print(satirlar)          <span class="c"># ['Ankara\n', 'Adana\n', 'İzmir\n', 'Mersin\n']</span></pre>
     </div>
     <p>Bir dosyayı satır satır işlemenin en temiz ve <strong>belleğe en dostça</strong> yolu ise dosya nesnesi üzerinde doğrudan döngü kurmaktır. Bu yöntem dosyanın tamamını belleğe yüklemez, satırları tek tek alır; bu yüzden çok büyük dosyalarda bile güvenle çalışır.</p>
     <div class="code">
@@ -192,7 +192,8 @@ print(satirlar)          <span class="c"># ['Ankara\n', 'Adana\n', 'İzmir\n']</
       <div class="thead">Çıktı</div>
 <pre>Ankara
 Adana
-İzmir</pre>
+İzmir
+Mersin</pre>
     </div>
     <div class="twrap">
       <table>
@@ -257,7 +258,7 @@ with open("kisiler.txt", "r+", encoding="utf-8") as f:
 
 <span class="c"># Dosyanın ortasına ekleme</span>
 with open("kisiler.txt", "r+", encoding="utf-8") as f:
-    satirlar = f.readlines()           <span class="c"># ['Ali\n', 'Ayşe\n', ...]</span>
+    satirlar = f.readlines()           <span class="c"># ['Derman Kaya\n', 'Ali\n', 'Ayşe\n', ...]</span>
     satirlar.insert(2, "Yeni Kişi\n")  <span class="c"># 3. sıraya ekle (indeks 2)</span>
     f.seek(0)
     f.writelines(satirlar)             <span class="c"># listeyi geri yaz</span></pre>
@@ -303,7 +304,7 @@ with open("isimler.txt", "w") as f:
       </table>
     </div>
     <p>Aklınızda tutması kolay olsun: sonundaki <strong><code class="inline">s</code> "string"</strong> demektir.</p>
-    <figure class="diagram"><img alt="Python sözlüğü ile JSON dosyası arasındaki json.dump / json.load dönüşümü ve tip eşlemesi" src="images/json_donusum.png" width="1230" height="705" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="Python sözlüğü ile JSON dosyası arasındaki json.dump / json.load dönüşümü ve tip eşlemesi" src="images/json_donusum.png" width="1230" height="705" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Python sözlüğü ile JSON dosyası arasındaki dönüşüm</figcaption>
     </figure>
     <p>Görseldeki en kritik ayrıntı: Python'daki <code class="inline">True</code>/<code class="inline">False</code>/<code class="inline">None</code>, JSON'da küçük harfli <code class="inline">true</code>/<code class="inline">false</code>/<code class="inline">null</code> olur. Bu çeviriyi <code class="inline">json</code> modülü sizin yerinize yapar.</p>

@@ -119,9 +119,9 @@
     });
   })();
 
-  /* ---------- 6) gorseli tam ekran ac ---------- */
+  /* ---------- 6) gorseli tam ekran ac (img ve svg) ---------- */
   (function () {
-    var gorseller = hepsi("figure.diagram img");
+    var gorseller = hepsi("figure.diagram img, figure.diagram svg");
     if (!gorseller.length) return;
     var acik = null, oncekiOdak = null;
 
@@ -133,18 +133,32 @@
       if (oncekiOdak) oncekiOdak.focus();
     }
 
-    function ac(img) {
+    function etiketi(oge) {
+      if (oge.tagName.toLowerCase() === "svg") {
+        var b = oge.querySelector("title");
+        return b ? b.textContent : "Görsel";
+      }
+      return oge.alt || "Görsel";
+    }
+
+    function ac(oge) {
       kapat();
       oncekiOdak = document.activeElement;
       var kutu = document.createElement("div");
       kutu.className = "kutu";
       kutu.setAttribute("role", "dialog");
       kutu.setAttribute("aria-modal", "true");
-      kutu.setAttribute("aria-label", img.alt || "Görsel");
+      kutu.setAttribute("aria-label", etiketi(oge));
 
-      var buyuk = document.createElement("img");
-      buyuk.src = img.currentSrc || img.src;
-      buyuk.alt = img.alt || "";
+      var buyuk;
+      if (oge.tagName.toLowerCase() === "svg") {
+        buyuk = oge.cloneNode(true);
+        buyuk.removeAttribute("tabindex");
+      } else {
+        buyuk = document.createElement("img");
+        buyuk.src = oge.currentSrc || oge.src;
+        buyuk.alt = oge.alt || "";
+      }
 
       var kapatDugme = document.createElement("button");
       kapatDugme.type = "button";
@@ -164,8 +178,14 @@
       kapatDugme.focus();
     }
 
-    gorseller.forEach(function (img) {
-      img.addEventListener("click", function () { ac(img); });
+    gorseller.forEach(function (oge) {
+      oge.addEventListener("click", function () { ac(oge); });
+      oge.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          ac(oge);
+        }
+      });
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") kapat();

@@ -57,7 +57,7 @@
     <details class="toc-mobil">
       <summary>Bu sayfada</summary>
       <nav aria-label="Sayfa bölümleri">
-  <a href="#giris"><span class="n">1</span>Bu modülde ne var?</a>
+  <a href="#giris"><span class="n">1</span>Bu hafta ne var?</a>
         <a href="#polimorfizm"><span class="n">2</span>Çok biçimlilik</a>
         <a href="#kapsulleme"><span class="n">3</span>Kapsülleme</a>
         <a href="#soyutlama"><span class="n">4</span>Soyutlama</a>
@@ -65,12 +65,12 @@
       </nav>
     </details>
 
-<h2 id="giris"><span class="num">1</span>Bu modülde ne var?</h2>
+<h2 id="giris"><span class="num">1</span>Bu hafta ne var?</h2>
     <p>Nesne tabanlı programlamanın dört temel ilkesinden birini, <strong>kalıtımı</strong>, geçen hafta gördük. Bu hafta kalan üçünü işliyoruz. Bunlar birbirinden bağımsız konular değil; üçü de aynı amaca hizmet eder: gerçek dünyayı daha sadık modellemek ve büyük projelerde kodu yönetilebilir tutmak.</p>
     <p><strong>Çok biçimlilik</strong> aynı komutun farklı nesnelerde farklı çalışmasını, <strong>kapsülleme</strong> bir nesnenin verisini dış dünyadan koruyup yalnızca izin verilen yollarla erişilmesini, <strong>soyutlama</strong> ise gereksiz ayrıntıları gizleyip yalnızca gerekli iskeleti ortaya koymayı sağlar.</p>
 
     <h2 id="polimorfizm"><span class="num">2</span>Çok biçimlilik (polymorphism)</h2>
-    <p>Geçen modülde override'ı <code class="inline">Arac</code> ve <code class="inline">Araba</code> sınıfları üzerinde görmüştük: alt sınıf, ana sınıftan miras aldığı <code class="inline">ses_cikar</code> metodunu kendine göre yeniden tanımlıyordu. <strong>Çok biçimlilik</strong>, bu fikrin doğal sonucudur: aynı isimli bir metot, hangi nesne üzerinde çağrıldığına göre farklı davranır. "Polimorfizm" kelimesi zaten "çok biçim" demektir.</p>
+    <p>Geçen hafta override'ı <code class="inline">Arac</code> ve <code class="inline">Araba</code> sınıfları üzerinde görmüştük: alt sınıf, ana sınıftan miras aldığı <code class="inline">ses_cikar</code> metodunu kendine göre yeniden tanımlıyordu. <strong>Çok biçimlilik</strong>, bu fikrin doğal sonucudur: aynı isimli bir metot, hangi nesne üzerinde çağrıldığına göre farklı davranır. "Polimorfizm" kelimesi zaten "çok biçim" demektir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">hayvanlar.py</span></div>
 <pre>class Hayvan:
@@ -111,7 +111,7 @@ Miyav!</pre>
 
     <h3 id="erisim">3.1 Üç erişim düzeyi</h3>
     <p>Python'da kapsülleme, özelliklerin önüne konan alt çizgilerle ifade edilir. Üç düzey vardır:</p>
-    <figure class="diagram"><img alt="Public, protected ve private erişim düzeyleri" src="images/erisim_belirleyiciler.png" width="1230" height="645" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="Public, protected ve private erişim düzeyleri" src="images/erisim_belirleyiciler.png" width="1230" height="645" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Public, protected ve private erişim düzeyleri</figcaption>
     </figure>
     <p><strong>Public (genel):</strong> Python'da bir özellik varsayılan olarak public'tir; önüne hiçbir ek konmaz, sınıfın dışından serbestçe erişilebilir. <strong>Protected (korumalı):</strong> önüne <strong>tek alt çizgi</strong> konur; teknik olarak dışarıdan erişilebilir, ama bu adlandırma "bu özelliğe dışarıdan dokunma, yalnızca sınıf ve alt sınıflar içinde kullan" anlamına gelen bir uyarıdır. <strong>Private (özel):</strong> önüne <strong>çift alt çizgi</strong> konur; bu özelliğe sınıfın dışından doğrudan erişilemez.</p>
@@ -292,7 +292,7 @@ print(a.hiz_goster())</pre>
 
     <div class="aside-card mobil">
       <div class="k">Dizi bilgisi</div>
-      <p>Sınıflar dizisinin dördüncü ve son modülü. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). Bu modüldeki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
+      <p>Sınıflar dizisinin dördüncü ve son konusu. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). Bu haftaki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -312,7 +312,7 @@ print(a.hiz_goster())</pre>
   <aside>
     <div class="toc-title">Bu Sayfada</div>
     <nav class="toc" id="toc">
-<a href="#giris"><span class="n">1</span>Bu modülde ne var?</a>
+<a href="#giris"><span class="n">1</span>Bu hafta ne var?</a>
       <a href="#polimorfizm"><span class="n">2</span>Çok biçimlilik</a>
       <a href="#kapsulleme"><span class="n">3</span>Kapsülleme</a>
       <a href="#soyutlama"><span class="n">4</span>Soyutlama</a>
@@ -320,7 +320,7 @@ print(a.hiz_goster())</pre>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>
-      <p>Sınıflar dizisinin dördüncü ve son modülü. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). Bu modüldeki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
+      <p>Sınıflar dizisinin dördüncü ve son konusu. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). Bu haftaki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
     </div>
   </aside>
 </div>

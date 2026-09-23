@@ -70,7 +70,7 @@
     <p>Bir üniversite otomasyonu yazdığınızı düşünün. Sistemde akademik personel ve idari personel var. İkisinin de bir adı, soyadı ve e-postası var; ikisinin de bilgilerini gösteren bir metoda ihtiyaç var. Eğer her biri için ayrı bir sınıf yazıp <code class="inline">ad</code>, <code class="inline">soyad</code>, <code class="inline">email</code> özelliklerini ve <code class="inline">bilgileri_goster</code> metodunu iki kez tekrar yazarsanız, aynı kodu kopyalamış olursunuz. Yarın e-posta biçimini değiştirmek gerekirse iki ayrı yerde düzeltmeniz gerekir.</p>
     <p><strong>Kalıtım (inheritance)</strong>, tam da bu tekrarı ortadan kaldırır. Ortak olan her şeyi bir <strong>ana sınıfta</strong> (örneğin <code class="inline">Personel</code>) bir kez tanımlarsınız; sonra <code class="inline">AkademikPersonel</code> ve <code class="inline">IdariPersonel</code> gibi <strong>alt sınıflar</strong> bu ana sınıftan miras alır. Böylece ortak özellik ve metotları tekrar yazmadan kullanırlar, üstüne yalnızca kendilerine özgü olanları eklerler.</p>
     <figure class="diagram">
-<svg viewBox="0 0 1000 600" role="img" aria-labelledby="kalitim-svg-baslik" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1000 600" role="img" tabindex="0" aria-labelledby="kalitim-svg-baslik" xmlns="http://www.w3.org/2000/svg">
   <title id="kalitim-svg-baslik">Personel ana sınıfı ve ondan miras alan AkademikPersonel ile IdariPersonel alt sınıfları</title>
 
   <text x="500" y="26" text-anchor="middle" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="700" fill="#12405F">ANA SINIF (superclass)</text>
@@ -87,8 +87,7 @@
   <line x1="570" y1="238" x2="750" y2="392" stroke="#1789AD" stroke-width="2.5"/>
   <text x="318" y="298" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" font-style="italic" fill="#1789AD" transform="rotate(-40.5 318 298)">miras alır</text>
 
-  <text x="500" y="424" text-anchor="middle" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="700" fill="#1789AD">ALT SINIFLAR</text>
-  <text x="500" y="446" text-anchor="middle" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="14" fill="#1789AD">(subclass)</text>
+  <text x="500" y="378" text-anchor="middle" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="700" fill="#1789AD">ALT SINIFLAR (subclass)</text>
 
   <rect x="60" y="392" width="380" height="180" rx="14" fill="#E6F4F8" stroke="#1789AD" stroke-width="2.5"/>
   <text x="250" y="428" text-anchor="middle" font-family="ui-monospace, Consolas, 'Courier New', monospace" font-size="19" font-weight="700" fill="#12405F">AkademikPersonel</text>
@@ -146,7 +145,7 @@ Email: ali@uni.edu</pre>
         self.email = email
         self.unvan = unvan       <span class="c"># yeni özellik</span></pre>
     </div>
-    <p>Bu çalışır ama bir sorunu vardır: <code class="inline">ad</code>, <code class="inline">soyad</code>, <code class="inline">email</code> atamalarını ana sınıfta zaten yazmıştık, burada yine yazdık. Yani kalıtımın çözmeye çalıştığı tekrarı, farkında olmadan geri getirdik. İşte <code class="inline">super()</code> bu noktada devreye girer.</p>
+    <p>Bu çalışır ama bir sorunu vardır: <code class="inline">ad</code>, <code class="inline">soyad</code>, <code class="inline">email</code> atamalarını ana sınıfta zaten yazmıştık, burada yine yazdık. Yani kalıtımın çözmeye çalıştığı tekrarı, farkında olmadan geri getirdik. <code class="inline">super()</code> bu noktada devreye girer.</p>
 
     <h2 id="super"><span class="num">4</span>super() ile temiz yol</h2>
     <p><code class="inline">super()</code>, alt sınıfın içinden <strong>ana sınıfa</strong> ulaşmamızı sağlar. <code class="inline">super().__init__(...)</code> yazdığımızda, ana sınıfın <code class="inline">__init__</code> metodunu çağırmış oluruz; böylece ortak özelliklerin atanmasını ana sınıfa bırakır, alt sınıfta yalnızca yeni olanı yazarız:</p>
@@ -206,7 +205,7 @@ AkademikPersonel("Veli", "Demir", "v@uni.edu", "Doç. Dr.").selamla()</pre>
 <pre>Merhaba, ben bir personelim.
 Merhaba, ben Doç. Dr. Veli.</pre>
     </div>
-    <p>Görüldüğü gibi aynı isimli <code class="inline">selamla</code> metodu, hangi sınıfın nesnesinden çağrıldığına göre farklı davranır. Bu fikir — aynı isimli metodun farklı sınıflarda farklı çalışması — bir sonraki modülün konusu olan <strong>çok biçimliliğin</strong> (polimorfizm) de temelidir.</p>
+    <p>Görüldüğü gibi aynı isimli <code class="inline">selamla</code> metodu, hangi sınıfın nesnesinden çağrıldığına göre farklı davranır. Bu fikir — aynı isimli metodun farklı sınıflarda farklı çalışması — bir sonraki haftanın konusu olan <strong>çok biçimliliğin</strong> (polimorfizm) de temelidir.</p>
     <div class="note ok"><span class="tag">Köprü</span><p><strong>Kendi hata sınıfınız.</strong> Kalıtımı öğrendiğinize göre, hata yönetimi konusunda yarım bıraktığımız bir ipi de bağlayabilirsiniz. Python'da kendi özel hatanızı, <code class="inline">Exception</code> sınıfından miras alarak tanımlarsınız: <code class="inline">class YetersizBakiyeError(Exception): pass</code>. Sonra <code class="inline">raise YetersizBakiyeError("Bakiye yetersiz")</code> ile fırlatabilirsiniz. Yani kendi hata türlerinizi yazmak, kalıtımın pratik bir uygulamasıdır.</p></div>
 
     <hr class="hr">
@@ -314,7 +313,7 @@ print(c.ad)</pre>
 
     <div class="aside-card mobil">
       <div class="k">Dizi bilgisi</div>
-      <p>Sınıflar dizisinin üçüncü modülü. Önceki: Metotlar ve dunder metotlar (7. hafta). Sonraki: Polimorfizm, kapsülleme ve soyutlama (11. hafta).</p>
+      <p>Sınıflar dizisinin üçüncü konusu. Önceki: Metotlar ve dunder metotlar (7. hafta). Sonraki: Polimorfizm, kapsülleme ve soyutlama (11. hafta).</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -343,7 +342,7 @@ print(c.ad)</pre>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>
-      <p>Sınıflar dizisinin üçüncü modülü. Önceki: Metotlar ve dunder metotlar (7. hafta). Sonraki: Polimorfizm, kapsülleme ve soyutlama (11. hafta).</p>
+      <p>Sınıflar dizisinin üçüncü konusu. Önceki: Metotlar ve dunder metotlar (7. hafta). Sonraki: Polimorfizm, kapsülleme ve soyutlama (11. hafta).</p>
     </div>
   </aside>
 </div>

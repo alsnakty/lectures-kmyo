@@ -77,7 +77,7 @@ print(type(liste))    <span class="c"># &lt;class 'list'&gt;</span></pre>
     </div>
     <p><code class="inline">type(liste)</code> size <code class="inline">list</code> der; yani <code class="inline">liste</code>, <code class="inline">list</code> adındaki sınıfın bir <strong>örneğidir (nesnesidir)</strong>. <code class="inline">liste.append(6)</code> ya da <code class="inline">liste.sort()</code> yazabilmenizin sebebi de budur: <code class="inline">append</code> ve <code class="inline">sort</code>, <code class="inline">list</code> sınıfının metotlarıdır. Bu bölümde öğreneceğimiz şey, işte bu hazır sınıflar gibi <strong>kendi sınıflarımızı</strong> yazmaktır.</p>
     <div class="note"><span class="tag">Kurabiye Kalıbı</span><p>Bir <strong>sınıfı</strong> kurabiye kalıbı gibi düşünün: kalıp, kurabiyenin nasıl olacağını tanımlar ama kendisi yenilebilir bir kurabiye değildir. <strong>Nesne</strong> ise o kalıptan üretilen somut kurabiyedir. Bir kalıptan istediğiniz kadar kurabiye çıkarabilirsiniz; her biri aynı biçimdedir ama biri çikolatalı, biri sade olabilir.</p></div>
-    <figure class="diagram"><img alt="Sınıf bir kalıptır; nesneler o kalıptan üretilir ve her biri kendi verisine sahiptir" src="images/sinif_vs_nesne.png" width="1230" height="660" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="Sınıf bir kalıptır; nesneler o kalıptan üretilir ve her biri kendi verisine sahiptir" src="images/sinif_vs_nesne.png" width="1230" height="660" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Sınıf kalıptır, nesneler o kalıptan üretilir</figcaption>
     </figure>
     <p>Görselde <code class="inline">Araba</code> sınıfı kalıptır; <code class="inline">araba1</code>, <code class="inline">araba2</code>, <code class="inline">araba3</code> ise bu kalıptan üretilmiş, her biri kendi verisini taşıyan nesnelerdir. Kalıbı bir kez yazarız, ondan dilediğimiz kadar nesne üretiriz.</p>
@@ -101,8 +101,8 @@ print(arabam.renk)      <span class="c"># Gümüş</span></pre>
 
     <h2 id="init"><span class="num">3</span>__init__ yapıcı metodu ve self</h2>
     <p><code class="inline">__init__</code>, Python'da özel bir metottur ve bir nesne oluşturulduğu anda <strong>otomatik olarak</strong> çalışır. Görevi, yeni doğan nesneye başlangıç verilerini yerleştirmektir. Sayesinde her nesneye kendine özgü değerler verebiliriz; artık tüm arabalar aynı olmak zorunda değildir. İsmi iki alt çizgiyle başlayıp iki alt çizgiyle biter; bu tür özel metotlara "dunder" (double underscore) metotlar denir ve Python bunları belirli durumlarda kendisi çağırır.</p>
-    <p><code class="inline">__init__</code> metodunun ilk parametresi her zaman <code class="inline">self</code>'tir. <code class="inline">self</code>, üzerinde çalışılan <strong>nesnenin kendisini</strong> temsil eder. Yani <code class="inline">self.model = model</code> yazdığınızda, "şu an oluşturulan nesnenin <code class="inline">model</code> özelliğine, dışarıdan gelen <code class="inline">model</code> değerini ata" demiş olursunuz. <code class="inline">self</code> sayesinde her nesne kendi verisini kendi içinde tutar.</p>
-    <figure class="diagram"><img alt="class, __init__, self ve self.model = model satırının anatomisi" src="images/init_self_anatomi.png" width="1230" height="593" loading="lazy" decoding="async">
+    <p><code class="inline">__init__</code> metodunun ilk parametresine geleneksel olarak <code class="inline">self</code> adı verilir. <code class="inline">self</code>, üzerinde çalışılan <strong>nesnenin kendisini</strong> temsil eder. Yani <code class="inline">self.model = model</code> yazdığınızda, "şu an oluşturulan nesnenin <code class="inline">model</code> özelliğine, dışarıdan gelen <code class="inline">model</code> değerini ata" demiş olursunuz. <code class="inline">self</code> sayesinde her nesne kendi verisini kendi içinde tutar.</p>
+    <figure class="diagram"><img alt="class, __init__, self ve self.model = model satırının anatomisi" src="images/init_self_anatomi.png" width="1230" height="593" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Yapıcı metodun anatomisi ve <code>self</code>'in rolü</figcaption>
     </figure>
     <div class="code">
@@ -251,7 +251,7 @@ print(a.deger, b.deger)</pre>
 
     <div class="aside-card mobil">
       <div class="k">Dizi bilgisi</div>
-      <p>Bu, dört haftalık Sınıflar dizisinin ilk modülüdür. Sırada metotlar ve dunder metotlar (7. hafta), kalıtım (10. hafta), polimorfizm ve kapsülleme (11. hafta) var.</p>
+      <p>Bu, dört haftalık Sınıflar dizisinin ilk konusudur. Sırada metotlar ve dunder metotlar (7. hafta), kalıtım (10. hafta), polimorfizm ve kapsülleme (11. hafta) var.</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -280,7 +280,7 @@ print(a.deger, b.deger)</pre>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>
-      <p>Bu, dört haftalık Sınıflar dizisinin ilk modülüdür. Sırada metotlar ve dunder metotlar (7. hafta), kalıtım (10. hafta), polimorfizm ve kapsülleme (11. hafta) var.</p>
+      <p>Bu, dört haftalık Sınıflar dizisinin ilk konusudur. Sırada metotlar ve dunder metotlar (7. hafta), kalıtım (10. hafta), polimorfizm ve kapsülleme (11. hafta) var.</p>
     </div>
   </aside>
 </div>

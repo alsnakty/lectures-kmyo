@@ -67,7 +67,7 @@
 
 <h2 id="neden"><span class="num">1</span>Neden bu üç kütüphane?</h2>
     <p>Python'un veri biliminde bu kadar popüler olmasının arkasında birbiriyle uyum içinde çalışan birkaç kütüphane vardır. Sade Python listeleriyle binlerce sayıyı işlemek hem yavaştır hem zahmetlidir; bir Excel tablosu gibi satır-sütun veriyi yönetmek için liste yeterli değildir; ve sonuçları göstermek için bir grafik aracına ihtiyaç duyarsınız. İşte bu üç ihtiyaca üç kütüphane karşılık gelir.</p>
-    <figure class="diagram"><img alt="NumPy sayısal temeli, Pandas tabloyu, Matplotlib görselleştirmeyi sağlar" src="images/veri_akisi.png" width="1230" height="480" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="NumPy sayısal temeli, Pandas tabloyu, Matplotlib görselleştirmeyi sağlar" src="images/veri_akisi.png" width="1230" height="480" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Tipik bir veri işinde akış</figcaption>
     </figure>
     <p>Tipik bir veri işinde akış genellikle soldan sağa ilerler: veriyi <strong>NumPy</strong> ve <strong>Pandas</strong> ile yükler, temizler ve işlersiniz; sonra <strong>Matplotlib</strong> ile görselleştirip anlamlandırırsınız. Bu üçü ayrı kurulur (<code class="inline">pip install numpy pandas matplotlib</code>) ve genellikle şu kısaltmalarla içe aktarılır:</p>
@@ -89,8 +89,8 @@ a = np.array([1, 2, 3, 4, 5])
 print(a * 2)        <span class="c"># [ 2  4  6  8 10]   — her elemanı 2 ile çarpar</span>
 print(a + 10)       <span class="c"># [11 12 13 14 15]</span></pre>
     </div>
-    <p>Dikkat edin: <code class="inline">a * 2</code> yazdığınızda döngü kurmanıza gerek kalmadan <strong>tüm dizi</strong> birden çarpılır. Sade bir Python listesinde <code class="inline">[1,2,3] * 2</code> size <code class="inline">[1,2,3,1,2,3]</code> verirdi; NumPy'de ise gerçek bir matematiksel işlem yapılır. İşte NumPy'nin gücü budur.</p>
-    <p>NumPy hazır hesaplama işlevleriyle de gelir; diziler tek boyutlu olmak zorunda değildir, satır-sütun biçiminde <strong>matrisler</strong> de oluşturabilirsiniz:</p>
+    <p>Dikkat edin: <code class="inline">a * 2</code> yazdığınızda döngü kurmanıza gerek kalmadan <strong>tüm dizi</strong> birden çarpılır. Sade bir Python listesinde <code class="inline">[1,2,3] * 2</code> size <code class="inline">[1,2,3,1,2,3]</code> verirdi; NumPy'de ise gerçek bir matematiksel işlem yapılır. NumPy'yi sıradan listelerden ayıran şey budur.</p>
+    <p>NumPy hazır hesaplama fonksiyonlarıyla da gelir; diziler tek boyutlu olmak zorunda değildir, satır-sütun biçiminde <strong>matrisler</strong> de oluşturabilirsiniz:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">numpy_islemler.py</span></div>
 <pre>a = np.array([1, 2, 3, 4, 5])
@@ -210,7 +210,7 @@ plt.xlabel('x')
 plt.ylabel('sin(x)')
 plt.show()</pre>
     </div>
-    <figure class="diagram"><img alt="Matplotlib ile üretilmiş bir sütun grafiği ve bir sinüs eğrisi" src="images/matplotlib_ornek.png" width="1198" height="448" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="Matplotlib ile üretilmiş bir sütun grafiği ve bir sinüs eğrisi" src="images/matplotlib_ornek.png" width="1198" height="448" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Yukarıdaki iki kodun ürettiği grafikler</figcaption>
     </figure>
     <p>En çok kullanılan grafik türleri: sütun için <code class="inline">plt.bar()</code>, çizgi için <code class="inline">plt.plot()</code>, dağılım için <code class="inline">plt.scatter()</code>, histogram için <code class="inline">plt.hist()</code>. Hepsinin kullanımı benzerdir: veriyi verir, başlık/etiket eklersiniz, <code class="inline">plt.show()</code> ile gösterirsiniz.</p>
@@ -222,7 +222,7 @@ plt.show()</pre>
 <pre>df.groupby('Sehir')['Gelir'].mean().plot(kind='bar')
 plt.show()</pre>
     </div>
-    <p>İşte bu noktada üç kütüphane bir araya gelir: NumPy sayısal temeli sağlar, Pandas veriyi tabloya döker ve özetler, Matplotlib sonucu görselleştirir.</p>
+    <p>Bu noktada üç kütüphane bir araya gelir: NumPy sayısal temeli sağlar, Pandas veriyi tabloya döker ve özetler, Matplotlib sonucu görselleştirir.</p>
     <div class="note ok"><span class="tag">Aklınızda kalsın</span><p>Matplotlib grafiği üç adımdır — veriyi ver, başlık/etiket ekle, <code class="inline">plt.show()</code> ile göster. Grafik türünü değiştirmek (<code class="inline">bar</code>, <code class="inline">plot</code>, <code class="inline">scatter</code>) çoğu zaman tek kelimeyi değiştirmek kadar basittir.</p></div>
 
     <hr class="hr">
@@ -310,7 +310,7 @@ print(a * 2)</pre>
 
     <hr class="hr">
 
-    <div class="note"><span class="tag">Özet</span><p>Bu hafta bir tanışma haftasıdır: üçünün de yüzlerce işlevi vardır, hedef hepsini ezberlemek değil "hangi iş için hangi araç" mantığını kavramaktır. Takma adlar (<code class="inline">np</code>, <code class="inline">pd</code>, <code class="inline">plt</code>) standarttır. NumPy ekosistemin temelidir, Pandas Excel'in koddaki hâlidir. Daha fazlası için resmî belgeler: numpy.org, pandas.pydata.org, matplotlib.org.</p></div>
+    <div class="note"><span class="tag">Özet</span><p>Bu hafta bir tanışma haftasıdır: üçünün de yüzlerce fonksiyonu vardır, hedef hepsini ezberlemek değil "hangi iş için hangi araç" mantığını kavramaktır. Takma adlar (<code class="inline">np</code>, <code class="inline">pd</code>, <code class="inline">plt</code>) standarttır. NumPy ekosistemin temelidir, Pandas Excel'in koddaki hâlidir. Daha fazlası için resmî belgeler: numpy.org, pandas.pydata.org, matplotlib.org.</p></div>
 
     <div class="aside-card mobil">
       <div class="k">İlgili konu</div>

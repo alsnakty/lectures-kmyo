@@ -68,7 +68,7 @@
 
 <h2 id="giris"><span class="num">1</span>Python yalnızca konsol değildir</h2>
     <p>Şimdiye kadar yazdığımız programlar hep aynı şekilde çalıştı: çalıştırırsınız, ekrana (konsola) yazı basar, biter. Oysa Python'la çok daha fazlası yapılabilir — tıklanabilir pencereler, hareket eden oyunlar, internetten veri toplayan botlar, milyonlarca kullanıcıya hizmet veren web siteleri. Bunların hepsi, bir işi kolaylaştırmak için yazılmış <strong>kütüphaneler</strong> sayesinde mümkün olur; siz sıfırdan yazmazsınız, hazır araçları kullanırsınız.</p>
-    <figure class="diagram"><img alt="Python'un dört kullanım alanı ve kütüphaneleri" src="images/python_harita.png" width="1230" height="705" loading="lazy" decoding="async">
+    <figure class="diagram"><img alt="Python'un dört kullanım alanı ve kütüphaneleri" src="images/python_harita.png" width="1230" height="705" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Python'un dört kullanım alanı ve kütüphaneleri</figcaption>
     </figure>
 
@@ -93,7 +93,7 @@ buton.pack()
 
 pencere.mainloop()</pre>
     </div>
-    <div class="note warn"><span class="tag">Dikkat</span><p>Düğmeye <code class="inline">command=selamla</code> veriyoruz, <code class="inline">command=selamla()</code> değil. Yani fonksiyonun <strong>kendisini</strong> veriyoruz; Python onu düğmeye basıldığında çağırsın diye. Parantez koyarsanız fonksiyon pencere daha açılırken hemen bir kez çalışır ve düğme işlevini yitirir — yeni başlayanların en sık yaptığı GUI hatasıdır.</p></div>
+    <div class="note warn"><span class="tag">Dikkat</span><p>Düğmeye <code class="inline">command=selamla</code> veriyoruz, <code class="inline">command=selamla()</code> değil. Yani fonksiyonun <strong>kendisini</strong> veriyoruz; Python onu düğmeye basıldığında çağırsın diye. Parantez koyarsanız fonksiyon pencere daha açılırken hemen bir kez çalışır ve düğme çalışmaz hâle gelir — yeni başlayanların en sık yaptığı GUI hatasıdır.</p></div>
     <p>Son satırdaki <code class="inline">pencere.mainloop()</code> ise pencereyi açık tutan ve tıklamaları dinleyen döngüdür. Daha modern, şık ve karmaşık uygulamalar için ise <strong>PyQt</strong> (ya da kardeşi <strong>PySide</strong>) kullanılır; bunlar güçlü Qt arayüz kütüphanesini Python'a taşır:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">pyqt_ornek.py</span></div>
@@ -167,7 +167,7 @@ class Oyun(arcade.Window):
 oyun = Oyun()
 arcade.run()</pre>
     </div>
-    <p>Burada geçen modüllerde öğrendiğimiz <strong>sınıf</strong> ve <strong>kalıtım</strong> kavramlarını görüyorsunuz: <code class="inline">Oyun</code> sınıfı <code class="inline">arcade.Window</code>'dan miras alıyor ve <code class="inline">on_draw</code> metodunu override ediyor. Yani OOP bilginiz burada doğrudan işe yarıyor. Basit 3D prototipleri için ise <strong>Ursina</strong> kullanılır.</p>
+    <p>Burada geçen haftalarda öğrendiğimiz <strong>sınıf</strong> ve <strong>kalıtım</strong> kavramlarını görüyorsunuz: <code class="inline">Oyun</code> sınıfı <code class="inline">arcade.Window</code>'dan miras alıyor ve <code class="inline">on_draw</code> metodunu override ediyor. Yani OOP bilginiz burada doğrudan işe yarıyor. Basit 3D prototipleri için ise <strong>Ursina</strong> kullanılır.</p>
     <div class="note"><span class="tag">Nereye bakmalı</span><p>pygame.org, api.arcade.academy, ursinaengine.org.</p></div>
 
     <h2 id="scraping"><span class="num">4</span>Web'den veri toplama (web scraping)</h2>
@@ -178,8 +178,8 @@ arcade.run()</pre>
 <pre>from bs4 import BeautifulSoup
 
 html = """
-&lt;div class="duyuru"&gt;&lt;h2&gt;Kayıt tarihleri açıklandı&lt;/h2&gt;&lt;span class="tarih"&gt;2025-09-01&lt;/span&gt;&lt;/div&gt;
-&lt;div class="duyuru"&gt;&lt;h2&gt;Vize programı yayımlandı&lt;/h2&gt;&lt;span class="tarih"&gt;2025-11-10&lt;/span&gt;&lt;/div&gt;
+&lt;div class="duyuru"&gt;&lt;h2&gt;Kayıt tarihleri açıklandı&lt;/h2&gt;&lt;span class="tarih"&gt;2026-09-01&lt;/span&gt;&lt;/div&gt;
+&lt;div class="duyuru"&gt;&lt;h2&gt;Vize programı yayımlandı&lt;/h2&gt;&lt;span class="tarih"&gt;2026-11-10&lt;/span&gt;&lt;/div&gt;
 """
 
 soup = BeautifulSoup(html, "html.parser")
@@ -190,8 +190,8 @@ for duyuru in soup.find_all("div", class_="duyuru"):
     </div>
     <div class="term">
       <div class="thead">Çıktı</div>
-<pre>Duyuru: Kayıt tarihleri açıklandı | Tarih: 2025-09-01
-Duyuru: Vize programı yayımlandı | Tarih: 2025-11-10</pre>
+<pre>Duyuru: Kayıt tarihleri açıklandı | Tarih: 2026-09-01
+Duyuru: Vize programı yayımlandı | Tarih: 2026-11-10</pre>
     </div>
     <p><code class="inline">find_all</code> belirli etikete/sınıfa uyan tüm öğeleri, <code class="inline">find</code> ise ilkini bulur; <code class="inline">.text</code> ise öğenin içindeki yazıyı verir. Gerçek bir siteden veri çekerken önce sayfayı <code class="inline">requests</code> ile indirir, sonra aynı şekilde ayrıştırırsınız. Bazı siteler ise içeriğini JavaScript ile sonradan yükler; bu durumda <code class="inline">requests</code> boş sayfa görür. <strong>Selenium</strong>, gerçek bir tarayıcıyı (Chrome gibi) kod ile yöneterek bu sorunu çözer: sayfayı açar, butona tıklar, formu doldurur, sonra içeriği okur.</p>
     <div class="code">
@@ -228,16 +228,16 @@ app.run(debug=True)       <span class="c"># sunucuyu başlat</span></pre>
     <p>Buradaki <code class="inline">@app.route("/")</code>, daha önce görmediğimiz bir yapı: bir <strong>dekoratör</strong>. "Birisi <code class="inline">/</code> adresini ziyaret ederse, hemen altındaki fonksiyonu çalıştır" anlamına gelir (<code class="inline">pip install flask</code>).</p>
     <p><strong>Django</strong>, büyük ve kurumsal projeler için "her şey dahil" bir çerçevedir; veritabanı yönetimi, kullanıcı girişi, yönetim paneli gibi pek çok şey hazır gelir. <strong>FastAPI</strong> ise özellikle <strong>API</strong> (uygulamaların birbiriyle veri alışverişi yaptığı arayüzler) yazmak için tasarlanmış, modern ve hızlı bir çerçevedir; otomatik dokümantasyon üretmesiyle ünlüdür:</p>
     <div class="code">
-      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">django_ve_fastapi.py</span></div>
-<pre><span class="c"># Django — bir görünüm (view) fonksiyonu</span>
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">django_gorunum.py</span></div>
+<pre><span class="c"># Bir Django projesinin views.py dosyasında yer alır; tek başına çalıştırılmaz</span>
 from django.http import HttpResponse
 
 def ana_sayfa(request):
-    return HttpResponse("Django sunucusuna hoş geldiniz.")
-
-
-<span class="c"># FastAPI — bir uç nokta</span>
-from fastapi import FastAPI
+    return HttpResponse("Django sunucusuna hoş geldiniz.")</pre>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">fastapi_ornek.py</span></div>
+<pre>from fastapi import FastAPI
 
 app = FastAPI()
 
@@ -269,7 +269,7 @@ def ana_sayfa():
         <thead><tr><th>Nelere dikkat etmeli?</th><th>Açıklama</th></tr></thead>
         <tbody>
           <tr><td class="no">❌ <strong>Anlamadan kopyalamak</strong></td><td>Üretilen kodu anlamadan yapıştırırsanız, kod çalışsa bile siz öğrenmemiş olursunuz. Amaç kodu <strong>anlamaktır</strong>, yalnızca çalıştırmak değil.</td></tr>
-          <tr><td>⚠ <strong>Her zaman doğru değildir</strong></td><td>Yapay zekâ bazen çalışmayan, hatalı ya da var olmayan işlevlere dayanan kod üretebilir. Ürettiği kodu mutlaka çalıştırıp doğrulayın.</td></tr>
+          <tr><td>⚠ <strong>Her zaman doğru değildir</strong></td><td>Yapay zekâ bazen çalışmayan, hatalı ya da var olmayan fonksiyonlara dayanan kod üretebilir. Ürettiği kodu mutlaka çalıştırıp doğrulayın.</td></tr>
           <tr><td>⚠ <strong>Temeli atlamayın</strong></td><td>Döngü, fonksiyon, sınıf gibi temelleri kendiniz bilmezseniz, aracın verdiği kodu ne düzeltebilir ne de geliştirebilirsiniz.</td></tr>
         </tbody>
       </table>
