@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Python ile Neler Yapılır — NTP II Ders Notları</title>
+<title>Python ile Neler Yapılır | NTP II Ders Notları</title>
 <meta name="description" content="Bu sayfa Python&#x27;un dört farklı dünyasına kısa bir tur atar: masaüstü uygulamaları, oyun geliştirme, web&#x27;den veri toplama ve web/sunucu geliştirme. Amaç...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python ile Neler Yapılır — NTP II Ders Notları">
+<meta property="og:title" content="Python ile Neler Yapılır | NTP II Ders Notları">
 <meta property="og:description" content="Bu sayfa Python&#x27;un dört farklı dünyasına kısa bir tur atar: masaüstü uygulamaları, oyun geliştirme, web&#x27;den veri toplama ve web/sunucu geliştirme. Amaç...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
 
 </head>
@@ -52,7 +53,7 @@
   <article id="icerik">
     <div class="eyebrow">Konu Anlatımı · 14. Hafta</div>
     <h1>Python ile Başka Neler Yapılır?</h1>
-    <p class="lede">Bu sayfa Python'un dört farklı dünyasına kısa bir tur atar: masaüstü uygulamaları, oyun geliştirme, web'den veri toplama ve web/sunucu geliştirme. Amaç bunları öğrenmek değil, var olduklarını bilmek — her biri başlı başına bir derstir.</p>
+    <p class="lede">Bu sayfa Python'un dört farklı dünyasına kısa bir tur atar: masaüstü uygulamaları, oyun geliştirme, web'den veri toplama ve web/sunucu geliştirme. Amaç bunları öğrenmek değil, var olduklarını bilmek. Her biri başlı başına bir derstir.</p>
 
     <details class="toc-mobil">
       <summary>Bu sayfada</summary>
@@ -67,13 +68,13 @@
     </details>
 
 <h2 id="giris"><span class="num">1</span>Python yalnızca konsol değildir</h2>
-    <p>Şimdiye kadar yazdığımız programlar hep aynı şekilde çalıştı: çalıştırırsınız, ekrana (konsola) yazı basar, biter. Oysa Python'la çok daha fazlası yapılabilir — tıklanabilir pencereler, hareket eden oyunlar, internetten veri toplayan botlar, milyonlarca kullanıcıya hizmet veren web siteleri. Bunların hepsi, bir işi kolaylaştırmak için yazılmış <strong>kütüphaneler</strong> sayesinde mümkün olur; siz sıfırdan yazmazsınız, hazır araçları kullanırsınız.</p>
+    <p>Şimdiye kadar yazdığımız programlar hep aynı şekilde çalıştı: çalıştırırsınız, ekrana (konsola) yazı basar, biter. Oysa Python'la çok daha fazlası yapılabilir: tıklanabilir pencereler, hareket eden oyunlar, internetten veri toplayan botlar, milyonlarca kullanıcıya hizmet veren web siteleri. Bunların hepsi, bir işi kolaylaştırmak için yazılmış <strong>kütüphaneler</strong> sayesinde mümkün olur; siz sıfırdan yazmazsınız, hazır araçları kullanırsınız.</p>
     <figure class="diagram"><img alt="Python'un dört kullanım alanı ve kütüphaneleri" src="images/python_harita.png" width="1230" height="705" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Python'un dört kullanım alanı ve kütüphaneleri</figcaption>
     </figure>
 
     <h2 id="gui"><span class="num">2</span>Masaüstü uygulamaları (GUI)</h2>
-    <p><strong>GUI</strong> (Graphical User Interface — grafik kullanıcı arayüzü), pencereli, düğmeli, kutucuklu programlar demektir. Word, hesap makinesi, bir giriş ekranı; hepsi birer GUI uygulamasıdır. Python'da bunları yazmak için en yaygın iki seçenek Tkinter ve PyQt'tir.</p>
+    <p><strong>GUI</strong> (Graphical User Interface, grafik kullanıcı arayüzü), pencereli, düğmeli, kutucuklu programlar demektir. Word, hesap makinesi, bir giriş ekranı; hepsi birer GUI uygulamasıdır. Python'da bunları yazmak için en yaygın iki seçenek Tkinter ve PyQt'tir.</p>
     <p><strong>Tkinter</strong>, Python ile birlikte gelir (ayrı kurulum gerektirmez) ve basit arayüzler için idealdir. Aşağıdaki örnek, bir etiket ve bir düğmeden oluşan küçük bir pencere oluşturur; düğmeye tıklanınca etiketin yazısı değişir:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">tkinter_ornek.py</span></div>
@@ -93,7 +94,7 @@ buton.pack()
 
 pencere.mainloop()</pre>
     </div>
-    <div class="note warn"><span class="tag">Dikkat</span><p>Düğmeye <code class="inline">command=selamla</code> veriyoruz, <code class="inline">command=selamla()</code> değil. Yani fonksiyonun <strong>kendisini</strong> veriyoruz; Python onu düğmeye basıldığında çağırsın diye. Parantez koyarsanız fonksiyon pencere daha açılırken hemen bir kez çalışır ve düğme çalışmaz hâle gelir — yeni başlayanların en sık yaptığı GUI hatasıdır.</p></div>
+    <div class="note warn"><span class="tag">Dikkat</span><p>Düğmeye <code class="inline">command=selamla</code> veriyoruz, <code class="inline">command=selamla()</code> değil. Yani fonksiyonun <strong>kendisini</strong> veriyoruz; Python onu düğmeye basıldığında çağırsın diye. Parantez koyarsanız fonksiyon pencere daha açılırken hemen bir kez çalışır ve düğme çalışmaz hâle gelir. Bu, yeni başlayanların en sık yaptığı GUI hatasıdır.</p></div>
     <p>Son satırdaki <code class="inline">pencere.mainloop()</code> ise pencereyi açık tutan ve tıklamaları dinleyen döngüdür. Daha modern, şık ve karmaşık uygulamalar için ise <strong>PyQt</strong> (ya da kardeşi <strong>PySide</strong>) kullanılır; bunlar güçlü Qt arayüz kütüphanesini Python'a taşır:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">pyqt_ornek.py</span></div>
@@ -120,7 +121,7 @@ app.exec()</pre>
     <div class="note"><span class="tag">Nereye bakmalı</span><p>Tkinter için Python'un resmî belgeleri (docs.python.org), PyQt için riverbankcomputing.com, PySide için doc.qt.io.</p></div>
 
     <h2 id="oyun"><span class="num">3</span>Oyun geliştirme</h2>
-    <p>Python, büyük ticari oyunların dili olmasa da, oyun <strong>mantığını</strong> öğrenmek ve 2D/3D prototipler yapmak için harika bir başlangıçtır. <strong>Pygame</strong>, 2D oyunlar için en yaygın kütüphanedir. Her oyunun kalbinde bir <strong>oyun döngüsü</strong> (game loop) vardır: ekranı temizle, nesneleri çiz, kullanıcı girişini dinle, ekranı güncelle — ve bunu saniyede onlarca kez tekrarla. Aşağıdaki örnek, W/A/S/D tuşlarıyla hareket eden bir daire çizer:</p>
+    <p>Python, büyük ticari oyunların dili olmasa da, oyun <strong>mantığını</strong> öğrenmek ve 2D/3D prototipler yapmak için harika bir başlangıçtır. <strong>Pygame</strong>, 2D oyunlar için en yaygın kütüphanedir. Her oyunun kalbinde bir <strong>oyun döngüsü</strong> (game loop) vardır: ekranı temizle, nesneleri çiz, kullanıcı girişini dinle, ekranı güncelle. Bunu da saniyede onlarca kez tekrarla. Aşağıdaki örnek, W/A/S/D tuşlarıyla hareket eden bir daire çizer:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">pygame_ornek.py</span></div>
 <pre>import pygame
@@ -167,7 +168,7 @@ class Oyun(arcade.Window):
 oyun = Oyun()
 arcade.run()</pre>
     </div>
-    <p>Burada geçen haftalarda öğrendiğimiz <strong>sınıf</strong> ve <strong>kalıtım</strong> kavramlarını görüyorsunuz: <code class="inline">Oyun</code> sınıfı <code class="inline">arcade.Window</code>'dan miras alıyor ve <code class="inline">on_draw</code> metodunu override ediyor. Yani OOP bilginiz burada doğrudan işe yarıyor. Basit 3D prototipleri için ise <strong>Ursina</strong> kullanılır.</p>
+    <p>Burada 6. ve 10. haftalarda öğrendiğimiz <strong>sınıf</strong> ve <strong>kalıtım</strong> kavramlarını görüyorsunuz: <code class="inline">Oyun</code> sınıfı <code class="inline">arcade.Window</code>'dan miras alıyor (hazır pencere sınıfının tüm özelliklerini devralıyor) ve <code class="inline">on_draw</code> metodunu override ediyor (devraldığı çizim metodunu kendi çizimiyle yeniden yazıyor). Yani OOP bilginiz burada doğrudan işe yarıyor. Basit 3D prototipleri için ise <strong>Ursina</strong> kullanılır.</p>
     <div class="note"><span class="tag">Nereye bakmalı</span><p>pygame.org, api.arcade.academy, ursinaengine.org.</p></div>
 
     <h2 id="scraping"><span class="num">4</span>Web'den veri toplama (web scraping)</h2>
@@ -278,7 +279,7 @@ def ana_sayfa():
 
     <hr class="hr">
 
-    <div class="note"><span class="tag">Özet</span><p>Bu hafta bir keşif turudur; hiçbirini ezberlemeniz gerekmiyor, "şu işi Python'la şu kütüphane yapar" eşleşmesini kavramak yeterli. OOP bilginiz burada doğrudan işe yarıyor. Tkinter dışındaki kütüphaneler Python'la gelmez, <code class="inline">pip</code> ile kurulur. Bu kodlar konsol programı değildir; ayrı bir pencere açar ya da sunucu başlatır.</p></div>
+    <div class="note"><span class="tag">Özet</span><p>14. hafta bir keşif turudur; hiçbirini ezberlemeniz gerekmiyor, "şu işi Python'la şu kütüphane yapar" eşleşmesini kavramak yeterli. OOP bilginiz burada doğrudan işe yarıyor. Tkinter dışındaki kütüphaneler Python'la gelmez, <code class="inline">pip</code> ile kurulur. Bu kodlar konsol programı değildir; ayrı bir pencere açar ya da sunucu başlatır.</p></div>
 
     <div class="aside-card mobil">
       <div class="k">Çalıştırma notu</div>
@@ -322,6 +323,7 @@ def ana_sayfa():
   </div>
 </footer>
 
+<script src="js/vendor/highlight.min.js"></script>
 <script src="js/ders.js"></script>
 
 

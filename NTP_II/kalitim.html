@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kalıtım — NTP II Ders Notları</title>
+<title>Kalıtım | NTP II Ders Notları</title>
 <meta name="description" content="Kalıtım, bir sınıfın başka bir sınıfın özelliklerini ve metotlarını miras almasını sağlar. Bu sayfa ortak kodu tek bir yerde toplamayı, super() ile ana...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kalıtım — NTP II Ders Notları">
+<meta property="og:title" content="Kalıtım | NTP II Ders Notları">
 <meta property="og:description" content="Kalıtım, bir sınıfın başka bir sınıfın özelliklerini ve metotlarını miras almasını sağlar. Bu sayfa ortak kodu tek bir yerde toplamayı, super() ile ana...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
 
 </head>
@@ -67,6 +68,7 @@
     </details>
 
 <h2 id="neden"><span class="num">1</span>Kalıtım neden vardır?</h2>
+    <div class="note"><span class="tag">Hatırlatma</span><p>Sınıf nesneler için bir kalıptır; <code class="inline">__init__</code> nesne oluşturulurken çalışıp verisini yerleştirir, <code class="inline">self</code> o nesnenin kendisidir, metot ise sınıfın içinde tanımlanan ve nesnenin verisiyle çalışan fonksiyondur (6. ve 7. hafta).</p></div>
     <p>Bir üniversite otomasyonu yazdığınızı düşünün. Sistemde akademik personel ve idari personel var. İkisinin de bir adı, soyadı ve e-postası var; ikisinin de bilgilerini gösteren bir metoda ihtiyaç var. Eğer her biri için ayrı bir sınıf yazıp <code class="inline">ad</code>, <code class="inline">soyad</code>, <code class="inline">email</code> özelliklerini ve <code class="inline">bilgileri_goster</code> metodunu iki kez tekrar yazarsanız, aynı kodu kopyalamış olursunuz. Yarın e-posta biçimini değiştirmek gerekirse iki ayrı yerde düzeltmeniz gerekir.</p>
     <p><strong>Kalıtım (inheritance)</strong>, tam da bu tekrarı ortadan kaldırır. Ortak olan her şeyi bir <strong>ana sınıfta</strong> (örneğin <code class="inline">Personel</code>) bir kez tanımlarsınız; sonra <code class="inline">AkademikPersonel</code> ve <code class="inline">IdariPersonel</code> gibi <strong>alt sınıflar</strong> bu ana sınıftan miras alır. Böylece ortak özellik ve metotları tekrar yazmadan kullanırlar, üstüne yalnızca kendilerine özgü olanları eklerler.</p>
     <figure class="diagram">
@@ -93,15 +95,15 @@
   <text x="250" y="428" text-anchor="middle" font-family="ui-monospace, Consolas, 'Courier New', monospace" font-size="19" font-weight="700" fill="#12405F">AkademikPersonel</text>
   <line x1="90" y1="444" x2="410" y2="444" stroke="#B9CFDD" stroke-width="1.5"/>
   <text x="88" y="476" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#1E8A5B">+ unvan (yeni özellik)</text>
-  <text x="88" y="504" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#2C3A43">bilgileri_goster() — miras</text>
-  <text x="88" y="532" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#C9720B">selamla() — override</text>
+  <text x="88" y="504" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#2C3A43">bilgileri_goster() (miras)</text>
+  <text x="88" y="532" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#C9720B">selamla() (override)</text>
 
   <rect x="560" y="392" width="380" height="180" rx="14" fill="#E6F4F8" stroke="#1789AD" stroke-width="2.5"/>
   <text x="750" y="428" text-anchor="middle" font-family="ui-monospace, Consolas, 'Courier New', monospace" font-size="19" font-weight="700" fill="#12405F">IdariPersonel</text>
   <line x1="590" y1="444" x2="910" y2="444" stroke="#B9CFDD" stroke-width="1.5"/>
   <text x="588" y="476" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#1E8A5B">+ departman (yeni özellik)</text>
-  <text x="588" y="504" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#2C3A43">bilgileri_goster() — miras</text>
-  <text x="588" y="532" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#2C3A43">selamla() — miras</text>
+  <text x="588" y="504" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#2C3A43">bilgileri_goster() (miras)</text>
+  <text x="588" y="532" font-family="ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif" font-size="15" fill="#2C3A43">selamla() (miras)</text>
 </svg>
       <figcaption>Ana sınıf ve ondan miras alan alt sınıflar</figcaption>
     </figure>
@@ -140,7 +142,7 @@ Email: ali@uni.edu</pre>
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">zahmetli_yol.py</span></div>
 <pre>class AkademikPersonel(Personel):
     def __init__(self, ad, soyad, email, unvan):
-        self.ad = ad             <span class="no"># ana sınıfta da yazılmıştı — tekrar!</span>
+        self.ad = ad             <span class="no"># ana sınıfta da yazılmıştı (tekrar!)</span>
         self.soyad = soyad
         self.email = email
         self.unvan = unvan       <span class="c"># yeni özellik</span></pre>
@@ -205,8 +207,8 @@ AkademikPersonel("Veli", "Demir", "v@uni.edu", "Doç. Dr.").selamla()</pre>
 <pre>Merhaba, ben bir personelim.
 Merhaba, ben Doç. Dr. Veli.</pre>
     </div>
-    <p>Görüldüğü gibi aynı isimli <code class="inline">selamla</code> metodu, hangi sınıfın nesnesinden çağrıldığına göre farklı davranır. Bu fikir — aynı isimli metodun farklı sınıflarda farklı çalışması — bir sonraki haftanın konusu olan <strong>çok biçimliliğin</strong> (polimorfizm) de temelidir.</p>
-    <div class="note ok"><span class="tag">Köprü</span><p><strong>Kendi hata sınıfınız.</strong> Kalıtımı öğrendiğinize göre, hata yönetimi konusunda yarım bıraktığımız bir ipi de bağlayabilirsiniz. Python'da kendi özel hatanızı, <code class="inline">Exception</code> sınıfından miras alarak tanımlarsınız: <code class="inline">class YetersizBakiyeError(Exception): pass</code>. Sonra <code class="inline">raise YetersizBakiyeError("Bakiye yetersiz")</code> ile fırlatabilirsiniz. Yani kendi hata türlerinizi yazmak, kalıtımın pratik bir uygulamasıdır.</p></div>
+    <p>Görüldüğü gibi aynı isimli <code class="inline">selamla</code> metodu, hangi sınıfın nesnesinden çağrıldığına göre farklı davranır. Bu fikir (aynı isimli metodun farklı sınıflarda farklı çalışması) 11. haftanın konusu olan <strong>çok biçimliliğin</strong> (polimorfizm) de temelidir.</p>
+    <div class="note ok"><span class="tag">Köprü</span><p><strong>Kendi hata sınıfınız.</strong> 3. haftada <code class="inline">raise</code> ile Python'un hazır hatalarını fırlatmıştık; örneğin <code class="inline">raise ValueError("Yaş negatif olamaz!")</code>. Kalıtımla artık kendi hata türümüzü de tanımlayabiliriz. Python'da kendi özel hatanızı, <code class="inline">Exception</code> sınıfından miras alarak tanımlarsınız: <code class="inline">class YetersizBakiyeError(Exception): pass</code>. Sonra <code class="inline">raise YetersizBakiyeError("Bakiye yetersiz")</code> ile fırlatabilirsiniz. Yani kendi hata türlerinizi yazmak, kalıtımın pratik bir uygulamasıdır.</p></div>
 
     <hr class="hr">
 
@@ -358,6 +360,7 @@ print(c.ad)</pre>
   </div>
 </footer>
 
+<script src="js/vendor/highlight.min.js"></script>
 <script src="js/ders.js"></script>
 
 

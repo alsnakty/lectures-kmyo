@@ -47,10 +47,15 @@ Ardından `http://localhost:8000` adresine girin.
 index.html                  ana sayfa (haftalık plan)
 giris.html … neler-yapilir.html   konu sayfaları
 css/ders.css                ortak stil
+css/vendor/                 highlight.js teması (github-dark; github da yedekte) ve lisansı
 js/ders.js                  ortak betik
+js/vendor/                  highlight.js (yalnızca Python derlemesi) ve lisansı
 images/                     şemalar
 NTP_II_Proje_Yonergesi.pdf  dönem projesi yönergesi
 ```
 
-Sayfalar saf HTML, CSS ve JavaScript ile yazılmıştır; dış kütüphane, yazı tipi
-indirmesi veya CDN çağrısı yoktur.
+404.html: Vercel için (kök dizindeki GitHub Pages içindir).
+
+Sayfalar saf HTML, CSS ve JavaScript ile yazılmıştır. Kod renklendirme için
+highlight.js'in yerel kopyası kullanılır (BSD-3 lisansı `js/vendor/LICENSE`);
+yazı tipi indirmesi veya CDN çağrısı yoktur.

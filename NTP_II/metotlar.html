@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Metotlar ve Dunder Metotlar — NTP II Ders Notları</title>
-<meta name="description" content="Geçen hafta nesnelere veri vermeyi öğrendik. Bu sayfa nesnelere davranış kazandırmayı anlatır: sınıf içinde metot tanımlamayı, self ile nesnenin verisine...">
+<title>Metotlar ve Dunder Metotlar | NTP II Ders Notları</title>
+<meta name="description" content="6. haftada nesnelere veri vermeyi öğrendik. Bu sayfa nesnelere davranış kazandırmayı anlatır: sınıf içinde metot tanımlamayı, self ile nesnenin verisine...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Metotlar ve Dunder Metotlar — NTP II Ders Notları">
-<meta property="og:description" content="Geçen hafta nesnelere veri vermeyi öğrendik. Bu sayfa nesnelere davranış kazandırmayı anlatır: sınıf içinde metot tanımlamayı, self ile nesnenin verisine...">
+<meta property="og:title" content="Metotlar ve Dunder Metotlar | NTP II Ders Notları">
+<meta property="og:description" content="6. haftada nesnelere veri vermeyi öğrendik. Bu sayfa nesnelere davranış kazandırmayı anlatır: sınıf içinde metot tanımlamayı, self ile nesnenin verisine...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
 
 </head>
@@ -52,7 +53,7 @@
   <article id="icerik">
     <div class="eyebrow">Konu Anlatımı · 7. Hafta</div>
     <h1>Metotlar ve Özel (Dunder) Metotlar</h1>
-    <p class="lede">Geçen hafta nesnelere veri vermeyi öğrendik. Bu sayfa nesnelere <strong>davranış</strong> kazandırmayı anlatır: sınıf içinde metot tanımlamayı, <code class="inline">self</code> ile nesnenin verisine ulaşmayı ve Python'un <code class="inline">print</code>, <code class="inline">len</code>, <code class="inline">==</code> gibi işlemlerde kendisi çağırdığı özel metotları.</p>
+    <p class="lede">6. haftada nesnelere veri vermeyi öğrendik. Bu sayfa nesnelere <strong>davranış</strong> kazandırmayı anlatır: sınıf içinde metot tanımlamayı, <code class="inline">self</code> ile nesnenin verisine ulaşmayı ve Python'un <code class="inline">print</code>, <code class="inline">len</code>, <code class="inline">==</code> gibi işlemlerde kendisi çağırdığı özel metotları.</p>
 
     <details class="toc-mobil">
       <summary>Bu sayfada</summary>
@@ -67,8 +68,19 @@
     </details>
 
 <h2 id="metot"><span class="num">1</span>Metot nedir?</h2>
-    <p>Geçen hafta bir nesneye veri verdik: <code class="inline">araba1</code>'in modeli, rengi, beygir gücü vardı. Ama bir araba sadece veriden ibaret değildir; <strong>bir şeyler yapar</strong> da — hızlanır, korna çalar, durur. İşte bir nesnenin yapabildiği bu işlere <strong>metot</strong> denir.</p>
-    <p>Metot, aslında bir sınıfın içinde tanımlanmış bir fonksiyondur. Sıradan bir fonksiyondan tek farkı, bir nesneye ait olması ve o nesnenin verisine erişebilmesidir. Bir öğrencinin notlarını ekleyen, ortalamasını hesaplayan, bilgilerini ekrana yazan işlemler hep metot olarak yazılır. Böylece bir nesnenin verisi (özellikler) ile davranışları (metotlar) tek bir çatı altında toplanır — nesne tabanlı programlamanın asıl gücü buradadır.</p>
+    <div class="note"><span class="tag">Hatırlatma</span><div><p>6. haftada yazdığımız <code class="inline">Araba</code> sınıfı aşağıdadır. <code class="inline">__init__</code>, <code class="inline">Araba(...)</code> ile nesne oluşturulduğu anda kendiliğinden çalışır ve verileri nesneye yazar; <code class="inline">self</code> ise o an oluşturulan nesnenin kendisidir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">araba.py</span></div>
+<pre>class Araba:
+    def __init__(self, model, renk, beygir_gucu):
+        self.model = model
+        self.renk = renk
+        self.beygir_gucu = beygir_gucu
+
+araba1 = Araba('Mercedes C180', 'Siyah', 156)</pre>
+    </div></div></div>
+    <p>6. haftada bir nesneye veri verdik: <code class="inline">araba1</code>'in modeli, rengi, beygir gücü vardı. Ama bir araba sadece veriden ibaret değildir; <strong>bir şeyler yapar</strong> da: hızlanır, korna çalar, durur. İşte bir nesnenin yapabildiği bu işlere <strong>metot</strong> denir.</p>
+    <p>Metot, aslında bir sınıfın içinde tanımlanmış bir fonksiyondur. Sıradan bir fonksiyondan tek farkı, bir nesneye ait olması ve o nesnenin verisine erişebilmesidir. Bir öğrencinin notlarını ekleyen, ortalamasını hesaplayan, bilgilerini ekrana yazan işlemler hep metot olarak yazılır. Böylece bir nesnenin verisi (özellikler) ile davranışları (metotlar) tek bir çatı altında toplanır. Nesne tabanlı programlamanın asıl gücü buradadır.</p>
 
     <h2 id="ilk-metot"><span class="num">2</span>İlk metot ve self</h2>
     <p>Bir metodu, sınıfın içinde <code class="inline">def</code> ile tanımlarız ve ilk parametresi her zaman <code class="inline">self</code> olur. <code class="inline">self</code> sayesinde metot, "üzerinde çalıştığı nesnenin" verisine ulaşır.</p>
@@ -150,7 +162,7 @@ og.gecme_durumu()        <span class="c"># Ortalama: 76.0 - Geçti</span></pre>
     </figure>
     <p>Bu metotları kendi sınıfımızda tanımlayarak, nesnelerimizin bu sıradan işlemlere nasıl tepki vereceğini biz belirleriz. Şimdi bir <code class="inline">Kitap</code> sınıfı üzerinden en sık kullanılanları görelim.</p>
 
-    <h3 id="str">5.1 __str__ — print() çıktısını belirler</h3>
+    <h3 id="str">5.1 __str__: print() çıktısını belirler</h3>
     <p>Bir nesneyi olduğu gibi <code class="inline">print()</code>'e verirseniz, Python varsayılan olarak <code class="inline">&lt;__main__.Kitap object at 0x...&gt;</code> gibi okunması zor bir çıktı verir. <code class="inline">__str__</code> metodu, bunun yerine <strong>kendi belirlediğimiz</strong> okunaklı bir metin döndürmemizi sağlar:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">str_ornek.py</span></div>
@@ -167,7 +179,7 @@ kitap = Kitap("Sefiller", "Victor Hugo", 1488)
 print(kitap)      <span class="c"># Kitap: Sefiller / Victor Hugo (1488 sayfa)</span></pre>
     </div>
 
-    <h3 id="len">5.2 __len__ — len() davranışını belirler</h3>
+    <h3 id="len">5.2 __len__: len() davranışını belirler</h3>
     <p><code class="inline">__len__</code> metodu, nesneniz <code class="inline">len()</code> fonksiyonuna verildiğinde dönecek değeri belirler. Bir kitabın "uzunluğu" olarak sayfa sayısını döndürmek mantıklıdır:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">len_ornek.py</span></div>
@@ -183,7 +195,7 @@ kitap = Kitap("1984", 352)
 print(len(kitap))     <span class="c"># 352</span></pre>
     </div>
 
-    <h3 id="eq">5.3 __eq__ — == ile eşitlik karşılaştırması</h3>
+    <h3 id="eq">5.3 __eq__: == ile eşitlik karşılaştırması</h3>
     <p>İki nesnenin ne zaman "eşit" sayılacağına siz karar verebilirsiniz. <code class="inline">__eq__</code> metodu, <code class="inline">==</code> operatörünün davranışını belirler. Örneğin iki kitabı ISBN numaraları aynıysa eşit kabul edebiliriz:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">eq_ornek.py</span></div>
@@ -349,6 +361,7 @@ s.arttir()</pre>
   </div>
 </footer>
 
+<script src="js/vendor/highlight.min.js"></script>
 <script src="js/ders.js"></script>
 
 

@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Modüller — NTP II Ders Notları</title>
+<title>Modüller | NTP II Ders Notları</title>
 <meta name="description" content="Bir modül, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Bu sayfa import&#x27;un biçimlerini, sık...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Modüller — NTP II Ders Notları">
+<meta property="og:title" content="Modüller | NTP II Ders Notları">
 <meta property="og:description" content="Bir modül, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Bu sayfa import&#x27;un biçimlerini, sık...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
 
 </head>
@@ -70,7 +71,7 @@
 <h2 id="nedir"><span class="num">1</span>Modül nedir, neden vardır?</h2>
     <p>Bir program büyüdükçe, her şeyi tek bir dosyaya yığmak zorlaşır. Üstelik kare kök almak, rastgele sayı üretmek, tarih hesaplamak gibi işleri her seferinde sıfırdan yazmak hem zaman kaybıdır hem de hataya açıktır. Bu işlerin pek çoğunu sizden önce birileri yazmış ve test etmiştir; tek yapmanız gereken onları kullanmaktır.</p>
     <p>İşte bir <strong>modül</strong>, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Python "modüler" bir dil olarak tasarlanmıştır: belirli işleri yapan pek çok modül ya doğrudan Python'la birlikte gelir ya da dışarıdan eklenebilir. Bir modülü programınıza dahil etmek için <code class="inline">import</code> anahtar kelimesini kullanırsınız.</p>
-    <p>Modüllerin bize kazandırdığı şey nettir: hazır ve denenmiş kodu <strong>yeniden kullanırız</strong>, böylece tekerleği yeniden icat etmeyiz; kodumuzu konularına göre ayrı dosyalara bölerek <strong>düzenli</strong> tutarız; ve binlerce hazır fonksiyona erişerek işimizi <strong>hızlandırırız</strong>. Python'un kurulumla birlikte gelen bu hazır modüller bütününe <strong>standart kütüphane</strong> denir — <code class="inline">math</code>, <code class="inline">random</code>, <code class="inline">datetime</code> bunlardan yalnızca birkaçıdır.</p>
+    <p>Modüllerin bize kazandırdığı şey nettir: hazır ve denenmiş kodu <strong>yeniden kullanırız</strong>, böylece tekerleği yeniden icat etmeyiz; kodumuzu konularına göre ayrı dosyalara bölerek <strong>düzenli</strong> tutarız; ve binlerce hazır fonksiyona erişerek işimizi <strong>hızlandırırız</strong>. Python'un kurulumla birlikte gelen bu hazır modüller bütününe <strong>standart kütüphane</strong> denir. <code class="inline">math</code>, <code class="inline">random</code>, <code class="inline">datetime</code> bunlardan yalnızca birkaçıdır.</p>
 
     <h2 id="import"><span class="num">2</span>import yöntemleri</h2>
     <p>Bir modülü kullanmadan önce onu içe aktarmanız gerekir. Bunun üç biçimi vardır ve üçü de aynı işi görür; yalnızca onu hangi adla çağırdığınız değişir.</p>
@@ -102,11 +103,11 @@ sayi = randint(1, 50)          <span class="c"># random.randint değil, doğruda
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">math_ornek.py</span></div>
 <pre>import math
 
-print(math.sqrt(16))        <span class="c"># 4.0   — kare kök</span>
-print(math.factorial(5))    <span class="c"># 120   — faktöriyel</span>
+print(math.sqrt(16))        <span class="c"># 4.0  (kare kök)</span>
+print(math.factorial(5))    <span class="c"># 120  (faktöriyel)</span>
 print(math.pi)              <span class="c"># 3.141592653589793</span>
-print(math.ceil(4.2))       <span class="c"># 5     — yukarı yuvarlama</span>
-print(math.floor(4.8))      <span class="c"># 4     — aşağı yuvarlama</span></pre>
+print(math.ceil(4.2))       <span class="c"># 5    (yukarı yuvarlama)</span>
+print(math.floor(4.8))      <span class="c"># 4    (aşağı yuvarlama)</span></pre>
     </div>
     <p><code class="inline">random</code> modülü, rastgele sayılar üretmek ve rastgele seçimler yapmak için kullanılır:</p>
     <div class="code">
@@ -181,7 +182,7 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
     </div>
     <p><strong>3. Anaconda Navigator arayüzü ile.</strong> Komut yazmak istemeyenler için Anaconda Navigator uygulamasında <strong>Environments</strong> bölümünden paket adını aratıp kutucuğunu işaretleyerek fareyle de kurulum yapılabilir.</p>
     <p>Hangi yolu seçerseniz seçin, kurulum bittikten sonra modülü her zamanki gibi <code class="inline">import pandas</code> yazarak kullanırsınız.</p>
-    <div class="note"><span class="tag">Not</span><p>Anaconda kurulu bir bilgisayarda genellikle <code class="inline">conda install</code> (veya Navigator), sade Python kurulumunda ise <code class="inline">pip install</code> tercih edilir. Bir modülü kurmadan <code class="inline">import</code> etmeye çalışırsanız <code class="inline">ModuleNotFoundError</code> alırsınız — bu, "önce kurman gerekiyor" demektir.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Anaconda kurulu bir bilgisayarda genellikle <code class="inline">conda install</code> (veya Navigator), sade Python kurulumunda ise <code class="inline">pip install</code> tercih edilir. Bir modülü kurmadan <code class="inline">import</code> etmeye çalışırsanız <code class="inline">ModuleNotFoundError</code> alırsınız. Bu, "önce kurman gerekiyor" demektir.</p></div>
 
     <hr class="hr">
 
@@ -263,7 +264,7 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
 
     <div class="aside-card mobil">
       <div class="k">İlgili konu</div>
-      <p>Veri Kütüphaneleri — 13. hafta. <code class="inline">pandas</code> ve <code class="inline">matplotlib</code> gibi harici modüller, bu sayfadaki kurulum ve <code class="inline">import ... as ...</code> bilgisinin üzerine kurulur.</p>
+      <p>Veri Kütüphaneleri (13. hafta). <code class="inline">pandas</code> ve <code class="inline">matplotlib</code> gibi harici modüller, bu sayfadaki kurulum ve <code class="inline">import ... as ...</code> bilgisinin üzerine kurulur.</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -293,7 +294,7 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
     </nav>
     <div class="aside-card">
       <div class="k">İlgili konu</div>
-      <p>Veri Kütüphaneleri — 13. hafta. <code class="inline">pandas</code> ve <code class="inline">matplotlib</code> gibi harici modüller, bu sayfadaki kurulum ve <code class="inline">import ... as ...</code> bilgisinin üzerine kurulur.</p>
+      <p>Veri Kütüphaneleri (13. hafta). <code class="inline">pandas</code> ve <code class="inline">matplotlib</code> gibi harici modüller, bu sayfadaki kurulum ve <code class="inline">import ... as ...</code> bilgisinin üzerine kurulur.</p>
     </div>
   </aside>
 </div>
@@ -309,6 +310,7 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
   </div>
 </footer>
 
+<script src="js/vendor/highlight.min.js"></script>
 <script src="js/ders.js"></script>
 
 

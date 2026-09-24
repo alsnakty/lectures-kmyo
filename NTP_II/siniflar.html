@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sınıflara Giriş — NTP II Ders Notları</title>
+<title>Sınıflara Giriş | NTP II Ders Notları</title>
 <meta name="description" content="Nesne tabanlı programlama, gerçek dünyadaki bir varlığı (öğrenci, araba, banka hesabı) hem verisiyle hem davranışıyla tek bir bütün olarak modellememizi...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sınıflara Giriş — NTP II Ders Notları">
+<meta property="og:title" content="Sınıflara Giriş | NTP II Ders Notları">
 <meta property="og:description" content="Nesne tabanlı programlama, gerçek dünyadaki bir varlığı (öğrenci, araba, banka hesabı) hem verisiyle hem davranışıyla tek bir bütün olarak modellememizi...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
 
 </head>
@@ -68,8 +69,8 @@
 
 <h2 id="neden"><span class="num">1</span>Nesne tabanlı programlama neden vardır?</h2>
     <p>Bir okul otomasyonu yazdığınızı düşünün. Tek bir öğrenciyi tutmak kolay: bir ad, bir soyad, bir numara, birkaç not. Ama ikinci öğrenci gelince ikinci bir ad, ikinci bir soyad, ikinci bir not listesi açmanız gerekir. Yüz öğrenci olunca ortaya <code class="inline">ad1</code>, <code class="inline">ad2</code>, <code class="inline">ad3</code> gibi yüzlerce dağınık değişken çıkar ve bunları birlikte yönetmek imkânsızlaşır.</p>
-    <p>Asıl sorun şudur: bizim kafamızda "öğrenci" tek bir bütündür — adı, numarası ve davranışları (not ekleme, ortalama hesaplama) bir aradadır. Oysa düz programlamada bu bütünü parçalara bölmek zorunda kalırız. <strong>Nesne tabanlı programlama (NTP / OOP)</strong>, tam da bu kopukluğu giderir ve karmaşık sistemleri <strong>daha modüler, anlaşılır ve sürdürülebilir</strong> kılar. NTP'nin üzerine kurulduğu dört temel ilke vardır — <strong>kapsülleme, kalıtım, çok biçimlilik ve soyutlama</strong> — ama bunlara sırası geldiğinde, ilerleyen haftalarda gireceğiz. Bu hafta önce temeli atıyoruz: sınıf ve nesne.</p>
-    <p>Aslında nesnelerle ilk günden beri çalışıyorsunuz. Python'da bir liste, bir metin, bir sayı — hepsi birer nesnedir ve her birinin kendi metotları vardır:</p>
+    <p>Asıl sorun şudur: bizim kafamızda "öğrenci" tek bir bütündür: adı, numarası ve davranışları (not ekleme, ortalama hesaplama) bir aradadır. Oysa düz programlamada bu bütünü parçalara bölmek zorunda kalırız. <strong>Nesne tabanlı programlama (NTP / OOP)</strong>, tam da bu kopukluğu giderir ve karmaşık sistemleri <strong>daha modüler, anlaşılır ve sürdürülebilir</strong> kılar. NTP'nin üzerine kurulduğu dört temel ilke vardır (<strong>kapsülleme, kalıtım, çok biçimlilik ve soyutlama</strong>), ama bunlara sırası geldiğinde gireceğiz: kalıtıma 10. haftada, diğer üçüne 11. haftada. 6. haftada önce temeli atıyoruz: sınıf ve nesne.</p>
+    <p>Aslında nesnelerle ilk günden beri çalışıyorsunuz. Python'da bir liste, bir metin, bir sayı: hepsi birer nesnedir ve her birinin kendi metotları vardır:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">her_sey_nesne.py</span></div>
 <pre>liste = [1, 2, 3, 4, 5]
@@ -296,6 +297,7 @@ print(a.deger, b.deger)</pre>
   </div>
 </footer>
 
+<script src="js/vendor/highlight.min.js"></script>
 <script src="js/ders.js"></script>
 
 

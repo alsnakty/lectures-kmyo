@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dosya İşlemleri — NTP II Ders Notları</title>
+<title>Dosya İşlemleri | NTP II Ders Notları</title>
 <meta name="description" content="Bir değişken yalnızca program çalıştığı sürece bellekte durur; program kapandığında her şey silinir. Bu sayfa veriyi diske kalıcı olarak yazmayı, geri...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dosya İşlemleri — NTP II Ders Notları">
+<meta property="og:title" content="Dosya İşlemleri | NTP II Ders Notları">
 <meta property="og:description" content="Bir değişken yalnızca program çalıştığı sürece bellekte durur; program kapandığında her şey silinir. Bu sayfa veriyi diske kalıcı olarak yazmayı, geri...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
 
 </head>
@@ -95,7 +96,7 @@
 dosya.write("Merhaba dünya")                        <span class="c"># içine yaz</span>
 dosya.close()                                       <span class="c"># dosyayı kapat</span></pre>
     </div>
-    <p>Bu üç adım — <strong>aç, işle, kapat</strong> — bütün dosya işlemlerinin temelidir.</p>
+    <p>Bu üç adım (<strong>aç, işle, kapat</strong>) bütün dosya işlemlerinin temelidir.</p>
     <figure class="diagram"><img alt="Dosya işleminin yaşam döngüsü: aç, işle, kapat. with bloğu kapatmayı otomatik yapar." src="images/dosya_yasam_dongusu.png" width="1200" height="645" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Dosya işleminin yaşam döngüsü</figcaption>
     </figure>
@@ -166,17 +167,17 @@ with open("sehirler.txt", "a", encoding="utf-8") as f:
     <p>Bir dosyayı okumanın birkaç farklı yolu vardır. Hangisini seçeceğiniz, dosyayı <strong>bütün olarak mı yoksa satır satır mı</strong> işlemek istediğinize bağlıdır. Aşağıdaki örneklerde dosyanın içeriğinin, bir önceki örnekte oluşturduğumuz <code class="inline">Ankara</code>, <code class="inline">Adana</code>, <code class="inline">İzmir</code>, <code class="inline">Mersin</code> satırları olduğunu varsayalım.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">okuma.py</span></div>
-<pre><span class="c"># read() — tümünü tek string olarak okur</span>
+<pre><span class="c"># read(): tümünü tek string olarak okur</span>
 with open("sehirler.txt", "r", encoding="utf-8") as f:
     icerik = f.read()
 print(type(icerik))      <span class="c"># &lt;class 'str'&gt;</span>
 
-<span class="c"># readline() — her çağrıda bir sonraki satırı okur</span>
+<span class="c"># readline(): her çağrıda bir sonraki satırı okur</span>
 with open("sehirler.txt", "r", encoding="utf-8") as f:
     print(f.readline().strip())  <span class="c"># Ankara</span>
     print(f.readline().strip())  <span class="c"># Adana</span>
 
-<span class="c"># readlines() — satırları liste olarak okur</span>
+<span class="c"># readlines(): satırları liste olarak okur</span>
 with open("sehirler.txt", "r", encoding="utf-8") as f:
     satirlar = f.readlines()
 print(satirlar)          <span class="c"># ['Ankara\n', 'Adana\n', 'İzmir\n', 'Mersin\n']</span></pre>
@@ -221,7 +222,7 @@ with open("notlar.txt", "w", encoding="utf-8") as f:
     f.write("merhaba")
 <span class="ok"># Blok bitti → dosya otomatik kapandı</span></pre>
     </div>
-    <p>Üstelik blok içinde bir <strong>hata oluşsa bile</strong> dosya yine de güvenle kapatılır. Bu davranış, hata yönetimindeki <code class="inline">finally</code> bloğunun yaptığı işin aynısıdır — <code class="inline">with</code>, bunu bizim için arka planda halleder. Blok içinde istediğimiz kadar okuma ve yazma işlemi yapabiliriz.</p>
+    <p>Üstelik blok içinde bir <strong>hata oluşsa bile</strong> dosya yine de güvenle kapatılır. Bu davranış, hata yönetimindeki <code class="inline">finally</code> bloğunun yaptığı işin aynısıdır: <code class="inline">with</code>, bunu bizim için arka planda halleder. Blok içinde istediğimiz kadar okuma ve yazma işlemi yapabiliriz.</p>
     <p>İki dosyayla aynı anda çalışmak gerektiğinde (örneğin birinden okuyup diğerine yazmak), hepsini <strong>tek <code class="inline">with</code> satırında</strong> virgülle açabiliriz:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">iki_dosya.py</span></div>
@@ -275,7 +276,7 @@ with open("kisiler.txt", "r+", encoding="utf-8") as f:
 except FileNotFoundError:
     print("Dosya bulunamadı.")</pre>
     </div>
-    <p>Alternatif olarak <code class="inline">os</code> modülüyle dosyanın var olup olmadığını açmadan önce de kontrol edebilirsiniz: <code class="inline">if os.path.exists("sehirler.txt"):</code>. Genel kural şudur: "önce kontrol et" yerine "dene, hata olursa yakala" çoğu zaman daha güvenlidir; çünkü kontrol ettiğiniz an ile dosyayı açtığınız an arasında dosya silinebilir.</p>
+    <p>Alternatif olarak <code class="inline">os</code> modülüyle dosyanın var olup olmadığını açmadan önce de kontrol edebilirsiniz: <code class="inline">if os.path.exists("sehirler.txt"):</code>. Genel kural şudur: "önce kontrol et" yerine "dene, hata olursa yakala" çoğu zaman daha güvenlidir; çünkü kontrol ettiğiniz an ile dosyayı açtığınız an arasında dosya silinebilir. <code class="inline">import</code>, Python'un hazır araç dosyalarından (modüllerden) birini programa ekler; ayrıntısını 12. haftada göreceğiz.</p>
     <p>Türkçe karakterler (ç, ğ, ı, ö, ş, ü ve büyük hâlleri) bazı sistemlerde bozuk görünebilir veya <code class="inline">UnicodeDecodeError</code> hatası verebilir. Çözüm, dosyayı açarken <code class="inline">encoding="utf-8"</code> belirtmektir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">encoding.py</span></div>
@@ -308,6 +309,7 @@ with open("isimler.txt", "w") as f:
       <figcaption>Python sözlüğü ile JSON dosyası arasındaki dönüşüm</figcaption>
     </figure>
     <p>Görseldeki en kritik ayrıntı: Python'daki <code class="inline">True</code>/<code class="inline">False</code>/<code class="inline">None</code>, JSON'da küçük harfli <code class="inline">true</code>/<code class="inline">false</code>/<code class="inline">null</code> olur. Bu çeviriyi <code class="inline">json</code> modülü sizin yerinize yapar.</p>
+    <p><code class="inline">import</code>, Python'un hazır araç dosyalarından (modüllerden) birini programa ekler; ayrıntısını 12. haftada göreceğiz.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">json_yazma.py</span></div>
 <pre>import json
@@ -342,7 +344,7 @@ with open("ogrenci.json", "w", encoding="utf-8") as f:
 with open("ogrenci.json", "r", encoding="utf-8") as f:
     veri = json.load(f)
 
-print(type(veri))        <span class="c"># &lt;class 'dict'&gt;  — gerçek bir sözlük!</span>
+print(type(veri))        <span class="c"># &lt;class 'dict'&gt; (gerçek bir sözlük!)</span>
 print(veri["ad"])        <span class="c"># Şükrü</span>
 print(veri["dersler"])   <span class="c"># ['Python', 'Veritabanı']</span>
 print(veri["mezun"])     <span class="c"># False  (tekrar Python bool'una döndü)</span></pre>
@@ -352,7 +354,7 @@ print(veri["mezun"])     <span class="c"># False  (tekrar Python bool'una dönd�
 
     <hr class="hr">
 
-    <h2 id="karar"><span class="num">10</span>Hangi modu, hangi yöntemi? — Karar tablosu</h2>
+    <h2 id="karar"><span class="num">10</span>Karar tablosu: Hangi modu, hangi yöntemi?</h2>
     <div class="twrap">
       <table>
         <thead><tr><th>Durum</th><th>Önerilen yapı</th></tr></thead>
@@ -366,7 +368,7 @@ print(veri["mezun"])     <span class="c"># False  (tekrar Python bool'una dönd�
           <tr><td>Dosyayı her durumda güvenle kapatmak istiyorum</td><td><code>with</code> bloğu</td></tr>
           <tr><td>Dosya olmayabilir, çökmesin istiyorum</td><td><code>try / except FileNotFoundError</code></td></tr>
           <tr><td>İçerikte Türkçe karakter var</td><td><code>encoding="utf-8"</code></td></tr>
-          <tr><td>Yapılı / iç içe veri saklayacağım (sözlük, liste)</td><td>JSON — <code>json.dump</code> / <code>json.load</code></td></tr>
+          <tr><td>Yapılı / iç içe veri saklayacağım (sözlük, liste)</td><td>JSON: <code>json.dump</code> / <code>json.load</code></td></tr>
           <tr><td>Türkçe JSON yazacağım</td><td><code>ensure_ascii=False, indent=4</code></td></tr>
           <tr><td>Dosyada belirli bir konuma gideceğim</td><td><code>seek()</code> / <code>tell()</code></td></tr>
           <tr><td>Dosyayı silmeden başına/ortasına ekleyeceğim</td><td><code>"r+"</code> modu + <code>seek(0)</code></td></tr>
@@ -474,7 +476,7 @@ print(veri["mezun"])     <span class="c"># False  (tekrar Python bool'una dönd�
 
     <div class="aside-card mobil">
       <div class="k">İlgili konu</div>
-      <p>Hata Yönetimi — 3. hafta. Dosya açma her zaman başarısız olabilir; <code class="inline">try / except FileNotFoundError</code> bu konuda sürekli karşınıza çıkar.</p>
+      <p>Hata Yönetimi (3. hafta). Dosya açma her zaman başarısız olabilir; <code class="inline">try / except FileNotFoundError</code> bu konuda sürekli karşınıza çıkar.</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -508,7 +510,7 @@ print(veri["mezun"])     <span class="c"># False  (tekrar Python bool'una dönd�
     </nav>
     <div class="aside-card">
       <div class="k">İlgili konu</div>
-      <p>Hata Yönetimi — 3. hafta. Dosya açma her zaman başarısız olabilir; <code class="inline">try / except FileNotFoundError</code> bu konuda sürekli karşınıza çıkar.</p>
+      <p>Hata Yönetimi (3. hafta). Dosya açma her zaman başarısız olabilir; <code class="inline">try / except FileNotFoundError</code> bu konuda sürekli karşınıza çıkar.</p>
     </div>
   </aside>
 </div>
@@ -524,6 +526,7 @@ print(veri["mezun"])     <span class="c"># False  (tekrar Python bool'una dönd�
   </div>
 </footer>
 
+<script src="js/vendor/highlight.min.js"></script>
 <script src="js/ders.js"></script>
 
 

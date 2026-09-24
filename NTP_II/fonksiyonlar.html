@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fonksiyonlar — NTP II Ders Notları</title>
+<title>Fonksiyonlar | NTP II Ders Notları</title>
 <meta name="description" content="Bir fonksiyon, bir kez tanımlayıp sonra istediğiniz zaman, istediğiniz veriyle yeniden çağırabildiğiniz bir kod bloğudur. Bu sayfa def ile fonksiyon...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Fonksiyonlar — NTP II Ders Notları">
+<meta property="og:title" content="Fonksiyonlar | NTP II Ders Notları">
 <meta property="og:description" content="Bir fonksiyon, bir kez tanımlayıp sonra istediğiniz zaman, istediğiniz veriyle yeniden çağırabildiğiniz bir kod bloğudur. Bu sayfa def ile fonksiyon...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
 
 </head>
@@ -153,7 +154,7 @@ personel_yazdir("hasan", "karaisalı", 12)
 personel_yazdir("hasan", 12, "karaisalı")   <span class="no"># ⚠ sıra bozuk → yaş yerine "karaisalı" yazılır!</span></pre>
     </div>
     <div class="term">
-      <div class="thead">Çıktı — ilk çağrı</div>
+      <div class="thead">Çıktı (ilk çağrı)</div>
 <pre>personelin adi : hasan
 personelin soyadı : karaisalı
 personelin yas : 12</pre>
@@ -207,7 +208,7 @@ print("a:", a)
 print("b:", b)</pre>
     </div>
     <div class="term">
-      <div class="thead">Çıktı — programın tamamı</div>
+      <div class="thead">Çıktı (programın tamamı)</div>
 <pre>25
 a: None
 b: 25</pre>
@@ -261,7 +262,7 @@ print(og_numarasi)          <span class="c"># 123  (artık global de değişti!)
 
     <hr class="hr">
 
-    <h2 id="karar"><span class="num">7</span>print mi return mi? — Karar tablosu</h2>
+    <h2 id="karar"><span class="num">7</span>Karar tablosu: print mi return mi?</h2>
     <div class="twrap">
       <table>
         <thead><tr><th>Durum</th><th>Önerilen yapı</th></tr></thead>
@@ -393,7 +394,7 @@ print(sonuc)</pre>
 
     <div class="aside-card mobil">
       <div class="k">İlgili konu</div>
-      <p>Hata Yönetimi — 3. hafta. Fonksiyona uygunsuz bir değer geldiğinde <code class="inline">raise</code> ile hata fırlatmak, bu konunun doğrudan devamıdır.</p>
+      <p>Hata Yönetimi (3. hafta). Fonksiyona uygunsuz bir değer geldiğinde <code class="inline">raise</code> ile hata fırlatmak, bu konunun doğrudan devamıdır.</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -424,7 +425,7 @@ print(sonuc)</pre>
     </nav>
     <div class="aside-card">
       <div class="k">İlgili konu</div>
-      <p>Hata Yönetimi — 3. hafta. Fonksiyona uygunsuz bir değer geldiğinde <code class="inline">raise</code> ile hata fırlatmak, bu konunun doğrudan devamıdır.</p>
+      <p>Hata Yönetimi (3. hafta). Fonksiyona uygunsuz bir değer geldiğinde <code class="inline">raise</code> ile hata fırlatmak, bu konunun doğrudan devamıdır.</p>
     </div>
   </aside>
 </div>
@@ -440,6 +441,7 @@ print(sonuc)</pre>
   </div>
 </footer>
 
+<script src="js/vendor/highlight.min.js"></script>
 <script src="js/ders.js"></script>
 
 

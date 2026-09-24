@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hata Yönetimi — NTP II Ders Notları</title>
+<title>Hata Yönetimi | NTP II Ders Notları</title>
 <meta name="description" content="Bir program çalışırken beklenmedik durumlarla karşılaşır: kullanıcı yanlış veri girer, dosya bulunamaz, bir sayı sıfıra bölünür. Bu sayfa, programın...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hata Yönetimi — NTP II Ders Notları">
+<meta property="og:title" content="Hata Yönetimi | NTP II Ders Notları">
 <meta property="og:description" content="Bir program çalışırken beklenmedik durumlarla karşılaşır: kullanıcı yanlış veri girer, dosya bulunamaz, bir sayı sıfıra bölünür. Bu sayfa, programın...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
 
 </head>
@@ -70,7 +71,7 @@
     </details>
 
 <h2 id="neden"><span class="num">1</span>Hata yönetimi neden vardır?</h2>
-    <p>Bir program çalışırken her şeyin yolunda gideceğini varsaymak iyimser ama gerçekçi olmayan bir yaklaşımdır. Kullanıcı sayı yerine harf girer, açılmak istenen dosya silinmiştir ya da bir sayı sıfıra bölünür. Bu durumların hepsi <strong>çalışma zamanında</strong> ortaya çıkar ve hiçbir önlem alınmamışsa program <strong>çöker</strong> — yani aniden durur ve geri kalan satırlar hiç çalışmaz.</p>
+    <p>Bir program çalışırken her şeyin yolunda gideceğini varsaymak iyimser ama gerçekçi olmayan bir yaklaşımdır. Kullanıcı sayı yerine harf girer, açılmak istenen dosya silinmiştir ya da bir sayı sıfıra bölünür. Bu durumların hepsi <strong>çalışma zamanında</strong> ortaya çıkar ve hiçbir önlem alınmamışsa program <strong>çöker</strong>, yani aniden durur ve geri kalan satırlar hiç çalışmaz.</p>
     <p>Amaç hataları yok etmek değildir; amaç, bir hata oluştuğunda programın ne yapacağına <em>bizim</em> karar verebilmemizdir. Bunu üç şey için kullanırız: programın çökmesini engellemek, kullanıcıya anlamlı geri bildirim vermek ve riskli işlemleri güvenli kılmak.</p>
 
     <h3 id="iki-tur">1.1 İki tür hata</h3>
@@ -78,8 +79,8 @@
       <table>
         <thead><tr><th>Tür</th><th>Ne zaman oluşur</th><th>Yakalanabilir mi?</th><th>Örnek</th></tr></thead>
         <tbody>
-          <tr><td><strong>Söz Dizimi Hatası</strong><br>(SyntaxError)</td><td>Kod çalışmadan önce, yazım kurallarına aykırı kod yazıldığında</td><td class="no">✕ Hayır — kodu düzeltmek gerekir</td><td><code>print("merhaba"</code></td></tr>
-          <tr><td><strong>Çalışma Zamanı Hatası</strong><br>(Exception)</td><td>Kod çalışırken, beklenmedik bir durumla karşılaşıldığında</td><td class="yes">✓ Evet — <code>try/except</code> ile</td><td><code>10 / 0</code></td></tr>
+          <tr><td><strong>Söz Dizimi Hatası</strong><br>(SyntaxError)</td><td>Kod çalışmadan önce, yazım kurallarına aykırı kod yazıldığında</td><td class="no">✕ Hayır, kodu düzeltmek gerekir</td><td><code>print("merhaba"</code></td></tr>
+          <tr><td><strong>Çalışma Zamanı Hatası</strong><br>(Exception)</td><td>Kod çalışırken, beklenmedik bir durumla karşılaşıldığında</td><td class="yes">✓ Evet, <code>try/except</code> ile</td><td><code>10 / 0</code></td></tr>
         </tbody>
       </table>
     </div>
@@ -96,7 +97,7 @@ print("Girdiğiniz sayı:", sayi)            <span class="no"># buraya hiç geli
 print("Program bitti")                     <span class="no"># bu da çalışmaz</span></pre>
     </div>
     <div class="term">
-      <div class="thead">Çıktı — kullanıcı "abc" girerse</div>
+      <div class="thead">Çıktı (kullanıcı "abc" girerse)</div>
 <pre>Program başladı
 Bir sayı giriniz: abc
 Traceback (most recent call last):
@@ -134,7 +135,7 @@ except:
 print("Program devam ediyor...")   <span class="ok"># artık her durumda çalışır</span></pre>
     </div>
     <div class="term">
-      <div class="thead">Çıktı — kullanıcı "abc" girerse</div>
+      <div class="thead">Çıktı (kullanıcı "abc" girerse)</div>
 <pre>Geçersiz giriş! Lütfen bir sayı giriniz.
 Program devam ediyor...</pre>
     </div>
@@ -159,7 +160,7 @@ except ZeroDivisionError:
         <tbody>
           <tr><td><code>abc</code></td><td><code>ValueError</code></td><td>birinci</td><td>Lütfen harf değil, sayı giriniz.</td></tr>
           <tr><td><code>0</code></td><td><code>ZeroDivisionError</code></td><td>ikinci</td><td>Bir sayıyı sıfıra bölemezsiniz.</td></tr>
-          <tr><td><code>5</code></td><td>—</td><td>hiçbiri</td><td>Sonuç: 20.0</td></tr>
+          <tr><td><code>5</code></td><td>Yok</td><td>hiçbiri</td><td>Sonuç: 20.0</td></tr>
         </tbody>
       </table>
     </div>
@@ -197,7 +198,7 @@ finally:
     print("4) finally: HER durumda çalışır")</pre>
     </div>
     <div class="term">
-      <div class="thead">Çıktı — hata oluşmadığı için</div>
+      <div class="thead">Çıktı (hata oluşmadığı için)</div>
 <pre>1) try: riskli işlem deneniyor
 3) else: yalnızca hata OLMAZSA çalışır
 4) finally: HER durumda çalışır</pre>
@@ -215,7 +216,7 @@ finally:
     </div>
 
     <h2 id="raise"><span class="num">7</span>raise ile hata fırlatmak</h2>
-    <p>Şimdiye kadar hataları yakaladık. Bazen ise hatayı bilerek biz oluşturmak isteriz — örneğin bir fonksiyona negatif yaş gibi mantıksız bir değer geldiğinde. Bunun için <code class="inline">raise</code> kullanılır.</p>
+    <p>Şimdiye kadar hataları yakaladık. Bazen ise hatayı bilerek biz oluşturmak isteriz, örneğin bir fonksiyona negatif yaş gibi mantıksız bir değer geldiğinde. Bunun için <code class="inline">raise</code> kullanılır.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">raise_ornek.py</span></div>
 <pre>def yas_kontrol(yas):
@@ -241,7 +242,7 @@ yas_kontrol(-3)      <span class="no"># ValueError: Yaş negatif olamaz!</span><
           <tr><td>Riskli işlem başarılı olursa devamında bir şey yapacağım</td><td><code>else</code> bloğu</td></tr>
           <tr><td>Hata olsa da olmasa da çalışacak kod var</td><td><code>finally</code> bloğu</td></tr>
           <tr><td>Uygunsuz değer gelince hata oluşturmak istiyorum</td><td><code>raise</code></td></tr>
-          <tr><td>Hata bir yazım hatası (SyntaxError)</td><td>try/except değil — <strong>kodu düzelt</strong></td></tr>
+          <tr><td>Hata bir yazım hatası (SyntaxError)</td><td>try/except değil, <strong>kodu düzelt</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -358,7 +359,7 @@ except ValueError as e:
 
     <div class="aside-card mobil">
       <div class="k">İlgili konu</div>
-      <p>Dosya İşlemleri — 4-5. hafta. Dosya açarken <code class="inline">FileNotFoundError</code> ve <code class="inline">finally</code> ile kapatma burada tekrar karşınıza çıkar.</p>
+      <p>Dosya İşlemleri (4-5. hafta). Dosya açarken <code class="inline">FileNotFoundError</code> ve <code class="inline">finally</code> ile kapatma burada tekrar karşınıza çıkar.</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -390,7 +391,7 @@ except ValueError as e:
     </nav>
     <div class="aside-card">
       <div class="k">İlgili konu</div>
-      <p>Dosya İşlemleri — 4-5. hafta. Dosya açarken <code class="inline">FileNotFoundError</code> ve <code class="inline">finally</code> ile kapatma burada tekrar karşınıza çıkar.</p>
+      <p>Dosya İşlemleri (4-5. hafta). Dosya açarken <code class="inline">FileNotFoundError</code> ve <code class="inline">finally</code> ile kapatma burada tekrar karşınıza çıkar.</p>
     </div>
   </aside>
 </div>
@@ -406,6 +407,7 @@ except ValueError as e:
   </div>
 </footer>
 
+<script src="js/vendor/highlight.min.js"></script>
 <script src="js/ders.js"></script>
 
 

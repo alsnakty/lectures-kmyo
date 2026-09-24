@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Polimorfizm, Kapsülleme, Soyutlama — NTP II Ders Notları</title>
-<meta name="description" content="Nesne tabanlı programlamanın dört temel ilkesinden kalıtımı geçen hafta gördük. Bu sayfa kalan üçünü anlatır: aynı komutun farklı nesnelerde farklı...">
+<title>Polimorfizm, Kapsülleme, Soyutlama | NTP II Ders Notları</title>
+<meta name="description" content="Nesne tabanlı programlamanın dört temel ilkesinden kalıtımı 10. haftada gördük. Bu sayfa kalan üçünü anlatır: aynı komutun farklı nesnelerde farklı...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Polimorfizm, Kapsülleme, Soyutlama — NTP II Ders Notları">
-<meta property="og:description" content="Nesne tabanlı programlamanın dört temel ilkesinden kalıtımı geçen hafta gördük. Bu sayfa kalan üçünü anlatır: aynı komutun farklı nesnelerde farklı...">
+<meta property="og:title" content="Polimorfizm, Kapsülleme, Soyutlama | NTP II Ders Notları">
+<meta property="og:description" content="Nesne tabanlı programlamanın dört temel ilkesinden kalıtımı 10. haftada gördük. Bu sayfa kalan üçünü anlatır: aynı komutun farklı nesnelerde farklı...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
 
 </head>
@@ -52,12 +53,12 @@
   <article id="icerik">
     <div class="eyebrow">Konu Anlatımı · 11. Hafta</div>
     <h1>Çok Biçimlilik, Kapsülleme ve Soyutlama</h1>
-    <p class="lede">Nesne tabanlı programlamanın dört temel ilkesinden kalıtımı geçen hafta gördük. Bu sayfa kalan üçünü anlatır: aynı komutun farklı nesnelerde farklı çalışması, bir nesnenin verisini dış dünyadan koruma ve gereksiz ayrıntıları gizleyip yalnızca iskeleti ortaya koyma.</p>
+    <p class="lede">Nesne tabanlı programlamanın dört temel ilkesinden kalıtımı 10. haftada gördük. Bu sayfa kalan üçünü anlatır: aynı komutun farklı nesnelerde farklı çalışması, bir nesnenin verisini dış dünyadan koruma ve gereksiz ayrıntıları gizleyip yalnızca iskeleti ortaya koyma.</p>
 
     <details class="toc-mobil">
       <summary>Bu sayfada</summary>
       <nav aria-label="Sayfa bölümleri">
-  <a href="#giris"><span class="n">1</span>Bu hafta ne var?</a>
+  <a href="#giris"><span class="n">1</span>Bu konuda ne var?</a>
         <a href="#polimorfizm"><span class="n">2</span>Çok biçimlilik</a>
         <a href="#kapsulleme"><span class="n">3</span>Kapsülleme</a>
         <a href="#soyutlama"><span class="n">4</span>Soyutlama</a>
@@ -65,12 +66,13 @@
       </nav>
     </details>
 
-<h2 id="giris"><span class="num">1</span>Bu hafta ne var?</h2>
-    <p>Nesne tabanlı programlamanın dört temel ilkesinden birini, <strong>kalıtımı</strong>, geçen hafta gördük. Bu hafta kalan üçünü işliyoruz. Bunlar birbirinden bağımsız konular değil; üçü de aynı amaca hizmet eder: gerçek dünyayı daha sadık modellemek ve büyük projelerde kodu yönetilebilir tutmak.</p>
+<h2 id="giris"><span class="num">1</span>Bu konuda ne var?</h2>
+    <div class="note"><span class="tag">Hatırlatma</span><p>Sınıf nesneler için bir kalıptır; <code class="inline">__init__</code> nesne oluşturulurken verisini yerleştirir, <code class="inline">self</code> o nesnenin kendisidir (6. hafta). Kalıtımda alt sınıf, ana sınıfın özelliklerini ve metotlarını devralır; override ise alt sınıfın devraldığı bir metodu aynı adla kendine göre yeniden yazmasıdır (10. hafta).</p></div>
+    <p>Nesne tabanlı programlamanın dört temel ilkesinden birini, <strong>kalıtımı</strong>, 10. haftada gördük. 11. haftada kalan üçünü işliyoruz. Bunlar birbirinden bağımsız konular değil; üçü de aynı amaca hizmet eder: gerçek dünyayı daha sadık modellemek ve büyük projelerde kodu yönetilebilir tutmak.</p>
     <p><strong>Çok biçimlilik</strong> aynı komutun farklı nesnelerde farklı çalışmasını, <strong>kapsülleme</strong> bir nesnenin verisini dış dünyadan koruyup yalnızca izin verilen yollarla erişilmesini, <strong>soyutlama</strong> ise gereksiz ayrıntıları gizleyip yalnızca gerekli iskeleti ortaya koymayı sağlar.</p>
 
     <h2 id="polimorfizm"><span class="num">2</span>Çok biçimlilik (polymorphism)</h2>
-    <p>Geçen hafta override'ı <code class="inline">Arac</code> ve <code class="inline">Araba</code> sınıfları üzerinde görmüştük: alt sınıf, ana sınıftan miras aldığı <code class="inline">ses_cikar</code> metodunu kendine göre yeniden tanımlıyordu. <strong>Çok biçimlilik</strong>, bu fikrin doğal sonucudur: aynı isimli bir metot, hangi nesne üzerinde çağrıldığına göre farklı davranır. "Polimorfizm" kelimesi zaten "çok biçim" demektir.</p>
+    <p>10. haftada override'ı <code class="inline">Arac</code> ve <code class="inline">Araba</code> sınıfları üzerinde görmüştük: <code class="inline">Araba</code>, <code class="inline">Arac</code>'tan devraldığı <code class="inline">ses_cikar</code> metodunu kendine göre yeniden yazıyordu. <strong>Çok biçimlilik</strong>, bu fikrin doğal sonucudur: aynı isimli bir metot, hangi nesne üzerinde çağrıldığına göre farklı davranır. "Polimorfizm" kelimesi zaten "çok biçim" demektir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">hayvanlar.py</span></div>
 <pre>class Hayvan:
@@ -124,7 +126,7 @@ Miyav!</pre>
         self.__sasi_no = "ABC123"   <span class="c"># private</span>
 
 araba = Araba("Toyota")
-print(araba.model)       <span class="ok"># Toyota — erişim serbest</span>
+print(araba.model)       <span class="ok"># Toyota (erişim serbest)</span>
 print(araba._yakit)      <span class="c"># erişilebilir ama önerilmez</span>
 print(araba.__sasi_no)   <span class="no"># ❌ AttributeError</span></pre>
     </div>
@@ -145,7 +147,7 @@ print(araba.__sasi_no)   <span class="no"># ❌ AttributeError</span></pre>
         self.__sasi_no = yeni
 
 araba = Araba("ABC123")
-print(araba.get_sasi_no())          <span class="c"># ABC123  — getter ile okuduk</span>
+print(araba.get_sasi_no())          <span class="c"># ABC123 (getter ile okuduk)</span>
 araba.set_sasi_no("XYZ999")         <span class="c"># setter ile değiştirdik</span>
 print(araba.get_sasi_no())          <span class="c"># XYZ999</span></pre>
     </div>
@@ -161,7 +163,7 @@ print(araba.get_sasi_no())          <span class="c"># XYZ999</span></pre>
 class Sekil(ABC):
     @abstractmethod
     def alan_hesapla(self):
-        pass                        <span class="c"># içi boş — kuralı koyar, uygulamayı alt sınıfa bırakır</span>
+        pass                        <span class="c"># içi boş: kuralı koyar, uygulamayı alt sınıfa bırakır</span>
 
 class Dikdortgen(Sekil):
     def __init__(self, genislik, yukseklik):
@@ -292,7 +294,7 @@ print(a.hiz_goster())</pre>
 
     <div class="aside-card mobil">
       <div class="k">Dizi bilgisi</div>
-      <p>Sınıflar dizisinin dördüncü ve son konusu. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). Bu haftaki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
+      <p>Sınıflar dizisinin dördüncü ve son konusu. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). 11. haftadaki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -312,7 +314,7 @@ print(a.hiz_goster())</pre>
   <aside>
     <div class="toc-title">Bu Sayfada</div>
     <nav class="toc" id="toc">
-<a href="#giris"><span class="n">1</span>Bu hafta ne var?</a>
+<a href="#giris"><span class="n">1</span>Bu konuda ne var?</a>
       <a href="#polimorfizm"><span class="n">2</span>Çok biçimlilik</a>
       <a href="#kapsulleme"><span class="n">3</span>Kapsülleme</a>
       <a href="#soyutlama"><span class="n">4</span>Soyutlama</a>
@@ -320,7 +322,7 @@ print(a.hiz_goster())</pre>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>
-      <p>Sınıflar dizisinin dördüncü ve son konusu. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). Bu haftaki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
+      <p>Sınıflar dizisinin dördüncü ve son konusu. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). 11. haftadaki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
     </div>
   </aside>
 </div>
@@ -336,6 +338,7 @@ print(a.hiz_goster())</pre>
   </div>
 </footer>
 
+<script src="js/vendor/highlight.min.js"></script>
 <script src="js/ders.js"></script>
 
 

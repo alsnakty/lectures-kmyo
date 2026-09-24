@@ -167,15 +167,32 @@
       kapatDugme.setAttribute("aria-label", "Görseli kapat");
       kapatDugme.addEventListener("click", kapat);
 
+      var ipucu = document.createElement("p");
+      ipucu.className = "ipucu";
+      ipucu.textContent = "Görseli parmağınızla kaydırın · Telefonu yan çevirirseniz tamamını görürsünüz";
+
       kutu.appendChild(buyuk);
       kutu.appendChild(kapatDugme);
+      kutu.appendChild(ipucu);
       kutu.addEventListener("click", function (e) {
         if (e.target === kutu) kapat();
       });
       document.body.appendChild(kutu);
       document.documentElement.style.overflow = "hidden";
       acik = kutu;
-      kapatDugme.focus();
+      kapatDugme.focus({ preventScroll: true });
+
+      /* dar ekranda gorsel kaydirilabilir; baslangicta ortasi gorunsun */
+      function ortala() {
+        if (acik !== kutu) return;
+        if (!window.matchMedia || !window.matchMedia("(max-width: 699.98px)").matches) return;
+        kutu.scrollLeft = (kutu.scrollWidth - kutu.clientWidth) / 2;
+        kutu.scrollTop = (kutu.scrollHeight - kutu.clientHeight) / 2;
+      }
+      ortala();
+      if (buyuk.tagName.toLowerCase() === "img" && !buyuk.complete) {
+        buyuk.addEventListener("load", ortala);
+      }
     }
 
     gorseller.forEach(function (oge) {
@@ -230,4 +247,64 @@
       }
     }
   })();
+
+  /* ---------- 9) Python kod renklendirme (highlight.js, yerel kopya) ---------- */
+  (function () {
+    if (!window.hljs) return;   /* MD klasorundeki tek dosyalik kopyalarda yuklu degil */
+    /* bloklarda yorum span'leri var; hljs duz metni yeniden kurar, uyari basmasin */
+    window.hljs.configure({ ignoreUnescapedHTML: true });
+    var ATLA_AD = /komut istemi|anaconda prompt|kalıp/i;
+
+    hepsi(".code").forEach(function (blok) {
+      var pre = sec("pre", blok);
+      if (!pre) return;
+      var ad = sec(".code-head .name", blok);
+      if (ad && ATLA_AD.test(ad.textContent)) return;
+
+      /* yesil / kirmizi isaretli yorumlar (.ok / .no): renklendirmeden sonra geri eklenir */
+      var isaretli = hepsi("span.ok, span.no", pre).map(function (s) {
+        return { metin: s.textContent, sinif: s.classList.contains("ok") ? "ok" : "no" };
+      });
+
+      pre.classList.add("language-python");   /* dil sabit: otomatik algilama yok */
+      window.hljs.highlightElement(pre);
+
+      if (!isaretli.length) return;
+      hepsi(".hljs-comment", pre).forEach(function (yorum) {
+        for (var i = 0; i < isaretli.length; i++) {
+          if (isaretli[i].metin === yorum.textContent) {
+            yorum.classList.add(isaretli[i].sinif);
+            isaretli.splice(i, 1);
+            return;
+          }
+        }
+      });
+    });
+  })();
+
+  /* ---------- 10) okuma cubugu (yalnizca konu sayfalari) ---------- */
+  (function () {
+    var ust = sec(".topbar");
+    if (!ust || !sec("#toc")) return;
+    var cubuk = document.createElement("div");
+    cubuk.className = "okuma";
+    cubuk.setAttribute("aria-hidden", "true");
+    ust.appendChild(cubuk);
+    var bekliyor = false;
+    function guncelle() {
+      bekliyor = false;
+      var enfazla = document.documentElement.scrollHeight - window.innerHeight;
+      var oran = enfazla > 0 ? Math.min(1, Math.max(0, window.scrollY / enfazla)) : 0;
+      cubuk.style.transform = "scaleX(" + oran + ")";
+    }
+    function iste() {
+      if (bekliyor) return;
+      bekliyor = true;
+      window.requestAnimationFrame(guncelle);
+    }
+    window.addEventListener("scroll", iste, { passive: true });
+    window.addEventListener("resize", iste);
+    iste();
+  })();
+
 })();
