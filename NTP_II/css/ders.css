@@ -540,11 +540,12 @@
   footer.alt { border-top: 1px solid var(--line); margin-top: 64px; background: var(--surface); }
   .alt-ic {
     max-width: var(--maxw); margin: 0 auto; padding: 26px 32px 34px;
-    display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: baseline;
+    display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
   }
   .alt-ic p { margin: 0; font-size: 13.5px; color: var(--ink-soft); max-width: none; }
   .alt-ic .alt-kisi { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); }
-  .alt-bag { margin-left: auto; display: flex; gap: 18px; flex-wrap: wrap; }
+  .alt-bag { display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+  .alt-bag .ayrac { color: var(--ink-faint); font-size: 13.5px; }
   footer.alt a { color: var(--accent); text-decoration: none; font-size: 13.5px; }
   footer.alt a:hover { text-decoration: underline; }
   footer.alt .alt-kisi a { font-size: inherit; }
@@ -578,11 +579,17 @@
       font-family: var(--sans); font-size: 11.5px; color: var(--accent);
     }
   }
+  /* dar ekranda ust bardaki sayfa adi tek satirda kalir, sigmazsa uc noktayla kisalir */
+  @media (max-width: 399.98px) {
+    .brand { min-width: 0; white-space: nowrap; }
+    .brand .dot { flex-shrink: 0; }
+    .brand .muted { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ust-araclar { flex-shrink: 0; }
+  }
   @media (max-width: 560px) {
     .komsu { grid-template-columns: minmax(0, 1fr); }
     .komsu-kart.sonraki { grid-column: 1; text-align: left; }
     .alt-ic { padding-left: 20px; padding-right: 20px; }
-    .alt-bag { margin-left: 0; }
     .yukari { right: 14px; bottom: 14px; }
   }
 
