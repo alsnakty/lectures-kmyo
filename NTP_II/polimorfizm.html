@@ -68,6 +68,7 @@
         <a href="#kendin-yaz"><span class="n">5</span>Kendin yaz</a>
         <a href="#test"><span class="n">6</span>Konu sonu testi</a>
         <a href="#kendi-basina"><span class="n">7</span>Kendi başına dene</a>
+        <a href="#ileri-okuma"><span class="n">8</span>İleri okuma</a>
       </nav>
     </details>
 
@@ -248,7 +249,7 @@ Mehmet 85</pre>
         self.__notu = 0
 
     def set_not(self, yeni):
-        if yeni &gt;= 0 and yeni &lt;= 100:
+        if 0 &lt;= yeni &lt;= 100:
             self.__notu = yeni
         else:
             print("Geçersiz not:", yeni)
@@ -298,6 +299,51 @@ notlar = {"Ali": 70, "Ayşe": 90, "Zeynep": 80}
 for rapor in [KisaRapor(), DetayliRapor()]:
     rapor.olustur(notlar)
     print("-" * 12)</pre>
+      </div>
+    </details>
+    <h3 id="gorev-4">Görev 4: Hatayı bul</h3>
+    <p>Aşağıdaki kodda bakiye private (<code class="inline">__bakiye</code>) olarak tutuluyor. Kod bakiyeyi 5000 yapıp yazdırmalıdır. Hata vermeden çalışıyor, ama bakiye değişmiyor. Hatayı bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">hatali.py</span></div>
+<pre>class Hesap:
+    def __init__(self, sahip, bakiye):
+        self.sahip = sahip
+        self.__bakiye = bakiye
+
+    def bakiye_goster(self):
+        print("Bakiye:", self.__bakiye)
+
+h = Hesap("Can", 1000)
+h.__bakiye = 5000
+h.bakiye_goster()</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Kodun şu anki çıktısı</div>
+<pre>Bakiye: 1000</pre>
+    </div>
+    <details class="ansbox"><summary>Açıklama ve düzeltilmiş kod</summary>
+      <p>Private bir özelliğe sınıfın dışından yazılamaz. Python, sınıfın içindeki <code class="inline">__bakiye</code> adını name mangling ile <code class="inline">_Hesap__bakiye</code> olarak saklar. Sınıfın dışında yazılan <code class="inline">h.__bakiye = 5000</code> satırı bu değeri değiştirmez; nesneye <code class="inline">__bakiye</code> adında yeni ve ilgisiz bir özellik ekler. <code class="inline">bakiye_goster()</code> ise sınıfın içindeki asıl değeri okuduğu için 1000 yazar. Private bir değeri değiştirmenin doğru yolu, sınıfın içine yazılan bir setter metodudur (3.2'deki gibi).</p>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">duzeltilmis.py</span></div>
+<pre>class Hesap:
+    def __init__(self, sahip, bakiye):
+        self.sahip = sahip
+        self.__bakiye = bakiye
+
+    def set_bakiye(self, yeni):
+        if yeni &gt;= 0:
+            self.__bakiye = yeni
+
+    def bakiye_goster(self):
+        print("Bakiye:", self.__bakiye)
+
+h = Hesap("Can", 1000)
+h.set_bakiye(5000)
+h.bakiye_goster()</pre>
+      </div>
+      <div class="term">
+        <div class="thead">Çıktı</div>
+<pre>Bakiye: 5000</pre>
       </div>
     </details>
 
@@ -407,6 +453,13 @@ print(a.hiz_goster())</pre>
       <li>Bir <code class="inline">Urun</code> sınıfı yazınız; <code class="inline">__fiyat</code> private olsun. Bir setter ile fiyatı güncellerken negatif değeri reddediniz; bir getter ile fiyatı okuyunuz. Ayrıca <code class="inline">__str__</code> ekleyerek <code class="inline">print(urun)</code> çağrısında ürünün adını ve fiyatını okunaklı gösteriniz.</li>
     </ol>
 
+    <h2 id="ileri-okuma"><span class="num">8</span>İleri okuma</h2>
+    <p>Konuyu Python'un resmî belgelerinden de okuyabilirsiniz:</p>
+    <ul class="ileri-okuma">
+      <li><a href="https://docs.python.org/tr/3/tutorial/classes.html#private-variables" target="_blank" rel="noopener">Python Öğreticisi: 9.6. Özel Değişkenler</a></li>
+      <li><a href="https://docs.python.org/3/library/abc.html" target="_blank" rel="noopener">abc: Abstract Base Classes</a> (İngilizce)</li>
+    </ul>
+
     <div class="aside-card mobil">
       <div class="k">Dizi bilgisi</div>
       <p>Sınıflar dizisinin dördüncü ve son konusu. Önceki: Kalıtım, <code class="inline">super()</code> ve override (10. hafta). 11. haftadaki çok biçimlilik, oradaki override'ın doğal devamıdır.</p>
@@ -436,6 +489,7 @@ print(a.hiz_goster())</pre>
       <a href="#kendin-yaz"><span class="n">5</span>Kendin yaz</a>
       <a href="#test"><span class="n">6</span>Konu sonu testi</a>
       <a href="#kendi-basina"><span class="n">7</span>Kendi başına dene</a>
+      <a href="#ileri-okuma"><span class="n">8</span>İleri okuma</a>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>
@@ -447,10 +501,10 @@ print(a.hiz_goster())</pre>
 <footer class="alt">
   <div class="alt-ic">
     <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
-    <p class="alt-kisi"><!-- AD SOYAD --></p>
+    <p class="alt-kisi">Hazırlayan: Öğr. Gör. alsnakty · Bu içerik <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a> lisansıyla paylaşılmıştır.</p>
       <nav class="alt-bag" aria-label="Alt bağlantılar">
         <a href="index.html">Ders ana sayfası</a>
-        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+        <a href="proje-yonergesi.html">Dönem projesi yönergesi</a>
       </nav>
   </div>
 </footer>

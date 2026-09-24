@@ -396,7 +396,7 @@
   }
   .konu-menu > summary::-webkit-details-marker { display: none; }
   .konu-menu > summary:hover { color: var(--ink); border-color: var(--accent); }
-  .konu-menu > summary:focus-visible, .tema-dugme:focus-visible,
+  .konu-menu > summary:focus-visible, .tema-dugme:focus-visible, .yazdir-dugme:focus-visible,
   .yukari:focus-visible, .kopyala:focus-visible, .kutu .kapat:focus-visible,
   .toc-mobil > summary:focus-visible, .komsu-kart:focus-visible,
   footer.alt a:focus-visible, .atla:focus-visible {
@@ -426,14 +426,14 @@
   .konu-listesi .mh { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); min-width: 30px; }
   .konu-listesi a.etkin .mh { color: var(--accent); }
 
-  .tema-dugme {
+  .tema-dugme, .yazdir-dugme {
     display: inline-flex; align-items: center; justify-content: center;
     width: 34px; height: 34px; padding: 0; cursor: pointer;
     background: var(--surface); color: var(--ink-soft);
     border: 1px solid var(--line-strong); border-radius: 8px;
   }
-  .tema-dugme:hover { color: var(--ink); border-color: var(--accent); }
-  .tema-dugme svg { width: 17px; height: 17px; fill: none; stroke: currentColor;
+  .tema-dugme:hover, .yazdir-dugme:hover { color: var(--ink); border-color: var(--accent); }
+  .tema-dugme svg, .yazdir-dugme svg { width: 17px; height: 17px; fill: none; stroke: currentColor;
                     stroke-width: 1.8; stroke-linecap: round; }
   .tema-dugme .gunes { display: none; }
   @media (prefers-color-scheme: dark) {
@@ -469,6 +469,7 @@
   .toc-mobil nav a .n { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); margin-right: 10px; }
 
   .aside-card.mobil { display: none; margin-top: 40px; }
+  .aside-card a { color: var(--accent); font-weight: 600; }
 
   /* ---- kod blogu kopyalama ---- */
   .kopyala {
@@ -562,6 +563,8 @@
   .alt-bag { margin-left: auto; display: flex; gap: 18px; flex-wrap: wrap; }
   footer.alt a { color: var(--accent); text-decoration: none; font-size: 13.5px; }
   footer.alt a:hover { text-decoration: underline; }
+  footer.alt .alt-kisi a { font-size: inherit; }
+  article p a, article li a { color: var(--accent); text-underline-offset: 2px; }
 
   /* ---- yukari cik ---- */
   .yukari {
@@ -601,9 +604,24 @@
 
   /* ---- baski ---- */
   @media print {
+    /* ekranda koyu tema secili olsa bile kagida acik tema renkleriyle basilir */
+    :root, :root[data-theme] {
+      --bg: #FFFFFF; --surface: #FFFFFF; --surface-2: #F4F4EF;
+      --ink: #1C1E22; --ink-soft: #3A3D44; --ink-faint: #6B6E75;
+      --line: #D6D5CC; --line-strong: #B9B8AE;
+      --accent: #5A4BD4; --accent-soft: #EEEBFB;
+      --ok: #2E8A5F; --ok-soft: #E6F3EC; --err: #C8394F; --err-soft: #FBECEE;
+      --warn: #B77518; --warn-soft: #FBF1E1;
+      color-scheme: light;
+    }
     .topbar, .crumbs, aside, .toc-mobil, .komsu, footer.alt,
-    .yukari, .atla, .kopyala, .kutu, .okuma { display: none !important; }
+    .yukari, .atla, .kopyala, .kutu, .okuma, .yazdir-dugme, .aside-card { display: none !important; }
     body { background: #fff; color: #000; }
+    /* uzun kod satirlari ve genis tablolar kagitta kesilmesin */
+    .code pre, .term pre { white-space: pre-wrap; overflow-wrap: anywhere; overflow: visible; }
+    .twrap { overflow: visible; }
+    figure.diagram img + figcaption::after,
+    figure.diagram svg + figcaption::after { content: none !important; }
     .shell { display: block; max-width: none; padding: 0; }
     article p { max-width: none; }
     details.ansbox > .ans { display: block !important; }
@@ -614,7 +632,7 @@
     .code-head { border-bottom: 1px solid #ccc; }
     .code-head .lights { display: none; }
     .code-head .name { color: #333 !important; }
-    .note, .kart, figure.diagram img, figure.diagram svg { break-inside: avoid; }
+    .note, .kart, .term, figure.diagram { break-inside: avoid; }
     h2, h3 { break-after: avoid; }
   }
 
@@ -676,7 +694,7 @@
 <footer class="alt">
   <div class="alt-ic">
     <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
-    <p class="alt-kisi"><!-- AD SOYAD --></p>
+    <p class="alt-kisi">Hazırlayan: Öğr. Gör. alsnakty · Bu içerik <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a> lisansıyla paylaşılmıştır.</p>
     <nav class="alt-bag" aria-label="Alt bağlantılar">
       <a href="/index.html">Ders ana sayfası</a>
       <a href="/NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
@@ -896,6 +914,11 @@
     });
   })();
 
+  /* ---------- 6b) yazdir dugmesi (Ctrl+P ile ayni yol; cevaplar 8. bolumde acilir) ---------- */
+  hepsi(".yazdir-dugme").forEach(function (d) {
+    d.addEventListener("click", function () { window.print(); });
+  });
+
   /* ---------- 7) yukari cik ---------- */
   (function () {
     var dugme = document.createElement("button");
@@ -940,7 +963,7 @@
     if (!window.hljs) return;   /* MD klasorundeki tek dosyalik kopyalarda yuklu degil */
     /* bloklarda yorum span'leri var; hljs duz metni yeniden kurar, uyari basmasin */
     window.hljs.configure({ ignoreUnescapedHTML: true });
-    var ATLA_AD = /komut istemi|anaconda prompt|kalıp/i;
+    var ATLA_AD = /komut istemi|anaconda prompt|kalıp|şablon|readme/i;
 
     hepsi(".code").forEach(function (blok) {
       var pre = sec("pre", blok);

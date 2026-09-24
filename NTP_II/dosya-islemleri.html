@@ -74,6 +74,7 @@
         <a href="#kendin-yaz"><span class="n">11</span>Kendin yaz</a>
         <a href="#test"><span class="n">12</span>Konu sonu testi</a>
         <a href="#kendi-basina"><span class="n">13</span>Kendi başına dene</a>
+        <a href="#ileri-okuma"><span class="n">14</span>İleri okuma</a>
       </nav>
     </details>
 
@@ -260,11 +261,11 @@ with open("notlar.txt", "w", encoding="utf-8") as f:
 with open("kisiler.txt", "r+", encoding="utf-8") as f:
     icerik = f.read()                  <span class="c"># mevcut içeriği oku</span>
     f.seek(0)                          <span class="c"># başa dön</span>
-    f.write("Derman Kaya\n" + icerik)  <span class="c"># yeniyi öne koyup tümünü yaz</span>
+    f.write("Can Yılmaz\n" + icerik)  <span class="c"># yeniyi öne koyup tümünü yaz</span>
 
 <span class="c"># Dosyanın ortasına ekleme</span>
 with open("kisiler.txt", "r+", encoding="utf-8") as f:
-    satirlar = f.readlines()           <span class="c"># ['Derman Kaya\n', 'Ali\n', 'Ayşe\n', ...]</span>
+    satirlar = f.readlines()           <span class="c"># ['Can Yılmaz\n', 'Ali\n', 'Ayşe\n', ...]</span>
     satirlar.insert(2, "Yeni Kişi\n")  <span class="c"># 3. sıraya ekle (indeks 2)</span>
     f.seek(0)
     f.writelines(satirlar)             <span class="c"># listeyi geri yaz</span></pre>
@@ -281,7 +282,7 @@ with open("kisiler.txt", "r+", encoding="utf-8") as f:
 except FileNotFoundError:
     print("Dosya bulunamadı.")</pre>
     </div>
-    <p>Alternatif olarak <code class="inline">os</code> modülüyle dosyanın var olup olmadığını açmadan önce de kontrol edebilirsiniz: <code class="inline">if os.path.exists("sehirler.txt"):</code>. Genel kural şudur: "önce kontrol et" yerine "dene, hata olursa yakala" çoğu zaman daha güvenlidir; çünkü kontrol ettiğiniz an ile dosyayı açtığınız an arasında dosya silinebilir. <code class="inline">import</code>, Python'un hazır araç dosyalarından (modüllerden) birini programa ekler; ayrıntısını 12. haftada göreceğiz.</p>
+    <p>Alternatif olarak <code class="inline">os</code> modülüyle dosyanın var olup olmadığını açmadan önce de kontrol edebilirsiniz: <code class="inline">if os.path.exists("sehirler.txt"):</code>. Genel kural şudur: "önce kontrol et" yerine "dene, hata olursa yakala" çoğu zaman daha güvenlidir; çünkü kontrol ettiğiniz an ile dosyayı açtığınız an arasında dosya silinebilir. <code class="inline">import</code>, Python'un hazır araç dosyalarından (modüllerden) birini programa ekler; ayrıntısını 12. haftada, <a href="moduller.html">Modüller</a> konusunda göreceğiz.</p>
     <p>Türkçe karakterler (ç, ğ, ı, ö, ş, ü ve büyük hâlleri) bazı sistemlerde bozuk görünebilir veya <code class="inline">UnicodeDecodeError</code> hatası verebilir. Çözüm, dosyayı açarken <code class="inline">encoding="utf-8"</code> belirtmektir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">encoding.py</span></div>
@@ -314,7 +315,7 @@ with open("isimler.txt", "w") as f:
       <figcaption>Python sözlüğü ile JSON dosyası arasındaki dönüşüm</figcaption>
     </figure>
     <p>Görseldeki en kritik ayrıntı: Python'daki <code class="inline">True</code>/<code class="inline">False</code>/<code class="inline">None</code>, JSON'da küçük harfli <code class="inline">true</code>/<code class="inline">false</code>/<code class="inline">null</code> olur. Bu çeviriyi <code class="inline">json</code> modülü sizin yerinize yapar.</p>
-    <p><code class="inline">import</code>, Python'un hazır araç dosyalarından (modüllerden) birini programa ekler; ayrıntısını 12. haftada göreceğiz.</p>
+    <p><code class="inline">import</code>, Python'un hazır araç dosyalarından (modüllerden) birini programa ekler; ayrıntısını 12. haftada, <a href="moduller.html">Modüller</a> konusunda göreceğiz.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">json_yazma.py</span></div>
 <pre>import json
@@ -584,6 +585,13 @@ with open("kayitlar.json", "r", encoding="utf-8") as f:
       <li>Bir metin dosyasını okuyup içinde en sık geçen kelimeyi ve kaç kez geçtiğini bulan bir program yazınız. (Kelimeleri saymak için bir sözlük kullanabilirsiniz.)</li>
     </ol>
 
+    <h2 id="ileri-okuma"><span class="num">14</span>İleri okuma</h2>
+    <p>Konuyu Python'un resmî belgelerinden de okuyabilirsiniz:</p>
+    <ul class="ileri-okuma">
+      <li><a href="https://docs.python.org/tr/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank" rel="noopener">Python Öğreticisi: 7.2. Dosyaları Okuma ve Yazma</a></li>
+      <li><a href="https://docs.python.org/tr/3/tutorial/inputoutput.html#saving-structured-data-with-json" target="_blank" rel="noopener">Python Öğreticisi: 7.2.2. Yapılandırılmış verileri json ile kaydetme</a></li>
+    </ul>
+
     <div class="aside-card mobil">
       <div class="k">İlgili konu</div>
       <p>Hata Yönetimi (3. hafta). Dosya açma her zaman başarısız olabilir; <code class="inline">try / except FileNotFoundError</code> bu konuda sürekli karşınıza çıkar.</p>
@@ -619,6 +627,7 @@ with open("kayitlar.json", "r", encoding="utf-8") as f:
       <a href="#kendin-yaz"><span class="n">11</span>Kendin yaz</a>
       <a href="#test"><span class="n">12</span>Konu sonu testi</a>
       <a href="#kendi-basina"><span class="n">13</span>Kendi başına dene</a>
+      <a href="#ileri-okuma"><span class="n">14</span>İleri okuma</a>
     </nav>
     <div class="aside-card">
       <div class="k">İlgili konu</div>
@@ -630,10 +639,10 @@ with open("kayitlar.json", "r", encoding="utf-8") as f:
 <footer class="alt">
   <div class="alt-ic">
     <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
-    <p class="alt-kisi"><!-- AD SOYAD --></p>
+    <p class="alt-kisi">Hazırlayan: Öğr. Gör. alsnakty · Bu içerik <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a> lisansıyla paylaşılmıştır.</p>
       <nav class="alt-bag" aria-label="Alt bağlantılar">
         <a href="index.html">Ders ana sayfası</a>
-        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+        <a href="proje-yonergesi.html">Dönem projesi yönergesi</a>
       </nav>
   </div>
 </footer>

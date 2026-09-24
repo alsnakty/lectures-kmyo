@@ -69,6 +69,7 @@
         <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
         <a href="#test"><span class="n">7</span>Konu sonu testi</a>
         <a href="#kendi-basina"><span class="n">8</span>Kendi başına dene</a>
+        <a href="#ileri-okuma"><span class="n">9</span>İleri okuma</a>
       </nav>
     </details>
 
@@ -107,6 +108,7 @@ print(arabam.renk)      <span class="c"># Gümüş</span></pre>
 
     <h2 id="init"><span class="num">3</span>__init__ yapıcı metodu ve self</h2>
     <p><code class="inline">__init__</code>, Python'da özel bir metottur ve bir nesne oluşturulduğu anda <strong>otomatik olarak</strong> çalışır. Görevi, yeni doğan nesneye başlangıç verilerini yerleştirmektir. Sayesinde her nesneye kendine özgü değerler verebiliriz; artık tüm arabalar aynı olmak zorunda değildir. İsmi iki alt çizgiyle başlayıp iki alt çizgiyle biter; bu tür özel metotlara "dunder" (double underscore) metotlar denir ve Python bunları belirli durumlarda kendisi çağırır.</p>
+    <div class="note"><span class="tag">Not</span><p>Teknik olarak nesneyi oluşturan <code class="inline">__new__</code> metodudur; <code class="inline">__init__</code> oluşturulan nesneyi başlatır. Günlük kullanımda <code class="inline">__init__</code>'e yapıcı metot denir.</p></div>
     <p><code class="inline">__init__</code> metodunun ilk parametresine geleneksel olarak <code class="inline">self</code> adı verilir. <code class="inline">self</code>, üzerinde çalışılan <strong>nesnenin kendisini</strong> temsil eder. Yani <code class="inline">self.model = model</code> yazdığınızda, "şu an oluşturulan nesnenin <code class="inline">model</code> özelliğine, dışarıdan gelen <code class="inline">model</code> değerini ata" demiş olursunuz. <code class="inline">self</code> sayesinde her nesne kendi verisini kendi içinde tutar.</p>
     <figure class="diagram"><img alt="class, __init__, self ve self.model = model satırının anatomisi" src="images/init_self_anatomi.png" width="1230" height="593" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Yapıcı metodun anatomisi ve <code>self</code>'in rolü</figcaption>
@@ -243,7 +245,7 @@ print(araba.model)</pre>
     <div class="term">
       <div class="thead">Beklenen çıktı</div>
 <pre>Yolculuk 2021 118 dk
-Deniz Feneri 2019 95 dk</pre>
+Kayıp Harita 2019 95 dk</pre>
     </div>
     <details class="ansbox"><summary>Çözümü göster</summary>
       <div class="code">
@@ -255,14 +257,14 @@ Deniz Feneri 2019 95 dk</pre>
         self.sure = sure
 
 film1 = Film("Yolculuk", 2021, 118)
-film2 = Film("Deniz Feneri", 2019, 95)
+film2 = Film("Kayıp Harita", 2019, 95)
 
 print(film1.ad, film1.yil, film1.sure, "dk")
 print(film2.ad, film2.yil, film2.sure, "dk")</pre>
       </div>
     </details>
     <h3 id="gorev-2">Görev 2: Depodaki ürünlerin değeri</h3>
-    <p>Ad, fiyat ve stok adedini alan bir <code class="inline">Urun</code> sınıfı yazın; <code class="inline">__init__</code> içinde ürünün toplam değerini (<code class="inline">fiyat * stok</code>) de <code class="inline">deger</code> özelliği olarak hesaplayın. Üç ürünü bir listede tutup her birinin adını ve değerini yazdırın, en sonda depodaki toplam değeri gösterin.</p>
+    <p>Ad, fiyat ve stok adedini alan bir <code class="inline">Urun</code> sınıfı yazın; <code class="inline">__init__</code> içinde ürünün toplam değerini (<code class="inline">fiyat * stok</code>) de <code class="inline">deger</code> özelliği olarak hesaplayın. Üç ürünü bir listede tutup her birinin adını ve değerini yazdırın, en sonda depodaki toplam değeri gösterin. Not: Stok sonradan değişirse <code class="inline">deger</code> kendiliğinden güncellenmez. Bunu 7. haftada, <a href="metotlar.html">Metotlar</a> konusunda, sınıfın içine değeri her çağrıldığında yeniden hesaplayan bir metot yazarak çözeceğiz.</p>
     <div class="term">
       <div class="thead">Beklenen çıktı</div>
 <pre>Defter 1000
@@ -314,6 +316,47 @@ for o in ogrenciler:
     liste.append({"ad": o.ad, "numara": o.numara, "bolum": o.bolum})
 
 print(json.dumps(liste, ensure_ascii=False))</pre>
+      </div>
+    </details>
+    <h3 id="gorev-4">Görev 4: Hatayı bul</h3>
+    <p>Aşağıdaki kod iki öğrencinin adını ve numarasını yazdırmalıdır. Kod hata vermeden çalışıyor, ama ikinci satırın çıktısı yanlış. Hatayı bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">hatali.py</span></div>
+<pre>class Ogrenci:
+    def __init__(self, ad, numara):
+        self.ad = ad
+        self.numara = numara
+
+ogr1 = Ogrenci("Ayşe", 101)
+ogr2 = Ogrenci(102, "Mehmet")
+
+print(ogr1.ad, "numarası:", ogr1.numara)
+print(ogr2.ad, "numarası:", ogr2.numara)</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Kodun şu anki çıktısı</div>
+<pre>Ayşe numarası: 101
+102 numarası: Mehmet</pre>
+    </div>
+    <details class="ansbox"><summary>Açıklama ve düzeltilmiş kod</summary>
+      <p><code class="inline">__init__</code> değerleri sırayla alır: önce <code class="inline">ad</code>, sonra <code class="inline">numara</code>. <code class="inline">ogr2</code> oluşturulurken değerler ters sırada verilmiş; bu yüzden <code class="inline">102</code> ada, <code class="inline">"Mehmet"</code> numaraya yazılmış. İki değer de geçerli olduğu için Python bunu hata saymaz. Değerleri parametrelerle aynı sırada verin.</p>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">duzeltilmis.py</span></div>
+<pre>class Ogrenci:
+    def __init__(self, ad, numara):
+        self.ad = ad
+        self.numara = numara
+
+ogr1 = Ogrenci("Ayşe", 101)
+ogr2 = Ogrenci("Mehmet", 102)
+
+print(ogr1.ad, "numarası:", ogr1.numara)
+print(ogr2.ad, "numarası:", ogr2.numara)</pre>
+      </div>
+      <div class="term">
+        <div class="thead">Çıktı</div>
+<pre>Ayşe numarası: 101
+Mehmet numarası: 102</pre>
       </div>
     </details>
 
@@ -421,6 +464,12 @@ print(a.deger, b.deger)</pre>
       <li>Bir <code class="inline">Kütüphane</code> senaryosu kurun: bir <code class="inline">Kitap</code> sınıfı (ad, yazar, durum: "rafta" veya "ödünçte") yazınız. Birkaç kitap nesnesi oluşturup bir listede tutunuz; sonra bir kitabın <code class="inline">durum</code> özelliğini "ödünçte" olarak güncelleyip, listedeki tüm kitapların ad ve durumunu yazdırınız.</li>
     </ol>
 
+    <h2 id="ileri-okuma"><span class="num">9</span>İleri okuma</h2>
+    <p>Konuyu Python'un resmî belgelerinden de okuyabilirsiniz:</p>
+    <ul class="ileri-okuma">
+      <li><a href="https://docs.python.org/tr/3/tutorial/classes.html#a-first-look-at-classes" target="_blank" rel="noopener">Python Öğreticisi: 9.3. Sınıflara İlk Bakış</a></li>
+    </ul>
+
     <div class="aside-card mobil">
       <div class="k">Dizi bilgisi</div>
       <p>Bu, dört haftalık Sınıflar dizisinin ilk konusudur. Sırada metotlar ve dunder metotlar (7. hafta), kalıtım (10. hafta), polimorfizm ve kapsülleme (11. hafta) var.</p>
@@ -451,6 +500,7 @@ print(a.deger, b.deger)</pre>
       <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
       <a href="#test"><span class="n">7</span>Konu sonu testi</a>
       <a href="#kendi-basina"><span class="n">8</span>Kendi başına dene</a>
+      <a href="#ileri-okuma"><span class="n">9</span>İleri okuma</a>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>
@@ -462,10 +512,10 @@ print(a.deger, b.deger)</pre>
 <footer class="alt">
   <div class="alt-ic">
     <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
-    <p class="alt-kisi"><!-- AD SOYAD --></p>
+    <p class="alt-kisi">Hazırlayan: Öğr. Gör. alsnakty · Bu içerik <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a> lisansıyla paylaşılmıştır.</p>
       <nav class="alt-bag" aria-label="Alt bağlantılar">
         <a href="index.html">Ders ana sayfası</a>
-        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+        <a href="proje-yonergesi.html">Dönem projesi yönergesi</a>
       </nav>
   </div>
 </footer>

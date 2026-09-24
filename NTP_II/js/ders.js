@@ -258,7 +258,7 @@
     if (!window.hljs) return;   /* MD klasorundeki tek dosyalik kopyalarda yuklu degil */
     /* bloklarda yorum span'leri var; hljs duz metni yeniden kurar, uyari basmasin */
     window.hljs.configure({ ignoreUnescapedHTML: true });
-    var ATLA_AD = /komut istemi|anaconda prompt|kalıp/i;
+    var ATLA_AD = /komut istemi|anaconda prompt|kalıp|şablon|readme/i;
 
     hepsi(".code").forEach(function (blok) {
       var pre = sec("pre", blok);

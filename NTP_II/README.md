@@ -46,6 +46,7 @@ Ardından `http://localhost:8000` adresine girin.
 ```
 index.html                  ana sayfa (haftalık plan)
 giris.html … neler-yapilir.html   konu sayfaları
+proje-yonergesi.html        dönem projesi yönergesi (md'den üretilir)
 css/ders.css                ortak stil
 css/vendor/                 highlight.js teması (github-dark; github da yedekte) ve lisansı
 js/ders.js                  ortak betik

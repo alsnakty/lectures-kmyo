@@ -69,6 +69,7 @@
         <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
         <a href="#test"><span class="n">7</span>Konu sonu testi</a>
         <a href="#kendi-basina"><span class="n">8</span>Kendi başına dene</a>
+        <a href="#ileri-okuma"><span class="n">9</span>İleri okuma</a>
       </nav>
     </details>
 
@@ -308,6 +309,46 @@ for g in gorevler:
     print(g)</pre>
       </div>
     </details>
+    <h3 id="gorev-4">Görev 4: Hatayı bul</h3>
+    <p>Aşağıdaki kod <code class="inline">print(k)</code> satırında kitabın adını ve sayfa sayısını okunaklı biçimde yazdırmalıdır. Bilgi ekrana geliyor, ama hemen ardından hata alınıyor. Hatayı bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">hatali.py</span></div>
+<pre>class Kitap:
+    def __init__(self, ad, sayfa):
+        self.ad = ad
+        self.sayfa = sayfa
+
+    def __str__(self):
+        print(f"{self.ad} ({self.sayfa} sayfa)")
+
+k = Kitap("Python Notları", 120)
+print(k)</pre>
+    </div>
+    <div class="term">
+      <div class="thead">Kodun şu anki çıktısı</div>
+<pre>Python Notları (120 sayfa)
+<span class="err">TypeError: __str__ returned non-string (type NoneType)</span></pre>
+    </div>
+    <details class="ansbox"><summary>Açıklama ve düzeltilmiş kod</summary>
+      <p><code class="inline">__str__</code> metni ekrana yazmamalı, <strong>döndürmelidir</strong>. <code class="inline">print(k)</code> önce <code class="inline">__str__</code> metodunu çağırır. Metodun içindeki <code class="inline">print</code> bilgiyi ekrana yazar, ama metot bir şey döndürmediği için sonuç <code class="inline">None</code> olur. <code class="inline">print(k)</code> bir metin beklediğinden <code class="inline">TypeError: __str__ returned non-string (type NoneType)</code> hatası verir. Metodun içinde <code class="inline">print</code> yerine <code class="inline">return</code> yazın.</p>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">duzeltilmis.py</span></div>
+<pre>class Kitap:
+    def __init__(self, ad, sayfa):
+        self.ad = ad
+        self.sayfa = sayfa
+
+    def __str__(self):
+        return f"{self.ad} ({self.sayfa} sayfa)"
+
+k = Kitap("Python Notları", 120)
+print(k)</pre>
+      </div>
+      <div class="term">
+        <div class="thead">Çıktı</div>
+<pre>Python Notları (120 sayfa)</pre>
+      </div>
+    </details>
 
     <h2 id="test"><span class="num">7</span>Konu sonu testi</h2>
     <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
@@ -415,6 +456,13 @@ s.arttir()</pre>
       <li>Bir <code class="inline">Para</code> sınıfı yazınız; miktar ve birim (örneğin "TL") alsın. <code class="inline">__eq__</code> metoduyla iki para nesnesini, miktar ve birimleri aynıysa eşit kabul etsin. İki nesneyle test ediniz.</li>
     </ol>
 
+    <h2 id="ileri-okuma"><span class="num">9</span>İleri okuma</h2>
+    <p>Konuyu Python'un resmî belgelerinden de okuyabilirsiniz:</p>
+    <ul class="ileri-okuma">
+      <li><a href="https://docs.python.org/tr/3/tutorial/classes.html#method-objects" target="_blank" rel="noopener">Python Öğreticisi: 9.3.4. Metot Nesneleri</a></li>
+      <li><a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" target="_blank" rel="noopener">3. Data model: 3.3. Special method names</a> (İngilizce)</li>
+    </ul>
+
     <div class="aside-card mobil">
       <div class="k">Dizi bilgisi</div>
       <p>Sınıflar dizisinin ikinci konusu. Önceki: Sınıflara Giriş (6. hafta, <code class="inline">__init__</code> ve <code class="inline">self</code>). Sonraki: Kalıtım (10. hafta).</p>
@@ -445,6 +493,7 @@ s.arttir()</pre>
       <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
       <a href="#test"><span class="n">7</span>Konu sonu testi</a>
       <a href="#kendi-basina"><span class="n">8</span>Kendi başına dene</a>
+      <a href="#ileri-okuma"><span class="n">9</span>İleri okuma</a>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>
@@ -456,10 +505,10 @@ s.arttir()</pre>
 <footer class="alt">
   <div class="alt-ic">
     <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
-    <p class="alt-kisi"><!-- AD SOYAD --></p>
+    <p class="alt-kisi">Hazırlayan: Öğr. Gör. alsnakty · Bu içerik <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a> lisansıyla paylaşılmıştır.</p>
       <nav class="alt-bag" aria-label="Alt bağlantılar">
         <a href="index.html">Ders ana sayfası</a>
-        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+        <a href="proje-yonergesi.html">Dönem projesi yönergesi</a>
       </nav>
   </div>
 </footer>

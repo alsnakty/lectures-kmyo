@@ -71,6 +71,7 @@
         <a href="#kendin-yaz"><span class="n">8</span>Kendin yaz</a>
         <a href="#test"><span class="n">9</span>Konu sonu testi</a>
         <a href="#kendi-basina"><span class="n">10</span>Kendi başına dene</a>
+        <a href="#ileri-okuma"><span class="n">11</span>İleri okuma</a>
       </nav>
     </details>
 
@@ -109,12 +110,12 @@
     <p>Bir fonksiyonu yalnızca tanımladığınızda ekranda hiçbir şey görmezsiniz; tanım fonksiyonu <em>çalıştırmaz</em>, sadece hazırlar. Tıpkı kahve makinesini kurmuş ama henüz düğmesine basmamış olmanız gibi. Üstelik Python kodu yukarıdan aşağıya okur; henüz tanımını görmediği bir fonksiyonu çağırırsanız onu tanımaz ve hata verir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">sira.py</span></div>
-<pre>merhaba("hasan")           <span class="no"># ❌ NameError: name 'merhaba' is not defined</span>
+<pre>merhaba("ali")           <span class="no"># ❌ NameError: name 'merhaba' is not defined</span>
 
 def merhaba(ad):
     print("merhaba {}".format(ad))
 
-merhaba("hasan")           <span class="ok"># ✅ Ekran: merhaba hasan</span></pre>
+merhaba("ali")           <span class="ok"># ✅ Ekran: merhaba ali</span></pre>
     </div>
     <div class="twrap">
       <table>
@@ -154,23 +155,23 @@ print(sonuc)             <span class="c"># 8</span></pre>
     print("personelin soyadı :", soyad)
     print("personelin yas :", yas)
 
-personel_yazdir("hasan", "karaisalı", 12)
+personel_yazdir("ali", "kaya", 12)
 
-personel_yazdir("hasan", 12, "karaisalı")   <span class="no"># ⚠ sıra bozuk → yaş yerine "karaisalı" yazılır!</span></pre>
+personel_yazdir("ali", 12, "kaya")   <span class="no"># ⚠ sıra bozuk → yaş yerine "kaya" yazılır!</span></pre>
     </div>
     <div class="term">
       <div class="thead">Çıktı (ilk çağrı)</div>
-<pre>personelin adi : hasan
-personelin soyadı : karaisalı
+<pre>personelin adi : ali
+personelin soyadı : kaya
 personelin yas : 12</pre>
     </div>
-    <p>Son satırda sıranın bozulduğuna dikkat edin: <code class="inline">12</code> artık <code class="inline">soyad</code>'a, <code class="inline">"karaisalı"</code> ise <code class="inline">yas</code>'a gitmiştir. Python bunu hata olarak görmez, çünkü teknik olarak geçerlidir; ama sonuç mantıksız olur. Bu karışıklıktan kurtulmanın yolu, argümanı <strong>parametre adıyla birlikte</strong> vermektir. <code class="inline">personel_yazdir(ad="hasan", soyad="karaisalı", yas=12)</code> ile <code class="inline">personel_yazdir(ad="hasan", yas=12, soyad="karaisalı")</code> aynı sonucu verir; isimli argümanda sıra önemini kaybeder.</p>
+    <p>Son satırda sıranın bozulduğuna dikkat edin: <code class="inline">12</code> artık <code class="inline">soyad</code>'a, <code class="inline">"kaya"</code> ise <code class="inline">yas</code>'a gitmiştir. Python bunu hata olarak görmez, çünkü teknik olarak geçerlidir; ama sonuç mantıksız olur. Bu karışıklıktan kurtulmanın yolu, argümanı <strong>parametre adıyla birlikte</strong> vermektir. <code class="inline">personel_yazdir(ad="ali", soyad="kaya", yas=12)</code> ile <code class="inline">personel_yazdir(ad="ali", yas=12, soyad="kaya")</code> aynı sonucu verir; isimli argümanda sıra önemini kaybeder.</p>
 
     <h3 id="varsayilan">4.2 Varsayılan parametre değerleri</h3>
     <p>Bir parametreye varsayılan bir değer atanmamışsa, fonksiyonu çağırırken o argümanı <strong>mutlaka</strong> vermeniz gerekir; eksik bırakırsanız <code class="inline">TypeError: missing 1 required positional argument</code> gibi bir hata alırsınız. Oysa bir parametrenin çoğu zaman aynı değeri alacağını biliyorsanız ona <strong>varsayılan değer</strong> atayabilirsiniz; çağrıda o argüman verilmezse Python varsayılanı kullanır.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">varsayilan.py</span></div>
-<pre>def personel_yazdir2(ad='ahmet', soyad='taşçı', yas=12):
+<pre>def personel_yazdir2(ad='ali', soyad='yılmaz', yas=12):
     print("personelin adi :", ad)
     print("personelin soyadı :", soyad)
     print("personelin yas :", yas)
@@ -367,18 +368,18 @@ print("Zeynep:", ort, durum)</pre>
 <pre>def selamla(isim):
     print(f"Merhaba {isim}")
 
-sonuc = selamla("Hasan")
+sonuc = selamla("Ali")
 print(sonuc)</pre>
         </div>
         <ul class="opts">
-          <li><b>A)</b> <code class="inline">Merhaba Hasan</code> ve <code class="inline">None</code> (iki satır)</li>
-          <li><b>B)</b> <code class="inline">Merhaba Hasan</code> (tek satır)</li>
-          <li><b>C)</b> <code class="inline">Merhaba Hasan</code> ve <code class="inline">Merhaba Hasan</code> (iki satır)</li>
+          <li><b>A)</b> <code class="inline">Merhaba Ali</code> ve <code class="inline">None</code> (iki satır)</li>
+          <li><b>B)</b> <code class="inline">Merhaba Ali</code> (tek satır)</li>
+          <li><b>C)</b> <code class="inline">Merhaba Ali</code> ve <code class="inline">Merhaba Ali</code> (iki satır)</li>
           <li><b>D)</b> <code class="inline">None</code> (tek satır)</li>
           <li><b>E)</b> Hata verir</li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">A</span>İçerideki <code class="inline">print</code> "Merhaba Hasan" yazar; fonksiyon <code class="inline">return</code> yapmadığı için <code class="inline">sonuc = None</code> olur ve son satırda <code class="inline">None</code> yazılır.</div>
+          <div class="ans"><span class="letter">A</span>İçerideki <code class="inline">print</code> "Merhaba Ali" yazar; fonksiyon <code class="inline">return</code> yapmadığı için <code class="inline">sonuc = None</code> olur ve son satırda <code class="inline">None</code> yazılır.</div>
         </details>
       </li>
 
@@ -478,6 +479,13 @@ print(sonuc)</pre>
       <li>Bir metnin palindrom olup olmadığını kontrol eden bir fonksiyon yazınız. (Palindrom, tersten okunduğunda da aynı olan ifadedir; örneğin "kayak".)</li>
     </ol>
 
+    <h2 id="ileri-okuma"><span class="num">11</span>İleri okuma</h2>
+    <p>Konuyu Python'un resmî belgelerinden de okuyabilirsiniz:</p>
+    <ul class="ileri-okuma">
+      <li><a href="https://docs.python.org/tr/3/tutorial/controlflow.html#defining-functions" target="_blank" rel="noopener">Python Öğreticisi: 4.8. Fonksiyonların Tanımlanması</a></li>
+      <li><a href="https://docs.python.org/tr/3/tutorial/controlflow.html#default-argument-values" target="_blank" rel="noopener">Python Öğreticisi: 4.9.1. Varsayılan Değişken Değerleri</a></li>
+    </ul>
+
     <div class="aside-card mobil">
       <div class="k">İlgili konu</div>
       <p>Hata Yönetimi (3. hafta). Fonksiyona uygunsuz bir değer geldiğinde <code class="inline">raise</code> ile hata fırlatmak, bu konunun doğrudan devamıdır.</p>
@@ -510,6 +518,7 @@ print(sonuc)</pre>
       <a href="#kendin-yaz"><span class="n">8</span>Kendin yaz</a>
       <a href="#test"><span class="n">9</span>Konu sonu testi</a>
       <a href="#kendi-basina"><span class="n">10</span>Kendi başına dene</a>
+      <a href="#ileri-okuma"><span class="n">11</span>İleri okuma</a>
     </nav>
     <div class="aside-card">
       <div class="k">İlgili konu</div>
@@ -521,10 +530,10 @@ print(sonuc)</pre>
 <footer class="alt">
   <div class="alt-ic">
     <p>Nesne Tabanlı Programlama II · Karaisalı MYO · Bilgisayar Programcılığı</p>
-    <p class="alt-kisi"><!-- AD SOYAD --></p>
+    <p class="alt-kisi">Hazırlayan: Öğr. Gör. alsnakty · Bu içerik <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a> lisansıyla paylaşılmıştır.</p>
       <nav class="alt-bag" aria-label="Alt bağlantılar">
         <a href="index.html">Ders ana sayfası</a>
-        <a href="NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi (PDF)</a>
+        <a href="proje-yonergesi.html">Dönem projesi yönergesi</a>
       </nav>
   </div>
 </footer>
