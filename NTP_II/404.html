@@ -555,16 +555,17 @@
   /* ---- alt bilgi ---- */
   footer.alt { border-top: 1px solid var(--line); margin-top: 64px; background: var(--surface); }
   .alt-ic {
-    max-width: var(--maxw); margin: 0 auto; padding: 26px 32px 34px;
-    display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+    max-width: var(--maxw); margin: 0 auto; padding: 22px 32px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px;
+    font-family: var(--sans); font-size: 13.5px; line-height: 1.5; color: var(--ink-soft);
   }
-  .alt-ic p { margin: 0; font-size: 13.5px; color: var(--ink-soft); max-width: none; }
-  .alt-ic .alt-kisi { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); }
-  .alt-bag { display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
-  .alt-bag .ayrac { color: var(--ink-faint); font-size: 13.5px; }
-  footer.alt a { color: var(--accent); text-decoration: none; font-size: 13.5px; }
-  footer.alt a:hover { text-decoration: underline; }
-  footer.alt .alt-kisi a { font-size: inherit; }
+  .alt-sol, .alt-bag { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin: 0; max-width: none; }
+  .alt-ic .alt-ad { font-weight: 600; }
+  footer.alt a { color: inherit; text-decoration: none; }
+  footer.alt a:hover { color: var(--accent); }
+  @media (max-width: 639.98px) {
+    .alt-ic { flex-direction: column; align-items: flex-start; }
+  }
   article p a, article li a { color: var(--accent); text-underline-offset: 2px; }
 
   /* ---- yukari cik ---- */
@@ -700,12 +701,8 @@
 
 <footer class="alt">
   <div class="alt-ic">
-    <p>Nesne Tabanlı Programlama II · Çukurova Üniversitesi Karaisalı MYO · Bilgisayar Programcılığı</p>
-    <p class="alt-kisi"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
-    <nav class="alt-bag" aria-label="Alt bağlantılar">
-      <a href="/index.html">Ders ana sayfası</a> <span class="ayrac" aria-hidden="true">·</span>
-      <a href="/NTP_II_Proje_Yonergesi.pdf">Dönem projesi yönergesi</a>
-    </nav>
+    <p class="alt-sol"><a class="alt-ad" href="/index.html">NTP II Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="/index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="/NTP_II_Proje_Yonergesi.pdf">Proje yönergesi</a></nav>
   </div>
 </footer>
 
@@ -937,10 +934,15 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
     document.body.appendChild(dugme);
+    /* sayfa sonunda dugme alt bilginin ustune cikar, baglantilari ortmez */
+    var alt = document.querySelector("footer.alt");
     function bak() {
       dugme.classList.toggle("gorunur", window.scrollY > 400);
+      var ek = alt ? Math.max(0, window.innerHeight - alt.getBoundingClientRect().top) : 0;
+      dugme.style.transform = ek ? "translateY(-" + Math.ceil(ek) + "px)" : "";
     }
     window.addEventListener("scroll", bak, { passive: true });
+    window.addEventListener("resize", bak);
     bak();
   })();
 

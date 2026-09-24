@@ -225,10 +225,15 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
     document.body.appendChild(dugme);
+    /* sayfa sonunda dugme alt bilginin ustune cikar, baglantilari ortmez */
+    var alt = document.querySelector("footer.alt");
     function bak() {
       dugme.classList.toggle("gorunur", window.scrollY > 400);
+      var ek = alt ? Math.max(0, window.innerHeight - alt.getBoundingClientRect().top) : 0;
+      dugme.style.transform = ek ? "translateY(-" + Math.ceil(ek) + "px)" : "";
     }
     window.addEventListener("scroll", bak, { passive: true });
+    window.addEventListener("resize", bak);
     bak();
   })();
 
