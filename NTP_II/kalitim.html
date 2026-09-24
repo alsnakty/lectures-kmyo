@@ -68,6 +68,7 @@
         <a href="#override"><span class="n">5</span>Override</a>
         <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
         <a href="#test"><span class="n">7</span>Konu sonu testi</a>
+        <a href="#kendi-basina"><span class="n">8</span>Kendi başına dene</a>
       </nav>
     </details>
 
@@ -405,6 +406,14 @@ print(c.ad)</pre>
 
     <div class="note"><span class="tag">Özet</span><p>Ortak olanı yukarı taşıyın: birden çok sınıfın paylaştığı özellik ve metotları ana sınıfta bir kez tanımlayın. Override için metot adı birebir aynı olmalıdır. "Öğrenci bir kişidir" gibi "bir-dir" ilişkisi kalıtımın işaretidir; "arabanın bir motoru vardır" gibi "sahiptir" ilişkilerinde kalıtım değil, nesneyi özellik olarak tutmak doğrudur.</p></div>
 
+    <h2 id="kendi-basina"><span class="num">8</span>Kendi başına dene</h2>
+    <p>Aşağıdaki soruları kendi başınıza çözün; çözümleri verilmemiştir.</p>
+    <ol>
+      <li>Bir <code class="inline">Sekil</code> ana sınıfı yazınız; <code class="inline">renk</code> özelliği olsun. Ondan miras alan bir <code class="inline">Kare</code> sınıfı oluşturup bir nesne üretiniz ve <code class="inline">renk</code> özelliğine erişiniz.</li>
+      <li>Bir <code class="inline">Telefon</code> ana sınıfı (<code class="inline">marka</code>, <code class="inline">model</code>; <code class="inline">bilgi</code> metodu) yazınız. Ondan miras alan <code class="inline">AkilliTelefon</code> sınıfı, <code class="inline">super()</code> ile <code class="inline">isletim_sistemi</code> özelliğini eklesin.</li>
+      <li>Üç katmanlı bir hiyerarşi kurunuz: <code class="inline">Canli</code> → <code class="inline">Hayvan</code> → <code class="inline">Kedi</code>. Her katman bir öncekinden miras alsın ve <code class="inline">super()</code> ile yeni bir özellik eklesin (<code class="inline">Canli</code>: ad, <code class="inline">Hayvan</code>: ayak_sayisi, <code class="inline">Kedi</code>: tuy_rengi). Bir <code class="inline">Kedi</code> nesnesi oluşturup üç katmandan gelen özelliklerin de erişilebildiğini gösteriniz.</li>
+    </ol>
+
     <div class="aside-card mobil">
       <div class="k">Dizi bilgisi</div>
       <p>Sınıflar dizisinin üçüncü konusu. Önceki: Metotlar ve dunder metotlar (7. hafta). Sonraki: Polimorfizm, kapsülleme ve soyutlama (11. hafta).</p>
@@ -434,6 +443,7 @@ print(c.ad)</pre>
       <a href="#override"><span class="n">5</span>Override</a>
       <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
       <a href="#test"><span class="n">7</span>Konu sonu testi</a>
+      <a href="#kendi-basina"><span class="n">8</span>Kendi başına dene</a>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>
