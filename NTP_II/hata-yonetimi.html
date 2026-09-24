@@ -39,6 +39,9 @@
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
         </nav>
       </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
       <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
         <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
         <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
@@ -66,7 +69,8 @@
         <a href="#else-finally"><span class="n">6</span>else ve finally</a>
         <a href="#raise"><span class="n">7</span>raise</a>
         <a href="#karar"><span class="n">8</span>Karar tablosu</a>
-        <a href="#test"><span class="n">9</span>Konu sonu testi</a>
+        <a href="#kendin-yaz"><span class="n">9</span>Kendin yaz</a>
+        <a href="#test"><span class="n">10</span>Konu sonu testi</a>
       </nav>
     </details>
 
@@ -249,7 +253,81 @@ yas_kontrol(-3)      <span class="no"># ValueError: Yaş negatif olamaz!</span><
 
     <hr class="hr">
 
-    <h2 id="test"><span class="num">9</span>Konu sonu testi</h2>
+        <h2 id="kendin-yaz"><span class="num">9</span>Kendin yaz</h2>
+    <p>Aşağıdaki görevleri önce kendiniz yazmaya çalışın; takıldığınızda çözümü açın. Görevler kolaydan zora doğru sıralanmıştır.</p>
+    <h3 id="gorev-1">Görev 1: Güvenli bölme</h3>
+    <p>İki sayıyı bölen <code class="inline">guvenli_bol(a, b)</code> fonksiyonunu yazın. Bölen sıfırsa program çökmesin; <code class="inline">ZeroDivisionError</code> yakalanıp <code class="inline">"Sıfıra bölünemez"</code> metni döndürülsün. Fonksiyonu <code class="inline">(10, 4)</code> ve <code class="inline">(10, 0)</code> ile çağırıp sonuçları yazdırın.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>2.5
+Sıfıra bölünemez</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">guvenli_bol.py</span></div>
+<pre>def guvenli_bol(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return "Sıfıra bölünemez"
+
+print(guvenli_bol(10, 4))
+print(guvenli_bol(10, 0))</pre>
+      </div>
+    </details>
+    <h3 id="gorev-2">Görev 2: Hatalı kayıtları ayıklama</h3>
+    <p>Bir formdan gelen notlar metin olarak <code class="inline">["45", "abc", "80", "", "92"]</code> listesinde duruyor. Sayıya çevrilebilenleri toplayın; çevrilemeyenler için <code class="inline">ValueError</code> yakalayıp ekrana <code class="inline">Geçersiz: 'abc'</code> gibi bir satır yazın. En sonda geçerli not sayısını ve toplamı yazdırın.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>Geçersiz: 'abc'
+Geçersiz: ''
+Geçerli not sayısı: 3
+Toplam: 217</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">ayikla.py</span></div>
+<pre>notlar = ["45", "abc", "80", "", "92"]
+toplam = 0
+adet = 0
+
+for metin in notlar:
+    try:
+        toplam += int(metin)
+        adet += 1
+    except ValueError:
+        print(f"Geçersiz: '{metin}'")
+
+print("Geçerli not sayısı:", adet)
+print("Toplam:", toplam)</pre>
+      </div>
+    </details>
+    <h3 id="gorev-3">Görev 3: Yaş doğrulama</h3>
+    <p>Gelen metni yaşa çeviren <code class="inline">yas_al(metin)</code> fonksiyonunu yazın. Metin sayıya çevrilemezse <code class="inline">int()</code> hatası kendiliğinden oluşur; sayı 0 ile 120 arasında değilse <code class="inline">raise ValueError("Yaş 0 ile 120 arasında olmalı")</code> ile hatayı siz fırlatın. Fonksiyonu <code class="inline">"25"</code>, <code class="inline">"yirmi"</code> ve <code class="inline">"150"</code> ile <code class="inline">try/except ValueError as hata</code> içinde çağırıp sonucu ya da hata mesajını yazdırın. Projede kullanıcı girişlerini bu kalıpla denetleyebilirsiniz.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>Kabul edildi: 25
+Hata: invalid literal for int() with base 10: 'yirmi'
+Hata: Yaş 0 ile 120 arasında olmalı</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">yas_al.py</span></div>
+<pre>def yas_al(metin):
+    yas = int(metin)
+    if yas &lt; 0 or yas &gt; 120:
+        raise ValueError("Yaş 0 ile 120 arasında olmalı")
+    return yas
+
+for metin in ["25", "yirmi", "150"]:
+    try:
+        print("Kabul edildi:", yas_al(metin))
+    except ValueError as hata:
+        print("Hata:", hata)</pre>
+      </div>
+    </details>
+
+    <h2 id="test"><span class="num">10</span>Konu sonu testi</h2>
     <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
     <ol class="quiz">
       <li>
@@ -387,7 +465,8 @@ except ValueError as e:
       <a href="#else-finally"><span class="n">6</span>else ve finally</a>
       <a href="#raise"><span class="n">7</span>raise</a>
       <a href="#karar"><span class="n">8</span>Karar tablosu</a>
-      <a href="#test"><span class="n">9</span>Konu sonu testi</a>
+      <a href="#kendin-yaz"><span class="n">9</span>Kendin yaz</a>
+      <a href="#test"><span class="n">10</span>Konu sonu testi</a>
     </nav>
     <div class="aside-card">
       <div class="k">İlgili konu</div>

@@ -39,6 +39,9 @@
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
         </nav>
       </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
       <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
         <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
         <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
@@ -63,7 +66,8 @@
         <a href="#yeni-ozellik"><span class="n">3</span>Yeni özellik eklemek</a>
         <a href="#super"><span class="n">4</span>super() ile temiz yol</a>
         <a href="#override"><span class="n">5</span>Override</a>
-        <a href="#test"><span class="n">6</span>Konu sonu testi</a>
+        <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
+        <a href="#test"><span class="n">7</span>Konu sonu testi</a>
       </nav>
     </details>
 
@@ -212,7 +216,95 @@ Merhaba, ben Doç. Dr. Veli.</pre>
 
     <hr class="hr">
 
-    <h2 id="test"><span class="num">6</span>Konu sonu testi</h2>
+        <h2 id="kendin-yaz"><span class="num">6</span>Kendin yaz</h2>
+    <p>Aşağıdaki görevleri önce kendiniz yazmaya çalışın; takıldığınızda çözümü açın. Görevler kolaydan zora doğru sıralanmıştır.</p>
+    <h3 id="gorev-1">Görev 1: Temel kalıtım</h3>
+    <p><code class="inline">baslik</code> özelliği ve <code class="inline">bilgi()</code> metodu olan bir <code class="inline">Belge</code> sınıfı yazın; <code class="inline">bilgi()</code> ekrana <code class="inline">Belge:</code> ve başlığı yazsın. <code class="inline">Belge</code> sınıfından miras alan ve içine yalnızca <code class="inline">pass</code> yazılan bir <code class="inline">Rapor</code> sınıfı oluşturun, bir <code class="inline">Rapor</code> nesnesi üzerinden <code class="inline">bilgi()</code> metodunu çağırın.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>Belge: Haftalık satış raporu</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">belge.py</span></div>
+<pre>class Belge:
+    def __init__(self, baslik):
+        self.baslik = baslik
+
+    def bilgi(self):
+        print("Belge:", self.baslik)
+
+class Rapor(Belge):
+    pass
+
+r = Rapor("Haftalık satış raporu")
+r.bilgi()</pre>
+      </div>
+    </details>
+    <h3 id="gorev-2">Görev 2: super() ve override</h3>
+    <p><code class="inline">ad</code> ve aylık <code class="inline">maas</code> alan bir <code class="inline">Calisan</code> sınıfı yazın; <code class="inline">yillik()</code> metodu <code class="inline">maas * 12</code> döndürsün. <code class="inline">Calisan</code> sınıfından miras alan <code class="inline">Mudur</code> sınıfı <code class="inline">super().__init__()</code> ile bu iki özelliği atasın, ayrıca yıllık <code class="inline">prim</code> alsın ve <code class="inline">yillik()</code> metodunu override ederek primi de eklesin. Ali (çalışan, maaş 30000) ve Ayşe (müdür, maaş 45000, prim 60000) için yıllık tutarı yazdırın.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>Ali 360000
+Ayşe 600000</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">calisan.py</span></div>
+<pre>class Calisan:
+    def __init__(self, ad, maas):
+        self.ad = ad
+        self.maas = maas
+
+    def yillik(self):
+        return self.maas * 12
+
+class Mudur(Calisan):
+    def __init__(self, ad, maas, prim):
+        super().__init__(ad, maas)
+        self.prim = prim
+
+    def yillik(self):
+        return self.maas * 12 + self.prim
+
+for kisi in [Calisan("Ali", 30000), Mudur("Ayşe", 45000, 60000)]:
+    print(kisi.ad, kisi.yillik())</pre>
+      </div>
+    </details>
+    <h3 id="gorev-3">Görev 3: Kendi hata sınıfın</h3>
+    <p><code class="inline">Exception</code> sınıfından miras alan bir <code class="inline">StokHatasi</code> sınıfı yazın (hata yönetimi, 3. hafta). Ürün adını ve stok adedini tutan <code class="inline">Depo</code> sınıfının <code class="inline">cikar(adet)</code> metodu, istenen adet stoktan fazlaysa <code class="inline">"Stokta yalnızca 5 adet var"</code> gibi bir mesajla <code class="inline">StokHatasi</code> fırlatsın, değilse stoğu azaltsın. 8 adet stoklu bir depodan önce 3, sonra 10 adet çıkarmayı <code class="inline">try/except</code> içinde deneyin. Stok ya da rezervasyon tutan projelerde bu kalıp işinize yarar.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>3 adet çıkarıldı, kalan: 5
+İşlem yapılamadı: Stokta yalnızca 5 adet var</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">stok.py</span></div>
+<pre>class StokHatasi(Exception):
+    pass
+
+class Depo:
+    def __init__(self, urun, stok):
+        self.urun = urun
+        self.stok = stok
+
+    def cikar(self, adet):
+        if adet &gt; self.stok:
+            raise StokHatasi("Stokta yalnızca " + str(self.stok) + " adet var")
+        self.stok -= adet
+
+d = Depo("Defter", 8)
+for adet in [3, 10]:
+    try:
+        d.cikar(adet)
+        print(adet, "adet çıkarıldı, kalan:", d.stok)
+    except StokHatasi as hata:
+        print("İşlem yapılamadı:", hata)</pre>
+      </div>
+    </details>
+
+    <h2 id="test"><span class="num">7</span>Konu sonu testi</h2>
     <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
     <ol class="quiz">
       <li>
@@ -340,7 +432,8 @@ print(c.ad)</pre>
       <a href="#yeni-ozellik"><span class="n">3</span>Yeni özellik eklemek</a>
       <a href="#super"><span class="n">4</span>super() ile temiz yol</a>
       <a href="#override"><span class="n">5</span>Override</a>
-      <a href="#test"><span class="n">6</span>Konu sonu testi</a>
+      <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
+      <a href="#test"><span class="n">7</span>Konu sonu testi</a>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>

@@ -209,6 +209,11 @@
     });
   })();
 
+  /* ---------- 6b) yazdir dugmesi (Ctrl+P ile ayni yol; cevaplar 8. bolumde acilir) ---------- */
+  hepsi(".yazdir-dugme").forEach(function (d) {
+    d.addEventListener("click", function () { window.print(); });
+  });
+
   /* ---------- 7) yukari cik ---------- */
   (function () {
     var dugme = document.createElement("button");

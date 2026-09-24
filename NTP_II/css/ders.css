@@ -380,7 +380,7 @@
   }
   .konu-menu > summary::-webkit-details-marker { display: none; }
   .konu-menu > summary:hover { color: var(--ink); border-color: var(--accent); }
-  .konu-menu > summary:focus-visible, .tema-dugme:focus-visible,
+  .konu-menu > summary:focus-visible, .tema-dugme:focus-visible, .yazdir-dugme:focus-visible,
   .yukari:focus-visible, .kopyala:focus-visible, .kutu .kapat:focus-visible,
   .toc-mobil > summary:focus-visible, .komsu-kart:focus-visible,
   footer.alt a:focus-visible, .atla:focus-visible {
@@ -410,14 +410,14 @@
   .konu-listesi .mh { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); min-width: 30px; }
   .konu-listesi a.etkin .mh { color: var(--accent); }
 
-  .tema-dugme {
+  .tema-dugme, .yazdir-dugme {
     display: inline-flex; align-items: center; justify-content: center;
     width: 34px; height: 34px; padding: 0; cursor: pointer;
     background: var(--surface); color: var(--ink-soft);
     border: 1px solid var(--line-strong); border-radius: 8px;
   }
-  .tema-dugme:hover { color: var(--ink); border-color: var(--accent); }
-  .tema-dugme svg { width: 17px; height: 17px; fill: none; stroke: currentColor;
+  .tema-dugme:hover, .yazdir-dugme:hover { color: var(--ink); border-color: var(--accent); }
+  .tema-dugme svg, .yazdir-dugme svg { width: 17px; height: 17px; fill: none; stroke: currentColor;
                     stroke-width: 1.8; stroke-linecap: round; }
   .tema-dugme .gunes { display: none; }
   @media (prefers-color-scheme: dark) {
@@ -585,9 +585,24 @@
 
   /* ---- baski ---- */
   @media print {
+    /* ekranda koyu tema secili olsa bile kagida acik tema renkleriyle basilir */
+    :root, :root[data-theme] {
+      --bg: #FFFFFF; --surface: #FFFFFF; --surface-2: #F4F4EF;
+      --ink: #1C1E22; --ink-soft: #3A3D44; --ink-faint: #6B6E75;
+      --line: #D6D5CC; --line-strong: #B9B8AE;
+      --accent: #5A4BD4; --accent-soft: #EEEBFB;
+      --ok: #2E8A5F; --ok-soft: #E6F3EC; --err: #C8394F; --err-soft: #FBECEE;
+      --warn: #B77518; --warn-soft: #FBF1E1;
+      color-scheme: light;
+    }
     .topbar, .crumbs, aside, .toc-mobil, .komsu, footer.alt,
-    .yukari, .atla, .kopyala, .kutu, .okuma { display: none !important; }
+    .yukari, .atla, .kopyala, .kutu, .okuma, .yazdir-dugme, .aside-card { display: none !important; }
     body { background: #fff; color: #000; }
+    /* uzun kod satirlari ve genis tablolar kagitta kesilmesin */
+    .code pre, .term pre { white-space: pre-wrap; overflow-wrap: anywhere; overflow: visible; }
+    .twrap { overflow: visible; }
+    figure.diagram img + figcaption::after,
+    figure.diagram svg + figcaption::after { content: none !important; }
     .shell { display: block; max-width: none; padding: 0; }
     article p { max-width: none; }
     details.ansbox > .ans { display: block !important; }
@@ -598,7 +613,7 @@
     .code-head { border-bottom: 1px solid #ccc; }
     .code-head .lights { display: none; }
     .code-head .name { color: #333 !important; }
-    .note, .kart, figure.diagram img, figure.diagram svg { break-inside: avoid; }
+    .note, .kart, .term, figure.diagram { break-inside: avoid; }
     h2, h3 { break-after: avoid; }
   }
 
@@ -668,9 +683,10 @@
   @media (max-width: 560px) { .proje { padding: 18px 16px; } }
 
   /* ---- kart simgesi ---- */
-  .kart h3.ikonlu { display: flex; align-items: center; gap: 9px; }
+  /* baslik iki satira tasarsa simge ilk satirla hizali kalsin */
+  .kart h3.ikonlu { display: flex; align-items: flex-start; gap: 9px; }
   .kart-ikon {
-    width: 21px; height: 21px; flex: none; color: var(--accent);
+    width: 21px; height: 21px; flex: none; color: var(--accent); margin-top: 5px;
     fill: none; stroke: currentColor; stroke-width: 1.8;
     stroke-linecap: round; stroke-linejoin: round;
   }

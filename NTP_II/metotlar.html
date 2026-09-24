@@ -39,6 +39,9 @@
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
         </nav>
       </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
       <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
         <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
         <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
@@ -63,7 +66,8 @@
         <a href="#donduren"><span class="n">3</span>Değer döndüren metotlar</a>
         <a href="#durum"><span class="n">4</span>Durumu değiştiren metotlar</a>
         <a href="#dunder"><span class="n">5</span>Özel (dunder) metotlar</a>
-        <a href="#test"><span class="n">6</span>Konu sonu testi</a>
+        <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
+        <a href="#test"><span class="n">7</span>Konu sonu testi</a>
       </nav>
     </details>
 
@@ -216,7 +220,95 @@ print(k1 == k2)      <span class="c"># True  (isimleri farklı ama ISBN'leri ayn
 
     <hr class="hr">
 
-    <h2 id="test"><span class="num">6</span>Konu sonu testi</h2>
+        <h2 id="kendin-yaz"><span class="num">6</span>Kendin yaz</h2>
+    <p>Aşağıdaki görevleri önce kendiniz yazmaya çalışın; takıldığınızda çözümü açın. Görevler kolaydan zora doğru sıralanmıştır.</p>
+    <h3 id="gorev-1">Görev 1: Kare sınıfı</h3>
+    <p>Kenar uzunluğunu alan bir <code class="inline">Kare</code> sınıfı yazın; <code class="inline">alan()</code> ve <code class="inline">cevre()</code> metotları değeri <strong>döndürsün</strong>. Kenarı 4 ve 7 olan iki kare için kenarı, alanı ve çevreyi yazdırın.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>Kenar: 4 Alan: 16 Çevre: 16
+Kenar: 7 Alan: 49 Çevre: 28</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">kare.py</span></div>
+<pre>class Kare:
+    def __init__(self, kenar):
+        self.kenar = kenar
+
+    def alan(self):
+        return self.kenar * self.kenar
+
+    def cevre(self):
+        return 4 * self.kenar
+
+for k in [Kare(4), Kare(7)]:
+    print("Kenar:", k.kenar, "Alan:", k.alan(), "Çevre:", k.cevre())</pre>
+      </div>
+    </details>
+    <h3 id="gorev-2">Görev 2: Kumbara</h3>
+    <p>Bakiyesi 0 ile başlayan bir <code class="inline">Kumbara</code> sınıfı yazın. <code class="inline">para_at(miktar)</code> bakiyeyi artırsın; <code class="inline">harca(miktar)</code> bakiye yetmiyorsa <code class="inline">Yetersiz bakiye</code> yazsın, yetiyorsa bakiyeyi azaltsın. 100 TL atıp 30 TL harcayın, ardından 200 TL harcamayı deneyin ve son bakiyeyi yazdırın.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>Yetersiz bakiye
+Bakiye: 70</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">kumbara.py</span></div>
+<pre>class Kumbara:
+    def __init__(self):
+        self.bakiye = 0
+
+    def para_at(self, miktar):
+        self.bakiye += miktar
+
+    def harca(self, miktar):
+        if miktar &gt; self.bakiye:
+            print("Yetersiz bakiye")
+        else:
+            self.bakiye -= miktar
+
+k = Kumbara()
+k.para_at(100)
+k.harca(30)
+k.harca(200)
+print("Bakiye:", k.bakiye)</pre>
+      </div>
+    </details>
+    <h3 id="gorev-3">Görev 3: Yapılacaklar listesi</h3>
+    <p>Görev adını alan ve <code class="inline">tamamlandi</code> özelliği <code class="inline">False</code> ile başlayan bir <code class="inline">Gorev</code> sınıfı yazın. <code class="inline">tamamla()</code> metodu görevi tamamlanmış yapsın; <code class="inline">__str__</code> tamamlanmış görevi <code class="inline">[x] Ödev teslimi</code>, bekleyeni <code class="inline">[ ] Ödev teslimi</code> biçiminde döndürsün. Üç görev oluşturup ilkini tamamlayın ve hepsini <code class="inline">print</code> ile listeleyin. Yapılacaklar listesi projelerinin çekirdeği budur.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>[x] Ödev teslimi
+[ ] Proje konusunu seç
+[ ] Sunuma hazırlan</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">gorev.py</span></div>
+<pre>class Gorev:
+    def __init__(self, ad):
+        self.ad = ad
+        self.tamamlandi = False
+
+    def tamamla(self):
+        self.tamamlandi = True
+
+    def __str__(self):
+        if self.tamamlandi:
+            return "[x] " + self.ad
+        return "[ ] " + self.ad
+
+gorevler = [Gorev("Ödev teslimi"), Gorev("Proje konusunu seç"), Gorev("Sunuma hazırlan")]
+gorevler[0].tamamla()
+
+for g in gorevler:
+    print(g)</pre>
+      </div>
+    </details>
+
+    <h2 id="test"><span class="num">7</span>Konu sonu testi</h2>
     <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
     <ol class="quiz">
       <li>
@@ -341,7 +433,8 @@ s.arttir()</pre>
       <a href="#donduren"><span class="n">3</span>Değer döndüren metotlar</a>
       <a href="#durum"><span class="n">4</span>Durumu değiştiren metotlar</a>
       <a href="#dunder"><span class="n">5</span>Özel (dunder) metotlar</a>
-      <a href="#test"><span class="n">6</span>Konu sonu testi</a>
+      <a href="#kendin-yaz"><span class="n">6</span>Kendin yaz</a>
+      <a href="#test"><span class="n">7</span>Konu sonu testi</a>
     </nav>
     <div class="aside-card">
       <div class="k">Dizi bilgisi</div>

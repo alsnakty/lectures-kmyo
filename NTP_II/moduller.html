@@ -39,6 +39,9 @@
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
         </nav>
       </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
       <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
         <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
         <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
@@ -64,7 +67,8 @@
         <a href="#kesif"><span class="n">4</span>help() ve dir()</a>
         <a href="#kendi"><span class="n">5</span>Kendi modülünüz</a>
         <a href="#kurulum"><span class="n">6</span>Harici modül kurmak</a>
-        <a href="#test"><span class="n">7</span>Konu sonu testi</a>
+        <a href="#kendin-yaz"><span class="n">7</span>Kendin yaz</a>
+        <a href="#test"><span class="n">8</span>Konu sonu testi</a>
       </nav>
     </details>
 
@@ -186,7 +190,70 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
 
     <hr class="hr">
 
-    <h2 id="test"><span class="num">7</span>Konu sonu testi</h2>
+        <h2 id="kendin-yaz"><span class="num">7</span>Kendin yaz</h2>
+    <p>Aşağıdaki görevleri önce kendiniz yazmaya çalışın; takıldığınızda çözümü açın. Görevler kolaydan zora doğru sıralanmıştır.</p>
+    <h3 id="gorev-1">Görev 1: math ile hesap</h3>
+    <p><code class="inline">from math import sqrt, ceil</code> ile iki fonksiyonu içe aktarın. Kenarları 6 ve 8 olan dik üçgenin hipotenüsünü ve 130 öğrencinin 45 kişilik otobüslere kaç otobüsle sığacağını hesaplayıp yazdırın.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>Hipotenüs: 10.0
+Otobüs sayısı: 3</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">math_hesap.py</span></div>
+<pre>from math import sqrt, ceil
+
+print("Hipotenüs:", sqrt(6 ** 2 + 8 ** 2))
+print("Otobüs sayısı:", ceil(130 / 45))</pre>
+      </div>
+    </details>
+    <h3 id="gorev-2">Görev 2: Takma adla daire alanı</h3>
+    <p><code class="inline">import math as m</code> ile modüle takma ad verin. Yarıçapları 1, 2 ve 5 olan dairelerin alanını <code class="inline">m.pi</code> ile hesaplayıp <code class="inline">round(..., 2)</code> ile iki basamağa yuvarlayarak yazdırın.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>Yarıçap 1 alan 3.14
+Yarıçap 2 alan 12.57
+Yarıçap 5 alan 78.54</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">daire.py</span></div>
+<pre>import math as m
+
+for r in [1, 2, 5]:
+    print("Yarıçap", r, "alan", round(m.pi * r ** 2, 2))</pre>
+      </div>
+    </details>
+    <h3 id="gorev-3">Görev 3: Kendi modülün</h3>
+    <p><code class="inline">notlar_modulu.py</code> adında bir dosya oluşturup içine <code class="inline">ortalama(liste)</code> ve <code class="inline">durum(ort)</code> fonksiyonlarını yazın; <code class="inline">durum</code> 50 ve üstüne <code class="inline">"Geçti"</code>, altına <code class="inline">"Kaldı"</code> döndürsün. Aynı klasördeki ana programda modülü <code class="inline">import notlar_modulu</code> ile içe aktarıp Ali ve Mehmet için ortalamayı ve durumu yazdırın. Projede kodu dosyalara bölerken bu yapıyı kullanacaksınız.</p>
+    <div class="term">
+      <div class="thead">Beklenen çıktı</div>
+<pre>Ali 75.0 Geçti
+Mehmet 42.0 Kaldı</pre>
+    </div>
+    <details class="ansbox"><summary>Çözümü göster</summary>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">notlar_modulu.py</span></div>
+<pre>def ortalama(liste):
+    return sum(liste) / len(liste)
+
+def durum(ort):
+    if ort &gt;= 50:
+        return "Geçti"
+    return "Kaldı"</pre>
+      </div>
+      <div class="code">
+        <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">ana.py</span></div>
+<pre>import notlar_modulu
+
+for ad, notlar in [("Ali", [60, 75, 90]), ("Mehmet", [30, 45, 51])]:
+    ort = notlar_modulu.ortalama(notlar)
+    print(ad, ort, notlar_modulu.durum(ort))</pre>
+      </div>
+    </details>
+
+    <h2 id="test"><span class="num">8</span>Konu sonu testi</h2>
     <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
     <ol class="quiz">
       <li>
@@ -290,7 +357,8 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
       <a href="#kesif"><span class="n">4</span>help() ve dir()</a>
       <a href="#kendi"><span class="n">5</span>Kendi modülünüz</a>
       <a href="#kurulum"><span class="n">6</span>Harici modül kurmak</a>
-      <a href="#test"><span class="n">7</span>Konu sonu testi</a>
+      <a href="#kendin-yaz"><span class="n">7</span>Kendin yaz</a>
+      <a href="#test"><span class="n">8</span>Konu sonu testi</a>
     </nav>
     <div class="aside-card">
       <div class="k">İlgili konu</div>
