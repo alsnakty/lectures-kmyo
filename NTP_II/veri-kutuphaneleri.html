@@ -169,7 +169,7 @@ print(df['Gelir'].mean())        <span class="c"># 4500.0</span></pre>
     <p>Buradaki <code class="inline">df[df['Yas'] &gt; 24]</code> ifadesi, Pandas mantığının güzel bir örneğidir: önce her satır için "yaşı 24'ten büyük mü?" sorusunun cevabını (<code class="inline">True</code>/<code class="inline">False</code>) üretir, sonra yalnızca <code class="inline">True</code> olan satırları getirir.</p>
 
     <h3 id="csv-groupby">3.3 Dosya okuma, yazma ve gruplama</h3>
-    <p>Pandas'ın en pratik yanlarından biri, CSV gibi dosyaları tek satırda okuyup yazabilmesidir. 4-5. haftada dosyayı satır satır okuyup <code class="inline">split()</code> ile parçalara ayırarak yaptığımız işler, burada hazır gelir. <code class="inline">groupby</code> ise bir sütuna göre satırları gruplayıp her grup için hesap yapmanızı sağlar:</p>
+    <p>Pandas'ın en pratik yanlarından biri, CSV gibi dosyaları tek satırda okuyup yazabilmesidir. 4-5. haftada, <a href="dosya-islemleri.html">Dosya İşlemleri</a> konusunda, dosyayı satır satır okuyup <code class="inline">split()</code> ile parçalara ayırarak yaptığımız işler, burada hazır gelir. <code class="inline">groupby</code> ise bir sütuna göre satırları gruplayıp her grup için hesap yapmanızı sağlar:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">csv_groupby.py</span></div>
 <pre>df.to_csv('veri.csv', index=False)     <span class="c"># tabloyu CSV'ye yaz</span>
