@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Listeler ve Tablolar | Web Arayüz Tasarımı Ders Notları</title>
-<meta name="description" content="Madde işaretli ve numaralı listeleri (&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;) ve satır–sütunlardan oluşan tabloları (&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;) oluşturmayı öğrenmek. Sonunda...">
+<meta name="description" content="Madde işaretli ve numaralı listeleri (&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;) ve basit bir tabloyu (&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;) oluşturmayı; içeriği kutulara ayıran &lt;div&gt;...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Listeler ve Tablolar | Web Arayüz Tasarımı Ders Notları">
-<meta property="og:description" content="Madde işaretli ve numaralı listeleri (&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;) ve satır–sütunlardan oluşan tabloları (&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;) oluşturmayı öğrenmek. Sonunda...">
+<meta property="og:description" content="Madde işaretli ve numaralı listeleri (&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;) ve basit bir tabloyu (&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;) oluşturmayı; içeriği kutulara ayıran &lt;div&gt;...">
 <script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
 <link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
@@ -64,8 +64,8 @@
       <nav aria-label="Sayfa bölümleri">
   <a href="#listeler"><span class="n">1</span>Listeler</a>
         <a href="#tablolar"><span class="n">2</span>Tablolar</a>
-        <a href="#ornek-haftalik-ders-programi"><span class="n">3</span>Örnek: Haftalık Ders Programı</a>
-        <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#icerigi-kutulara-ayirmak"><span class="n">3</span><code class="inline">&lt;div&gt;</code>: İçeriği Kutulara Ayırmak</a>
+        <a href="#sikca-yapilan-6-hata"><span class="n">4</span>Sıkça Yapılan 6 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
         <a href="#kendinizi-deneyin"><span class="n">7</span>Kendinizi Deneyin</a>
@@ -77,7 +77,7 @@
       </nav>
     </details>
 
-<p>Liste, birbiriyle ilgili maddeleri alt alta sıralar: tarif adımları ya da bir menüdeki bağlantılar gibi. Tablo ise veriyi satır ve sütunlara yerleştirir; ders programı ya da fiyat listesi gibi karşılaştırılacak bilgiler için kullanılır. İkisinde de tarayıcı düzeni etiketlerden anlar: listede her madde, tabloda her hücre ayrı bir etiketle yazılır.</p>
+<p>Liste, birbiriyle ilgili maddeleri alt alta sıralar: tarif adımları ya da bir menüdeki bağlantılar gibi. Tablo ise veriyi satır ve sütunlara yerleştirir; ders programı ya da fiyat listesi gibi karşılaştırılacak bilgiler için kullanılır. <code class="inline">&lt;div&gt;</code> ise sayfadaki içeriği kutulara ayırır; bundan sonraki bütün haftalarda sayfa düzenini bu kutularla kuracağız.</p>
 
     <h2 id="listeler"><span class="num">1</span>Listeler</h2>
     <p>Listeler iki türlüdür ve her ikisinde de her madde <code class="inline">&lt;li&gt;</code> (list item) etiketiyle yazılır.</p>
@@ -141,47 +141,22 @@
     </div>
 
     <h2 id="tablolar"><span class="num">2</span>Tablolar</h2>
-    <p>Tablolar, verileri <strong>satır ve sütunlar</strong> hâlinde düzenler. Bir tablonun parçaları şunlardır:</p>
+    <p>Tablolar, verileri <strong>satır ve sütunlar</strong> hâlinde düzenler. Bir tablo satırlardan (<code class="inline">&lt;tr&gt;</code>), her satır da hücrelerden oluşur:</p>
     <figure class="diagram"><img alt="Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi" src="images/tablo_yapisi.png" width="972" height="561" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi</figcaption>
     </figure>
     <div class="twrap">
       <table>
-        <thead><tr><th>Etiket</th><th>Açılımı</th><th>Görevi</th></tr></thead>
+        <thead><tr><th>Etiket</th><th>Görevi</th></tr></thead>
         <tbody>
-          <tr><td><code class="inline">&lt;table&gt;</code></td><td>table</td><td>Tablonun tamamını kapsar.</td></tr>
-          <tr><td><code class="inline">&lt;tr&gt;</code></td><td>table row</td><td>Bir <strong>satır</strong> oluşturur.</td></tr>
-          <tr><td><code class="inline">&lt;th&gt;</code></td><td>table header</td><td><strong>Başlık hücresi</strong> (varsayılan olarak kalın ve ortalı).</td></tr>
-          <tr><td><code class="inline">&lt;td&gt;</code></td><td>table data</td><td><strong>Veri hücresi</strong> (normal içerik).</td></tr>
+          <tr><td><code class="inline">&lt;table&gt;</code></td><td>Tablonun tamamını kapsar.</td></tr>
+          <tr><td><code class="inline">&lt;tr&gt;</code></td><td>Bir <strong>satır</strong> oluşturur (table row).</td></tr>
+          <tr><td><code class="inline">&lt;th&gt;</code></td><td><strong>Başlık hücresi</strong>; varsayılan olarak kalın ve ortalı görünür.</td></tr>
+          <tr><td><code class="inline">&lt;td&gt;</code></td><td><strong>Veri hücresi</strong> (table data).</td></tr>
         </tbody>
       </table>
     </div>
-    <h3 id="basit-tablo-ornegi">2.1. Basit Tablo Örneği</h3>
-    <p>Bir tablo satırlardan (<code class="inline">&lt;tr&gt;</code>), her satır da hücrelerden (<code class="inline">&lt;th&gt;</code> veya <code class="inline">&lt;td&gt;</code>) oluşur. İlk satır genellikle başlık satırıdır.</p>
-    <div class="code">
-      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
-<pre class="language-xml">&lt;table border="1"&gt;
-    &lt;tr&gt;
-        &lt;th&gt;Ad&lt;/th&gt;
-        &lt;th&gt;Soyad&lt;/th&gt;
-        &lt;th&gt;No&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Ali&lt;/td&gt;
-        &lt;td&gt;Yılmaz&lt;/td&gt;
-        &lt;td&gt;12&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Ayşe&lt;/td&gt;
-        &lt;td&gt;Demir&lt;/td&gt;
-        &lt;td&gt;15&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;</pre>
-    </div>
-    <div class="note"><span class="tag">Not</span><p><code class="inline">border="1"</code> özelliği, hücrelerin <strong>kenarlıklarının görünmesini</strong> sağlar. Bu olmadan tablo çizgisiz görünür. Tabloların renk, boşluk ve çizgi gibi görsel ayarları esas olarak <strong>CSS</strong> ile yapılır; CSS'i 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda göreceğiz. <code class="inline">border="1"</code> HTML5'te eskimiş sayılır; CSS'i öğrenene kadar kenarlığı görmek için <strong>geçici olarak</strong> kullanıyoruz.</p></div>
-
-    <h2 id="ornek-haftalik-ders-programi"><span class="num">3</span>Örnek: Haftalık Ders Programı</h2>
-    <p>Şimdi bu haftanın çıktısını hazırlayalım: bir haftalık ders programı tablosu. İlk satır günlerin başlıklarını (<code class="inline">&lt;th&gt;</code>), diğer satırlar saatlere göre dersleri (<code class="inline">&lt;td&gt;</code>) içerir.</p>
+    <p>Bu haftanın çıktısı bir haftalık ders programı tablosu. İlk satır günlerin başlıklarını (<code class="inline">&lt;th&gt;</code>), diğer satırlar saatlere göre dersleri (<code class="inline">&lt;td&gt;</code>) içerir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -225,30 +200,109 @@
     <figure class="diagram"><img alt="Haftalık ders programı tablosunun tarayıcı çıktısı" src="images/ders_programi_tablo.png" width="1200" height="306" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">Haftalık ders programı tablosunun tarayıcı çıktısı</figcaption>
     </figure>
-    <p><strong>Başlık satırındaki</strong> hücreler <code class="inline">&lt;th&gt;</code> olduğu için kalın ve ortalı, diğer hücreler <code class="inline">&lt;td&gt;</code> olduğu için normal görünür.</p>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">border="1"</code> özelliği hücrelerin <strong>kenarlıklarını</strong> gösterir; bu olmadan tablo çizgisiz görünür. <code class="inline">border="1"</code> HTML5'te eskimiş sayılır; tablonun görünümünü 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda CSS ile vereceğiz. O zamana kadar kenarlığı görmek için <strong>geçici olarak</strong> kullanıyoruz.</p></div>
 
-    <h2 id="sikca-yapilan-5-hata"><span class="num">4</span>Sıkça Yapılan 5 Hata</h2>
+    <h2 id="icerigi-kutulara-ayirmak"><span class="num">3</span><code class="inline">&lt;div&gt;</code>: İçeriği Kutulara Ayırmak</h2>
+    <h3 id="nedir">3.1. <code class="inline">&lt;div&gt;</code> Nedir?</h3>
+    <p><code class="inline">&lt;div&gt;</code> (division, bölüm), birbiriyle ilgili içeriği bir <strong>kutuda toplayan</strong> etikettir. Bir başlığı, onun altındaki listeyi ve paragrafı aynı kutuya koyabilirsiniz. Kutunun kendisi ekranda görünmez; ama tarayıcı onu bir bütün olarak tanır.</p>
+    <p><code class="inline">&lt;div&gt;</code> hakkında bilmeniz gereken iki temel özellik:</p>
+    <ul>
+      <li><strong>Her <code class="inline">&lt;div&gt;</code> yeni bir satırda başlar</strong> ve bulunduğu satırın <strong>tamamını kaplar</strong>. İki <code class="inline">&lt;div&gt;</code> art arda yazılırsa alt alta dizilir.</li>
+      <li><strong>Kendi başına görünüm getirmez:</strong> rengi, kenarlığı, boşluğu yoktur. İçine yazılanlar <code class="inline">&lt;div&gt;</code> yokmuş gibi görünür.</li>
+    </ul>
+    <h3 id="kutularla-gruplama">3.2. Kutularla Gruplama</h3>
+    <p>Aşağıdaki kodda iki öğün iki ayrı kutuya ayrılmıştır. Her kutuda bir başlık ve bir liste vardır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;div&gt;
+    &lt;h2&gt;Kahvaltı&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Peynir&lt;/li&gt;
+        &lt;li&gt;Zeytin&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;h2&gt;Öğle Yemeği&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Mercimek çorbası&lt;/li&gt;
+        &lt;li&gt;Pilav&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <p>Bu kod tarayıcıda iki başlık ve iki liste olarak alt alta görünür; kutuların sınırları görünmez. Aşağıdaki görselde kutuları görebilmeniz için sınırlarını <strong>kesik çizgiyle</strong> gösterdik:</p>
+    <figure class="diagram"><img alt="İki div kutusu: her biri satırın tamamını kaplıyor, içlerinde birer başlık ve liste var" src="images/div_kutulari.png" width="840" height="405" loading="lazy" decoding="async" tabindex="0">
+      <figcaption aria-hidden="true">İki div kutusu: her biri satırın tamamını kaplıyor, içlerinde birer başlık ve liste var</figcaption>
+    </figure>
+    <p>Kutuların <strong>satırın tamamını</strong> kapladığına ve <strong>alt alta</strong> dizildiğine dikkat edin. Bu kutulara 7. haftada, <a href="kutu-modeli.html">CSS Kutu Modeli</a> konusunda kenarlık ve boşluk verecek; 10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda da onları yan yana dizeceğiz.</p>
+    <h3 id="ic-ice">3.3. İç İçe <code class="inline">&lt;div&gt;</code></h3>
+    <p>Bir kutunun içinde başka kutular olabilir. Gerçek sayfalar böyle kurulur: bütün sayfayı saran bir kutu, onun içinde üst bölüm, içerik ve alt bilgi kutuları.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;div&gt;
+    &lt;div&gt;
+        &lt;h1&gt;Kahve Dünyası&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;h2&gt;Menümüz&lt;/h2&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Filtre kahve&lt;/li&gt;
+            &lt;li&gt;Türk kahvesi&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;p&gt;Her gün 08.00 - 22.00 arası açığız.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <p>İç içe yazarken iki kurala uyun:</p>
+    <ul>
+      <li><strong>Açılan her <code class="inline">&lt;div&gt;</code> kapatılır.</strong> En son açılan <code class="inline">&lt;div&gt;</code>, en önce kapatılır.</li>
+      <li><strong>Girintiyi düzgün tutun:</strong> içteki kutuyu dıştakinden dört boşluk içeri yazın. Böylece hangi <code class="inline">&lt;/div&gt;</code>'in hangi <code class="inline">&lt;div&gt;</code>'i kapattığı kolayca görülür.</li>
+    </ul>
+    <h3 id="class-ile-kutulara-ad-vermek">3.4. <code class="inline">class</code> ile Kutulara Ad Vermek</h3>
+    <p>Bir sayfada çok sayıda <code class="inline">&lt;div&gt;</code> olur. Hangisinin ne olduğunu anlamak için kutulara <code class="inline">class</code> özelliğiyle <strong>ad</strong> verilir:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;div class="urun"&gt;
+    &lt;h3&gt;Filtre Kahve&lt;/h3&gt;
+    &lt;p&gt;60 TL&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="urun"&gt;
+    &lt;h3&gt;Türk Kahvesi&lt;/h3&gt;
+    &lt;p&gt;50 TL&lt;/p&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <ul>
+      <li>Aynı <code class="inline">class</code> adı <strong>birden fazla</strong> kutuya verilebilir; iki ürün kutusu da <code class="inline">urun</code> adını taşır.</li>
+      <li><code class="inline">class</code> adını alışkanlık olarak <strong>küçük harfle ve Türkçe harf kullanmadan</strong> yazın.</li>
+      <li><code class="inline">class</code> adında <strong>boşluk olmaz</strong>: <code class="inline">class="urun kutusu"</code> yazarsanız tarayıcı bunu iki ayrı ad (<code class="inline">urun</code> ve <code class="inline">kutusu</code>) sayar. İki kelime gerekiyorsa alt çizgi kullanın: <code class="inline">urun_kutusu</code>.</li>
+    </ul>
+    <p>Kutulara verdiğiniz adlar, CSS'te o kutuları seçmek için kullanılır. Bunu 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda göreceğiz.</p>
+    <div class="note"><span class="tag">Not</span><p>Eskiden sayfa düzeni tablolarla kurulurdu: menüyü sola, içeriği sağa almak için sayfanın tamamı büyük bir tablonun hücrelerine bölünürdü. Bugün sayfa <code class="inline">&lt;div&gt;</code> ve anlamlı etiketlerle (<a href="tasarimdan-koda.html">Tasarımdan Koda</a>, 9. hafta) bölümlere ayrılır, CSS ile yerleştirilir. Tablo ise yalnızca gerçekten satır ve sütunlu veriler (ders programı, fiyat listesi) için kullanılır.</p></div>
+
+    <h2 id="sikca-yapilan-6-hata"><span class="num">4</span>Sıkça Yapılan 6 Hata</h2>
     <div class="twrap">
       <table>
         <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
         <tbody>
           <tr><td><code class="inline">&lt;li&gt;</code>'yi <code class="inline">&lt;ul&gt;</code>/<code class="inline">&lt;ol&gt;</code> dışında kullanmak</td><td>Madde işaretleri görünmez, maddeler düz yazı gibi alt alta durur</td><td><code class="inline">&lt;li&gt;</code> her zaman <code class="inline">&lt;ul&gt;</code> veya <code class="inline">&lt;ol&gt;</code> içinde olmalı</td></tr>
-          <tr><td>Satırlarda hücre sayısını eşit tutmamak (bir satırda 3, diğerinde 2 hücre)</td><td>Kısa satırın sonunda boş bir alan kalır</td><td>Her satırda aynı sayıda hücre olsun</td></tr>
           <tr><td><code class="inline">&lt;tr&gt;</code> içine doğrudan metin yazmak</td><td>Metin tablonun dışına, üstüne taşınır</td><td>Metni <code class="inline">&lt;td&gt;</code> veya <code class="inline">&lt;th&gt;</code> içine yazın</td></tr>
-          <tr><td>Kenarlık vermeyi unutmak</td><td>Tablo çizgisiz kalır</td><td><code class="inline">border="1"</code> ekleyin (veya CSS ile kenarlık verin)</td></tr>
-          <tr><td><code class="inline">&lt;th&gt;</code> ile <code class="inline">&lt;td&gt;</code>'yi karıştırmak</td><td>Başlıklar normal görünür</td><td>Başlık hücresi için <code class="inline">&lt;th&gt;</code>, veri için <code class="inline">&lt;td&gt;</code></td></tr>
+          <tr><td>Sayfa düzenini tabloyla kurmak</td><td>Kod uzar ve karmaşıklaşır</td><td>Düzen için <code class="inline">&lt;div&gt;</code> ve CSS kullanın; tabloyu yalnızca veri için kullanın</td></tr>
+          <tr><td><code class="inline">&lt;div&gt;</code>'in kendiliğinden kutu gibi görüneceğini sanmak</td><td>Ekranda hiçbir değişiklik olmaz</td><td>Kutunun görünümünü CSS ile verin</td></tr>
+          <tr><td><code class="inline">&lt;div&gt;</code>'i kapatmayı unutmak</td><td>Ekranda fark görünmez, ama sonraki bütün içerik o kutunun içine girer</td><td>Açılan her <code class="inline">&lt;div&gt;</code>'i <code class="inline">&lt;/div&gt;</code> ile kapatın, girintiyi düzgün tutun</td></tr>
+          <tr><td><code class="inline">class</code> adına boşluk koymak (<code class="inline">class="urun kutusu"</code>)</td><td>Tarayıcı bunu iki ayrı ad sayar</td><td>Boşluk yerine alt çizgi kullanın: <code class="inline">urun_kutusu</code></td></tr>
         </tbody>
       </table>
     </div>
 
     <h2 id="bu-haftanin-ozeti"><span class="num">5</span>Bu Haftanın Özeti</h2>
     <ul>
-      <li>Listeler <code class="inline">&lt;li&gt;</code> maddelerinden oluşur: <strong><code class="inline">&lt;ul&gt;</code></strong> madde işaretli (sırasız), <strong><code class="inline">&lt;ol&gt;</code></strong> numaralı (sıralı) liste yapar.</li>
-      <li><code class="inline">&lt;ol&gt;</code> etiketinin <code class="inline">type</code> özelliğiyle numaralar harfe (<code class="inline">type="A"</code>) veya Roma rakamına (<code class="inline">type="I"</code>) dönüştürülebilir.</li>
+      <li>Listeler <code class="inline">&lt;li&gt;</code> maddelerinden oluşur: <strong><code class="inline">&lt;ul&gt;</code></strong> madde işaretli (sırasız), <strong><code class="inline">&lt;ol&gt;</code></strong> numaralı (sıralı) liste yapar. <code class="inline">type</code> özelliğiyle numaralar harfe (<code class="inline">type="A"</code>) veya Roma rakamına (<code class="inline">type="I"</code>) dönüştürülebilir.</li>
       <li>Bir <code class="inline">&lt;li&gt;</code> içine yeni bir liste yazarak <strong>iç içe</strong> liste oluşturulur.</li>
-      <li>Tablo parçaları: <strong><code class="inline">&lt;table&gt;</code></strong> tabloyu, <strong><code class="inline">&lt;tr&gt;</code></strong> bir satırı, <strong><code class="inline">&lt;th&gt;</code></strong> başlık hücresini, <strong><code class="inline">&lt;td&gt;</code></strong> veri hücresini tanımlar.</li>
-      <li>Her satırda <strong>aynı sayıda hücre</strong> bulunmalıdır; başlık satırı genellikle <code class="inline">&lt;th&gt;</code> ile yazılır.</li>
-      <li><code class="inline">border="1"</code> kenarlıkları görünür kılar; asıl görsel düzenleme <strong>CSS</strong> ile yapılır.</li>
+      <li>Tablo: <strong><code class="inline">&lt;table&gt;</code></strong> içinde <strong><code class="inline">&lt;tr&gt;</code></strong> satırları, satırların içinde <strong><code class="inline">&lt;th&gt;</code></strong> (başlık) ve <strong><code class="inline">&lt;td&gt;</code></strong> (veri) hücreleri bulunur. Tablo yalnızca satır ve sütunlu veriler içindir.</li>
+      <li><strong><code class="inline">&lt;div&gt;</code></strong> içeriği bir kutuda toplar. Her <code class="inline">&lt;div&gt;</code> yeni satırda başlar, satırın tamamını kaplar ve kendi başına görünüm getirmez.</li>
+      <li><code class="inline">&lt;div&gt;</code>'ler iç içe yazılabilir; açılan her <code class="inline">&lt;div&gt;</code> kapatılır.</li>
+      <li>Kutulara <strong><code class="inline">class</code></strong> ile ad verilir; aynı ad birden fazla kutuda kullanılabilir, adda boşluk olmaz.</li>
     </ul>
 
     <h2 id="konu-sonu-testi"><span class="num">6</span>Konu Sonu Testi</h2>
@@ -290,27 +344,27 @@
         </details>
       </li>
       <li>
-        <p class="q">Tablonun <strong>başlık hücresi</strong> (varsayılan olarak kalın ve ortalı) hangi etikettir?</p>
+        <p class="q">CSS yazılmamış bir sayfada <code class="inline">&lt;div&gt;</code> içine alınan içerik nasıl görünür?</p>
         <ul class="opts">
-          <li><b>a)</b> <code class="inline">&lt;th&gt;</code></li>
-          <li><b>b)</b> <code class="inline">&lt;td&gt;</code></li>
-          <li><b>c)</b> <code class="inline">&lt;tr&gt;</code></li>
-          <li><b>d)</b> <code class="inline">&lt;h1&gt;</code></li>
+          <li><b>a)</b> Kenarlıklı bir kutu içinde</li>
+          <li><b>b)</b> Gri bir zemin üzerinde</li>
+          <li><b>c)</b> <code class="inline">&lt;div&gt;</code> yokmuş gibi, değişmeden</li>
+          <li><b>d)</b> Hiç görünmez</li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">a</span>Başlık hücresi <code class="inline">&lt;th&gt;</code>'dir; kalın ve ortalı görünür.</div>
+          <div class="ans"><span class="letter">c</span><code class="inline">&lt;div&gt;</code> kendi başına görünüm getirmez; görünümü CSS verir.</div>
         </details>
       </li>
       <li>
-        <p class="q">Bir tablo hücresine normal <strong>veri</strong> yazmak için hangi etiket kullanılır?</p>
+        <p class="q"><code class="inline">&lt;div class="urun kutusu"&gt;</code> yazıldığında tarayıcı kutuya kaç ad verilmiş sayar?</p>
         <ul class="opts">
-          <li><b>a)</b> <code class="inline">&lt;tr&gt;</code></li>
-          <li><b>b)</b> <code class="inline">&lt;th&gt;</code></li>
-          <li><b>c)</b> <code class="inline">&lt;td&gt;</code></li>
-          <li><b>d)</b> <code class="inline">&lt;li&gt;</code></li>
+          <li><b>a)</b> Bir</li>
+          <li><b>b)</b> İki</li>
+          <li><b>c)</b> Hiç</li>
+          <li><b>d)</b> Üç</li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">c</span>Veri hücresi <code class="inline">&lt;td&gt;</code> (table data) ile yazılır.</div>
+          <div class="ans"><span class="letter">b</span><code class="inline">class</code> adındaki boşluk iki ayrı ad demektir: <code class="inline">urun</code> ve <code class="inline">kutusu</code>.</div>
         </details>
       </li>
     </ol>
@@ -384,31 +438,48 @@
     </div>
       </div>
     </details>
-    <p><strong>5. (Kod yazma)</strong> "Ders" ve "Gün" başlıklı iki sütunu olan; altında iki ders bilgisi bulunan bir tablo yazın (başlık satırı + iki veri satırı).</p>
+    <p><strong>5. (Kod okuma)</strong> Aşağıdaki kodda kaç kutu vardır? Hangi kutu hangisinin içindedir? <code class="inline">&lt;/div&gt;</code>'lerin hangi <code class="inline">&lt;div&gt;</code>'leri kapattığını yazın.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;div class="sayfa"&gt;
+    &lt;div class="ust"&gt;
+        &lt;h1&gt;Kitap Kulübü&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div class="icerik"&gt;
+        &lt;p&gt;Her ay bir kitap okuyoruz.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Üç kutu vardır. <code class="inline">ust</code> ve <code class="inline">icerik</code> kutuları, <code class="inline">sayfa</code> kutusunun içindedir. Birinci <code class="inline">&lt;/div&gt;</code> <code class="inline">ust</code> kutusunu, ikinci <code class="inline">&lt;/div&gt;</code> <code class="inline">icerik</code> kutusunu, en sondaki <code class="inline">&lt;/div&gt;</code> de <code class="inline">sayfa</code> kutusunu kapatır.</p>
+      </div>
+    </details>
+    <p><strong>6. (Kod yazma)</strong> İki ürün kutusu yazın. Her kutunun class adı <code class="inline">urun</code> olsun; içinde ürünün adı (<code class="inline">&lt;h3&gt;</code>) ve fiyatı (<code class="inline">&lt;p&gt;</code>) bulunsun.</p>
     <details class="ansbox"><summary>Cevabı göster</summary>
       <div class="ans">
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
-<pre class="language-xml">&lt;table border="1"&gt;
-    &lt;tr&gt;
-        &lt;th&gt;Ders&lt;/th&gt;
-        &lt;th&gt;Gün&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Web Arayüz&lt;/td&gt;
-        &lt;td&gt;Pazartesi&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Temel Tasarım&lt;/td&gt;
-        &lt;td&gt;Çarşamba&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;</pre>
+<pre class="language-xml">&lt;div class="urun"&gt;
+    &lt;h3&gt;Defter&lt;/h3&gt;
+    &lt;p&gt;40 TL&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="urun"&gt;
+    &lt;h3&gt;Kalem&lt;/h3&gt;
+    &lt;p&gt;15 TL&lt;/p&gt;
+&lt;/div&gt;</pre>
     </div>
+      </div>
+    </details>
+    <p><strong>7. (Kavram)</strong> Eskiden web sayfalarının düzeni (menü solda, içerik sağda gibi) tablolarla kurulurdu. Bugün düzen neyle kurulur? Tablo hangi durumlarda kullanılır?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Bugün sayfa <code class="inline">&lt;div&gt;</code> ve anlamlı etiketlerle bölümlere ayrılır, bölümler CSS ile yerleştirilir. Tablo yalnızca gerçekten satır ve sütunlu veriler için kullanılır: ders programı, fiyat listesi gibi.</p>
       </div>
     </details>
 
     <h2 id="uygulamalar"><span class="num">8</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> Bir sayfada, üç ürünü ve fiyatlarını gösteren bir <strong>tablo</strong>, ayrıca bir kek tarifinin adımlarını gösteren bir <strong>sıralı liste</strong> oluşturun.</p>
+    <p><strong>Görev:</strong> Bir sayfada iki kutu oluşturun: birinci kutuda üç ürünü ve fiyatlarını gösteren bir <strong>tablo</strong>, ikinci kutuda bir kek tarifinin adımlarını gösteren bir <strong>sıralı liste</strong> bulunsun. Kutulara <code class="inline">class</code> ile ad verin.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -419,32 +490,36 @@
     &lt;title&gt;Ürünler ve Tarif&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;h1&gt;Fiyat Listesi&lt;/h1&gt;
-    &lt;table border="1"&gt;
-        &lt;tr&gt;
-            &lt;th&gt;Ürün&lt;/th&gt;
-            &lt;th&gt;Fiyat&lt;/th&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Ekmek&lt;/td&gt;
-            &lt;td&gt;15 TL&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Süt&lt;/td&gt;
-            &lt;td&gt;30 TL&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Yumurta&lt;/td&gt;
-            &lt;td&gt;60 TL&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt;
+    &lt;div class="fiyatlar"&gt;
+        &lt;h1&gt;Fiyat Listesi&lt;/h1&gt;
+        &lt;table border="1"&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Ürün&lt;/th&gt;
+                &lt;th&gt;Fiyat&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Ekmek&lt;/td&gt;
+                &lt;td&gt;15 TL&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Süt&lt;/td&gt;
+                &lt;td&gt;30 TL&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Yumurta&lt;/td&gt;
+                &lt;td&gt;60 TL&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
 
-    &lt;h2&gt;Kek Tarifi&lt;/h2&gt;
-    &lt;ol&gt;
-        &lt;li&gt;Malzemeleri karıştırın.&lt;/li&gt;
-        &lt;li&gt;Kalıba dökün.&lt;/li&gt;
-        &lt;li&gt;Fırında 40 dakika pişirin.&lt;/li&gt;
-    &lt;/ol&gt;
+    &lt;div class="tarif"&gt;
+        &lt;h2&gt;Kek Tarifi&lt;/h2&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Malzemeleri karıştırın.&lt;/li&gt;
+            &lt;li&gt;Kalıba dökün.&lt;/li&gt;
+            &lt;li&gt;Fırında 40 dakika pişirin.&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
@@ -452,26 +527,28 @@
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">fiyat_listesi.html</code></strong> adında yeni bir dosya oluşturun.</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
-      <li>Dosyayı tarayıcıda açarak tablo ve listenin göründüğünü doğrulayın.</li>
+      <li>Dosyayı tarayıcıda açarak tablo ve listenin göründüğünü doğrulayın. Kutular görünmez; tablo ve liste alt alta durur.</li>
     </ol>
 
     <h2 id="sinif-uygulamasi"><span class="num">9</span>Sınıf Uygulaması</h2>
-    <p><strong>Senaryo:</strong> Bir konuyu (kendi seçtiğiniz bir işletme, hobi veya ders) liste ve tablo kullanarak düzenli biçimde sunan bir bilgi sayfası hazırlayın.</p>
+    <p><strong>Senaryo:</strong> Bir konuyu (kendi seçtiğiniz bir işletme, hobi veya ders) listeler ve bir tablo kullanarak, kutulara ayrılmış bir bilgi sayfası olarak sunun.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">bilgi.html</code></strong> adında yeni bir dosya oluşturun.</li>
       <li>Bir <code class="inline">&lt;ul&gt;</code> (sırasız liste) ile en az <strong>beş madde</strong> yazın (örneğin hizmetler veya ilgi alanları).</li>
       <li>Bir <code class="inline">&lt;ol&gt;</code> (sıralı liste) ile bir <strong>adım listesi</strong> yazın (örneğin bir tarif veya süreç).</li>
       <li>Bir <code class="inline">&lt;table border="1"&gt;</code> oluşturun: ilk satır <code class="inline">&lt;th&gt;</code> başlıkları, sonraki satırlar <code class="inline">&lt;td&gt;</code> verileri (örneğin haftalık program veya fiyat listesi).</li>
+      <li>Her bölümü (iki liste ve tablo) kendi başlığıyla birlikte ayrı bir <code class="inline">&lt;div&gt;</code> içine alın ve her kutuya anlamlı bir <code class="inline">class</code> adı verin (örneğin <code class="inline">hizmetler</code>, <code class="inline">adimlar</code>, <code class="inline">program</code>).</li>
     </ol>
-    <p><strong>Beklenen sonuç:</strong> Sayfada madde işaretli bir liste, numaralı bir liste ve kenarlıklı, başlıklı bir tablo görünür.</p>
-    <p><strong>İpuçları:</strong> <code class="inline">&lt;li&gt;</code> her zaman <code class="inline">&lt;ul&gt;</code>/<code class="inline">&lt;ol&gt;</code> içinde olmalı. Tabloda her satırda aynı sayıda hücre bulunmalı; başlık hücreleri için <code class="inline">&lt;th&gt;</code> kullanın.</p>
+    <p><strong>Beklenen sonuç:</strong> Sayfada madde işaretli bir liste, numaralı bir liste ve kenarlıklı, başlıklı bir tablo görünür. Kodda her bölüm kendi <code class="inline">&lt;div&gt;</code> kutusunun içindedir.</p>
+    <p><strong>İpuçları:</strong> <code class="inline">&lt;li&gt;</code> her zaman <code class="inline">&lt;ul&gt;</code>/<code class="inline">&lt;ol&gt;</code> içinde olmalı. Açılan her <code class="inline">&lt;div&gt;</code>'i kapatın ve girintiyi düzgün tutun; <code class="inline">class</code> adlarında boşluk ve Türkçe harf kullanmayın.</p>
 
     <h2 id="notlar-ve-ipuclari"><span class="num">10</span>Notlar ve İpuçları</h2>
     <ul>
-      <li>Tablolar yalnızca satır-sütun biçimindeki veriler içindir. Sayfa yerleşimi (menü solda, içerik sağda gibi) tabloyla yapılmaz; bu iş 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda, CSS ile yapılır.</li>
       <li><code class="inline">&lt;th&gt;</code> yalnızca kalın görünmek için değildir. Ekran okuyucular başlık hücresi sayesinde her verinin hangi sütuna ait olduğunu okuyabilir.</li>
       <li>İç içe listede alt liste, <code class="inline">&lt;li&gt;</code>'nin <strong>içine</strong>, <code class="inline">&lt;/li&gt;</code>'den önce yazılır.</li>
+      <li>VS Code'da bir <code class="inline">&lt;div&gt;</code> etiketinin üzerine tıkladığınızda, onu kapatan <code class="inline">&lt;/div&gt;</code> da vurgulanır. Uzun kodlarda hangi etiketin hangisini kapattığını böyle kontrol edebilirsiniz.</li>
+      <li><code class="inline">&lt;div&gt;</code> satırı böler. Bir satırın içindeki birkaç kelimeyi işaretlemek için kullanılan <code class="inline">&lt;span&gt;</code> etiketini 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda göreceğiz.</li>
     </ul>
 
     <h2 id="calisma-sorulari"><span class="num">11</span>Çalışma Soruları</h2>
@@ -479,16 +556,17 @@
     <ol>
       <li><code class="inline">&lt;ul&gt;</code> ile en sevdiğiniz beş filmi listeleyin.</li>
       <li><code class="inline">&lt;ol&gt;</code> ile sabah rutininizi sırayla yazın.</li>
-      <li>Üç sütunlu (Ad, Şehir, Yaş) ve üç satırlı bir tablo oluşturun.</li>
       <li>Kendi haftalık ders programınızı bir tablo hâline getirin.</li>
       <li>Bir <code class="inline">&lt;ol&gt;</code> listesinde <code class="inline">type="A"</code> kullanıp numaraların harfe dönüştüğünü gözlemleyin.</li>
-      <li>Bir listeyi <strong>iç içe</strong> yapın: bir maddenin altına alt liste ekleyin.</li>
+      <li>Sayfanızı üç <code class="inline">&lt;div&gt;</code> kutusuna ayırın (üst bölüm, içerik, alt bilgi) ve her birine <code class="inline">class</code> ile ad verin.</li>
+      <li>İçerik kutusunun içine iki ayrı kutu daha yazın; girintiyi düzenleyip her <code class="inline">&lt;/div&gt;</code>'in hangi <code class="inline">&lt;div&gt;</code>'i kapattığını kontrol edin.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
     <ul class="kaynakca">
       <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Lists" target="_blank" rel="noopener">MDN: Lists</a> (İngilizce)</li>
       <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics" target="_blank" rel="noopener">MDN: HTML table basics</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div" target="_blank" rel="noopener">MDN: <code class="inline">&lt;div&gt;</code></a> (İngilizce)</li>
     </ul>
 
     <div class="aside-card mobil">
@@ -515,8 +593,8 @@
     <nav class="toc" id="toc">
 <a href="#listeler"><span class="n">1</span>Listeler</a>
       <a href="#tablolar"><span class="n">2</span>Tablolar</a>
-      <a href="#ornek-haftalik-ders-programi"><span class="n">3</span>Örnek: Haftalık Ders Programı</a>
-      <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#icerigi-kutulara-ayirmak"><span class="n">3</span><code class="inline">&lt;div&gt;</code>: İçeriği Kutulara Ayırmak</a>
+      <a href="#sikca-yapilan-6-hata"><span class="n">4</span>Sıkça Yapılan 6 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
       <a href="#kendinizi-deneyin"><span class="n">7</span>Kendinizi Deneyin</a>
