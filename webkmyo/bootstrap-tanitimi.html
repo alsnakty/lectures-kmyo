@@ -70,10 +70,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -275,7 +276,35 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">9</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> CSS framework nedir? Bootstrap kullanmanın bir kolaylığını ve bir dezavantajını yazın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>CSS framework, önceden yazılmış hazır CSS kurallarından oluşan bir kütüphanedir; öğelere hazır class'lar verilerek biçimlendirme yapılır. Kolaylığı: menü, kart, düğme gibi bileşenler az kodla ve hızlıca hazırlanır. Dezavantajı: sayfalar birbirine benzer ve arkadaki CSS bilinmeden kullanılırsa sorunları çözmek zorlaşır.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kod yazma)</strong> <code class="inline">css</code> klasöründeki <code class="inline">bootstrap.min.css</code> dosyasını sayfaya internetsiz bağlayan satırı yazın. Bu satır nereye yazılır?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">&lt;head&gt;</code> içine: <code class="inline">&lt;link rel="stylesheet" href="css/bootstrap.min.css"&gt;</code>. Kendi <code class="inline">style.css</code> dosyanız varsa Bootstrap'ten sonra bağlanır; böylece kendi kurallarınız geçerli olur.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> <code class="inline">&lt;div class="d-flex gap-3 p-3"&gt;</code> satırındaki Bootstrap class'larının elle yazılmış CSS karşılığı nedir?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">div {
+    display: flex;   /* d-flex */
+    gap: 16px;       /* gap-3 */
+    padding: 16px;   /* p-3 */
+}</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Örnekteki sayfaya "Türk Kahvesi" adlı üçüncü bir kart ekleyin; bu kartın düğmesi <strong>yeşil</strong> olsun.</p>
     <p><strong>Çözüm:</strong> İkinci kartı kapatan <code class="inline">&lt;/div&gt;</code>'ten sonra, <code class="inline">d-flex</code> kutusunu kapatan <code class="inline">&lt;/div&gt;</code>'ten önce şu kart eklenir. Yeşil düğme için <code class="inline">btn-primary</code> yerine <code class="inline">btn-success</code> yazılır.</p>
     <div class="code">
@@ -295,7 +324,7 @@
       <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açın; üçüncü kartın yeşil düğmesini görün.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> 10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda elle yazdığınız menüyü Bootstrap ile yeniden yapın ve iki sayfayı karşılaştırın.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -308,17 +337,18 @@
     <p><strong>Beklenen sonuç:</strong> CSS kuralı yazmadan, yalnızca class'larla biçimlenmiş bir menü ve iki kart.</p>
     <p><strong>İpuçları:</strong> Sayfa hiç biçimlenmiyorsa önce <code class="inline">&lt;link&gt;</code>'teki yolu ve <code class="inline">rel="stylesheet"</code> yazısını kontrol edin. Birden fazla class arasına boşluk koyun.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
     <ul>
       <li>Bootstrap'in resmî belgeleri İngilizcedir; her bileşenin sayfasında kopyalanabilir örnek kodlar bulunur.</li>
       <li>Belgelerdeki menü örnekleri çoğu zaman <code class="inline">navbar-expand-lg</code> ile birlikte ayrı bir menü düğmesi (<code class="inline">navbar-toggler</code>) ve gizlenebilen bir bölüm (<code class="inline">collapse</code>) kullanır; dar ekranda bağlantılar gizlenir, yerine düğme görünür. Düğmenin çalışması için Bootstrap'in JavaScript dosyası (<code class="inline">bootstrap.bundle.min.js</code>) da sayfaya eklenmelidir. Bu haftanın örneğinde <code class="inline">navbar-expand</code> kullandığımız için JavaScript gerekmez.</li>
       <li>Bootstrap'i kullanmak için CSS'i bilmek yine gereklidir: bir şey beklendiği gibi görünmediğinde sorunu <code class="inline">F12</code> ile incelerken karşınıza bildiğiniz CSS kuralları çıkar.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
+    <p>Soruları Sınıf Uygulamasında hazırladığınız <code class="inline">bootstrap_menu.html</code> sayfası üzerinde yapın.</p>
     <ol>
-      <li>Örnekteki düğmelerin class'ını <code class="inline">btn-primary</code> yerine <code class="inline">btn-success</code>, <code class="inline">btn-danger</code> ve <code class="inline">btn-warning</code> yapıp renkleri karşılaştırın.</li>
-      <li>Örnekte <code class="inline">navbar-expand</code> class'ını silip menünün nasıl değiştiğini gözlemleyin.</li>
+      <li>Düğmelerin class'ını <code class="inline">btn-primary</code> yerine <code class="inline">btn-success</code>, <code class="inline">btn-danger</code> ve <code class="inline">btn-warning</code> yapıp renkleri karşılaştırın.</li>
+      <li><code class="inline">navbar-expand</code> class'ını silip menünün nasıl değiştiğini gözlemleyin.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
@@ -353,10 +383,11 @@
       <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

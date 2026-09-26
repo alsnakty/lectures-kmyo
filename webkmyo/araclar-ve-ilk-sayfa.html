@@ -70,10 +70,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -326,7 +327,85 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">9</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> Bir web sayfası açıldığında tarayıcının, sunucunun ve internetin görevi nedir? Lokanta benzetmesini kullanarak açıklayın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Tarayıcı (istemci) müşteridir: sayfayı ister. Sunucu mutfaktır: istenen sayfayı hazırlayıp gönderir. İnternet garsondur: isteği sunucuya götürür, sayfayı tarayıcıya getirir. Tarayıcı gelen sayfayı ekranda gösterir.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> Alan adı (domain) ile barındırma (hosting) arasındaki farkı açıklayın. İkisi neden birlikte gereklidir?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Alan adı sitenin internetteki adresidir (örneğin <code class="inline">www.ornek.com</code>). Barındırma, site dosyalarının sürekli açık bir sunucuda saklanıp yayınlanması hizmetidir. Alan adı evin adresi, hosting evin kendisi gibidir: adres olmadan siteye ulaşılamaz, hosting olmadan da adresin gösterdiği bir yer olmaz.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kavram)</strong> <code class="inline">www.ankara.edu.tr</code> adresindeki <code class="inline">edu</code> ve <code class="inline">tr</code> bölümleri ne anlatır?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">edu</code>, sitenin bir eğitim kurumuna ait olduğunu; <code class="inline">tr</code>, Türkiye'ye ait olduğunu gösterir.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> Aşağıdaki dosya adlarından hangileri kurallara aykırıdır? Her birinin doğru hâlini yazın.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Metin</span></div>
+<pre>Ana Sayfa.html
+iletişim.html
+index.html.txt
+hakkinda.html</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ul>
+      <li><code class="inline">Ana Sayfa.html</code> → boşluk ve büyük harf var. Doğrusu: <code class="inline">ana_sayfa.html</code> (ana sayfa için en doğrusu <code class="inline">index.html</code>).</li>
+      <li><code class="inline">iletişim.html</code> → Türkçe harf (ş) var. Doğrusu: <code class="inline">iletisim.html</code>.</li>
+      <li><code class="inline">index.html.txt</code> → uzantı yanlış, dosya metin belgesi olarak kaydedilmiş. Doğrusu: <code class="inline">index.html</code>.</li>
+      <li><code class="inline">hakkinda.html</code> → kurallara uygundur.</li>
+    </ul>
+      </div>
+    </details>
+    <p><strong>5. (Kod okuma)</strong> Aşağıdaki kod tarayıcıda açıldığında sekmede ve sayfada ne görünür?</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Ders Notlarım&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Web Dersi&lt;/h1&gt;
+    &lt;p&gt;İlk haftadayız.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Sekmede "Ders Notlarım" yazar. Sayfada büyük ve kalın "Web Dersi" başlığı, altında normal yazıyla "İlk haftadayız." paragrafı görünür. <code class="inline">&lt;head&gt;</code> içindekiler sayfanın içinde görünmez.</p>
+      </div>
+    </details>
+    <p><strong>6. (Kod yazma)</strong> Sekme başlığı "Deneme" olan; sayfada büyük başlık olarak "Hoş Geldiniz" ve altında bir paragraf bulunan sayfanın kodunu eksiksiz yazın. Türkçe harfler düzgün görünmelidir.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Deneme&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hoş Geldiniz&lt;/h1&gt;
+    &lt;p&gt;Bu benim deneme sayfam.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Kendinizi tanıtan bir web sayfası hazırlayın. Sayfada bir başlık ve iki paragraf bulunsun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
@@ -352,7 +431,7 @@
       <li>Go Live ile tarayıcıda açın. Kendi adınızı ve bilgilerinizi yazarak içeriği değiştirin.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Dönem boyunca kullanacağınız çalışma ortamını kurun ve ilk sayfanızı tarayıcıda açın.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -366,7 +445,7 @@
     <p><strong>Beklenen sonuç:</strong> Tarayıcı sekmesinde başlığınız, sayfada da adınız (büyük başlık) ve bölümünüz görünür. Türkçe harfler düzgün çıkar.</p>
     <p><strong>İpuçları:</strong> Türkçe harfler için <code class="inline">&lt;head&gt;</code> içine <code class="inline">&lt;meta charset="utf-8"&gt;</code> eklemeyi unutmayın. Dosya ve klasör adlarında Türkçe harf ve boşluk kullanmayın.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
     <ul>
       <li>Çalışmaya başlarken VS Code'da tek bir dosyayı değil, <code class="inline">web_sitem</code> klasörünü açın (<strong>Dosya → Klasör Aç</strong>; İngilizce arayüzde <strong>File → Open Folder...</strong>). Sol taraftaki gezginde projenin bütün dosyalarını görürsünüz.</li>
       <li>Kaydedilmemiş bir dosyanın sekmesinde, dosya adının yanında bir <strong>nokta</strong> görünür. Nokta kaybolmadıysa dosya kaydedilmemiştir; <code class="inline">Ctrl</code> + <code class="inline">S</code> ile kaydedin.</li>
@@ -375,12 +454,13 @@
       <li>Tarayıcıda sayfaya sağ tıklayıp <strong>Sayfa kaynağını görüntüle</strong>'yi seçerseniz, tarayıcının aldığı HTML kodunu görürsünüz. Bu, başka sitelerin nasıl yazıldığını incelemenin en kolay yoludur.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
+    <p>Soruları 5. bölümde yazdığınız <code class="inline">index.html</code> sayfası üzerinde yapın.</p>
     <ol>
-      <li><code class="inline">index.html</code> sayfasındaki <code class="inline">&lt;h1&gt;</code> başlığını kendi adınızla değiştirin.</li>
+      <li><code class="inline">&lt;h1&gt;</code> başlığını kendi adınızla değiştirin.</li>
       <li>Sayfaya ikinci bir paragraf (<code class="inline">&lt;p&gt;</code>) ekleyin: en sevdiğiniz dersi yazın.</li>
       <li><code class="inline">&lt;title&gt;</code> etiketindeki yazıyı değiştirin ve tarayıcı sekmesinde nasıl değiştiğini gözlemleyin.</li>
-      <li><code class="inline">web_sitem</code> klasörünün içinde <code class="inline">iletisim.html</code> adında yeni bir sayfa oluşturun; içine bir başlık ve telefon veya e-posta bilgisi yazın.</li>
+      <li><code class="inline">web_sitem</code> klasörünün içinde <code class="inline">bilgilerim.html</code> adında yeni bir sayfa oluşturun; içine bir başlık ve telefon veya e-posta bilgisi yazın.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
@@ -417,10 +497,11 @@
       <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

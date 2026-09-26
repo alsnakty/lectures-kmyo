@@ -72,10 +72,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">8</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">9</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">10</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">11</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">12</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">13</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">14</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">15</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -287,7 +288,81 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">11</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> Kutu modelinin dört katmanını içten dışa doğru sıralayın. <code class="inline">padding</code> ile <code class="inline">margin</code> arasındaki farkı açıklayın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>İçten dışa: content (içerik) → padding (iç boşluk) → border (kenarlık) → margin (dış boşluk). <code class="inline">padding</code> içerik ile kenarlık arasındaki, kutunun içindeki boşluktur; kutunun arka plan rengi bu alana da yayılır. <code class="inline">margin</code> kenarlığın dışındaki, kutu ile komşu öğeler arasındaki boşluktur.</p>
+      </div>
+    </details>
+    <p><strong>2. (Hesap)</strong> Aşağıdaki kutunun (a) kenarlık dâhil ekranda kapladığı genişliğini, (b) dış boşluklar da eklendiğinde yatayda kapladığı toplam alanı hesaplayın. İşlemi gösterin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kutu {
+    width: 250px;
+    padding: 15px;
+    border: 3px solid black;
+    margin: 20px;
+}</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>(a) 250 + (2 × 15) + (2 × 3) = 250 + 30 + 6 = <strong>286px</strong></p>
+    <p>(b) 286 + (2 × 20) = <strong>326px</strong></p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Aşağıdaki kurallarda hangi kenara ne kadar boşluk verilir?</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.a { padding: 10px 20px; }
+.b { margin: 5px 10px 15px 20px; }</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">.a</code>: üst ve alt 10px, sağ ve sol 20px iç boşluk. <code class="inline">.b</code>: saat yönünde üst 5px, sağ 10px, alt 15px, sol 20px dış boşluk.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> Aşağıdaki kartın ortalanması ve kenarlığının görünmesi bekleniyor, ama olmuyor. Dört hatayı bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kart {
+    width: 300;
+    border: 2px #333;
+    padding: 20px 10px 5px 15px 30px;
+    magrin: 0 auto;
+}</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li><code class="inline">width</code> değerinde birim yok; genişlik uygulanmaz, bu yüzden kart ortalanamaz. Doğrusu: <code class="inline">300px</code></li>
+      <li>Kenarlıkta çizgi türü yok; kenarlık görünmez. Doğrusu: <code class="inline">border: 2px solid #333;</code></li>
+      <li><code class="inline">padding</code> en fazla dört değer alır; beş değerli satır tamamen geçersiz sayılır. Örneğin: <code class="inline">padding: 20px 10px 5px 15px;</code></li>
+      <li>Özellik adı yanlış yazılmış. Doğrusu: <code class="inline">margin: 0 auto;</code></li>
+    </ol>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> Genişliği 200px, iç boşluğu 20px, 1px düz gri kenarlığı olan ve sayfada yatay olarak ortalanan bir kutunun CSS kuralını ve HTML'ini yazın. Kutunun class adı <code class="inline">kutu</code> olsun.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kutu {
+    width: 200px;
+    padding: 20px;
+    border: 1px solid gray;
+    margin: 0 auto;
+}</pre>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;div class="kutu"&gt;Kutunun içeriği&lt;/div&gt;</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">12</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Kutu modelini kullanarak basit bir <strong>ürün kartı</strong> hazırlayın. Kartın kenarlığı, iç boşluğu ve dış boşluğu olsun; içeriği ortalanmış olsun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
@@ -333,7 +408,7 @@
       <li>Go Live ile açın; ardından karta sağ tıklayıp <strong>İncele</strong> komutuna tıklayın ve kutu modeli şemasında <code class="inline">padding</code>, <code class="inline">border</code> ve <code class="inline">margin</code> değerlerini gözlemleyin.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">13</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Kutu modelini kullanarak temiz bir <strong>profil kartı</strong> tasarlayın.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -346,13 +421,14 @@
     <p><strong>Beklenen sonuç:</strong> Gri zemin üzerinde kenarlıklı, iç boşluklu ve sayfa kenarından margin ile ayrılmış, düzenli bir kart.</p>
     <p><strong>İpuçları:</strong> <code class="inline">border</code>'da kalınlık–tür–renk sırasını (<code class="inline">1px solid #ccc</code>) yazın. Unutmayın: <code class="inline">margin</code> dış boşluk, <code class="inline">padding</code> iç boşluktur.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">13</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">14</span>Notlar ve İpuçları</h2>
     <ul>
       <li>Tarayıcı <code class="inline">body</code>'ye varsayılan olarak 8 piksel <code class="inline">margin</code> verir. Sayfanın kenarındaki küçük boşluğun sebebi budur; <code class="inline">body { margin: 0; }</code> ile kaldırılabilir.</li>
       <li><code class="inline">margin: 0 auto;</code> ile ortalama için kutunun bir <code class="inline">width</code> değeri olmalıdır. Genişlik verilmezse kutu zaten satırın tamamını kaplar ve ortalanmış görünmez.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">15</span>Çalışma Soruları</h2>
+    <p>Soruları <code class="inline">web_sitem</code> klasöründe açacağınız yeni bir <code class="inline">.html</code> dosyasında deneyin.</p>
     <ol>
       <li>Bir <code class="inline">&lt;div&gt;</code>'e <code class="inline">border</code> ekleyip kalınlık, tür (<code class="inline">solid</code>/<code class="inline">dashed</code>) ve rengini değiştirin.</li>
       <li>Aynı <code class="inline">&lt;div&gt;</code>'e <code class="inline">padding</code> ekleyip içeriğin kenarlıktan uzaklaştığını gözlemleyin.</li>
@@ -400,10 +476,11 @@
       <a href="#sikca-yapilan-5-hata"><span class="n">8</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">9</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">10</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">11</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">12</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">13</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">14</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">15</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

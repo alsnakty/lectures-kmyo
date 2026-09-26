@@ -69,10 +69,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">5</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">6</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">7</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">8</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -337,7 +338,80 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">8</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">8</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> <code class="inline">flex-wrap: wrap</code> ne işe yarar? Yazılmazsa, yani varsayılan durumda, kapsayıcıya sığmayan kartlara ne olur?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">flex-wrap: wrap</code>, satıra sığmayan öğelerin alt satıra geçmesini sağlar. Varsayılan durumda (<code class="inline">nowrap</code>) öğeler hep tek satırda kalır; önce küçülürler, küçülemedikleri noktada kapsayıcının dışına taşarlar.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> Aynı kapsayıcıdaki <code class="inline">main</code> öğesine <code class="inline">flex: 2</code>, <code class="inline">aside</code> öğesine <code class="inline">flex: 1</code> verilirse genişlikler nasıl paylaşılır?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Genişlik 2'ye 1 oranında paylaşılır: <code class="inline">main</code> yaklaşık üçte iki, <code class="inline">aside</code> üçte bir yer kaplar. Yani <code class="inline">main</code>, <code class="inline">aside</code>'ın yaklaşık iki katı genişliktedir.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Aşağıdaki kapsayıcıda üç kart vardır. Kartlar nasıl dizilir? Bu durumda <code class="inline">justify-content</code> hangi yönde hizalama yapar?</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.liste {
+    display: flex;
+    flex-direction: column;
+}</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Kartlar alt alta dizilir. <code class="inline">flex-direction: column</code> verildiğinde eksenler yer değiştirir: <code class="inline">justify-content</code> artık dikeyde, <code class="inline">align-items</code> yatayda hizalar.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> <code class="inline">main</code> ile <code class="inline">aside</code>'ın yan yana, kartların da aralarında 20px boşlukla durması bekleniyor. İki hatayı bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;div class="govde"&gt;
+    &lt;main&gt;Asıl içerik&lt;/main&gt;
+&lt;/div&gt;
+&lt;aside&gt;Yan bölüm&lt;/aside&gt;
+
+&lt;div class="galeri"&gt;
+    &lt;div class="kart"&gt;1&lt;/div&gt;
+    &lt;div class="kart"&gt;2&lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.govde  { display: flex; }
+main    { flex: 2; }
+aside   { flex: 1; }
+.galeri { display: flex; }
+.kart   { gap: 20px; }</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li><code class="inline">aside</code>, <code class="inline">.govde</code> kapsayıcısının dışında kalmış; flex yalnızca kapsayıcının doğrudan içindeki öğeleri yan yana dizer. <code class="inline">aside</code> de <code class="inline">.govde</code>'nin içine alınmalı.</li>
+      <li><code class="inline">gap</code> öğelere (<code class="inline">.kart</code>) değil kapsayıcıya (<code class="inline">.galeri</code>) yazılır: <code class="inline">.galeri { display: flex; gap: 20px; }</code></li>
+    </ol>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> Genişliği 200px olan kartları yan yana dizen, sığmayanları alt satıra geçiren ve kartlar arasında 20px boşluk bırakan galerinin CSS'ini yazın. Kapsayıcının class adı <code class="inline">galeri</code>, kartlarınki <code class="inline">kart</code> olsun.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.galeri {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.kart {
+    width: 200px;
+}</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Flexbox ile <strong>iki sütunlu</strong> bir sayfa yapın: solda geniş bir ana içerik (<code class="inline">main</code>), sağda dar bir yan sütun (<code class="inline">aside</code>).</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
@@ -383,7 +457,7 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
       <li>Go Live ile açın; <code class="inline">flex: 3</code> ve <code class="inline">flex: 1</code> oranını değiştirerek sütun genişliklerinin nasıl değiştiğini gözlemleyin.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">9</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Semantik etiketlerle klasik bir <strong>site iskeleti</strong> kurun ve altına <strong>3'lü bir kart galerisi</strong> ekleyin.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -396,18 +470,19 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
     <p><strong>Beklenen sonuç:</strong> Üstte header ve nav, ortada iki sütunlu (main + aside) bir gövde, gövdenin altında yan yana üç karttan oluşan bir galeri, en altta footer.</p>
     <p><strong>İpuçları:</strong> <code class="inline">display: flex</code>, <code class="inline">flex-wrap</code> ve <code class="inline">gap</code> kapsayıcıya yazılır. <code class="inline">flex: 2</code> / <code class="inline">flex: 1</code> sütun oranını belirler.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">10</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
     <ul>
       <li><code class="inline">&lt;main&gt;</code> bir sayfada yalnızca bir kez kullanılır.</li>
       <li><code class="inline">min-width</code> verilmezse <code class="inline">flex: 1</code> olan kartlar, içlerindeki yazı sığdığı sürece daralmaya devam eder; alt satıra ancak yazı artık sığmayınca geçer. Örneğin 800px genişlikte altı kart, <code class="inline">min-width</code> olmadan tek satırda daracık dizilir. Kartların ne zaman alt satıra geçeceğini <code class="inline">min-width</code> ile siz belirlersiniz.</li>
       <li>Chrome'un geliştirici araçlarında, <code class="inline">display: flex</code> verilmiş öğenin yanında <strong>flex</strong> rozeti görünür. Rozete tıklayınca öğelerin yerleşimi sayfanın üzerinde çizgilerle gösterilir.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">11</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
+    <p>Soruları Sınıf Uygulamasında hazırladığınız <code class="inline">iskelet.html</code> sayfası üzerinde yapın.</p>
     <ol>
-      <li><code class="inline">main</code> ve <code class="inline">aside</code>'ı bir flex kapsayıcısının içinde yan yana koyup <code class="inline">flex</code> oranlarını deneyin (<code class="inline">2:1</code>, <code class="inline">3:1</code>, <code class="inline">1:1</code>).</li>
+      <li><code class="inline">main</code> ve <code class="inline">aside</code>'ın <code class="inline">flex</code> oranlarını deneyin (<code class="inline">2:1</code>, <code class="inline">3:1</code>, <code class="inline">1:1</code>).</li>
       <li><code class="inline">flex-direction: column</code> kullanarak öğeleri alt alta dizin.</li>
-      <li>Kart galerisine dört, sonra altı kart ekleyip kartların alt satıra nasıl geçtiğini gözlemleyin.</li>
+      <li>Galeriye dört, sonra altı kart ekleyip kartların alt satıra nasıl geçtiğini gözlemleyin.</li>
       <li>Galeriden <code class="inline">flex-wrap: wrap</code> satırını silip sayfayı daraltın; ne olduğunu gözlemleyin.</li>
     </ol>
 
@@ -447,10 +522,11 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
       <a href="#sikca-yapilan-5-hata"><span class="n">5</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">6</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">7</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">8</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

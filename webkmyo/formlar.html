@@ -68,10 +68,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">7</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">8</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">9</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">10</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">7</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -339,7 +340,78 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">7</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">7</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> GET ve POST yöntemleri arasındaki farkı açıklayın. POST verileri gizler mi?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>GET'te veriler adres çubuğunda görünür (<code class="inline">?arama=kalem</code> gibi); arama gibi gizli olmayan, az veri için kullanılır. POST'ta veriler adres çubuğunda görünmez; şifre gibi hassas ya da çok miktarda veri için kullanılır. POST verileri gizlemez veya şifrelemez, yalnızca adreste göstermez. Verileri yolda koruyan, <code class="inline">https://</code> ile başlayan güvenli bağlantıdır.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> <code class="inline">&lt;label&gt;</code> etiketindeki <code class="inline">for</code> özelliği ile <code class="inline">&lt;input&gt;</code> etiketindeki <code class="inline">id</code> özelliği neden aynı değeri taşımalıdır?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">for</code> ve <code class="inline">id</code> aynı olunca etiket o alana bağlanır. Etiket yazısına tıklandığında imleç ilgili alana gider, ekran okuyucular da alanın adını doğru okur. Değerler farklıysa bağlantı kurulmaz.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Aşağıdaki formda radyo düğmelerinden aynı anda kaç tanesi seçilebilir? İki radyo düğmesinin <code class="inline">name</code> değerleri farklı olsaydı ne olurdu? Onay kutusu için durum nedir?</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;form&gt;
+    &lt;input type="radio" name="ogretim" value="1"&gt; Birinci öğretim
+    &lt;input type="radio" name="ogretim" value="2"&gt; İkinci öğretim
+    &lt;input type="checkbox" name="bulten"&gt; Duyuruları almak istiyorum
+&lt;/form&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Radyo düğmelerinin <code class="inline">name</code> değeri aynı olduğu için aynı gruptadırlar; aynı anda yalnızca biri seçilebilir. <code class="inline">name</code> değerleri farklı olsaydı ikisi birden seçilebilirdi. Onay kutusu (checkbox) diğerlerinden bağımsızdır; işaretlenip kaldırılabilir.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> Aşağıdaki formda dört hata var. Bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;form method="get"&gt;
+    &lt;label for="eposta"&gt;E-posta:&lt;/label&gt;
+    &lt;input type="text" id="mail"&gt;
+
+    &lt;label for="sifre"&gt;Şifre:&lt;/label&gt;
+    &lt;input type="text" id="sifre" name="sifre"&gt;
+
+    &lt;textarea name="mesaj"&gt;
+
+    &lt;button type="submit"&gt;Gönder&lt;/button&gt;
+&lt;/form&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li><code class="inline">for="eposta"</code> ile <code class="inline">id="mail"</code> eşleşmiyor; ayrıca alanın <code class="inline">name</code> özelliği yok (veri gönderilmez) ve e-posta için <code class="inline">type="email"</code> uygundur. Doğrusu: <code class="inline">&lt;input type="email" id="eposta" name="eposta"&gt;</code></li>
+      <li>Şifre alanı <code class="inline">type="text"</code>; yazılanlar açıkça görünür. Doğrusu: <code class="inline">type="password"</code></li>
+      <li>Şifre içeren form <code class="inline">get</code> ile gönderiliyor; şifre adres çubuğunda görünür. Doğrusu: <code class="inline">&lt;form method="post"&gt;</code></li>
+      <li><code class="inline">&lt;textarea&gt;</code> kapatılmamış; düğme de dâhil sonraki her şey kutunun içinde yazı olarak görünür. Doğrusu: <code class="inline">&lt;textarea name="mesaj"&gt;&lt;/textarea&gt;</code></li>
+    </ol>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> "Bölüm" etiketli, içinde "Bilgisayar Programcılığı", "Bilgisayar Destekli Tasarım" ve "Grafik Tasarım" seçenekleri bulunan bir açılır liste ile "Gönder" düğmesi içeren formu yazın. Etiket listeye bağlı olmalıdır.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;form&gt;
+    &lt;label for="bolum"&gt;Bölüm:&lt;/label&gt;
+    &lt;select id="bolum" name="bolum"&gt;
+        &lt;option&gt;Bilgisayar Programcılığı&lt;/option&gt;
+        &lt;option&gt;Bilgisayar Destekli Tasarım&lt;/option&gt;
+        &lt;option&gt;Grafik Tasarım&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;button type="submit"&gt;Gönder&lt;/button&gt;
+&lt;/form&gt;</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">8</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Basit bir <strong>üyelik formu</strong> hazırlayın. Ad, e-posta ve şifre alanları, cinsiyet için iki radyo düğmesi ve bir "Kayıt Ol" düğmesi bulunsun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
@@ -381,7 +453,7 @@
       <li>Go Live ile açın. İki radyo düğmesinden aynı anda yalnızca birinin seçilebildiğini gözlemleyin.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">8</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">9</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Bir web sitesi için eksiksiz görünen bir <strong>iletişim formu</strong> sayfası hazırlayın (backend olmadığı için çalışması beklenmez, görünmesi yeterli).</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -394,13 +466,14 @@
     <p><strong>Beklenen sonuç:</strong> Ad, e-posta, konu (açılır liste), mesaj, onay kutusu ve Gönder düğmesi içeren düzenli bir iletişim formu.</p>
     <p><strong>İpuçları:</strong> <code class="inline">&lt;label for="..."&gt;</code> ile alanın <code class="inline">id</code>'si aynı olmalı. <code class="inline">&lt;textarea&gt;</code>'yi <code class="inline">&lt;/textarea&gt;</code> ile kapatmayı unutmayın.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">9</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">10</span>Notlar ve İpuçları</h2>
     <ul>
       <li><code class="inline">type="email"</code> alanına <code class="inline">ali</code> gibi geçersiz bir adres yazıp "Gönder" düğmesine basarsanız tarayıcı formu göndermez.</li>
       <li><code class="inline">&lt;label&gt;</code>'ın <code class="inline">for</code> değeri alanın <code class="inline">id</code>'si ile eşleşince etikete tıklamak alanı seçer ve ekran okuyucular etiketi sesli okur.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">10</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">11</span>Çalışma Soruları</h2>
+    <p>Soruları <code class="inline">web_sitem</code> klasöründe açacağınız yeni bir <code class="inline">.html</code> dosyasında deneyin.</p>
     <ol>
       <li>Bir forma <code class="inline">type="text"</code> ve <code class="inline">type="email"</code> alanları ekleyip <code class="inline">placeholder</code> yazın.</li>
       <li>Her alana bir <code class="inline">&lt;label&gt;</code> ekleyip <code class="inline">for</code>/<code class="inline">id</code> değerlerini eşleştirin.</li>
@@ -444,10 +517,11 @@
       <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">7</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">8</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">9</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">10</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">7</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

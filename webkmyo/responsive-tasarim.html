@@ -69,10 +69,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">5</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">6</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">7</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">8</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -268,8 +269,79 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">8</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda yaptığınız <strong>3'lü kart galerisini</strong> responsive yapın: masaüstünde üç sütun, telefonda <strong>tek sütun</strong> görünsün.</p>
+    <h2 id="kendinizi-deneyin"><span class="num">8</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> Viewport meta etiketi ne işe yarar? Yazılmazsa telefonda ne olur? Etiketi yazın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Viewport etiketi, telefonun sayfayı kendi ekran genişliğinde göstermesini sağlar. Yazılmazsa telefon sayfayı geniş bir masaüstü ekranıymış gibi çizip küçültür; yazılar okunmayacak kadar küçük görünür ve media query'ler beklendiği gibi çalışmaz.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</pre>
+    </div>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> Responsive tasarım ve kırılma noktası (breakpoint) ne demektir? "Mobil öncelik" yaklaşımını bir cümleyle açıklayın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Responsive tasarım, sayfanın ekran genişliğine göre kendini düzenlemesidir. Kırılma noktası, düzenin değiştiği ekran genişliğidir (örneğin 600px). Mobil öncelikte önce telefon için tasarlanır, geniş ekranlar için düzen sonradan eklenir.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Aşağıdaki CSS ile <code class="inline">.govde</code> içindeki iki bölüm ekran genişliği 800px, 600px ve 400px iken nasıl görünür?</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.govde {
+    display: flex;
+}
+@media (max-width: 600px) {
+    .govde {
+        flex-direction: column;
+    }
+}</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>800px'te yan yana durur. 600px'te alt alta dizilir, çünkü <code class="inline">max-width: 600px</code> "600px ve altı" demektir. 400px'te de alt alta dizilir.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> Aşağıdaki media query hiç çalışmıyor. İki hatayı bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">@media (max-width: 600) {
+    nav {
+        flex-direction: column;
+    }
+    .govde {
+        flex-direction: column;
+    }</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li>Kırılma noktasında birim yok; sorgu geçersiz sayılır. Doğrusu: <code class="inline">(max-width: 600px)</code></li>
+      <li><code class="inline">@media</code> bloğunun kapanış süslü parantezi <code class="inline">}</code> yok; sonraki kurallar da bloğun içine karışır. En sona <code class="inline">}</code> eklenmeli.</li>
+    </ol>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> Ekran 600px ve altındayken <code class="inline">.menu</code> içindeki bağlantıları ve <code class="inline">.galeri</code> içindeki kartları alt alta dizen media query'yi yazın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">@media (max-width: 600px) {
+    .menu {
+        flex-direction: column;
+    }
+    .galeri {
+        flex-direction: column;
+    }
+}</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> 11. haftada, Flexbox 2 ve Sayfa Yerleşimi konusunun 4. bölümündeki <strong>3'lü kart galerisini</strong> responsive yapın: masaüstünde üç sütun, telefonda <strong>tek sütun</strong> görünsün.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -318,7 +390,7 @@
     </ol>
     <p><code class="inline">flex-wrap</code> tek başına da kartları ekran daraldıkça alt satıra geçirir; ama media query olmasaydı, örneğin 600px genişlikte iki kart yan yana, üçüncüsü altta kalırdı. Media query, ekran 600px veya daha dar olduğunda kartların <strong>her zaman tek sütunda</strong> olmasını sağlar.</p>
 
-    <h2 id="sinif-uygulamasi"><span class="num">9</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda yaptığınız site iskeletini (veya kart galerisini) <strong>telefonda düzgün görünecek</strong> hâle getirin.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -331,17 +403,18 @@
     <p><strong>Beklenen sonuç:</strong> Geniş ekranda bölümler yan yana durur; ekran daraldığında (telefonda) bölümler alt alta gelir ve sayfa okunur kalır.</p>
     <p><strong>İpuçları:</strong> Viewport etiketi olmadan telefonda sayfa küçük görünür. <code class="inline">@media</code> kuralının süslü parantezlerini doğru kapatın.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">10</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
     <ul>
       <li><code class="inline">@media</code> bloğunu alışkanlık olarak CSS'in <strong>sonuna</strong> yazın. Aynı öğeye aynı özellik iki kez verilirse sonra yazılan geçerli olur. Blok başta kalırsa ve alttaki normal kurallarda aynı özellik (örneğin <code class="inline">flex-direction: row</code>) yazılıysa, alttaki kural onu ezer ve telefonda o özellik değişmez.</li>
       <li>Viewport etiketi olmayan bir sayfa telefonda yaklaşık 980 piksel genişliğinde çizilir. Bu yüzden <code class="inline">max-width: 600px</code> gibi bir media query telefonda bile hiç devreye girmez.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">11</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
+    <p>Soruları 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda hazırladığınız <code class="inline">iskelet.html</code> sayfası üzerinde yapın.</p>
     <ol>
-      <li>Herhangi bir sayfanın <code class="inline">&lt;head&gt;</code>'ine viewport meta etiketini ekleyin.</li>
+      <li>Sayfanın <code class="inline">&lt;head&gt;</code>'ine viewport meta etiketini ekleyin.</li>
       <li>Bir <code class="inline">@media (max-width: 600px)</code> bloğu yazıp içinde <code class="inline">body</code> arka plan rengini değiştirin; ekranı daraltınca rengin değiştiğini görün.</li>
-      <li>11. haftadaki (Flexbox 2 ve Sayfa Yerleşimi) site iskeletinizi açıp telefonda sütunları <code class="inline">flex-direction: column</code> ile alt alta alın.</li>
+      <li>Telefonda sütunları <code class="inline">flex-direction: column</code> ile alt alta alın.</li>
       <li><code class="inline">F12</code> cihaz simülasyonunda farklı telefon boyutlarını deneyip düzeni gözlemleyin.</li>
     </ol>
 
@@ -380,10 +453,11 @@
       <a href="#sikca-yapilan-5-hata"><span class="n">5</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">6</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">7</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">8</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

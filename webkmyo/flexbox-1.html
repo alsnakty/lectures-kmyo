@@ -70,10 +70,11 @@
         <a href="#sikca-yapilan-4-hata"><span class="n">6</span>Sıkça Yapılan 4 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -298,7 +299,83 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">9</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> Flexbox'ta "kapsayıcı" ve "öğe" ne demektir? <code class="inline">display: flex</code> hangisine yazılır ve ne değişir?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Kapsayıcı, öğeleri içine alan dış kutudur; öğeler onun doğrudan içindeki kutulardır. <code class="inline">display: flex</code> kapsayıcıya yazılır. Yazılınca kapsayıcının içindeki öğeler alt alta değil yan yana dizilir ve <code class="inline">justify-content</code>, <code class="inline">align-items</code> ile hizalanabilir hâle gelir.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> Öğeler varsayılan yönde (yan yana) dizilirken <code class="inline">justify-content</code> ve <code class="inline">align-items</code> hangi yönde hizalama yapar?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">justify-content</code> ana eksende, yani yatayda hizalar. <code class="inline">align-items</code> çapraz eksende, yani dikeyde hizalar. Öğeler alt alta dizildiğinde bu eksenler yer değiştirir; bunu 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda göreceğiz.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Kapsayıcının içinde üç kutu vardır. Aşağıdaki CSS ile kutular nasıl yerleşir?</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kapsayici {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+}</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Üç kutu yan yana dizilir. Birinci kutu en solda, üçüncü en sağda, ikinci ortada durur; kutuların arasındaki boşluklar eşittir. Kutular 200px yüksekliğindeki kapsayıcının dikeyde tam ortasındadır.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> Menü bağlantılarının yan yana ve ortalı olması bekleniyor, ama bağlantılar alt alta diziliyor. İki hatayı bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;nav class="menu"&gt;
+    &lt;a href="#"&gt;Ana Sayfa&lt;/a&gt;
+    &lt;a href="#"&gt;İletişim&lt;/a&gt;
+&lt;/nav&gt;</pre>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.menu a {
+    display: flex;
+}
+.menu {
+    justify-content: middle;
+}</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li><code class="inline">display: flex</code> bağlantılara (öğelere) yazılmış; kapsayıcıya, yani <code class="inline">.menu</code>'ye yazılmalı.</li>
+      <li><code class="inline">justify-content</code> için <code class="inline">middle</code> diye bir değer yok. Doğrusu: <code class="inline">center</code></li>
+    </ol>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.menu {
+    display: flex;
+    justify-content: center;
+}</pre>
+    </div>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> Yüksekliği 300px olan <code class="inline">.orta</code> kapsayıcısının içindeki tek kutuyu hem yatayda hem dikeyde ortalayan CSS kuralını yazın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.orta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Üç mavi kutuyu bir kapsayıcı içinde <strong>yatayda ve dikeyde ortalayan</strong> bir düzen oluşturun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
@@ -340,7 +417,7 @@
       <li>Go Live ile açın; üç kutunun kapsayıcının tam ortasında yan yana durduğunu gözlemleyin. <code class="inline">justify-content</code> değerini <code class="inline">space-between</code> yapıp farkı görün.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Flexbox kullanarak, solda site adı ve sağda menü bağlantıları olan bir <strong>yatay menü (navbar)</strong> hazırlayın.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -353,20 +430,21 @@
     <p><strong>Beklenen sonuç:</strong> Solda marka, sağda menü bağlantıları olan; dikeyde ortalanmış, koyu renkli bir navbar.</p>
     <p><strong>İpuçları:</strong> <code class="inline">display: flex</code> <strong>ana kutuya</strong> yazılır. <code class="inline">justify-content</code> yatay, <code class="inline">align-items</code> dikey hizalamayı yönetir.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
     <ul>
       <li>Kapsayıcıya <code class="inline">height</code> verilmezse kapsayıcı en yüksek öğe kadar olur. Öğelerin boyu eşitse <code class="inline">align-items</code> değerlerinin farkı görünmez; farkı görmek için kapsayıcıya bir <code class="inline">height</code> verin.</li>
       <li><code class="inline">gap</code> yalnızca öğelerin <strong>arasına</strong> boşluk koyar; kapsayıcının kenarlarına boşluk eklemez. Kenar boşluğu için kapsayıcıya <code class="inline">padding</code> verin.</li>
       <li>Chrome'un geliştirici araçlarında, <code class="inline">display: flex</code> verilmiş öğenin yanında <strong>flex</strong> rozeti görünür. Rozete tıklayınca öğelerin yerleşimi sayfanın üzerinde çizgilerle gösterilir.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
+    <p>İlk dört soruyu <code class="inline">web_sitem</code> klasöründe açacağınız yeni bir <code class="inline">.html</code> dosyasında deneyin.</p>
     <ol>
       <li>Üç <code class="inline">&lt;div&gt;</code>'i bir kapsayıcıya koyup <code class="inline">display: flex</code> ile yan yana dizin.</li>
       <li><code class="inline">justify-content</code> değerini sırasıyla <code class="inline">center</code>, <code class="inline">flex-end</code>, <code class="inline">space-between</code>, <code class="inline">space-around</code> yapıp farkları gözlemleyin.</li>
       <li>Kapsayıcıya bir <code class="inline">height</code> verip <code class="inline">align-items</code> değerlerini (<code class="inline">flex-start</code>, <code class="inline">center</code>, <code class="inline">flex-end</code>) deneyin.</li>
       <li><code class="inline">justify-content: center</code> ve <code class="inline">align-items: center</code> ile tek bir kutuyu tam ortaya alın.</li>
-      <li>Kendi sitenizin sayfalarına, örnekteki gibi bir <strong>navbar</strong> ekleyin.</li>
+      <li>3. haftada, Bağlantılar ve Görseller konusunun Sınıf Uygulamasında yaptığınız sitenin sayfalarına (<code class="inline">index.html</code>, <code class="inline">hakkinda.html</code>) 5. bölümdeki gibi bir <strong>navbar</strong> ekleyin.</li>
       <li>Navbar bağlantıları arasındaki boşluğu <code class="inline">gap</code> değerini değiştirerek ayarlayın.</li>
     </ol>
 
@@ -406,10 +484,11 @@
       <a href="#sikca-yapilan-4-hata"><span class="n">6</span>Sıkça Yapılan 4 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

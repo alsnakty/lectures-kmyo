@@ -71,10 +71,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">10</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -102,8 +103,8 @@
 <pre class="language-xml">&lt;a href="https://www.google.com"&gt;Google&lt;/a&gt;</pre>
     </div>
     <p><strong>Göreli yol:</strong> Hedefin, <strong>o an bulunduğunuz dosyaya göre</strong> yerini belirtir. Kendi sitenizin içindeki sayfa ve resimler için bunu kullanırsınız. Aşağıdaki klasör yapısını örnek alalım:</p>
-    <figure class="diagram"><img alt="Mini sitenin klasör yapısı: web_sitem içinde index.html, hakkinda.html, iletisim.html ve gorseller klasöründe foto.jpg" src="images/mini_site_yapisi.png" width="901" height="584" loading="lazy" decoding="async" tabindex="0">
-      <figcaption aria-hidden="true">Mini sitenin klasör yapısı: web_sitem içinde index.html, hakkinda.html, iletisim.html ve gorseller klasöründe foto.jpg</figcaption>
+    <figure class="diagram"><img alt="Mini sitenin klasör yapısı: mini_site içinde index.html, hakkinda.html, iletisim.html ve gorseller klasöründe foto.jpg" src="images/mini_site_yapisi.png" width="901" height="584" loading="lazy" decoding="async" tabindex="0">
+      <figcaption aria-hidden="true">Mini sitenin klasör yapısı: mini_site içinde index.html, hakkinda.html, iletisim.html ve gorseller klasöründe foto.jpg</figcaption>
     </figure>
     <p>Bu yapıya göre yollar şöyle yazılır:</p>
     <div class="twrap">
@@ -244,7 +245,7 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Üç dosyayı da <code class="inline">web_sitem</code> klasörüne kaydedin. Menüdeki bağlantılara tıklayarak sayfalar arasında gezebilirsiniz. Menüdeki bağlantılar site içi (göreli) bağlantılardır; <code class="inline">iletisim.html</code> içindeki harita bağlantısı ise dış (mutlak) bağlantıdır.</p>
+    <p>Üç dosyayı <code class="inline">web_sitem</code> içinde açacağınız <code class="inline">mini_site</code> klasörüne, resmi de <code class="inline">mini_site/gorseller/</code> klasörüne kaydedin. Menüdeki bağlantılara tıklayarak sayfalar arasında gezebilirsiniz. Menüdeki bağlantılar site içi (göreli) bağlantılardır; <code class="inline">iletisim.html</code> içindeki harita bağlantısı ise dış (mutlak) bağlantıdır.</p>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">7</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
@@ -334,9 +335,70 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> İki sayfalık bir site yapın: <code class="inline">index.html</code> ve <code class="inline">urunler.html</code>. Her iki sayfada da diğerine giden bir bağlantı bulunsun. Ana sayfaya bir görsel ekleyin.</p>
-    <p><strong>Çözüm (<code class="inline">index.html</code>):</strong></p>
+    <h2 id="kendinizi-deneyin"><span class="num">10</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> Göreli yol ile mutlak yol arasındaki farkı birer örnekle açıklayın. Aynı sitedeki sayfalar arasında hangisi kullanılır?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Mutlak yol, tam adrestir ve <code class="inline">https://</code> ile başlar: <code class="inline">https://www.ornek.com/iletisim.html</code>. Göreli yol, bulunulan dosyaya göre yazılır: <code class="inline">iletisim.html</code> ya da <code class="inline">gorseller/logo.png</code>. Aynı sitedeki sayfalar ve resimler için göreli yol kullanılır; mutlak yol başka sitelere bağlantı verirken kullanılır.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> <code class="inline">&lt;img&gt;</code> etiketindeki <code class="inline">alt</code> özelliği ne işe yarar? İki durum yazın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">alt</code>, resmi yazıyla anlatan alternatif metindir. (1) Resim açılmazsa (yol yanlışsa, dosya silinmişse) resmin yerinde bu yazı görünür. (2) Görme engelli kullanıcıların ekran okuyucusu bu yazıyı sesli okur.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Klasör yapısı şöyledir:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Metin</span></div>
+<pre>web_sitem/
+├── index.html
+├── hakkinda.html
+└── gorseller/
+    └── logo.png</pre>
+    </div>
+    <p><code class="inline">index.html</code> içinde şu kod vardır. Sayfada ne görünür, tıklanınca ne olur?</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="hakkinda.html"&gt;&lt;img src="gorseller/logo.png" alt="Logo" width="150"&gt;&lt;/a&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Sayfada 150 piksel genişliğinde logo resmi görünür. Resim bir bağlantının içinde olduğu için tıklanabilir; tıklanınca aynı sekmede <code class="inline">hakkinda.html</code> sayfası açılır.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> <code class="inline">index.html</code> ile aynı klasörde bir <code class="inline">gorseller</code> klasörü, onun içinde de <code class="inline">foto.jpg</code> ve <code class="inline">kedi.jpg</code> dosyaları var. Aşağıdaki kodda üç hata var. Bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;img src="foto.jpg"&gt;
+&lt;img scr="gorseller/kedi.jpg" alt="Kedi"&gt;
+&lt;a href="hakkinda.html"&gt;Hakkımızda</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li><code class="inline">foto.jpg</code> <code class="inline">gorseller</code> klasöründe olduğu için yol yanlış; ayrıca <code class="inline">alt</code> yok. Doğrusu: <code class="inline">&lt;img src="gorseller/foto.jpg" alt="Fotoğraf"&gt;</code></li>
+      <li><code class="inline">scr</code> yanlış yazılmış, resim görünmez. Doğrusu: <code class="inline">src</code></li>
+      <li><code class="inline">&lt;a&gt;</code> kapatılmamış; sayfanın geri kalanı da bağlantıya dönüşür. Doğrusu: <code class="inline">&lt;a href="hakkinda.html"&gt;Hakkımızda&lt;/a&gt;</code></li>
+    </ol>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> <code class="inline">sayfalar</code> klasöründeki <code class="inline">urunler.html</code> dosyasından, bir üst klasördeki <code class="inline">index.html</code> sayfasına "Ana Sayfa" yazısıyla bağlantı veren kodu yazın. Aynı sayfaya, üst klasördeki <code class="inline">gorseller</code> klasöründe bulunan <code class="inline">logo.png</code> resmini de ekleyin.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="../index.html"&gt;Ana Sayfa&lt;/a&gt;
+&lt;img src="../gorseller/logo.png" alt="Logo"&gt;</pre>
+    </div>
+    <p><code class="inline">../</code> bir üst klasöre çıkmak demektir.</p>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> İki sayfalık bir site yapın: <code class="inline">cicekci.html</code> ve <code class="inline">urunler.html</code>. Her iki sayfada da diğerine giden bir bağlantı bulunsun. <code class="inline">cicekci.html</code> sayfasına bir görsel ekleyin.</p>
+    <p><strong>Çözüm (<code class="inline">cicekci.html</code>):</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -365,7 +427,7 @@
 &lt;body&gt;
     &lt;h1&gt;Ürünlerimiz&lt;/h1&gt;
     &lt;p&gt;Gül, papatya ve lale çeşitlerimiz mevcuttur.&lt;/p&gt;
-    &lt;p&gt;&lt;a href="index.html"&gt;Ana sayfaya dön&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href="cicekci.html"&gt;Ana sayfaya dön&lt;/a&gt;&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
@@ -376,11 +438,11 @@
       <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açarak bağlantıların iki sayfa arasında çalıştığını deneyin.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Birbirine bağlı iki sayfalık, görselli küçük bir tanıtım sitesi kurun.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">index.html</code></strong> ve <strong><code class="inline">hakkinda.html</code></strong> adında iki sayfa oluşturun.</li>
+      <li>1. haftada, <a href="araclar-ve-ilk-sayfa.html">Araçlar ve İlk Web Sayfası</a> konusunda oluşturduğunuz <code class="inline">index.html</code> sayfasının yanına, <code class="inline">web_sitem</code> klasöründe <strong><code class="inline">hakkinda.html</code></strong> adında ikinci bir sayfa oluşturun.</li>
       <li>Her iki sayfanın başına aynı <strong>menüyü</strong> koyun: <code class="inline">index.html</code> ve <code class="inline">hakkinda.html</code>'e giden iki bağlantı (<code class="inline">&lt;a href="..."&gt;</code>).</li>
       <li><code class="inline">gorseller</code> klasörüne bir resim koyun; ana sayfada bu resmi <code class="inline">&lt;img&gt;</code> ile gösterin ve <code class="inline">alt</code> metnini yazın.</li>
       <li>Sayfalardan birine bir <strong>dış bağlantı</strong> (<code class="inline">https://...</code>) ekleyin ve <code class="inline">target="_blank"</code> ile yeni sekmede açılmasını sağlayın.</li>
@@ -388,17 +450,18 @@
     <p><strong>Beklenen sonuç:</strong> Menüden iki sayfa arasında geçiş yapabiliyorsunuz; ana sayfada resminiz görünüyor; dış bağlantı yeni sekmede açılıyor.</p>
     <p><strong>İpuçları:</strong> Resim yolunu klasör yapısına göre yazın (<code class="inline">gorseller/resim.jpg</code>). Dosya adlarında Türkçe harf kullanmayın; yol hatası en sık buradan çıkar.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">13</span>Notlar ve İpuçları</h2>
     <ul>
       <li><code class="inline">width</code>, resmi yalnızca ekranda küçültür; dosyanın boyutu değişmez. Büyük bir fotoğraf küçük gösterilse de tamamı indirilir. Sayfaya koymadan önce resmin kendisini küçültün.</li>
       <li>Çoğu sunucu büyük/küçük harfe duyarlıdır: <code class="inline">Foto.JPG</code> ile <code class="inline">foto.jpg</code> farklı dosyalardır. Kendi bilgisayarınızda çalışan bir resim ya da bağlantı, sunucuya yüklenince bu yüzden çalışmayabilir. Dosya adını <code class="inline">src</code> ve <code class="inline">href</code> içinde birebir aynı yazın.</li>
       <li><code class="inline">alt</code> metni resmi anlatmalıdır: <code class="inline">resim1</code> değil, <code class="inline">Kahve fincanı</code>.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>
+    <p>Soruları Sınıf Uygulamasında hazırladığınız site (<code class="inline">index.html</code>, <code class="inline">hakkinda.html</code>) üzerinde yapın.</p>
     <ol>
-      <li><code class="inline">index.html</code> sayfasına <code class="inline">hakkinda.html</code>'e giden bir bağlantı ekleyin.</li>
-      <li>Sayfanıza kendi seçtiğiniz bir resmi <code class="inline">&lt;img&gt;</code> ile ekleyip <code class="inline">alt</code> metnini yazın.</li>
+      <li>Siteye üçüncü bir sayfa olarak <code class="inline">iletisim.html</code> ekleyin; iki sayfanın menüsüne de ona giden bağlantıyı koyun.</li>
+      <li><code class="inline">index.html</code> sayfanıza kendi seçtiğiniz bir resmi <code class="inline">&lt;img&gt;</code> ile ekleyip <code class="inline">alt</code> metnini yazın.</li>
       <li>Resmin genişliğini <code class="inline">width="200"</code> yaparak boyutunu küçültün.</li>
       <li>Bir dış siteye (<code class="inline">https://...</code>) <code class="inline">target="_blank"</code> ile bağlantı verip yeni sekmede açıldığını gözlemleyin.</li>
       <li><code class="inline">gorseller</code> klasörünün içine bir HTML sayfası koyup oradan <code class="inline">../index.html</code> ile ana sayfaya bağlantı verin; <code class="inline">../</code> olmadan çalışmadığını görün.</li>
@@ -442,10 +505,11 @@
       <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">10</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

@@ -68,10 +68,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">7</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">8</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">9</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">10</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">7</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -314,7 +315,99 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">7</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">7</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> <code class="inline">&lt;ul&gt;</code> ile <code class="inline">&lt;ol&gt;</code> arasındaki fark nedir? Hangisinin kullanılacağına nasıl karar verilir? Birer örnek durum yazın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">&lt;ul&gt;</code> sırasız listedir, maddeler nokta ile gösterilir; sıranın önemli olmadığı durumlarda kullanılır (alışveriş listesi). <code class="inline">&lt;ol&gt;</code> sıralı listedir, maddeler numaralanır; sıranın önemli olduğu durumlarda kullanılır (yemek tarifinin adımları).</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> Tablo etiketlerinden <code class="inline">&lt;tr&gt;</code>, <code class="inline">&lt;th&gt;</code> ve <code class="inline">&lt;td&gt;</code> ne işe yarar?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">&lt;tr&gt;</code> tablonun bir satırıdır. <code class="inline">&lt;th&gt;</code> başlık hücresidir; tarayıcı içindeki yazıyı kalın ve ortalı gösterir. <code class="inline">&lt;td&gt;</code> normal veri hücresidir. <code class="inline">&lt;th&gt;</code> ve <code class="inline">&lt;td&gt;</code> her zaman bir <code class="inline">&lt;tr&gt;</code> içine yazılır.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Aşağıdaki kod tarayıcıda nasıl görünür? Madde işaretlerini ve girintiyi belirterek yazın.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;ul&gt;
+    &lt;li&gt;Meyveler
+        &lt;ul&gt;
+            &lt;li&gt;Elma&lt;/li&gt;
+            &lt;li&gt;Armut&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Sebzeler&lt;/li&gt;
+&lt;/ul&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Metin</span></div>
+<pre>• Meyveler
+    ○ Elma
+    ○ Armut
+• Sebzeler</pre>
+    </div>
+    <p>İçteki liste "Meyveler" maddesinin altında, içeriden başlar. Tarayıcı iç listenin madde işaretini içi boş daire olarak gösterir.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> Aşağıdaki kodda iki hata var. Bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;ol&gt;
+    &lt;li&gt;Unu ekleyin&lt;/li&gt;
+    &lt;li&gt;Karıştırın&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table border="1"&gt;
+    &lt;td&gt;Ad&lt;/td&gt;
+    &lt;td&gt;Yaş&lt;/td&gt;
+&lt;/table&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li>Liste <code class="inline">&lt;ol&gt;</code> ile açılmış, <code class="inline">&lt;/ul&gt;</code> ile kapatılmış. Doğrusu: <code class="inline">&lt;/ol&gt;</code></li>
+      <li><code class="inline">&lt;td&gt;</code> hücreleri bir satırın (<code class="inline">&lt;tr&gt;</code>) içinde değil. Tarayıcı bunu çoğu zaman kendisi düzeltir, ama kod yanlıştır. Doğrusu:</li>
+    </ol>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Ad&lt;/td&gt;
+        &lt;td&gt;Yaş&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </div>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> "Ders" ve "Gün" başlıklı iki sütunu olan; altında iki ders bilgisi bulunan bir tablo yazın (başlık satırı + iki veri satırı).</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Ders&lt;/th&gt;
+        &lt;th&gt;Gün&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Web Arayüz&lt;/td&gt;
+        &lt;td&gt;Pazartesi&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Temel Tasarım&lt;/td&gt;
+        &lt;td&gt;Çarşamba&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">8</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Bir sayfada, üç ürünü ve fiyatlarını gösteren bir <strong>tablo</strong>, ayrıca bir kek tarifinin adımlarını gösteren bir <strong>sıralı liste</strong> oluşturun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
@@ -362,7 +455,7 @@
       <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açarak tablo ve listenin göründüğünü doğrulayın.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">8</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">9</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Bir konuyu (kendi seçtiğiniz bir işletme, hobi veya ders) liste ve tablo kullanarak düzenli biçimde sunan bir bilgi sayfası hazırlayın.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -374,14 +467,15 @@
     <p><strong>Beklenen sonuç:</strong> Sayfada madde işaretli bir liste, numaralı bir liste ve kenarlıklı, başlıklı bir tablo görünür.</p>
     <p><strong>İpuçları:</strong> <code class="inline">&lt;li&gt;</code> her zaman <code class="inline">&lt;ul&gt;</code>/<code class="inline">&lt;ol&gt;</code> içinde olmalı. Tabloda her satırda aynı sayıda hücre bulunmalı; başlık hücreleri için <code class="inline">&lt;th&gt;</code> kullanın.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">9</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">10</span>Notlar ve İpuçları</h2>
     <ul>
       <li>Tablolar yalnızca satır-sütun biçimindeki veriler içindir. Sayfa yerleşimi (menü solda, içerik sağda gibi) tabloyla yapılmaz; bu iş 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda, CSS ile yapılır.</li>
       <li><code class="inline">&lt;th&gt;</code> yalnızca kalın görünmek için değildir. Ekran okuyucular başlık hücresi sayesinde her verinin hangi sütuna ait olduğunu okuyabilir.</li>
       <li>İç içe listede alt liste, <code class="inline">&lt;li&gt;</code>'nin <strong>içine</strong>, <code class="inline">&lt;/li&gt;</code>'den önce yazılır.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">10</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">11</span>Çalışma Soruları</h2>
+    <p>Soruları <code class="inline">web_sitem</code> klasöründe açacağınız yeni bir <code class="inline">.html</code> dosyasında deneyin.</p>
     <ol>
       <li><code class="inline">&lt;ul&gt;</code> ile en sevdiğiniz beş filmi listeleyin.</li>
       <li><code class="inline">&lt;ol&gt;</code> ile sabah rutininizi sırayla yazın.</li>
@@ -425,10 +519,11 @@
       <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">7</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">8</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">9</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">10</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">7</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

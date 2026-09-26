@@ -70,10 +70,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -320,7 +321,118 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">9</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> Semantik (anlamlı) etiket ne demektir? Sayfa bölgeleri için <code class="inline">&lt;div&gt;</code> yerine semantik etiket kullanmanın iki yararını yazın.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Semantik etiket, adıyla içindeki bölümün ne olduğunu anlatan etikettir (<code class="inline">&lt;header&gt;</code>, <code class="inline">&lt;nav&gt;</code>, <code class="inline">&lt;footer&gt;</code> gibi). Yararları: (1) Kodu okuyan kişi hangi bölümün ne olduğunu hemen anlar. (2) Ekran okuyucular ve arama motorları sayfanın yapısını doğru tanır.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> Aşağıdaki sayfa parçalarını uygun semantik etiketle eşleştirin: <code class="inline">&lt;header&gt;</code>, <code class="inline">&lt;nav&gt;</code>, <code class="inline">&lt;main&gt;</code>, <code class="inline">&lt;section&gt;</code>, <code class="inline">&lt;footer&gt;</code></p>
+    <ul>
+      <li>a) Sayfanın asıl içeriği</li>
+      <li>b) Site adı ve logonun bulunduğu üst bölüm</li>
+      <li>c) Telif yazısının bulunduğu alt bölüm</li>
+      <li>d) Menü bağlantıları</li>
+      <li>e) Asıl içeriğin içindeki "Duyurular" bölümü</li>
+    </ul>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>a) <code class="inline">&lt;main&gt;</code> b) <code class="inline">&lt;header&gt;</code> c) <code class="inline">&lt;footer&gt;</code> d) <code class="inline">&lt;nav&gt;</code> e) <code class="inline">&lt;section&gt;</code></p>
+      </div>
+    </details>
+    <p><strong>3. (Hata bulma)</strong> Aşağıdaki kodda semantik etiketlerle ilgili üç hata var. Bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;head&gt;
+    &lt;header&gt;&lt;h1&gt;Kitap Kulübü&lt;/h1&gt;&lt;/header&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main&gt;Kitap listesi&lt;/main&gt;
+    &lt;main&gt;Etkinlikler&lt;/main&gt;
+    &lt;div class="alt"&gt;© 2026 Kitap Kulübü&lt;/div&gt;
+&lt;/body&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li><code class="inline">&lt;header&gt;</code> görünür bir bölümdür, <code class="inline">&lt;head&gt;</code> içine değil <code class="inline">&lt;body&gt;</code> içine yazılır.</li>
+      <li>Bir sayfada yalnızca bir <code class="inline">&lt;main&gt;</code> olur. İki bölüm tek <code class="inline">&lt;main&gt;</code> içinde iki <code class="inline">&lt;section&gt;</code> olarak yazılmalı.</li>
+      <li>Alt bölüm için <code class="inline">&lt;div class="alt"&gt;</code> yerine <code class="inline">&lt;footer&gt;</code> kullanılmalı.</li>
+    </ol>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;body&gt;
+    &lt;header&gt;&lt;h1&gt;Kitap Kulübü&lt;/h1&gt;&lt;/header&gt;
+    &lt;main&gt;
+        &lt;section&gt;Kitap listesi&lt;/section&gt;
+        &lt;section&gt;Etkinlikler&lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;© 2026 Kitap Kulübü&lt;/footer&gt;
+&lt;/body&gt;</pre>
+    </div>
+      </div>
+    </details>
+    <p><strong>4. (Kod yazma)</strong> Aşağıdaki tasarım notuna göre üst bölümün CSS'ini yazın.</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Bölge</th><th>Özellik</th><th>Değer</th></tr></thead>
+        <tbody>
+          <tr><td>Üst bölüm (header)</td><td>Arka plan</td><td><code class="inline">#2c3e50</code></td></tr>
+          <tr><td></td><td>Yazı rengi</td><td>beyaz</td></tr>
+          <tr><td></td><td>İç boşluk</td><td>20px</td></tr>
+          <tr><td></td><td>Yazı hizası</td><td>ortalı</td></tr>
+          <tr><td>Başlık (h1)</td><td>Yazı boyutu</td><td>32px</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+header h1 {
+    font-size: 32px;
+}</pre>
+    </div>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> Üst bölüm, menü, iki bölümden oluşan asıl içerik ve alt bölümden oluşan bir sayfanın semantik iskeletini (yalnızca <code class="inline">&lt;body&gt;</code> içini) yazın. İçerik olarak kısa yazılar yeterlidir.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;header&gt;
+    &lt;h1&gt;Site Adı&lt;/h1&gt;
+&lt;/header&gt;
+&lt;nav&gt;
+    &lt;a href="#"&gt;Ana Sayfa&lt;/a&gt;
+    &lt;a href="#"&gt;İletişim&lt;/a&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Hakkımızda&lt;/h2&gt;
+        &lt;p&gt;Kısa tanıtım yazısı.&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Duyurular&lt;/h2&gt;
+        &lt;p&gt;Yeni duyuru.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+&lt;footer&gt;
+    &lt;p&gt;© 2026 Site Adı&lt;/p&gt;
+&lt;/footer&gt;</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Aşağıdaki tasarım notuna göre, kişisel bir tanıtım sayfasının semantik iskeletini kodlayın. Sayfada üst bölüm, menü, tek bölümlü bir içerik ve alt bilgi olsun.</p>
     <div class="twrap">
       <table>
@@ -400,7 +512,7 @@
       <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açın. Renkleri ve boşlukları tasarım notuyla karşılaştırın.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Bir kitap kulübü için hazırlanmış tanıtım sayfası tasarımı size resim olarak verildi. Bu tasarımı semantik etiketlerle kodlayın.</p>
     <figure class="diagram"><img alt="Kitap Kulübü tanıtım sayfası tasarımı: yeşil üst bölüm, açık yeşil menü, iki içerik kutusu, yeşil alt bilgi" src="images/sinif_tasarim.png" width="1200" height="824" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">Kitap Kulübü tanıtım sayfası tasarımı: yeşil üst bölüm, açık yeşil menü, iki içerik kutusu, yeşil alt bilgi</figcaption>
@@ -429,7 +541,7 @@
     <p><strong>Beklenen sonuç:</strong> Tarayıcıdaki sayfa, verilen tasarım resmine benzer görünür ve kodda hiç <code class="inline">&lt;div&gt;</code> yoktur.</p>
     <p><strong>İpuçları:</strong> Önce yalnızca HTML iskeletini yazıp kaydedin, sonra CSS'e geçin. <code class="inline">body</code>'ye <code class="inline">margin: 0</code> verin. İç boşluk <code class="inline">padding</code>, kutular arası boşluk <code class="inline">margin</code>'dir.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
     <ul>
       <li>Tasarımı kodlamaya başlamadan önce bölgelere ayırmak, hangi etiketin nereye yazılacağını baştan belirler; kodu yazarken daha az geri dönersiniz.</li>
       <li>Tasarımdaki bir rengin kodunu bilmiyorsanız tasarım notuna bakın; gözle tahmin edilen renk çoğu zaman tutmaz.</li>
@@ -437,9 +549,9 @@
       <li>Hiçbir semantik etiketin uymadığı, yalnızca biçim vermek için kullanılan kutularda <code class="inline">&lt;div&gt;</code> kullanmaya devam edebilirsiniz.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
     <ol>
-      <li>7. haftada, <a href="kutu-modeli.html">CSS Kutu Modeli</a> konusunda yaptığınız kart sayfasını semantik etiketlerle yeniden düzenleyin: sayfaya bir <code class="inline">&lt;header&gt;</code> ve bir <code class="inline">&lt;footer&gt;</code> ekleyip kartı <code class="inline">&lt;main&gt;</code> içine alın.</li>
+      <li>7. haftada, <a href="kutu-modeli.html">CSS Kutu Modeli</a> konusunda yaptığınız kart sayfasını (<code class="inline">kart_uygulama.html</code>) semantik etiketlerle yeniden düzenleyin: sayfaya bir <code class="inline">&lt;header&gt;</code> ve bir <code class="inline">&lt;footer&gt;</code> ekleyip kartı <code class="inline">&lt;main&gt;</code> içine alın.</li>
       <li>Sık kullandığınız bir web sitesinin ana sayfasını kâğıda çizip bölgelere ayırın; her bölgeye hangi semantik etiketin uyacağını yazın.</li>
     </ol>
 
@@ -479,10 +591,11 @@
       <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

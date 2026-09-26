@@ -72,10 +72,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">8</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">9</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">10</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">11</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">12</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">13</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">14</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">15</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -329,7 +330,77 @@
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">11</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> <code class="inline">&lt;head&gt;</code> ile <code class="inline">&lt;body&gt;</code> arasındaki farkı açıklayın. Her birine yazılan ikişer şey örnek verin.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">&lt;head&gt;</code> sayfanın içinde görünmeyen bilgileri taşır: <code class="inline">&lt;title&gt;</code> (sekme başlığı), <code class="inline">&lt;meta charset="utf-8"&gt;</code> (karakter kodlaması). <code class="inline">&lt;body&gt;</code> sayfada görünen her şeyi taşır: başlıklar (<code class="inline">&lt;h1&gt;</code>), paragraflar (<code class="inline">&lt;p&gt;</code>), resimler vb.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> <code class="inline">&lt;b&gt;</code> ile <code class="inline">&lt;strong&gt;</code> ikisi de yazıyı kalın gösterir. Aralarındaki fark nedir?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">&lt;b&gt;</code> yazıyı yalnızca görünüş olarak kalın yapar. <code class="inline">&lt;strong&gt;</code> ise kalın göstermenin yanında "bu metin önemlidir" anlamını da taşır. Aynı ilişki <code class="inline">&lt;i&gt;</code> ile <code class="inline">&lt;em&gt;</code> arasında da vardır.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Aşağıdaki kod tarayıcıda nasıl görünür? Satır satır yazın.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;p&gt;Bugün      hava
+çok güzel.&lt;/p&gt;
+&lt;p&gt;Yarın&lt;br&gt;yağmur var.&lt;/p&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Metin</span></div>
+<pre>Bugün hava çok güzel.
+
+Yarın
+yağmur var.</pre>
+    </div>
+    <p>Birinci paragrafta fazla boşluklar tek boşluğa iner, Enter da boşluk sayılır; bu yüzden tek satırda görünür. İkinci paragrafta <code class="inline">&lt;br&gt;</code> satırı keser.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> Aşağıdaki kodda üç hata var. Bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;title&gt;Hakkımda&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Ali Yılmaz&lt;/h2&gt;
+    &lt;p&gt;Merhaba, &lt;b&gt;ben Ali&lt;/p&gt;&lt;/b&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li><code class="inline">&lt;meta charset="utf-8"&gt;</code> yok; Türkçe harfler bozuk görünebilir. <code class="inline">&lt;head&gt;</code> içine eklenmeli.</li>
+      <li><code class="inline">&lt;h1&gt;</code> açılmış, <code class="inline">&lt;/h2&gt;</code> ile kapatılmış. Doğrusu: <code class="inline">&lt;h1&gt;Ali Yılmaz&lt;/h1&gt;</code></li>
+      <li>Etiketler yanlış sırada kapatılmış. İçteki etiket önce kapanmalı: <code class="inline">&lt;p&gt;Merhaba, &lt;b&gt;ben Ali&lt;/b&gt;&lt;/p&gt;</code></li>
+    </ol>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> <code class="inline">&lt;body&gt;</code> içine yazılacak şu kodu yazın: "Hobilerim" büyük başlığı, "Kitap okumak" alt başlığı, altında yatay bir çizgi, ardından içinde bir kelimesi kalın olan bir paragraf. Paragrafın üstüne "Hobi açıklaması" yazan bir yorum satırı ekleyin.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;h1&gt;Hobilerim&lt;/h1&gt;
+&lt;h2&gt;Kitap okumak&lt;/h2&gt;
+&lt;hr&gt;
+&lt;!-- Hobi açıklaması --&gt;
+&lt;p&gt;Her akşam yatmadan önce &lt;b&gt;yarım saat&lt;/b&gt; kitap okurum.&lt;/p&gt;</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">12</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> En sevdiğiniz filmi tanıtan bir sayfa hazırlayın. Bir ana başlık, bir alt başlık, yatay çizgi ile ayrılmış iki bölüm ve en az iki paragraf bulunsun. Filmin adını bir paragraf içinde <strong>kalın</strong> yazın.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
@@ -359,7 +430,7 @@
       <li>Go Live ile açın ve içeriği kendi seçtiğiniz filme göre değiştirin.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">13</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Kendinizi (veya seçtiğiniz bir konuyu) tanıtan, düzgün başlık hiyerarşisi olan bir tanıtım sayfası hazırlayın.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -374,16 +445,17 @@
     <p><strong>Beklenen sonuç:</strong> Büyükten küçüğe başlıklar, yatay çizgiyle ayrılmış bölümler, kalın ve italik vurgular içeren düzenli bir tanıtım sayfası. Yorum satırı tarayıcıda görünmez.</p>
     <p><strong>İpuçları:</strong> Başlık etiketlerini yalnızca başlık için kullanın. <code class="inline">&lt;b&gt;</code>/<code class="inline">&lt;i&gt;</code> gibi etiketleri açtığınız yerde kapatmayı unutmayın.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">13</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">14</span>Notlar ve İpuçları</h2>
     <ul>
       <li>Başlık düzeylerini atlamayın: <code class="inline">&lt;h1&gt;</code>'den sonra <code class="inline">&lt;h3&gt;</code> değil, <code class="inline">&lt;h2&gt;</code> gelir. Alt bölümler sırayla bir düzey aşağı iner.</li>
       <li>Yorum satırları sayfada görünmez; ancak tarayıcıda <strong>Sayfa kaynağını görüntüle</strong> ile herkes görebilir. Yorumlara şifre veya kişisel bilgi yazmayın.</li>
       <li>Anlam taşıdıkları için <code class="inline">&lt;b&gt;</code> yerine <code class="inline">&lt;strong&gt;</code>, <code class="inline">&lt;i&gt;</code> yerine <code class="inline">&lt;em&gt;</code> tercih edilir. Bu derste ikisini de kullanabilirsiniz; ancak MDN, anlamı öne çıkaran <code class="inline">&lt;strong&gt;</code> ve <code class="inline">&lt;em&gt;</code> etiketlerini önerir.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">15</span>Çalışma Soruları</h2>
+    <p>Soruları Sınıf Uygulamasında hazırladığınız <code class="inline">tanitim.html</code> sayfası üzerinde yapın.</p>
     <ol>
-      <li><code class="inline">&lt;h1&gt;</code> başlığının altına kendi bölümünüzü <code class="inline">&lt;h2&gt;</code> ile yazın.</li>
+      <li><code class="inline">&lt;h2&gt;</code> alt başlığının altına <code class="inline">&lt;h3&gt;</code> ile iki ara başlık ekleyin ve her birinin altına bir paragraf yazın.</li>
       <li>Bir paragraf yazıp içindeki bir kelimeyi <code class="inline">&lt;b&gt;</code> ile kalın, başka bir kelimeyi <code class="inline">&lt;i&gt;</code> ile italik yapın.</li>
       <li>İki paragraf yazıp aralarına <code class="inline">&lt;hr&gt;</code> ekleyin; çizginin nasıl göründüğüne bakın.</li>
       <li>Bir paragraf içinde <code class="inline">&lt;br&gt;</code> kullanarak metni üç ayrı satıra bölün.</li>
@@ -430,10 +502,11 @@
       <a href="#sikca-yapilan-5-hata"><span class="n">8</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">9</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">10</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">11</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">12</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">13</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">14</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">15</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

@@ -71,10 +71,11 @@
         <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">10</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -300,7 +301,83 @@ h2 {
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">10</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> <code class="inline">:hover</code> nedir ve nasıl yazılır? <code class="inline">.dugme:hover</code> ile <code class="inline">.dugme :hover</code> (arada boşluk) aynı şey midir?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">:hover</code>, fare öğenin üzerine geldiğinde uygulanacak kuralları yazmak için kullanılır. Seçiciye bitişik yazılır: <code class="inline">.dugme:hover</code>. Aralarında boşluk olursa anlam değişir: <code class="inline">.dugme :hover</code>, düğmenin kendisini değil içindeki öğeleri seçer; bu yüzden düğmede bir değişiklik olmaz.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> <code class="inline">transition</code> neden <code class="inline">:hover</code> kuralına değil de öğenin normal kuralına yazılır? <code class="inline">:hover</code> içine yazılırsa ne olur?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Normal kurala yazılan <code class="inline">transition</code> her iki yönde çalışır: fare gelince de, çekilince de değişim yumuşak olur. Yalnızca <code class="inline">:hover</code> içine yazılırsa fare gelince yumuşak geçiş olur, ama fare çekilince öğe birden eski hâline döner.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Aşağıdaki kurallar ne sonuç verir? <code class="inline">box-shadow</code> değerlerinin her birinin anlamını yazın.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kart   { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+.profil { width: 100px; height: 100px; border-radius: 50%; }</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">.kart</code> kutusunun altında hafif bir gölge oluşur: yatay kaydırma 0, dikey kaydırma 4px (gölge aşağıda), bulanıklık 8px, renk %20'si görünen (yani oldukça saydam) siyah. <code class="inline">.profil</code> kare olduğu için <code class="inline">border-radius: 50%</code> ile tam bir daireye dönüşür.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> Düğmenin köşeleri yuvarlak olmuyor, fare üzerine gelince de renk değişmiyor. Dört hatayı bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.dugme {
+    background-color: #27ae60;
+    border-radius: 10;
+}
+.dugme :hover {
+    background-color: #1e8449;
+    transition: 0.3;
+}</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li><code class="inline">border-radius</code> değerinde birim yok. Doğrusu: <code class="inline">10px</code></li>
+      <li><code class="inline">.dugme</code> ile <code class="inline">:hover</code> arasında boşluk var. Doğrusu: <code class="inline">.dugme:hover</code></li>
+      <li><code class="inline">transition</code> süresinde birim yok. Doğrusu: <code class="inline">0.3s</code></li>
+      <li><code class="inline">transition</code> <code class="inline">:hover</code> içine değil <code class="inline">.dugme</code> kuralına yazılmalı.</li>
+    </ol>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.dugme {
+    background-color: #27ae60;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.dugme:hover {
+    background-color: #1e8449;
+}</pre>
+    </div>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> <code class="inline">.kart</code> için şu kuralları yazın: köşeler 12px yuvarlak, hafif bir gölge, yazı tipi Verdana (yoksa tırnaksız herhangi bir yazı tipi). Fare kartın üzerine gelince gölge belirginleşsin; değişim 0.3 saniyede yumuşakça olsun.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kart {
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Verdana, sans-serif;
+    transition: 0.3s;
+}
+.kart:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}</pre>
+    </div>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Bir <strong>düğmeyi</strong> güzelleştirin: yuvarlak köşeli olsun, fare üzerine gelince rengi yumuşak bir geçişle değişsin.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
@@ -339,11 +416,11 @@ h2 {
       <li>Go Live ile açın; farenizi düğmenin üzerine getirip rengin <strong>yumuşakça</strong> değiştiğini gözlemleyin.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> 7-12. haftalarda yaptığınız bir kartı ya da sayfayı, bu haftanın küçük dokunuşlarıyla <strong>güzelleştirin</strong>.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
-      <li>7. haftadaki (CSS Kutu Modeli) kart sayfanızı (veya başka bir sayfanızı) açın.</li>
+      <li>7. haftadaki (CSS Kutu Modeli) kart sayfanızı (<code class="inline">kart_uygulama.html</code>) ya da başka bir sayfanızı açın.</li>
       <li>Karta <code class="inline">border-radius</code> ile <strong>yuvarlak köşeler</strong> ve <code class="inline">box-shadow</code> ile <strong>gölge</strong> ekleyin.</li>
       <li>Sayfaya bir düğme koyun; düğmeye <code class="inline">:hover</code> ile fare üzerine gelince <strong>renk değişimi</strong> verin.</li>
       <li>Aynı düğmeye <code class="inline">transition</code> ekleyerek geçişi <strong>yumuşatın</strong>.</li>
@@ -352,19 +429,20 @@ h2 {
     <p><strong>Beklenen sonuç:</strong> Yuvarlak köşeli, gölgeli, yeni yazı tipli bir sayfa ve fare üzerine gelince yumuşakça renk değiştiren bir düğme.</p>
     <p><strong>İpuçları:</strong> <code class="inline">transition</code>'ı <code class="inline">:hover</code>'a değil, <strong>asıl öğeye</strong> yazın. <code class="inline">box-shadow</code> sırası: yatay, dikey, bulanıklık, renk.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">13</span>Notlar ve İpuçları</h2>
     <ul>
       <li>Telefon ve tabletlerde fare olmadığı için <code class="inline">:hover</code> güvenilir çalışmaz. Önemli bir bilgiyi yalnızca fare üzerine gelince görünen bir yere koymayın.</li>
       <li><code class="inline">transition: 0.3s</code> değişen bütün özellikleri yumuşatır. Yalnızca birini yumuşatmak için özelliğin adını yazın: <code class="inline">transition: background-color 0.3s;</code></li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>
+    <p>Soruları 7. haftada, <a href="kutu-modeli.html">CSS Kutu Modeli</a> konusunda hazırladığınız <code class="inline">kart_uygulama.html</code> sayfası üzerinde yapın.</p>
     <ol>
-      <li>Bir düğmeye <code class="inline">:hover</code> ekleyip fare üzerine gelince rengini değiştirin.</li>
+      <li>Sayfaya bir düğme ekleyin; <code class="inline">:hover</code> ile fare üzerine gelince rengini değiştirin.</li>
       <li>Aynı düğmeye <code class="inline">transition: 0.3s</code> ekleyip değişimin yumuşadığını gözlemleyin.</li>
-      <li>Bir karta <code class="inline">border-radius</code> ve <code class="inline">box-shadow</code> ekleyerek yuvarlak ve gölgeli yapın.</li>
-      <li>Bir profil resmine (<code class="inline">&lt;img&gt;</code>) <code class="inline">border-radius: 50%</code> uygulayıp daire yapın.</li>
-      <li>Sayfanızda metne Verdana, başlıklara Georgia yazı tipini verin.</li>
+      <li>Karta <code class="inline">border-radius</code> ve <code class="inline">box-shadow</code> ekleyerek yuvarlak ve gölgeli yapın.</li>
+      <li>Karta bir profil resmi (<code class="inline">&lt;img&gt;</code>) ekleyip <code class="inline">border-radius: 50%</code> ile daire yapın.</li>
+      <li>Metne Verdana, başlıklara Georgia yazı tipini verin.</li>
       <li>2-12. haftalarda yaptığınız bir sayfayı bu dokunuşlarla (yuvarlak köşe, gölge, hover, yazı tipi) baştan sona güzelleştirin.</li>
     </ol>
 
@@ -407,10 +485,11 @@ h2 {
       <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">10</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

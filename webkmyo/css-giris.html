@@ -70,10 +70,11 @@
         <a href="#sikca-yapilan-6-hata"><span class="n">6</span>Sıkça Yapılan 6 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-        <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+        <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
@@ -321,7 +322,85 @@ p { color: gray; }</pre>
       </li>
     </ol>
 
-    <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">9</span>Kendinizi Deneyin</h2>
+    <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
+    <p><strong>1. (Kavram)</strong> CSS'i sayfaya eklemenin üç yolu nedir? Hangisi neden önerilir?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>(1) Satır içi: etiketin <code class="inline">style</code> özelliğine yazılır. (2) Dahili: <code class="inline">&lt;head&gt;</code> içindeki <code class="inline">&lt;style&gt;</code> etiketine yazılır. (3) Harici: ayrı bir <code class="inline">.css</code> dosyasına yazılıp <code class="inline">&lt;link&gt;</code> ile bağlanır. Harici CSS önerilir, çünkü tek dosyayla bütün sayfaların görünümü yönetilir; bir değişiklik her sayfaya birden uygulanır ve HTML ile CSS birbirinden ayrı durur.</p>
+      </div>
+    </details>
+    <p><strong>2. (Kavram)</strong> <code class="inline">class</code> ile <code class="inline">id</code> arasındaki fark nedir? CSS'te her biri nasıl seçilir?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p><code class="inline">class</code> aynı sayfada birden çok öğeye verilebilir; CSS'te nokta ile seçilir: <code class="inline">.uyari { }</code>. <code class="inline">id</code> sayfada yalnızca bir öğeye verilir; CSS'te diyez ile seçilir: <code class="inline">#baslik { }</code>.</p>
+      </div>
+    </details>
+    <p><strong>3. (Kod okuma)</strong> Aşağıdaki üç paragraf hangi renkte görünür? Nedenini açıklayın.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;style&gt;
+    p { color: gray; }
+    .uyari { color: red; }
+    #baslik { color: navy; }
+&lt;/style&gt;
+
+&lt;p&gt;Birinci&lt;/p&gt;
+&lt;p class="uyari"&gt;İkinci&lt;/p&gt;
+&lt;p id="baslik" class="uyari"&gt;Üçüncü&lt;/p&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Birinci gri, ikinci kırmızı, üçüncü lacivert görünür. Bir öğeye birden fazla kural uyduğunda öncelik sırası id &gt; class &gt; etiket'tir. İkinci paragrafa hem <code class="inline">p</code> hem <code class="inline">.uyari</code> uyar, class kazanır. Üçüncüye üç kural da uyar, id kazanır.</p>
+      </div>
+    </details>
+    <p><strong>4. (Hata bulma)</strong> Aşağıdaki kodda beş hata var. Bulun ve düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">body {
+    background-color: f5f5f5;
+    font-size: 16;
+    color: blue
+    text-align: center;
+}
+.baslik {
+    colour: red;
+}</pre>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;h1 class=".baslik"&gt;Merhaba&lt;/h1&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <ol>
+      <li>HEX renkte <code class="inline">#</code> yok. Doğrusu: <code class="inline">#f5f5f5</code></li>
+      <li>Yazı boyutunda birim yok. Doğrusu: <code class="inline">16px</code></li>
+      <li><code class="inline">color: blue</code> satırının sonunda <code class="inline">;</code> yok; bu yüzden hem bu satır hem de sonraki <code class="inline">text-align</code> çalışmaz.</li>
+      <li>Özellik adı yanlış yazılmış. Doğrusu: <code class="inline">color</code></li>
+      <li>HTML'de class adı noktasız yazılır. Doğrusu: <code class="inline">class="baslik"</code></li>
+    </ol>
+      </div>
+    </details>
+    <p><strong>5. (Kod yazma)</strong> <code class="inline">style.css</code> adlı harici dosyaya şu kuralları yazın: sayfanın arka planı <code class="inline">#eeeeee</code>, yazı tipi Arial (yoksa tırnaksız herhangi bir yazı tipi); <code class="inline">h1</code> başlıkları ortalı ve lacivert. Ardından bu dosyayı HTML sayfasına bağlayan satırı ve nereye yazılacağını belirtin.</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">body {
+    background-color: #eeeeee;
+    font-family: Arial, sans-serif;
+}
+h1 {
+    text-align: center;
+    color: navy;
+}</pre>
+    </div>
+    <p>HTML'de <code class="inline">&lt;head&gt;</code> içine: <code class="inline">&lt;link rel="stylesheet" href="style.css"&gt;</code></p>
+      </div>
+    </details>
+
+    <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Bir sayfada dahili CSS kullanarak <code class="inline">body</code> arka planını, <code class="inline">h1</code> rengini, bir <code class="inline">class</code> ve bir <code class="inline">id</code> seçicisini biçimlendirin.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
@@ -362,11 +441,11 @@ p { color: gray; }</pre>
       <li>Go Live ile açın; renklerin, hizalamanın ve arka planların uygulandığını gözlemleyin.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> 2-5. haftalarda yaptığınız sade bir sayfayı, <strong>harici CSS</strong> kullanarak renklendirin ve biçimlendirin.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
-      <li>2. haftada, <a href="html-iskeleti.html">HTML İskeleti ve Metin Etiketleri</a> konusunda yaptığınız tanıtım sayfanızı (veya yeni bir sayfa) açın.</li>
+      <li>2. haftada, <a href="html-iskeleti.html">HTML İskeleti ve Metin Etiketleri</a> konusunda yaptığınız tanıtım sayfanızı (<code class="inline">tanitim.html</code>) ya da yeni bir sayfa açın.</li>
       <li>Aynı klasörde <strong><code class="inline">style.css</code></strong> adında bir dosya oluşturun ve HTML'e <code class="inline">&lt;link&gt;</code> ile bağlayın.</li>
       <li>CSS'te <code class="inline">body</code>'ye bir <strong>arka plan rengi</strong> ve bir <strong>yazı tipi</strong> (<code class="inline">font-family</code>) verin.</li>
       <li><code class="inline">h1</code> için bir <strong>renk</strong> belirleyin.</li>
@@ -376,16 +455,17 @@ p { color: gray; }</pre>
     <p><strong>Beklenen sonuç:</strong> Sayfa artık renkli ve kendi yazı tipiyle görünüyor; bir metin <code class="inline">.vurgu</code> sınıfıyla öne çıkmış; bir öğe <code class="inline">#altbilgi</code> id'siyle biçimlendirilmiş. Tüm stiller ayrı dosyada.</p>
     <p><strong>İpuçları:</strong> CSS'te class için <code class="inline">.</code>, id için <code class="inline">#</code> kullanın; HTML'de <code class="inline">class="vurgu"</code> (noktasız) yazın. <code class="inline">&lt;link&gt;</code>'in <code class="inline">href</code> yolunu doğru verin.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
     <ul>
       <li>VS Code, CSS dosyasındaki renklerin yanında küçük bir renk kutusu gösterir. Kutuya tıklayınca renk paleti açılır; rengi oradan seçebilirsiniz.</li>
       <li>Bir öğeye birden fazla class verilebilir; adlar boşlukla ayrılır: <code class="inline">class="kutu uyari"</code>. Bu yüzden bir class adının içinde boşluk olamaz.</li>
       <li><code class="inline">#fff</code> gibi üç basamaklı HEX kodları da vardır; her basamak iki kez yazılmış sayılır (<code class="inline">#fff</code> = <code class="inline">#ffffff</code>).</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
+    <p>Soruları 2. haftada, <a href="html-iskeleti.html">HTML İskeleti ve Metin Etiketleri</a> konusunda hazırladığınız <code class="inline">tanitim.html</code> sayfası üzerinde yapın.</p>
     <ol>
-      <li>2. haftada, <a href="html-iskeleti.html">HTML İskeleti ve Metin Etiketleri</a> konusunda yaptığınız "kendini tanıtan sayfa"yı açıp <code class="inline">&lt;head&gt;</code> içine bir <code class="inline">&lt;style&gt;</code> ekleyerek <code class="inline">h1</code> rengini değiştirin.</li>
+      <li><code class="inline">&lt;head&gt;</code> içine bir <code class="inline">&lt;style&gt;</code> ekleyerek <code class="inline">h1</code> rengini değiştirin.</li>
       <li><code class="inline">body</code> için bir <code class="inline">background-color</code> ve bir <code class="inline">font-family</code> belirleyin.</li>
       <li>Bir paragrafa <code class="inline">class="onemli"</code> verip CSS'te <code class="inline">.onemli</code> sınıfını kırmızı yapın.</li>
       <li>Bir öğeye <code class="inline">id</code> verip <code class="inline">#</code> seçicisiyle arka plan rengini değiştirin.</li>
@@ -431,10 +511,11 @@ p { color: gray; }</pre>
       <a href="#sikca-yapilan-6-hata"><span class="n">6</span>Sıkça Yapılan 6 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-      <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+      <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">
