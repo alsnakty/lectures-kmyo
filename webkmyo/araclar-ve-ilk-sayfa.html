@@ -78,7 +78,7 @@
       </nav>
     </details>
 
-<p>Bu dersin sonunda kendi bilgisayarınızda çalışan bir web sitesi hazırlayabilecek düzeye geleceksiniz. Ancak bir sayfa hazırlamadan önce, o sayfayı <strong>nereye yazacağınızı</strong> ve <strong>nasıl çalıştıracağınızı</strong> bilmeniz gerekir. Bu hafta, dönemin geri kalanının üzerine kurulacağı bu temeli oluşturmaya ayrılmıştır. İlk hafta içeriği ilk bakışta hazırlık niteliğinde görünebilir; ancak bu aşamayı atlayan bir öğrenci, dönem boyunca dosya ve klasör düzeninden kaynaklanan sorunlarla ("dosyam nerede", "sayfam neden açılmıyor" gibi) zaman kaybeder. Bu nedenle temelin sağlam atılması önem taşır.</p>
+<p>Bir web sayfası, tarayıcının okuyup ekranda gösterdiği ve uzantısı <code class="inline">.html</code> olan bir metin dosyasıdır. Bu dosya bir kod düzenleyicisinde (VS Code) yazılır; VS Code'a eklenen <strong>Live Server</strong> eklentisi de sayfayı tarayıcıda açar ve her kaydettiğinizde yeniler. Dosyaların hangi klasörde durduğu en az kod kadar önemlidir: yanlış yere kaydedilen bir sayfa ya da resim açılmaz.</p>
 
     <h2 id="web-nasil-calisir"><span class="num">1</span>Web Nasıl Çalışır?</h2>
     <p>Bir web sayfasını açtığınızda, arka planda görünmeyen bir iletişim gerçekleşir. Bu iletişimi bir <strong>lokantaya</strong> benzetebiliriz:</p>
@@ -111,7 +111,7 @@
         </tbody>
       </table>
     </div>
-    <div class="note"><span class="tag">Not</span><p>Bu hafta yalnızca HTML'in en temel parçasına değinilecektir. CSS, 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda ayrıntılı olarak ele alınacaktır. Şimdilik amaç, bir sayfanın nasıl açıldığını kavramaktır.</p></div>
+    <div class="note"><span class="tag">Not</span><p>CSS, 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda ayrıntılı olarak ele alınır.</p></div>
 
     <h2 id="alan-adi-domain-barindirma-host-ve-uzant"><span class="num">2</span>Alan Adı (Domain), Barındırma (Host) ve Uzantılar</h2>
     <p>Hazırladığınız bir web sayfası, siz onu internette yayınlayana kadar yalnızca kendi bilgisayarınızda durur. Sayfanızın herkes tarafından internetten erişilebilir olması için iki şeye ihtiyaç vardır: bir <strong>alan adı (domain)</strong> ve bir <strong>barındırma (host / hosting)</strong> hizmeti.</p>
@@ -177,7 +177,7 @@
     <div class="note"><span class="tag">Not</span><p>Live Server kurulu değilse <code class="inline">.html</code> dosyasına Dosya Gezgini'nde çift tıklayarak sayfayı tarayıcıda açabilirsiniz. Bu durumda sayfa kendiliğinden yenilenmez: kodu kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>), sonra tarayıcıda <code class="inline">F5</code> tuşuyla sayfayı yenileyin.</p></div>
 
     <h2 id="dosya-ve-klasor-mantigi-en-onemli-kisim"><span class="num">4</span>Dosya ve Klasör Mantığı (En Önemli Kısım)</h2>
-    <p>Bu başlığa <strong>özellikle dikkat ediniz.</strong> Dönem boyunca en sık karşılaşılan sorun bir kod hatası değil, dosya ve klasör düzeninden kaynaklanan "dosyam nerede?" sorusudur.</p>
+    <p>Bir sayfanın ya da resmin açılmaması çoğu zaman kod hatasından değil, dosyanın yanlış klasöre kaydedilmesinden kaynaklanır.</p>
     <p>Kural basittir: <strong>Her web projesi kendi klasöründe durur.</strong> O projeye ait bütün dosyalar (sayfalar, resimler) o klasörün içinde bulunur. Örnek bir düzen aşağıda verilmiştir:</p>
     <figure class="diagram"><img alt="Örnek klasör düzeni: web_sitem klasörü içinde index.html ve içinde logo.png bulunan gorseller klasörü" src="images/dosya_klasor_yapisi.png" width="901" height="515" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Örnek klasör düzeni: web_sitem klasörü içinde index.html ve içinde logo.png bulunan gorseller klasörü</figcaption>
@@ -221,7 +221,7 @@
         </tbody>
       </table>
     </div>
-    <div class="note warn"><span class="tag">Kural</span><p>Boşluk yerine <strong>alt çizgi</strong> (<code class="inline">_</code>) kullanınız ve Türkçe harf kullanmayınız. Bu, profesyonel bir alışkanlıktır; baştan edinildiğinde ileride oluşabilecek sorunları önler.</p></div>
+    <div class="note warn"><span class="tag">Kural</span><p>Boşluk yerine <strong>alt çizgi</strong> (<code class="inline">_</code>) kullanınız ve Türkçe harf kullanmayınız. Böyle adlandırılan dosyalar başka bir bilgisayara ya da sunucuya taşındığında da sorunsuz açılır.</p></div>
 
     <h2 id="ilk-sayfa-index-html"><span class="num">5</span>İlk Sayfa: <code class="inline">index.html</code></h2>
     <p>Şimdi ilk sayfayı oluşturalım. VS Code'da <code class="inline">web_sitem</code> klasörünü açınız, içinde <code class="inline">index.html</code> adında yeni bir dosya oluşturunuz ve aşağıdaki kodu yazınız:</p>

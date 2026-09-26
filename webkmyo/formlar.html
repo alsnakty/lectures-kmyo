@@ -76,7 +76,7 @@
       </nav>
     </details>
 
-<p>1-4. haftalarda sayfada bilgi <strong>gösterdik</strong>. Bu hafta ise kullanıcıdan bilgi <strong>alacağız</strong>: ad, e-posta, mesaj gibi. Bunun için <strong>formları</strong> kullanırız. Formlar; iletişim sayfaları, kayıt ekranları ve arama kutularının temelidir.</p>
+<p>Form, kullanıcının sayfaya bilgi girmesini sağlayan alanlardan oluşur: metin kutuları, açılır listeler, onay kutuları ve bir gönderme düğmesi. İletişim sayfaları, üyelik ekranları ve arama kutuları formlarla yapılır.</p>
     <div class="note warn"><span class="tag">Önemli</span><p>Bir formun girdiği bilgiyi işlemesi (kaydetmesi, e-posta göndermesi) için bir <strong>sunucu tarafı (backend)</strong> gerekir. Bu derste backend yoktur; bu yüzden "Gönder" düğmesine bastığınızda veri hiçbir yere kaydedilmez. <strong>Amacımız formu doğru kodlamak ve görünümünü oluşturmaktır</strong>; çalışması beklenmez.</p></div>
 
     <h2 id="form-nedir"><span class="num">1</span>Form Nedir?</h2>
@@ -248,7 +248,7 @@
     <figure class="diagram"><img alt="İletişim formunun tarayıcı çıktısı: ad, e-posta, konu, mesaj alanları, onay kutusu ve Gönder düğmesi" src="images/iletisim_formu_ciktisi.png" width="1200" height="657" loading="lazy" decoding="async" tabindex="0">
       <figcaption>İletişim formunun tarayıcı çıktısı: ad, e-posta, konu, mesaj alanları, onay kutusu ve Gönder düğmesi</figcaption>
     </figure>
-    <div class="note"><span class="tag">Hatırlatma</span><p>Formda <code class="inline">action</code> olmadığı için "Gönder" düğmesine bastığınızda form aynı sayfaya gönderilir: sayfa yeniden açılır ve yazdıklarınız adres çubuğunda görünür (<code class="inline">?ad=Ali&amp;...</code>). Veri hiçbir yere kaydedilmez, çünkü arkada veriyi işleyen bir program (backend) yoktur. Bu haftalık amaç, formun <strong>görünmesi ve doğru kodlanmasıdır.</strong></p></div>
+    <div class="note"><span class="tag">Hatırlatma</span><p>Formda <code class="inline">action</code> olmadığı için "Gönder" düğmesine bastığınızda form aynı sayfaya gönderilir: sayfa yeniden açılır ve yazdıklarınız adres çubuğunda görünür (<code class="inline">?ad=Ali&amp;...</code>). Veri hiçbir yere kaydedilmez, çünkü arkada veriyi işleyen bir program (backend) yoktur.</p></div>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">4</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
