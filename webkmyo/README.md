@@ -10,23 +10,23 @@ Sayfalar tarayıcıda açılır, kurulum gerektirmez.
 
 | Hafta | Konu |
 |---|---|
-| 1 | [Araçlar ve İlk Web Sayfası](araclar-ve-ilk-sayfa.html) |
-| 2 | [HTML İskeleti ve Metin Etiketleri](html-iskeleti.html) |
-| 3 | [Bağlantılar ve Görseller](baglantilar-ve-gorseller.html) |
-| 4 | [Listeler ve Tablolar](listeler-ve-tablolar.html) |
-| 5 | [Formlar](formlar.html) |
-| 6 | [CSS'e Giriş](css-giris.html) |
-| 7 | [CSS Kutu Modeli](kutu-modeli.html) |
-| 9 | [Tasarımdan Koda](tasarimdan-koda.html) |
-| 10 | [Flexbox 1](flexbox-1.html) |
-| 11 | [Flexbox 2 ve Sayfa Yerleşimi](flexbox-2-ve-sayfa-yerlesimi.html) |
-| 12 | [Responsive Tasarım](responsive-tasarim.html) |
-| 13 | [Geçişler ve Küçük Dokunuşlar](gecisler-ve-dokunuslar.html) |
-| 14 | [Bootstrap Tanıtımı](bootstrap-tanitimi.html) |
+| 1 | [Araçlar ve İlk Web Sayfası](https://alsnakty.github.io/lectures-kmyo/webkmyo/araclar-ve-ilk-sayfa.html) |
+| 2 | [HTML İskeleti ve Metin Etiketleri](https://alsnakty.github.io/lectures-kmyo/webkmyo/html-iskeleti.html) |
+| 3 | [Bağlantılar ve Görseller](https://alsnakty.github.io/lectures-kmyo/webkmyo/baglantilar-ve-gorseller.html) |
+| 4 | [Listeler ve Tablolar](https://alsnakty.github.io/lectures-kmyo/webkmyo/listeler-ve-tablolar.html) |
+| 5 | [Formlar](https://alsnakty.github.io/lectures-kmyo/webkmyo/formlar.html) |
+| 6 | [CSS'e Giriş](https://alsnakty.github.io/lectures-kmyo/webkmyo/css-giris.html) |
+| 7 | [CSS Kutu Modeli](https://alsnakty.github.io/lectures-kmyo/webkmyo/kutu-modeli.html) |
+| 9 | [Tasarımdan Koda](https://alsnakty.github.io/lectures-kmyo/webkmyo/tasarimdan-koda.html) |
+| 10 | [Flexbox 1](https://alsnakty.github.io/lectures-kmyo/webkmyo/flexbox-1.html) |
+| 11 | [Flexbox 2 ve Sayfa Yerleşimi](https://alsnakty.github.io/lectures-kmyo/webkmyo/flexbox-2-ve-sayfa-yerlesimi.html) |
+| 12 | [Responsive Tasarım](https://alsnakty.github.io/lectures-kmyo/webkmyo/responsive-tasarim.html) |
+| 13 | [Geçişler ve Küçük Dokunuşlar](https://alsnakty.github.io/lectures-kmyo/webkmyo/gecisler-ve-dokunuslar.html) |
+| 14 | [Bootstrap Tanıtımı](https://alsnakty.github.io/lectures-kmyo/webkmyo/bootstrap-tanitimi.html) |
 
 Sınav haftaları: 8. hafta vize · 15. hafta final. Tam plan ana sayfadadır.
 
-Dönem projesi yönergesi: [proje-yonergesi.html](proje-yonergesi.html)
+Dönem projesi yönergesi: [proje-yonergesi.html](https://alsnakty.github.io/lectures-kmyo/webkmyo/proje-yonergesi.html)
 
 ## Yerelde açmak
 
