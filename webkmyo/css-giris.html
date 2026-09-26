@@ -79,17 +79,17 @@
     </details>
 
 <p>HTML bir sayfanın içeriğini ve iskeletini belirler; bu içeriğin rengi, yazı tipi ve düzeni ise <strong>CSS</strong> ile verilir. CSS yazılmamış bir sayfayı tarayıcı kendi varsayılan görünümüyle, beyaz zemin üzerinde siyah yazıyla gösterir.</p>
-    <p><strong>CSS (Cascading Style Sheets, Basamaklı Stil Şablonları)</strong>, W3C tarafından HTML'in <strong>görünümünü</strong> ayrı bir yerden yönetmek için geliştirilmiştir. Kısaca:</p>
+    <p><strong>CSS (Cascading Style Sheets, Basamaklı Stil Şablonları)</strong>, HTML'in <strong>görünümünü</strong> ayrı bir yerden yönetmek için kullanılan dildir; standardını W3C belirler. Kısaca:</p>
     <ul>
       <li><strong>HTML</strong> → içerik ve yapı (iskelet).</li>
       <li><strong>CSS</strong> → görünüm (renk, yazı tipi, yerleşim).</li>
     </ul>
-    <p>İçeriği görünümden ayırmak, sayfayı daha düzenli tutar ve tek bir CSS ile birçok sayfayı aynı anda biçimlendirmeyi mümkün kılar.</p>
+    <p>İçeriği görünümden ayırmak, sayfayı daha düzenli tutar ve tek bir CSS dosyasıyla birçok sayfayı aynı anda biçimlendirmenizi sağlar.</p>
 
     <h2 id="css-soz-dizimi"><span class="num">1</span>CSS Söz Dizimi</h2>
     <p>Bir CSS kuralı <strong>seçici</strong> ve <strong>bildirim bloğu</strong> olmak üzere iki bölümden oluşur. Seçici, <strong>hangi öğenin</strong> biçimlendirileceğini; süslü parantez içindeki bildirimler ise <strong>nasıl</strong> görüneceğini söyler. Her bildirim bir <strong>özellik</strong> ve bir <strong>değer</strong> çiftidir.</p>
     <figure class="diagram"><img alt="CSS söz dizimi: seçici, bildirim, özellik ve değer bölümleri" src="images/css_soz_dizimi.png" width="1018" height="492" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>CSS söz dizimi: seçici, bildirim, özellik ve değer bölümleri</figcaption>
+      <figcaption aria-hidden="true">CSS söz dizimi: seçici, bildirim, özellik ve değer bölümleri</figcaption>
     </figure>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
@@ -225,10 +225,10 @@ p { color: gray; }</pre>
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;span&gt;</code>, metnin bir parçasını satırı bölmeden işaretleyen etikettir; kendisi görünüm getirmez. Burada "sıcacık" kelimesini <code class="inline">vurgu</code> class'ı ile biçimlendirmek için kullandık.</p></div>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;span&gt;</code>, metnin bir parçasını satırı bölmeden işaretleyen etikettir; kendi başına görünümü değiştirmez. Burada "sıcacık" kelimesini <code class="inline">vurgu</code> class'ı ile biçimlendirmek için kullandık.</p></div>
     <p>CSS eklenmeden önce ve eklendikten sonra sayfanın görünümü şöyle değişir:</p>
     <figure class="diagram"><img alt="CSS öncesi ve sonrası: solda sade siyah-beyaz sayfa, sağda renklendirilmiş ve farklı yazı tipli sayfa" src="images/renklendirme_ornek.png" width="1420" height="318" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>CSS öncesi ve sonrası: solda sade siyah-beyaz sayfa, sağda renklendirilmiş ve farklı yazı tipli sayfa</figcaption>
+      <figcaption aria-hidden="true">CSS öncesi ve sonrası: solda sade siyah-beyaz sayfa, sağda renklendirilmiş ve farklı yazı tipli sayfa</figcaption>
     </figure>
     <p>Görüldüğü gibi içerik (yazılar) <strong>aynı</strong> kaldı; yalnızca <strong>görünüm</strong> değişti. Aynı HTML, farklı CSS ile tamamen farklı görünebilir.</p>
 
@@ -322,7 +322,7 @@ p { color: gray; }</pre>
     </ol>
 
     <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> Bir sayfada dahili CSS kullanarak; <code class="inline">body</code> arka planını, <code class="inline">h1</code> rengini, bir <code class="inline">class</code> ve bir <code class="inline">id</code> seçicisini biçimlendirin.</p>
+    <p><strong>Görev:</strong> Bir sayfada dahili CSS kullanarak <code class="inline">body</code> arka planını, <code class="inline">h1</code> rengini, bir <code class="inline">class</code> ve bir <code class="inline">id</code> seçicisini biçimlendirin.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -357,7 +357,7 @@ p { color: gray; }</pre>
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
       <li>Go Live ile açın; renklerin, hizalamanın ve arka planların uygulandığını gözlemleyin.</li>
     </ol>
@@ -373,12 +373,12 @@ p { color: gray; }</pre>
       <li>Bir <strong>class</strong> (örn. <code class="inline">.vurgu</code>) tanımlayıp bir metne uygulayın.</li>
       <li>Bir <strong>id</strong> (örn. <code class="inline">#altbilgi</code>) tanımlayıp bir öğeye uygulayın.</li>
     </ol>
-    <p><strong>Beklenen sonuç:</strong> Sayfa artık renkli ve fontlu; bir metin <code class="inline">.vurgu</code> sınıfıyla öne çıkmış; bir öğe <code class="inline">#altbilgi</code> id'siyle biçimlenmiş. Tüm stiller ayrı dosyada.</p>
+    <p><strong>Beklenen sonuç:</strong> Sayfa artık renkli ve kendi yazı tipiyle görünüyor; bir metin <code class="inline">.vurgu</code> sınıfıyla öne çıkmış; bir öğe <code class="inline">#altbilgi</code> id'siyle biçimlendirilmiş. Tüm stiller ayrı dosyada.</p>
     <p><strong>İpuçları:</strong> CSS'te class için <code class="inline">.</code>, id için <code class="inline">#</code> kullanın; HTML'de <code class="inline">class="vurgu"</code> (noktasız) yazın. <code class="inline">&lt;link&gt;</code>'in <code class="inline">href</code> yolunu doğru verin.</p>
 
     <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
     <ul>
-      <li>VS Code, CSS dosyasındaki renklerin yanında küçük bir renk kutusu gösterir. Kutuya tıklayınca renk seçici açılır; rengi oradan seçebilirsiniz.</li>
+      <li>VS Code, CSS dosyasındaki renklerin yanında küçük bir renk kutusu gösterir. Kutuya tıklayınca renk paleti açılır; rengi oradan seçebilirsiniz.</li>
       <li>Bir öğeye birden fazla class verilebilir; adlar boşlukla ayrılır: <code class="inline">class="kutu uyari"</code>. Bu yüzden bir class adının içinde boşluk olamaz.</li>
       <li><code class="inline">#fff</code> gibi üç basamaklı HEX kodları da vardır; her basamak iki kez yazılmış sayılır (<code class="inline">#fff</code> = <code class="inline">#ffffff</code>).</li>
     </ul>

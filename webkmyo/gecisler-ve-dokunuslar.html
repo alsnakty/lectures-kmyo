@@ -81,7 +81,7 @@
 
 <p>Aynı içerik, birkaç satır CSS ile çok farklı görünebilir: yuvarlatılmış köşeler, hafif bir gölge ya da fare üzerine gelince renk değiştiren bir düğme sayfayı daha özenli gösterir. Bu üç dokunuş aşağıda bir arada görülüyor:</p>
     <figure class="diagram"><img alt="Küçük dokunuşlar: border-radius (yuvarlak köşe), box-shadow (gölge), hover + transition (fare etkisi)" src="images/dokunuslar.png" width="1080" height="240" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Küçük dokunuşlar: border-radius (yuvarlak köşe), box-shadow (gölge), hover + transition (fare etkisi)</figcaption>
+      <figcaption aria-hidden="true">Küçük dokunuşlar: border-radius (yuvarlak köşe), box-shadow (gölge), hover + transition (fare etkisi)</figcaption>
     </figure>
 
     <h2 id="hover-fare-uzerine-gelince"><span class="num">1</span><code class="inline">:hover</code>: Fare Üzerine Gelince</h2>
@@ -121,7 +121,7 @@
     <p><code class="inline">border-radius: 50%</code>, kare bir öğeyi <strong>tam daire</strong> yapar; profil fotoğrafları için sık kullanılır.</p>
 
     <h2 id="box-shadow-golge"><span class="num">4</span><code class="inline">box-shadow</code>: Gölge</h2>
-    <p>Öğeye derinlik hissi veren bir gölge ekler. Dört değer sırayla yazılır: <strong>yatay kaydırma – dikey kaydırma – bulanıklık – renk</strong>.</p>
+    <p>Öğeye derinlik hissi veren bir gölge ekler. Dört değer sırayla yazılır: <strong>yatay kaydırma, dikey kaydırma, bulanıklık, renk</strong>.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
 <pre class="language-css">.kart {
@@ -138,7 +138,7 @@
     <h2 id="yazi-tipi-secme-kurulu-yazi-tipleri"><span class="num">5</span>Yazı Tipi Seçme: Kurulu Yazı Tipleri</h2>
     <p><code class="inline">font-family</code> özelliğini 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda gördük. İnternet bağlantısı gerektirmeyen yazı tipleri, bilgisayarda <strong>zaten kurulu</strong> olanlardır. Aşağıdaki dördü Windows'ta kurulu gelir:</p>
     <figure class="diagram"><img alt="Kurulu yazı tipleri: aynı cümle Arial, Verdana, Georgia ve Tahoma ile yazılmış" src="images/yazi_tipleri.png" width="1140" height="356" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Kurulu yazı tipleri: aynı cümle Arial, Verdana, Georgia ve Tahoma ile yazılmış</figcaption>
+      <figcaption aria-hidden="true">Kurulu yazı tipleri: aynı cümle Arial, Verdana, Georgia ve Tahoma ile yazılmış</figcaption>
     </figure>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
@@ -152,7 +152,7 @@ h2 {
     <ul>
       <li><strong>Arial, Verdana, Tahoma</strong> harflerin uçlarında çıkıntı olmayan (tırnaksız) yazı tipleridir; ekranda kolay okunur.</li>
       <li><strong>Georgia</strong>, harflerin uçlarında küçük çıkıntılar olan (tırnaklı) bir yazı tipidir; başlıklarda şık durur.</li>
-      <li>Virgülden sonraki <code class="inline">sans-serif</code> (tırnaksız) ve <code class="inline">serif</code> (tırnaklı) <strong>yedek</strong> yazı tipidir. İlk yazı tipi cihazda yoksa (örneğin bazı telefonlarda) ya da adı yanlış yazılmışsa tarayıcı bu yedeğe geçer.</li>
+      <li>Virgülden sonraki <code class="inline">sans-serif</code> (tırnaksız) ve <code class="inline">serif</code> (tırnaklı) <strong>yedek</strong> yazı tipleridir. İlk yazı tipi cihazda yoksa (örneğin bazı telefonlarda) ya da adı yanlış yazılmışsa tarayıcı bu yedeğe geçer.</li>
     </ul>
     <div class="note ok"><span class="tag">İpucu</span><p><code class="inline">font-family</code>'de her zaman sonda yedek bir yazı tipi (<code class="inline">sans-serif</code> ya da <code class="inline">serif</code>) bırakın.</p></div>
     <div class="note"><span class="tag">Not</span><p>İnternet bağlantısı olan bir bilgisayarda <strong>Google Fonts</strong> (<code class="inline">fonts.google.com</code>) sitesinden seçilen bir yazı tipi, sitenin verdiği <code class="inline">&lt;link&gt;</code> etiketi <code class="inline">&lt;head&gt;</code>'e eklenerek kullanılabilir. İnternet yoksa bu yazı tipi yüklenmez ve tarayıcı yedek yazı tipini kullanır.</p></div>
@@ -208,9 +208,9 @@ h2 {
     </div>
     <p>Aynı içerik, dokunuşlardan önce ve sonra şöyle görünür:</p>
     <figure class="diagram"><img alt="Güzelleştirme öncesi ve sonrası: solda sade keskin kart, sağda yuvarlak köşeli, gölgeli, Verdana yazı tipli kart" src="images/guzellestirme.png" width="1300" height="507" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Güzelleştirme öncesi ve sonrası: solda sade keskin kart, sağda yuvarlak köşeli, gölgeli, Verdana yazı tipli kart</figcaption>
+      <figcaption aria-hidden="true">Güzelleştirme öncesi ve sonrası: solda sade keskin kart, sağda yuvarlak köşeli, gölgeli, Verdana yazı tipli kart</figcaption>
     </figure>
-    <p>Sağdaki kartta: köşeler <code class="inline">border-radius</code> ile yuvarlandı, <code class="inline">box-shadow</code> ile gölge eklendi, <code class="inline">Verdana</code> yazı tipi kullanıldı ve düğme <code class="inline">:hover</code> + <code class="inline">transition</code> ile canlı hâle geldi. Düğmeler sayfanın yazı tipini kendiliğinden almaz; <code class="inline">font-family: inherit;</code> satırı düğmenin de sayfanın yazı tipini (Verdana) kullanmasını sağlar. İçerik değişmedi; yalnızca <strong>görünüm</strong> güzelleşti.</p>
+    <p>Sağdaki kartta köşeler <code class="inline">border-radius</code> ile yuvarlatıldı, <code class="inline">box-shadow</code> ile gölge eklendi, <code class="inline">Verdana</code> yazı tipi kullanıldı ve düğme <code class="inline">:hover</code> + <code class="inline">transition</code> ile canlı hâle geldi. Düğmeler sayfanın yazı tipini kendiliğinden almaz; <code class="inline">font-family: inherit;</code> satırı düğmenin de sayfanın yazı tipini (Verdana) kullanmasını sağlar. İçerik değişmedi; yalnızca <strong>görünüm</strong> güzelleşti.</p>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">7</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
@@ -221,14 +221,14 @@ h2 {
           <tr><td>Yazı tipi adını yanlış yazmak (<code class="inline">font-family: Verdena, sans-serif;</code>)</td><td>Tarayıcı o yazı tipini bulamaz, yedek yazı tipini (<code class="inline">sans-serif</code>) kullanır</td><td>Adı doğru yazın: <code class="inline">Verdana</code></td></tr>
           <tr><td><code class="inline">box-shadow</code> değerlerinin sırasını karıştırmak</td><td>Gölge beklenmedik görünür</td><td>Sıra: yatay, dikey, bulanıklık, renk</td></tr>
           <tr><td><code class="inline">border-radius</code>'a birim (<code class="inline">px</code>/<code class="inline">%</code>) yazmamak</td><td>Köşe yuvarlanmaz</td><td><code class="inline">12px</code> veya <code class="inline">50%</code> biçiminde yazın</td></tr>
-          <tr><td>Düğmede <code class="inline">border: none</code> unutmak</td><td>Düğmenin çevresinde varsayılan kabartmalı çerçeve kalır</td><td>Düğmelere <code class="inline">border: none</code> ekleyin</td></tr>
+          <tr><td>Düğmeye <code class="inline">border: none</code> yazmayı unutmak</td><td>Düğmenin çevresinde varsayılan kabartmalı çerçeve kalır</td><td>Düğmelere <code class="inline">border: none</code> ekleyin</td></tr>
         </tbody>
       </table>
     </div>
 
     <h2 id="bu-haftanin-ozeti"><span class="num">8</span>Bu Haftanın Özeti</h2>
     <ul>
-      <li><strong><code class="inline">:hover</code></strong> fare bir öğenin üzerine gelince stil değiştirir (düğme, bağlantı).</li>
+      <li><strong><code class="inline">:hover</code></strong>, fare bir öğenin üzerine gelince uygulanacak stili belirler (düğme, bağlantı).</li>
       <li><strong><code class="inline">transition</code></strong> bu değişimi yumuşak (animasyonlu) yapar ve <strong>asıl öğeye</strong> yazılır (<code class="inline">:hover</code>'a değil).</li>
       <li><strong><code class="inline">border-radius</code></strong> köşeleri yuvarlar; <code class="inline">50%</code> kareyi daireye çevirir.</li>
       <li><strong><code class="inline">box-shadow</code></strong> gölge ekler: yatay, dikey, bulanıklık, renk (renkte <code class="inline">rgba</code> ile saydamlık verilir).</li>
@@ -334,7 +334,7 @@ h2 {
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
       <li>Go Live ile açın; farenizi düğmenin üzerine getirip rengin <strong>yumuşakça</strong> değiştiğini gözlemleyin.</li>
     </ol>

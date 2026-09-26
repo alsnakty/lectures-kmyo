@@ -81,7 +81,7 @@
     <h2 id="listeler"><span class="num">1</span>Listeler</h2>
     <p>Listeler iki türlüdür ve her ikisinde de her madde <code class="inline">&lt;li&gt;</code> (list item) etiketiyle yazılır.</p>
     <figure class="diagram"><img alt="Sırasız listede madde işareti, sıralı listede numara görünümü" src="images/liste_turleri.png" width="840" height="251" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Sırasız listede madde işareti, sıralı listede numara görünümü</figcaption>
+      <figcaption aria-hidden="true">Sırasız listede madde işareti, sıralı listede numara görünümü</figcaption>
     </figure>
     <h3 id="sirasiz-liste">1.1. Sırasız Liste: <code class="inline">&lt;ul&gt;</code></h3>
     <p>Maddelerin sırası önemli değilse <strong>sırasız liste</strong> kullanılır. Tarayıcı her maddenin başına <strong>madde işareti (•)</strong> koyar.</p>
@@ -142,13 +142,13 @@
     <h2 id="tablolar"><span class="num">2</span>Tablolar</h2>
     <p>Tablolar, verileri <strong>satır ve sütunlar</strong> hâlinde düzenler. Bir tablonun parçaları şunlardır:</p>
     <figure class="diagram"><img alt="Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi" src="images/tablo_yapisi.png" width="972" height="561" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi</figcaption>
+      <figcaption aria-hidden="true">Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi</figcaption>
     </figure>
     <div class="twrap">
       <table>
         <thead><tr><th>Etiket</th><th>Açılımı</th><th>Görevi</th></tr></thead>
         <tbody>
-          <tr><td><code class="inline">&lt;table&gt;</code></td><td>table</td><td>Tabloyu başlatır ve bitirir.</td></tr>
+          <tr><td><code class="inline">&lt;table&gt;</code></td><td>table</td><td>Tablonun tamamını kapsar.</td></tr>
           <tr><td><code class="inline">&lt;tr&gt;</code></td><td>table row</td><td>Bir <strong>satır</strong> oluşturur.</td></tr>
           <tr><td><code class="inline">&lt;th&gt;</code></td><td>table header</td><td><strong>Başlık hücresi</strong> (varsayılan olarak kalın ve ortalı).</td></tr>
           <tr><td><code class="inline">&lt;td&gt;</code></td><td>table data</td><td><strong>Veri hücresi</strong> (normal içerik).</td></tr>
@@ -156,7 +156,7 @@
       </table>
     </div>
     <h3 id="basit-tablo-ornegi">2.1. Basit Tablo Örneği</h3>
-    <p>Bir tablo, satırlardan (<code class="inline">&lt;tr&gt;</code>); her satır da hücrelerden (<code class="inline">&lt;th&gt;</code> veya <code class="inline">&lt;td&gt;</code>) oluşur. İlk satır genellikle başlık satırıdır.</p>
+    <p>Bir tablo satırlardan (<code class="inline">&lt;tr&gt;</code>), her satır da hücrelerden (<code class="inline">&lt;th&gt;</code> veya <code class="inline">&lt;td&gt;</code>) oluşur. İlk satır genellikle başlık satırıdır.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;table border="1"&gt;
@@ -180,7 +180,7 @@
     <div class="note"><span class="tag">Not</span><p><code class="inline">border="1"</code> özelliği, hücrelerin <strong>kenarlıklarının görünmesini</strong> sağlar. Bu olmadan tablo çizgisiz görünür. Tabloların renk, boşluk ve çizgi gibi görsel ayarları esas olarak <strong>CSS</strong> ile yapılır; CSS'i 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda göreceğiz. <code class="inline">border="1"</code> HTML5'te eskimiş sayılır; CSS'i öğrenene kadar kenarlığı görmek için <strong>geçici olarak</strong> kullanıyoruz.</p></div>
 
     <h2 id="ornek-haftalik-ders-programi"><span class="num">3</span>Örnek: Haftalık Ders Programı</h2>
-    <p>Şimdi bu haftanın çıktısını hazırlayalım: bir haftalık ders programı tablosu. İlk satır günlerin başlığı (<code class="inline">&lt;th&gt;</code>), diğer satırlar saatlere göre dersleri (<code class="inline">&lt;td&gt;</code>) içerir.</p>
+    <p>Şimdi bu haftanın çıktısını hazırlayalım: bir haftalık ders programı tablosu. İlk satır günlerin başlıklarını (<code class="inline">&lt;th&gt;</code>), diğer satırlar saatlere göre dersleri (<code class="inline">&lt;td&gt;</code>) içerir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -222,9 +222,9 @@
     </div>
     <p>Kaydedip Go Live ile açtığınızda tarayıcıda şu sonucu görürsünüz:</p>
     <figure class="diagram"><img alt="Haftalık ders programı tablosunun tarayıcı çıktısı" src="images/ders_programi_tablo.png" width="1200" height="306" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Haftalık ders programı tablosunun tarayıcı çıktısı</figcaption>
+      <figcaption aria-hidden="true">Haftalık ders programı tablosunun tarayıcı çıktısı</figcaption>
     </figure>
-    <p><strong>Başlık satırındaki</strong> hücreler <code class="inline">&lt;th&gt;</code> olduğu için kalın ve ortalı; diğer hücreler <code class="inline">&lt;td&gt;</code> olduğu için normal görünür.</p>
+    <p><strong>Başlık satırındaki</strong> hücreler <code class="inline">&lt;th&gt;</code> olduğu için kalın ve ortalı, diğer hücreler <code class="inline">&lt;td&gt;</code> olduğu için normal görünür.</p>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">4</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
@@ -234,7 +234,7 @@
           <tr><td><code class="inline">&lt;li&gt;</code>'yi <code class="inline">&lt;ul&gt;</code>/<code class="inline">&lt;ol&gt;</code> dışında kullanmak</td><td>Madde işaretleri görünmez, maddeler düz yazı gibi alt alta durur</td><td><code class="inline">&lt;li&gt;</code> her zaman <code class="inline">&lt;ul&gt;</code> veya <code class="inline">&lt;ol&gt;</code> içinde olmalı</td></tr>
           <tr><td>Satırlarda hücre sayısını eşit tutmamak (bir satırda 3, diğerinde 2 hücre)</td><td>Kısa satırın sonunda boş bir alan kalır</td><td>Her satırda aynı sayıda hücre olsun</td></tr>
           <tr><td><code class="inline">&lt;tr&gt;</code> içine doğrudan metin yazmak</td><td>Metin tablonun dışına, üstüne taşınır</td><td>Metni <code class="inline">&lt;td&gt;</code> veya <code class="inline">&lt;th&gt;</code> içine yazın</td></tr>
-          <tr><td>Kenarlık görünmemesi</td><td>Tablo çizgisiz kalır</td><td><code class="inline">border="1"</code> ekleyin (veya CSS)</td></tr>
+          <tr><td>Kenarlık vermeyi unutmak</td><td>Tablo çizgisiz kalır</td><td><code class="inline">border="1"</code> ekleyin (veya CSS ile kenarlık verin)</td></tr>
           <tr><td><code class="inline">&lt;th&gt;</code> ile <code class="inline">&lt;td&gt;</code>'yi karıştırmak</td><td>Başlıklar normal görünür</td><td>Başlık hücresi için <code class="inline">&lt;th&gt;</code>, veri için <code class="inline">&lt;td&gt;</code></td></tr>
         </tbody>
       </table>
@@ -243,7 +243,7 @@
     <h2 id="bu-haftanin-ozeti"><span class="num">5</span>Bu Haftanın Özeti</h2>
     <ul>
       <li>Listeler <code class="inline">&lt;li&gt;</code> maddelerinden oluşur: <strong><code class="inline">&lt;ul&gt;</code></strong> madde işaretli (sırasız), <strong><code class="inline">&lt;ol&gt;</code></strong> numaralı (sıralı) liste yapar.</li>
-      <li><code class="inline">&lt;ol type="A"&gt;</code> ile numaralar harfe (A, B, C) veya Roma rakamına dönüştürülebilir.</li>
+      <li><code class="inline">&lt;ol&gt;</code> etiketinin <code class="inline">type</code> özelliğiyle numaralar harfe (<code class="inline">type="A"</code>) veya Roma rakamına (<code class="inline">type="I"</code>) dönüştürülebilir.</li>
       <li>Bir <code class="inline">&lt;li&gt;</code> içine yeni bir liste yazarak <strong>iç içe</strong> liste oluşturulur.</li>
       <li>Tablo parçaları: <strong><code class="inline">&lt;table&gt;</code></strong> tabloyu, <strong><code class="inline">&lt;tr&gt;</code></strong> bir satırı, <strong><code class="inline">&lt;th&gt;</code></strong> başlık hücresini, <strong><code class="inline">&lt;td&gt;</code></strong> veri hücresini tanımlar.</li>
       <li>Her satırda <strong>aynı sayıda hücre</strong> bulunmalıdır; başlık satırı genellikle <code class="inline">&lt;th&gt;</code> ile yazılır.</li>
@@ -315,7 +315,7 @@
     </ol>
 
     <h2 id="uygulamalar"><span class="num">7</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> Bir sayfada, üç ürün ve fiyatını gösteren bir <strong>tablo</strong>, ayrıca bir kek tarifinin adımlarını gösteren bir <strong>sıralı liste</strong> oluşturun.</p>
+    <p><strong>Görev:</strong> Bir sayfada, üç ürünü ve fiyatlarını gösteren bir <strong>tablo</strong>, ayrıca bir kek tarifinin adımlarını gösteren bir <strong>sıralı liste</strong> oluşturun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -357,7 +357,7 @@
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">urunler.html</code></strong> adında yeni bir dosya oluşturun.</li>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">fiyat_listesi.html</code></strong> adında yeni bir dosya oluşturun.</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
       <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açarak tablo ve listenin göründüğünü doğrulayın.</li>
     </ol>
@@ -376,7 +376,7 @@
 
     <h2 id="notlar-ve-ipuclari"><span class="num">9</span>Notlar ve İpuçları</h2>
     <ul>
-      <li>Tablolar yalnızca satır-sütun biçimindeki veriler içindir. Sayfa yerleşimi (menü solda, içerik sağda gibi) tabloyla yapılmaz; bu iş 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda CSS ile yapılır.</li>
+      <li>Tablolar yalnızca satır-sütun biçimindeki veriler içindir. Sayfa yerleşimi (menü solda, içerik sağda gibi) tabloyla yapılmaz; bu iş 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda, CSS ile yapılır.</li>
       <li><code class="inline">&lt;th&gt;</code> yalnızca kalın görünmek için değildir. Ekran okuyucular başlık hücresi sayesinde her verinin hangi sütuna ait olduğunu okuyabilir.</li>
       <li>İç içe listede alt liste, <code class="inline">&lt;li&gt;</code>'nin <strong>içine</strong>, <code class="inline">&lt;/li&gt;</code>'den önce yazılır.</li>
     </ul>

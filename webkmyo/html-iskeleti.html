@@ -103,7 +103,7 @@
         </tbody>
       </table>
     </div>
-    <div class="note"><span class="tag">Not</span><p>HTML büyük/küçük harfe <strong>duyarlı değildir</strong> (<code class="inline">&lt;P&gt;</code> ile <code class="inline">&lt;p&gt;</code> aynı anlama gelir); ancak etiketler genellikle <strong>küçük harfle</strong> yazılır; siz de öyle yazın. Açtığınız her çift etiketi <strong>kapatmayı unutmayın.</strong></p></div>
+    <div class="note"><span class="tag">Not</span><p>HTML büyük/küçük harfe <strong>duyarlı değildir</strong> (<code class="inline">&lt;P&gt;</code> ile <code class="inline">&lt;p&gt;</code> aynı anlama gelir). Ancak etiketler genellikle <strong>küçük harfle</strong> yazılır; siz de öyle yazın. Açtığınız her çift etiketi <strong>kapatmayı unutmayın.</strong></p></div>
 
     <h2 id="sayfanin-iskeleti"><span class="num">2</span>Sayfanın İskeleti</h2>
     <p>Her HTML sayfası aynı temel iskelet üzerine kurulur. Aşağıdaki dört etiket, bir sayfanın "olmazsa olmaz" parçalarıdır:</p>
@@ -139,14 +139,14 @@
         <thead><tr><th>Etiket</th><th>Görevi</th></tr></thead>
         <tbody>
           <tr><td><code class="inline">&lt;title&gt;</code></td><td>Tarayıcı sekmesinde görünen başlık.</td></tr>
-          <tr><td><code class="inline">&lt;meta charset="utf-8"&gt;</code></td><td>Türkçe karakterlerin doğru görünmesini sağlar.</td></tr>
+          <tr><td><code class="inline">&lt;meta charset="utf-8"&gt;</code></td><td>Türkçe harflerin doğru görünmesini sağlar.</td></tr>
           <tr><td><code class="inline">&lt;meta name="description" content="..."&gt;</code></td><td>Sayfanın kısa açıklaması (arama motorları için).</td></tr>
           <tr><td><code class="inline">&lt;meta name="keywords" content="..."&gt;</code></td><td>Sayfayla ilgili anahtar kelimeler (günümüzde arama motorlarının çoğu dikkate almaz).</td></tr>
           <tr><td><code class="inline">&lt;meta name="author" content="..."&gt;</code></td><td>Sayfayı hazırlayan kişi.</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;meta name="viewport" ...&gt;</code> etiketi de <code class="inline">&lt;head&gt;</code> içinde yer alır ve sayfanın telefonda düzgün görünmesini sağlar. Bu etiketi <strong>12. hafta (<a href="responsive-tasarim.html">Responsive Tasarım</a>)</strong> konusunda ayrıntılı göreceğiz.</p></div>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;meta name="viewport" ...&gt;</code> etiketi de <code class="inline">&lt;head&gt;</code> içinde yer alır ve sayfanın telefonda düzgün görünmesini sağlar. Bu etiketi 12. haftada, <strong>Responsive (Duyarlı) Tasarım</strong> konusunda ayrıntılı göreceğiz.</p></div>
 
     <h2 id="baslik-etiketleri"><span class="num">3</span>Başlık Etiketleri: <code class="inline">&lt;h1&gt;</code>–<code class="inline">&lt;h6&gt;</code></h2>
     <p>Başlıklar, metni bölümlere ayırmak için kullanılır. Altı düzey vardır: <code class="inline">&lt;h1&gt;</code> en büyük ve en önemli başlık, <code class="inline">&lt;h6&gt;</code> en küçüğüdür.</p>
@@ -158,9 +158,9 @@
     </div>
     <p>Tarayıcı bu başlıkları, numarası büyüdükçe (<code class="inline">&lt;h1&gt;</code>'den <code class="inline">&lt;h6&gt;</code>'ya doğru) daha küçük yazı ile gösterir:</p>
     <figure class="diagram"><img alt="h1, h2 ve h3 başlıklarının giderek küçülen boyutlarla görünümü" src="images/basliklar_h1_h6.png" width="1200" height="269" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>h1, h2 ve h3 başlıklarının giderek küçülen boyutlarla görünümü</figcaption>
+      <figcaption aria-hidden="true">h1, h2 ve h3 başlıklarının giderek küçülen boyutlarla görünümü</figcaption>
     </figure>
-    <p>Başlıklar yalnızca yazıyı büyütmek için değil, <strong>sayfayı anlamlı bölümlere ayırmak</strong> için kullanılır. Bir sayfada genellikle <strong>tek bir <code class="inline">&lt;h1&gt;</code></strong> bulunur (ana başlık); alt bölümler <code class="inline">&lt;h2&gt;</code>, onların da alt bölümleri <code class="inline">&lt;h3&gt;</code> ile devam eder.</p>
+    <p>Başlıklar yazıyı büyütmek için değil, <strong>sayfayı anlamlı bölümlere ayırmak</strong> için kullanılır. Bir sayfada genellikle <strong>tek bir <code class="inline">&lt;h1&gt;</code></strong> bulunur (ana başlık); alt bölümler <code class="inline">&lt;h2&gt;</code>, onların da alt bölümleri <code class="inline">&lt;h3&gt;</code> ile devam eder.</p>
     <div class="note warn"><span class="tag">Kural</span><p>Yazıyı büyütmek veya küçültmek amacıyla başlık etiketi kullanmayın. Boyut ve görünüm ayarlarını 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda, <strong>CSS</strong> ile yapacağız. Başlık etiketi yalnızca "burası bir başlıktır" anlamı taşır.</p></div>
 
     <h2 id="paragraf-satir-kesme-ve-yatay-cizgi"><span class="num">4</span>Paragraf, Satır Kesme ve Yatay Çizgi</h2>
@@ -171,7 +171,7 @@
 <pre class="language-xml">&lt;p&gt;Bu birinci paragraftır.&lt;/p&gt;
 &lt;p&gt;Bu ikinci paragraftır.&lt;/p&gt;</pre>
     </div>
-    <div class="note warn"><span class="tag">Önemli</span><p>Tarayıcı, kodda arka arkaya bıraktığınız <strong>birden fazla boşluğu tek boşluk</strong> sayar; <strong>Enter ile yaptığınız satır atlamayı da bir boşluk sayar.</strong> Yani metni koddaki gibi alt satıra geçirmek için Enter'a basmanız yetmez; satır ve paragrafları aşağıdaki etiketlerle oluşturmanız gerekir.</p></div>
+    <div class="note warn"><span class="tag">Önemli</span><p>Tarayıcı, kodda arka arkaya bıraktığınız <strong>birden fazla boşluğu tek boşluk</strong> sayar; <strong>Enter ile yaptığınız satır atlamayı da bir boşluk sayar.</strong> Yani metni koddaki gibi alt satıra geçirmek için Enter'a basmanız yetmez; satırı <code class="inline">&lt;br&gt;</code>, paragrafı <code class="inline">&lt;p&gt;</code> etiketiyle oluşturmanız gerekir.</p></div>
     <h3 id="satir-kesme">4.2. Satır Kesme: <code class="inline">&lt;br&gt;</code></h3>
     <p>Aynı paragraf içinde bir alt satıra geçmek için <code class="inline">&lt;br&gt;</code> kullanılır. Tek (kapanışsız) bir etikettir.</p>
     <div class="code">
@@ -202,7 +202,7 @@
     </div>
     <p>Tarayıcıdaki görünümleri şöyledir:</p>
     <figure class="diagram"><img alt="Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri" src="images/metin_bicimlendirme.png" width="780" height="314" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri</figcaption>
+      <figcaption aria-hidden="true">Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri</figcaption>
     </figure>
     <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;b&gt;</code> ile <code class="inline">&lt;strong&gt;</code> her ikisi de yazıyı kalın gösterir; aradaki fark, <code class="inline">&lt;strong&gt;</code> etiketinin aynı zamanda "bu metin önemlidir" anlamını taşımasıdır. Aynı ilişki <code class="inline">&lt;i&gt;</code> ile <code class="inline">&lt;em&gt;</code> arasında da vardır. Bu derste ikisini de kalın ya da eğik yapmak için kullanabilirsiniz.</p></div>
 
@@ -237,7 +237,7 @@
     </div>
     <p>Kaydedip (<code class="inline">Ctrl</code> + <code class="inline">S</code>) Go Live ile açtığınızda tarayıcıda şu sonucu görürsünüz:</p>
     <figure class="diagram"><img alt="Örnek sayfanın tarayıcı çıktısı: büyük başlık, alt başlık, yatay çizgi, paragraflar ve bir ara başlık" src="images/ornek_sayfa_ciktisi.png" width="1200" height="422" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Örnek sayfanın tarayıcı çıktısı: büyük başlık, alt başlık, yatay çizgi, paragraflar ve bir ara başlık</figcaption>
+      <figcaption aria-hidden="true">Örnek sayfanın tarayıcı çıktısı: büyük başlık, alt başlık, yatay çizgi, paragraflar ve bir ara başlık</figcaption>
     </figure>
     <p><code class="inline">&lt;!-- İletişim bilgileri ileride eklenecek --&gt;</code> satırı bir yorum olduğu için sayfada <strong>görünmez.</strong></p>
 
@@ -247,7 +247,7 @@
         <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
         <tbody>
           <tr><td>Çift etiketi kapatmamak (<code class="inline">&lt;b&gt;</code> var, <code class="inline">&lt;/b&gt;</code> yok)</td><td>Sonraki bütün yazılar kalın görünür</td><td>Her çift etiketi kapatın</td></tr>
-          <tr><td><code class="inline">&lt;br&gt;</code> ve <code class="inline">&lt;hr&gt;</code> için kapanış aramak (<code class="inline">&lt;/br&gt;</code>)</td><td>Fazladan boş bir satır oluşur</td><td>Bunlar tek etikettir, kapanışları yoktur</td></tr>
+          <tr><td><code class="inline">&lt;br&gt;</code> ve <code class="inline">&lt;hr&gt;</code> için kapanış etiketi yazmak (<code class="inline">&lt;/br&gt;</code>)</td><td>Fazladan boş bir satır oluşur</td><td>Bunlar tek etikettir, kapanışları yoktur</td></tr>
           <tr><td>Alt satıra geçmek için kodda Enter'a basmak</td><td>Tarayıcı satırı atlamaz</td><td>Satır için <code class="inline">&lt;br&gt;</code>, paragraf için <code class="inline">&lt;p&gt;</code> kullanın</td></tr>
           <tr><td>Yazıyı büyütmek için <code class="inline">&lt;h1&gt;</code> kullanmak</td><td>Anlam bozulur</td><td>Başlık yalnızca başlık için; boyut CSS ile ayarlanır</td></tr>
           <tr><td>İç içe etiketleri yanlış sırada kapatmak</td><td>Tarayıcı çoğu zaman kendisi düzeltir; ama kod karışır ve hata bulmak zorlaşır</td><td>En son açılan etiketi en önce kapatın</td></tr>
@@ -360,7 +360,7 @@
     </ol>
 
     <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
-    <p><strong>Senaryo:</strong> Kendinizi (veya seçtiğiniz bir konuyu) tanıtan, düzgün başlık hiyerarşisi olan tek sayfalık bir tanıtım sayfası hazırlayın.</p>
+    <p><strong>Senaryo:</strong> Kendinizi (veya seçtiğiniz bir konuyu) tanıtan, düzgün başlık hiyerarşisi olan bir tanıtım sayfası hazırlayın.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">tanitim.html</code></strong> adında yeni bir dosya oluşturun.</li>
@@ -378,7 +378,7 @@
     <ul>
       <li>Başlık düzeylerini atlamayın: <code class="inline">&lt;h1&gt;</code>'den sonra <code class="inline">&lt;h3&gt;</code> değil, <code class="inline">&lt;h2&gt;</code> gelir. Alt bölümler sırayla bir düzey aşağı iner.</li>
       <li>Yorum satırları sayfada görünmez; ancak tarayıcıda <strong>Sayfa kaynağını görüntüle</strong> ile herkes görebilir. Yorumlara şifre veya kişisel bilgi yazmayın.</li>
-      <li>Anlam taşıdıkları için <code class="inline">&lt;b&gt;</code> yerine <code class="inline">&lt;strong&gt;</code>, <code class="inline">&lt;i&gt;</code> yerine <code class="inline">&lt;em&gt;</code> tercih edilir. Bu derste ikisini de kullanabilirsiniz; ancak MDN de anlamı öne çıkaran <code class="inline">&lt;strong&gt;</code> ve <code class="inline">&lt;em&gt;</code>'i önerir.</li>
+      <li>Anlam taşıdıkları için <code class="inline">&lt;b&gt;</code> yerine <code class="inline">&lt;strong&gt;</code>, <code class="inline">&lt;i&gt;</code> yerine <code class="inline">&lt;em&gt;</code> tercih edilir. Bu derste ikisini de kullanabilirsiniz; ancak MDN, anlamı öne çıkaran <code class="inline">&lt;strong&gt;</code> ve <code class="inline">&lt;em&gt;</code> etiketlerini önerir.</li>
     </ul>
 
     <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flexbox 2 ve Sayfa Yerleşimi | Web Arayüz Tasarımı Ders Notları</title>
-<meta name="description" content="Semantik iskeleti Flexbox ile çok kolonlu bir düzene çevirmek (flex-direction, flex); flex-wrap ve gap ile sığmayan öğeleri alt satıra geçiren bir kart...">
+<meta name="description" content="Semantik iskeleti Flexbox ile çok sütunlu bir düzene çevirmek (flex-direction, flex); flex-wrap ile sığmayan öğeleri alt satıra geçiren, gap ile aralarına...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flexbox 2 ve Sayfa Yerleşimi | Web Arayüz Tasarımı Ders Notları">
-<meta property="og:description" content="Semantik iskeleti Flexbox ile çok kolonlu bir düzene çevirmek (flex-direction, flex); flex-wrap ve gap ile sığmayan öğeleri alt satıra geçiren bir kart...">
+<meta property="og:description" content="Semantik iskeleti Flexbox ile çok sütunlu bir düzene çevirmek (flex-direction, flex); flex-wrap ile sığmayan öğeleri alt satıra geçiren, gap ile aralarına...">
 <script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
 <link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
@@ -84,7 +84,7 @@
     <h3 id="flex-direction-yon">1.1. <code class="inline">flex-direction</code>: Yön</h3>
     <p>10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda, <code class="inline">display: flex</code> öğeleri <strong>yan yana</strong> (satır) dizmişti. Öğeleri <strong>alt alta</strong> (sütun) dizmek için <code class="inline">flex-direction: column;</code> kullanılır.</p>
     <figure class="diagram"><img alt="flex-direction: row öğeleri yatay, column ise dikey dizer" src="images/flex_direction.png" width="840" height="338" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>flex-direction: row öğeleri yatay, column ise dikey dizer</figcaption>
+      <figcaption aria-hidden="true">flex-direction: row öğeleri yatay, column ise dikey dizer</figcaption>
     </figure>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
@@ -96,20 +96,20 @@
     </div>
     <div class="note warn"><span class="tag">Dikkat</span><p><code class="inline">flex-direction: column</code> verildiğinde eksenler yer değiştirir: <code class="inline">justify-content</code> artık öğeleri <strong>dikeyde</strong>, <code class="inline">align-items</code> ise <strong>yatayda</strong> hizalar.</p></div>
     <h3 id="flex-sutun-orani">1.2. <code class="inline">flex</code>: Sütun Oranı</h3>
-    <p>Bir flex öğesine <code class="inline">flex</code> değeri vererek, o öğenin <strong>kalan alandan ne kadar pay alacağını</strong> belirlersiniz. Böylece kolonlu düzenler kurabilirsiniz.</p>
+    <p>Bir flex öğesine <code class="inline">flex</code> değeri vererek, o öğenin <strong>kalan alandan ne kadar pay alacağını</strong> belirlersiniz. Böylece sütunlu düzenler kurabilirsiniz.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
 <pre class="language-css">main  { flex: 2; }   /* iki pay alır (daha geniş) */
 aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
     </div>
-    <p>Yukarıdaki örnekte <code class="inline">main</code>, kalan alandan <code class="inline">aside</code>'ın <strong>iki katı</strong> pay alır; bu yüzden yaklaşık iki kat geniş olur (iki kutunun <code class="inline">padding</code> değeri eşit olduğu için tam iki kat değildir). <code class="inline">flex: 1</code> verilen iki öğe ise <strong>eşit</strong> genişlikte olur.</p>
+    <p>Yukarıdaki örnekte <code class="inline">main</code>, kalan alandan <code class="inline">aside</code>'ın <strong>iki katı</strong> pay alır; bu yüzden yaklaşık iki kat geniş olur (iki kutunun eşit <code class="inline">padding</code>'i paya dahil olmadığı için tam iki kat değildir). <code class="inline">flex: 1</code> verilen iki öğe ise <strong>eşit</strong> genişlikte olur.</p>
 
     <h2 id="ornek-klasik-site-iskeleti"><span class="num">2</span>Örnek: Klasik Site İskeleti</h2>
     <p>Şimdi semantik etiketleri ve Flexbox'ı birleştirip klasik bir site düzeni kuralım: üstte <code class="inline">header</code>, altında <code class="inline">nav</code>, ortada yan yana <code class="inline">main</code> + <code class="inline">aside</code>, en altta <code class="inline">footer</code>.</p>
     <figure class="diagram"><img alt="Klasik site iskeleti: header, nav, main ve aside sütunları, footer" src="images/site_iskeleti.png" width="959" height="769" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Klasik site iskeleti: header, nav, main ve aside sütunları, footer</figcaption>
+      <figcaption aria-hidden="true">Klasik site iskeleti: header, nav, main ve aside sütunları, footer</figcaption>
     </figure>
-    <p>Burada yeni bir semantik etiket kullanıyoruz: <strong><code class="inline">&lt;aside&gt;</code></strong>, ana içeriğin yanındaki <strong>yan içeriği</strong> (duyurular, kenar çubuğu) işaretler.</p>
+    <p>Burada yeni bir semantik etiket kullanıyoruz: <strong><code class="inline">&lt;aside&gt;</code></strong>. Bu etiket, ana içeriğin yanında duran <strong>yan içeriği</strong> (duyurular, kenar çubuğu) işaretler.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -176,10 +176,10 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Burada <code class="inline">.govde</code> bir flex kapsayıcısıdır; <code class="inline">main</code> (<code class="inline">flex: 2</code>) ve <code class="inline">aside</code> (<code class="inline">flex: 1</code>) yan yana <strong>iki sütun</strong> oluşturur ve genişlikleri yaklaşık 2:1 oranındadır. <code class="inline">main</code> ile <code class="inline">aside</code>'ı saran kutunun bir anlamı olmadığı için burada <code class="inline">&lt;div&gt;</code> kullandık. <code class="inline">body</code>'ye <code class="inline">margin: 0</code> verdik ki header ve footer kenarlara tam otursun.</p>
+    <p>Burada <code class="inline">.govde</code> bir flex kapsayıcısıdır; <code class="inline">main</code> (<code class="inline">flex: 2</code>) ve <code class="inline">aside</code> (<code class="inline">flex: 1</code>) yan yana <strong>iki sütun</strong> oluşturur ve genişlikleri yaklaşık 2:1 oranındadır. <code class="inline">main</code> ile <code class="inline">aside</code>'ı saran kutu yalnızca düzen için var, anlamsal bir görevi yok; bu yüzden burada <code class="inline">&lt;div&gt;</code> kullandık. <code class="inline">body</code>'ye <code class="inline">margin: 0</code> verdik ki header ve footer kenarlara tam otursun.</p>
 
     <h2 id="flex-wrap-alt-satira-gecme"><span class="num">3</span><code class="inline">flex-wrap</code>: Alt Satıra Geçme</h2>
-    <p>Flex kapsayıcısı, varsayılan olarak bütün öğeleri <strong>tek satırda</strong> tutar. Öğeler sığmadığında önce daralır; daha fazla daralamıyorlarsa yine alt satıra geçmez, sayfa yana taşar. Öğelerin sığmadığında <strong>alt satıra geçmesi</strong> için kapsayıcıya <code class="inline">flex-wrap: wrap;</code> verilir:</p>
+    <p>Flex kapsayıcısı, varsayılan olarak bütün öğeleri <strong>tek satırda</strong> tutar. Öğeler sığmadığında önce daralır; daha fazla daralamazlarsa yine de alt satıra geçmezler, sayfa yana taşar. Öğelerin sığmadığında <strong>alt satıra geçmesi</strong> için kapsayıcıya <code class="inline">flex-wrap: wrap;</code> verilir:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
 <pre class="language-css">.galeri {
@@ -195,7 +195,7 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
     <ul>
       <li><strong><code class="inline">flex-wrap: wrap</code></strong> kapsayıcıya yazılır; sığmayan öğe bir alt satıra geçer.</li>
       <li><strong><code class="inline">flex: 1</code></strong> kartların satırdaki alanı eşit paylaşmasını sağlar.</li>
-      <li><strong><code class="inline">min-width: 200px</code></strong> bir kartın en az genişliğidir. Yan yana kartlar bu genişliğe sığmıyorsa sonuncusu alt satıra geçer.</li>
+      <li><strong><code class="inline">min-width: 200px</code></strong> bir kartın en az genişliğidir. Kartlar bu genişlikle yan yana sığmıyorsa sığmayan kart alt satıra geçer.</li>
       <li><strong><code class="inline">gap</code></strong> kartların arasına boşluk koyar (10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda navbarda kullandığımız özellikle aynı).</li>
     </ul>
 
@@ -245,7 +245,7 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
     </div>
     <p>Tarayıcıdaki sonucu şöyledir:</p>
     <figure class="diagram"><img alt="3&#x27;lü kart galerisi: eşit genişlikte üç kart, aralarında boşluk" src="images/kart_galerisi.png" width="1200" height="297" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>3'lü kart galerisi: eşit genişlikte üç kart, aralarında boşluk</figcaption>
+      <figcaption aria-hidden="true">3'lü kart galerisi: eşit genişlikte üç kart, aralarında boşluk</figcaption>
     </figure>
     <p>Üç kart <code class="inline">flex: 1</code> sayesinde <strong>eşit genişlikte</strong> yan yana dizildi; <code class="inline">gap</code> aralarında boşluk bıraktı. Bu genişlikte (800px) galeriye dördüncü bir kart eklerseniz dört kart bir satıra sığmaz: dördüncü kart alt satıra geçer ve <code class="inline">flex: 1</code> yüzünden o satırın tamamını kaplar.</p>
     <div class="note"><span class="tag">Not</span><p>Aynı galeri <strong>CSS Grid</strong> adlı başka bir yerleşim yöntemiyle de yapılabilir. Bu derste yerleşim için Flexbox yeterlidir.</p></div>
@@ -259,7 +259,7 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
           <tr><td><code class="inline">aside</code>'ı flex kapsayıcısının (<code class="inline">.govde</code>) dışına yazmak</td><td><code class="inline">aside</code> ana içeriğin yanına değil, altına düşer ve tam genişlikte olur</td><td><code class="inline">main</code> ile <code class="inline">aside</code>'ı aynı flex kapsayıcısının içine yazın</td></tr>
           <tr><td>Galeride <code class="inline">flex-wrap: wrap</code> yazmamak</td><td>Kartlar sığmasa da tek satırda kalır; sayfa yana taşar</td><td>Kapsayıcıya <code class="inline">flex-wrap: wrap</code> verin</td></tr>
           <tr><td><code class="inline">gap</code>'i kapsayıcıya değil kartlara yazmak</td><td>Kartların arasında boşluk oluşmaz</td><td><code class="inline">gap</code>'i flex kapsayıcısına (<code class="inline">.galeri</code>) yazın</td></tr>
-          <tr><td><code class="inline">flex-wrap</code>'i kartlara yazmak</td><td>Alt satıra geçme olmaz</td><td><code class="inline">flex-wrap</code> da kapsayıcıya yazılır</td></tr>
+          <tr><td><code class="inline">flex-wrap</code>'i kartlara yazmak</td><td>Kartlar alt satıra geçmez</td><td><code class="inline">flex-wrap</code> da kapsayıcıya yazılır</td></tr>
         </tbody>
       </table>
     </div>
@@ -378,7 +378,7 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
       <li>Go Live ile açın; <code class="inline">flex: 3</code> ve <code class="inline">flex: 1</code> oranını değiştirerek sütun genişliklerinin nasıl değiştiğini gözlemleyin.</li>
     </ol>
@@ -393,7 +393,7 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
       <li><code class="inline">.govde</code>'nin altına, <code class="inline">&lt;footer&gt;</code>'dan önce ayrı bir galeri bölümü ekleyin: bir <code class="inline">&lt;div class="galeri"&gt;</code> içinde üç <code class="inline">&lt;div class="kart"&gt;</code>.</li>
       <li><code class="inline">.galeri</code>'ye <code class="inline">display: flex</code>, <code class="inline">flex-wrap: wrap</code> ve <code class="inline">gap</code> verin; kartlara <code class="inline">flex: 1</code> ve bir <code class="inline">min-width</code> yazın.</li>
     </ol>
-    <p><strong>Beklenen sonuç:</strong> Üstte header ve nav, ortada iki sütunlu (main + aside) bir gövde, altta footer; footer'ın üstünde yan yana üç karttan oluşan bir galeri.</p>
+    <p><strong>Beklenen sonuç:</strong> Üstte header ve nav, ortada iki sütunlu (main + aside) bir gövde, gövdenin altında yan yana üç karttan oluşan bir galeri, en altta footer.</p>
     <p><strong>İpuçları:</strong> <code class="inline">display: flex</code>, <code class="inline">flex-wrap</code> ve <code class="inline">gap</code> kapsayıcıya yazılır. <code class="inline">flex: 2</code> / <code class="inline">flex: 1</code> sütun oranını belirler.</p>
 
     <h2 id="notlar-ve-ipuclari"><span class="num">10</span>Notlar ve İpuçları</h2>
@@ -405,7 +405,7 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
 
     <h2 id="calisma-sorulari"><span class="num">11</span>Çalışma Soruları</h2>
     <ol>
-      <li><code class="inline">main</code> ve <code class="inline">aside</code>'ı bir flex kapsayıcı içinde yan yana koyup <code class="inline">flex</code> oranlarını deneyin (<code class="inline">2:1</code>, <code class="inline">3:1</code>, <code class="inline">1:1</code>).</li>
+      <li><code class="inline">main</code> ve <code class="inline">aside</code>'ı bir flex kapsayıcısının içinde yan yana koyup <code class="inline">flex</code> oranlarını deneyin (<code class="inline">2:1</code>, <code class="inline">3:1</code>, <code class="inline">1:1</code>).</li>
       <li><code class="inline">flex-direction: column</code> kullanarak öğeleri alt alta dizin.</li>
       <li>Kart galerisine dört, sonra altı kart ekleyip kartların alt satıra nasıl geçtiğini gözlemleyin.</li>
       <li>Galeriden <code class="inline">flex-wrap: wrap</code> satırını silip sayfayı daraltın; ne olduğunu gözlemleyin.</li>

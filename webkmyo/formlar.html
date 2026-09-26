@@ -77,7 +77,7 @@
     </details>
 
 <p>Form, kullanıcının sayfaya bilgi girmesini sağlayan alanlardan oluşur: metin kutuları, açılır listeler, onay kutuları ve bir gönderme düğmesi. İletişim sayfaları, üyelik ekranları ve arama kutuları formlarla yapılır.</p>
-    <div class="note warn"><span class="tag">Önemli</span><p>Bir formun girdiği bilgiyi işlemesi (kaydetmesi, e-posta göndermesi) için bir <strong>sunucu tarafı (backend)</strong> gerekir. Bu derste backend yoktur; bu yüzden "Gönder" düğmesine bastığınızda veri hiçbir yere kaydedilmez. <strong>Amacımız formu doğru kodlamak ve görünümünü oluşturmaktır</strong>; çalışması beklenmez.</p></div>
+    <div class="note warn"><span class="tag">Önemli</span><p>Formdaki bilgilerin işlenmesi (kaydedilmesi, e-posta ile gönderilmesi) için bir <strong>sunucu tarafı (backend)</strong> gerekir. Bu derste backend yoktur; bu yüzden "Gönder" düğmesine bastığınızda veri hiçbir yere kaydedilmez. <strong>Amacımız formu doğru kodlamak ve görünümünü oluşturmaktır</strong>; çalışması beklenmez.</p></div>
 
     <h2 id="form-nedir"><span class="num">1</span>Form Nedir?</h2>
     <p>Tüm form ögeleri <code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code> etiketleri arasında bulunur.</p>
@@ -87,12 +87,12 @@
     &lt;!-- Form ögeleri (input, select, button ...) buraya yazılır --&gt;
 &lt;/form&gt;</pre>
     </div>
-    <p><code class="inline">&lt;form&gt;</code> etiketinin iki bilgilendirici özelliği vardır (backend olduğunda işe yararlar):</p>
+    <p><code class="inline">&lt;form&gt;</code> etiketinin iki önemli özelliği vardır (backend olduğunda işe yararlar):</p>
     <ul>
       <li><code class="inline">action</code> → verinin <strong>nereye</strong> gönderileceği (bir sunucu adresi).</li>
       <li><code class="inline">method</code> → <strong>nasıl</strong> gönderileceği: <code class="inline">get</code> (adres çubuğunda görünür, arama gibi) veya <code class="inline">post</code> (adres çubuğunda görünmez, şifre gibi bilgiler için).</li>
     </ul>
-    <p>Bu derste backend olmadığı için <code class="inline">action</code>/<code class="inline">method</code> yazmadan da form ögelerini görebilirsiniz.</p>
+    <p>Bu derste backend olmadığı için <code class="inline">action</code> ve <code class="inline">method</code> yazmak zorunlu değildir; bunlar olmadan da form ögeleri sayfada görünür.</p>
     <h3 id="gonderim-yontemi-get-ve-post">1.1. Gönderim Yöntemi: GET ve POST</h3>
     <p>Form gönderildiğinde veriler sunucuya iki farklı yöntemle iletilebilir. Yöntem, <code class="inline">&lt;form&gt;</code> etiketinin <code class="inline">method</code> özelliği ile belirlenir.</p>
     <p><strong>GET yöntemi:</strong> Veriler <strong>adresin (URL) sonuna</strong> eklenerek gönderilir; bu yüzden adres çubuğunda <strong>görünür</strong>. Az miktarda ve gizli olmayan veriler için uygundur; en yaygın örneği bir <strong>arama kutusudur</strong>.</p>
@@ -130,7 +130,7 @@
     <h2 id="form-ogeleri"><span class="num">2</span>Form Ögeleri</h2>
     <p>En sık kullanılan form ögeleri tarayıcıda şöyle görünür:</p>
     <figure class="diagram"><img alt="Metin kutusu, e-posta, açılır liste, çok satırlı metin, onay kutusu, radyo düğmesi ve düğme örnekleri" src="images/form_ogeleri.png" width="930" height="477" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Metin kutusu, e-posta, açılır liste, çok satırlı metin, onay kutusu, radyo düğmesi ve düğme örnekleri</figcaption>
+      <figcaption aria-hidden="true">Metin kutusu, e-posta, açılır liste, çok satırlı metin, onay kutusu, radyo düğmesi ve düğme örnekleri</figcaption>
     </figure>
     <h3 id="metin-ve-diger-girisler">2.1. Metin ve Diğer Girişler: <code class="inline">&lt;input&gt;</code></h3>
     <p><code class="inline">&lt;input&gt;</code> tek (kapanışsız) bir etikettir. Ne tür veri isteneceği <code class="inline">type</code> özelliği ile belirlenir:</p>
@@ -159,7 +159,7 @@
       <li><code class="inline">placeholder</code> → alan boşken görünen soluk ipucu metni.</li>
     </ul>
     <h3 id="etiket">2.2. Etiket: <code class="inline">&lt;label&gt;</code></h3>
-    <p><code class="inline">&lt;label&gt;</code>, bir form alanının <strong>adını ya da açıklamasını</strong> yazar. <code class="inline">for</code> özelliği, etiketin hangi alana ait olduğunu belirtir; bu değer, ilgili alanın <code class="inline">id</code>'si ile <strong>aynı</strong> olmalıdır.</p>
+    <p><code class="inline">&lt;label&gt;</code>, bir form alanının <strong>adını ya da açıklamasını</strong> gösterir. <code class="inline">for</code> özelliği, etiketin hangi alana ait olduğunu belirtir; bu değer, ilgili alanın <code class="inline">id</code>'si ile <strong>aynı</strong> olmalıdır.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;label for="ad"&gt;Ad Soyad:&lt;/label&gt;
@@ -198,7 +198,7 @@
     <div class="note warn"><span class="tag">Kural</span><p>Radyo düğmelerine <strong>aynı <code class="inline">name</code></strong> verilmezse hepsi ayrı ayrı seçilebilir ve "tek seçim" özelliği çalışmaz.</p></div>
     <h3 id="dugmeler">2.6. Düğmeler: <code class="inline">&lt;button&gt;</code></h3>
     <ul>
-      <li><code class="inline">type="submit"</code> → formu gönderir. Formda <code class="inline">action</code> yazmadığımız için form aynı sayfaya gönderilir: sayfa yeniden açılır ve yazdıklarınız adres çubuğunda görünür.</li>
+      <li><code class="inline">type="submit"</code> → formu gönderir. Formda <code class="inline">action</code> yazılmazsa form aynı sayfaya gönderilir: sayfa yeniden açılır ve yazdıklarınız adres çubuğunda görünür.</li>
       <li><code class="inline">type="reset"</code> → formdaki tüm alanları temizler.</li>
     </ul>
     <div class="code">
@@ -208,7 +208,7 @@
     </div>
 
     <h2 id="ornek-iletisim-formu"><span class="num">3</span>Örnek: İletişim Formu</h2>
-    <p>Şimdi bu haftanın çıktısını hazırlayalım. Aşağıdaki form; ad, e-posta, konu (açılır liste), mesaj ve bir onay kutusu içerir.</p>
+    <p>Şimdi bu haftanın çıktısını hazırlayalım. Aşağıdaki formda ad, e-posta, konu (açılır liste) ve mesaj alanları ile bir onay kutusu vardır.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -246,9 +246,9 @@
     </div>
     <p>Kaydedip Go Live ile açtığınızda tarayıcıda şu sonucu görürsünüz:</p>
     <figure class="diagram"><img alt="İletişim formunun tarayıcı çıktısı: ad, e-posta, konu, mesaj alanları, onay kutusu ve Gönder düğmesi" src="images/iletisim_formu_ciktisi.png" width="1200" height="657" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>İletişim formunun tarayıcı çıktısı: ad, e-posta, konu, mesaj alanları, onay kutusu ve Gönder düğmesi</figcaption>
+      <figcaption aria-hidden="true">İletişim formunun tarayıcı çıktısı: ad, e-posta, konu, mesaj alanları, onay kutusu ve Gönder düğmesi</figcaption>
     </figure>
-    <div class="note"><span class="tag">Hatırlatma</span><p>Formda <code class="inline">action</code> olmadığı için "Gönder" düğmesine bastığınızda form aynı sayfaya gönderilir: sayfa yeniden açılır ve yazdıklarınız adres çubuğunda görünür (<code class="inline">?ad=Ali&amp;...</code>). Veri hiçbir yere kaydedilmez, çünkü arkada veriyi işleyen bir program (backend) yoktur.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Formda <code class="inline">action</code> olmadığı için "Gönder" düğmesine bastığınızda form aynı sayfaya gönderilir: sayfa yeniden açılır ve yazdıklarınız adres çubuğunda görünür (<code class="inline">?ad=Ali&amp;...</code>). Veri hiçbir yere kaydedilmez, çünkü arkada veriyi işleyen bir program (backend) yoktur.</p></div>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">4</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
@@ -267,9 +267,9 @@
     <h2 id="bu-haftanin-ozeti"><span class="num">5</span>Bu Haftanın Özeti</h2>
     <ul>
       <li>Tüm form ögeleri <strong><code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code></strong> arasında bulunur; <code class="inline">action</code> ve <code class="inline">method</code> verinin nereye ve nasıl gideceğini belirtir (backend gerektirir).</li>
-      <li><strong>GET</strong> verileri adres çubuğunda (URL'de) gösterir ve az miktardaki, gizli olmayan veriler (arama) için; <strong>POST</strong> verileri adres çubuğunda göstermez ve hassas ya da çok veri (şifre, giriş) için kullanılır.</li>
+      <li><strong>GET</strong> verileri adres çubuğunda (URL'de) gösterir; az miktardaki, gizli olmayan veriler (arama) için kullanılır. <strong>POST</strong> verileri adres çubuğunda göstermez; hassas ya da çok veri (şifre, giriş) için kullanılır.</li>
       <li><strong><code class="inline">&lt;input&gt;</code></strong> tek etikettir; <code class="inline">type</code> ile türü belirlenir: <code class="inline">text</code>, <code class="inline">email</code>, <code class="inline">password</code>, <code class="inline">number</code>, <code class="inline">date</code>, <code class="inline">checkbox</code>, <code class="inline">radio</code>, <code class="inline">submit</code> ...</li>
-      <li><strong><code class="inline">&lt;label&gt;</code></strong>, alanın adını yazar; <code class="inline">for</code> değeri alanın <code class="inline">id</code>'si ile aynı olmalıdır.</li>
+      <li><strong><code class="inline">&lt;label&gt;</code></strong>, alanın adını gösterir; <code class="inline">for</code> değeri alanın <code class="inline">id</code>'si ile aynı olmalıdır.</li>
       <li><strong><code class="inline">&lt;select&gt;</code>/<code class="inline">&lt;option&gt;</code></strong> açılır liste, <strong><code class="inline">&lt;textarea&gt;</code></strong> çok satırlı metin, <strong><code class="inline">&lt;button&gt;</code></strong> düğme oluşturur.</li>
       <li>Radyo düğmelerinde <strong>aynı <code class="inline">name</code></strong> ile grup oluşturulur; gruptan yalnızca biri seçilir.</li>
       <li>Bu derste <strong>backend yoktur</strong>; veri hiçbir yere kaydedilmez, amaç formun doğru kodlanıp görüntülenmesidir.</li>
@@ -298,7 +298,7 @@
           <li><b>d)</b> <code class="inline">&lt;p&gt;</code></li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">c</span>Alan adını <code class="inline">&lt;label&gt;</code> yazar; <code class="inline">for</code> ile alana bağlanır.</div>
+          <div class="ans"><span class="letter">c</span>Alan adını <code class="inline">&lt;label&gt;</code> gösterir; <code class="inline">for</code> ile alana bağlanır.</div>
         </details>
       </li>
       <li>
@@ -373,10 +373,10 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <div class="note"><span class="tag">Not</span><p>Bu formda <code class="inline">method</code> yazılmadığı için form gönderildiğinde bütün veriler, şifre dahil, adres çubuğunda görünür. Gerçek sitelerde şifreli formlar <code class="inline">method="post"</code> ile gönderilir.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Bu formda <code class="inline">method</code> yazılmadığı için form gönderildiğinde bütün veriler, şifre dahil, adres çubuğunda görünür. Gerçek sitelerde şifre alanı olan formlar <code class="inline">method="post"</code> ile gönderilir.</p></div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">uyelik.html</code></strong> adında yeni bir dosya oluşturun.</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
       <li>Go Live ile açın. İki radyo düğmesinden aynı anda yalnızca birinin seçilebildiğini gözlemleyin.</li>
     </ol>
@@ -385,7 +385,7 @@
     <p><strong>Senaryo:</strong> Bir web sitesi için eksiksiz görünen bir <strong>iletişim formu</strong> sayfası hazırlayın (backend olmadığı için çalışması beklenmez, görünmesi yeterli).</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">iletisim.html</code></strong> adında yeni bir dosya oluşturun.</li>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">iletisim_formu.html</code></strong> adında yeni bir dosya oluşturun.</li>
       <li>Bir <code class="inline">&lt;form&gt;</code> içine şu alanları ekleyin: <strong>Ad</strong> (<code class="inline">text</code>), <strong>E-posta</strong> (<code class="inline">email</code>), <strong>Konu</strong> (<code class="inline">&lt;select&gt;</code> ile en az üç <code class="inline">&lt;option&gt;</code>), <strong>Mesaj</strong> (<code class="inline">&lt;textarea&gt;</code>).</li>
       <li>Bir <strong>onay kutusu</strong> (<code class="inline">checkbox</code>) ve yanına bir <code class="inline">&lt;label&gt;</code> ekleyin.</li>
       <li>Formu bitiren bir <strong>Gönder</strong> düğmesi (<code class="inline">&lt;button&gt;</code>) koyun.</li>
@@ -396,7 +396,7 @@
 
     <h2 id="notlar-ve-ipuclari"><span class="num">9</span>Notlar ve İpuçları</h2>
     <ul>
-      <li><code class="inline">type="email"</code> alanına <code class="inline">ali</code> gibi geçersiz bir adres yazıp Gönder'e basarsanız tarayıcı formu göndermez.</li>
+      <li><code class="inline">type="email"</code> alanına <code class="inline">ali</code> gibi geçersiz bir adres yazıp "Gönder" düğmesine basarsanız tarayıcı formu göndermez.</li>
       <li><code class="inline">&lt;label&gt;</code>'ın <code class="inline">for</code> değeri alanın <code class="inline">id</code>'si ile eşleşince etikete tıklamak alanı seçer ve ekran okuyucular etiketi sesli okur.</li>
     </ul>
 

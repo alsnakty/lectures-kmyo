@@ -88,7 +88,7 @@
     </ul>
     <p>Bir kutuyu flex kapsayıcısına çevirmek için ona <code class="inline">display: flex;</code> verilir. Bunu yaptığınız anda, içindeki öğeler <strong>alt alta değil, yan yana</strong> dizilir:</p>
     <figure class="diagram"><img alt="display:block ile öğeler alt alta, display:flex ile yan yana dizilir" src="images/flex_temel.png" width="1080" height="326" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>display:block ile öğeler alt alta, display:flex ile yan yana dizilir</figcaption>
+      <figcaption aria-hidden="true">display:block ile öğeler alt alta, display:flex ile yan yana dizilir</figcaption>
     </figure>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
@@ -107,9 +107,9 @@
     <div class="note"><span class="tag">Not</span><p>Bu eşleşme (ana eksen yatay, çapraz eksen dikey) öğelerin yan yana dizildiği varsayılan durum içindir. Öğeler alt alta dizildiğinde eksenler yer değiştirir (<a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a>, 11. hafta).</p></div>
 
     <h2 id="justify-content-yatay-hizalama"><span class="num">3</span><code class="inline">justify-content</code> (Yatay Hizalama)</h2>
-    <p>Öğeleri kapsayıcının içinde <strong>yatayda</strong> nasıl dağıtacağını belirler:</p>
+    <p><code class="inline">justify-content</code>, öğelerin kapsayıcının içinde <strong>yatayda</strong> nasıl dağıtılacağını belirler:</p>
     <figure class="diagram"><img alt="justify-content değerleri: flex-start, center, flex-end, space-between, space-around" src="images/justify_content.png" width="840" height="734" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>justify-content değerleri: flex-start, center, flex-end, space-between, space-around</figcaption>
+      <figcaption aria-hidden="true">justify-content değerleri: flex-start, center, flex-end, space-between, space-around</figcaption>
     </figure>
     <div class="twrap">
       <table>
@@ -132,9 +132,9 @@
     </div>
 
     <h2 id="align-items-dikey-hizalama"><span class="num">4</span><code class="inline">align-items</code> (Dikey Hizalama)</h2>
-    <p>Öğeleri kapsayıcının içinde <strong>dikeyde</strong> nasıl hizalayacağını belirler:</p>
+    <p><code class="inline">align-items</code>, öğelerin kapsayıcının içinde <strong>dikeyde</strong> nasıl hizalanacağını belirler:</p>
     <figure class="diagram"><img alt="align-items değerleri: flex-start, center, flex-end, stretch" src="images/align_items.png" width="1380" height="344" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>align-items değerleri: flex-start, center, flex-end, stretch</figcaption>
+      <figcaption aria-hidden="true">align-items değerleri: flex-start, center, flex-end, stretch</figcaption>
     </figure>
     <div class="twrap">
       <table>
@@ -154,10 +154,10 @@
     align-items: center;
 }</pre>
     </div>
-    <div class="note ok"><span class="tag">İpucu</span><p>Bir öğeyi bir kutunun <strong>tam ortasına</strong> (hem yatay hem dikey) almak için <code class="inline">justify-content: center;</code> ve <code class="inline">align-items: center;</code> birlikte kullanılır. Bu, Flexbox'ın en sık kullanılan özelliklerinden biridir.</p></div>
+    <div class="note ok"><span class="tag">İpucu</span><p>Bir öğeyi bir kutunun <strong>tam ortasına</strong> (hem yatay hem dikey) almak için <code class="inline">justify-content: center;</code> ve <code class="inline">align-items: center;</code> birlikte kullanılır. Bu, Flexbox'ın en sık kullanıldığı durumlardan biridir.</p></div>
 
     <h2 id="ornek-yatay-menu-navbar"><span class="num">5</span>Örnek: Yatay Menü (Navbar)</h2>
-    <p>Şimdi bu haftanın çıktısını hazırlayalım: solda site adı, sağda menü bağlantıları olan bir <strong>navbar</strong>. Menü çubuğunu bir flex kapsayıcısı yapıyoruz; <code class="inline">space-between</code> markayı sola, bağlantıları sağa iter; <code class="inline">align-items: center</code> ise hepsini dikeyde ortalar.</p>
+    <p>Şimdi bu haftanın çıktısını hazırlayalım: solda site adı, sağda menü bağlantıları olan bir <strong>navbar</strong>. Menü çubuğunu bir flex kapsayıcısı yapıyoruz; <code class="inline">space-between</code> site adını sola, bağlantıları sağa iter; <code class="inline">align-items: center</code> ise hepsini dikeyde ortalar.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -203,7 +203,7 @@
     </div>
     <p>Tarayıcıdaki sonucu şöyledir:</p>
     <figure class="diagram"><img alt="Navbar çıktısı: koyu bir çubukta solda sarı site adı, sağda beyaz menü bağlantıları" src="images/navbar_ciktisi.png" width="1200" height="240" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Navbar çıktısı: koyu bir çubukta solda sarı site adı, sağda beyaz menü bağlantıları</figcaption>
+      <figcaption aria-hidden="true">Navbar çıktısı: koyu bir çubukta solda sarı site adı, sağda beyaz menü bağlantıları</figcaption>
     </figure>
     <p>Burada iki yeni küçük ayrıntı kullandık:</p>
     <ul>
@@ -219,14 +219,14 @@
           <tr><td><code class="inline">display: flex</code>'i öğelere yazmak</td><td>Öğeler yan yana dizilmez</td><td><code class="inline">display: flex</code> <strong>ana kutuya</strong> (kapsayıcıya) yazılır</td></tr>
           <tr><td><code class="inline">justify-content</code> ile <code class="inline">align-items</code>'ı karıştırmak</td><td>Hizalama yanlış eksende olur</td><td>Varsayılan yönde justify = yatay, align = dikey</td></tr>
           <tr><td><code class="inline">display: flex</code> olmadan hizalama yazmak</td><td><code class="inline">justify-content</code>/<code class="inline">align-items</code> çalışmaz</td><td>Önce kapsayıcıya <code class="inline">display: flex</code> verin</td></tr>
-          <tr><td>Öğeleri doğrudan çocuk yapmamak</td><td>Flex etkisi görünmez</td><td>Öğeler kapsayıcının <strong>doğrudan</strong> içinde olmalı</td></tr>
+          <tr><td>Öğeleri kapsayıcının doğrudan içine koymamak</td><td>Flex etkisi görünmez</td><td>Öğeler kapsayıcının <strong>doğrudan</strong> içinde olmalı</td></tr>
         </tbody>
       </table>
     </div>
 
     <h2 id="bu-haftanin-ozeti"><span class="num">7</span>Bu Haftanın Özeti</h2>
     <ul>
-      <li><strong>Flexbox</strong>, öğeleri kolayca <strong>yan yana dizmeyi ve hizalamayı</strong> sağlar. Bir kutuyu kapsayıcıya çevirmek için ona <strong><code class="inline">display: flex</code></strong> verilir.</li>
+      <li><strong>Flexbox</strong>, öğeleri kolayca <strong>yan yana dizmeyi ve hizalamayı</strong> sağlar. Bir kutuyu flex kapsayıcısına çevirmek için ona <strong><code class="inline">display: flex</code></strong> verilir.</li>
       <li>Hizalama özellikleri <strong>ana kutuya (kapsayıcıya)</strong> yazılır; öğelere değil.</li>
       <li><strong><code class="inline">justify-content</code></strong> yatay (ana eksen, varsayılan yönde) hizalamayı yönetir: <code class="inline">flex-start</code>, <code class="inline">center</code>, <code class="inline">flex-end</code>, <code class="inline">space-between</code>, <code class="inline">space-around</code>.</li>
       <li><strong><code class="inline">align-items</code></strong> dikey (çapraz eksen, varsayılan yönde) hizalamayı yönetir: <code class="inline">flex-start</code>, <code class="inline">center</code>, <code class="inline">flex-end</code>, <code class="inline">stretch</code>.</li>
@@ -245,7 +245,7 @@
           <li><b>d)</b> <code class="inline">&lt;head&gt;</code> etiketine</li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">c</span>Flex özellikleri öğeleri içeren ana kutuya (kapsayıcıya) uygulanır.</div>
+          <div class="ans"><span class="letter">c</span><code class="inline">display: flex</code> öğeleri içeren ana kutuya (kapsayıcıya) uygulanır.</div>
         </details>
       </li>
       <li>
@@ -299,7 +299,7 @@
     </ol>
 
     <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> Üç renkli kutuyu bir kapsayıcı içinde <strong>yatayda ve dikeyde ortalayan</strong> bir düzen oluşturun.</p>
+    <p><strong>Görev:</strong> Üç mavi kutuyu bir kapsayıcı içinde <strong>yatayda ve dikeyde ortalayan</strong> bir düzen oluşturun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -335,7 +335,7 @@
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
       <li>Go Live ile açın; üç kutunun kapsayıcının tam ortasında yan yana durduğunu gözlemleyin. <code class="inline">justify-content</code> değerini <code class="inline">space-between</code> yapıp farkı görün.</li>
     </ol>

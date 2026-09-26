@@ -79,7 +79,7 @@
 
 <p>Web sitelerine yalnızca bilgisayardan değil, <strong>telefondan</strong> da giriliyor. Masaüstünde güzel görünen bir sayfa, telefonda okunamayacak kadar küçük veya bozuk görünebilir. <strong>Responsive (duyarlı) tasarım</strong>, aynı sayfanın <strong>ekran boyutuna göre kendini yeniden düzenlemesi</strong> demektir.</p>
     <figure class="diagram"><img alt="Aynı site masaüstünde iki sütun (main + aside), telefonda ise alt alta dizilir" src="images/responsive_kavram.png" width="1953" height="972" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Aynı site masaüstünde iki sütun (main + aside), telefonda ise alt alta dizilir</figcaption>
+      <figcaption aria-hidden="true">Aynı site masaüstünde iki sütun (main + aside), telefonda ise alt alta dizilir</figcaption>
     </figure>
     <p>Görüldüğü gibi masaüstünde yan yana duran <code class="inline">main</code> ve <code class="inline">aside</code>, telefonda <strong>alt alta</strong> gelir. Bunu sağlayan iki araç, <strong>viewport</strong> etiketi ve <strong>media query</strong> kuralıdır.</p>
 
@@ -96,9 +96,9 @@
     <div class="note"><span class="tag">Neden şart?</span><p>Bu etiket olmadan mobil tarayıcılar sayfayı yaklaşık 980 piksel genişliğinde çizip küçültür; sonuçta yazılar minicik ve okunmaz görünür. Bu nedenle her responsive sayfanın <code class="inline">&lt;head&gt;</code>'inde bu satır bulunmalıdır.</p></div>
 
     <h2 id="media-query-ortam-sorgusu"><span class="num">2</span>Media Query (Ortam Sorgusu)</h2>
-    <p><strong>Media query</strong>, "ekran belirli bir genişlikteyse şu CSS kurallarını uygula" demenin yoludur. Kuralların geçerli olacağı sınıra <strong>breakpoint (kırılma noktası)</strong> denir.</p>
+    <p><strong>Media query</strong> ile tarayıcıya "ekran belirli bir genişlikteyse şu CSS kurallarını uygula" deriz. Düzenin değiştiği bu genişlik sınırına <strong>breakpoint (kırılma noktası)</strong> denir.</p>
     <figure class="diagram"><img alt="Media query: 600px ve altında tek sütun, üstünde iki sütun" src="images/media_query.png" width="1116" height="607" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Media query: 600px ve altında tek sütun, üstünde iki sütun</figcaption>
+      <figcaption aria-hidden="true">Media query: 600px ve altında tek sütun, üstünde iki sütun</figcaption>
     </figure>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
@@ -110,17 +110,17 @@
 }</pre>
     </div>
     <ul>
-      <li><code class="inline">@media (max-width: 600px)</code> → "ekran <strong>en fazla</strong> 600px genişlikteyse" anlamına gelir; yani telefon gibi dar ekranlarda.</li>
+      <li><code class="inline">@media (max-width: 600px)</code> → "ekran <strong>en fazla</strong> 600px genişlikteyse" anlamına gelir. Bu, telefon gibi dar ekranlar demektir.</li>
       <li>Süslü parantezlerin <strong>içine</strong>, o durumda geçerli olacak normal CSS kuralları yazılır.</li>
       <li>Bu derste <strong>tek bir</strong> kırılma noktası kullanıyoruz: 600px. Ekran 600px veya daha darsa telefon düzeni, daha genişse bilgisayar düzeni geçerli olur.</li>
     </ul>
 
     <h2 id="mobil-oncelik-mobile-first-mantigi"><span class="num">3</span>Mobil Öncelik (Mobile-First) Mantığı</h2>
-    <p>Modern web tasarımında sayfalar genellikle <strong>önce telefon</strong> için tasarlanır, sonra büyük ekranlar için ayrıntı eklenir. Buna <strong>mobil öncelik</strong> denir. Mantığı basittir: en küçük ekranda çalışan sade bir düzen, her yerde çalışır; büyük ekranda ise ekstra sütunlar ve boşluklar eklenir.</p>
-    <p>Bu derste, kavramı daha kolay görmek için tersini kullanacağız: <strong>masaüstü düzenini varsayılan yapıp, telefon için <code class="inline">max-width</code> media query ile değiştireceğiz.</strong> İkisi de geçerli yöntemdir; önemli olan sayfanın her ekranda düzgün görünmesidir.</p>
+    <p>Modern web tasarımında sayfalar genellikle <strong>önce telefon</strong> için tasarlanır, sonra büyük ekranlar için ayrıntı eklenir. Buna <strong>mobil öncelik</strong> denir. Mantığı basittir: en küçük ekranda çalışan sade bir düzen her yerde çalışır; büyük ekranlar için ise fazladan sütun ve boşluk eklenir.</p>
+    <p>Bu derste, kavramı daha kolay görmek için tersini kullanacağız: <strong>masaüstü düzenini varsayılan yapıp, telefon için <code class="inline">max-width</code> media query ile değiştireceğiz.</strong> İkisi de geçerli bir yöntemdir; önemli olan sayfanın her ekranda düzgün görünmesidir.</p>
 
     <h2 id="ornek-site-iskeletini-responsive-yapma"><span class="num">4</span>Örnek: Site İskeletini Responsive Yapma</h2>
-    <p>Şimdi 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda yaptığımız site iskeletini alıp <strong>telefonda düzgün görünecek</strong> hâle getirelim. İki şey ekliyoruz: <code class="inline">&lt;head&gt;</code>'e <strong>viewport</strong> etiketi ve sona bir <strong>media query</strong> (telefonda sütunları alt alta almak için).</p>
+    <p>Şimdi 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda yaptığımız site iskeletini alıp <strong>telefonda düzgün görünecek</strong> hâle getirelim. İki şey ekliyoruz: <code class="inline">&lt;head&gt;</code>'e <strong>viewport</strong> etiketi ve CSS'in sonuna bir <strong>media query</strong> (telefonda sütunları alt alta almak için).</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -176,9 +176,9 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Geniş ekranda <code class="inline">main</code> ve <code class="inline">aside</code> yan yana durur. Ekranı daralttığınızda (veya telefonda açtığınızda), ekran 600px ve altına indiğinde <code class="inline">.govde</code> bir <strong>sütuna</strong> dönüşür ve iki bölüm <strong>alt alta</strong> gelir. Aynı şey menü için de olur.</p>
+    <p>Geniş ekranda <code class="inline">main</code> ve <code class="inline">aside</code> yan yana durur. Ekranı daralttığınızda (veya sayfayı telefonda açtığınızda) genişlik 600px veya altına inince <code class="inline">.govde</code> öğelerini tek <strong>sütunda</strong> dizer ve iki bölüm <strong>alt alta</strong> gelir. Aynı şey menü için de olur.</p>
     <h3 id="nasil-test-edilir">Nasıl Test Edilir?</h3>
-    <p>Telefonunuz olmadan da test edebilirsiniz: sayfayı açıp <code class="inline">F12</code> ile <strong>Geliştirici Araçları</strong>'nı açın, üstteki <strong>cihaz simülasyonu</strong> (telefon ve tablet) simgesine tıklayın. Farklı cihaz boyutlarını seçerek sayfanın nasıl değiştiğini görebilirsiniz. Ayrıca tarayıcı penceresini fareyle daraltmak da düzenin değiştiğini gösterir.</p>
+    <p>Telefonunuz olmadan da test edebilirsiniz: sayfayı tarayıcıda görüntülerken <code class="inline">F12</code> ile <strong>Geliştirici Araçları</strong>'nı açın ve üstteki <strong>cihaz simülasyonu</strong> (telefon ve tablet) simgesine tıklayın. Farklı cihaz boyutlarını seçerek sayfanın nasıl değiştiğini görebilirsiniz. Tarayıcı penceresini fareyle daraltarak da düzenin değiştiğini görebilirsiniz.</p>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">5</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
@@ -186,9 +186,9 @@
         <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
         <tbody>
           <tr><td>Viewport meta etiketini eklememek</td><td>Sayfa telefonda küçük ve okunmaz görünür</td><td><code class="inline">&lt;head&gt;</code>'e viewport etiketini ekleyin</td></tr>
-          <tr><td>Media query'yi <code class="inline">&lt;style&gt;</code> dışına yazmak</td><td>Kural çalışmaz; kod sayfada yazı olarak görünür</td><td><code class="inline">@media</code> kuralını CSS'in içine yazın</td></tr>
+          <tr><td>Media query'yi <code class="inline">&lt;style&gt;</code> dışına yazmak</td><td>Kural çalışmaz; kod sayfada yazı olarak görünür</td><td><code class="inline">@media</code> kuralını <code class="inline">&lt;style&gt;</code> etiketinin içine yazın</td></tr>
           <tr><td><code class="inline">@media</code>'nin süslü parantezlerini kapatmamak</td><td>Sonra yazılan kurallar da yalnızca dar ekranda uygulanır</td><td>İç içe <code class="inline">{ }</code> parantezleri doğru kapatın</td></tr>
-          <tr><td>Breakpoint'te birim (<code class="inline">px</code>) unutmak</td><td>Bloktaki kurallar hiç uygulanmaz</td><td><code class="inline">max-width: 600px</code> biçiminde yazın</td></tr>
+          <tr><td>Breakpoint'te birimi (<code class="inline">px</code>) unutmak</td><td>Bloktaki kurallar hiç uygulanmaz</td><td><code class="inline">max-width: 600px</code> biçiminde yazın</td></tr>
           <tr><td>Yalnızca kodu yazıp test etmemek</td><td>Telefonda bozukluk fark edilmez</td><td><code class="inline">F12</code> cihaz simülasyonuyla mutlaka test edin</td></tr>
         </tbody>
       </table>
@@ -197,11 +197,11 @@
     <h2 id="bu-haftanin-ozeti"><span class="num">6</span>Bu Haftanın Özeti</h2>
     <ul>
       <li><strong>Responsive tasarım</strong>, aynı sayfanın <strong>ekran boyutuna göre</strong> kendini yeniden düzenlemesidir (telefon ve bilgisayar).</li>
-      <li><strong>Viewport meta etiketi</strong> (<code class="inline">width=device-width, initial-scale=1.0</code>) responsive'in ilk şartıdır; olmadan mobilde sayfa küçük görünür.</li>
-      <li><strong>Media query</strong> (<code class="inline">@media (max-width: 600px) { ... }</code>) belirli ekran genişliğinde farklı CSS uygular; sınıra <strong>breakpoint</strong> denir.</li>
+      <li><strong>Viewport meta etiketi</strong> (<code class="inline">width=device-width, initial-scale=1.0</code>) responsive tasarımın ilk şartıdır; bu etiket olmadan mobilde sayfa küçük görünür.</li>
+      <li><strong>Media query</strong> (<code class="inline">@media (max-width: 600px) { ... }</code>) belirli bir ekran genişliğinde farklı CSS uygular; sınıra <strong>breakpoint</strong> denir.</li>
       <li>Telefonda menü, sütunlar ve kartlar <strong>alt alta</strong> alınır: <code class="inline">flex-direction: column</code>.</li>
-      <li><strong>Mobil öncelik</strong>, önce küçük ekran için tasarlayıp büyük ekrana eklemektir; bu derste <code class="inline">max-width</code> ile masaüstünden telefona uyarladık.</li>
-      <li>Responsive her zaman <code class="inline">F12</code> <strong>cihaz simülasyonu</strong> ile test edilmelidir.</li>
+      <li><strong>Mobil öncelik</strong>, önce küçük ekran için tasarlayıp büyük ekranlar için ayrıntı eklemektir; bu derste <code class="inline">max-width</code> ile masaüstünden telefona uyarladık.</li>
+      <li>Responsive bir sayfa her zaman <code class="inline">F12</code> <strong>cihaz simülasyonu</strong> ile test edilmelidir.</li>
     </ul>
 
     <h2 id="konu-sonu-testi"><span class="num">7</span>Konu Sonu Testi</h2>
@@ -215,7 +215,7 @@
           <li><b>d)</b> <code class="inline">&lt;nav&gt;</code></li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">b</span>Viewport meta etiketi responsive'in ilk şartıdır.</div>
+          <div class="ans"><span class="letter">b</span>Viewport meta etiketi responsive tasarımın ilk şartıdır.</div>
         </details>
       </li>
       <li>
@@ -312,7 +312,7 @@
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
       <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açın. <code class="inline">F12</code> cihaz simülasyonunda bir telefon seçin; kartların üç sütundan <strong>tek sütuna</strong> düştüğünü gözlemleyin.</li>
     </ol>
@@ -328,12 +328,12 @@
       <li>Bu blokta <code class="inline">.govde</code> ve <code class="inline">nav</code> için <code class="inline">flex-direction: column</code> yazarak sütunları <strong>alt alta</strong> alın (galeri varsa <code class="inline">.galeri</code> için de <code class="inline">flex-direction: column</code> yazın).</li>
       <li><code class="inline">F12</code> ile <strong>cihaz simülasyonunu</strong> açıp bir telefon seçerek sonucu test edin.</li>
     </ol>
-    <p><strong>Beklenen sonuç:</strong> Geniş ekranda düzen yan yana; ekran daraldığında (telefonda) bölümler alt alta gelir ve sayfa okunur kalır.</p>
+    <p><strong>Beklenen sonuç:</strong> Geniş ekranda bölümler yan yana durur; ekran daraldığında (telefonda) bölümler alt alta gelir ve sayfa okunur kalır.</p>
     <p><strong>İpuçları:</strong> Viewport etiketi olmadan telefonda sayfa küçük görünür. <code class="inline">@media</code> kuralının süslü parantezlerini doğru kapatın.</p>
 
     <h2 id="notlar-ve-ipuclari"><span class="num">10</span>Notlar ve İpuçları</h2>
     <ul>
-      <li><code class="inline">@media</code> bloğunu alışkanlık olarak CSS'in <strong>sonuna</strong> yazın. Aynı öğeye aynı özellik iki kez verilirse sonra yazılan geçerli olur; blok başta kalır ve alttaki normal kurallarda aynı özellik (örneğin <code class="inline">flex-direction: row</code>) yazılıysa, alttaki kural onu ezer ve telefonda o özellik değişmez.</li>
+      <li><code class="inline">@media</code> bloğunu alışkanlık olarak CSS'in <strong>sonuna</strong> yazın. Aynı öğeye aynı özellik iki kez verilirse sonra yazılan geçerli olur. Blok başta kalırsa ve alttaki normal kurallarda aynı özellik (örneğin <code class="inline">flex-direction: row</code>) yazılıysa, alttaki kural onu ezer ve telefonda o özellik değişmez.</li>
       <li>Viewport etiketi olmayan bir sayfa telefonda yaklaşık 980 piksel genişliğinde çizilir. Bu yüzden <code class="inline">max-width: 600px</code> gibi bir media query telefonda bile hiç devreye girmez.</li>
     </ul>
 

@@ -82,12 +82,12 @@
 
     <h2 id="neden-once-tasarim"><span class="num">1</span>Neden Önce Tasarım?</h2>
     <p>Bir ev yapılmadan önce mimar evin planını çizer; usta da bu plana bakarak duvarları örer. Web sitelerinde de çoğu zaman aynı düzen vardır: önce bir <strong>tasarımcı</strong> sayfanın nasıl görüneceğini çizer, sonra bu tasarım <strong>kodlanır</strong>.</p>
-    <p>Sektörde tasarım size genellikle bir <strong>resim dosyası</strong> ya da bir tasarım programındaki dosya olarak gelir. Bu programların yaygın olanlarından biri <strong>Figma</strong>'dır. Tasarımı açan kişi her öğenin rengini, yazı boyutunu ve ölçülerini görebilir; yani ölçüler hazır yazıyordur. Sizin işiniz bu ölçüleri okuyup HTML ve CSS'e çevirmektir.</p>
+    <p>Sektörde tasarım size genellikle bir <strong>resim dosyası</strong> ya da bir tasarım programındaki dosya olarak gelir. Bu programların yaygın olanlarından biri <strong>Figma</strong>'dır. Figma'da tasarımı açan kişi her öğenin rengini, yazı boyutunu ve ölçülerini görebilir; yani bu değerler tasarımda hazır bulunur. Sizin işiniz bu ölçüleri okuyup HTML ve CSS'e çevirmektir.</p>
 
     <h2 id="tasarimi-okuma"><span class="num">2</span>Tasarımı Okuma</h2>
     <p>Aşağıda "Kahve Dünyası" için hazırlanmış basit bir tanıtım sayfası tasarımı var:</p>
     <figure class="diagram"><img alt="Kahve Dünyası tanıtım sayfası tasarımı: kahverengi üst bölüm, açık renkli menü, iki içerik kutusu, kahverengi alt bilgi" src="images/tasarim.png" width="1200" height="881" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Kahve Dünyası tanıtım sayfası tasarımı: kahverengi üst bölüm, açık renkli menü, iki içerik kutusu, kahverengi alt bilgi</figcaption>
+      <figcaption aria-hidden="true">Kahve Dünyası tanıtım sayfası tasarımı: kahverengi üst bölüm, açık renkli menü, iki içerik kutusu, kahverengi alt bilgi</figcaption>
     </figure>
     <p>Tasarımcı bu resmin yanında kısa bir <strong>tasarım notu</strong> da verir:</p>
     <div class="twrap">
@@ -121,7 +121,7 @@
     <div class="note ok"><span class="tag">İpucu</span><p>Renk kodunu tasarım notundan <strong>kopyalayıp yapıştırın</strong>. <code class="inline">#6f4e37</code> gibi altı basamaklı bir kodu elle yazarken bir harf bile yanlış olursa renk değişir.</p></div>
 
     <h2 id="tasarimi-bolgelere-ayirma"><span class="num">3</span>Tasarımı Bölgelere Ayırma</h2>
-    <p>Kod yazmaya başlamadan önce tasarım <strong>bölgelere</strong> ayrılır. Tahtada ya da kâğıt üzerinde tasarımın üzerine kutular çizip her kutuya bir ad verin:</p>
+    <p>Kod yazmaya başlamadan önce tasarım <strong>bölgelere</strong> ayrılır. Kâğıtta ya da tahtada tasarımın üzerine kutular çizip her kutuya bir ad verin:</p>
     <ul>
       <li><strong>Üst bölüm:</strong> sitenin adı ya da logosu</li>
       <li><strong>Menü:</strong> sayfalar arası bağlantılar</li>
@@ -130,11 +130,11 @@
     </ul>
     <p>Aynı tasarım, bölgeleri ve her bölgenin etiketiyle birlikte şöyle görünür:</p>
     <figure class="diagram"><img alt="Tasarımın bölgeleri: header, nav, main, main içinde iki section, footer" src="images/tasarim_bolgeler.png" width="1200" height="881" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Tasarımın bölgeleri: header, nav, main, main içinde iki section, footer</figcaption>
+      <figcaption aria-hidden="true">Tasarımın bölgeleri: header, nav, main, main içinde iki section, footer</figcaption>
     </figure>
 
     <h2 id="semantik-anlamli-etiketler"><span class="num">4</span>Semantik (Anlamlı) Etiketler</h2>
-    <p>Kart tasarımını 7. haftada, <a href="kutu-modeli.html">CSS Kutu Modeli</a> konusunda, <code class="inline">&lt;div&gt;</code> ile yaptık. <code class="inline">&lt;div&gt;</code> işe yarar ama <strong>anlamsızdır</strong>: tarayıcıya "bu bir menü" ya da "bu ana içerik" demez. HTML, sayfanın bölgelerini <strong>anlamlı</strong> biçimde işaretlemek için özel etiketler sunar. Bunlara <strong>semantik etiketler</strong> denir.</p>
+    <p>Kart tasarımını 7. haftada, <a href="kutu-modeli.html">CSS Kutu Modeli</a> konusunda, <code class="inline">&lt;div&gt;</code> ile yaptık. <code class="inline">&lt;div&gt;</code> işe yarar ama <strong>anlam taşımaz</strong>: tarayıcıya "bu bir menü" ya da "bu ana içerik" demez. HTML, sayfanın bölgelerini <strong>anlamlı</strong> biçimde işaretlemek için özel etiketler sunar. Bunlara <strong>semantik etiketler</strong> denir.</p>
     <div class="twrap">
       <table>
         <thead><tr><th>Etiket</th><th>Görevi</th><th>Tasarımdaki bölge</th></tr></thead>
@@ -229,8 +229,8 @@
     <ul>
       <li><code class="inline">body</code>'ye <code class="inline">margin: 0</code> verdik; böylece üst bölüm ve alt bilgi sayfanın kenarlarına tam oturur.</li>
       <li>Bağlantılar (<code class="inline">&lt;a&gt;</code>) paragraf ya da başlık gibi yeni satıra geçmez, yazının içinde kalır; bu yüzden menü bağlantıları kendiliğinden <strong>yan yana</strong> dizilir. <code class="inline">text-align: center</code> onları ortalar, <code class="inline">margin: 0 12px</code> aralarına boşluk koyar.</li>
-      <li><code class="inline">section</code> kurallarındaki <code class="inline">margin: 0 0 16px 0</code> yalnızca alta 16px boşluk bırakır (dört değerde sıra: üst, sağ, alt, sol); kutular arasındaki boşluk buradan gelir.</li>
-      <li>Etiketlerin kendisi görünüm getirmez; bütün renk ve boşlukları CSS verir.</li>
+      <li><code class="inline">section</code> kuralındaki <code class="inline">margin: 0 0 16px 0</code> yalnızca alta 16px boşluk bırakır (dört değerde sıra: üst, sağ, alt, sol); kutular arasındaki boşluk buradan gelir.</li>
+      <li>Semantik etiketlerin kendisi görünüm getirmez; bütün renk ve boşlukları CSS verir.</li>
     </ul>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">6</span>Sıkça Yapılan 5 Hata</h2>
@@ -253,7 +253,7 @@
       <li>Tasarım notundaki <strong>renk kodu</strong> <code class="inline">color</code> / <code class="inline">background-color</code>, <strong>yazı boyutu</strong> <code class="inline">font-size</code>, <strong>iç boşluk</strong> <code class="inline">padding</code>, <strong>kutular arası boşluk</strong> <code class="inline">margin</code> olarak yazılır.</li>
       <li>Kodlamadan önce tasarım <strong>bölgelere</strong> ayrılır: üst bölüm, menü, içerik, alt bilgi.</li>
       <li>Her bölge <strong>semantik etiketle</strong> kodlanır: <code class="inline">header</code>, <code class="inline">nav</code>, <code class="inline">main</code>, <code class="inline">section</code>, <code class="inline">footer</code>.</li>
-      <li>Semantik etiketler ekranda <code class="inline">&lt;div&gt;</code> gibi görünür; görünümü CSS verir. Yararları, sayfanın yapısını arama motorlarına, ekran okuyuculara ve kodu okuyan kişiye anlatmalarıdır.</li>
+      <li>Semantik etiketler ekranda <code class="inline">&lt;div&gt;</code> gibi görünür; görünümü CSS verir. Sayfanın yapısını arama motorlarına, ekran okuyuculara ve kodu okuyan kişiye anlatırlar.</li>
     </ul>
 
     <h2 id="konu-sonu-testi"><span class="num">8</span>Konu Sonu Testi</h2>
@@ -271,7 +271,7 @@
         </details>
       </li>
       <li>
-        <p class="q">Tasarım notunda "Arka plan <code class="inline">#6f4e37</code>" yazıyor. Bu hangi CSS kuralıyla yazılır?</p>
+        <p class="q">Tasarım notunda "Arka plan <code class="inline">#6f4e37</code>" yazıyor. Bu bilgi CSS'te nasıl yazılır?</p>
         <ul class="opts">
           <li><b>a)</b> <code class="inline">color: #6f4e37;</code></li>
           <li><b>b)</b> <code class="inline">background-color: #6f4e37;</code></li>
@@ -303,7 +303,7 @@
           <li><b>d)</b> <code class="inline">&lt;header&gt;</code> yalnızca <code class="inline">&lt;head&gt;</code> içinde kullanılır</li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">c</span><code class="inline">&lt;head&gt;</code> görünmeyen bilgileri, <code class="inline">&lt;header&gt;</code> görünen üst kısmı tutar.</div>
+          <div class="ans"><span class="letter">c</span><code class="inline">&lt;head&gt;</code> görünmeyen bilgileri tutar; <code class="inline">&lt;header&gt;</code> ise sayfanın görünen üst kısmıdır.</div>
         </details>
       </li>
       <li>
@@ -395,7 +395,7 @@
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
       <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açın. Renkleri ve boşlukları tasarım notuyla karşılaştırın.</li>
     </ol>
@@ -403,7 +403,7 @@
     <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> Bir kitap kulübü için hazırlanmış tanıtım sayfası tasarımı size resim olarak verildi. Bu tasarımı semantik etiketlerle kodlayın.</p>
     <figure class="diagram"><img alt="Kitap Kulübü tanıtım sayfası tasarımı: yeşil üst bölüm, açık yeşil menü, iki içerik kutusu, yeşil alt bilgi" src="images/sinif_tasarim.png" width="1200" height="824" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Kitap Kulübü tanıtım sayfası tasarımı: yeşil üst bölüm, açık yeşil menü, iki içerik kutusu, yeşil alt bilgi</figcaption>
+      <figcaption aria-hidden="true">Kitap Kulübü tanıtım sayfası tasarımı: yeşil üst bölüm, açık yeşil menü, iki içerik kutusu, yeşil alt bilgi</figcaption>
     </figure>
     <div class="twrap">
       <table>
@@ -434,7 +434,7 @@
       <li>Tasarımı kodlamaya başlamadan önce bölgelere ayırmak, hangi etiketin nereye yazılacağını baştan belirler; kodu yazarken daha az geri dönersiniz.</li>
       <li>Tasarımdaki bir rengin kodunu bilmiyorsanız tasarım notuna bakın; gözle tahmin edilen renk çoğu zaman tutmaz.</li>
       <li><code class="inline">&lt;main&gt;</code> bir sayfada yalnızca bir kez kullanılır. İçeriği bölmek için <code class="inline">&lt;section&gt;</code> kullanın.</li>
-      <li>Hangi etiketin kullanılacağına karar veremediğiniz, anlamı olmayan kutular için <code class="inline">&lt;div&gt;</code> kullanmaya devam edebilirsiniz.</li>
+      <li>Hiçbir semantik etiketin uymadığı, yalnızca biçim vermek için kullanılan kutularda <code class="inline">&lt;div&gt;</code> kullanmaya devam edebilirsiniz.</li>
     </ul>
 
     <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>

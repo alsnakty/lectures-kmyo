@@ -82,9 +82,9 @@
     <div class="note"><span class="tag">Not</span><p>Bootstrap bu derste tanıtım olarak işlenir; final sınavı kapsamında değildir.</p></div>
 
     <h2 id="css-framework-nedir"><span class="num">1</span>CSS Framework Nedir?</h2>
-    <p>Bir mobilyayı sıfırdan yapmak için tahtayı kesmeniz, zımparalamanız, boyamanız gerekir. Hazır parçalardan oluşan bir mobilyada ise parçalar hazırdır; siz yalnızca birleştirirsiniz. <strong>CSS framework</strong> de böyledir: menü, kart, düğme gibi sık kullanılan parçaların CSS'i <strong>önceden yazılmıştır</strong>. Siz yalnızca HTML'e doğru <strong>class</strong> adlarını verirsiniz.</p>
+    <p>Bir mobilyayı sıfırdan yapmak için tahtayı kesmeniz, zımparalamanız, boyamanız gerekir. Hazır parçalarla satılan bir mobilyada ise parçalar kesilmiş ve boyanmıştır; siz yalnızca birleştirirsiniz. <strong>CSS framework</strong> de böyledir: menü, kart, düğme gibi sık kullanılan parçaların CSS'i <strong>önceden yazılmıştır</strong>. Siz yalnızca HTML'e doğru <strong>class</strong> adlarını verirsiniz.</p>
     <p>En yaygın CSS framework'lerinden biri <strong>Bootstrap</strong>'tir. Bootstrap'in temeli tek bir CSS dosyasıdır (<code class="inline">bootstrap.min.css</code>); içinde yüzlerce hazır class bulunur.</p>
-    <div class="note warn"><span class="tag">Önemli</span><p>Framework hazır verir ama altında <strong>bildiğiniz CSS</strong> vardır. Örneğin Bootstrap'teki <code class="inline">d-flex</code> class'ı, arka planda 10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda öğrendiğiniz <code class="inline">display: flex</code> kuralıdır.</p></div>
+    <div class="note warn"><span class="tag">Önemli</span><p>Framework CSS'i hazır verir ama altında <strong>bildiğiniz CSS</strong> vardır. Örneğin Bootstrap'teki <code class="inline">d-flex</code> class'ı, 10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda öğrendiğiniz <code class="inline">display: flex</code> kuralını uygular.</p></div>
 
     <h2 id="bootstrap-i-sayfaya-ekleme"><span class="num">2</span>Bootstrap'i Sayfaya Ekleme</h2>
     <p>Bootstrap dosyası derste USB bellekle ya da ortak klasörle dağıtılır; internet bağlantısı olan bir bilgisayarda Bootstrap'in resmî sitesinden (<code class="inline">getbootstrap.com</code>) de indirilebilir. İnternet olmayan bir bilgisayarda da çalışması için dosyayı projenizin içine koyarsınız:</p>
@@ -165,16 +165,16 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Tarayıcıdaki sonucu şöyledir:</p>
+    <p>Tarayıcıdaki sonuç şöyledir:</p>
     <figure class="diagram"><img alt="Bootstrap ile menü ve kart: açık gri menü çubuğu, yuvarlak köşeli iki kart ve mavi düğmeler" src="images/bootstrap_ornek.png" width="1200" height="384" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Bootstrap ile menü ve kart: açık gri menü çubuğu, yuvarlak köşeli iki kart ve mavi düğmeler</figcaption>
+      <figcaption aria-hidden="true">Bootstrap ile menü ve kart: açık gri menü çubuğu, yuvarlak köşeli iki kart ve mavi düğmeler</figcaption>
     </figure>
     <p>Sayfada tek satır CSS yazmadık (kart genişliği dışında); menü, yuvarlak köşeli kartlar ve mavi düğmeler Bootstrap'in hazır class'larından geldi. Yazı tipinin de değiştiğine dikkat edin: Bootstrap, sayfaya kendi yazı tipi ayarını getirir.</p>
 
     <h2 id="elle-yazmak-ile-bootstrap-yan-yana"><span class="num">5</span>Elle Yazmak ile Bootstrap Yan Yana</h2>
-    <p>Aynı menü ve kartlar, soldaki sayfada 10. haftadaki (Flexbox 1) gibi <strong>elle yazılmış CSS</strong> ile, sağdaki sayfada <strong>Bootstrap</strong> ile yapıldı:</p>
+    <p>Aynı menü ve kartlar, soldaki sayfada 10. haftada (<a href="flexbox-1.html">Flexbox 1</a>) olduğu gibi <strong>elle yazılmış CSS</strong> ile, sağdaki sayfada <strong>Bootstrap</strong> ile yapıldı:</p>
     <figure class="diagram"><img alt="Solda elle yazılmış CSS ile menü ve kartlar, sağda aynı içeriğin Bootstrap ile yapılmış hâli" src="images/elle_ve_bootstrap.png" width="1960" height="444" loading="lazy" decoding="async" tabindex="0">
-      <figcaption>Solda elle yazılmış CSS ile menü ve kartlar, sağda aynı içeriğin Bootstrap ile yapılmış hâli</figcaption>
+      <figcaption aria-hidden="true">Solda elle yazılmış CSS ile menü ve kartlar, sağda aynı içeriğin Bootstrap ile yapılmış hâli</figcaption>
     </figure>
     <div class="twrap">
       <table>
@@ -302,7 +302,7 @@
       <li><code class="inline">web_sitem</code> klasöründe bir <code class="inline">css</code> klasörü oluşturun ve <code class="inline">bootstrap.min.css</code> dosyasını içine koyun.</li>
       <li><strong><code class="inline">bootstrap_menu.html</code></strong> adında yeni bir dosya oluşturun ve <code class="inline">&lt;head&gt;</code> içinde Bootstrap'i <code class="inline">&lt;link&gt;</code> ile bağlayın.</li>
       <li><code class="inline">navbar</code>, <code class="inline">navbar-expand</code> ve <code class="inline">bg-body-tertiary</code> class'larıyla bir menü kurun; site adını <code class="inline">navbar-brand</code> ile, bağlantıları <code class="inline">navbar-nav</code> listesiyle yazın.</li>
-      <li>Menünün altına <code class="inline">card</code> class'ıyla iki kart ekleyin; her kartta bir başlık, bir yazı ve bir <code class="inline">btn btn-primary</code> düğme olsun.</li>
+      <li>Menünün altına <code class="inline">card</code> class'ıyla iki kart ekleyin; her kartta bir başlık, bir yazı ve <code class="inline">btn btn-primary</code> class'lı bir düğme olsun.</li>
       <li>10. haftadaki (Flexbox 1) <code class="inline">navbar.html</code> dosyanızı ve yeni sayfayı iki ayrı sekmede açıp karşılaştırın.</li>
     </ol>
     <p><strong>Beklenen sonuç:</strong> CSS kuralı yazmadan, yalnızca class'larla biçimlenmiş bir menü ve iki kart.</p>
