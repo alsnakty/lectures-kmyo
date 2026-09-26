@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bağlantılar ve Görseller | Web Arayüz Tasarımı Ders Notları</title>
+<meta name="description" content="Sayfalar arası ve dış sitelere bağlantı (&lt;a&gt;) vermeyi, sayfaya görsel (&lt;img&gt;) eklemeyi ve en önemlisi göreli/mutlak yol mantığını öğrenmek. Sonunda...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bağlantılar ve Görseller | Web Arayüz Tasarımı Ders Notları">
+<meta property="og:description" content="Sayfalar arası ve dış sitelere bağlantı (&lt;a&gt;) vermeyi, sayfaya görsel (&lt;img&gt;) eklemeyi ve en önemlisi göreli/mutlak yol mantığını öğrenmek. Sonunda...">
+<script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>BDT249 <span class="muted">/ Bağlantılar ve Görseller</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
+          <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
+          <a href="baglantilar-ve-gorseller.html" class="etkin" aria-current="page"><span class="mh">3</span>Bağlantılar ve Görseller</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="formlar.html"><span class="mh">5</span>Formlar</a>
+          <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
+          <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
+          <a href="tasarimdan-koda.html"><span class="mh">9</span>Tasarımdan Koda</a>
+          <a href="flexbox-1.html"><span class="mh">10</span>Flexbox 1</a>
+          <a href="flexbox-2-ve-sayfa-yerlesimi.html"><span class="mh">11</span>Flexbox 2 ve Sayfa Yerleşimi</a>
+          <a href="responsive-tasarim.html"><span class="mh">12</span>Responsive Tasarım</a>
+          <a href="gecisler-ve-dokunuslar.html"><span class="mh">13</span>Geçişler ve Küçük Dokunuşlar</a>
+          <a href="bootstrap-tanitimi.html"><span class="mh">14</span>Bootstrap Tanıtımı</a>
+        </nav>
+      </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Web &nbsp;›&nbsp; <span>Bağlantılar ve Görseller</span></div>
+
+<main class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 3. Hafta</div>
+    <h1>Bağlantılar ve Görseller</h1>
+    <p class="lede">Sayfalar arası ve dış sitelere <strong>bağlantı</strong> (<code class="inline">&lt;a&gt;</code>) vermeyi, sayfaya <strong>görsel</strong> (<code class="inline">&lt;img&gt;</code>) eklemeyi ve en önemlisi <strong>göreli/mutlak yol</strong> mantığını öğrenmek. Sonunda birbirine bağlı <strong>üç sayfalık</strong> küçük bir site hazırlayacaksınız.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#baglanti-link-nedir"><span class="n">1</span>Bağlantı (Link) Nedir?</a>
+        <a href="#yol-path-goreli-ve-mutlak-en-kritik-konu"><span class="n">2</span>Yol (Path): Göreli ve Mutlak (En Kritik Konu)</a>
+        <a href="#baglanti-turleri"><span class="n">3</span>Bağlantı Türleri</a>
+        <a href="#gorsel-ekleme"><span class="n">4</span>Görsel Ekleme: <code class="inline">&lt;img&gt;</code></a>
+        <a href="#resmi-baglanti-haline-getirme"><span class="n">5</span>Resmi Bağlantı Hâline Getirme</a>
+        <a href="#ornek-uc-sayfali-mini-site"><span class="n">6</span>Örnek: Üç Sayfalı Mini Site</a>
+        <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
+        <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
+        <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
+        <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+      </nav>
+    </details>
+
+<p>Web'i "web" (ağ) yapan şey, sayfaların birbirine <strong>bağlantılarla</strong> örülmüş olmasıdır. Bu hafta sayfaları birbirine bağlamayı ve resim eklemeyi öğreneceğiz. Konunun en kritik kısmı <strong>yol (path)</strong> kavramıdır; öğrencilerin en çok zorlandığı yer burasıdır, bu yüzden bu bölümü dikkatle okuyunuz.</p>
+
+    <h2 id="baglanti-link-nedir"><span class="num">1</span>Bağlantı (Link) Nedir?</h2>
+    <p>Bir bağlantı, tıklandığında başka bir sayfaya götüren metindir. Bağlantı <code class="inline">&lt;a&gt;</code> (anchor) etiketi ile oluşturulur. Gidilecek adres <code class="inline">href</code> özelliğine yazılır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="hakkinda.html"&gt;Hakkımda&lt;/a&gt;</pre>
+    </div>
+    <p>Burada:</p>
+    <ul>
+      <li><code class="inline">href="hakkinda.html"</code> → tıklanınca gidilecek <strong>hedef</strong>.</li>
+      <li><code class="inline">Hakkımda</code> → sayfada <strong>görünen</strong> tıklanabilir metin.</li>
+    </ul>
+    <p>Tarayıcı, bağlantıları varsayılan olarak <strong>mavi ve altı çizili</strong> gösterir (daha önce tıklanmış bağlantılar mor görünür); böylece kullanıcı tıklanabilir olduğunu anlar.</p>
+
+    <h2 id="yol-path-goreli-ve-mutlak-en-kritik-konu"><span class="num">2</span>Yol (Path): Göreli ve Mutlak (En Kritik Konu)</h2>
+    <p><code class="inline">href</code> (bağlantı) ve <code class="inline">src</code> (resim) değerine, hedef dosyanın <strong>nerede olduğunu</strong> söylemeniz gerekir. Bunun iki yolu vardır.</p>
+    <p><strong>Mutlak yol:</strong> Hedefin tam adresidir. Genellikle başka bir web sitesine bağlanmak için kullanılır ve <code class="inline">https://</code> ile başlar.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="https://www.google.com"&gt;Google&lt;/a&gt;</pre>
+    </div>
+    <p><strong>Göreli yol:</strong> Hedefin, <strong>o an bulunduğunuz dosyaya göre</strong> yerini belirtir. Kendi sitenizin içindeki sayfa ve resimler için bunu kullanırsınız. Aşağıdaki klasör yapısını örnek alalım:</p>
+    <figure class="diagram"><img alt="Mini sitenin klasör yapısı: web_sitem içinde index.html, hakkinda.html, iletisim.html ve gorseller klasöründe foto.jpg" src="images/mini_site_yapisi.png" width="901" height="584" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Mini sitenin klasör yapısı: web_sitem içinde index.html, hakkinda.html, iletisim.html ve gorseller klasöründe foto.jpg</figcaption>
+    </figure>
+    <p>Bu yapıya göre yollar şöyle yazılır:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hedef nerede?</th><th>Nasıl yazılır?</th><th>Örnek</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Aynı klasörde</strong></td><td>doğrudan dosya adı</td><td><code class="inline">hakkinda.html</code></td></tr>
+          <tr><td><strong>Alt klasörde</strong></td><td><code class="inline">klasör/dosya</code></td><td><code class="inline">gorseller/foto.jpg</code></td></tr>
+          <tr><td><strong>Üst klasörde</strong></td><td><code class="inline">../dosya</code></td><td><code class="inline">gorseller</code> içindeki bir sayfadan: <code class="inline">../index.html</code></td></tr>
+          <tr><td><strong>Başka bir sitede</strong></td><td>tam adres (mutlak)</td><td><code class="inline">https://www.google.com</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn"><span class="tag">Kural</span><p><code class="inline">../</code> işareti "bir üst klasöre çık" demektir. Örneğin <code class="inline">gorseller</code> klasörünün içindeki bir sayfadan <code class="inline">index.html</code>'e bağlanmak için <code class="inline">../index.html</code> yazılır. En sık yapılan hata, dosya adını yanlış yazmak veya yolun başına gereksiz <code class="inline">/</code> koymaktır. Dosya ve klasör adlarını (1. haftada, <a href="araclar-ve-ilk-sayfa.html">Araçlar ve İlk Web Sayfası</a> konusunda görüldüğü gibi) Türkçe karaktersiz ve boşluksuz tutunuz.</p></div>
+
+    <h2 id="baglanti-turleri"><span class="num">3</span>Bağlantı Türleri</h2>
+    <p><strong>Site içi bağlantı (göreli yol):</strong> Kendi sayfalarınız arasında geçiş için.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="iletisim.html"&gt;İletişim&lt;/a&gt;</pre>
+    </div>
+    <p><strong>Dış bağlantı (mutlak yol):</strong> Başka bir web sitesine gitmek için.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="https://www.cu.edu.tr"&gt;Üniversite Sitesi&lt;/a&gt;</pre>
+    </div>
+    <p><strong>Yeni sekmede açma:</strong> Bağlantının yeni bir sekmede açılması için <code class="inline">target="_blank"</code> eklenir. Dış bağlantılarda sık kullanılır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="https://www.google.com" target="_blank"&gt;Google (yeni sekme)&lt;/a&gt;</pre>
+    </div>
+
+    <h2 id="gorsel-ekleme"><span class="num">4</span>Görsel Ekleme: <code class="inline">&lt;img&gt;</code></h2>
+    <p>Sayfaya resim eklemek için <code class="inline">&lt;img&gt;</code> etiketi kullanılır. Bu, tek (kapanışsız) bir etikettir ve iki temel özelliği vardır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;img src="gorseller/foto.jpg" alt="Kahve fincanı"&gt;</pre>
+    </div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Özellik</th><th>Görevi</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">src</code></td><td>Resmin <strong>yolu</strong> (göreli veya mutlak). Resim aynı sitenizdeyse göreli yol yazılır.</td></tr>
+          <tr><td><code class="inline">alt</code></td><td>Resim <strong>yüklenmezse</strong> görünecek alternatif metin. Ekran okuyucular ve arama motorları için de önemlidir.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Boyut:</strong> Resmin genişlik/yüksekliğini <code class="inline">width</code> ve <code class="inline">height</code> ile ayarlayabilirsiniz. Yalnızca <code class="inline">width</code> verirseniz, resim oranını bozmadan ölçeklenir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;img src="gorseller/foto.jpg" alt="Kahve fincanı" width="300"&gt;</pre>
+    </div>
+    <div class="note"><span class="tag">Not</span><p>İçerik taşıyan resimlerde <code class="inline">alt</code> metnini boş bırakmayınız. Resim bir sebeple açılmazsa kullanıcı en azından ne olduğunu okuyabilir; görme engelli kullanıcılar için de bu metin sesli okunur.</p></div>
+
+    <h2 id="resmi-baglanti-haline-getirme"><span class="num">5</span>Resmi Bağlantı Hâline Getirme</h2>
+    <p>Bir resmi, tıklanınca başka sayfaya götüren bir bağlantıya dönüştürmek için <code class="inline">&lt;img&gt;</code> etiketini <code class="inline">&lt;a&gt;</code> etiketinin <strong>içine</strong> yazarsınız.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="index.html"&gt;
+    &lt;img src="gorseller/logo.png" alt="Site logosu" width="120"&gt;
+&lt;/a&gt;</pre>
+    </div>
+    <p>Bu yöntem, sitelerde <strong>logoya tıklayınca ana sayfaya dönme</strong> özelliği için sık kullanılır.</p>
+
+    <h2 id="ornek-uc-sayfali-mini-site"><span class="num">6</span>Örnek: Üç Sayfalı Mini Site</h2>
+    <p>Şimdi birbirine bağlı üç sayfalık küçük bir site hazırlayalım. Her sayfanın başında aynı <strong>menü</strong> (üç bağlantı) bulunacak; böylece sayfalar arasında gezinebileceksiniz.</p>
+    <p><strong><code class="inline">index.html</code> (Ana Sayfa):</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Ana Sayfa&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;
+        &lt;a href="index.html"&gt;Ana Sayfa&lt;/a&gt; |
+        &lt;a href="hakkinda.html"&gt;Hakkımda&lt;/a&gt; |
+        &lt;a href="iletisim.html"&gt;İletişim&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;hr&gt;
+    &lt;h1&gt;Kahve Dünyası&lt;/h1&gt;
+    &lt;p&gt;Şehrin merkezinde sıcak bir kahve molası.&lt;/p&gt;
+    &lt;img src="gorseller/foto.jpg" alt="Kahve fincanı" width="300"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Bu sayfanın tarayıcıdaki görünümü şöyledir:</p>
+    <figure class="diagram"><img alt="Ana sayfanın tarayıcı çıktısı: üstte üç bağlantılı menü, başlık, paragraf ve bir görsel" src="images/anasayfa_ciktisi.png" width="1200" height="585" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Ana sayfanın tarayıcı çıktısı: üstte üç bağlantılı menü, başlık, paragraf ve bir görsel</figcaption>
+    </figure>
+    <p><strong><code class="inline">hakkinda.html</code> (Hakkımda):</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Hakkımda&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;
+        &lt;a href="index.html"&gt;Ana Sayfa&lt;/a&gt; |
+        &lt;a href="hakkinda.html"&gt;Hakkımda&lt;/a&gt; |
+        &lt;a href="iletisim.html"&gt;İletişim&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;hr&gt;
+    &lt;h1&gt;Hakkımızda&lt;/h1&gt;
+    &lt;p&gt;Amacımız kaliteli kahveyi uygun fiyata sunmaktır.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p><strong><code class="inline">iletisim.html</code> (İletişim):</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;İletişim&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;
+        &lt;a href="index.html"&gt;Ana Sayfa&lt;/a&gt; |
+        &lt;a href="hakkinda.html"&gt;Hakkımda&lt;/a&gt; |
+        &lt;a href="iletisim.html"&gt;İletişim&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;hr&gt;
+    &lt;h1&gt;İletişim&lt;/h1&gt;
+    &lt;p&gt;Adres: Merkez Mahallesi, Adana&lt;/p&gt;
+    &lt;p&gt;Telefon: 0322 000 00 00&lt;/p&gt;
+    &lt;p&gt;
+        Konumumuz için
+        &lt;a href="https://www.google.com/maps" target="_blank"&gt;haritayı&lt;/a&gt;
+        yeni sekmede açabilirsiniz.
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Üç dosyayı da <code class="inline">web_sitem</code> klasörüne kaydediniz. Menüdeki bağlantılara tıklayarak sayfalar arasında gezebilirsiniz. <code class="inline">index.html</code> içindeki menü site içi (göreli) bağlantılar, <code class="inline">iletisim.html</code> içindeki harita bağlantısı ise dış (mutlak) bağlantıdır.</p>
+
+    <h2 id="sikca-yapilan-5-hata"><span class="num">7</span>Sıkça Yapılan 5 Hata</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
+        <tbody>
+          <tr><td>Dosya adını yanlış yazmak (<code class="inline">hakkında.html</code>)</td><td>Bağlantı çalışmaz, sayfa açılmaz</td><td>Adı birebir aynı yazın; Türkçe karakter kullanmayın</td></tr>
+          <tr><td>Resim yolunu yanlış yazmak</td><td>Resim yerine küçük bir kırık resim simgesi ve <code class="inline">alt</code> metni görünür</td><td><code class="inline">src</code>'yi klasör yapısına göre yazın (<code class="inline">gorseller/foto.jpg</code>)</td></tr>
+          <tr><td>Üst klasöre çıkmayı unutmak</td><td>Alt klasördeki sayfadan bağlantı kopar</td><td>Üst klasör için <code class="inline">../</code> kullanın</td></tr>
+          <tr><td><code class="inline">alt</code> metnini boş bırakmak</td><td>Erişilebilirlik ve SEO zayıflar</td><td>Her resme anlamlı <code class="inline">alt</code> yazın</td></tr>
+          <tr><td><code class="inline">href</code>'i unutmak (<code class="inline">&lt;a&gt;metin&lt;/a&gt;</code>)</td><td>Bağlantı tıklanamaz olur</td><td><code class="inline">&lt;a&gt;</code> etiketine mutlaka <code class="inline">href</code> ekleyin</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="bu-haftanin-ozeti"><span class="num">8</span>Bu Haftanın Özeti</h2>
+    <ul>
+      <li>Bağlantı <code class="inline">&lt;a href="hedef"&gt;metin&lt;/a&gt;</code> ile verilir; tarayıcı bağlantıyı <strong>mavi ve altı çizili</strong> gösterir.</li>
+      <li>Yol iki türlüdür: <strong>göreli</strong> (o an bulunduğunuz dosyaya göre) ve <strong>mutlak</strong> (tam adres, <code class="inline">https://</code> ile başlar).</li>
+      <li>Göreli yol: aynı klasör → <strong>dosya adı</strong>, alt klasör → <strong><code class="inline">klasör/dosya</code></strong>, üst klasör → <strong><code class="inline">../dosya</code></strong>.</li>
+      <li>Görsel <code class="inline">&lt;img src="yol" alt="metin"&gt;</code> ile eklenir. <code class="inline">alt</code>, resim açılmazsa ve erişilebilirlik için önemlidir; <code class="inline">width</code> ile boyut ayarlanır.</li>
+      <li><code class="inline">target="_blank"</code> bağlantıyı <strong>yeni sekmede</strong> açar; <code class="inline">&lt;a&gt;</code> içine <code class="inline">&lt;img&gt;</code> koyarak resim <strong>bağlantı</strong> hâline getirilir.</li>
+      <li>En sık hata <strong>yanlış yol/dosya adı</strong>dır; adları birebir ve Türkçe karaktersiz yazın.</li>
+    </ul>
+
+    <h2 id="konu-sonu-testi"><span class="num">9</span>Konu Sonu Testi</h2>
+    <ol class="quiz">
+      <li>
+        <p class="q">Bağlantının gideceği adres hangi özelliğe yazılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">src</code></li>
+          <li><b>b)</b> <code class="inline">alt</code></li>
+          <li><b>c)</b> <code class="inline">href</code></li>
+          <li><b>d)</b> <code class="inline">link</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>Hedef adres <code class="inline">href</code> özelliğine yazılır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q"><code class="inline">../index.html</code> yolundaki <code class="inline">../</code> ne anlama gelir?</p>
+        <ul class="opts">
+          <li><b>a)</b> Aynı klasördeki dosya</li>
+          <li><b>b)</b> Bir üst klasöre çık</li>
+          <li><b>c)</b> Alt klasöre gir</li>
+          <li><b>d)</b> İnternetteki bir site</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span><code class="inline">../</code> bir üst klasöre çıkmayı belirtir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Resim yüklenemediğinde görünecek metni hangi özellik belirler?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">src</code></li>
+          <li><b>b)</b> <code class="inline">title</code></li>
+          <li><b>c)</b> <code class="inline">alt</code></li>
+          <li><b>d)</b> <code class="inline">href</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span><code class="inline">alt</code>, resim açılmazsa görünen alternatif metindir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Aşağıdakilerden hangisi <strong>mutlak (dış) bağlantı</strong> örneğidir?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">hakkinda.html</code></li>
+          <li><b>b)</b> <code class="inline">gorseller/foto.jpg</code></li>
+          <li><b>c)</b> <code class="inline">../index.html</code></li>
+          <li><b>d)</b> <code class="inline">https://www.google.com</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">d</span><code class="inline">https://</code> ile başlayan tam adres mutlak bağlantıdır; diğerleri göreli yoldur.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bir bağlantının <strong>yeni sekmede</strong> açılması için ne eklenir?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">target="_blank"</code></li>
+          <li><b>b)</b> <code class="inline">new="true"</code></li>
+          <li><b>c)</b> <code class="inline">href="yeni"</code></li>
+          <li><b>d)</b> <code class="inline">alt="_blank"</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">a</span><code class="inline">target="_blank"</code> bağlantıyı yeni sekmede açar.</div>
+        </details>
+      </li>
+    </ol>
+
+    <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> İki sayfalık bir site yapınız: <code class="inline">index.html</code> ve <code class="inline">urunler.html</code>. Her iki sayfada da diğerine giden bir bağlantı bulunsun. Ana sayfaya bir görsel ekleyiniz.</p>
+    <p><strong>Çözüm (<code class="inline">index.html</code>):</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Ana Sayfa&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Çiçekçi Dükkânı&lt;/h1&gt;
+    &lt;p&gt;Taze çiçekler, uygun fiyatlar.&lt;/p&gt;
+    &lt;img src="gorseller/cicek.jpg" alt="Renkli çiçekler" width="250"&gt;
+    &lt;p&gt;&lt;a href="urunler.html"&gt;Ürünlerimize göz atın&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p><strong>Çözüm (<code class="inline">urunler.html</code>):</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Ürünler&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Ürünlerimiz&lt;/h1&gt;
+    &lt;p&gt;Gül, papatya ve lale çeşitlerimiz mevcuttur.&lt;/p&gt;
+    &lt;p&gt;&lt;a href="index.html"&gt;Ana sayfaya dön&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Adımlar:</p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe iki dosyayı oluşturunuz.</li>
+      <li><code class="inline">gorseller</code> klasörüne bir resim koyup adını <code class="inline">cicek.jpg</code> yapınız (veya <code class="inline">src</code>'yi kendi resminizin adına göre değiştiriniz).</li>
+      <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açarak bağlantıların iki sayfa arasında çalıştığını deneyiniz.</li>
+    </ol>
+
+    <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
+    <p><strong>Senaryo:</strong> Birbirine bağlı iki sayfalık, görselli küçük bir tanıtım sitesi kurun.</p>
+    <p><strong>Yapılacaklar:</strong></p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">index.html</code></strong> ve <strong><code class="inline">hakkinda.html</code></strong> adında iki sayfa oluşturun.</li>
+      <li>Her iki sayfanın başına aynı <strong>menüyü</strong> koyun: <code class="inline">index.html</code> ve <code class="inline">hakkinda.html</code>'e giden iki bağlantı (<code class="inline">&lt;a href="..."&gt;</code>).</li>
+      <li><code class="inline">gorseller</code> klasörüne bir resim koyun; ana sayfada bu resmi <code class="inline">&lt;img&gt;</code> ile gösterin ve <code class="inline">alt</code> metnini yazın.</li>
+      <li>Bir yere bir <strong>dış bağlantı</strong> (<code class="inline">https://...</code>) ekleyin ve <code class="inline">target="_blank"</code> ile yeni sekmede açılmasını sağlayın.</li>
+    </ol>
+    <p><strong>Beklenen sonuç:</strong> Menüden iki sayfa arasında geçiş yapabiliyorsunuz; ana sayfada resminiz görünüyor; dış bağlantı yeni sekmede açılıyor.</p>
+    <p><strong>İpuçları:</strong> Resim yolunu klasör yapısına göre yazın (<code class="inline">gorseller/resim.jpg</code>). Dosya adlarını Türkçe karaktersiz tutun; yol hatası en sık buradan çıkar.</p>
+
+    <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
+    <ul>
+      <li><code class="inline">width</code>, resmi yalnızca ekranda küçültür; dosyanın boyutu değişmez. Büyük bir fotoğraf küçük gösterilse de tamamı indirilir. Sayfaya koymadan önce resmin kendisini küçültün.</li>
+      <li>Çoğu sunucu büyük/küçük harfe duyarlıdır: <code class="inline">Foto.JPG</code> ile <code class="inline">foto.jpg</code> farklı dosyalardır. Kendi bilgisayarınızda çalışan bir sayfa, internete konunca bu yüzden bozulabilir. Dosya adını <code class="inline">src</code> ve <code class="inline">href</code> içinde birebir aynı yazın.</li>
+      <li><code class="inline">alt</code> metni resmi anlatmalıdır: <code class="inline">resim1</code> değil, <code class="inline">Kahve fincanı</code>.</li>
+    </ul>
+
+    <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
+    <ol>
+      <li><code class="inline">index.html</code> sayfasına <code class="inline">hakkinda.html</code>'e giden bir bağlantı ekleyiniz.</li>
+      <li>Sayfanıza kendi seçtiğiniz bir resmi <code class="inline">&lt;img&gt;</code> ile ekleyip <code class="inline">alt</code> metnini yazınız.</li>
+      <li>Resmin genişliğini <code class="inline">width="200"</code> yaparak boyutunu küçültünüz.</li>
+      <li>Bir dış siteye (<code class="inline">https://...</code>) <code class="inline">target="_blank"</code> ile bağlantı verip yeni sekmede açıldığını gözlemleyiniz.</li>
+      <li><code class="inline">gorseller</code> klasörünün içine bir HTML sayfası koyup oradan <code class="inline">../index.html</code> ile ana sayfaya bağlantı veriniz; <code class="inline">../</code> olmadan çalışmadığını görünüz.</li>
+      <li>Bir resmi <code class="inline">&lt;a&gt;</code> etiketi içine alarak tıklanabilir (bağlantılı) hâle getiriniz.</li>
+    </ol>
+
+    <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
+    <ul class="kaynakca">
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links" target="_blank" rel="noopener">MDN: Creating links</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_images" target="_blank" rel="noopener">MDN: HTML images</a> (İngilizce)</li>
+    </ul>
+
+    <div class="aside-card mobil">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="html-iskeleti.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">2. Hafta</span>
+        <span class="kb">HTML İskeleti ve Metin Etiketleri</span>
+      </a>
+      <a class="komsu-kart sonraki" href="listeler-ve-tablolar.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">4. Hafta</span>
+        <span class="kb">Listeler ve Tablolar</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#baglanti-link-nedir"><span class="n">1</span>Bağlantı (Link) Nedir?</a>
+      <a href="#yol-path-goreli-ve-mutlak-en-kritik-konu"><span class="n">2</span>Yol (Path): Göreli ve Mutlak (En Kritik Konu)</a>
+      <a href="#baglanti-turleri"><span class="n">3</span>Bağlantı Türleri</a>
+      <a href="#gorsel-ekleme"><span class="n">4</span>Görsel Ekleme: <code class="inline">&lt;img&gt;</code></a>
+      <a href="#resmi-baglanti-haline-getirme"><span class="n">5</span>Resmi Bağlantı Hâline Getirme</a>
+      <a href="#ornek-uc-sayfali-mini-site"><span class="n">6</span>Örnek: Üç Sayfalı Mini Site</a>
+      <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
+      <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
+      <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
+      <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p class="alt-sol"><a class="alt-ad" href="index.html">Web Arayüz Tasarımı Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="proje-yonergesi.html">Proje yönergesi</a></nav>
+  </div>
+</footer>
+
+<script src="js/vendor/highlight.min.js"></script>
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

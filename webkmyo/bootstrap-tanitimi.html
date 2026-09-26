@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Tanıtımı | Web Arayüz Tasarımı Ders Notları</title>
+<meta name="description" content="CSS framework&#x27;ün ne olduğunu öğrenmek; Bootstrap&#x27;i bilgisayardaki bir dosyadan sayfaya eklemek ve hazır menü (navbar) ile kart bileşenlerini kullanmak....">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap Tanıtımı | Web Arayüz Tasarımı Ders Notları">
+<meta property="og:description" content="CSS framework&#x27;ün ne olduğunu öğrenmek; Bootstrap&#x27;i bilgisayardaki bir dosyadan sayfaya eklemek ve hazır menü (navbar) ile kart bileşenlerini kullanmak....">
+<script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>BDT249 <span class="muted">/ Bootstrap Tanıtımı</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
+          <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
+          <a href="baglantilar-ve-gorseller.html"><span class="mh">3</span>Bağlantılar ve Görseller</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="formlar.html"><span class="mh">5</span>Formlar</a>
+          <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
+          <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
+          <a href="tasarimdan-koda.html"><span class="mh">9</span>Tasarımdan Koda</a>
+          <a href="flexbox-1.html"><span class="mh">10</span>Flexbox 1</a>
+          <a href="flexbox-2-ve-sayfa-yerlesimi.html"><span class="mh">11</span>Flexbox 2 ve Sayfa Yerleşimi</a>
+          <a href="responsive-tasarim.html"><span class="mh">12</span>Responsive Tasarım</a>
+          <a href="gecisler-ve-dokunuslar.html"><span class="mh">13</span>Geçişler ve Küçük Dokunuşlar</a>
+          <a href="bootstrap-tanitimi.html" class="etkin" aria-current="page"><span class="mh">14</span>Bootstrap Tanıtımı</a>
+        </nav>
+      </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Web &nbsp;›&nbsp; <span>Bootstrap Tanıtımı</span></div>
+
+<main class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 14. Hafta</div>
+    <h1>Bootstrap Tanıtımı</h1>
+    <p class="lede">CSS framework'ün ne olduğunu öğrenmek; <strong>Bootstrap</strong>'i bilgisayardaki bir dosyadan sayfaya eklemek ve hazır <strong>menü (navbar)</strong> ile <strong>kart</strong> bileşenlerini kullanmak. Sonunda elle yazdığınız menü ve kartın Bootstrap'teki hazır hâlini yan yana göreceksiniz.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#css-framework-nedir"><span class="n">1</span>CSS Framework Nedir?</a>
+        <a href="#bootstrap-i-sayfaya-ekleme"><span class="n">2</span>Bootstrap'i Sayfaya Ekleme</a>
+        <a href="#class-ile-bicimlendirme"><span class="n">3</span>Class ile Biçimlendirme</a>
+        <a href="#ornek-hazir-menu-ve-kart"><span class="n">4</span>Örnek: Hazır Menü ve Kart</a>
+        <a href="#elle-yazmak-ile-bootstrap-yan-yana"><span class="n">5</span>Elle Yazmak ile Bootstrap Yan Yana</a>
+        <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
+        <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
+        <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+        <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+      </nav>
+    </details>
+
+<div class="note"><span class="tag">Hatırlatma</span><p>Harici stil dosyasını <code class="inline">&lt;link&gt;</code> ile bağlamayı 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda; göreli yolu ise 3. haftada, <a href="baglantilar-ve-gorseller.html">Bağlantılar ve Görseller</a> konusunda gördük. Bootstrap da aynı yolla bağlanan bir stil dosyasıdır.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Bootstrap bu derste tanıtım olarak işlenir; final sınavı kapsamında değildir.</p></div>
+
+    <h2 id="css-framework-nedir"><span class="num">1</span>CSS Framework Nedir?</h2>
+    <p>Bir mobilyayı sıfırdan yapmak için tahtayı kesmeniz, zımparalamanız, boyamanız gerekir. Hazır parçalardan oluşan bir mobilyada ise parçalar hazırdır; siz yalnızca birleştirirsiniz. <strong>CSS framework</strong> de böyledir: menü, kart, düğme gibi sık kullanılan parçaların CSS'i <strong>önceden yazılmıştır</strong>. Siz yalnızca HTML'e doğru <strong>class</strong> adlarını verirsiniz.</p>
+    <p>En yaygın CSS framework'lerinden biri <strong>Bootstrap</strong>'tir. Bootstrap'in temeli tek bir CSS dosyasıdır (<code class="inline">bootstrap.min.css</code>); içinde yüzlerce hazır class bulunur.</p>
+    <div class="note warn"><span class="tag">Önemli</span><p>Framework hazır verir ama altında <strong>bildiğiniz CSS</strong> vardır. Örneğin Bootstrap'teki <code class="inline">d-flex</code> class'ı, arka planda 10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda öğrendiğiniz <code class="inline">display: flex</code> kuralıdır.</p></div>
+
+    <h2 id="bootstrap-i-sayfaya-ekleme"><span class="num">2</span>Bootstrap'i Sayfaya Ekleme</h2>
+    <p>Bootstrap dosyası derste USB bellekle ya da ortak klasörle dağıtılır; internet bağlantısı olan bir bilgisayarda Bootstrap'in resmî sitesinden (<code class="inline">getbootstrap.com</code>) de indirilebilir. İnternet olmayan bir bilgisayarda da çalışması için dosyayı projenizin içine koyarsınız:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Metin</span></div>
+<pre>web_sitem/
+├── index.html
+└── css/
+    └── bootstrap.min.css</pre>
+    </div>
+    <p>Sonra <code class="inline">&lt;head&gt;</code> içinde, kendi stil dosyanızı bağlar gibi bağlarsınız:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;link rel="stylesheet" href="css/bootstrap.min.css"&gt;</pre>
+    </div>
+    <p><code class="inline">href</code> içindeki <code class="inline">css/bootstrap.min.css</code> bir <strong>göreli yoldur</strong>: "bu sayfanın yanındaki <code class="inline">css</code> klasöründeki <code class="inline">bootstrap.min.css</code> dosyası" demektir.</p>
+
+    <h2 id="class-ile-bicimlendirme"><span class="num">3</span>Class ile Biçimlendirme</h2>
+    <p>Bootstrap'te CSS kuralı yazmazsınız; öğeye <strong>hazır class</strong> verirsiniz. Bu haftanın örneğinde kullanacağımız class'lar şunlardır:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Class</th><th>Ne yapar?</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">navbar</code></td><td>Menü çubuğu</td></tr>
+          <tr><td><code class="inline">navbar-expand</code></td><td>Menü bağlantılarını her ekranda <strong>yan yana</strong> dizer</td></tr>
+          <tr><td><code class="inline">bg-body-tertiary</code></td><td>Menüye açık gri arka plan verir</td></tr>
+          <tr><td><code class="inline">container-fluid</code></td><td>Menünün içeriğini sayfa genişliğinde bir kutuya alır</td></tr>
+          <tr><td><code class="inline">navbar-brand</code></td><td>Menüdeki site adı</td></tr>
+          <tr><td><code class="inline">navbar-nav</code>, <code class="inline">nav-item</code>, <code class="inline">nav-link</code></td><td>Menü listesi, liste ögesi ve bağlantı</td></tr>
+          <tr><td><code class="inline">card</code>, <code class="inline">card-body</code></td><td>Kart ve kartın iç boşluklu gövdesi</td></tr>
+          <tr><td><code class="inline">card-title</code>, <code class="inline">card-text</code></td><td>Kart başlığı ve kart yazısı</td></tr>
+          <tr><td><code class="inline">btn</code>, <code class="inline">btn-primary</code></td><td>Düğme ve mavi (ana) düğme rengi</td></tr>
+          <tr><td><code class="inline">d-flex</code></td><td><code class="inline">display: flex</code></td></tr>
+          <tr><td><code class="inline">gap-3</code>, <code class="inline">p-3</code></td><td>16 piksellik <code class="inline">gap</code> ve <code class="inline">padding</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Bir öğeye birden fazla class, aralarında <strong>boşluk</strong> bırakılarak yazılır: <code class="inline">class="btn btn-primary"</code>.</p>
+
+    <h2 id="ornek-hazir-menu-ve-kart"><span class="num">4</span>Örnek: Hazır Menü ve Kart</h2>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Bootstrap ile Menü ve Kart&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/bootstrap.min.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav class="navbar navbar-expand bg-body-tertiary"&gt;
+        &lt;div class="container-fluid"&gt;
+            &lt;a class="navbar-brand" href="#"&gt;Kahve Dünyası&lt;/a&gt;
+            &lt;ul class="navbar-nav"&gt;
+                &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Ana Sayfa&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Menü&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;İletişim&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+    &lt;div class="d-flex gap-3 p-3"&gt;
+        &lt;div class="card" style="width: 260px;"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;h5 class="card-title"&gt;Filtre Kahve&lt;/h5&gt;
+                &lt;p class="card-text"&gt;Sıcak servis edilir.&lt;/p&gt;
+                &lt;a href="#" class="btn btn-primary"&gt;Sipariş&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card" style="width: 260px;"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;h5 class="card-title"&gt;Latte&lt;/h5&gt;
+                &lt;p class="card-text"&gt;Sıcak servis edilir.&lt;/p&gt;
+                &lt;a href="#" class="btn btn-primary"&gt;Sipariş&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Tarayıcıdaki sonucu şöyledir:</p>
+    <figure class="diagram"><img alt="Bootstrap ile menü ve kart: açık gri menü çubuğu, yuvarlak köşeli iki kart ve mavi düğmeler" src="images/bootstrap_ornek.png" width="1200" height="384" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Bootstrap ile menü ve kart: açık gri menü çubuğu, yuvarlak köşeli iki kart ve mavi düğmeler</figcaption>
+    </figure>
+    <p>Sayfada tek satır CSS yazmadık (kart genişliği dışında); menü, yuvarlak köşeli kartlar ve mavi düğmeler Bootstrap'in hazır class'larından geldi. Yazı tipinin de değiştiğine dikkat edin: Bootstrap, sayfaya kendi yazı tipi ayarını getirir.</p>
+
+    <h2 id="elle-yazmak-ile-bootstrap-yan-yana"><span class="num">5</span>Elle Yazmak ile Bootstrap Yan Yana</h2>
+    <p>Aynı menü ve kartlar, soldaki sayfada 10. haftadaki (Flexbox 1) gibi <strong>elle yazılmış CSS</strong> ile, sağdaki sayfada <strong>Bootstrap</strong> ile yapıldı:</p>
+    <figure class="diagram"><img alt="Solda elle yazılmış CSS ile menü ve kartlar, sağda aynı içeriğin Bootstrap ile yapılmış hâli" src="images/elle_ve_bootstrap.png" width="1960" height="444" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Solda elle yazılmış CSS ile menü ve kartlar, sağda aynı içeriğin Bootstrap ile yapılmış hâli</figcaption>
+    </figure>
+    <div class="twrap">
+      <table>
+        <thead><tr><th></th><th>Elle yazmak</th><th>Bootstrap</th></tr></thead>
+        <tbody>
+          <tr><td>CSS'i kim yazar?</td><td>Siz</td><td>Hazır gelir</td></tr>
+          <tr><td>Hız</td><td>Yavaş</td><td>Hızlı</td></tr>
+          <tr><td>Görünüm</td><td>Tamamen sizin tasarımınız</td><td>Değiştirilmezse siteler birbirine benzer</td></tr>
+          <tr><td>Öğrenmek için</td><td>Neyin neden olduğunu anlarsınız</td><td>Altındaki CSS'i bilmeden sorun çözmek zordur</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="sikca-yapilan-5-hata"><span class="num">6</span>Sıkça Yapılan 5 Hata</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">href</code> yolunu yanlış yazmak (dosya <code class="inline">css</code> klasöründeyken <code class="inline">href="bootstrap.min.css"</code>)</td><td>Dosya bulunamaz; sayfa hiç biçimlenmez, konsolda dosyanın yüklenemediğini bildiren bir hata görünür</td><td>Yolu klasörle birlikte yazın: <code class="inline">css/bootstrap.min.css</code></td></tr>
+          <tr><td><code class="inline">&lt;link&gt;</code>'te <code class="inline">rel="stylesheet"</code> yazmamak</td><td>Dosya stil olarak yüklenmez; sayfa hiç biçimlenmez</td><td><code class="inline">rel="stylesheet"</code> ekleyin</td></tr>
+          <tr><td>Class adını yanlış yazmak (<code class="inline">btn-primery</code>)</td><td>Düğmenin mavi rengi gelmez; tarayıcı uyarı vermez</td><td>Adı doğru yazın: <code class="inline">btn-primary</code></td></tr>
+          <tr><td><code class="inline">navbar-expand</code> yazmamak</td><td>Menü bağlantıları yan yana değil, <strong>alt alta</strong> dizilir</td><td><code class="inline">navbar</code> ile birlikte <code class="inline">navbar-expand</code> yazın</td></tr>
+          <tr><td>Kendi stilinizi Bootstrap'in <code class="inline">&lt;link&gt;</code>'inden <strong>önce</strong> yazmak</td><td>Bootstrap sonra geldiği için bazı kurallarınızı ezer (örneğin <code class="inline">body</code> arka plan renginiz beyaza döner)</td><td>Kendi stilinizi Bootstrap'ten <strong>sonra</strong> yazın</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="bu-haftanin-ozeti"><span class="num">7</span>Bu Haftanın Özeti</h2>
+    <ul>
+      <li><strong>CSS framework</strong>, sık kullanılan parçaların CSS'ini hazır veren bir dosyadır; en yaygınlarından biri <strong>Bootstrap</strong>'tir.</li>
+      <li>Bootstrap, projenin içindeki <code class="inline">css/bootstrap.min.css</code> dosyası <code class="inline">&lt;link&gt;</code> ile bağlanarak eklenir; internet gerekmez.</li>
+      <li>Bootstrap'te CSS kuralı yazılmaz; öğelere <strong>hazır class</strong> verilir (<code class="inline">navbar</code>, <code class="inline">card</code>, <code class="inline">btn btn-primary</code>).</li>
+      <li>Class'ların altında bildiğiniz CSS vardır: <code class="inline">d-flex</code>, <code class="inline">display: flex</code> demektir.</li>
+      <li>Kendi stiliniz Bootstrap'ten <strong>sonra</strong> yazılmalıdır; yoksa Bootstrap sizinkini ezer.</li>
+    </ul>
+
+    <h2 id="konu-sonu-testi"><span class="num">8</span>Konu Sonu Testi</h2>
+    <ol class="quiz">
+      <li>
+        <p class="q">CSS framework nedir?</p>
+        <ul class="opts">
+          <li><b>a)</b> Bir tarayıcı türü</li>
+          <li><b>b)</b> Sık kullanılan parçaların CSS'ini hazır veren dosya</li>
+          <li><b>c)</b> Bir resim düzenleme programı</li>
+          <li><b>d)</b> HTML'in yeni sürümü</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Framework, hazır yazılmış CSS'tir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bootstrap dosyası <code class="inline">css</code> klasöründeyse <code class="inline">&lt;link&gt;</code> nasıl yazılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;link rel="stylesheet" href="css/bootstrap.min.css"&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;link href="bootstrap"&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;style src="css/bootstrap.min.css"&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;script href="css/bootstrap.min.css"&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">a</span>Harici stil <code class="inline">rel="stylesheet"</code> ve göreli yol ile bağlanır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bootstrap'te mavi bir düğme için hangi class'lar yazılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">button blue</code></li>
+          <li><b>b)</b> <code class="inline">btn btn-primary</code></li>
+          <li><b>c)</b> <code class="inline">dugme mavi</code></li>
+          <li><b>d)</b> <code class="inline">btn-blue</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span><code class="inline">btn</code> düğme biçimini, <code class="inline">btn-primary</code> mavi rengi verir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bootstrap'teki <code class="inline">d-flex</code> class'ı hangi CSS kuralına karşılık gelir?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">display: block</code></li>
+          <li><b>b)</b> <code class="inline">display: flex</code></li>
+          <li><b>c)</b> <code class="inline">float: left</code></li>
+          <li><b>d)</b> <code class="inline">text-align: center</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span><code class="inline">d-flex</code>, <code class="inline">display: flex</code> kuralıdır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Kendi <code class="inline">&lt;style&gt;</code> kurallarınız Bootstrap'in <code class="inline">&lt;link&gt;</code>'inden önce yazılırsa ne olabilir?</p>
+        <ul class="opts">
+          <li><b>a)</b> Bootstrap hiç yüklenmez</li>
+          <li><b>b)</b> Bootstrap bazı kurallarınızı ezer</li>
+          <li><b>c)</b> Sayfa açılmaz</li>
+          <li><b>d)</b> Hiçbir şey değişmez</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Sonra yazılan kural geçerli olduğu için Bootstrap sizinkini ezebilir.</div>
+        </details>
+      </li>
+    </ol>
+
+    <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> Örnekteki sayfaya "Türk Kahvesi" adlı üçüncü bir kart ekleyiniz; bu kartın düğmesi <strong>yeşil</strong> olsun.</p>
+    <p><strong>Çözüm:</strong> İkinci kartı kapatan <code class="inline">&lt;/div&gt;</code>'ten sonra, <code class="inline">d-flex</code> kutusunu kapatan <code class="inline">&lt;/div&gt;</code>'ten önce şu kart eklenir. Yeşil düğme için <code class="inline">btn-primary</code> yerine <code class="inline">btn-success</code> yazılır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">        &lt;div class="card" style="width: 260px;"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;h5 class="card-title"&gt;Türk Kahvesi&lt;/h5&gt;
+                &lt;p class="card-text"&gt;Sıcak servis edilir.&lt;/p&gt;
+                &lt;a href="#" class="btn btn-success"&gt;Sipariş&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;</pre>
+    </div>
+    <p>Adımlar:</p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe bir <code class="inline">css</code> klasörü oluşturup <code class="inline">bootstrap.min.css</code> dosyasını içine koyunuz.</li>
+      <li>Örnekteki sayfayı yazıp üçüncü kartı ekleyiniz, kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açınız; üçüncü kartın yeşil düğmesini görünüz.</li>
+    </ol>
+
+    <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
+    <p><strong>Senaryo:</strong> 10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda elle yazdığınız menüyü Bootstrap ile yeniden yapın ve iki sayfayı karşılaştırın.</p>
+    <p><strong>Yapılacaklar:</strong></p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe bir <code class="inline">css</code> klasörü oluşturun ve <code class="inline">bootstrap.min.css</code> dosyasını içine koyun.</li>
+      <li><strong><code class="inline">bootstrap_menu.html</code></strong> adında yeni bir dosya oluşturun ve <code class="inline">&lt;head&gt;</code> içinde Bootstrap'i <code class="inline">&lt;link&gt;</code> ile bağlayın.</li>
+      <li><code class="inline">navbar</code>, <code class="inline">navbar-expand</code> ve <code class="inline">bg-body-tertiary</code> class'larıyla bir menü kurun; site adını <code class="inline">navbar-brand</code> ile, bağlantıları <code class="inline">navbar-nav</code> listesiyle yazın.</li>
+      <li>Menünün altına <code class="inline">card</code> class'ıyla iki kart ekleyin; her kartta bir başlık, bir yazı ve bir <code class="inline">btn btn-primary</code> düğme olsun.</li>
+      <li>10. haftadaki (Flexbox 1) <code class="inline">navbar.html</code> dosyanızı ve yeni sayfayı iki ayrı sekmede açıp karşılaştırın.</li>
+    </ol>
+    <p><strong>Beklenen sonuç:</strong> CSS kuralı yazmadan, yalnızca class'larla biçimlenmiş bir menü ve iki kart.</p>
+    <p><strong>İpuçları:</strong> Sayfa hiç biçimlenmiyorsa önce <code class="inline">&lt;link&gt;</code>'teki yolu ve <code class="inline">rel="stylesheet"</code> yazısını kontrol edin. Birden fazla class arasına boşluk koyun.</p>
+
+    <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
+    <ul>
+      <li>Bootstrap'in resmî belgeleri İngilizcedir; her bileşenin sayfasında kopyalanabilir örnek kodlar bulunur.</li>
+      <li>Belgelerdeki menü örnekleri çoğu zaman <code class="inline">navbar-expand-lg</code> ile birlikte ayrı bir menü düğmesi (<code class="inline">navbar-toggler</code>) ve gizlenebilen bir bölüm (<code class="inline">collapse</code>) kullanır; dar ekranda bağlantılar gizlenir, yerine düğme görünür. Düğmenin çalışması için Bootstrap'in JavaScript dosyası (<code class="inline">bootstrap.bundle.min.js</code>) da sayfaya eklenmelidir. Bu haftanın örneğinde <code class="inline">navbar-expand</code> kullandığımız için JavaScript gerekmez.</li>
+      <li>Bootstrap'i kullanmak için CSS'i bilmek yine gereklidir: bir şey beklendiği gibi görünmediğinde sorunu <code class="inline">F12</code> ile incelerken karşınıza bildiğiniz CSS kuralları çıkar.</li>
+    </ul>
+
+    <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
+    <ol>
+      <li>Örnekteki düğmelerin class'ını <code class="inline">btn-primary</code> yerine <code class="inline">btn-success</code>, <code class="inline">btn-danger</code> ve <code class="inline">btn-warning</code> yapıp renkleri karşılaştırınız.</li>
+      <li>Örnekte <code class="inline">navbar-expand</code> class'ını silip menünün nasıl değiştiğini gözlemleyiniz.</li>
+    </ol>
+
+    <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
+    <ul class="kaynakca">
+      <li><a href="https://getbootstrap.com/docs/5.3/getting-started/download/" target="_blank" rel="noopener">Bootstrap: Download</a> (İngilizce)</li>
+      <li><a href="https://getbootstrap.com/docs/5.3/components/navbar/" target="_blank" rel="noopener">Bootstrap: Navbar</a> (İngilizce)</li>
+      <li><a href="https://getbootstrap.com/docs/5.3/components/card/" target="_blank" rel="noopener">Bootstrap: Cards</a> (İngilizce)</li>
+    </ul>
+
+    <div class="aside-card mobil">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="gecisler-ve-dokunuslar.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">13. Hafta</span>
+        <span class="kb">Geçişler ve Küçük Dokunuşlar</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#css-framework-nedir"><span class="n">1</span>CSS Framework Nedir?</a>
+      <a href="#bootstrap-i-sayfaya-ekleme"><span class="n">2</span>Bootstrap'i Sayfaya Ekleme</a>
+      <a href="#class-ile-bicimlendirme"><span class="n">3</span>Class ile Biçimlendirme</a>
+      <a href="#ornek-hazir-menu-ve-kart"><span class="n">4</span>Örnek: Hazır Menü ve Kart</a>
+      <a href="#elle-yazmak-ile-bootstrap-yan-yana"><span class="n">5</span>Elle Yazmak ile Bootstrap Yan Yana</a>
+      <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
+      <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
+      <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+      <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p class="alt-sol"><a class="alt-ad" href="index.html">Web Arayüz Tasarımı Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="proje-yonergesi.html">Proje yönergesi</a></nav>
+  </div>
+</footer>
+
+<script src="js/vendor/highlight.min.js"></script>
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

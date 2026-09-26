@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS Kutu Modeli | Web Arayüz Tasarımı Ders Notları</title>
+<meta name="description" content="Her HTML öğesinin bir kutu olarak nasıl ele alındığını (içerik, iç boşluk, kenarlık, dış boşluk) ve bu kutuyu width, height, padding, border, margin ile...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS Kutu Modeli | Web Arayüz Tasarımı Ders Notları">
+<meta property="og:description" content="Her HTML öğesinin bir kutu olarak nasıl ele alındığını (içerik, iç boşluk, kenarlık, dış boşluk) ve bu kutuyu width, height, padding, border, margin ile...">
+<script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>BDT249 <span class="muted">/ CSS Kutu Modeli</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
+          <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
+          <a href="baglantilar-ve-gorseller.html"><span class="mh">3</span>Bağlantılar ve Görseller</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="formlar.html"><span class="mh">5</span>Formlar</a>
+          <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
+          <a href="kutu-modeli.html" class="etkin" aria-current="page"><span class="mh">7</span>CSS Kutu Modeli</a>
+          <a href="tasarimdan-koda.html"><span class="mh">9</span>Tasarımdan Koda</a>
+          <a href="flexbox-1.html"><span class="mh">10</span>Flexbox 1</a>
+          <a href="flexbox-2-ve-sayfa-yerlesimi.html"><span class="mh">11</span>Flexbox 2 ve Sayfa Yerleşimi</a>
+          <a href="responsive-tasarim.html"><span class="mh">12</span>Responsive Tasarım</a>
+          <a href="gecisler-ve-dokunuslar.html"><span class="mh">13</span>Geçişler ve Küçük Dokunuşlar</a>
+          <a href="bootstrap-tanitimi.html"><span class="mh">14</span>Bootstrap Tanıtımı</a>
+        </nav>
+      </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Web &nbsp;›&nbsp; <span>CSS Kutu Modeli</span></div>
+
+<main class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 7. Hafta</div>
+    <h1>CSS Kutu Modeli</h1>
+    <p class="lede">Her HTML öğesinin bir <strong>kutu</strong> olarak nasıl ele alındığını (içerik, iç boşluk, kenarlık, dış boşluk) ve bu kutuyu <code class="inline">width</code>, <code class="inline">height</code>, <code class="inline">padding</code>, <code class="inline">border</code>, <code class="inline">margin</code> ile nasıl düzenlediğinizi öğrenmek. Sonunda bir <strong>kart tasarımı</strong> hazırlayacaksınız.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#kutu-modeli-nedir"><span class="n">1</span>Kutu Modeli Nedir?</a>
+        <a href="#width-ve-height-icerik-boyutu"><span class="n">2</span><code class="inline">width</code> ve <code class="inline">height</code> (İçerik Boyutu)</a>
+        <a href="#padding-ic-bosluk"><span class="n">3</span><code class="inline">padding</code> (İç Boşluk)</a>
+        <a href="#border-kenarlik"><span class="n">4</span><code class="inline">border</code> (Kenarlık)</a>
+        <a href="#margin-dis-bosluk"><span class="n">5</span><code class="inline">margin</code> (Dış Boşluk)</a>
+        <a href="#kutu-modelini-tarayicida-inceleme-devtoo"><span class="n">6</span>Kutu Modelini Tarayıcıda İnceleme (DevTools)</a>
+        <a href="#ornek-kart-tasarimi"><span class="n">7</span>Örnek: Kart Tasarımı</a>
+        <a href="#sikca-yapilan-5-hata"><span class="n">8</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#bu-haftanin-ozeti"><span class="n">9</span>Bu Haftanın Özeti</a>
+        <a href="#konu-sonu-testi"><span class="n">10</span>Konu Sonu Testi</a>
+        <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
+        <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+      </nav>
+    </details>
+
+<p>6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda, öğelere renk ve yazı tipi verdik. Ancak öğeleri sayfada <strong>konumlandırmak</strong> ve aralarında <strong>boşluk</strong> bırakmak için kutu modelini anlamamız gerekir. Kutu modeli, web tasarımının en temel ve en çok karıştırılan konusudur; bu yüzden dikkatle çalışınız.</p>
+
+    <h2 id="kutu-modeli-nedir"><span class="num">1</span>Kutu Modeli Nedir?</h2>
+    <p>CSS'e göre sayfadaki <strong>her öğe bir kutudur.</strong> Bu kutu, içten dışa dört katmandan oluşur:</p>
+    <figure class="diagram"><img alt="CSS kutu modeli: içten dışa content, padding, border ve margin katmanları" src="images/kutu_modeli.png" width="1018" height="680" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>CSS kutu modeli: içten dışa content, padding, border ve margin katmanları</figcaption>
+    </figure>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Katman</th><th>Anlamı</th></tr></thead>
+        <tbody>
+          <tr><td><strong>content (içerik)</strong></td><td>Yazının/resmin bulunduğu asıl alan.</td></tr>
+          <tr><td><strong>padding (iç boşluk)</strong></td><td>İçerik ile kenarlık arasındaki boşluk.</td></tr>
+          <tr><td><strong>border (kenarlık)</strong></td><td>Kutunun etrafındaki çizgi.</td></tr>
+          <tr><td><strong>margin (dış boşluk)</strong></td><td>Kutu ile <strong>komşu öğeler</strong> arasındaki boşluk.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Bu katmanları duvara asılı <strong>çerçeveli bir fotoğrafa</strong> benzetebiliriz: içerik = fotoğraf, padding = fotoğraf ile çerçeve arasındaki paspartu, border = çerçevenin kendisi, margin = çerçeve ile duvardaki diğer fotoğraflar arasındaki mesafe.</p>
+
+    <h2 id="width-ve-height-icerik-boyutu"><span class="num">2</span><code class="inline">width</code> ve <code class="inline">height</code> (İçerik Boyutu)</h2>
+    <p>İçeriğin genişlik ve yüksekliğini belirler. Değerler genellikle <strong>piksel (px)</strong> ile verilir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kutu {
+    width: 300px;
+    height: 150px;
+}</pre>
+    </div>
+
+    <h2 id="padding-ic-bosluk"><span class="num">3</span><code class="inline">padding</code> (İç Boşluk)</h2>
+    <p>İçerik ile kenarlık arasına boşluk koyar. İçeriğin "nefes almasını" sağlar.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kutu {
+    padding: 20px;               /* dört yöne 20px */
+    padding: 10px 20px;          /* üst-alt 10px, sağ-sol 20px */
+    padding: 10px 20px 30px;     /* üst 10px, sağ-sol 20px, alt 30px */
+    padding: 5px 10px 15px 20px; /* saat yönünde: üst, sağ, alt, sol */
+}</pre>
+    </div>
+
+    <h2 id="border-kenarlik"><span class="num">4</span><code class="inline">border</code> (Kenarlık)</h2>
+    <p>Kutunun etrafına çizgi ekler. Üç değer sırayla yazılır: <strong>kalınlık – çizgi türü – renk</strong>.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kutu {
+    border: 2px solid #333;
+}</pre>
+    </div>
+    <p>Çizgi türleri arasında <code class="inline">solid</code> (düz), <code class="inline">dashed</code> (kesik), <code class="inline">dotted</code> (noktalı) bulunur. Çizgi türünü yazmazsanız kenarlık görünmez; kalınlığı yazmazsanız tarayıcı orta kalınlıkta (3 piksel) bir çizgi çizer.</p>
+
+    <h2 id="margin-dis-bosluk"><span class="num">5</span><code class="inline">margin</code> (Dış Boşluk)</h2>
+    <p>Kutunun <strong>dışında</strong>, komşu öğelerle arasında boşluk bırakır. Yazım biçimi <code class="inline">padding</code> ile aynıdır (bir, iki, üç veya dört değer).</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kutu {
+    margin: 30px;        /* dört yöne 30px */
+    margin: 10px 20px;   /* üst-alt 10px, sağ-sol 20px */
+}</pre>
+    </div>
+    <div class="note ok"><span class="tag">İpucu</span><p>Genişliği belirli bir kutuyu sayfada <strong>yatay olarak ortalamak</strong> için <code class="inline">margin: 0 auto;</code> kullanılır. <code class="inline">auto</code>, sağ ve sol boşluğu eşitleyerek kutuyu ortaya alır.</p></div>
+    <div class="note warn"><span class="tag">Önemli (kutu büyür)</span><p>Bir kutunun ekranda kapladığı toplam genişlik yalnızca <code class="inline">width</code> değildir; <strong>padding ve border de eklenir.</strong> Örneğin <code class="inline">width: 200px</code> + <code class="inline">padding: 20px</code> + <code class="inline">border: 2px solid #333</code>, kutunun toplam genişliğini <code class="inline">244px</code> yapar (200 + iki yandan 20'şer padding + iki yandan 2'şer border). Bunu unutmak, en sık yaşanan yerleşim sorunudur. Bu hesap tarayıcının varsayılan davranışıdır; <code class="inline">box-sizing: border-box</code> yazılırsa padding ve border <code class="inline">width</code>'in içinde kalır.</p></div>
+
+    <h2 id="kutu-modelini-tarayicida-inceleme-devtoo"><span class="num">6</span>Kutu Modelini Tarayıcıda İnceleme (DevTools)</h2>
+    <p>Kutu modelini gözle görmek, anlamayı çok kolaylaştırır. Tarayıcının <strong>Geliştirici Araçları (DevTools)</strong> bunu size renkli bir şema olarak gösterir:</p>
+    <ol>
+      <li>Sayfada bir öğeye <strong>sağ tıklayın</strong> → <strong>İncele (Inspect)</strong> seçin (veya <code class="inline">F12</code> tuşuna basın).</li>
+      <li>Açılan panelde <strong>Öğeler (Elements)</strong> sekmesinde bir öğe seçin.</li>
+      <li>Sağ/alt bölümdeki <strong>kutu modeli şemasında</strong> o öğenin <code class="inline">margin</code>, <code class="inline">border</code>, <code class="inline">padding</code> ve <code class="inline">content</code> değerlerini <strong>piksel piksel</strong> görürsünüz.</li>
+    </ol>
+    <div class="note"><span class="tag">Not</span><p>Edge ve Chrome'da bu şemada katmanlar renklerle ayrılır: içerik <strong>mavi</strong>, padding <strong>yeşil</strong>, border <strong>sarı</strong>, margin <strong>turuncu</strong>. Fareyi öğe üzerine getirdiğinizde bu katmanlar sayfada da renklenir. Kutu modelini kâğıt üzerinde anlamak zor gelirse, DevTools ile canlı olarak incelemek en iyi yoldur.</p></div>
+
+    <h2 id="ornek-kart-tasarimi"><span class="num">7</span>Örnek: Kart Tasarımı</h2>
+    <p>Şimdi kutu modelini kullanarak bir <strong>kart</strong> yapalım. Kartları oluşturmak için <code class="inline">&lt;div&gt;</code> etiketini kullanacağız.</p>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;div&gt;</code>, sayfada bir <strong>bölüm/kutu</strong> oluşturan kapsayıcı etikettir; kendisi bir görünüm taşımaz, ancak kutu modeli özellikleriyle (border, padding, margin) biçimlendirilerek kart, kutu ve bölüm oluşturmak için sık kullanılır.</p></div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Kart Tasarımı&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: #eef1f4;
+            font-family: Arial, sans-serif;
+        }
+        .kart {
+            width: 260px;
+            background-color: white;
+            border: 1px solid #d0d0d0;
+            padding: 20px;
+            margin: 30px;
+        }
+        .kart h2 {
+            color: #2c3e50;
+        }
+        .kart p {
+            color: #555;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="kart"&gt;
+        &lt;h2&gt;Ahmet Yılmaz&lt;/h2&gt;
+        &lt;p&gt;Web Tasarım Öğrencisi&lt;/p&gt;
+        &lt;p&gt;ahmet@mail.com&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Kaydedip Go Live ile açtığınızda tarayıcıda şu sonucu görürsünüz:</p>
+    <figure class="diagram"><img alt="Kart tasarımının tarayıcı çıktısı: gri zemin üzerinde kenarlıklı, iç boşluklu beyaz bir kart" src="images/kart_tasarimi.png" width="1200" height="393" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Kart tasarımının tarayıcı çıktısı: gri zemin üzerinde kenarlıklı, iç boşluklu beyaz bir kart</figcaption>
+    </figure>
+    <p>Dikkat ediniz: <code class="inline">padding</code> sayesinde yazılar kenarlığa yapışmadı; <code class="inline">border</code> kartı çerçeveledi; <code class="inline">margin</code> ise kartı sayfanın kenarından ve diğer öğelerden uzaklaştırdı.</p>
+    <div class="note"><span class="tag">Not</span><p>CSS'teki <code class="inline">.kart h2</code> yazımında iki seçici arasında boşluk vardır. Bu, "<code class="inline">.kart</code> class'lı öğenin <strong>içindeki</strong> <code class="inline">h2</code>'ler" demektir; sayfadaki diğer <code class="inline">h2</code>'ler etkilenmez.</p></div>
+
+    <h2 id="sikca-yapilan-5-hata"><span class="num">8</span>Sıkça Yapılan 5 Hata</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">padding</code> ile <code class="inline">margin</code>'i karıştırmak</td><td>Boşluklar yanlış yere gelir</td><td>padding = iç (kenarlık içi), margin = dış (kenarlık dışı)</td></tr>
+          <tr><td><code class="inline">border</code>'da çizgi türü (<code class="inline">solid</code>) yazmamak</td><td>Kenarlık görünmez</td><td><code class="inline">border: 1px solid #333;</code> biçiminde yazın</td></tr>
+          <tr><td>Boyuta birim (<code class="inline">px</code>) yazmamak</td><td><code class="inline">width: 260</code> çalışmaz</td><td>Değerlere birim ekleyin: <code class="inline">260px</code></td></tr>
+          <tr><td><code class="inline">padding</code>/<code class="inline">margin</code> kısayol sırasını şaşırmak</td><td>Boşluklar beklenenden farklı</td><td>Sıra saat yönünde: üst, sağ, alt, sol</td></tr>
+          <tr><td>Toplam genişliği yanlış hesaplamak</td><td>Kutu taşar/beklenenden geniştir</td><td><code class="inline">width</code> + padding + border toplamını göz önünde tutun</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="bu-haftanin-ozeti"><span class="num">9</span>Bu Haftanın Özeti</h2>
+    <ul>
+      <li>CSS'e göre her öğe bir <strong>kutudur</strong>; içten dışa: <strong>content → padding → border → margin</strong>.</li>
+      <li><strong><code class="inline">width</code>/<code class="inline">height</code></strong> içerik boyutunu, <strong><code class="inline">padding</code></strong> iç boşluğu (içerik–kenarlık arası), <strong><code class="inline">border</code></strong> kenarlığı, <strong><code class="inline">margin</code></strong> dış boşluğu (komşu öğelerle arası) belirler.</li>
+      <li><code class="inline">padding</code> ve <code class="inline">margin</code> bir, iki, üç veya dört değerle yazılır (dört değerde sıra saat yönünde: üst, sağ, alt, sol).</li>
+      <li><code class="inline">border</code> üç değerle yazılır: <strong>kalınlık – çizgi türü – renk</strong> (<code class="inline">1px solid #333</code>).</li>
+      <li>Kutunun toplam genişliği <code class="inline">width</code> + padding + border kadardır; <strong>padding ve border kutuyu büyütür</strong>.</li>
+      <li>Kutu modelini <strong>DevTools</strong> (<code class="inline">F12</code> → İncele) ile canlı ve renkli olarak inceleyebilirsiniz.</li>
+    </ul>
+
+    <h2 id="konu-sonu-testi"><span class="num">10</span>Konu Sonu Testi</h2>
+    <ol class="quiz">
+      <li>
+        <p class="q">Kutu modelinde <strong>en içteki</strong> katman hangisidir?</p>
+        <ul class="opts">
+          <li><b>a)</b> margin</li>
+          <li><b>b)</b> border</li>
+          <li><b>c)</b> padding</li>
+          <li><b>d)</b> content</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">d</span>En içte <strong>content (içerik)</strong> bulunur; dıştan içe margin, border, padding, content.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">İçerik ile kenarlık arasındaki <strong>iç boşluğu</strong> hangi özellik belirler?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">margin</code></li>
+          <li><b>b)</b> <code class="inline">padding</code></li>
+          <li><b>c)</b> <code class="inline">border</code></li>
+          <li><b>d)</b> <code class="inline">width</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>İç boşluğu <code class="inline">padding</code> belirler.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q"><code class="inline">border: 2px solid red;</code> kuralında <code class="inline">2px</code> neyi belirtir?</p>
+        <ul class="opts">
+          <li><b>a)</b> Kenarlık rengini</li>
+          <li><b>b)</b> Çizgi türünü</li>
+          <li><b>c)</b> Kenarlık kalınlığını</li>
+          <li><b>d)</b> İç boşluğu</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>İlk değer kenarlık kalınlığıdır (<code class="inline">2px</code>).</div>
+        </details>
+      </li>
+      <li>
+        <p class="q"><code class="inline">margin: 10px 20px;</code> kuralında <code class="inline">20px</code> hangi kenarlar için geçerlidir?</p>
+        <ul class="opts">
+          <li><b>a)</b> Üst ve alt</li>
+          <li><b>b)</b> Sağ ve sol</li>
+          <li><b>c)</b> Yalnızca üst</li>
+          <li><b>d)</b> Dört kenar</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>İki değerde ikinci değer sağ ve sol kenarları temsil eder.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q"><code class="inline">width: 200px</code> olan bir kutuya <code class="inline">padding: 20px</code> ve <code class="inline">border: 2px solid #333</code> eklenirse kutunun <strong>toplam genişliği</strong> ne olur?</p>
+        <ul class="opts">
+          <li><b>a)</b> 200px</li>
+          <li><b>b)</b> 220px</li>
+          <li><b>c)</b> 244px</li>
+          <li><b>d)</b> 180px</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>200 + (2×20) padding + (2×2) border = 244px; padding ve border kutuyu büyütür.</div>
+        </details>
+      </li>
+    </ol>
+
+    <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> Kutu modelini kullanarak basit bir <strong>ürün kartı</strong> hazırlayınız. Kartın kenarlığı, iç boşluğu ve dış boşluğu olsun; içeriği ortalanmış olsun.</p>
+    <p><strong>Çözüm:</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Ürün Kartı&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .urun {
+            width: 200px;
+            background-color: white;
+            border: 2px solid #3498db;
+            padding: 15px;
+            margin: 20px;
+            text-align: center;
+        }
+        .urun h3 {
+            color: #2c3e50;
+        }
+        .urun .fiyat {
+            color: #27ae60;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="urun"&gt;
+        &lt;h3&gt;Filtre Kahve&lt;/h3&gt;
+        &lt;p class="fiyat"&gt;45 TL&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Adımlar:</p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturunuz.</li>
+      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live ile açınız; ardından <code class="inline">F12</code> ile kartı <strong>İncele</strong> yapıp kutu modeli şemasında <code class="inline">padding</code>, <code class="inline">border</code> ve <code class="inline">margin</code> değerlerini gözlemleyiniz.</li>
+    </ol>
+
+    <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
+    <p><strong>Senaryo:</strong> Kutu modelini kullanarak temiz bir <strong>profil kartı</strong> tasarlayın.</p>
+    <p><strong>Yapılacaklar:</strong></p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">kart_uygulama.html</code></strong> adında yeni bir dosya oluşturun.</li>
+      <li><code class="inline">&lt;body&gt;</code> içine bir <code class="inline">&lt;div class="kart"&gt;</code> koyun; içine bir başlık (<code class="inline">&lt;h2&gt;</code>) ve iki paragraf (<code class="inline">&lt;p&gt;</code>) yazın.</li>
+      <li><code class="inline">.kart</code> için CSS'te: bir <code class="inline">width</code>, bir <code class="inline">border</code>, bir <code class="inline">padding</code> ve bir <code class="inline">margin</code> tanımlayın.</li>
+      <li><code class="inline">body</code>'ye açık gri, <code class="inline">.kart</code>'a beyaz bir <strong>arka plan rengi</strong> verin.</li>
+      <li><code class="inline">F12</code> ile kartı <strong>İncele</strong> yapıp kutu modeli şemasında <code class="inline">padding</code>, <code class="inline">border</code> ve <code class="inline">margin</code> değerlerini görün.</li>
+    </ol>
+    <p><strong>Beklenen sonuç:</strong> Gri zemin üzerinde; kenarlıklı, iç boşluklu ve sayfadan margin ile ayrık, düzenli bir kart.</p>
+    <p><strong>İpuçları:</strong> <code class="inline">border</code>'da kalınlık–tür–renk sırasını (<code class="inline">1px solid #ccc</code>) yazın. Unutmayın: <code class="inline">margin</code> dış boşluk, <code class="inline">padding</code> iç boşluktur.</p>
+
+    <h2 id="notlar-ve-ipuclari"><span class="num">13</span>Notlar ve İpuçları</h2>
+    <ul>
+      <li>Tarayıcı <code class="inline">body</code>'ye varsayılan olarak 8 piksel <code class="inline">margin</code> verir. Sayfanın kenarındaki küçük boşluğun sebebi budur; <code class="inline">body { margin: 0; }</code> ile kaldırılabilir.</li>
+      <li><code class="inline">margin: 0 auto;</code> ile ortalama için kutunun bir <code class="inline">width</code> değeri olmalıdır. Genişlik verilmezse kutu zaten satırın tamamını kaplar ve ortalanmış görünmez.</li>
+    </ul>
+
+    <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>
+    <ol>
+      <li>Bir <code class="inline">&lt;div&gt;</code>'e <code class="inline">border</code> ekleyip kalınlık, tür (<code class="inline">solid</code>/<code class="inline">dashed</code>) ve rengini değiştiriniz.</li>
+      <li>Aynı <code class="inline">&lt;div&gt;</code>'e <code class="inline">padding</code> ekleyip içeriğin kenarlıktan uzaklaştığını gözlemleyiniz.</li>
+      <li><code class="inline">margin</code> değerini artırıp kutunun diğer öğelerden nasıl uzaklaştığını görünüz.</li>
+      <li><code class="inline">width</code> ve <code class="inline">height</code> vererek kutunun boyutunu sabitleyiniz.</li>
+      <li><code class="inline">margin: 0 auto;</code> kullanarak genişliği belirli bir kutuyu sayfada ortalayınız.</li>
+      <li><code class="inline">F12</code> ile herhangi bir web sitesini açıp bir öğenin kutu modeli şemasını inceleyiniz.</li>
+    </ol>
+
+    <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
+    <ul class="kaynakca">
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model" target="_blank" rel="noopener">MDN: The box model</a> (İngilizce)</li>
+      <li><a href="https://developer.chrome.com/docs/devtools/css/reference" target="_blank" rel="noopener">Chrome DevTools: CSS features reference</a> (İngilizce)</li>
+    </ul>
+
+    <div class="aside-card mobil">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="css-giris.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">6. Hafta</span>
+        <span class="kb">CSS'e Giriş</span>
+      </a>
+      <a class="komsu-kart sonraki" href="tasarimdan-koda.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">9. Hafta</span>
+        <span class="kb">Tasarımdan Koda</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#kutu-modeli-nedir"><span class="n">1</span>Kutu Modeli Nedir?</a>
+      <a href="#width-ve-height-icerik-boyutu"><span class="n">2</span><code class="inline">width</code> ve <code class="inline">height</code> (İçerik Boyutu)</a>
+      <a href="#padding-ic-bosluk"><span class="n">3</span><code class="inline">padding</code> (İç Boşluk)</a>
+      <a href="#border-kenarlik"><span class="n">4</span><code class="inline">border</code> (Kenarlık)</a>
+      <a href="#margin-dis-bosluk"><span class="n">5</span><code class="inline">margin</code> (Dış Boşluk)</a>
+      <a href="#kutu-modelini-tarayicida-inceleme-devtoo"><span class="n">6</span>Kutu Modelini Tarayıcıda İnceleme (DevTools)</a>
+      <a href="#ornek-kart-tasarimi"><span class="n">7</span>Örnek: Kart Tasarımı</a>
+      <a href="#sikca-yapilan-5-hata"><span class="n">8</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#bu-haftanin-ozeti"><span class="n">9</span>Bu Haftanın Özeti</a>
+      <a href="#konu-sonu-testi"><span class="n">10</span>Konu Sonu Testi</a>
+      <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
+      <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p class="alt-sol"><a class="alt-ad" href="index.html">Web Arayüz Tasarımı Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="proje-yonergesi.html">Proje yönergesi</a></nav>
+  </div>
+</footer>
+
+<script src="js/vendor/highlight.min.js"></script>
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

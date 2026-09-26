@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formlar | Web Arayüz Tasarımı Ders Notları</title>
+<meta name="description" content="Kullanıcıdan bilgi toplayan form ögelerini (&lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;button&gt;) tanımak ve bunları bir araya getirerek bir iletişim formu...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Formlar | Web Arayüz Tasarımı Ders Notları">
+<meta property="og:description" content="Kullanıcıdan bilgi toplayan form ögelerini (&lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;button&gt;) tanımak ve bunları bir araya getirerek bir iletişim formu...">
+<script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>BDT249 <span class="muted">/ Formlar</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
+          <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
+          <a href="baglantilar-ve-gorseller.html"><span class="mh">3</span>Bağlantılar ve Görseller</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="formlar.html" class="etkin" aria-current="page"><span class="mh">5</span>Formlar</a>
+          <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
+          <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
+          <a href="tasarimdan-koda.html"><span class="mh">9</span>Tasarımdan Koda</a>
+          <a href="flexbox-1.html"><span class="mh">10</span>Flexbox 1</a>
+          <a href="flexbox-2-ve-sayfa-yerlesimi.html"><span class="mh">11</span>Flexbox 2 ve Sayfa Yerleşimi</a>
+          <a href="responsive-tasarim.html"><span class="mh">12</span>Responsive Tasarım</a>
+          <a href="gecisler-ve-dokunuslar.html"><span class="mh">13</span>Geçişler ve Küçük Dokunuşlar</a>
+          <a href="bootstrap-tanitimi.html"><span class="mh">14</span>Bootstrap Tanıtımı</a>
+        </nav>
+      </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Web &nbsp;›&nbsp; <span>Formlar</span></div>
+
+<main class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 5. Hafta</div>
+    <h1>Formlar</h1>
+    <p class="lede">Kullanıcıdan bilgi toplayan <strong>form</strong> ögelerini (<code class="inline">&lt;input&gt;</code>, <code class="inline">&lt;label&gt;</code>, <code class="inline">&lt;select&gt;</code>, <code class="inline">&lt;textarea&gt;</code>, <code class="inline">&lt;button&gt;</code>) tanımak ve bunları bir araya getirerek bir <strong>iletişim formu</strong> hazırlamak.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#form-nedir"><span class="n">1</span>Form Nedir?</a>
+        <a href="#form-ogeleri"><span class="n">2</span>Form Ögeleri</a>
+        <a href="#ornek-iletisim-formu"><span class="n">3</span>Örnek: İletişim Formu</a>
+        <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
+        <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
+        <a href="#uygulamalar"><span class="n">7</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">8</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">9</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">10</span>Çalışma Soruları</a>
+        <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+      </nav>
+    </details>
+
+<p>1-4. haftalarda sayfada bilgi <strong>gösterdik</strong>. Bu hafta ise kullanıcıdan bilgi <strong>alacağız</strong>: ad, e-posta, mesaj gibi. Bunun için <strong>formları</strong> kullanırız. Formlar; iletişim sayfaları, kayıt ekranları ve arama kutularının temelidir.</p>
+    <div class="note warn"><span class="tag">Önemli</span><p>Bir formun girdiği bilgiyi işlemesi (kaydetmesi, e-posta göndermesi) için bir <strong>sunucu tarafı (backend)</strong> gerekir. Bu derste backend yoktur; bu yüzden "Gönder" düğmesine bastığınızda veri hiçbir yere kaydedilmez. <strong>Amacımız formu doğru kodlamak ve görünümünü oluşturmaktır</strong>; çalışması beklenmez.</p></div>
+
+    <h2 id="form-nedir"><span class="num">1</span>Form Nedir?</h2>
+    <p>Tüm form ögeleri <code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code> etiketleri arasında bulunur.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;form&gt;
+    &lt;!-- Form ögeleri (input, select, button ...) buraya yazılır --&gt;
+&lt;/form&gt;</pre>
+    </div>
+    <p><code class="inline">&lt;form&gt;</code> etiketinin iki bilgilendirici özelliği vardır (backend olduğunda işe yararlar):</p>
+    <ul>
+      <li><code class="inline">action</code> → verinin <strong>nereye</strong> gönderileceği (bir sunucu adresi).</li>
+      <li><code class="inline">method</code> → <strong>nasıl</strong> gönderileceği: <code class="inline">get</code> (adres çubuğunda görünür, arama gibi) veya <code class="inline">post</code> (adres çubuğunda görünmez, şifre gibi bilgiler için).</li>
+    </ul>
+    <p>Bu derste backend olmadığı için <code class="inline">action</code>/<code class="inline">method</code> yazmadan da form ögelerini görebilirsiniz.</p>
+    <h3 id="gonderim-yontemi-get-ve-post">1.1. Gönderim Yöntemi: GET ve POST</h3>
+    <p>Form gönderildiğinde veriler sunucuya iki farklı yöntemle iletilebilir. Yöntem, <code class="inline">&lt;form&gt;</code> etiketinin <code class="inline">method</code> özelliği ile belirlenir.</p>
+    <p><strong>GET yöntemi:</strong> Veriler <strong>adresin (URL) sonuna</strong> eklenerek gönderilir; bu yüzden adres çubuğunda <strong>görünür</strong>. Az miktarda ve gizli olmayan veriler için uygundur; en yaygın örneği bir <strong>arama kutusudur</strong>.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;form action="arama.php" method="get"&gt;
+    &lt;input type="text" name="arama" placeholder="Ara..."&gt;
+    &lt;button type="submit"&gt;Ara&lt;/button&gt;
+&lt;/form&gt;</pre>
+    </div>
+    <p>Kullanıcı "kalem" yazıp gönderdiğinde adres şuna benzer olur: <code class="inline">arama.php?arama=kalem</code>. Girilen değer URL'de açıkça görülür.</p>
+    <p><strong>POST yöntemi:</strong> Veriler adreste <strong>görünmez</strong>, isteğin gövdesinde gönderilir. Şifre gibi <strong>hassas</strong> veya çok miktarda veri için kullanılır. En yaygın örneği bir <strong>giriş (login) formudur</strong>.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;form action="giris.php" method="post"&gt;
+    &lt;input type="password" name="sifre"&gt;
+    &lt;button type="submit"&gt;Giriş Yap&lt;/button&gt;
+&lt;/form&gt;</pre>
+    </div>
+    <p>İki yöntemin karşılaştırması:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Özellik</th><th>GET</th><th>POST</th></tr></thead>
+        <tbody>
+          <tr><td>Veri nerede?</td><td>Adres çubuğunda (URL'de) görünür</td><td>Adreste görünmez</td></tr>
+          <tr><td>Güvenlik</td><td>Düşük (herkes görebilir)</td><td>Adreste görünmez; asıl koruma HTTPS ile sağlanır</td></tr>
+          <tr><td>Veri miktarı</td><td>Sınırlı</td><td>Fazla veri gönderilebilir</td></tr>
+          <tr><td>Tipik kullanım</td><td>Arama, filtreleme</td><td>Şifre, giriş, kayıt</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn"><span class="tag">Dikkat</span><p>POST verileri gizlemez ya da şifrelemez; yalnızca adres çubuğunda göstermez. Verileri yolda koruyan, adresi <code class="inline">https://</code> ile başlayan güvenli bağlantıdır (HTTPS).</p></div>
+    <div class="note"><span class="tag">Not</span><p>GET ve POST'un asıl işini yapabilmesi için <code class="inline">action</code> ile belirtilen sunucu tarafı dosyanın (örneğin <code class="inline">.php</code>) çalışıyor olması gerekir. Bu derste backend olmadığından bu dosyalar yoktur; yöntemler burada yalnızca <strong>kavram olarak</strong> öğretilmektedir.</p></div>
+
+    <h2 id="form-ogeleri"><span class="num">2</span>Form Ögeleri</h2>
+    <p>Aşağıda en sık kullanılan form ögelerinin görünümü verilmiştir:</p>
+    <figure class="diagram"><img alt="Metin kutusu, e-posta, açılır liste, çok satırlı metin, onay kutusu, radyo düğmesi ve düğme örnekleri" src="images/form_ogeleri.png" width="930" height="477" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Metin kutusu, e-posta, açılır liste, çok satırlı metin, onay kutusu, radyo düğmesi ve düğme örnekleri</figcaption>
+    </figure>
+    <h3 id="metin-ve-diger-girisler">2.1. Metin ve Diğer Girişler: <code class="inline">&lt;input&gt;</code></h3>
+    <p><code class="inline">&lt;input&gt;</code> tek (kapanışsız) bir etikettir. Ne tür veri isteneceği <code class="inline">type</code> özelliği ile belirlenir:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th><code class="inline">type</code> değeri</th><th>Ne için kullanılır</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">text</code></td><td>Kısa metin (ad, şehir)</td></tr>
+          <tr><td><code class="inline">email</code></td><td>E-posta adresi</td></tr>
+          <tr><td><code class="inline">password</code></td><td>Şifre (noktalarla gizlenir)</td></tr>
+          <tr><td><code class="inline">number</code></td><td>Sayı (yaş, adet)</td></tr>
+          <tr><td><code class="inline">date</code></td><td>Tarih seçici</td></tr>
+          <tr><td><code class="inline">tel</code></td><td>Telefon numarası</td></tr>
+          <tr><td><code class="inline">checkbox</code></td><td>Onay kutusu (birden fazla seçilebilir)</td></tr>
+          <tr><td><code class="inline">radio</code></td><td>Tek seçim (gruptan yalnızca biri)</td></tr>
+          <tr><td><code class="inline">submit</code></td><td>Gönder düğmesi</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;input type="text" name="ad" placeholder="Adınızı yazınız"&gt;</pre>
+    </div>
+    <ul>
+      <li><code class="inline">name</code> → verinin adı (backend'de bu adla tanınır).</li>
+      <li><code class="inline">placeholder</code> → alan boşken görünen soluk ipucu metni.</li>
+    </ul>
+    <h3 id="etiket">2.2. Etiket: <code class="inline">&lt;label&gt;</code></h3>
+    <p><code class="inline">&lt;label&gt;</code>, bir form alanının <strong>adını/açıklamasını</strong> yazar. <code class="inline">for</code> özelliği, etiketin hangi alana ait olduğunu belirtir; bu değer, ilgili alanın <code class="inline">id</code>'si ile <strong>aynı</strong> olmalıdır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;label for="ad"&gt;Ad Soyad:&lt;/label&gt;
+&lt;input type="text" id="ad" name="ad"&gt;</pre>
+    </div>
+    <div class="note"><span class="tag">Neden önemli?</span><p><code class="inline">for</code> ile <code class="inline">id</code> eşleşince, <strong>etikete tıklamak</strong> ilgili alanı seçer (özellikle küçük onay kutularında kolaylık sağlar) ve görme engelli kullanıcılar için alan sesli okunur. Her alana bir <code class="inline">&lt;label&gt;</code> yazmak iyi bir alışkanlıktır.</p></div>
+    <h3 id="acilir-liste-ve">2.3. Açılır Liste: <code class="inline">&lt;select&gt;</code> ve <code class="inline">&lt;option&gt;</code></h3>
+    <p>Hazır seçeneklerden birini seçtirmek için <code class="inline">&lt;select&gt;</code> kullanılır; her seçenek bir <code class="inline">&lt;option&gt;</code>'dır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;select name="sehir"&gt;
+    &lt;option&gt;Adana&lt;/option&gt;
+    &lt;option&gt;Ankara&lt;/option&gt;
+    &lt;option&gt;İstanbul&lt;/option&gt;
+&lt;/select&gt;</pre>
+    </div>
+    <h3 id="cok-satirli-metin">2.4. Çok Satırlı Metin: <code class="inline">&lt;textarea&gt;</code></h3>
+    <p>Uzun metinler (mesaj, açıklama) için <code class="inline">&lt;textarea&gt;</code> kullanılır. <code class="inline">rows</code> satır, <code class="inline">cols</code> sütun sayısını (yaklaşık boyut) belirtir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;textarea name="mesaj" rows="4" cols="30"&gt;&lt;/textarea&gt;</pre>
+    </div>
+    <h3 id="onay-kutusu-ve-radyo-dugmesi">2.5. Onay Kutusu ve Radyo Düğmesi</h3>
+    <ul>
+      <li><strong>Onay kutusu (<code class="inline">checkbox</code>)</strong>: Birden fazla seçenek işaretlenebilir.</li>
+      <li><strong>Radyo düğmesi (<code class="inline">radio</code>)</strong>: Bir gruptan yalnızca biri seçilir. Aynı gruba ait radyo düğmelerinin <strong><code class="inline">name</code> değeri aynı</strong> olmalıdır.</li>
+    </ul>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;input type="radio" id="erkek" name="cinsiyet" value="erkek"&gt;
+&lt;label for="erkek"&gt;Erkek&lt;/label&gt;
+
+&lt;input type="radio" id="kadin" name="cinsiyet" value="kadin"&gt;
+&lt;label for="kadin"&gt;Kadın&lt;/label&gt;</pre>
+    </div>
+    <div class="note warn"><span class="tag">Kural</span><p>Radyo düğmelerine <strong>aynı <code class="inline">name</code></strong> verilmezse hepsi ayrı ayrı seçilebilir ve "tek seçim" özelliği çalışmaz.</p></div>
+    <h3 id="dugmeler">2.6. Düğmeler: <code class="inline">&lt;button&gt;</code></h3>
+    <ul>
+      <li><code class="inline">type="submit"</code> → formu gönderir. Formda <code class="inline">action</code> yazmadığımız için form aynı sayfaya gönderilir: sayfa yeniden açılır ve yazdıklarınız adres çubuğunda görünür.</li>
+      <li><code class="inline">type="reset"</code> → formdaki tüm alanları temizler.</li>
+    </ul>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;button type="submit"&gt;Gönder&lt;/button&gt;
+&lt;button type="reset"&gt;Temizle&lt;/button&gt;</pre>
+    </div>
+
+    <h2 id="ornek-iletisim-formu"><span class="num">3</span>Örnek: İletişim Formu</h2>
+    <p>Şimdi bu haftanın çıktısını hazırlayalım. Aşağıdaki form; ad, e-posta, konu (açılır liste), mesaj ve bir onay kutusu içerir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;İletişim Formu&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;İletişim Formu&lt;/h1&gt;
+    &lt;form&gt;
+        &lt;label for="ad"&gt;Ad Soyad:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="text" id="ad" name="ad" placeholder="Adınızı yazınız"&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;label for="eposta"&gt;E-posta:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="email" id="eposta" name="eposta" placeholder="ornek@mail.com"&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;label for="konu"&gt;Konu:&lt;/label&gt;&lt;br&gt;
+        &lt;select id="konu" name="konu"&gt;
+            &lt;option&gt;Genel&lt;/option&gt;
+            &lt;option&gt;Şikayet&lt;/option&gt;
+            &lt;option&gt;Öneri&lt;/option&gt;
+        &lt;/select&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;label for="mesaj"&gt;Mesajınız:&lt;/label&gt;&lt;br&gt;
+        &lt;textarea id="mesaj" name="mesaj" rows="4" cols="30"&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;input type="checkbox" id="onay" name="onay"&gt;
+        &lt;label for="onay"&gt;Bilgilerimin işlenmesini onaylıyorum.&lt;/label&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;button type="submit"&gt;Gönder&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Kaydedip Go Live ile açtığınızda tarayıcıda şu sonucu görürsünüz:</p>
+    <figure class="diagram"><img alt="İletişim formunun tarayıcı çıktısı: ad, e-posta, konu, mesaj alanları, onay kutusu ve Gönder düğmesi" src="images/iletisim_formu_ciktisi.png" width="1200" height="657" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>İletişim formunun tarayıcı çıktısı: ad, e-posta, konu, mesaj alanları, onay kutusu ve Gönder düğmesi</figcaption>
+    </figure>
+    <div class="note"><span class="tag">Hatırlatma</span><p>Formda <code class="inline">action</code> olmadığı için "Gönder" düğmesine bastığınızda form aynı sayfaya gönderilir: sayfa yeniden açılır ve yazdıklarınız adres çubuğunda görünür (<code class="inline">?ad=Ali&amp;...</code>). Veri hiçbir yere kaydedilmez, çünkü arkada veriyi işleyen bir program (backend) yoktur. Bu haftalık amaç, formun <strong>görünmesi ve doğru kodlanmasıdır.</strong></p></div>
+
+    <h2 id="sikca-yapilan-5-hata"><span class="num">4</span>Sıkça Yapılan 5 Hata</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">&lt;label for="..."&gt;</code> ile <code class="inline">id</code>'yi eşleştirmemek</td><td>Etikete tıklayınca alan seçilmez</td><td><code class="inline">for</code> ve <code class="inline">id</code> değerlerini aynı yapın</td></tr>
+          <tr><td>Radyo düğmelerine aynı <code class="inline">name</code>'i vermemek</td><td>Hepsi ayrı seçilir, tek seçim olmaz</td><td>Aynı gruptaki radyolara aynı <code class="inline">name</code> verin</td></tr>
+          <tr><td><code class="inline">&lt;select&gt;</code> içine <code class="inline">&lt;option&gt;</code> koymamak</td><td>Açılır liste boş görünür</td><td>Her seçenek için bir <code class="inline">&lt;option&gt;</code> ekleyin</td></tr>
+          <tr><td><code class="inline">&lt;textarea&gt;</code> etiketini kapatmamak</td><td>Sonraki bütün kodlar kutunun içinde yazı olarak görünür</td><td><code class="inline">&lt;textarea&gt;</code> mutlaka <code class="inline">&lt;/textarea&gt;</code> ile kapatılır</td></tr>
+          <tr><td>Alanlara <code class="inline">name</code> vermemek</td><td>Alanın verisi hiç gönderilmez</td><td>Her form alanına <code class="inline">name</code> yazın</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="bu-haftanin-ozeti"><span class="num">5</span>Bu Haftanın Özeti</h2>
+    <ul>
+      <li>Tüm form ögeleri <strong><code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code></strong> arasında bulunur; <code class="inline">action</code> ve <code class="inline">method</code> verinin nereye/nasıl gideceğini belirtir (backend gerektirir).</li>
+      <li><strong>GET</strong> verileri adres çubuğunda (URL'de) gösterir ve az/gizli olmayan veriler (arama) için; <strong>POST</strong> verileri adres çubuğunda göstermez ve hassas/çok veri (şifre, giriş) için kullanılır.</li>
+      <li><strong><code class="inline">&lt;input&gt;</code></strong> tek etikettir; <code class="inline">type</code> ile türü belirlenir: <code class="inline">text</code>, <code class="inline">email</code>, <code class="inline">password</code>, <code class="inline">number</code>, <code class="inline">date</code>, <code class="inline">checkbox</code>, <code class="inline">radio</code>, <code class="inline">submit</code> ...</li>
+      <li><strong><code class="inline">&lt;label&gt;</code></strong>, alanın adını yazar; <code class="inline">for</code> değeri alanın <code class="inline">id</code>'si ile aynı olmalıdır.</li>
+      <li><strong><code class="inline">&lt;select&gt;</code>/<code class="inline">&lt;option&gt;</code></strong> açılır liste, <strong><code class="inline">&lt;textarea&gt;</code></strong> çok satırlı metin, <strong><code class="inline">&lt;button&gt;</code></strong> düğme oluşturur.</li>
+      <li>Radyo düğmelerinde <strong>aynı <code class="inline">name</code></strong> ile grup oluşturulur; gruptan yalnızca biri seçilir.</li>
+      <li>Bu derste <strong>backend yoktur</strong>; veri hiçbir yere kaydedilmez, amaç formun doğru kodlanıp görüntülenmesidir.</li>
+    </ul>
+
+    <h2 id="konu-sonu-testi"><span class="num">6</span>Konu Sonu Testi</h2>
+    <ol class="quiz">
+      <li>
+        <p class="q">Tüm form ögeleri hangi etiketin içine yazılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;input&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;form&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;label&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;body&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Tüm form ögeleri <code class="inline">&lt;form&gt;</code> içinde yer alır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bir form alanının adını/açıklamasını yazmak için hangi etiket kullanılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;title&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;option&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;label&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;p&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>Alan adını <code class="inline">&lt;label&gt;</code> yazar; <code class="inline">for</code> ile alana bağlanır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Hazır seçeneklerden birini seçtiren <strong>açılır liste</strong> hangi etikettir?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;ul&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;select&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;textarea&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;input&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Açılır liste <code class="inline">&lt;select&gt;</code> ile oluşturulur; seçenekler <code class="inline">&lt;option&gt;</code>'dır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Radyo düğmelerinin <strong>aynı gruba</strong> ait olması için hangi özelliği aynı olmalıdır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">id</code></li>
+          <li><b>b)</b> <code class="inline">type</code></li>
+          <li><b>c)</b> <code class="inline">name</code></li>
+          <li><b>d)</b> <code class="inline">value</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>Aynı gruptaki radyo düğmelerinin <code class="inline">name</code> değeri aynı olmalıdır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Girilen verilerin adres çubuğunda görünmemesi istenen (şifre gibi hassas) durumlarda hangi gönderim yöntemi tercih edilir?</p>
+        <ul class="opts">
+          <li><b>a)</b> GET</li>
+          <li><b>b)</b> POST</li>
+          <li><b>c)</b> <code class="inline">text</code></li>
+          <li><b>d)</b> <code class="inline">label</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>POST verileri URL'de göstermez; GET ise adres çubuğunda açıkça gösterir.</div>
+        </details>
+      </li>
+    </ol>
+
+    <h2 id="uygulamalar"><span class="num">7</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> Basit bir <strong>üyelik formu</strong> hazırlayınız. Ad, e-posta ve şifre alanları, cinsiyet için iki radyo düğmesi ve bir "Kayıt Ol" düğmesi bulunsun.</p>
+    <p><strong>Çözüm:</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Üyelik Formu&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Üyelik Formu&lt;/h1&gt;
+    &lt;form&gt;
+        &lt;label for="ad"&gt;Ad:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="text" id="ad" name="ad"&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;label for="eposta"&gt;E-posta:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="email" id="eposta" name="eposta"&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;label for="sifre"&gt;Şifre:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="password" id="sifre" name="sifre"&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;p&gt;Cinsiyet:&lt;/p&gt;
+        &lt;input type="radio" id="erkek" name="cinsiyet" value="erkek"&gt;
+        &lt;label for="erkek"&gt;Erkek&lt;/label&gt;
+        &lt;input type="radio" id="kadin" name="cinsiyet" value="kadin"&gt;
+        &lt;label for="kadin"&gt;Kadın&lt;/label&gt;&lt;br&gt;&lt;br&gt;
+
+        &lt;button type="submit"&gt;Kayıt Ol&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <div class="note"><span class="tag">Not</span><p>Bu formda <code class="inline">method</code> yazılmadığı için form gönderildiğinde bütün veriler, şifre dahil, adres çubuğunda görünür. Gerçek sitelerde şifreli formlar <code class="inline">method="post"</code> ile gönderilir.</p></div>
+    <p>Adımlar:</p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturunuz.</li>
+      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live ile açınız. İki radyo düğmesinden aynı anda yalnızca birinin seçilebildiğini gözlemleyiniz.</li>
+    </ol>
+
+    <h2 id="sinif-uygulamasi"><span class="num">8</span>Sınıf Uygulaması</h2>
+    <p><strong>Senaryo:</strong> Bir web sitesi için eksiksiz görünen bir <strong>iletişim formu</strong> sayfası hazırlayın (backend olmadığı için çalışması beklenmez, görünmesi yeterli).</p>
+    <p><strong>Yapılacaklar:</strong></p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">iletisim.html</code></strong> adında yeni bir dosya oluşturun.</li>
+      <li>Bir <code class="inline">&lt;form&gt;</code> içine şu alanları ekleyin: <strong>Ad</strong> (<code class="inline">text</code>), <strong>E-posta</strong> (<code class="inline">email</code>), <strong>Konu</strong> (<code class="inline">&lt;select&gt;</code> ile en az üç <code class="inline">&lt;option&gt;</code>), <strong>Mesaj</strong> (<code class="inline">&lt;textarea&gt;</code>).</li>
+      <li>Bir <strong>onay kutusu</strong> (<code class="inline">checkbox</code>) ve yanına bir <code class="inline">&lt;label&gt;</code> ekleyin.</li>
+      <li>Formu bitiren bir <strong>Gönder</strong> düğmesi (<code class="inline">&lt;button&gt;</code>) koyun.</li>
+      <li>Her alan için bir <code class="inline">&lt;label&gt;</code> yazın ve <code class="inline">for</code> / <code class="inline">id</code> değerlerini eşleştirin.</li>
+    </ol>
+    <p><strong>Beklenen sonuç:</strong> Ad, e-posta, konu (açılır liste), mesaj, onay kutusu ve Gönder düğmesi içeren düzenli bir iletişim formu.</p>
+    <p><strong>İpuçları:</strong> <code class="inline">&lt;label for="..."&gt;</code> ile alanın <code class="inline">id</code>'si aynı olmalı. <code class="inline">&lt;textarea&gt;</code>'yi <code class="inline">&lt;/textarea&gt;</code> ile kapatmayı unutmayın.</p>
+
+    <h2 id="notlar-ve-ipuclari"><span class="num">9</span>Notlar ve İpuçları</h2>
+    <ul>
+      <li><code class="inline">type="email"</code> alanına <code class="inline">ali</code> gibi geçersiz bir adres yazıp Gönder'e basarsanız tarayıcı formu göndermez.</li>
+      <li><code class="inline">&lt;label&gt;</code>'ın <code class="inline">for</code> değeri alanın <code class="inline">id</code>'si ile eşleşince etikete tıklamak alanı seçer ve ekran okuyucular etiketi sesli okur.</li>
+    </ul>
+
+    <h2 id="calisma-sorulari"><span class="num">10</span>Çalışma Soruları</h2>
+    <ol>
+      <li>Bir forma <code class="inline">type="text"</code> ve <code class="inline">type="email"</code> alanları ekleyip <code class="inline">placeholder</code> yazınız.</li>
+      <li>Her alana bir <code class="inline">&lt;label&gt;</code> ekleyip <code class="inline">for</code>/<code class="inline">id</code> değerlerini eşleştiriniz.</li>
+      <li>Bir <code class="inline">&lt;select&gt;</code> açılır listesi oluşturup üç <code class="inline">&lt;option&gt;</code> ekleyiniz.</li>
+      <li>Bir <code class="inline">&lt;textarea&gt;</code> ekleyip <code class="inline">rows</code> ve <code class="inline">cols</code> değerlerini değiştirerek boyutunu ayarlayınız.</li>
+      <li><code class="inline">type="checkbox"</code> ile birden fazla seçenek, <code class="inline">type="radio"</code> ile tek seçimli bir grup oluşturunuz.</li>
+      <li><code class="inline">&lt;button type="reset"&gt;</code> ekleyip forma yazdıklarınızı temizlediğini gözlemleyiniz.</li>
+    </ol>
+
+    <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
+    <ul class="kaynakca">
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Your_first_form" target="_blank" rel="noopener">MDN: Your first form</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Sending_and_retrieving_form_data" target="_blank" rel="noopener">MDN: Sending form data</a> (İngilizce)</li>
+    </ul>
+
+    <div class="aside-card mobil">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="listeler-ve-tablolar.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">4. Hafta</span>
+        <span class="kb">Listeler ve Tablolar</span>
+      </a>
+      <a class="komsu-kart sonraki" href="css-giris.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">6. Hafta</span>
+        <span class="kb">CSS'e Giriş</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#form-nedir"><span class="n">1</span>Form Nedir?</a>
+      <a href="#form-ogeleri"><span class="n">2</span>Form Ögeleri</a>
+      <a href="#ornek-iletisim-formu"><span class="n">3</span>Örnek: İletişim Formu</a>
+      <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
+      <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
+      <a href="#uygulamalar"><span class="n">7</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">8</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">9</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">10</span>Çalışma Soruları</a>
+      <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p class="alt-sol"><a class="alt-ad" href="index.html">Web Arayüz Tasarımı Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="proje-yonergesi.html">Proje yönergesi</a></nav>
+  </div>
+</footer>
+
+<script src="js/vendor/highlight.min.js"></script>
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

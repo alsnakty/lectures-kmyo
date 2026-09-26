@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flexbox 2 ve Sayfa Yerleşimi | Web Arayüz Tasarımı Ders Notları</title>
+<meta name="description" content="Semantik iskeleti Flexbox ile çok kolonlu bir düzene çevirmek (flex-direction, flex); flex-wrap ve gap ile sığmayan öğeleri alt satıra geçiren bir kart...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flexbox 2 ve Sayfa Yerleşimi | Web Arayüz Tasarımı Ders Notları">
+<meta property="og:description" content="Semantik iskeleti Flexbox ile çok kolonlu bir düzene çevirmek (flex-direction, flex); flex-wrap ve gap ile sığmayan öğeleri alt satıra geçiren bir kart...">
+<script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>BDT249 <span class="muted">/ Flexbox 2 ve Sayfa Yerleşimi</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
+          <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
+          <a href="baglantilar-ve-gorseller.html"><span class="mh">3</span>Bağlantılar ve Görseller</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="formlar.html"><span class="mh">5</span>Formlar</a>
+          <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
+          <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
+          <a href="tasarimdan-koda.html"><span class="mh">9</span>Tasarımdan Koda</a>
+          <a href="flexbox-1.html"><span class="mh">10</span>Flexbox 1</a>
+          <a href="flexbox-2-ve-sayfa-yerlesimi.html" class="etkin" aria-current="page"><span class="mh">11</span>Flexbox 2 ve Sayfa Yerleşimi</a>
+          <a href="responsive-tasarim.html"><span class="mh">12</span>Responsive Tasarım</a>
+          <a href="gecisler-ve-dokunuslar.html"><span class="mh">13</span>Geçişler ve Küçük Dokunuşlar</a>
+          <a href="bootstrap-tanitimi.html"><span class="mh">14</span>Bootstrap Tanıtımı</a>
+        </nav>
+      </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Web &nbsp;›&nbsp; <span>Flexbox 2 ve Sayfa Yerleşimi</span></div>
+
+<main class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 11. Hafta</div>
+    <h1>Flexbox 2 ve Sayfa Yerleşimi</h1>
+    <p class="lede">Semantik iskeleti Flexbox ile <strong>çok kolonlu</strong> bir düzene çevirmek (<code class="inline">flex-direction</code>, <code class="inline">flex</code>); <code class="inline">flex-wrap</code> ve <code class="inline">gap</code> ile sığmayan öğeleri alt satıra geçiren bir <strong>kart galerisi</strong> yapmak. Sonunda <strong>klasik bir site iskeleti</strong> ve <strong>3'lü bir kart galerisi</strong> hazırlayacaksınız.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#flexbox-2-flex-direction-ve-esnek-sutunl"><span class="n">1</span>Flexbox 2: <code class="inline">flex-direction</code> ve Esnek Sütunlar</a>
+        <a href="#ornek-klasik-site-iskeleti"><span class="n">2</span>Örnek: Klasik Site İskeleti</a>
+        <a href="#flex-wrap-alt-satira-gecme"><span class="n">3</span><code class="inline">flex-wrap</code>: Alt Satıra Geçme</a>
+        <a href="#ornek-3-lu-kart-galerisi"><span class="n">4</span>Örnek: 3'lü Kart Galerisi</a>
+        <a href="#sikca-yapilan-5-hata"><span class="n">5</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#bu-haftanin-ozeti"><span class="n">6</span>Bu Haftanın Özeti</a>
+        <a href="#konu-sonu-testi"><span class="n">7</span>Konu Sonu Testi</a>
+        <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
+        <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+      </nav>
+    </details>
+
+<div class="note"><span class="tag">Hatırlatma</span><p>9. haftada, <a href="tasarimdan-koda.html">Tasarımdan Koda</a> konusunda sayfayı <code class="inline">header</code>, <code class="inline">nav</code>, <code class="inline">main</code>, <code class="inline">section</code> ve <code class="inline">footer</code> etiketleriyle bölgelere ayırdık; 10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda da <code class="inline">display: flex</code> ile öğeleri yan yana dizdik. Bu hafta ikisini birleştiriyoruz.</p></div>
+    <p>Semantik iskelette bütün bölgeler <strong>alt alta</strong> dizilir. Gerçek sitelerde ise içerik çoğu zaman <strong>yan yana sütunlara</strong> ayrılır: solda ana içerik, sağda duyurular gibi. Kartlar da bir satıra sığmadığında alt satıra geçmelidir. Bu hafta bu iki işi Flexbox ile yapıyoruz.</p>
+
+    <h2 id="flexbox-2-flex-direction-ve-esnek-sutunl"><span class="num">1</span>Flexbox 2: <code class="inline">flex-direction</code> ve Esnek Sütunlar</h2>
+    <h3 id="flex-direction-yon">1.1. <code class="inline">flex-direction</code>: Yön</h3>
+    <p>10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda, <code class="inline">display: flex</code> öğeleri <strong>yan yana</strong> (satır) dizmişti. Öğeleri <strong>alt alta</strong> (sütun) dizmek için <code class="inline">flex-direction: column;</code> kullanılır.</p>
+    <figure class="diagram"><img alt="flex-direction: row öğeleri yatay, column ise dikey dizer" src="images/flex_direction.png" width="840" height="338" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>flex-direction: row öğeleri yatay, column ise dikey dizer</figcaption>
+    </figure>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kapsayici {
+    display: flex;
+    flex-direction: row;    /* varsayılan: yan yana */
+    /* flex-direction: column;   alt alta */
+}</pre>
+    </div>
+    <div class="note warn"><span class="tag">Dikkat</span><p><code class="inline">flex-direction: column</code> verildiğinde eksenler yer değiştirir: <code class="inline">justify-content</code> artık öğeleri <strong>dikeyde</strong>, <code class="inline">align-items</code> ise <strong>yatayda</strong> hizalar.</p></div>
+    <h3 id="flex-sutun-orani">1.2. <code class="inline">flex</code>: Sütun Oranı</h3>
+    <p>Bir flex öğesine <code class="inline">flex</code> değeri vererek, o öğenin <strong>kalan alandan ne kadar pay alacağını</strong> belirlersiniz. Böylece kolonlu düzenler kurabilirsiniz.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">main  { flex: 2; }   /* iki pay alır (daha geniş) */
+aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
+    </div>
+    <p>Yukarıdaki örnekte <code class="inline">main</code>, kalan alandan <code class="inline">aside</code>'ın <strong>iki katı</strong> pay alır; bu yüzden yaklaşık iki kat geniş olur (iki kutunun <code class="inline">padding</code> değeri eşit olduğu için tam iki kat değildir). <code class="inline">flex: 1</code> verilen iki öğe ise <strong>eşit</strong> genişlikte olur.</p>
+
+    <h2 id="ornek-klasik-site-iskeleti"><span class="num">2</span>Örnek: Klasik Site İskeleti</h2>
+    <p>Şimdi semantik etiketleri ve Flexbox'ı birleştirip klasik bir site düzeni kuralım: üstte <code class="inline">header</code>, altında <code class="inline">nav</code>, ortada yan yana <code class="inline">main</code> + <code class="inline">aside</code>, en altta <code class="inline">footer</code>.</p>
+    <figure class="diagram"><img alt="Klasik site iskeleti: header, nav, main ve aside sütunları, footer" src="images/site_iskeleti.png" width="959" height="769" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Klasik site iskeleti: header, nav, main ve aside sütunları, footer</figcaption>
+    </figure>
+    <p>Burada yeni bir semantik etiket kullanıyoruz: <strong><code class="inline">&lt;aside&gt;</code></strong>, ana içeriğin yanındaki <strong>yan içeriği</strong> (duyurular, kenar çubuğu) işaretler.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Site İskeleti&lt;/title&gt;
+    &lt;style&gt;
+        body { margin: 0; font-family: Arial, sans-serif; }
+        header {
+            background-color: #34495e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+            background-color: #3498db;
+            padding: 12px;
+        }
+        nav a { color: white; text-decoration: none; }
+        .govde { display: flex; }
+        main {
+            flex: 2;
+            background-color: #ecf0f1;
+            padding: 20px;
+        }
+        aside {
+            flex: 1;
+            background-color: #d5dbdb;
+            padding: 20px;
+        }
+        footer {
+            background-color: #34495e;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Kahve Dünyası&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;Ana Sayfa&lt;/a&gt;
+        &lt;a href="#"&gt;Hakkımda&lt;/a&gt;
+        &lt;a href="#"&gt;İletişim&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;div class="govde"&gt;
+        &lt;main&gt;
+            &lt;h2&gt;Hoş Geldiniz&lt;/h2&gt;
+            &lt;p&gt;Şehrin merkezinde sıcacık bir mola.&lt;/p&gt;
+        &lt;/main&gt;
+        &lt;aside&gt;
+            &lt;h3&gt;Duyurular&lt;/h3&gt;
+            &lt;p&gt;Hafta içi %10 indirim.&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+        &lt;p&gt;© 2026 Kahve Dünyası&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Burada <code class="inline">.govde</code> bir flex kapsayıcısıdır; <code class="inline">main</code> (<code class="inline">flex: 2</code>) ve <code class="inline">aside</code> (<code class="inline">flex: 1</code>) yan yana <strong>iki sütun</strong> oluşturur ve genişlikleri yaklaşık 2:1 oranındadır. <code class="inline">main</code> ile <code class="inline">aside</code>'ı saran kutunun bir anlamı olmadığı için burada <code class="inline">&lt;div&gt;</code> kullandık. <code class="inline">body</code>'ye <code class="inline">margin: 0</code> verdik ki header ve footer kenarlara tam otursun.</p>
+
+    <h2 id="flex-wrap-alt-satira-gecme"><span class="num">3</span><code class="inline">flex-wrap</code>: Alt Satıra Geçme</h2>
+    <p>Flex kapsayıcısı, varsayılan olarak bütün öğeleri <strong>tek satırda</strong> tutar. Öğeler sığmadığında önce daralır; daha fazla daralamıyorlarsa yine alt satıra geçmez, sayfa yana taşar. Öğelerin sığmadığında <strong>alt satıra geçmesi</strong> için kapsayıcıya <code class="inline">flex-wrap: wrap;</code> verilir:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.galeri {
+    display: flex;
+    flex-wrap: wrap;    /* sığmayan öğe alt satıra geçer */
+    gap: 20px;          /* öğeler arası boşluk */
+}
+.kart {
+    flex: 1;            /* kartlar satırı eşit paylaşır */
+    min-width: 200px;   /* bir kart 200px'ten dar olmaz */
+}</pre>
+    </div>
+    <ul>
+      <li><strong><code class="inline">flex-wrap: wrap</code></strong> kapsayıcıya yazılır; sığmayan öğe bir alt satıra geçer.</li>
+      <li><strong><code class="inline">flex: 1</code></strong> kartların satırdaki alanı eşit paylaşmasını sağlar.</li>
+      <li><strong><code class="inline">min-width: 200px</code></strong> bir kartın en az genişliğidir. Yan yana kartlar bu genişliğe sığmıyorsa sonuncusu alt satıra geçer.</li>
+      <li><strong><code class="inline">gap</code></strong> kartların arasına boşluk koyar (10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda navbarda kullandığımız özellikle aynı).</li>
+    </ul>
+
+    <h2 id="ornek-3-lu-kart-galerisi"><span class="num">4</span>Örnek: 3'lü Kart Galerisi</h2>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Kart Galerisi&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: Arial, sans-serif; background-color: #eef1f4; }
+        .galeri {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .kart {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border: 1px solid #d5d5d5;
+            padding: 15px;
+            text-align: center;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="galeri"&gt;
+        &lt;div class="kart"&gt;
+            &lt;h3&gt;Filtre Kahve&lt;/h3&gt;
+            &lt;p&gt;Sıcak servis edilir.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="kart"&gt;
+            &lt;h3&gt;Latte&lt;/h3&gt;
+            &lt;p&gt;Sıcak servis edilir.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="kart"&gt;
+            &lt;h3&gt;Türk Kahvesi&lt;/h3&gt;
+            &lt;p&gt;Sıcak servis edilir.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Tarayıcıdaki sonucu şöyledir:</p>
+    <figure class="diagram"><img alt="3&#x27;lü kart galerisi: eşit genişlikte üç kart, aralarında boşluk" src="images/kart_galerisi.png" width="1200" height="297" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>3'lü kart galerisi: eşit genişlikte üç kart, aralarında boşluk</figcaption>
+    </figure>
+    <p>Üç kart <code class="inline">flex: 1</code> sayesinde <strong>eşit genişlikte</strong> yan yana dizildi; <code class="inline">gap</code> aralarında boşluk bıraktı. Bu genişlikte (800px) galeriye dördüncü bir kart eklerseniz dört kart bir satıra sığmaz: dördüncü kart alt satıra geçer ve <code class="inline">flex: 1</code> yüzünden o satırın tamamını kaplar.</p>
+    <div class="note"><span class="tag">Not</span><p>Aynı galeri <strong>CSS Grid</strong> adlı başka bir yerleşim yöntemiyle de yapılabilir. Bu derste yerleşim için Flexbox yeterlidir.</p></div>
+
+    <h2 id="sikca-yapilan-5-hata"><span class="num">5</span>Sıkça Yapılan 5 Hata</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
+        <tbody>
+          <tr><td>Flex sütunlarında sabit <code class="inline">width</code> verip esnekliği kaybetmek</td><td>Geniş ekranda sütunların yanında boş alan kalır</td><td>Oran için <code class="inline">flex: 1</code>, <code class="inline">flex: 2</code> kullanın</td></tr>
+          <tr><td><code class="inline">aside</code>'ı flex kapsayıcısının (<code class="inline">.govde</code>) dışına yazmak</td><td><code class="inline">aside</code> ana içeriğin yanına değil, altına düşer ve tam genişlikte olur</td><td><code class="inline">main</code> ile <code class="inline">aside</code>'ı aynı flex kapsayıcısının içine yazın</td></tr>
+          <tr><td>Galeride <code class="inline">flex-wrap: wrap</code> yazmamak</td><td>Kartlar sığmasa da tek satırda kalır; sayfa yana taşar</td><td>Kapsayıcıya <code class="inline">flex-wrap: wrap</code> verin</td></tr>
+          <tr><td><code class="inline">gap</code>'i kapsayıcıya değil kartlara yazmak</td><td>Kartların arasında boşluk oluşmaz</td><td><code class="inline">gap</code>'i flex kapsayıcısına (<code class="inline">.galeri</code>) yazın</td></tr>
+          <tr><td><code class="inline">flex-wrap</code>'i kartlara yazmak</td><td>Alt satıra geçme olmaz</td><td><code class="inline">flex-wrap</code> da kapsayıcıya yazılır</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="bu-haftanin-ozeti"><span class="num">6</span>Bu Haftanın Özeti</h2>
+    <ul>
+      <li><strong><code class="inline">flex-direction</code></strong> flex öğelerinin yönünü belirler: <code class="inline">row</code> (yan yana, varsayılan) veya <code class="inline">column</code> (alt alta).</li>
+      <li><strong><code class="inline">flex: 2</code> / <code class="inline">flex: 1</code></strong> gibi değerlerle sütun <strong>oranları</strong> kurulur; iki <code class="inline">flex: 1</code> öğe eşit genişlikte olur.</li>
+      <li>Klasik site iskeleti header → nav → (main + aside) → footer biçimindedir; <code class="inline">main</code> ve <code class="inline">aside</code> bir flex kapsayıcısında yan yana durur. <code class="inline">&lt;aside&gt;</code> yan içeriği işaretler.</li>
+      <li><strong><code class="inline">flex-wrap: wrap</code></strong> sığmayan öğeleri alt satıra geçirir; kart galerileri için gereklidir.</li>
+      <li><code class="inline">display: flex</code>, <code class="inline">flex-wrap</code> ve <code class="inline">gap</code> <strong>kapsayıcıya</strong>; <code class="inline">flex</code> ve <code class="inline">min-width</code> <strong>öğelere</strong> yazılır.</li>
+    </ul>
+
+    <h2 id="konu-sonu-testi"><span class="num">7</span>Konu Sonu Testi</h2>
+    <ol class="quiz">
+      <li>
+        <p class="q">Ana içeriğin yanındaki <strong>yan içerik</strong> (duyurular, kenar çubuğu) için hangi etiket kullanılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;header&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;aside&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;main&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;nav&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Yan içerik <code class="inline">&lt;aside&gt;</code> ile işaretlenir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Flex öğelerini <strong>alt alta</strong> dizmek için hangi kural yazılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">flex-direction: row</code></li>
+          <li><b>b)</b> <code class="inline">flex-direction: column</code></li>
+          <li><b>c)</b> <code class="inline">justify-content: center</code></li>
+          <li><b>d)</b> <code class="inline">display: block</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span><code class="inline">flex-direction: column</code> öğeleri alt alta dizer.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q"><code class="inline">main { flex: 2; }</code> ve <code class="inline">aside { flex: 1; }</code> ise <code class="inline">main</code> sütunu <code class="inline">aside</code>'a göre nasıl olur?</p>
+        <ul class="opts">
+          <li><b>a)</b> Yarısı kadar dar</li>
+          <li><b>b)</b> Eşit genişlikte</li>
+          <li><b>c)</b> Yaklaşık iki kat geniş</li>
+          <li><b>d)</b> Görünmez</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span><code class="inline">flex: 2</code>, <code class="inline">flex: 1</code>'e göre kalan alandan iki kat pay alır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bir satıra sığmayan kartların <strong>alt satıra geçmesi</strong> için kapsayıcıya hangi kural yazılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">flex-direction: row</code></li>
+          <li><b>b)</b> <code class="inline">flex-wrap: wrap</code></li>
+          <li><b>c)</b> <code class="inline">gap: 20px</code></li>
+          <li><b>d)</b> <code class="inline">text-align: center</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span><code class="inline">flex-wrap: wrap</code> sığmayan öğeyi alt satıra geçirir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Flex öğeleri <strong>arasına boşluk</strong> koyan ve kapsayıcıya yazılan özellik hangisidir?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">padding</code></li>
+          <li><b>b)</b> <code class="inline">margin</code></li>
+          <li><b>c)</b> <code class="inline">gap</code></li>
+          <li><b>d)</b> <code class="inline">border</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>Öğeler arası boşluğu kapsayıcıya yazılan <code class="inline">gap</code> belirler.</div>
+        </details>
+      </li>
+    </ol>
+
+    <h2 id="uygulamalar"><span class="num">8</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> Flexbox ile <strong>iki sütunlu</strong> bir sayfa yapınız: solda geniş bir ana içerik (<code class="inline">main</code>), sağda dar bir yan sütun (<code class="inline">aside</code>).</p>
+    <p><strong>Çözüm:</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;İki Sütunlu Sayfa&lt;/title&gt;
+    &lt;style&gt;
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .govde { display: flex; }
+        main {
+            flex: 3;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+        aside {
+            flex: 1;
+            background-color: #f4e1c1;
+            padding: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="govde"&gt;
+        &lt;main&gt;
+            &lt;h2&gt;Blog Yazısı&lt;/h2&gt;
+            &lt;p&gt;Bu bölüm sayfanın ana içeriğidir.&lt;/p&gt;
+        &lt;/main&gt;
+        &lt;aside&gt;
+            &lt;h3&gt;Kategoriler&lt;/h3&gt;
+            &lt;p&gt;Haberler, Duyurular, İpuçları&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Adımlar:</p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturunuz.</li>
+      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live ile açınız; <code class="inline">flex: 3</code> ve <code class="inline">flex: 1</code> oranını değiştirerek sütun genişliklerinin nasıl değiştiğini gözlemleyiniz.</li>
+    </ol>
+
+    <h2 id="sinif-uygulamasi"><span class="num">9</span>Sınıf Uygulaması</h2>
+    <p><strong>Senaryo:</strong> Semantik etiketlerle klasik bir <strong>site iskeleti</strong> kurun ve altına <strong>3'lü bir kart galerisi</strong> ekleyin.</p>
+    <p><strong>Yapılacaklar:</strong></p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">iskelet.html</code></strong> adında yeni bir dosya oluşturun.</li>
+      <li>Semantik etiketlerle yapıyı kurun: <code class="inline">&lt;header&gt;</code>, <code class="inline">&lt;nav&gt;</code>, sonra bir <code class="inline">.govde</code> içinde <code class="inline">&lt;main&gt;</code> ve <code class="inline">&lt;aside&gt;</code>, en altta <code class="inline">&lt;footer&gt;</code>.</li>
+      <li><code class="inline">.govde</code>'ye <code class="inline">display: flex</code> verin; <code class="inline">main</code>'e <code class="inline">flex: 2</code>, <code class="inline">aside</code>'a <code class="inline">flex: 1</code> yazarak <strong>iki sütun</strong> oluşturun.</li>
+      <li><code class="inline">.govde</code>'nin altına, <code class="inline">&lt;footer&gt;</code>'dan önce ayrı bir galeri bölümü ekleyin: bir <code class="inline">&lt;div class="galeri"&gt;</code> içinde üç <code class="inline">&lt;div class="kart"&gt;</code>.</li>
+      <li><code class="inline">.galeri</code>'ye <code class="inline">display: flex</code>, <code class="inline">flex-wrap: wrap</code> ve <code class="inline">gap</code> verin; kartlara <code class="inline">flex: 1</code> ve bir <code class="inline">min-width</code> yazın.</li>
+    </ol>
+    <p><strong>Beklenen sonuç:</strong> Üstte header/nav, ortada iki sütunlu (main + aside) bir gövde, altta footer; footer'ın üstünde yan yana üç karttan oluşan bir galeri.</p>
+    <p><strong>İpuçları:</strong> <code class="inline">display: flex</code>, <code class="inline">flex-wrap</code> ve <code class="inline">gap</code> kapsayıcıya yazılır. <code class="inline">flex: 2</code> / <code class="inline">flex: 1</code> sütun oranını belirler.</p>
+
+    <h2 id="notlar-ve-ipuclari"><span class="num">10</span>Notlar ve İpuçları</h2>
+    <ul>
+      <li><code class="inline">&lt;main&gt;</code> bir sayfada yalnızca bir kez kullanılır.</li>
+      <li><code class="inline">min-width</code> verilmezse <code class="inline">flex: 1</code> olan kartlar, içlerindeki yazı sığdığı sürece daralmaya devam eder; alt satıra ancak yazı artık sığmayınca geçer. Örneğin 800px genişlikte altı kart, <code class="inline">min-width</code> olmadan tek satırda daracık dizilir. Kartların ne zaman alt satıra geçeceğini <code class="inline">min-width</code> ile siz belirlersiniz.</li>
+      <li>Chrome'un geliştirici araçlarında, <code class="inline">display: flex</code> verilmiş öğenin yanında <strong>flex</strong> rozeti görünür. Rozete tıklayınca öğelerin yerleşimi sayfanın üzerinde çizgilerle gösterilir.</li>
+    </ul>
+
+    <h2 id="calisma-sorulari"><span class="num">11</span>Çalışma Soruları</h2>
+    <ol>
+      <li><code class="inline">main</code> ve <code class="inline">aside</code>'ı bir flex kapsayıcı içinde yan yana koyup <code class="inline">flex</code> oranlarını deneyiniz (<code class="inline">2:1</code>, <code class="inline">3:1</code>, <code class="inline">1:1</code>).</li>
+      <li><code class="inline">flex-direction: column</code> kullanarak öğeleri alt alta diziniz.</li>
+      <li>Kart galerisine dört, sonra altı kart ekleyip kartların alt satıra nasıl geçtiğini gözlemleyiniz.</li>
+      <li>Galeriden <code class="inline">flex-wrap: wrap</code> satırını silip sayfayı daraltınız; ne olduğunu gözlemleyiniz.</li>
+    </ol>
+
+    <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
+    <ul class="kaynakca">
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox" target="_blank" rel="noopener">MDN: Flexbox</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-wrap" target="_blank" rel="noopener">MDN: flex-wrap</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/aside" target="_blank" rel="noopener">MDN: <code class="inline">&lt;aside&gt;</code></a> (İngilizce)</li>
+    </ul>
+
+    <div class="aside-card mobil">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="flexbox-1.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">10. Hafta</span>
+        <span class="kb">Flexbox 1</span>
+      </a>
+      <a class="komsu-kart sonraki" href="responsive-tasarim.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">12. Hafta</span>
+        <span class="kb">Responsive Tasarım</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#flexbox-2-flex-direction-ve-esnek-sutunl"><span class="n">1</span>Flexbox 2: <code class="inline">flex-direction</code> ve Esnek Sütunlar</a>
+      <a href="#ornek-klasik-site-iskeleti"><span class="n">2</span>Örnek: Klasik Site İskeleti</a>
+      <a href="#flex-wrap-alt-satira-gecme"><span class="n">3</span><code class="inline">flex-wrap</code>: Alt Satıra Geçme</a>
+      <a href="#ornek-3-lu-kart-galerisi"><span class="n">4</span>Örnek: 3'lü Kart Galerisi</a>
+      <a href="#sikca-yapilan-5-hata"><span class="n">5</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#bu-haftanin-ozeti"><span class="n">6</span>Bu Haftanın Özeti</a>
+      <a href="#konu-sonu-testi"><span class="n">7</span>Konu Sonu Testi</a>
+      <a href="#uygulamalar"><span class="n">8</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">9</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">10</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">11</span>Çalışma Soruları</a>
+      <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p class="alt-sol"><a class="alt-ad" href="index.html">Web Arayüz Tasarımı Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="proje-yonergesi.html">Proje yönergesi</a></nav>
+  </div>
+</footer>
+
+<script src="js/vendor/highlight.min.js"></script>
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Listeler ve Tablolar | Web Arayüz Tasarımı Ders Notları</title>
+<meta name="description" content="Madde işaretli ve numaralı listeleri (&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;) ve satır–sütunlardan oluşan tabloları (&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;) oluşturmayı öğrenmek. Sonunda...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Listeler ve Tablolar | Web Arayüz Tasarımı Ders Notları">
+<meta property="og:description" content="Madde işaretli ve numaralı listeleri (&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;) ve satır–sütunlardan oluşan tabloları (&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;) oluşturmayı öğrenmek. Sonunda...">
+<script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>BDT249 <span class="muted">/ Listeler ve Tablolar</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
+          <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
+          <a href="baglantilar-ve-gorseller.html"><span class="mh">3</span>Bağlantılar ve Görseller</a>
+          <a href="listeler-ve-tablolar.html" class="etkin" aria-current="page"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="formlar.html"><span class="mh">5</span>Formlar</a>
+          <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
+          <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
+          <a href="tasarimdan-koda.html"><span class="mh">9</span>Tasarımdan Koda</a>
+          <a href="flexbox-1.html"><span class="mh">10</span>Flexbox 1</a>
+          <a href="flexbox-2-ve-sayfa-yerlesimi.html"><span class="mh">11</span>Flexbox 2 ve Sayfa Yerleşimi</a>
+          <a href="responsive-tasarim.html"><span class="mh">12</span>Responsive Tasarım</a>
+          <a href="gecisler-ve-dokunuslar.html"><span class="mh">13</span>Geçişler ve Küçük Dokunuşlar</a>
+          <a href="bootstrap-tanitimi.html"><span class="mh">14</span>Bootstrap Tanıtımı</a>
+        </nav>
+      </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Web &nbsp;›&nbsp; <span>Listeler ve Tablolar</span></div>
+
+<main class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 4. Hafta</div>
+    <h1>Listeler ve Tablolar</h1>
+    <p class="lede">Madde işaretli ve numaralı <strong>listeleri</strong> (<code class="inline">&lt;ul&gt;</code>, <code class="inline">&lt;ol&gt;</code>, <code class="inline">&lt;li&gt;</code>) ve satır–sütunlardan oluşan <strong>tabloları</strong> (<code class="inline">&lt;table&gt;</code>, <code class="inline">&lt;tr&gt;</code>, <code class="inline">&lt;th&gt;</code>, <code class="inline">&lt;td&gt;</code>) oluşturmayı öğrenmek. Sonunda <strong>haftalık ders programı</strong> tablosu hazırlayacaksınız.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#listeler"><span class="n">1</span>Listeler</a>
+        <a href="#tablolar"><span class="n">2</span>Tablolar</a>
+        <a href="#ornek-haftalik-ders-programi"><span class="n">3</span>Örnek: Haftalık Ders Programı</a>
+        <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
+        <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
+        <a href="#uygulamalar"><span class="n">7</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">8</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">9</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">10</span>Çalışma Soruları</a>
+        <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+      </nav>
+    </details>
+
+<p>Bilgiyi düzenli sunmak, bir web sayfasının en temel işlerinden biridir. Maddeleri <strong>liste</strong>, satır–sütunlu verileri ise <strong>tablo</strong> ile göstereceğiz. Bu iki yapı, web sayfalarındaki pek çok düzenli içeriğin temelini oluşturur.</p>
+
+    <h2 id="listeler"><span class="num">1</span>Listeler</h2>
+    <p>Listeler iki türlüdür ve her ikisinde de her madde <code class="inline">&lt;li&gt;</code> (list item) etiketiyle yazılır.</p>
+    <figure class="diagram"><img alt="Sırasız listede madde işareti, sıralı listede numara görünümü" src="images/liste_turleri.png" width="840" height="251" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Sırasız listede madde işareti, sıralı listede numara görünümü</figcaption>
+    </figure>
+    <h3 id="sirasiz-liste">1.1. Sırasız Liste: <code class="inline">&lt;ul&gt;</code></h3>
+    <p>Maddelerin sırası önemli değilse <strong>sırasız liste</strong> kullanılır. Tarayıcı her maddenin başına <strong>madde işareti (•)</strong> koyar.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;h2&gt;Alışveriş Listesi&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Elma&lt;/li&gt;
+    &lt;li&gt;Armut&lt;/li&gt;
+    &lt;li&gt;Kiraz&lt;/li&gt;
+&lt;/ul&gt;</pre>
+    </div>
+    <h3 id="sirali-liste">1.2. Sıralı Liste: <code class="inline">&lt;ol&gt;</code></h3>
+    <p>Maddelerin sırası önemliyse (adımlar, sıralama) <strong>sıralı liste</strong> kullanılır. Tarayıcı her maddeyi <strong>numaralandırır</strong>.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;h2&gt;Sabah Rutini&lt;/h2&gt;
+&lt;ol&gt;
+    &lt;li&gt;Uyan&lt;/li&gt;
+    &lt;li&gt;Kahvaltı yap&lt;/li&gt;
+    &lt;li&gt;Okula git&lt;/li&gt;
+&lt;/ol&gt;</pre>
+    </div>
+    <p>Numara yerine harf veya Roma rakamı istiyorsanız <code class="inline">type</code> özelliğini kullanabilirsiniz:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th><code class="inline">type</code> değeri</th><th>Görünüm</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">1</code></td><td>1, 2, 3 (varsayılan)</td></tr>
+          <tr><td><code class="inline">A</code></td><td>A, B, C</td></tr>
+          <tr><td><code class="inline">a</code></td><td>a, b, c</td></tr>
+          <tr><td><code class="inline">I</code></td><td>I, II, III</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;ol type="A"&gt;
+    &lt;li&gt;Birinci&lt;/li&gt;
+    &lt;li&gt;İkinci&lt;/li&gt;
+&lt;/ol&gt;</pre>
+    </div>
+    <h3 id="ic-ice-liste">1.3. İç İçe Liste</h3>
+    <p>Bir maddenin altında alt maddeler olabilir. Bunun için <code class="inline">&lt;li&gt;</code> içine yeni bir liste yazılır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;ul&gt;
+    &lt;li&gt;Meyveler
+        &lt;ul&gt;
+            &lt;li&gt;Elma&lt;/li&gt;
+            &lt;li&gt;Armut&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Sebzeler&lt;/li&gt;
+&lt;/ul&gt;</pre>
+    </div>
+
+    <h2 id="tablolar"><span class="num">2</span>Tablolar</h2>
+    <p>Tablolar, verileri <strong>satır ve sütunlar</strong> hâlinde düzenler. Bir tablonun parçaları şunlardır:</p>
+    <figure class="diagram"><img alt="Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi" src="images/tablo_yapisi.png" width="972" height="561" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi</figcaption>
+    </figure>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Etiket</th><th>Açılımı</th><th>Görevi</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">&lt;table&gt;</code></td><td>table</td><td>Tabloyu başlatır ve bitirir.</td></tr>
+          <tr><td><code class="inline">&lt;tr&gt;</code></td><td>table row</td><td>Bir <strong>satır</strong> oluşturur.</td></tr>
+          <tr><td><code class="inline">&lt;th&gt;</code></td><td>table header</td><td><strong>Başlık hücresi</strong> (varsayılan olarak kalın ve ortalı).</td></tr>
+          <tr><td><code class="inline">&lt;td&gt;</code></td><td>table data</td><td><strong>Veri hücresi</strong> (normal içerik).</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 id="basit-tablo-ornegi">2.1. Basit Tablo Örneği</h3>
+    <p>Bir tablo, satırlardan (<code class="inline">&lt;tr&gt;</code>); her satır da hücrelerden (<code class="inline">&lt;th&gt;</code> veya <code class="inline">&lt;td&gt;</code>) oluşur. İlk satır genellikle başlık satırıdır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Ad&lt;/th&gt;
+        &lt;th&gt;Soyad&lt;/th&gt;
+        &lt;th&gt;No&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Ali&lt;/td&gt;
+        &lt;td&gt;Yılmaz&lt;/td&gt;
+        &lt;td&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Ayşe&lt;/td&gt;
+        &lt;td&gt;Demir&lt;/td&gt;
+        &lt;td&gt;15&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </div>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">border="1"</code> özelliği, hücrelerin <strong>kenarlıklarının görünmesini</strong> sağlar. Bu olmadan tablo çizgisiz görünür. Tabloların renk, boşluk ve çizgi gibi görsel ayarları esas olarak <strong>CSS</strong> ile yapılır; CSS'i 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda göreceğiz. <code class="inline">border="1"</code> HTML5'te eskimiş sayılır; CSS'i öğrenene kadar kenarlığı görmek için <strong>geçici olarak</strong> kullanıyoruz.</p></div>
+
+    <h2 id="ornek-haftalik-ders-programi"><span class="num">3</span>Örnek: Haftalık Ders Programı</h2>
+    <p>Şimdi bu haftanın çıktısını hazırlayalım: bir haftalık ders programı tablosu. İlk satır günlerin başlığı (<code class="inline">&lt;th&gt;</code>), diğer satırlar saatlere göre dersleri (<code class="inline">&lt;td&gt;</code>) içerir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Ders Programı&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Haftalık Ders Programı&lt;/h1&gt;
+    &lt;table border="1"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Saat&lt;/th&gt;
+            &lt;th&gt;Pazartesi&lt;/th&gt;
+            &lt;th&gt;Salı&lt;/th&gt;
+            &lt;th&gt;Çarşamba&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;09:00&lt;/td&gt;
+            &lt;td&gt;Matematik&lt;/td&gt;
+            &lt;td&gt;Türkçe&lt;/td&gt;
+            &lt;td&gt;Fizik&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;10:00&lt;/td&gt;
+            &lt;td&gt;Web Tasarımı&lt;/td&gt;
+            &lt;td&gt;İngilizce&lt;/td&gt;
+            &lt;td&gt;Kimya&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;11:00&lt;/td&gt;
+            &lt;td&gt;Beden&lt;/td&gt;
+            &lt;td&gt;Tarih&lt;/td&gt;
+            &lt;td&gt;Biyoloji&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Kaydedip Go Live ile açtığınızda tarayıcıda şu sonucu görürsünüz:</p>
+    <figure class="diagram"><img alt="Haftalık ders programı tablosunun tarayıcı çıktısı" src="images/ders_programi_tablo.png" width="1200" height="306" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Haftalık ders programı tablosunun tarayıcı çıktısı</figcaption>
+    </figure>
+    <p>Dikkat ediniz: <strong>başlık satırındaki</strong> hücreler <code class="inline">&lt;th&gt;</code> olduğu için kalın ve ortalı; diğer hücreler <code class="inline">&lt;td&gt;</code> olduğu için normal görünür.</p>
+
+    <h2 id="sikca-yapilan-5-hata"><span class="num">4</span>Sıkça Yapılan 5 Hata</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">&lt;li&gt;</code>'yi <code class="inline">&lt;ul&gt;</code>/<code class="inline">&lt;ol&gt;</code> dışında kullanmak</td><td>Madde işaretleri görünmez, maddeler düz yazı gibi alt alta durur</td><td><code class="inline">&lt;li&gt;</code> her zaman <code class="inline">&lt;ul&gt;</code> veya <code class="inline">&lt;ol&gt;</code> içinde olmalı</td></tr>
+          <tr><td>Satırlarda hücre sayısını eşit tutmamak (bir satırda 3, diğerinde 2 hücre)</td><td>Kısa satırın sonunda boş bir alan kalır</td><td>Her satırda aynı sayıda hücre olsun</td></tr>
+          <tr><td><code class="inline">&lt;tr&gt;</code> içine doğrudan metin yazmak</td><td>Metin tablonun dışına, üstüne taşınır</td><td>Metni <code class="inline">&lt;td&gt;</code> veya <code class="inline">&lt;th&gt;</code> içine yazın</td></tr>
+          <tr><td>Kenarlık görünmemesi</td><td>Tablo çizgisiz kalır</td><td><code class="inline">border="1"</code> ekleyin (veya CSS)</td></tr>
+          <tr><td><code class="inline">&lt;th&gt;</code> ile <code class="inline">&lt;td&gt;</code>'yi karıştırmak</td><td>Başlıklar normal görünür</td><td>Başlık hücresi için <code class="inline">&lt;th&gt;</code>, veri için <code class="inline">&lt;td&gt;</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="bu-haftanin-ozeti"><span class="num">5</span>Bu Haftanın Özeti</h2>
+    <ul>
+      <li>Listeler <code class="inline">&lt;li&gt;</code> maddelerinden oluşur: <strong><code class="inline">&lt;ul&gt;</code></strong> madde işaretli (sırasız), <strong><code class="inline">&lt;ol&gt;</code></strong> numaralı (sıralı) liste yapar.</li>
+      <li><code class="inline">&lt;ol type="A"&gt;</code> ile numaralar harfe (A, B, C) veya Roma rakamına dönüştürülebilir.</li>
+      <li>Bir <code class="inline">&lt;li&gt;</code> içine yeni bir liste yazarak <strong>iç içe</strong> liste oluşturulur.</li>
+      <li>Tablo parçaları: <strong><code class="inline">&lt;table&gt;</code></strong> tabloyu, <strong><code class="inline">&lt;tr&gt;</code></strong> bir satırı, <strong><code class="inline">&lt;th&gt;</code></strong> başlık hücresini, <strong><code class="inline">&lt;td&gt;</code></strong> veri hücresini tanımlar.</li>
+      <li>Her satırda <strong>aynı sayıda hücre</strong> bulunmalıdır; başlık satırı genellikle <code class="inline">&lt;th&gt;</code> ile yazılır.</li>
+      <li><code class="inline">border="1"</code> kenarlıkları görünür kılar; asıl görsel düzenleme <strong>CSS</strong> ile yapılır.</li>
+    </ul>
+
+    <h2 id="konu-sonu-testi"><span class="num">6</span>Konu Sonu Testi</h2>
+    <ol class="quiz">
+      <li>
+        <p class="q">Numaralı (sıralı) bir liste oluşturmak için hangi etiket kullanılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;ul&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;ol&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;li&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;list&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Sıralı (numaralı) liste <code class="inline">&lt;ol&gt;</code> ile yapılır; <code class="inline">&lt;ul&gt;</code> madde işareti koyar.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bir listedeki her madde hangi etiketle yazılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;li&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;td&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;tr&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;ul&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">a</span>Her liste maddesi <code class="inline">&lt;li&gt;</code> ile yazılır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bir tabloda <strong>satır</strong> hangi etiketle tanımlanır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;td&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;th&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;tr&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;table&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>Bir satır <code class="inline">&lt;tr&gt;</code> (table row) ile tanımlanır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Tablonun <strong>başlık hücresi</strong> (varsayılan olarak kalın ve ortalı) hangi etikettir?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;th&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;td&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;tr&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;h1&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">a</span>Başlık hücresi <code class="inline">&lt;th&gt;</code>'dir; kalın ve ortalı görünür.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bir tablo hücresine normal <strong>veri</strong> yazmak için hangi etiket kullanılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;tr&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;th&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;td&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;li&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>Veri hücresi <code class="inline">&lt;td&gt;</code> (table data) ile yazılır.</div>
+        </details>
+      </li>
+    </ol>
+
+    <h2 id="uygulamalar"><span class="num">7</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> Bir sayfada, üç ürün ve fiyatını gösteren bir <strong>tablo</strong>, ayrıca bir kek tarifinin adımlarını gösteren bir <strong>sıralı liste</strong> oluşturunuz.</p>
+    <p><strong>Çözüm:</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Ürünler ve Tarif&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Fiyat Listesi&lt;/h1&gt;
+    &lt;table border="1"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Ürün&lt;/th&gt;
+            &lt;th&gt;Fiyat&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Ekmek&lt;/td&gt;
+            &lt;td&gt;15 TL&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Süt&lt;/td&gt;
+            &lt;td&gt;30 TL&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Yumurta&lt;/td&gt;
+            &lt;td&gt;60 TL&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;h2&gt;Kek Tarifi&lt;/h2&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Malzemeleri karıştırın.&lt;/li&gt;
+        &lt;li&gt;Kalıba dökün.&lt;/li&gt;
+        &lt;li&gt;Fırında 40 dakika pişirin.&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Adımlar:</p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">urunler.html</code></strong> adında yeni bir dosya oluşturunuz.</li>
+      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açarak tablo ve listenin göründüğünü doğrulayınız.</li>
+    </ol>
+
+    <h2 id="sinif-uygulamasi"><span class="num">8</span>Sınıf Uygulaması</h2>
+    <p><strong>Senaryo:</strong> Bir konuyu (kendi seçtiğiniz bir işletme, hobi veya ders) liste ve tablo kullanarak düzenli biçimde sunan bir bilgi sayfası hazırlayın.</p>
+    <p><strong>Yapılacaklar:</strong></p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">bilgi.html</code></strong> adında yeni bir dosya oluşturun.</li>
+      <li>Bir <code class="inline">&lt;ul&gt;</code> (sırasız liste) ile en az <strong>beş madde</strong> yazın (örneğin hizmetler veya ilgi alanları).</li>
+      <li>Bir <code class="inline">&lt;ol&gt;</code> (sıralı liste) ile bir <strong>adım listesi</strong> yazın (örneğin bir tarif veya süreç).</li>
+      <li>Bir <code class="inline">&lt;table border="1"&gt;</code> oluşturun: ilk satır <code class="inline">&lt;th&gt;</code> başlıkları, sonraki satırlar <code class="inline">&lt;td&gt;</code> verileri (örneğin haftalık program veya fiyat listesi).</li>
+    </ol>
+    <p><strong>Beklenen sonuç:</strong> Sayfada madde işaretli bir liste, numaralı bir liste ve kenarlıklı, başlıklı bir tablo görünür.</p>
+    <p><strong>İpuçları:</strong> <code class="inline">&lt;li&gt;</code> her zaman <code class="inline">&lt;ul&gt;</code>/<code class="inline">&lt;ol&gt;</code> içinde olmalı. Tabloda her satırda aynı sayıda hücre bulunmalı; başlık hücreleri için <code class="inline">&lt;th&gt;</code> kullanın.</p>
+
+    <h2 id="notlar-ve-ipuclari"><span class="num">9</span>Notlar ve İpuçları</h2>
+    <ul>
+      <li>Tablolar yalnızca satır-sütun biçimindeki veriler içindir. Sayfa yerleşimi (menü solda, içerik sağda gibi) tabloyla yapılmaz; bu iş 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda CSS ile yapılır.</li>
+      <li><code class="inline">&lt;th&gt;</code> yalnızca kalın görünmek için değildir. Ekran okuyucular başlık hücresi sayesinde her verinin hangi sütuna ait olduğunu okuyabilir.</li>
+      <li>İç içe listede alt liste, <code class="inline">&lt;li&gt;</code>'nin <strong>içine</strong>, <code class="inline">&lt;/li&gt;</code>'den önce yazılır.</li>
+    </ul>
+
+    <h2 id="calisma-sorulari"><span class="num">10</span>Çalışma Soruları</h2>
+    <ol>
+      <li><code class="inline">&lt;ul&gt;</code> ile en sevdiğiniz beş filmi listeleyiniz.</li>
+      <li><code class="inline">&lt;ol&gt;</code> ile sabah rutininizi sırayla yazınız.</li>
+      <li>Üç sütunlu (Ad, Şehir, Yaş) ve üç satırlı bir tablo oluşturunuz.</li>
+      <li>Kendi haftalık ders programınızı bir tablo hâline getiriniz.</li>
+      <li>Bir <code class="inline">&lt;ol&gt;</code> listesinde <code class="inline">type="A"</code> kullanıp numaraların harfe dönüştüğünü gözlemleyiniz.</li>
+      <li>Bir listeyi <strong>iç içe</strong> yapınız: bir maddenin altına alt liste ekleyiniz.</li>
+    </ol>
+
+    <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
+    <ul class="kaynakca">
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Lists" target="_blank" rel="noopener">MDN: Lists</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics" target="_blank" rel="noopener">MDN: HTML table basics</a> (İngilizce)</li>
+    </ul>
+
+    <div class="aside-card mobil">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="baglantilar-ve-gorseller.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">3. Hafta</span>
+        <span class="kb">Bağlantılar ve Görseller</span>
+      </a>
+      <a class="komsu-kart sonraki" href="formlar.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">5. Hafta</span>
+        <span class="kb">Formlar</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#listeler"><span class="n">1</span>Listeler</a>
+      <a href="#tablolar"><span class="n">2</span>Tablolar</a>
+      <a href="#ornek-haftalik-ders-programi"><span class="n">3</span>Örnek: Haftalık Ders Programı</a>
+      <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
+      <a href="#konu-sonu-testi"><span class="n">6</span>Konu Sonu Testi</a>
+      <a href="#uygulamalar"><span class="n">7</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">8</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">9</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">10</span>Çalışma Soruları</a>
+      <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p class="alt-sol"><a class="alt-ad" href="index.html">Web Arayüz Tasarımı Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="proje-yonergesi.html">Proje yönergesi</a></nav>
+  </div>
+</footer>
+
+<script src="js/vendor/highlight.min.js"></script>
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

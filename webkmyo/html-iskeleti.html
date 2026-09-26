@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HTML İskeleti ve Metin Etiketleri | Web Arayüz Tasarımı Ders Notları</title>
+<meta name="description" content="Bir HTML sayfasının temel iskeletini (&lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;head&gt;, &lt;body&gt;) tanımak; başlık (&lt;h1&gt;–&lt;h6&gt;), paragraf (&lt;p&gt;), satır kesme (&lt;br&gt;), yatay çizgi...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML İskeleti ve Metin Etiketleri | Web Arayüz Tasarımı Ders Notları">
+<meta property="og:description" content="Bir HTML sayfasının temel iskeletini (&lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;head&gt;, &lt;body&gt;) tanımak; başlık (&lt;h1&gt;–&lt;h6&gt;), paragraf (&lt;p&gt;), satır kesme (&lt;br&gt;), yatay çizgi...">
+<script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>BDT249 <span class="muted">/ HTML İskeleti ve Metin Etiketleri</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
+          <a href="html-iskeleti.html" class="etkin" aria-current="page"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
+          <a href="baglantilar-ve-gorseller.html"><span class="mh">3</span>Bağlantılar ve Görseller</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="formlar.html"><span class="mh">5</span>Formlar</a>
+          <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
+          <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
+          <a href="tasarimdan-koda.html"><span class="mh">9</span>Tasarımdan Koda</a>
+          <a href="flexbox-1.html"><span class="mh">10</span>Flexbox 1</a>
+          <a href="flexbox-2-ve-sayfa-yerlesimi.html"><span class="mh">11</span>Flexbox 2 ve Sayfa Yerleşimi</a>
+          <a href="responsive-tasarim.html"><span class="mh">12</span>Responsive Tasarım</a>
+          <a href="gecisler-ve-dokunuslar.html"><span class="mh">13</span>Geçişler ve Küçük Dokunuşlar</a>
+          <a href="bootstrap-tanitimi.html"><span class="mh">14</span>Bootstrap Tanıtımı</a>
+        </nav>
+      </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Web &nbsp;›&nbsp; <span>HTML İskeleti ve Metin Etiketleri</span></div>
+
+<main class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 2. Hafta</div>
+    <h1>HTML İskeleti ve Metin Etiketleri</h1>
+    <p class="lede">Bir HTML sayfasının temel iskeletini (<code class="inline">&lt;!DOCTYPE&gt;</code>, <code class="inline">&lt;html&gt;</code>, <code class="inline">&lt;head&gt;</code>, <code class="inline">&lt;body&gt;</code>) tanımak; başlık (<code class="inline">&lt;h1&gt;</code>–<code class="inline">&lt;h6&gt;</code>), paragraf (<code class="inline">&lt;p&gt;</code>), satır kesme (<code class="inline">&lt;br&gt;</code>), yatay çizgi (<code class="inline">&lt;hr&gt;</code>) ve yorum satırı (<code class="inline">&lt;!-- --&gt;</code>) etiketlerini kullanarak <strong>kendini tanıtan tek sayfalık</strong> bir web sayfası hazırlamak.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#etiket-tag-mantigi"><span class="n">1</span>Etiket (Tag) Mantığı</a>
+        <a href="#sayfanin-iskeleti"><span class="n">2</span>Sayfanın İskeleti</a>
+        <a href="#baslik-etiketleri"><span class="n">3</span>Başlık Etiketleri: <code class="inline">&lt;h1&gt;</code>–<code class="inline">&lt;h6&gt;</code></a>
+        <a href="#paragraf-satir-kesme-ve-yatay-cizgi"><span class="n">4</span>Paragraf, Satır Kesme ve Yatay Çizgi</a>
+        <a href="#metin-bicimlendirme-etiketleri"><span class="n">5</span>Metin Biçimlendirme Etiketleri</a>
+        <a href="#yorum-satiri"><span class="n">6</span>Yorum Satırı: <code class="inline">&lt;!-- --&gt;</code></a>
+        <a href="#ornek-kendini-tanitan-sayfa"><span class="n">7</span>Örnek: Kendini Tanıtan Sayfa</a>
+        <a href="#sikca-yapilan-5-hata"><span class="n">8</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#bu-haftanin-ozeti"><span class="n">9</span>Bu Haftanın Özeti</a>
+        <a href="#konu-sonu-testi"><span class="n">10</span>Konu Sonu Testi</a>
+        <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
+        <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+      </nav>
+    </details>
+
+<p>1. haftada, <a href="araclar-ve-ilk-sayfa.html">Araçlar ve İlk Web Sayfası</a> konusunda, çalışma ortamını kurduk ve ekrana "Merhaba Dünya" yazdırdık. Bu hafta bir web sayfasının <strong>hangi parçalardan oluştuğunu</strong> ve <strong>metni nasıl düzenlediğimizi</strong> öğreneceğiz. Bu, dönem boyunca yapılacak her şeyin üzerine kurulacağı temeldir.</p>
+
+    <h2 id="etiket-tag-mantigi"><span class="num">1</span>Etiket (Tag) Mantığı</h2>
+    <p>HTML, <strong>etiketlerden</strong> oluşur. Bir etiket, tarayıcıya "bu içerik bir başlıktır", "bu bir paragraftır" gibi bilgiler verir. Etiketler açılı parantez içinde yazılır:</p>
+    <ul>
+      <li><strong>Açılış etiketi:</strong> <code class="inline">&lt;p&gt;</code></li>
+      <li><strong>Kapanış etiketi:</strong> <code class="inline">&lt;/p&gt;</code> (kapanışta <code class="inline">/</code> işareti bulunur)</li>
+      <li><strong>İçerik:</strong> ikisinin arasına yazılır.</li>
+    </ul>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;p&gt;Bu bir paragraftır.&lt;/p&gt;</pre>
+    </div>
+    <p>İki tür etiket vardır:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Tür</th><th>Açıklama</th><th>Örnek</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Çift (kapatılan) etiket</strong></td><td>Açılır ve kapatılır; arasına içerik yazılır</td><td><code class="inline">&lt;h1&gt;Başlık&lt;/h1&gt;</code></td></tr>
+          <tr><td><strong>Tek (kapatılmayan) etiket</strong></td><td>Tek başına kullanılır, kapanışı yoktur</td><td><code class="inline">&lt;br&gt;</code>, <code class="inline">&lt;hr&gt;</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><span class="tag">Not</span><p>HTML büyük/küçük harfe <strong>duyarlı değildir</strong> (<code class="inline">&lt;P&gt;</code> ile <code class="inline">&lt;p&gt;</code> aynı anlama gelir); ancak profesyonel alışkanlık olarak etiketleri <strong>küçük harfle</strong> yazınız. Açtığınız her çift etiketi <strong>kapatmayı unutmayınız.</strong></p></div>
+
+    <h2 id="sayfanin-iskeleti"><span class="num">2</span>Sayfanın İskeleti</h2>
+    <p>Her HTML sayfası aynı temel iskelet üzerine kurulur. Aşağıdaki dört etiket, bir sayfanın "olmazsa olmaz" parçalarıdır:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Sayfa Başlığı&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Görünen içerik buraya yazılır --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Etiket</th><th>Görevi</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">&lt;!DOCTYPE html&gt;</code></td><td>Belgenin bir HTML5 belgesi olduğunu bildirir. Her sayfanın ilk satırıdır.</td></tr>
+          <tr><td><code class="inline">&lt;html&gt;</code></td><td>Tüm sayfayı kapsayan en dıştaki etikettir. <code class="inline">lang="tr"</code> sayfanın dilinin Türkçe olduğunu belirtir.</td></tr>
+          <tr><td><code class="inline">&lt;head&gt;</code></td><td>Sayfanın <strong>görünmeyen</strong> bilgileri (başlık, karakter seti, açıklama) burada durur.</td></tr>
+          <tr><td><code class="inline">&lt;body&gt;</code></td><td>Sayfada <strong>görünen</strong> her şey (yazılar, başlıklar, resimler) burada yer alır.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Kısaca: <strong><code class="inline">&lt;head&gt;</code> sayfanın kimlik bilgisidir, <code class="inline">&lt;body&gt;</code> ise ekranda gördüğümüz kısımdır.</strong></p>
+    <h3 id="icinde-neler-bulunur">2.1. <code class="inline">&lt;head&gt;</code> İçinde Neler Bulunur?</h3>
+    <p><code class="inline">&lt;head&gt;</code> bölümündeki bilgiler tarayıcı sekmesinde ve arama motorlarında işe yarar; sayfanın içinde doğrudan görünmezler.</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Etiket</th><th>Görevi</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">&lt;title&gt;</code></td><td>Tarayıcı sekmesinde görünen başlık.</td></tr>
+          <tr><td><code class="inline">&lt;meta charset="utf-8"&gt;</code></td><td>Türkçe karakterlerin doğru görünmesini sağlar.</td></tr>
+          <tr><td><code class="inline">&lt;meta name="description" content="..."&gt;</code></td><td>Sayfanın kısa açıklaması (arama motorları için).</td></tr>
+          <tr><td><code class="inline">&lt;meta name="keywords" content="..."&gt;</code></td><td>Sayfayla ilgili anahtar kelimeler (günümüzde arama motorlarının çoğu dikkate almaz).</td></tr>
+          <tr><td><code class="inline">&lt;meta name="author" content="..."&gt;</code></td><td>Sayfayı hazırlayan kişi.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;meta name="viewport" ...&gt;</code> etiketi de <code class="inline">&lt;head&gt;</code> içinde yer alır ve sayfanın telefonda düzgün görünmesini sağlar. Bu etiketi <strong>12. hafta (<a href="responsive-tasarim.html">Responsive Tasarım</a>)</strong> konusunda ayrıntılı göreceğiz.</p></div>
+
+    <h2 id="baslik-etiketleri"><span class="num">3</span>Başlık Etiketleri: <code class="inline">&lt;h1&gt;</code>–<code class="inline">&lt;h6&gt;</code></h2>
+    <p>Başlıklar, metni bölümlere ayırmak için kullanılır. Altı düzey vardır: <code class="inline">&lt;h1&gt;</code> en büyük ve en önemli başlık, <code class="inline">&lt;h6&gt;</code> en küçüğüdür.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;h1&gt;En büyük başlık&lt;/h1&gt;
+&lt;h2&gt;Alt başlık&lt;/h2&gt;
+&lt;h3&gt;Daha alt başlık&lt;/h3&gt;</pre>
+    </div>
+    <p>Tarayıcı bu başlıkları, numarası büyüdükçe (<code class="inline">&lt;h1&gt;</code>'den <code class="inline">&lt;h6&gt;</code>'ya doğru) daha küçük yazı ile gösterir:</p>
+    <figure class="diagram"><img alt="h1, h2 ve h3 başlıklarının giderek küçülen boyutlarla görünümü" src="images/basliklar_h1_h6.png" width="1200" height="269" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>h1, h2 ve h3 başlıklarının giderek küçülen boyutlarla görünümü</figcaption>
+    </figure>
+    <p>Başlıklar yalnızca yazıyı büyütmek için değil, <strong>sayfayı anlamlı bölümlere ayırmak</strong> için kullanılır. Bir sayfada genellikle <strong>tek bir <code class="inline">&lt;h1&gt;</code></strong> bulunur (ana başlık); alt bölümler <code class="inline">&lt;h2&gt;</code>, onların da alt bölümleri <code class="inline">&lt;h3&gt;</code> ile devam eder.</p>
+    <div class="note warn"><span class="tag">Kural</span><p>Yazıyı büyütmek veya küçültmek amacıyla başlık etiketi kullanmayınız. Boyut ve görünüm ayarları 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda, <strong>CSS</strong> ile yapılacaktır. Başlık etiketi yalnızca "burası bir başlıktır" anlamı taşır.</p></div>
+
+    <h2 id="paragraf-satir-kesme-ve-yatay-cizgi"><span class="num">4</span>Paragraf, Satır Kesme ve Yatay Çizgi</h2>
+    <h3 id="paragraf">4.1. Paragraf: <code class="inline">&lt;p&gt;</code></h3>
+    <p>Metin blokları <code class="inline">&lt;p&gt;</code> etiketi ile yazılır. Tarayıcı her paragrafın öncesine ve sonrasına boşluk bırakır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;p&gt;Bu birinci paragraftır.&lt;/p&gt;
+&lt;p&gt;Bu ikinci paragraftır.&lt;/p&gt;</pre>
+    </div>
+    <div class="note warn"><span class="tag">Önemli</span><p>Tarayıcı, kodda arka arkaya bıraktığınız <strong>birden fazla boşluğu tek boşluk</strong> sayar; <strong>Enter ile yaptığınız satır atlamayı da bir boşluk sayar.</strong> Yani metni koddaki gibi alt satıra geçirmek için Enter'a basmanız yetmez; satır ve paragrafları aşağıdaki etiketlerle oluşturmanız gerekir.</p></div>
+    <h3 id="satir-kesme">4.2. Satır Kesme: <code class="inline">&lt;br&gt;</code></h3>
+    <p>Aynı paragraf içinde bir alt satıra geçmek için <code class="inline">&lt;br&gt;</code> kullanılır. Tek (kapanışsız) bir etikettir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;p&gt;Birinci satır&lt;br&gt;İkinci satır&lt;/p&gt;</pre>
+    </div>
+    <h3 id="yatay-cizgi">4.3. Yatay Çizgi: <code class="inline">&lt;hr&gt;</code></h3>
+    <p><code class="inline">&lt;hr&gt;</code>, sayfaya yatay bir çizgi çizer ve genellikle <strong>konu değişimini</strong> belirtmek için kullanılır. O da tek (kapanışsız) bir etikettir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;p&gt;Giriş bölümü...&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Yeni bölüm...&lt;/p&gt;</pre>
+    </div>
+
+    <h2 id="metin-bicimlendirme-etiketleri"><span class="num">5</span>Metin Biçimlendirme Etiketleri</h2>
+    <p>Metnin bir kısmını vurgulamak için aşağıdaki etiketler kullanılır:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Etiket</th><th>Görevi</th><th>Örnek</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">&lt;b&gt;</code> / <code class="inline">&lt;strong&gt;</code></td><td>Kalın yazı</td><td><code class="inline">&lt;b&gt;önemli&lt;/b&gt;</code></td></tr>
+          <tr><td><code class="inline">&lt;i&gt;</code> / <code class="inline">&lt;em&gt;</code></td><td>İtalik (eğik) yazı</td><td><code class="inline">&lt;i&gt;terim&lt;/i&gt;</code></td></tr>
+          <tr><td><code class="inline">&lt;u&gt;</code></td><td>Altı çizili yazı</td><td><code class="inline">&lt;u&gt;altı çizili&lt;/u&gt;</code></td></tr>
+          <tr><td><code class="inline">&lt;del&gt;</code></td><td>Üstü çizili yazı</td><td><code class="inline">&lt;del&gt;eski fiyat&lt;/del&gt;</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Tarayıcıdaki görünümleri şöyledir:</p>
+    <figure class="diagram"><img alt="Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri" src="images/metin_bicimlendirme.png" width="780" height="314" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri</figcaption>
+    </figure>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;b&gt;</code> ile <code class="inline">&lt;strong&gt;</code> her ikisi de yazıyı kalın gösterir; aradaki fark, <code class="inline">&lt;strong&gt;</code> etiketinin aynı zamanda "bu metin önemlidir" anlamını taşımasıdır. Aynı ilişki <code class="inline">&lt;i&gt;</code> ile <code class="inline">&lt;em&gt;</code> arasında da vardır. Bu derste ikisini de kalın/eğik yapmak için kullanabilirsiniz.</p></div>
+
+    <h2 id="yorum-satiri"><span class="num">6</span>Yorum Satırı: <code class="inline">&lt;!-- --&gt;</code></h2>
+    <p>Yorumlar, kodun içine yazdığınız ama <strong>tarayıcıda görünmeyen</strong> notlardır. Kendinize hatırlatma bırakmak veya bir kod parçasını geçici olarak devre dışı bırakmak için kullanılır.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!-- Bu bir yorumdur, tarayıcıda görünmez --&gt;
+&lt;p&gt;Bu paragraf görünür.&lt;/p&gt;</pre>
+    </div>
+
+    <h2 id="ornek-kendini-tanitan-sayfa"><span class="num">7</span>Örnek: Kendini Tanıtan Sayfa</h2>
+    <p>Şimdi bu haftanın etiketlerini kullanarak kendini tanıtan bir sayfa hazırlayalım. VS Code'da <code class="inline">web_sitem</code> klasöründe <code class="inline">index.html</code> dosyasını açın ve şunu yazın:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Hakkımda&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Ayşe Demir&lt;/h1&gt;
+    &lt;h2&gt;Bilgisayar Teknolojileri Öğrencisi&lt;/h2&gt;
+    &lt;hr&gt;
+    &lt;p&gt;Merhaba! Ben Ayşe. Çukurova Üniversitesi'nde okuyorum.&lt;/p&gt;
+    &lt;h3&gt;İlgi Alanlarım&lt;/h3&gt;
+    &lt;p&gt;Web tasarımı, grafik tasarım ve fotoğrafçılık ile ilgileniyorum.&lt;/p&gt;
+    &lt;!-- İletişim bilgileri ileride eklenecek --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Kaydedip (<code class="inline">Ctrl</code> + <code class="inline">S</code>) Go Live ile açtığınızda tarayıcıda şu sonucu görürsünüz:</p>
+    <figure class="diagram"><img alt="Örnek sayfanın tarayıcı çıktısı: büyük başlık, alt başlık, yatay çizgi, paragraflar ve bir ara başlık" src="images/ornek_sayfa_ciktisi.png" width="1200" height="422" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Örnek sayfanın tarayıcı çıktısı: büyük başlık, alt başlık, yatay çizgi, paragraflar ve bir ara başlık</figcaption>
+    </figure>
+    <p>Dikkat ediniz: <code class="inline">&lt;!-- İletişim bilgileri ileride eklenecek --&gt;</code> satırı bir yorum olduğu için sayfada <strong>görünmez.</strong></p>
+
+    <h2 id="sikca-yapilan-5-hata"><span class="num">8</span>Sıkça Yapılan 5 Hata</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
+        <tbody>
+          <tr><td>Çift etiketi kapatmamak (<code class="inline">&lt;b&gt;</code> var, <code class="inline">&lt;/b&gt;</code> yok)</td><td>Sonraki bütün yazılar kalın görünür</td><td>Her çift etiketi kapatınız</td></tr>
+          <tr><td><code class="inline">&lt;br&gt;</code> ve <code class="inline">&lt;hr&gt;</code> için kapanış aramak (<code class="inline">&lt;/br&gt;</code>)</td><td>Fazladan boş bir satır oluşur</td><td>Bunlar tek etikettir, kapanışları yoktur</td></tr>
+          <tr><td>Alt satıra geçmek için kodda Enter'a basmak</td><td>Tarayıcı satırı atlamaz</td><td>Satır için <code class="inline">&lt;br&gt;</code>, paragraf için <code class="inline">&lt;p&gt;</code> kullanınız</td></tr>
+          <tr><td>Yazıyı büyütmek için <code class="inline">&lt;h1&gt;</code> kullanmak</td><td>Anlam bozulur</td><td>Başlık yalnızca başlık için; boyut CSS ile ayarlanır</td></tr>
+          <tr><td>İç içe etiketleri yanlış sırada kapatmak</td><td>Tarayıcı çoğu zaman kendisi düzeltir; ama kod karışır ve hata bulmak zorlaşır</td><td>En son açılan etiketi en önce kapatınız</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="bu-haftanin-ozeti"><span class="num">9</span>Bu Haftanın Özeti</h2>
+    <ul>
+      <li>HTML <strong>etiketlerden</strong> oluşur: <strong>çift etiketler</strong> açılıp kapatılır (<code class="inline">&lt;p&gt;&lt;/p&gt;</code>), <strong>tek etiketler</strong> kapatılmaz (<code class="inline">&lt;br&gt;</code>, <code class="inline">&lt;hr&gt;</code>).</li>
+      <li>Sayfa iskeleti: <code class="inline">&lt;!DOCTYPE html&gt;</code>, <code class="inline">&lt;html&gt;</code>, <code class="inline">&lt;head&gt;</code> (görünmeyen bilgiler) ve <code class="inline">&lt;body&gt;</code> (görünen içerik).</li>
+      <li>Başlıklar <code class="inline">&lt;h1&gt;</code>–<code class="inline">&lt;h6&gt;</code>; <code class="inline">&lt;h1&gt;</code> en büyük ve en önemlidir, yalnızca <strong>başlık</strong> amacıyla kullanılır (boyut için değil).</li>
+      <li>Metin etiketleri: <code class="inline">&lt;p&gt;</code> paragraf, <code class="inline">&lt;br&gt;</code> satır kesme, <code class="inline">&lt;hr&gt;</code> yatay çizgi. Tarayıcı koddaki <strong>fazladan boşlukları tek boşluğa indirir, Enter'ı da boşluk sayar.</strong></li>
+      <li>Biçimlendirme: <code class="inline">&lt;b&gt;</code>/<code class="inline">&lt;strong&gt;</code> kalın, <code class="inline">&lt;i&gt;</code>/<code class="inline">&lt;em&gt;</code> italik, <code class="inline">&lt;u&gt;</code> altı çizili, <code class="inline">&lt;del&gt;</code> üstü çizili.</li>
+      <li><code class="inline">&lt;!-- --&gt;</code> <strong>yorum</strong> satırıdır; tarayıcıda görünmez.</li>
+    </ul>
+
+    <h2 id="konu-sonu-testi"><span class="num">10</span>Konu Sonu Testi</h2>
+    <ol class="quiz">
+      <li>
+        <p class="q">Bir HTML sayfasında <strong>görünen</strong> içerik hangi etiketin içine yazılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;head&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;title&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;body&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;meta&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>Görünen içerik <code class="inline">&lt;body&gt;</code> içine yazılır; <code class="inline">&lt;head&gt;</code> görünmeyen bilgileri tutar.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Aşağıdakilerden hangisi <strong>tek (kapanışsız)</strong> bir etikettir?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;p&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;h2&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;br&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;title&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span><code class="inline">&lt;br&gt;</code> tek etikettir, kapanışı yoktur; <code class="inline">&lt;p&gt;</code>, <code class="inline">&lt;h2&gt;</code>, <code class="inline">&lt;title&gt;</code> çift etikettir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q"><code class="inline">&lt;!-- ... --&gt;</code> etiketi ne işe yarar?</p>
+        <ul class="opts">
+          <li><b>a)</b> Başlık oluşturur</li>
+          <li><b>b)</b> Tarayıcıda görünmeyen yorum ekler</li>
+          <li><b>c)</b> Yatay çizgi çizer</li>
+          <li><b>d)</b> Yazıyı kalın yapar</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Yorum satırı koda not düşmek içindir ve tarayıcıda görünmez.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Bir metni <strong>kalın</strong> göstermek için hangi etiket kullanılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">&lt;i&gt;</code></li>
+          <li><b>b)</b> <code class="inline">&lt;u&gt;</code></li>
+          <li><b>c)</b> <code class="inline">&lt;b&gt;</code></li>
+          <li><b>d)</b> <code class="inline">&lt;hr&gt;</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span><code class="inline">&lt;b&gt;</code> (veya <code class="inline">&lt;strong&gt;</code>) yazıyı kalın gösterir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Kodda arka arkaya bırakılan birden fazla boşluk ve Enter için tarayıcı ne yapar?</p>
+        <ul class="opts">
+          <li><b>a)</b> Hepsini olduğu gibi gösterir</li>
+          <li><b>b)</b> Birden fazla boşluğu tek boşluk sayar, Enter'ı da boşluk sayar</li>
+          <li><b>c)</b> Hata verir</li>
+          <li><b>d)</b> Otomatik paragraf oluşturur</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Tarayıcı fazladan boşlukları tek boşluğa indirir; Enter da bir boşluk sayılır.</div>
+        </details>
+      </li>
+    </ol>
+
+    <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> En sevdiğiniz filmi tanıtan bir sayfa hazırlayınız. Bir ana başlık, bir alt başlık, yatay çizgi ile ayrılmış iki bölüm ve en az iki paragraf bulunsun. Filmin adını bir paragraf içinde <strong>kalın</strong> yazınız.</p>
+    <p><strong>Çözüm:</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;En Sevdiğim Film&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;En Sevdiğim Film&lt;/h1&gt;
+    &lt;h2&gt;Kısa Tanıtım&lt;/h2&gt;
+    &lt;p&gt;En sevdiğim film &lt;b&gt;Esaretin Bedeli&lt;/b&gt; filmidir.&lt;/p&gt;
+    &lt;p&gt;Umut ve dostluk üzerine etkileyici bir hikâye anlatır.&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;h3&gt;Neden Sevdim?&lt;/h3&gt;
+    &lt;p&gt;Kurgusu ve sonu beni çok etkiledi.&lt;/p&gt;
+    &lt;!-- İstenirse buraya yönetmen bilgisi eklenebilir --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Adımlar:</p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe <code class="inline">film.html</code> adında yeni bir dosya oluşturunuz.</li>
+      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live ile açınız ve içeriği kendi seçtiğiniz filme göre değiştiriniz.</li>
+    </ol>
+
+    <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
+    <p><strong>Senaryo:</strong> Kendinizi (veya seçtiğiniz bir konuyu) tanıtan, düzgün başlık hiyerarşisi olan tek sayfalık bir tanıtım sayfası hazırlayın.</p>
+    <p><strong>Yapılacaklar:</strong></p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">tanitim.html</code></strong> adında yeni bir dosya oluşturun.</li>
+      <li>Sayfaya bir <code class="inline">&lt;h1&gt;</code> (ad/konu) ve bir <code class="inline">&lt;h2&gt;</code> (alt başlık) ekleyin.</li>
+      <li><code class="inline">&lt;h2&gt;</code>'nin altına bir <code class="inline">&lt;hr&gt;</code> (yatay çizgi) koyun.</li>
+      <li>En az <strong>iki paragraf</strong> (<code class="inline">&lt;p&gt;</code>) yazarak kendinizi/konuyu anlatın.</li>
+      <li>Bir <code class="inline">&lt;h3&gt;</code> ("İlgi Alanlarım" gibi) ve altına bir paragraf ekleyin.</li>
+      <li>Bir paragrafta bir kelimeyi <code class="inline">&lt;b&gt;</code> ile <strong>kalın</strong>, başka bir kelimeyi <code class="inline">&lt;i&gt;</code> ile <em>italik</em> yapın.</li>
+      <li>Sayfaya bir <strong>yorum satırı</strong> (<code class="inline">&lt;!-- --&gt;</code>) ekleyin.</li>
+    </ol>
+    <p><strong>Beklenen sonuç:</strong> Büyükten küçüğe başlıklar, yatay çizgiyle ayrılmış bölümler, kalın ve italik vurgular içeren düzenli bir tanıtım sayfası. Yorum satırı tarayıcıda görünmez.</p>
+    <p><strong>İpuçları:</strong> Başlık etiketlerini yalnızca başlık için kullanın. <code class="inline">&lt;b&gt;</code>/<code class="inline">&lt;i&gt;</code> gibi etiketleri açtığınız yerde kapatmayı unutmayın.</p>
+
+    <h2 id="notlar-ve-ipuclari"><span class="num">13</span>Notlar ve İpuçları</h2>
+    <ul>
+      <li>Başlık düzeylerini atlamayın: <code class="inline">&lt;h1&gt;</code>'den sonra <code class="inline">&lt;h3&gt;</code> değil, <code class="inline">&lt;h2&gt;</code> gelir. Alt bölümler sırayla bir düzey aşağı iner.</li>
+      <li>Yorum satırları sayfada görünmez; ancak tarayıcıda <strong>Sayfa kaynağını görüntüle</strong> ile herkes görebilir. Yorumlara şifre veya kişisel bilgi yazmayın.</li>
+      <li>Anlam taşıdıkları için <code class="inline">&lt;b&gt;</code> yerine <code class="inline">&lt;strong&gt;</code>, <code class="inline">&lt;i&gt;</code> yerine <code class="inline">&lt;em&gt;</code> tercih edilir. Bu derste ikisini de kullanabilirsiniz; ancak MDN de anlamı öne çıkaran <code class="inline">&lt;strong&gt;</code> ve <code class="inline">&lt;em&gt;</code>'i önerir.</li>
+    </ul>
+
+    <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>
+    <ol>
+      <li><code class="inline">&lt;h1&gt;</code> başlığının altına kendi bölümünüzü <code class="inline">&lt;h2&gt;</code> ile yazınız.</li>
+      <li>Bir paragraf yazıp içindeki bir kelimeyi <code class="inline">&lt;b&gt;</code> ile kalın, başka bir kelimeyi <code class="inline">&lt;i&gt;</code> ile italik yapınız.</li>
+      <li>İki paragraf yazıp aralarına <code class="inline">&lt;hr&gt;</code> ekleyiniz; çizginin nasıl göründüğüne bakınız.</li>
+      <li>Bir paragraf içinde <code class="inline">&lt;br&gt;</code> kullanarak metni üç ayrı satıra bölünüz.</li>
+      <li>Sayfanıza bir yorum satırı (<code class="inline">&lt;!-- --&gt;</code>) ekleyip kaydediniz; bu satırın tarayıcıda görünmediğini doğrulayınız.</li>
+      <li><code class="inline">&lt;h1&gt;</code>'den <code class="inline">&lt;h6&gt;</code>'ya kadar altı başlığı da yazıp boyutlarının nasıl küçüldüğünü gözlemleyiniz.</li>
+    </ol>
+
+    <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
+    <ul class="kaynakca">
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax" target="_blank" rel="noopener">MDN: Basic HTML syntax</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Headings_and_paragraphs" target="_blank" rel="noopener">MDN: Headings and paragraphs</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Emphasis_and_importance" target="_blank" rel="noopener">MDN: Emphasis and importance</a> (İngilizce)</li>
+    </ul>
+
+    <div class="aside-card mobil">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="araclar-ve-ilk-sayfa.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">1. Hafta</span>
+        <span class="kb">Araçlar ve İlk Web Sayfası</span>
+      </a>
+      <a class="komsu-kart sonraki" href="baglantilar-ve-gorseller.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">3. Hafta</span>
+        <span class="kb">Bağlantılar ve Görseller</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#etiket-tag-mantigi"><span class="n">1</span>Etiket (Tag) Mantığı</a>
+      <a href="#sayfanin-iskeleti"><span class="n">2</span>Sayfanın İskeleti</a>
+      <a href="#baslik-etiketleri"><span class="n">3</span>Başlık Etiketleri: <code class="inline">&lt;h1&gt;</code>–<code class="inline">&lt;h6&gt;</code></a>
+      <a href="#paragraf-satir-kesme-ve-yatay-cizgi"><span class="n">4</span>Paragraf, Satır Kesme ve Yatay Çizgi</a>
+      <a href="#metin-bicimlendirme-etiketleri"><span class="n">5</span>Metin Biçimlendirme Etiketleri</a>
+      <a href="#yorum-satiri"><span class="n">6</span>Yorum Satırı: <code class="inline">&lt;!-- --&gt;</code></a>
+      <a href="#ornek-kendini-tanitan-sayfa"><span class="n">7</span>Örnek: Kendini Tanıtan Sayfa</a>
+      <a href="#sikca-yapilan-5-hata"><span class="n">8</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#bu-haftanin-ozeti"><span class="n">9</span>Bu Haftanın Özeti</a>
+      <a href="#konu-sonu-testi"><span class="n">10</span>Konu Sonu Testi</a>
+      <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
+      <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p class="alt-sol"><a class="alt-ad" href="index.html">Web Arayüz Tasarımı Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="proje-yonergesi.html">Proje yönergesi</a></nav>
+  </div>
+</footer>
+
+<script src="js/vendor/highlight.min.js"></script>
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proje Yönergesi | Web Arayüz Tasarımı Ders Notları</title>
+<meta name="description" content="Dönem boyunca öğrendiklerinizi kullanarak, kendi seçtiğiniz bir konu için 3–4 sayfalık, birbirine bağlı ve responsive bir web sitesi hazırlayacaksınız....">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Proje Yönergesi | Web Arayüz Tasarımı Ders Notları">
+<meta property="og:description" content="Dönem boyunca öğrendiklerinizi kullanarak, kendi seçtiğiniz bir konu için 3–4 sayfalık, birbirine bağlı ve responsive bir web sitesi hazırlayacaksınız....">
+<script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>BDT249 <span class="muted">/ Proje Yönergesi</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
+          <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
+          <a href="baglantilar-ve-gorseller.html"><span class="mh">3</span>Bağlantılar ve Görseller</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="formlar.html"><span class="mh">5</span>Formlar</a>
+          <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
+          <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
+          <a href="tasarimdan-koda.html"><span class="mh">9</span>Tasarımdan Koda</a>
+          <a href="flexbox-1.html"><span class="mh">10</span>Flexbox 1</a>
+          <a href="flexbox-2-ve-sayfa-yerlesimi.html"><span class="mh">11</span>Flexbox 2 ve Sayfa Yerleşimi</a>
+          <a href="responsive-tasarim.html"><span class="mh">12</span>Responsive Tasarım</a>
+          <a href="gecisler-ve-dokunuslar.html"><span class="mh">13</span>Geçişler ve Küçük Dokunuşlar</a>
+          <a href="bootstrap-tanitimi.html"><span class="mh">14</span>Bootstrap Tanıtımı</a>
+        </nav>
+      </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Web &nbsp;›&nbsp; <span>Proje Yönergesi</span></div>
+
+<main class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Dönem Projesi</div>
+    <h1>BDT249 Web Arayüz Tasarımı: Dönem Projesi Yönergesi</h1>
+    <p class="lede">Dönem boyunca öğrendiklerinizi kullanarak, kendi seçtiğiniz bir konu için <strong>3–4 sayfalık, birbirine bağlı ve responsive bir web sitesi</strong> hazırlayacaksınız. Proje bireyseldir ve <strong>10. haftadan itibaren</strong> teslim edilebilir. Sunum, projenin teslim edildiği hafta ya da birlikte kararlaştırılan bir tarihte yapılır.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#amac"><span class="n">1</span>Amaç</a>
+        <a href="#proje-konusu"><span class="n">2</span>Proje Konusu</a>
+        <a href="#istenen-sayfalar"><span class="n">3</span>İstenen Sayfalar</a>
+        <a href="#teknik-gereksinimler"><span class="n">4</span>Teknik Gereksinimler</a>
+        <a href="#dosya-ve-klasor-duzeni"><span class="n">5</span>Dosya ve Klasör Düzeni</a>
+        <a href="#teslim"><span class="n">6</span>Teslim</a>
+        <a href="#sunum"><span class="n">7</span>Sunum</a>
+        <a href="#onemli-kurallar"><span class="n">8</span>Önemli Kurallar</a>
+        <a href="#teslim-oncesi-kontrol-listesi"><span class="n">9</span>Teslim Öncesi Kontrol Listesi</a>
+      </nav>
+    </details>
+
+<h2 id="amac"><span class="num">1</span>Amaç</h2>
+    <p>Bu proje, dönem boyunca gördüğünüz HTML ve CSS konularını <strong>tek bir bütün çalışmada</strong> uygulamanızı amaçlar. Sıfırdan bir web sitesi kurarak; sayfa yapısı, bağlantılar, görseller, form, CSS ile biçimlendirme, yerleşim (Flexbox), responsive tasarım ve küçük dokunuşları bir arada kullanacaksınız.</p>
+
+    <h2 id="proje-konusu"><span class="num">2</span>Proje Konusu</h2>
+    <p>Kendi seçeceğiniz <strong>bir işletme veya konu</strong> için tanıtım sitesi hazırlayınız. Konuyu siz belirlersiniz; birkaç örnek:</p>
+    <ul>
+      <li>Bir kafe, restoran veya pastane</li>
+      <li>Bir kuaför, spor salonu veya kütüphane</li>
+      <li>Kişisel tanıtım (portfolyo) sitesi</li>
+      <li>Bir kulüp, etkinlik veya hobi (fotoğrafçılık, müzik vb.)</li>
+    </ul>
+    <div class="note"><span class="tag">Not</span><p>İçerik <strong>özgün</strong> olmalıdır. Başka bir siteden birebir kopyalanan metin ve tasarım kabul edilmez. Görselleri ücretsiz kaynaklardan alabilir veya kendiniz hazırlayabilirsiniz.</p></div>
+
+    <h2 id="istenen-sayfalar"><span class="num">3</span>İstenen Sayfalar</h2>
+    <p>Site <strong>en az 3, en fazla 4 sayfadan</strong> oluşmalı ve tüm sayfalar bir <strong>menü (navbar)</strong> ile birbirine bağlı olmalıdır:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Dosya</th><th>Sayfa</th><th>İçerik</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">index.html</code></td><td><strong>Ana Sayfa</strong></td><td>Karşılama, kısa tanıtım, öne çıkan görsel.</td></tr>
+          <tr><td><code class="inline">hakkinda.html</code></td><td><strong>Hakkında</strong></td><td>İşletmenin/konunun tanıtımı, metin ve görsel.</td></tr>
+          <tr><td><code class="inline">galeri.html</code></td><td><strong>Galeri</strong></td><td>Kart veya ızgara düzeninde birkaç görsel.</td></tr>
+          <tr><td><code class="inline">iletisim.html</code></td><td><strong>İletişim</strong></td><td>İletişim bilgileri ve bir iletişim formu.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Ana sayfanız <strong><code class="inline">index.html</code></strong> adıyla kaydedilmelidir.</p>
+
+    <h2 id="teknik-gereksinimler"><span class="num">4</span>Teknik Gereksinimler</h2>
+    <p>Aşağıdaki maddeler, dönemde işlediğimiz konulardan gelmektedir ve projede <strong>kullanılması beklenir</strong> (parantezdeki haftalar, konuyu gördüğümüz haftalardır):</p>
+    <p><strong>HTML (2–5. haftalar)</strong></p>
+    <ul>
+      <li>Başlıklar, paragraflar; en az bir <strong>liste</strong> ve/veya <strong>tablo</strong> (<a href="listeler-ve-tablolar.html">Listeler ve Tablolar</a>, 4. hafta).</li>
+      <li><strong>Görseller</strong> (<code class="inline">&lt;img&gt;</code>, <code class="inline">alt</code> ile) ve sayfalar arası <strong>bağlantılar</strong> (<a href="baglantilar-ve-gorseller.html">Bağlantılar ve Görseller</a>, 3. hafta).</li>
+      <li>İletişim sayfasında bir <strong>form</strong> (ad, e-posta, mesaj, düğme) (<a href="formlar.html">Formlar</a>, 5. hafta).</li>
+    </ul>
+    <p><strong>CSS (6–7. haftalar)</strong></p>
+    <ul>
+      <li><strong>Harici</strong> bir stil dosyası (<code class="inline">style.css</code>) kullanınız; her sayfaya <code class="inline">&lt;link&gt;</code> ile bağlayınız (<a href="css-giris.html">CSS'e Giriş</a>, 6. hafta).</li>
+      <li>Renk, arka plan ve yazı tipi düzenlemeleri.</li>
+      <li><strong>Kutu modeli:</strong> <code class="inline">margin</code>, <code class="inline">padding</code>, <code class="inline">border</code> ile düzenli boşluklar (<a href="kutu-modeli.html">CSS Kutu Modeli</a>, 7. hafta).</li>
+    </ul>
+    <p><strong>Yerleşim (9–11. haftalar)</strong></p>
+    <ul>
+      <li>Anlamlı yerleşim etiketleri: <code class="inline">header</code>, <code class="inline">nav</code>, <code class="inline">main</code>, <code class="inline">footer</code> (<a href="tasarimdan-koda.html">Tasarımdan Koda</a>, 9. hafta).</li>
+      <li><strong>Flexbox</strong> ile bir <strong>yatay menü (navbar)</strong> (<a href="flexbox-1.html">Flexbox 1</a>, 10. hafta).</li>
+      <li>Galeride <strong>Flexbox</strong> (<code class="inline">flex-wrap</code>) ile çok kolonlu kart düzeni (<a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a>, 11. hafta).</li>
+    </ul>
+    <p><strong>Responsive (12. hafta)</strong></p>
+    <ul>
+      <li><code class="inline">&lt;head&gt;</code> içinde <strong>viewport</strong> meta etiketi.</li>
+      <li>En az bir <strong>media query</strong> ile sitenin <strong>telefonda düzgün</strong> görünmesi.</li>
+    </ul>
+    <p><strong>Küçük Dokunuşlar (13. hafta)</strong></p>
+    <ul>
+      <li><code class="inline">:hover</code>, <code class="inline">transition</code>, <code class="inline">border-radius</code>, <code class="inline">box-shadow</code> gibi en az birkaç dokunuş.</li>
+      <li>İsteğe bağlı: bilgisayarda kurulu bir yazı tipiyle (Arial, Verdana, Georgia, Tahoma gibi) sayfanın yazı tipini değiştirmek.</li>
+    </ul>
+
+    <h2 id="dosya-ve-klasor-duzeni"><span class="num">5</span>Dosya ve Klasör Düzeni</h2>
+    <ul>
+      <li>Projenizin tümü <strong>tek bir klasörde</strong> olmalıdır (örneğin <code class="inline">donem_projesi/</code>).</li>
+      <li>Görselleri ayrı bir <strong><code class="inline">gorseller/</code></strong> klasöründe tutunuz.</li>
+      <li>Dosya ve klasör adları <strong>küçük harf, Türkçe karaktersiz ve boşluksuz</strong> olmalıdır (örneğin <code class="inline">hakkinda.html</code>, <code class="inline">logo.png</code>).</li>
+    </ul>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Metin</span></div>
+<pre>donem_projesi/
+├── index.html
+├── hakkinda.html
+├── galeri.html
+├── iletisim.html
+├── style.css
+└── gorseller/
+    ├── logo.png
+    └── ...</pre>
+    </div>
+
+    <h2 id="teslim"><span class="num">6</span>Teslim</h2>
+    <ul>
+      <li>Proje klasörünüzü <strong>sıkıştırıp (<code class="inline">.zip</code>)</strong> teslim ediniz.</li>
+      <li>Teslim: <strong>10. haftadan itibaren</strong> (tarih ve yöntem ders sorumlusu ile kararlaştırılır).</li>
+      <li>Teslim etmeden önce, aşağıdaki <strong>kontrol listesini</strong> uygulayınız.</li>
+    </ul>
+
+    <h2 id="sunum"><span class="num">7</span>Sunum</h2>
+    <ul>
+      <li>Her öğrenci sitesini sınıfta <strong>yaklaşık 3 dakika</strong> tanıtacaktır.</li>
+      <li>Sunum sırasında sitenizin sayfalarını gezerek ne yaptığınızı anlatınız.</li>
+      <li><strong>Kodunuzdan rastgele satırlar sorulacaktır</strong> ("Bu satır ne yapıyor?"). Bu yüzden yazdığınız kodun her parçasını <strong>anlamanız</strong> gerekir (bkz. Bölüm 8).</li>
+    </ul>
+
+    <h2 id="onemli-kurallar"><span class="num">8</span>Önemli Kurallar</h2>
+    <ul>
+      <li><strong>Özgünlük:</strong> İçerik ve tasarım size ait olmalıdır. Birebir kopya kabul edilmez.</li>
+      <li><strong>Dosya adları:</strong> Türkçe karakter ve boşluk kullanmayınız.</li>
+      <li><strong>Bootstrap kullanılmaz:</strong> Projede Bootstrap kullanmayınız; bütün CSS'i kendiniz yazınız.</li>
+      <li><strong>Kendi kodunuzu anlayın:</strong> Yardım almak (arkadaş, internet, yapay zekâ araçları) bir şeyler öğrenmek için serbesttir; ancak <strong>teslim ettiğiniz kodu siz anlamalısınız.</strong> Sunumda kodunuzdan sorulacak sorular, kodu anlamadan hazır aldığınızı hemen ortaya çıkarır ve puan kaybettirir. Amaç, siteyi "yaptırmak" değil, <strong>yapmayı öğrenmektir.</strong></li>
+    </ul>
+
+    <h2 id="teslim-oncesi-kontrol-listesi"><span class="num">9</span>Teslim Öncesi Kontrol Listesi</h2>
+    <p>Teslimden önce her maddeyi işaretleyerek kontrol ediniz:</p>
+    <ul class="kontrol">
+      <li>☐ Ana sayfa <code class="inline">index.html</code> adıyla kaydedildi.</li>
+      <li>☐ 3–4 sayfa var ve hepsi menüyle birbirine bağlı.</li>
+      <li>☐ Tüm bağlantılar (menü ve iç bağlantılar) çalışıyor.</li>
+      <li>☐ Görseller görünüyor (yollar doğru, <code class="inline">gorseller/</code> klasöründe).</li>
+      <li>☐ Harici <code class="inline">style.css</code> her sayfaya bağlı.</li>
+      <li>☐ İletişim sayfasında bir form var.</li>
+      <li>☐ <code class="inline">header</code>/<code class="inline">nav</code>/<code class="inline">main</code>/<code class="inline">footer</code> gibi anlam etiketleri kullanıldı.</li>
+      <li>☐ Flexbox ile navbar ve çok kolonlu galeri yapıldı.</li>
+      <li>☐ <code class="inline">&lt;head&gt;</code>'de viewport var ve en az bir media query ile site telefonda düzgün.</li>
+      <li>☐ <code class="inline">:hover</code>, gölge, yuvarlak köşe gibi dokunuşlar eklendi.</li>
+      <li>☐ Dosya/klasör adları Türkçe karaktersiz ve boşluksuz.</li>
+      <li>☐ Yazdığım kodun her satırını açıklayabiliyorum.</li>
+    </ul>
+
+    <div class="aside-card mobil">
+      <div class="k">Önemli tarihler</div>
+      <p>Proje çalışması: <strong>14. hafta</strong>. Teslim: <strong>10. haftadan itibaren</strong>. Bireysel.</p>
+    </div>
+
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#amac"><span class="n">1</span>Amaç</a>
+      <a href="#proje-konusu"><span class="n">2</span>Proje Konusu</a>
+      <a href="#istenen-sayfalar"><span class="n">3</span>İstenen Sayfalar</a>
+      <a href="#teknik-gereksinimler"><span class="n">4</span>Teknik Gereksinimler</a>
+      <a href="#dosya-ve-klasor-duzeni"><span class="n">5</span>Dosya ve Klasör Düzeni</a>
+      <a href="#teslim"><span class="n">6</span>Teslim</a>
+      <a href="#sunum"><span class="n">7</span>Sunum</a>
+      <a href="#onemli-kurallar"><span class="n">8</span>Önemli Kurallar</a>
+      <a href="#teslim-oncesi-kontrol-listesi"><span class="n">9</span>Teslim Öncesi Kontrol Listesi</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Önemli tarihler</div>
+      <p>Proje çalışması: <strong>14. hafta</strong>. Teslim: <strong>10. haftadan itibaren</strong>. Bireysel.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p class="alt-sol"><a class="alt-ad" href="index.html">Web Arayüz Tasarımı Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="proje-yonergesi.html">Proje yönergesi</a></nav>
+  </div>
+</footer>
+
+<script src="js/vendor/highlight.min.js"></script>
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>

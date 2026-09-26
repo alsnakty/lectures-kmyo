@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flexbox 1 | Web Arayüz Tasarımı Ders Notları</title>
+<meta name="description" content="Öğeleri kolayca yan yana dizmeyi ve hizalamayı sağlayan Flexbox&#x27;ı tanımak; display: flex, justify-content (yatay hizalama) ve align-items (dikey hizalama)...">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flexbox 1 | Web Arayüz Tasarımı Ders Notları">
+<meta property="og:description" content="Öğeleri kolayca yan yana dizmeyi ve hizalamayı sağlayan Flexbox&#x27;ı tanımak; display: flex, justify-content (yatay hizalama) ve align-items (dikey hizalama)...">
+<script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
+<link rel="stylesheet" href="css/vendor/github-dark.min.css">
+<link rel="stylesheet" href="css/ders.css">
+
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="dot"></span>BDT249 <span class="muted">/ Flexbox 1</span></a>
+    <div class="ust-araclar">
+      <details class="konu-menu">
+        <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
+        <nav class="konu-listesi" aria-label="Tüm konular">
+          <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
+          <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
+          <a href="baglantilar-ve-gorseller.html"><span class="mh">3</span>Bağlantılar ve Görseller</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="formlar.html"><span class="mh">5</span>Formlar</a>
+          <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
+          <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
+          <a href="tasarimdan-koda.html"><span class="mh">9</span>Tasarımdan Koda</a>
+          <a href="flexbox-1.html" class="etkin" aria-current="page"><span class="mh">10</span>Flexbox 1</a>
+          <a href="flexbox-2-ve-sayfa-yerlesimi.html"><span class="mh">11</span>Flexbox 2 ve Sayfa Yerleşimi</a>
+          <a href="responsive-tasarim.html"><span class="mh">12</span>Responsive Tasarım</a>
+          <a href="gecisler-ve-dokunuslar.html"><span class="mh">13</span>Geçişler ve Küçük Dokunuşlar</a>
+          <a href="bootstrap-tanitimi.html"><span class="mh">14</span>Bootstrap Tanıtımı</a>
+        </nav>
+      </details>
+      <button class="yazdir-dugme" type="button" aria-label="Sayfayı yazdır" title="Yazdır">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="2"/><path d="M7 14h10v6.5H7z"/></svg>
+      </button>
+      <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
+        <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+        <svg class="gunes" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Web &nbsp;›&nbsp; <span>Flexbox 1</span></div>
+
+<main class="shell">
+  <article id="icerik">
+    <div class="eyebrow">Konu Anlatımı · 10. Hafta</div>
+    <h1>Flexbox 1</h1>
+    <p class="lede">Öğeleri kolayca <strong>yan yana dizmeyi ve hizalamayı</strong> sağlayan Flexbox'ı tanımak; <code class="inline">display: flex</code>, <code class="inline">justify-content</code> (yatay hizalama) ve <code class="inline">align-items</code> (dikey hizalama) özelliklerini öğrenmek. Sonunda bir <strong>yatay menü (navbar)</strong> hazırlayacaksınız.</p>
+
+    <details class="toc-mobil">
+      <summary>Bu sayfada</summary>
+      <nav aria-label="Sayfa bölümleri">
+  <a href="#flexbox-nedir"><span class="n">1</span>Flexbox Nedir?</a>
+        <a href="#iki-eksen-yatay-ve-dikey"><span class="n">2</span>İki Eksen: Yatay ve Dikey</a>
+        <a href="#justify-content-yatay-hizalama"><span class="n">3</span><code class="inline">justify-content</code> (Yatay Hizalama)</a>
+        <a href="#align-items-dikey-hizalama"><span class="n">4</span><code class="inline">align-items</code> (Dikey Hizalama)</a>
+        <a href="#ornek-yatay-menu-navbar"><span class="n">5</span>Örnek: Yatay Menü (Navbar)</a>
+        <a href="#sikca-yapilan-4-hata"><span class="n">6</span>Sıkça Yapılan 4 Hata</a>
+        <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
+        <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
+        <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+        <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+      </nav>
+    </details>
+
+<p>Bir sorunla başlayalım: HTML'de <code class="inline">&lt;div&gt;</code> gibi blok öğeler varsayılan olarak <strong>alt alta</strong> dizilir. Oysa web sayfalarında menüleri, kartları ve sütunları çoğu zaman <strong>yan yana</strong> ve hizalı görmek isteriz. Eskiden bunu yapmak zordu; <strong>Flexbox</strong> (esnek kutu düzeni) bu işi son derece kolaylaştırır.</p>
+
+    <h2 id="flexbox-nedir"><span class="num">1</span>Flexbox Nedir?</h2>
+    <p>Flexbox'ta iki taraf vardır:</p>
+    <ul>
+      <li><strong>Kapsayıcı (flex container):</strong> İçindeki öğeleri düzenleyen <strong>ana kutu</strong>.</li>
+      <li><strong>Öğeler (flex items):</strong> Kapsayıcının <strong>doğrudan içindeki</strong> öğeler.</li>
+    </ul>
+    <p>Bir kutuyu flex kapsayıcısına çevirmek için ona <code class="inline">display: flex;</code> verilir. Bunu yaptığınız anda, içindeki öğeler <strong>alt alta değil, yan yana</strong> dizilir:</p>
+    <figure class="diagram"><img alt="display:block ile öğeler alt alta, display:flex ile yan yana dizilir" src="images/flex_temel.png" width="1080" height="326" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>display:block ile öğeler alt alta, display:flex ile yan yana dizilir</figcaption>
+    </figure>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kapsayici {
+    display: flex;
+}</pre>
+    </div>
+    <div class="note warn"><span class="tag">Önemli</span><p><code class="inline">display: flex</code> <strong>öğelere değil, onları içeren ana kutuya</strong> (kapsayıcıya) uygulanır. Hizalama özellikleri de (aşağıdaki <code class="inline">justify-content</code> ve <code class="inline">align-items</code>) bu ana kutuya yazılır.</p></div>
+
+    <h2 id="iki-eksen-yatay-ve-dikey"><span class="num">2</span>İki Eksen: Yatay ve Dikey</h2>
+    <p>Flexbox'ta iki eksen üzerinde hizalama yaparız:</p>
+    <ul>
+      <li><strong>Ana eksen (yatay):</strong> <code class="inline">justify-content</code> ile yönetilir: öğeleri <strong>sola, ortaya, sağa</strong> yaslar veya aralarına boşluk koyar.</li>
+      <li><strong>Çapraz eksen (dikey):</strong> <code class="inline">align-items</code> ile yönetilir: öğeleri kutunun <strong>üstüne, ortasına, altına</strong> hizalar.</li>
+    </ul>
+    <div class="note"><span class="tag">Not</span><p>Bu eşleşme (ana eksen yatay, çapraz eksen dikey) öğelerin yan yana dizildiği varsayılan durum içindir. Öğeler alt alta dizildiğinde eksenler yer değiştirir (<a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a>, 11. hafta).</p></div>
+
+    <h2 id="justify-content-yatay-hizalama"><span class="num">3</span><code class="inline">justify-content</code> (Yatay Hizalama)</h2>
+    <p>Öğeleri kapsayıcının içinde <strong>yatayda</strong> nasıl dağıtacağını belirler:</p>
+    <figure class="diagram"><img alt="justify-content değerleri: flex-start, center, flex-end, space-between, space-around" src="images/justify_content.png" width="840" height="734" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>justify-content değerleri: flex-start, center, flex-end, space-between, space-around</figcaption>
+    </figure>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Değer</th><th>Etkisi</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">flex-start</code></td><td>Öğeleri <strong>sola</strong> yaslar (varsayılan).</td></tr>
+          <tr><td><code class="inline">center</code></td><td>Öğeleri <strong>ortalar</strong>.</td></tr>
+          <tr><td><code class="inline">flex-end</code></td><td>Öğeleri <strong>sağa</strong> yaslar.</td></tr>
+          <tr><td><code class="inline">space-between</code></td><td>İlk ve son öğeyi uçlara yaslar, <strong>aralara eşit boşluk</strong> koyar.</td></tr>
+          <tr><td><code class="inline">space-around</code></td><td>Her öğenin <strong>etrafına eşit boşluk</strong> koyar.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kapsayici {
+    display: flex;
+    justify-content: center;
+}</pre>
+    </div>
+
+    <h2 id="align-items-dikey-hizalama"><span class="num">4</span><code class="inline">align-items</code> (Dikey Hizalama)</h2>
+    <p>Öğeleri kapsayıcının içinde <strong>dikeyde</strong> nasıl hizalayacağını belirler:</p>
+    <figure class="diagram"><img alt="align-items değerleri: flex-start, center, flex-end, stretch" src="images/align_items.png" width="1380" height="344" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>align-items değerleri: flex-start, center, flex-end, stretch</figcaption>
+    </figure>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Değer</th><th>Etkisi</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">flex-start</code></td><td>Öğeleri <strong>üste</strong> hizalar.</td></tr>
+          <tr><td><code class="inline">center</code></td><td>Öğeleri <strong>dikeyde ortalar</strong>.</td></tr>
+          <tr><td><code class="inline">flex-end</code></td><td>Öğeleri <strong>alta</strong> hizalar.</td></tr>
+          <tr><td><code class="inline">stretch</code></td><td>Öğeleri kutunun <strong>yüksekliğine kadar uzatır</strong> (varsayılan; öğeye <code class="inline">height</code> verilmemişse).</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
+<pre class="language-css">.kapsayici {
+    display: flex;
+    align-items: center;
+}</pre>
+    </div>
+    <div class="note ok"><span class="tag">İpucu</span><p>Bir öğeyi bir kutunun <strong>tam ortasına</strong> (hem yatay hem dikey) almak için <code class="inline">justify-content: center;</code> ve <code class="inline">align-items: center;</code> birlikte kullanılır. Bu, Flexbox'ın en sık kullanılan özelliklerinden biridir.</p></div>
+
+    <h2 id="ornek-yatay-menu-navbar"><span class="num">5</span>Örnek: Yatay Menü (Navbar)</h2>
+    <p>Şimdi bu haftanın çıktısını hazırlayalım: solda site adı, sağda menü bağlantıları olan bir <strong>navbar</strong>. Menü çubuğunu bir flex kapsayıcısı yapıyoruz; <code class="inline">space-between</code> markayı sola, bağlantıları sağa iter; <code class="inline">align-items: center</code> ise hepsini dikeyde ortalar.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Navbar&lt;/title&gt;
+    &lt;style&gt;
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            padding: 15px 25px;
+        }
+        .marka {
+            color: #f1c40f;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .baglantilar {
+            display: flex;
+            gap: 25px;
+        }
+        .baglantilar a {
+            color: white;
+            text-decoration: none;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav class="menu"&gt;
+        &lt;div class="marka"&gt;Kahve Dünyası&lt;/div&gt;
+        &lt;div class="baglantilar"&gt;
+            &lt;a href="#"&gt;Ana Sayfa&lt;/a&gt;
+            &lt;a href="#"&gt;Hakkımda&lt;/a&gt;
+            &lt;a href="#"&gt;Hizmetler&lt;/a&gt;
+            &lt;a href="#"&gt;İletişim&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Tarayıcıdaki sonucu şöyledir:</p>
+    <figure class="diagram"><img alt="Navbar çıktısı: koyu bir çubukta solda sarı site adı, sağda beyaz menü bağlantıları" src="images/navbar_ciktisi.png" width="1200" height="240" loading="lazy" decoding="async" tabindex="0">
+      <figcaption>Navbar çıktısı: koyu bir çubukta solda sarı site adı, sağda beyaz menü bağlantıları</figcaption>
+    </figure>
+    <p>Burada iki yeni küçük ayrıntı kullandık:</p>
+    <ul>
+      <li><strong><code class="inline">gap: 25px;</code></strong> → flex öğeleri (menü bağlantıları) arasına eşit boşluk koyar.</li>
+      <li><strong><code class="inline">text-decoration: none;</code></strong> → bağlantıların altındaki çizgiyi kaldırır (menülerde daha temiz görünür).</li>
+    </ul>
+
+    <h2 id="sikca-yapilan-4-hata"><span class="num">6</span>Sıkça Yapılan 4 Hata</h2>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">display: flex</code>'i öğelere yazmak</td><td>Öğeler yan yana dizilmez</td><td><code class="inline">display: flex</code> <strong>ana kutuya</strong> (kapsayıcıya) yazılır</td></tr>
+          <tr><td><code class="inline">justify-content</code> ile <code class="inline">align-items</code>'ı karıştırmak</td><td>Hizalama yanlış eksende olur</td><td>Varsayılan yönde justify = yatay, align = dikey</td></tr>
+          <tr><td><code class="inline">display: flex</code> olmadan hizalama yazmak</td><td><code class="inline">justify-content</code>/<code class="inline">align-items</code> çalışmaz</td><td>Önce kapsayıcıya <code class="inline">display: flex</code> verin</td></tr>
+          <tr><td>Öğeleri doğrudan çocuk yapmamak</td><td>Flex etkisi görünmez</td><td>Öğeler kapsayıcının <strong>doğrudan</strong> içinde olmalı</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="bu-haftanin-ozeti"><span class="num">7</span>Bu Haftanın Özeti</h2>
+    <ul>
+      <li><strong>Flexbox</strong>, öğeleri kolayca <strong>yan yana dizmeyi ve hizalamayı</strong> sağlar. Bir kutuyu kapsayıcıya çevirmek için ona <strong><code class="inline">display: flex</code></strong> verilir.</li>
+      <li>Hizalama özellikleri <strong>ana kutuya (kapsayıcıya)</strong> yazılır; öğelere değil.</li>
+      <li><strong><code class="inline">justify-content</code></strong> yatay (ana eksen, varsayılan yönde) hizalamayı yönetir: <code class="inline">flex-start</code>, <code class="inline">center</code>, <code class="inline">flex-end</code>, <code class="inline">space-between</code>, <code class="inline">space-around</code>.</li>
+      <li><strong><code class="inline">align-items</code></strong> dikey (çapraz eksen, varsayılan yönde) hizalamayı yönetir: <code class="inline">flex-start</code>, <code class="inline">center</code>, <code class="inline">flex-end</code>, <code class="inline">stretch</code>.</li>
+      <li>Bir öğeyi tam ortaya almak için <code class="inline">justify-content: center</code> + <code class="inline">align-items: center</code> birlikte kullanılır.</li>
+      <li>Navbar gibi yatay menüler, <code class="inline">display: flex</code> + <code class="inline">justify-content: space-between</code> + <code class="inline">align-items: center</code> ile kolayca yapılır.</li>
+    </ul>
+
+    <h2 id="konu-sonu-testi"><span class="num">8</span>Konu Sonu Testi</h2>
+    <ol class="quiz">
+      <li>
+        <p class="q"><code class="inline">display: flex</code> hangi öğeye uygulanır?</p>
+        <ul class="opts">
+          <li><b>a)</b> Öğelerin her birine</li>
+          <li><b>b)</b> <code class="inline">&lt;body&gt;</code> etiketine</li>
+          <li><b>c)</b> Öğeleri içeren <strong>ana kutuya (kapsayıcıya)</strong></li>
+          <li><b>d)</b> <code class="inline">&lt;head&gt;</code> etiketine</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">c</span>Flex özellikleri öğeleri içeren ana kutuya (kapsayıcıya) uygulanır.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Flexbox'ta <strong>yatay</strong> hizalama (sola/ortaya/sağa) hangi özellikle yapılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">align-items</code></li>
+          <li><b>b)</b> <code class="inline">justify-content</code></li>
+          <li><b>c)</b> <code class="inline">text-align</code></li>
+          <li><b>d)</b> <code class="inline">margin</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Yatay hizalamayı <code class="inline">justify-content</code> yönetir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Flexbox'ta <strong>dikey</strong> hizalama hangi özellikle yapılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">justify-content</code></li>
+          <li><b>b)</b> <code class="inline">align-items</code></li>
+          <li><b>c)</b> <code class="inline">padding</code></li>
+          <li><b>d)</b> <code class="inline">display</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span>Dikey hizalamayı <code class="inline">align-items</code> yönetir.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q"><code class="inline">justify-content: space-between;</code> ne yapar?</p>
+        <ul class="opts">
+          <li><b>a)</b> Öğeleri ortalar</li>
+          <li><b>b)</b> İlk ve son öğeyi uçlara yaslar, aralara eşit boşluk koyar</li>
+          <li><b>c)</b> Öğeleri sola yaslar</li>
+          <li><b>d)</b> Öğeleri dikeyde ortalar</li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">b</span><code class="inline">space-between</code> uçlara yaslar ve aralara eşit boşluk koyar.</div>
+        </details>
+      </li>
+      <li>
+        <p class="q">Flexbox'ta bir öğeyi bir kutunun <strong>tam ortasına</strong> almak için hangi ikili kullanılır?</p>
+        <ul class="opts">
+          <li><b>a)</b> <code class="inline">justify-content: center</code> + <code class="inline">align-items: center</code></li>
+          <li><b>b)</b> <code class="inline">text-align: center</code> + <code class="inline">margin: auto</code></li>
+          <li><b>c)</b> <code class="inline">display: block</code> + <code class="inline">center</code></li>
+          <li><b>d)</b> <code class="inline">padding: center</code></li>
+        </ul>
+        <details class="ansbox"><summary>Cevabı göster</summary>
+          <div class="ans"><span class="letter">a</span>Yatay + dikey ortalama için ikisi birlikte kullanılır.</div>
+        </details>
+      </li>
+    </ol>
+
+    <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
+    <p><strong>Görev:</strong> Üç renkli kutuyu bir kapsayıcı içinde <strong>yatayda ve dikeyde ortalayan</strong> bir düzen oluşturunuz.</p>
+    <p><strong>Çözüm:</strong></p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Flex Ortalama&lt;/title&gt;
+    &lt;style&gt;
+        .kapsayici {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            height: 200px;
+            background-color: #ecf0f1;
+        }
+        .kutu {
+            width: 80px;
+            height: 80px;
+            background-color: #3498db;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="kapsayici"&gt;
+        &lt;div class="kutu"&gt;&lt;/div&gt;
+        &lt;div class="kutu"&gt;&lt;/div&gt;
+        &lt;div class="kutu"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Adımlar:</p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturunuz.</li>
+      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live ile açınız; üç kutunun kapsayıcının tam ortasında yan yana durduğunu gözlemleyiniz. <code class="inline">justify-content</code> değerini <code class="inline">space-between</code> yapıp farkı görünüz.</li>
+    </ol>
+
+    <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
+    <p><strong>Senaryo:</strong> Flexbox kullanarak, solda site adı ve sağda menü bağlantıları olan bir <strong>yatay menü (navbar)</strong> hazırlayın.</p>
+    <p><strong>Yapılacaklar:</strong></p>
+    <ol>
+      <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">navbar.html</code></strong> adında yeni bir dosya oluşturun.</li>
+      <li>Bir <code class="inline">&lt;nav class="menu"&gt;</code> oluşturun ve ona <code class="inline">display: flex</code>, <code class="inline">justify-content: space-between</code>, <code class="inline">align-items: center</code> verin; koyu bir arka plan ve <code class="inline">padding</code> ekleyin.</li>
+      <li>Menünün soluna site adını (<code class="inline">.marka</code>) yazın.</li>
+      <li>Menünün sağına bir <code class="inline">&lt;div class="baglantilar"&gt;</code> koyun; içine 3–4 bağlantı (<code class="inline">&lt;a&gt;</code>) ekleyin ve bu kapsayıcıya <code class="inline">display: flex</code> ile <code class="inline">gap</code> verin.</li>
+      <li>Bağlantılara beyaz renk ve <code class="inline">text-decoration: none</code> uygulayın.</li>
+    </ol>
+    <p><strong>Beklenen sonuç:</strong> Solda marka, sağda menü bağlantıları olan; dikeyde ortalanmış, koyu renkli bir navbar.</p>
+    <p><strong>İpuçları:</strong> <code class="inline">display: flex</code> <strong>ana kutuya</strong> yazılır. <code class="inline">justify-content</code> yatay, <code class="inline">align-items</code> dikey hizalamayı yönetir.</p>
+
+    <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
+    <ul>
+      <li>Kapsayıcıya <code class="inline">height</code> verilmezse kapsayıcı en yüksek öğe kadar olur. Öğelerin boyu eşitse <code class="inline">align-items</code> değerlerinin farkı görünmez; farkı görmek için kapsayıcıya bir <code class="inline">height</code> verin.</li>
+      <li><code class="inline">gap</code> yalnızca öğelerin <strong>arasına</strong> boşluk koyar; kapsayıcının kenarlarına boşluk eklemez. Kenar boşluğu için kapsayıcıya <code class="inline">padding</code> verin.</li>
+      <li>Chrome'un geliştirici araçlarında, <code class="inline">display: flex</code> verilmiş öğenin yanında <strong>flex</strong> rozeti görünür. Rozete tıklayınca öğelerin yerleşimi sayfanın üzerinde çizgilerle gösterilir.</li>
+    </ul>
+
+    <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
+    <ol>
+      <li>Üç <code class="inline">&lt;div&gt;</code>'i bir kapsayıcıya koyup <code class="inline">display: flex</code> ile yan yana diziniz.</li>
+      <li><code class="inline">justify-content</code> değerini sırasıyla <code class="inline">center</code>, <code class="inline">flex-end</code>, <code class="inline">space-between</code>, <code class="inline">space-around</code> yapıp farkları gözlemleyiniz.</li>
+      <li>Kapsayıcıya bir <code class="inline">height</code> verip <code class="inline">align-items</code> değerlerini (<code class="inline">flex-start</code>, <code class="inline">center</code>, <code class="inline">flex-end</code>) deneyiniz.</li>
+      <li><code class="inline">justify-content: center</code> ve <code class="inline">align-items: center</code> ile tek bir kutuyu tam ortaya alınız.</li>
+      <li>Kendi sitenizin sayfalarına, örnekteki gibi bir <strong>navbar</strong> ekleyiniz.</li>
+      <li>Navbar bağlantıları arasındaki boşluğu <code class="inline">gap</code> değerini değiştirerek ayarlayınız.</li>
+    </ol>
+
+    <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
+    <ul class="kaynakca">
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox" target="_blank" rel="noopener">MDN: Flexbox</a> (İngilizce)</li>
+      <li><a href="https://developer.chrome.com/docs/devtools/css/flexbox" target="_blank" rel="noopener">Chrome DevTools: Inspect and debug CSS flexbox layouts</a> (İngilizce)</li>
+    </ul>
+
+    <div class="aside-card mobil">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+
+    <nav class="komsu" aria-label="Konular arası gezinme">
+      <a class="komsu-kart onceki" href="tasarimdan-koda.html">
+        <span class="yon">← Önceki konu</span>
+        <span class="kh">9. Hafta</span>
+        <span class="kb">Tasarımdan Koda</span>
+      </a>
+      <a class="komsu-kart sonraki" href="flexbox-2-ve-sayfa-yerlesimi.html">
+        <span class="yon">Sonraki konu →</span>
+        <span class="kh">11. Hafta</span>
+        <span class="kb">Flexbox 2 ve Sayfa Yerleşimi</span>
+      </a>
+    </nav>
+  </article>
+
+  <aside>
+    <div class="toc-title">Bu Sayfada</div>
+    <nav class="toc" id="toc">
+<a href="#flexbox-nedir"><span class="n">1</span>Flexbox Nedir?</a>
+      <a href="#iki-eksen-yatay-ve-dikey"><span class="n">2</span>İki Eksen: Yatay ve Dikey</a>
+      <a href="#justify-content-yatay-hizalama"><span class="n">3</span><code class="inline">justify-content</code> (Yatay Hizalama)</a>
+      <a href="#align-items-dikey-hizalama"><span class="n">4</span><code class="inline">align-items</code> (Dikey Hizalama)</a>
+      <a href="#ornek-yatay-menu-navbar"><span class="n">5</span>Örnek: Yatay Menü (Navbar)</a>
+      <a href="#sikca-yapilan-4-hata"><span class="n">6</span>Sıkça Yapılan 4 Hata</a>
+      <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
+      <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
+      <a href="#uygulamalar"><span class="n">9</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">10</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">11</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">12</span>Çalışma Soruları</a>
+      <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
+    </nav>
+    <div class="aside-card">
+      <div class="k">Derste yapılacak</div>
+      <p>Bu haftanın <a href="#sinif-uygulamasi">Sınıf Uygulaması</a> sayfanın sonundadır. Önce konu anlatımını okuyun, sonra uygulamayı kendi bilgisayarınızda yapın.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="alt">
+  <div class="alt-ic">
+    <p class="alt-sol"><a class="alt-ad" href="index.html">Web Arayüz Tasarımı Ders Notları</a> <span class="ayrac" aria-hidden="true">·</span> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.tr" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a></p>
+    <nav class="alt-bag" aria-label="Alt bağlantılar"><a href="index.html">Ana sayfa</a> <span class="ayrac" aria-hidden="true">·</span> <a href="proje-yonergesi.html">Proje yönergesi</a></nav>
+  </div>
+</footer>
+
+<script src="js/vendor/highlight.min.js"></script>
+<script src="js/ders.js"></script>
+
+
+</body>
+</html>
