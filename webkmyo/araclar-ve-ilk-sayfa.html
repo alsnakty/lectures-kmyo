@@ -215,7 +215,7 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Dosyayı kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>), ardından <strong>Go Live</strong> ile açın. Tarayıcıda aşağıdaki sonucu görürsünüz:</p>
+    <p>Dosyayı kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>), ardından tarayıcıda açın. Aşağıdaki sonucu görürsünüz:</p>
     <figure class="diagram"><img alt="Tarayıcı sonucu: sayfada büyük &quot;Merhaba Dünya&quot; yazısı ve altında &quot;Bu benim ilk web sayfam.&quot; satırı" src="images/tarayici_merhaba.png" width="1200" height="240" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">Tarayıcı sonucu: sayfada büyük "Merhaba Dünya" yazısı ve altında "Bu benim ilk web sayfam." satırı</figcaption>
     </figure>
@@ -248,7 +248,7 @@
           <tr><td>Etiketi kapatmayı unutmak (<code class="inline">&lt;h1&gt;</code> var, <code class="inline">&lt;/h1&gt;</code> yok)</td><td>Sonraki yazılar da başlık gibi büyük ve kalın görünür</td><td>Her açılan etiketi kapatın</td></tr>
           <tr><td>Klasör veya dosya adında Türkçe harf ya da boşluk</td><td>Sayfa veya resim bazen açılmaz</td><td>Türkçe harf ve boşluk kullanmayın</td></tr>
           <tr><td><code class="inline">&lt;meta charset="utf-8"&gt;</code> yazmamak</td><td>Bazı sunucularda Türkçe harfler bozuk çıkar</td><td><code class="inline">&lt;head&gt;</code> içine bu satırı ekleyin</td></tr>
-          <tr><td>Dosyayı kaydetmeden sonuca bakmak</td><td>Değişiklik ekranda görünmez</td><td>Önce <code class="inline">Ctrl</code> + <code class="inline">S</code> ile kaydedin</td></tr>
+          <tr><td>Dosyayı kaydetmeden sonuca bakmak</td><td>Değişiklik ekranda görünmez</td><td>Önce <code class="inline">Ctrl</code> + <code class="inline">S</code> ile kaydedin, sonra sayfayı yenileyin (<code class="inline">F5</code>)</td></tr>
         </tbody>
       </table>
     </div>
@@ -258,7 +258,7 @@
       <li>Web, <strong>istemci</strong> (tarayıcı) ile <strong>sunucu</strong> arasındaki iletişimle çalışır. Sayfalar <strong>HTML</strong> (iskelet), <strong>CSS</strong> (görünüm) ve <strong>JavaScript</strong> (davranış) ile oluşturulur.</li>
       <li><strong>Alan adı (domain)</strong> bir sitenin internetteki adresidir; <strong>barındırma (hosting)</strong> ise dosyaların sürekli açık bir sunucuda tutulup yayınlanmasıdır.</li>
       <li>Alan adı <strong>uzantıları</strong> sitenin türünü gösterir: <code class="inline">.com</code>, <code class="inline">.edu</code>, <code class="inline">.gov</code>, <code class="inline">.mil</code> ...</li>
-      <li>Web sayfaları <strong>VS Code</strong> ile yazılır, <strong>Live Server</strong> ile tarayıcıda görüntülenir.</li>
+      <li>Web sayfaları <strong>VS Code</strong> ile yazılır ve tarayıcıda açılır. <strong>Live Server</strong> kuruluysa sayfa her kaydedişte kendiliğinden yenilenir.</li>
       <li>Her proje <strong>kendi klasöründe</strong> durur. Ana sayfa <strong><code class="inline">index.html</code></strong> adıyla kaydedilir, çünkü adres yazıldığında sunucu önce bu dosyayı arar.</li>
       <li>Dosya ve klasör adlarında <strong>Türkçe harf ve boşluk kullanılmaz.</strong></li>
     </ul>
@@ -428,7 +428,7 @@ hakkinda.html</pre>
       <li><code class="inline">web_sitem</code> klasörünü VS Code'da açın.</li>
       <li><code class="inline">hakkimda.html</code> adında yeni bir dosya oluşturun (Türkçe harf ve boşluk kullanmadan).</li>
       <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
-      <li>Go Live ile tarayıcıda açın. Kendi adınızı ve bilgilerinizi yazarak içeriği değiştirin.</li>
+      <li>Tarayıcıda açın. Kendi adınızı ve bilgilerinizi yazarak içeriği değiştirin; kaydedip <code class="inline">F5</code> ile yenileyince değişikliği görürsünüz.</li>
     </ol>
 
     <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
@@ -439,7 +439,7 @@ hakkinda.html</pre>
       <li>VS Code'da <strong>Dosya → Klasör Aç</strong> (İngilizce arayüzde <strong>File → Open Folder...</strong>) ile bu klasörü açın.</li>
       <li>İçinde <strong><code class="inline">index.html</code></strong> adında yeni bir dosya oluşturun ve temel iskeleti (<code class="inline">&lt;!DOCTYPE html&gt;</code>, <code class="inline">&lt;html&gt;</code>, <code class="inline">&lt;head&gt;</code>, <code class="inline">&lt;body&gt;</code>) yazın.</li>
       <li><code class="inline">&lt;title&gt;</code> içine bir başlık, <code class="inline">&lt;h1&gt;</code> içine kendi adınızı, bir <code class="inline">&lt;p&gt;</code> içine bölümünüzü yazın.</li>
-      <li><strong>Go Live</strong> ile sayfayı tarayıcıda açın.</li>
+      <li>Sayfayı tarayıcıda açın.</li>
       <li><code class="inline">web_sitem</code> içinde, 3. haftada (<a href="baglantilar-ve-gorseller.html">Bağlantılar ve Görseller</a>) kullanmak üzere bir <strong><code class="inline">gorseller</code></strong> klasörü de oluşturun.</li>
     </ol>
     <p><strong>Beklenen sonuç:</strong> Tarayıcı sekmesinde başlığınız, sayfada da adınız (büyük başlık) ve bölümünüz görünür. Türkçe harfler düzgün çıkar.</p>
