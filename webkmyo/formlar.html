@@ -125,10 +125,10 @@
       </table>
     </div>
     <div class="note warn"><span class="tag">Dikkat</span><p>POST verileri gizlemez ya da şifrelemez; yalnızca adres çubuğunda göstermez. Verileri yolda koruyan, adresi <code class="inline">https://</code> ile başlayan güvenli bağlantıdır (HTTPS).</p></div>
-    <div class="note"><span class="tag">Not</span><p>GET ve POST'un asıl işini yapabilmesi için <code class="inline">action</code> ile belirtilen sunucu tarafı dosyanın (örneğin <code class="inline">.php</code>) çalışıyor olması gerekir. Bu derste backend olmadığından bu dosyalar yoktur; yöntemler burada yalnızca <strong>kavram olarak</strong> öğretilmektedir.</p></div>
+    <div class="note"><span class="tag">Not</span><p>GET ve POST'un asıl işini yapabilmesi için <code class="inline">action</code> ile belirtilen sunucu tarafı dosyanın (örneğin <code class="inline">.php</code>) çalışıyor olması gerekir. Bu derste backend olmadığından bu dosyalar yoktur; yöntemleri burada yalnızca <strong>kavram olarak</strong> görüyoruz.</p></div>
 
     <h2 id="form-ogeleri"><span class="num">2</span>Form Ögeleri</h2>
-    <p>Aşağıda en sık kullanılan form ögelerinin görünümü verilmiştir:</p>
+    <p>En sık kullanılan form ögeleri tarayıcıda şöyle görünür:</p>
     <figure class="diagram"><img alt="Metin kutusu, e-posta, açılır liste, çok satırlı metin, onay kutusu, radyo düğmesi ve düğme örnekleri" src="images/form_ogeleri.png" width="930" height="477" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Metin kutusu, e-posta, açılır liste, çok satırlı metin, onay kutusu, radyo düğmesi ve düğme örnekleri</figcaption>
     </figure>
@@ -159,7 +159,7 @@
       <li><code class="inline">placeholder</code> → alan boşken görünen soluk ipucu metni.</li>
     </ul>
     <h3 id="etiket">2.2. Etiket: <code class="inline">&lt;label&gt;</code></h3>
-    <p><code class="inline">&lt;label&gt;</code>, bir form alanının <strong>adını/açıklamasını</strong> yazar. <code class="inline">for</code> özelliği, etiketin hangi alana ait olduğunu belirtir; bu değer, ilgili alanın <code class="inline">id</code>'si ile <strong>aynı</strong> olmalıdır.</p>
+    <p><code class="inline">&lt;label&gt;</code>, bir form alanının <strong>adını ya da açıklamasını</strong> yazar. <code class="inline">for</code> özelliği, etiketin hangi alana ait olduğunu belirtir; bu değer, ilgili alanın <code class="inline">id</code>'si ile <strong>aynı</strong> olmalıdır.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;label for="ad"&gt;Ad Soyad:&lt;/label&gt;
@@ -266,8 +266,8 @@
 
     <h2 id="bu-haftanin-ozeti"><span class="num">5</span>Bu Haftanın Özeti</h2>
     <ul>
-      <li>Tüm form ögeleri <strong><code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code></strong> arasında bulunur; <code class="inline">action</code> ve <code class="inline">method</code> verinin nereye/nasıl gideceğini belirtir (backend gerektirir).</li>
-      <li><strong>GET</strong> verileri adres çubuğunda (URL'de) gösterir ve az/gizli olmayan veriler (arama) için; <strong>POST</strong> verileri adres çubuğunda göstermez ve hassas/çok veri (şifre, giriş) için kullanılır.</li>
+      <li>Tüm form ögeleri <strong><code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code></strong> arasında bulunur; <code class="inline">action</code> ve <code class="inline">method</code> verinin nereye ve nasıl gideceğini belirtir (backend gerektirir).</li>
+      <li><strong>GET</strong> verileri adres çubuğunda (URL'de) gösterir ve az miktardaki, gizli olmayan veriler (arama) için; <strong>POST</strong> verileri adres çubuğunda göstermez ve hassas ya da çok veri (şifre, giriş) için kullanılır.</li>
       <li><strong><code class="inline">&lt;input&gt;</code></strong> tek etikettir; <code class="inline">type</code> ile türü belirlenir: <code class="inline">text</code>, <code class="inline">email</code>, <code class="inline">password</code>, <code class="inline">number</code>, <code class="inline">date</code>, <code class="inline">checkbox</code>, <code class="inline">radio</code>, <code class="inline">submit</code> ...</li>
       <li><strong><code class="inline">&lt;label&gt;</code></strong>, alanın adını yazar; <code class="inline">for</code> değeri alanın <code class="inline">id</code>'si ile aynı olmalıdır.</li>
       <li><strong><code class="inline">&lt;select&gt;</code>/<code class="inline">&lt;option&gt;</code></strong> açılır liste, <strong><code class="inline">&lt;textarea&gt;</code></strong> çok satırlı metin, <strong><code class="inline">&lt;button&gt;</code></strong> düğme oluşturur.</li>
@@ -290,7 +290,7 @@
         </details>
       </li>
       <li>
-        <p class="q">Bir form alanının adını/açıklamasını yazmak için hangi etiket kullanılır?</p>
+        <p class="q">Bir form alanının adını ya da açıklamasını yazmak için hangi etiket kullanılır?</p>
         <ul class="opts">
           <li><b>a)</b> <code class="inline">&lt;title&gt;</code></li>
           <li><b>b)</b> <code class="inline">&lt;option&gt;</code></li>
@@ -340,7 +340,7 @@
     </ol>
 
     <h2 id="uygulamalar"><span class="num">7</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> Basit bir <strong>üyelik formu</strong> hazırlayınız. Ad, e-posta ve şifre alanları, cinsiyet için iki radyo düğmesi ve bir "Kayıt Ol" düğmesi bulunsun.</p>
+    <p><strong>Görev:</strong> Basit bir <strong>üyelik formu</strong> hazırlayın. Ad, e-posta ve şifre alanları, cinsiyet için iki radyo düğmesi ve bir "Kayıt Ol" düğmesi bulunsun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -376,9 +376,9 @@
     <div class="note"><span class="tag">Not</span><p>Bu formda <code class="inline">method</code> yazılmadığı için form gönderildiğinde bütün veriler, şifre dahil, adres çubuğunda görünür. Gerçek sitelerde şifreli formlar <code class="inline">method="post"</code> ile gönderilir.</p></div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturunuz.</li>
-      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
-      <li>Go Live ile açınız. İki radyo düğmesinden aynı anda yalnızca birinin seçilebildiğini gözlemleyiniz.</li>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live ile açın. İki radyo düğmesinden aynı anda yalnızca birinin seçilebildiğini gözlemleyin.</li>
     </ol>
 
     <h2 id="sinif-uygulamasi"><span class="num">8</span>Sınıf Uygulaması</h2>
@@ -402,12 +402,12 @@
 
     <h2 id="calisma-sorulari"><span class="num">10</span>Çalışma Soruları</h2>
     <ol>
-      <li>Bir forma <code class="inline">type="text"</code> ve <code class="inline">type="email"</code> alanları ekleyip <code class="inline">placeholder</code> yazınız.</li>
-      <li>Her alana bir <code class="inline">&lt;label&gt;</code> ekleyip <code class="inline">for</code>/<code class="inline">id</code> değerlerini eşleştiriniz.</li>
-      <li>Bir <code class="inline">&lt;select&gt;</code> açılır listesi oluşturup üç <code class="inline">&lt;option&gt;</code> ekleyiniz.</li>
-      <li>Bir <code class="inline">&lt;textarea&gt;</code> ekleyip <code class="inline">rows</code> ve <code class="inline">cols</code> değerlerini değiştirerek boyutunu ayarlayınız.</li>
-      <li><code class="inline">type="checkbox"</code> ile birden fazla seçenek, <code class="inline">type="radio"</code> ile tek seçimli bir grup oluşturunuz.</li>
-      <li><code class="inline">&lt;button type="reset"&gt;</code> ekleyip forma yazdıklarınızı temizlediğini gözlemleyiniz.</li>
+      <li>Bir forma <code class="inline">type="text"</code> ve <code class="inline">type="email"</code> alanları ekleyip <code class="inline">placeholder</code> yazın.</li>
+      <li>Her alana bir <code class="inline">&lt;label&gt;</code> ekleyip <code class="inline">for</code>/<code class="inline">id</code> değerlerini eşleştirin.</li>
+      <li>Bir <code class="inline">&lt;select&gt;</code> açılır listesi oluşturup üç <code class="inline">&lt;option&gt;</code> ekleyin.</li>
+      <li>Bir <code class="inline">&lt;textarea&gt;</code> ekleyip <code class="inline">rows</code> ve <code class="inline">cols</code> değerlerini değiştirerek boyutunu ayarlayın.</li>
+      <li><code class="inline">type="checkbox"</code> ile birden fazla seçenek, <code class="inline">type="radio"</code> ile tek seçimli bir grup oluşturun.</li>
+      <li><code class="inline">&lt;button type="reset"&gt;</code> ekleyip forma yazdıklarınızı temizlediğini gözlemleyin.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>

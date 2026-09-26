@@ -116,7 +116,7 @@
     </ul>
 
     <h2 id="mobil-oncelik-mobile-first-mantigi"><span class="num">3</span>Mobil Öncelik (Mobile-First) Mantığı</h2>
-    <p>Modern web tasarımında sayfalar genellikle <strong>önce telefon</strong> için tasarlanır, sonra büyük ekranlar için ayrıntı eklenir. Buna <strong>mobil öncelik</strong> denir. Mantığı basittir: en küçük ekranda çalışan sade bir düzen, her yerde çalışır; büyük ekranda ise ekstra sütunlar/boşluklar eklenir.</p>
+    <p>Modern web tasarımında sayfalar genellikle <strong>önce telefon</strong> için tasarlanır, sonra büyük ekranlar için ayrıntı eklenir. Buna <strong>mobil öncelik</strong> denir. Mantığı basittir: en küçük ekranda çalışan sade bir düzen, her yerde çalışır; büyük ekranda ise ekstra sütunlar ve boşluklar eklenir.</p>
     <p>Bu derste, kavramı daha kolay görmek için tersini kullanacağız: <strong>masaüstü düzenini varsayılan yapıp, telefon için <code class="inline">max-width</code> media query ile değiştireceğiz.</strong> İkisi de geçerli yöntemdir; önemli olan sayfanın her ekranda düzgün görünmesidir.</p>
 
     <h2 id="ornek-site-iskeletini-responsive-yapma"><span class="num">4</span>Örnek: Site İskeletini Responsive Yapma</h2>
@@ -178,14 +178,14 @@
     </div>
     <p>Geniş ekranda <code class="inline">main</code> ve <code class="inline">aside</code> yan yana durur. Ekranı daralttığınızda (veya telefonda açtığınızda), ekran 600px ve altına indiğinde <code class="inline">.govde</code> bir <strong>sütuna</strong> dönüşür ve iki bölüm <strong>alt alta</strong> gelir. Aynı şey menü için de olur.</p>
     <h3 id="nasil-test-edilir">Nasıl Test Edilir?</h3>
-    <p>Telefonunuz olmadan da test edebilirsiniz: sayfayı açıp <code class="inline">F12</code> ile <strong>Geliştirici Araçları</strong>'nı açın, üstteki <strong>cihaz simülasyonu</strong> (telefon/tablet) simgesine tıklayın. Farklı cihaz boyutlarını seçerek sayfanın nasıl değiştiğini görebilirsiniz. Ayrıca tarayıcı penceresini fareyle daraltmak da düzenin değiştiğini gösterir.</p>
+    <p>Telefonunuz olmadan da test edebilirsiniz: sayfayı açıp <code class="inline">F12</code> ile <strong>Geliştirici Araçları</strong>'nı açın, üstteki <strong>cihaz simülasyonu</strong> (telefon ve tablet) simgesine tıklayın. Farklı cihaz boyutlarını seçerek sayfanın nasıl değiştiğini görebilirsiniz. Ayrıca tarayıcı penceresini fareyle daraltmak da düzenin değiştiğini gösterir.</p>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">5</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
       <table>
         <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
         <tbody>
-          <tr><td>Viewport meta etiketini eklememek</td><td>Sayfa telefonda küçük/okunmaz görünür</td><td><code class="inline">&lt;head&gt;</code>'e viewport etiketini ekleyin</td></tr>
+          <tr><td>Viewport meta etiketini eklememek</td><td>Sayfa telefonda küçük ve okunmaz görünür</td><td><code class="inline">&lt;head&gt;</code>'e viewport etiketini ekleyin</td></tr>
           <tr><td>Media query'yi <code class="inline">&lt;style&gt;</code> dışına yazmak</td><td>Kural çalışmaz; kod sayfada yazı olarak görünür</td><td><code class="inline">@media</code> kuralını CSS'in içine yazın</td></tr>
           <tr><td><code class="inline">@media</code>'nin süslü parantezlerini kapatmamak</td><td>Sonra yazılan kurallar da yalnızca dar ekranda uygulanır</td><td>İç içe <code class="inline">{ }</code> parantezleri doğru kapatın</td></tr>
           <tr><td>Breakpoint'te birim (<code class="inline">px</code>) unutmak</td><td>Bloktaki kurallar hiç uygulanmaz</td><td><code class="inline">max-width: 600px</code> biçiminde yazın</td></tr>
@@ -269,7 +269,7 @@
     </ol>
 
     <h2 id="uygulamalar"><span class="num">8</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda yaptığınız <strong>3'lü kart galerisini</strong> responsive yapınız: masaüstünde üç sütun, telefonda <strong>tek sütun</strong> görünsün.</p>
+    <p><strong>Görev:</strong> 11. haftada, <a href="flexbox-2-ve-sayfa-yerlesimi.html">Flexbox 2 ve Sayfa Yerleşimi</a> konusunda yaptığınız <strong>3'lü kart galerisini</strong> responsive yapın: masaüstünde üç sütun, telefonda <strong>tek sütun</strong> görünsün.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -312,9 +312,9 @@
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturunuz.</li>
-      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
-      <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açınız. <code class="inline">F12</code> cihaz simülasyonunda bir telefon seçiniz; kartların üç sütundan <strong>tek sütuna</strong> düştüğünü gözlemleyiniz.</li>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açın. <code class="inline">F12</code> cihaz simülasyonunda bir telefon seçin; kartların üç sütundan <strong>tek sütuna</strong> düştüğünü gözlemleyin.</li>
     </ol>
     <p><code class="inline">flex-wrap</code> tek başına da kartları ekran daraldıkça alt satıra geçirir; ama media query olmasaydı, örneğin 600px genişlikte iki kart yan yana, üçüncüsü altta kalırdı. Media query, ekran 600px veya daha dar olduğunda kartların <strong>her zaman tek sütunda</strong> olmasını sağlar.</p>
 
@@ -339,10 +339,10 @@
 
     <h2 id="calisma-sorulari"><span class="num">11</span>Çalışma Soruları</h2>
     <ol>
-      <li>Herhangi bir sayfanın <code class="inline">&lt;head&gt;</code>'ine viewport meta etiketini ekleyiniz.</li>
-      <li>Bir <code class="inline">@media (max-width: 600px)</code> bloğu yazıp içinde <code class="inline">body</code> arka plan rengini değiştiriniz; ekranı daraltınca rengin değiştiğini görünüz.</li>
-      <li>11. haftadaki (Flexbox 2 ve Sayfa Yerleşimi) site iskeletinizi açıp telefonda sütunları <code class="inline">flex-direction: column</code> ile alt alta alınız.</li>
-      <li><code class="inline">F12</code> cihaz simülasyonunda farklı telefon boyutlarını deneyip düzeni gözlemleyiniz.</li>
+      <li>Herhangi bir sayfanın <code class="inline">&lt;head&gt;</code>'ine viewport meta etiketini ekleyin.</li>
+      <li>Bir <code class="inline">@media (max-width: 600px)</code> bloğu yazıp içinde <code class="inline">body</code> arka plan rengini değiştirin; ekranı daraltınca rengin değiştiğini görün.</li>
+      <li>11. haftadaki (Flexbox 2 ve Sayfa Yerleşimi) site iskeletinizi açıp telefonda sütunları <code class="inline">flex-direction: column</code> ile alt alta alın.</li>
+      <li><code class="inline">F12</code> cihaz simülasyonunda farklı telefon boyutlarını deneyip düzeni gözlemleyin.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>

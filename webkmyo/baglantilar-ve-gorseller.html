@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bağlantılar ve Görseller | Web Arayüz Tasarımı Ders Notları</title>
-<meta name="description" content="Sayfalar arası ve dış sitelere bağlantı (&lt;a&gt;) vermeyi, sayfaya görsel (&lt;img&gt;) eklemeyi ve en önemlisi göreli/mutlak yol mantığını öğrenmek. Sonunda...">
+<meta name="description" content="Sayfalar arası ve dış sitelere bağlantı (&lt;a&gt;) vermeyi, sayfaya görsel (&lt;img&gt;) eklemeyi ve en önemlisi göreli ve mutlak yol mantığını öğrenmek. Sonunda...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bağlantılar ve Görseller | Web Arayüz Tasarımı Ders Notları">
-<meta property="og:description" content="Sayfalar arası ve dış sitelere bağlantı (&lt;a&gt;) vermeyi, sayfaya görsel (&lt;img&gt;) eklemeyi ve en önemlisi göreli/mutlak yol mantığını öğrenmek. Sonunda...">
+<meta property="og:description" content="Sayfalar arası ve dış sitelere bağlantı (&lt;a&gt;) vermeyi, sayfaya görsel (&lt;img&gt;) eklemeyi ve en önemlisi göreli ve mutlak yol mantığını öğrenmek. Sonunda...">
 <script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
 <link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
@@ -117,7 +117,7 @@
         </tbody>
       </table>
     </div>
-    <div class="note warn"><span class="tag">Kural</span><p><code class="inline">../</code> işareti "bir üst klasöre çık" demektir. Örneğin <code class="inline">gorseller</code> klasörünün içindeki bir sayfadan <code class="inline">index.html</code>'e bağlanmak için <code class="inline">../index.html</code> yazılır. En sık yapılan hata, dosya adını yanlış yazmak veya yolun başına gereksiz <code class="inline">/</code> koymaktır. Dosya ve klasör adlarını (1. haftada, <a href="araclar-ve-ilk-sayfa.html">Araçlar ve İlk Web Sayfası</a> konusunda görüldüğü gibi) Türkçe karaktersiz ve boşluksuz tutunuz.</p></div>
+    <div class="note warn"><span class="tag">Kural</span><p><code class="inline">../</code> işareti "bir üst klasöre çık" demektir. Örneğin <code class="inline">gorseller</code> klasörünün içindeki bir sayfadan <code class="inline">index.html</code>'e bağlanmak için <code class="inline">../index.html</code> yazılır. En sık yapılan hata, dosya adını yanlış yazmak veya yolun başına gereksiz <code class="inline">/</code> koymaktır. Dosya ve klasör adlarını (1. haftada, <a href="araclar-ve-ilk-sayfa.html">Araçlar ve İlk Web Sayfası</a> konusunda görüldüğü gibi) Türkçe karaktersiz ve boşluksuz tutun.</p></div>
 
     <h2 id="baglanti-turleri"><span class="num">3</span>Bağlantı Türleri</h2>
     <p><strong>Site içi bağlantı (göreli yol):</strong> Kendi sayfalarınız arasında geçiş için.</p>
@@ -151,12 +151,12 @@
         </tbody>
       </table>
     </div>
-    <p><strong>Boyut:</strong> Resmin genişlik/yüksekliğini <code class="inline">width</code> ve <code class="inline">height</code> ile ayarlayabilirsiniz. Yalnızca <code class="inline">width</code> verirseniz, resim oranını bozmadan ölçeklenir.</p>
+    <p><strong>Boyut:</strong> Resmin genişliğini ve yüksekliğini <code class="inline">width</code> ve <code class="inline">height</code> ile ayarlayabilirsiniz. Yalnızca <code class="inline">width</code> verirseniz, resim oranını bozmadan ölçeklenir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;img src="gorseller/foto.jpg" alt="Kahve fincanı" width="300"&gt;</pre>
     </div>
-    <div class="note"><span class="tag">Not</span><p>İçerik taşıyan resimlerde <code class="inline">alt</code> metnini boş bırakmayınız. Resim bir sebeple açılmazsa kullanıcı en azından ne olduğunu okuyabilir; görme engelli kullanıcılar için de bu metin sesli okunur.</p></div>
+    <div class="note"><span class="tag">Not</span><p>İçerik taşıyan resimlerde <code class="inline">alt</code> metnini boş bırakmayın. Resim bir sebeple açılmazsa kullanıcı en azından ne olduğunu okuyabilir; görme engelli kullanıcılar için de bu metin sesli okunur.</p></div>
 
     <h2 id="resmi-baglanti-haline-getirme"><span class="num">5</span>Resmi Bağlantı Hâline Getirme</h2>
     <p>Bir resmi, tıklanınca başka sayfaya götüren bir bağlantıya dönüştürmek için <code class="inline">&lt;img&gt;</code> etiketini <code class="inline">&lt;a&gt;</code> etiketinin <strong>içine</strong> yazarsınız.</p>
@@ -244,7 +244,7 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Üç dosyayı da <code class="inline">web_sitem</code> klasörüne kaydediniz. Menüdeki bağlantılara tıklayarak sayfalar arasında gezebilirsiniz. <code class="inline">index.html</code> içindeki menü site içi (göreli) bağlantılar, <code class="inline">iletisim.html</code> içindeki harita bağlantısı ise dış (mutlak) bağlantıdır.</p>
+    <p>Üç dosyayı da <code class="inline">web_sitem</code> klasörüne kaydedin. Menüdeki bağlantılara tıklayarak sayfalar arasında gezebilirsiniz. <code class="inline">index.html</code> içindeki menü site içi (göreli) bağlantılar, <code class="inline">iletisim.html</code> içindeki harita bağlantısı ise dış (mutlak) bağlantıdır.</p>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">7</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
@@ -267,7 +267,7 @@
       <li>Göreli yol: aynı klasör → <strong>dosya adı</strong>, alt klasör → <strong><code class="inline">klasör/dosya</code></strong>, üst klasör → <strong><code class="inline">../dosya</code></strong>.</li>
       <li>Görsel <code class="inline">&lt;img src="yol" alt="metin"&gt;</code> ile eklenir. <code class="inline">alt</code>, resim açılmazsa ve erişilebilirlik için önemlidir; <code class="inline">width</code> ile boyut ayarlanır.</li>
       <li><code class="inline">target="_blank"</code> bağlantıyı <strong>yeni sekmede</strong> açar; <code class="inline">&lt;a&gt;</code> içine <code class="inline">&lt;img&gt;</code> koyarak resim <strong>bağlantı</strong> hâline getirilir.</li>
-      <li>En sık hata <strong>yanlış yol/dosya adı</strong>dır; adları birebir ve Türkçe karaktersiz yazın.</li>
+      <li>En sık hata <strong>yanlış yol ya da dosya adı</strong>dır; adları birebir ve Türkçe karaktersiz yazın.</li>
     </ul>
 
     <h2 id="konu-sonu-testi"><span class="num">9</span>Konu Sonu Testi</h2>
@@ -335,7 +335,7 @@
     </ol>
 
     <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> İki sayfalık bir site yapınız: <code class="inline">index.html</code> ve <code class="inline">urunler.html</code>. Her iki sayfada da diğerine giden bir bağlantı bulunsun. Ana sayfaya bir görsel ekleyiniz.</p>
+    <p><strong>Görev:</strong> İki sayfalık bir site yapın: <code class="inline">index.html</code> ve <code class="inline">urunler.html</code>. Her iki sayfada da diğerine giden bir bağlantı bulunsun. Ana sayfaya bir görsel ekleyin.</p>
     <p><strong>Çözüm (<code class="inline">index.html</code>):</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -371,9 +371,9 @@
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe iki dosyayı oluşturunuz.</li>
-      <li><code class="inline">gorseller</code> klasörüne bir resim koyup adını <code class="inline">cicek.jpg</code> yapınız (veya <code class="inline">src</code>'yi kendi resminizin adına göre değiştiriniz).</li>
-      <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açarak bağlantıların iki sayfa arasında çalıştığını deneyiniz.</li>
+      <li><code class="inline">web_sitem</code> klasöründe iki dosyayı oluşturun.</li>
+      <li><code class="inline">gorseller</code> klasörüne bir resim koyup adını <code class="inline">cicek.jpg</code> yapın (veya <code class="inline">src</code>'yi kendi resminizin adına göre değiştirin).</li>
+      <li>Go Live varsa Go Live ile, yoksa dosyayı tarayıcıda açarak bağlantıların iki sayfa arasında çalıştığını deneyin.</li>
     </ol>
 
     <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
@@ -397,12 +397,12 @@
 
     <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
     <ol>
-      <li><code class="inline">index.html</code> sayfasına <code class="inline">hakkinda.html</code>'e giden bir bağlantı ekleyiniz.</li>
-      <li>Sayfanıza kendi seçtiğiniz bir resmi <code class="inline">&lt;img&gt;</code> ile ekleyip <code class="inline">alt</code> metnini yazınız.</li>
-      <li>Resmin genişliğini <code class="inline">width="200"</code> yaparak boyutunu küçültünüz.</li>
-      <li>Bir dış siteye (<code class="inline">https://...</code>) <code class="inline">target="_blank"</code> ile bağlantı verip yeni sekmede açıldığını gözlemleyiniz.</li>
-      <li><code class="inline">gorseller</code> klasörünün içine bir HTML sayfası koyup oradan <code class="inline">../index.html</code> ile ana sayfaya bağlantı veriniz; <code class="inline">../</code> olmadan çalışmadığını görünüz.</li>
-      <li>Bir resmi <code class="inline">&lt;a&gt;</code> etiketi içine alarak tıklanabilir (bağlantılı) hâle getiriniz.</li>
+      <li><code class="inline">index.html</code> sayfasına <code class="inline">hakkinda.html</code>'e giden bir bağlantı ekleyin.</li>
+      <li>Sayfanıza kendi seçtiğiniz bir resmi <code class="inline">&lt;img&gt;</code> ile ekleyip <code class="inline">alt</code> metnini yazın.</li>
+      <li>Resmin genişliğini <code class="inline">width="200"</code> yaparak boyutunu küçültün.</li>
+      <li>Bir dış siteye (<code class="inline">https://...</code>) <code class="inline">target="_blank"</code> ile bağlantı verip yeni sekmede açıldığını gözlemleyin.</li>
+      <li><code class="inline">gorseller</code> klasörünün içine bir HTML sayfası koyup oradan <code class="inline">../index.html</code> ile ana sayfaya bağlantı verin; <code class="inline">../</code> olmadan çalışmadığını görün.</li>
+      <li>Bir resmi <code class="inline">&lt;a&gt;</code> etiketi içine alarak tıklanabilir (bağlantılı) hâle getirin.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>

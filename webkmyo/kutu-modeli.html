@@ -91,7 +91,7 @@
       <table>
         <thead><tr><th>Katman</th><th>Anlamı</th></tr></thead>
         <tbody>
-          <tr><td><strong>content (içerik)</strong></td><td>Yazının/resmin bulunduğu asıl alan.</td></tr>
+          <tr><td><strong>content (içerik)</strong></td><td>Yazının ya da resmin bulunduğu asıl alan.</td></tr>
           <tr><td><strong>padding (iç boşluk)</strong></td><td>İçerik ile kenarlık arasındaki boşluk.</td></tr>
           <tr><td><strong>border (kenarlık)</strong></td><td>Kutunun etrafındaki çizgi.</td></tr>
           <tr><td><strong>margin (dış boşluk)</strong></td><td>Kutu ile <strong>komşu öğeler</strong> arasındaki boşluk.</td></tr>
@@ -149,13 +149,13 @@
     <ol>
       <li>Sayfada bir öğeye <strong>sağ tıklayın</strong> → <strong>İncele (Inspect)</strong> seçin (veya <code class="inline">F12</code> tuşuna basın).</li>
       <li>Açılan panelde <strong>Öğeler (Elements)</strong> sekmesinde bir öğe seçin.</li>
-      <li>Sağ/alt bölümdeki <strong>kutu modeli şemasında</strong> o öğenin <code class="inline">margin</code>, <code class="inline">border</code>, <code class="inline">padding</code> ve <code class="inline">content</code> değerlerini <strong>piksel piksel</strong> görürsünüz.</li>
+      <li>Sağdaki ya da alttaki bölümde, <strong>kutu modeli şemasında</strong> o öğenin <code class="inline">margin</code>, <code class="inline">border</code>, <code class="inline">padding</code> ve <code class="inline">content</code> değerlerini <strong>piksel piksel</strong> görürsünüz.</li>
     </ol>
     <div class="note"><span class="tag">Not</span><p>Edge ve Chrome'da bu şemada katmanlar renklerle ayrılır: içerik <strong>mavi</strong>, padding <strong>yeşil</strong>, border <strong>sarı</strong>, margin <strong>turuncu</strong>. Fareyi öğe üzerine getirdiğinizde bu katmanlar sayfada da renklenir. Kutu modelini kâğıt üzerinde anlamak zor gelirse, DevTools ile canlı olarak incelemek en iyi yoldur.</p></div>
 
     <h2 id="ornek-kart-tasarimi"><span class="num">7</span>Örnek: Kart Tasarımı</h2>
     <p>Şimdi kutu modelini kullanarak bir <strong>kart</strong> yapalım. Kartları oluşturmak için <code class="inline">&lt;div&gt;</code> etiketini kullanacağız.</p>
-    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;div&gt;</code>, sayfada bir <strong>bölüm/kutu</strong> oluşturan kapsayıcı etikettir; kendisi bir görünüm taşımaz, ancak kutu modeli özellikleriyle (border, padding, margin) biçimlendirilerek kart, kutu ve bölüm oluşturmak için sık kullanılır.</p></div>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;div&gt;</code>, sayfada bir <strong>bölüm</strong> (kutu) oluşturan kapsayıcı etikettir; kendisi bir görünüm taşımaz, ancak kutu modeli özellikleriyle (border, padding, margin) biçimlendirilerek kart, kutu ve bölüm oluşturmak için sık kullanılır.</p></div>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -208,7 +208,7 @@
           <tr><td><code class="inline">border</code>'da çizgi türü (<code class="inline">solid</code>) yazmamak</td><td>Kenarlık görünmez</td><td><code class="inline">border: 1px solid #333;</code> biçiminde yazın</td></tr>
           <tr><td>Boyuta birim (<code class="inline">px</code>) yazmamak</td><td><code class="inline">width: 260</code> çalışmaz</td><td>Değerlere birim ekleyin: <code class="inline">260px</code></td></tr>
           <tr><td><code class="inline">padding</code>/<code class="inline">margin</code> kısayol sırasını şaşırmak</td><td>Boşluklar beklenenden farklı</td><td>Sıra saat yönünde: üst, sağ, alt, sol</td></tr>
-          <tr><td>Toplam genişliği yanlış hesaplamak</td><td>Kutu taşar/beklenenden geniştir</td><td><code class="inline">width</code> + padding + border toplamını göz önünde tutun</td></tr>
+          <tr><td>Toplam genişliği yanlış hesaplamak</td><td>Kutu taşar ya da beklenenden geniş çıkar</td><td><code class="inline">width</code> + padding + border toplamını göz önünde tutun</td></tr>
         </tbody>
       </table>
     </div>
@@ -288,7 +288,7 @@
     </ol>
 
     <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> Kutu modelini kullanarak basit bir <strong>ürün kartı</strong> hazırlayınız. Kartın kenarlığı, iç boşluğu ve dış boşluğu olsun; içeriği ortalanmış olsun.</p>
+    <p><strong>Görev:</strong> Kutu modelini kullanarak basit bir <strong>ürün kartı</strong> hazırlayın. Kartın kenarlığı, iç boşluğu ve dış boşluğu olsun; içeriği ortalanmış olsun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -328,9 +328,9 @@
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturunuz.</li>
-      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
-      <li>Go Live ile açınız; ardından <code class="inline">F12</code> ile kartı <strong>İncele</strong> yapıp kutu modeli şemasında <code class="inline">padding</code>, <code class="inline">border</code> ve <code class="inline">margin</code> değerlerini gözlemleyiniz.</li>
+      <li><code class="inline">web_sitem</code> klasöründe yeni bir dosya oluşturun.</li>
+      <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live ile açın; ardından <code class="inline">F12</code> ile kartı <strong>İncele</strong> yapıp kutu modeli şemasında <code class="inline">padding</code>, <code class="inline">border</code> ve <code class="inline">margin</code> değerlerini gözlemleyin.</li>
     </ol>
 
     <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
@@ -354,12 +354,12 @@
 
     <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>
     <ol>
-      <li>Bir <code class="inline">&lt;div&gt;</code>'e <code class="inline">border</code> ekleyip kalınlık, tür (<code class="inline">solid</code>/<code class="inline">dashed</code>) ve rengini değiştiriniz.</li>
-      <li>Aynı <code class="inline">&lt;div&gt;</code>'e <code class="inline">padding</code> ekleyip içeriğin kenarlıktan uzaklaştığını gözlemleyiniz.</li>
-      <li><code class="inline">margin</code> değerini artırıp kutunun diğer öğelerden nasıl uzaklaştığını görünüz.</li>
-      <li><code class="inline">width</code> ve <code class="inline">height</code> vererek kutunun boyutunu sabitleyiniz.</li>
-      <li><code class="inline">margin: 0 auto;</code> kullanarak genişliği belirli bir kutuyu sayfada ortalayınız.</li>
-      <li><code class="inline">F12</code> ile herhangi bir web sitesini açıp bir öğenin kutu modeli şemasını inceleyiniz.</li>
+      <li>Bir <code class="inline">&lt;div&gt;</code>'e <code class="inline">border</code> ekleyip kalınlık, tür (<code class="inline">solid</code>/<code class="inline">dashed</code>) ve rengini değiştirin.</li>
+      <li>Aynı <code class="inline">&lt;div&gt;</code>'e <code class="inline">padding</code> ekleyip içeriğin kenarlıktan uzaklaştığını gözlemleyin.</li>
+      <li><code class="inline">margin</code> değerini artırıp kutunun diğer öğelerden nasıl uzaklaştığını görün.</li>
+      <li><code class="inline">width</code> ve <code class="inline">height</code> vererek kutunun boyutunu sabitleyin.</li>
+      <li><code class="inline">margin: 0 auto;</code> kullanarak genişliği belirli bir kutuyu sayfada ortalayın.</li>
+      <li><code class="inline">F12</code> ile herhangi bir web sitesini açıp bir öğenin kutu modeli şemasını inceleyin.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>

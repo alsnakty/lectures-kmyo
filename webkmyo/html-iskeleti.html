@@ -103,7 +103,7 @@
         </tbody>
       </table>
     </div>
-    <div class="note"><span class="tag">Not</span><p>HTML büyük/küçük harfe <strong>duyarlı değildir</strong> (<code class="inline">&lt;P&gt;</code> ile <code class="inline">&lt;p&gt;</code> aynı anlama gelir); ancak etiketler genellikle <strong>küçük harfle</strong> yazılır; siz de öyle yazınız. Açtığınız her çift etiketi <strong>kapatmayı unutmayınız.</strong></p></div>
+    <div class="note"><span class="tag">Not</span><p>HTML büyük/küçük harfe <strong>duyarlı değildir</strong> (<code class="inline">&lt;P&gt;</code> ile <code class="inline">&lt;p&gt;</code> aynı anlama gelir); ancak etiketler genellikle <strong>küçük harfle</strong> yazılır; siz de öyle yazın. Açtığınız her çift etiketi <strong>kapatmayı unutmayın.</strong></p></div>
 
     <h2 id="sayfanin-iskeleti"><span class="num">2</span>Sayfanın İskeleti</h2>
     <p>Her HTML sayfası aynı temel iskelet üzerine kurulur. Aşağıdaki dört etiket, bir sayfanın "olmazsa olmaz" parçalarıdır:</p>
@@ -161,7 +161,7 @@
       <figcaption>h1, h2 ve h3 başlıklarının giderek küçülen boyutlarla görünümü</figcaption>
     </figure>
     <p>Başlıklar yalnızca yazıyı büyütmek için değil, <strong>sayfayı anlamlı bölümlere ayırmak</strong> için kullanılır. Bir sayfada genellikle <strong>tek bir <code class="inline">&lt;h1&gt;</code></strong> bulunur (ana başlık); alt bölümler <code class="inline">&lt;h2&gt;</code>, onların da alt bölümleri <code class="inline">&lt;h3&gt;</code> ile devam eder.</p>
-    <div class="note warn"><span class="tag">Kural</span><p>Yazıyı büyütmek veya küçültmek amacıyla başlık etiketi kullanmayınız. Boyut ve görünüm ayarları 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda, <strong>CSS</strong> ile yapılacaktır. Başlık etiketi yalnızca "burası bir başlıktır" anlamı taşır.</p></div>
+    <div class="note warn"><span class="tag">Kural</span><p>Yazıyı büyütmek veya küçültmek amacıyla başlık etiketi kullanmayın. Boyut ve görünüm ayarlarını 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda, <strong>CSS</strong> ile yapacağız. Başlık etiketi yalnızca "burası bir başlıktır" anlamı taşır.</p></div>
 
     <h2 id="paragraf-satir-kesme-ve-yatay-cizgi"><span class="num">4</span>Paragraf, Satır Kesme ve Yatay Çizgi</h2>
     <h3 id="paragraf">4.1. Paragraf: <code class="inline">&lt;p&gt;</code></h3>
@@ -204,7 +204,7 @@
     <figure class="diagram"><img alt="Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri" src="images/metin_bicimlendirme.png" width="780" height="314" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri</figcaption>
     </figure>
-    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;b&gt;</code> ile <code class="inline">&lt;strong&gt;</code> her ikisi de yazıyı kalın gösterir; aradaki fark, <code class="inline">&lt;strong&gt;</code> etiketinin aynı zamanda "bu metin önemlidir" anlamını taşımasıdır. Aynı ilişki <code class="inline">&lt;i&gt;</code> ile <code class="inline">&lt;em&gt;</code> arasında da vardır. Bu derste ikisini de kalın/eğik yapmak için kullanabilirsiniz.</p></div>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;b&gt;</code> ile <code class="inline">&lt;strong&gt;</code> her ikisi de yazıyı kalın gösterir; aradaki fark, <code class="inline">&lt;strong&gt;</code> etiketinin aynı zamanda "bu metin önemlidir" anlamını taşımasıdır. Aynı ilişki <code class="inline">&lt;i&gt;</code> ile <code class="inline">&lt;em&gt;</code> arasında da vardır. Bu derste ikisini de kalın ya da eğik yapmak için kullanabilirsiniz.</p></div>
 
     <h2 id="yorum-satiri"><span class="num">6</span>Yorum Satırı: <code class="inline">&lt;!-- --&gt;</code></h2>
     <p>Yorumlar, kodun içine yazdığınız ama <strong>tarayıcıda görünmeyen</strong> notlardır. Kendinize hatırlatma bırakmak veya bir kod parçasını geçici olarak devre dışı bırakmak için kullanılır.</p>
@@ -246,11 +246,11 @@
       <table>
         <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
         <tbody>
-          <tr><td>Çift etiketi kapatmamak (<code class="inline">&lt;b&gt;</code> var, <code class="inline">&lt;/b&gt;</code> yok)</td><td>Sonraki bütün yazılar kalın görünür</td><td>Her çift etiketi kapatınız</td></tr>
+          <tr><td>Çift etiketi kapatmamak (<code class="inline">&lt;b&gt;</code> var, <code class="inline">&lt;/b&gt;</code> yok)</td><td>Sonraki bütün yazılar kalın görünür</td><td>Her çift etiketi kapatın</td></tr>
           <tr><td><code class="inline">&lt;br&gt;</code> ve <code class="inline">&lt;hr&gt;</code> için kapanış aramak (<code class="inline">&lt;/br&gt;</code>)</td><td>Fazladan boş bir satır oluşur</td><td>Bunlar tek etikettir, kapanışları yoktur</td></tr>
-          <tr><td>Alt satıra geçmek için kodda Enter'a basmak</td><td>Tarayıcı satırı atlamaz</td><td>Satır için <code class="inline">&lt;br&gt;</code>, paragraf için <code class="inline">&lt;p&gt;</code> kullanınız</td></tr>
+          <tr><td>Alt satıra geçmek için kodda Enter'a basmak</td><td>Tarayıcı satırı atlamaz</td><td>Satır için <code class="inline">&lt;br&gt;</code>, paragraf için <code class="inline">&lt;p&gt;</code> kullanın</td></tr>
           <tr><td>Yazıyı büyütmek için <code class="inline">&lt;h1&gt;</code> kullanmak</td><td>Anlam bozulur</td><td>Başlık yalnızca başlık için; boyut CSS ile ayarlanır</td></tr>
-          <tr><td>İç içe etiketleri yanlış sırada kapatmak</td><td>Tarayıcı çoğu zaman kendisi düzeltir; ama kod karışır ve hata bulmak zorlaşır</td><td>En son açılan etiketi en önce kapatınız</td></tr>
+          <tr><td>İç içe etiketleri yanlış sırada kapatmak</td><td>Tarayıcı çoğu zaman kendisi düzeltir; ama kod karışır ve hata bulmak zorlaşır</td><td>En son açılan etiketi en önce kapatın</td></tr>
         </tbody>
       </table>
     </div>
@@ -330,7 +330,7 @@
     </ol>
 
     <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> En sevdiğiniz filmi tanıtan bir sayfa hazırlayınız. Bir ana başlık, bir alt başlık, yatay çizgi ile ayrılmış iki bölüm ve en az iki paragraf bulunsun. Filmin adını bir paragraf içinde <strong>kalın</strong> yazınız.</p>
+    <p><strong>Görev:</strong> En sevdiğiniz filmi tanıtan bir sayfa hazırlayın. Bir ana başlık, bir alt başlık, yatay çizgi ile ayrılmış iki bölüm ve en az iki paragraf bulunsun. Filmin adını bir paragraf içinde <strong>kalın</strong> yazın.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -354,9 +354,9 @@
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasöründe <code class="inline">film.html</code> adında yeni bir dosya oluşturunuz.</li>
-      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
-      <li>Go Live ile açınız ve içeriği kendi seçtiğiniz filme göre değiştiriniz.</li>
+      <li><code class="inline">web_sitem</code> klasöründe <code class="inline">film.html</code> adında yeni bir dosya oluşturun.</li>
+      <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live ile açın ve içeriği kendi seçtiğiniz filme göre değiştirin.</li>
     </ol>
 
     <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
@@ -364,9 +364,9 @@
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">tanitim.html</code></strong> adında yeni bir dosya oluşturun.</li>
-      <li>Sayfaya bir <code class="inline">&lt;h1&gt;</code> (ad/konu) ve bir <code class="inline">&lt;h2&gt;</code> (alt başlık) ekleyin.</li>
+      <li>Sayfaya bir <code class="inline">&lt;h1&gt;</code> (ad ya da konu) ve bir <code class="inline">&lt;h2&gt;</code> (alt başlık) ekleyin.</li>
       <li><code class="inline">&lt;h2&gt;</code>'nin altına bir <code class="inline">&lt;hr&gt;</code> (yatay çizgi) koyun.</li>
-      <li>En az <strong>iki paragraf</strong> (<code class="inline">&lt;p&gt;</code>) yazarak kendinizi/konuyu anlatın.</li>
+      <li>En az <strong>iki paragraf</strong> (<code class="inline">&lt;p&gt;</code>) yazarak kendinizi ya da konuyu anlatın.</li>
       <li>Bir <code class="inline">&lt;h3&gt;</code> ("İlgi Alanlarım" gibi) ve altına bir paragraf ekleyin.</li>
       <li>Bir paragrafta bir kelimeyi <code class="inline">&lt;b&gt;</code> ile <strong>kalın</strong>, başka bir kelimeyi <code class="inline">&lt;i&gt;</code> ile <em>italik</em> yapın.</li>
       <li>Sayfaya bir <strong>yorum satırı</strong> (<code class="inline">&lt;!-- --&gt;</code>) ekleyin.</li>
@@ -383,12 +383,12 @@
 
     <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>
     <ol>
-      <li><code class="inline">&lt;h1&gt;</code> başlığının altına kendi bölümünüzü <code class="inline">&lt;h2&gt;</code> ile yazınız.</li>
-      <li>Bir paragraf yazıp içindeki bir kelimeyi <code class="inline">&lt;b&gt;</code> ile kalın, başka bir kelimeyi <code class="inline">&lt;i&gt;</code> ile italik yapınız.</li>
-      <li>İki paragraf yazıp aralarına <code class="inline">&lt;hr&gt;</code> ekleyiniz; çizginin nasıl göründüğüne bakınız.</li>
-      <li>Bir paragraf içinde <code class="inline">&lt;br&gt;</code> kullanarak metni üç ayrı satıra bölünüz.</li>
-      <li>Sayfanıza bir yorum satırı (<code class="inline">&lt;!-- --&gt;</code>) ekleyip kaydediniz; bu satırın tarayıcıda görünmediğini doğrulayınız.</li>
-      <li><code class="inline">&lt;h1&gt;</code>'den <code class="inline">&lt;h6&gt;</code>'ya kadar altı başlığı da yazıp boyutlarının nasıl küçüldüğünü gözlemleyiniz.</li>
+      <li><code class="inline">&lt;h1&gt;</code> başlığının altına kendi bölümünüzü <code class="inline">&lt;h2&gt;</code> ile yazın.</li>
+      <li>Bir paragraf yazıp içindeki bir kelimeyi <code class="inline">&lt;b&gt;</code> ile kalın, başka bir kelimeyi <code class="inline">&lt;i&gt;</code> ile italik yapın.</li>
+      <li>İki paragraf yazıp aralarına <code class="inline">&lt;hr&gt;</code> ekleyin; çizginin nasıl göründüğüne bakın.</li>
+      <li>Bir paragraf içinde <code class="inline">&lt;br&gt;</code> kullanarak metni üç ayrı satıra bölün.</li>
+      <li>Sayfanıza bir yorum satırı (<code class="inline">&lt;!-- --&gt;</code>) ekleyip kaydedin; bu satırın tarayıcıda görünmediğini doğrulayın.</li>
+      <li><code class="inline">&lt;h1&gt;</code>'den <code class="inline">&lt;h6&gt;</code>'ya kadar altı başlığı da yazıp boyutlarının nasıl küçüldüğünü gözlemleyin.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>

@@ -63,7 +63,7 @@
       <summary>Bu sayfada</summary>
       <nav aria-label="Sayfa bölümleri">
   <a href="#web-nasil-calisir"><span class="n">1</span>Web Nasıl Çalışır?</a>
-        <a href="#alan-adi-domain-barindirma-host-ve-uzant"><span class="n">2</span>Alan Adı (Domain), Barındırma (Host) ve Uzantılar</a>
+        <a href="#alan-adi-domain-barindirma-hosting-ve-uz"><span class="n">2</span>Alan Adı (Domain), Barındırma (Hosting) ve Uzantılar</a>
         <a href="#calisma-araclari"><span class="n">3</span>Çalışma Araçları</a>
         <a href="#dosya-ve-klasor-mantigi-en-onemli-kisim"><span class="n">4</span>Dosya ve Klasör Mantığı (En Önemli Kısım)</a>
         <a href="#ilk-sayfa-index-html"><span class="n">5</span>İlk Sayfa: <code class="inline">index.html</code></a>
@@ -78,7 +78,7 @@
       </nav>
     </details>
 
-<p>Bir web sayfası, tarayıcının okuyup ekranda gösterdiği ve uzantısı <code class="inline">.html</code> olan bir metin dosyasıdır. Bu dosya bir kod düzenleyicisinde (VS Code) yazılır; VS Code'a eklenen <strong>Live Server</strong> eklentisi de sayfayı tarayıcıda açar ve her kaydettiğinizde yeniler. Dosyaların hangi klasörde durduğu en az kod kadar önemlidir: yanlış yere kaydedilen bir sayfa ya da resim açılmaz.</p>
+<p>Bir web sayfası, tarayıcının okuyup ekranda gösterdiği ve uzantısı <code class="inline">.html</code> olan bir metin dosyasıdır. Bu dosya bir kod editöründe (VS Code) yazılır; VS Code'a eklenen <strong>Live Server</strong> eklentisi de sayfayı tarayıcıda açar ve her kaydettiğinizde yeniler. Dosyaların hangi klasörde durduğu en az kod kadar önemlidir: yanlış yere kaydedilen bir sayfa ya da resim açılmaz.</p>
 
     <h2 id="web-nasil-calisir"><span class="num">1</span>Web Nasıl Çalışır?</h2>
     <p>Bir web sayfasını açtığınızda, arka planda görünmeyen bir iletişim gerçekleşir. Bu iletişimi bir <strong>lokantaya</strong> benzetebiliriz:</p>
@@ -100,41 +100,34 @@
         </tbody>
       </table>
     </div>
-    <p>Bir web sayfası temelde üç dilden oluşur. Bu dönem ağırlıklı olarak ilk ikisi üzerinde durulacaktır:</p>
+    <p>Bir web sayfası temelde üç dilden oluşur. Bu dönem ilk ikisine odaklanacağız:</p>
     <div class="twrap">
       <table>
         <thead><tr><th>Dil</th><th>Görevi</th><th>Benzetme (bir insan)</th></tr></thead>
         <tbody>
           <tr><td><strong>HTML</strong></td><td>Sayfanın <strong>iskeleti</strong> ve içeriği (başlık, yazı, resim).</td><td>İskelet / kemikler</td></tr>
           <tr><td><strong>CSS</strong></td><td>Sayfanın <strong>görünümü</strong> (renk, yazı tipi, yerleşim).</td><td>Kıyafet / görünüm</td></tr>
-          <tr><td><strong>JavaScript</strong></td><td>Sayfanın <strong>hareketi</strong> (tıklanınca bir şey olması).</td><td>Hareket / kaslar</td></tr>
+          <tr><td><strong>JavaScript</strong></td><td>Sayfanın <strong>davranışı</strong> (tıklanınca bir şey olması).</td><td>Hareket / kaslar</td></tr>
         </tbody>
       </table>
     </div>
     <div class="note"><span class="tag">Not</span><p>CSS, 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda ayrıntılı olarak ele alınır.</p></div>
 
-    <h2 id="alan-adi-domain-barindirma-host-ve-uzant"><span class="num">2</span>Alan Adı (Domain), Barındırma (Host) ve Uzantılar</h2>
-    <p>Hazırladığınız bir web sayfası, siz onu internette yayınlayana kadar yalnızca kendi bilgisayarınızda durur. Sayfanızın herkes tarafından internetten erişilebilir olması için iki şeye ihtiyaç vardır: bir <strong>alan adı (domain)</strong> ve bir <strong>barındırma (host / hosting)</strong> hizmeti.</p>
+    <h2 id="alan-adi-domain-barindirma-hosting-ve-uz"><span class="num">2</span>Alan Adı (Domain), Barındırma (Hosting) ve Uzantılar</h2>
+    <p>Hazırladığınız bir web sayfası, siz onu internette yayınlayana kadar yalnızca kendi bilgisayarınızda durur. Sayfanızın herkes tarafından internetten erişilebilir olması için iki şeye ihtiyaç vardır: bir <strong>alan adı (domain)</strong> ve bir <strong>barındırma (hosting)</strong> hizmeti.</p>
     <h3 id="alan-adi-domain-nedir">2.1. Alan Adı (Domain) Nedir?</h3>
     <p>Alan adı, bir web sitesinin internetteki <strong>adresidir</strong>; örneğin <code class="inline">www.google.com</code>. Aslında internetteki her sunucunun sayılardan oluşan bir <strong>IP adresi</strong> vardır (örneğin <code class="inline">142.250.187.68</code> gibi). Bu sayıları akılda tutmak zor olduğundan, alan adı bu adresin kelimelerle ifade edilmiş, akılda kalıcı hâlidir.</p>
     <ul>
       <li>Tarayıcıya <code class="inline">www.google.com</code> yazdığınızda, bu ad arka planda önce ilgili IP adresine çevrilir, ardından o sunucuya ulaşılır.</li>
       <li>Her alan adı <strong>benzersizdir</strong>: aynı alan adı iki farklı kişiye ait olamaz. Başkası tarafından kullanılan bir alan adı, süresi dolup bırakılmadıkça alınamaz.</li>
     </ul>
-    <h3 id="barindirma-host-hosting-nedir">2.2. Barındırma (Host / Hosting) Nedir?</h3>
+    <h3 id="barindirma-hosting-nedir">2.2. Barındırma (Hosting) Nedir?</h3>
     <p>Bir web sitesi dosyalardan oluşur (<code class="inline">.html</code> sayfaları, resimler vb.). Bu dosyaların, ziyaretçilerin 7 gün 24 saat erişebilmesi için sürekli açık bir bilgisayarda durması gerekir. Dosyaların saklandığı bu bilgisayara <strong>sunucu (server)</strong>, dosyaların burada barındırılıp yayınlanması hizmetine ise <strong>barındırma (hosting)</strong> denir.</p>
     <p>Kendi ev bilgisayarınız bu iş için genellikle yeterli değildir; çünkü sunucunun sürekli açık kalması, hızlı bir internet bağlantısına sahip olması ve aynı anda çok sayıda ziyaretçiye hizmet verebilmesi gerekir. Bu nedenle barındırma, özel sunuculara sahip firmalardan kiralanır.</p>
     <div class="note"><span class="tag">Benzetme</span><p><strong>Alan adı</strong>, evinizin <strong>adresidir</strong>; <strong>hosting</strong> ise evin kendisidir (dosyalarınızın oturduğu yer). Adres olmadan kimse evi bulamaz; ev olmadan da adresin işaret edeceği bir yer olmaz. İkisi birlikte çalışır.</p></div>
-    <h3 id="alan-adi-ve-hosting-nasil-alinir">2.3. Alan Adı ve Hosting Nasıl Alınır?</h3>
-    <p>Alan adı ve hosting, bu hizmeti satan firmalardan <strong>belirli bir süre için kiralanır</strong> (genellikle yıllık). Genel adımlar şöyledir:</p>
-    <ol>
-      <li>Bir domain/hosting firmasının sitesine girilir.</li>
-      <li>İstenen alan adı yazılıp <strong>müsait mi</strong> diye sorgulanır. Alınmışsa başka bir ad denenir.</li>
-      <li>Müsaitse alan adı ve bir hosting paketi seçilir, ücreti ödenir. Süre sonunda hizmet <strong>yenilenir</strong>.</li>
-      <li>Hazırlanan site dosyaları hosting'e <strong>yüklenir (upload)</strong> ve site, alınan alan adı üzerinden yayına girer.</li>
-    </ol>
+    <p>Alan adı ve hosting, bu hizmeti satan firmalardan genellikle yıllık olarak kiralanır. Site dosyaları hosting'e yüklenince site, alan adı üzerinden yayına girer.</p>
     <div class="note"><span class="tag">Not</span><p>Bu derste sitemizi internette yayınlamayacağız; tüm çalışmaları kendi bilgisayarımızda yapacağız. Yine de gerçek bir sitenin internette nasıl yayına girdiğini bilmeniz önemlidir.</p></div>
-    <h3 id="alan-adi-uzantilari-com-edu-mil">2.4. Alan Adı Uzantıları (<code class="inline">.com</code>, <code class="inline">.edu</code>, <code class="inline">.mil</code> ...)</h3>
+    <h3 id="alan-adi-uzantilari-com-edu-mil">2.3. Alan Adı Uzantıları (<code class="inline">.com</code>, <code class="inline">.edu</code>, <code class="inline">.mil</code> ...)</h3>
     <p>Alan adının sonundaki kısım (<code class="inline">.com</code>, <code class="inline">.edu</code> gibi) sitenin <strong>türü</strong> hakkında bilgi verir. En yaygın uzantılar ve anlamları:</p>
     <div class="twrap">
       <table>
@@ -143,13 +136,13 @@
           <tr><td><code class="inline">.com</code></td><td>Ticari kuruluşlar (company)</td><td><code class="inline">www.hepsiburada.com</code></td></tr>
           <tr><td><code class="inline">.edu</code></td><td>Eğitim kurumları (education)</td><td><code class="inline">www.harvard.edu</code></td></tr>
           <tr><td><code class="inline">.gov</code></td><td>Devlet kurumları (government)</td><td><code class="inline">www.turkiye.gov.tr</code></td></tr>
-          <tr><td><code class="inline">.org</code></td><td>Ticari olmayan/kâr amacı gütmeyen kuruluşlar (organization)</td><td><code class="inline">www.wikipedia.org</code></td></tr>
+          <tr><td><code class="inline">.org</code></td><td>Kâr amacı gütmeyen kuruluşlar (organization)</td><td><code class="inline">www.wikipedia.org</code></td></tr>
           <tr><td><code class="inline">.mil</code></td><td>Askeri kurumlar (military)</td><td><code class="inline">www.army.mil</code></td></tr>
           <tr><td><code class="inline">.net</code></td><td>Ağ ve servis sağlayıcılar (network)</td><td><code class="inline">www.speedtest.net</code></td></tr>
         </tbody>
       </table>
     </div>
-    <p>Adresin en sonunda ayrıca bir <strong>ülke kodu</strong> bulunabilir: <code class="inline">.tr</code> (Türkiye), <code class="inline">.uk</code> (İngiltere), <code class="inline">.de</code> (Almanya) gibi. Örneğin <code class="inline">www.ankara.edu.tr</code> adresinde <code class="inline">edu</code> bunun bir <strong>eğitim kurumu</strong>, <code class="inline">tr</code> ise <strong>Türkiye</strong>'ye ait olduğunu gösterir.</p>
+    <p>Adresin en sonunda ayrıca bir <strong>ülke kodu</strong> bulunabilir: <code class="inline">.tr</code> (Türkiye), <code class="inline">.uk</code> (Birleşik Krallık), <code class="inline">.de</code> (Almanya) gibi. Örneğin <code class="inline">www.ankara.edu.tr</code> adresinde <code class="inline">edu</code> bunun bir <strong>eğitim kurumu</strong>, <code class="inline">tr</code> ise <strong>Türkiye</strong>'ye ait olduğunu gösterir.</p>
 
     <h2 id="calisma-araclari"><span class="num">3</span>Çalışma Araçları</h2>
     <p>Web sayfası yazmak için pahalı bir program gerekmez. İhtiyaç duyulan iki araç vardır ve her ikisi de ücretsizdir:</p>
@@ -161,24 +154,24 @@
     <p>VS Code, kod yazmak için tasarlanmış ücretsiz bir editördür. Word'e benzetebilirsiniz; ancak metin yerine <strong>kod</strong> yazmak için kullanılır.</p>
     <ul>
       <li>Adres: <strong>https://code.visualstudio.com</strong></li>
-      <li>Siteye giriniz, <strong>Download</strong> düğmesine basınız ve işletim sisteminize uygun sürümü indiriniz (Windows için <code class="inline">.exe</code>).</li>
-      <li>İndirdiğiniz dosyayı çalıştırınız; kurulum boyunca <strong>İleri (Next)</strong> seçeneğiyle işlemi tamamlayınız.</li>
+      <li>Siteye girin, <strong>Download</strong> düğmesine basın ve işletim sisteminize uygun sürümü indirin (Windows için <code class="inline">.exe</code>).</li>
+      <li>İndirdiğiniz dosyayı çalıştırın; kurulum boyunca <strong>İleri (Next)</strong> seçeneğiyle işlemi tamamlayın.</li>
     </ul>
     <div class="note ok"><span class="tag">İpucu</span><p>Kurulum sırasında "Open with Code" seçeneklerini işaretlerseniz, bir klasöre sağ tıklayarak klasörü doğrudan VS Code'da açabilirsiniz. Bu, çalışmanızı kolaylaştırır.</p></div>
     <h3 id="live-server-eklentisi">3.2. Live Server Eklentisi</h3>
     <p>Yazdığınız sayfayı tarayıcıda görüntülemenin en pratik yolu <strong>Live Server</strong> eklentisidir. Bu eklenti sayfanızı tarayıcıda açar ve <strong>kodu her kaydettiğinizde sayfayı otomatik olarak yeniler.</strong> Böylece dosyayı elle tekrar tekrar açmanız gerekmez.</p>
     <p>Kurulumu için:</p>
     <ol>
-      <li>VS Code'da sol taraftaki <strong>Eklentiler (Extensions)</strong> simgesine tıklayınız (kutucuklardan oluşan simge) veya <code class="inline">Ctrl</code> + <code class="inline">Shift</code> + <code class="inline">X</code> tuşlarına basınız.</li>
-      <li>Arama kutusuna <strong>Live Server</strong> yazınız.</li>
-      <li>Ritwick Dey imzalı "Live Server" eklentisini bulup <strong>Install</strong> seçeneğine tıklayınız.</li>
+      <li>VS Code'da sol taraftaki <strong>Eklentiler (Extensions)</strong> simgesine tıklayın (kutucuklardan oluşan simge) veya <code class="inline">Ctrl</code> + <code class="inline">Shift</code> + <code class="inline">X</code> tuşlarına basın.</li>
+      <li>Arama kutusuna <strong>Live Server</strong> yazın.</li>
+      <li>Ritwick Dey'in yayımladığı "Live Server" eklentisini bulup <strong>Install</strong> seçeneğine tıklayın.</li>
     </ol>
-    <p>Kullanımı: Bir <code class="inline">.html</code> dosyası açıkken sağ alttaki <strong>Go Live</strong> yazısına tıklayınız ya da sayfaya sağ tıklayıp <strong>Open with Live Server</strong> seçeneğini seçiniz. Sayfanız tarayıcıda açılır.</p>
+    <p>Kullanımı: Bir <code class="inline">.html</code> dosyası açıkken sağ alttaki <strong>Go Live</strong> yazısına tıklayın ya da sayfaya sağ tıklayıp <strong>Open with Live Server</strong> seçeneğini seçin. Sayfanız tarayıcıda açılır.</p>
     <div class="note"><span class="tag">Not</span><p>Live Server kurulu değilse <code class="inline">.html</code> dosyasına Dosya Gezgini'nde çift tıklayarak sayfayı tarayıcıda açabilirsiniz. Bu durumda sayfa kendiliğinden yenilenmez: kodu kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>), sonra tarayıcıda <code class="inline">F5</code> tuşuyla sayfayı yenileyin.</p></div>
 
     <h2 id="dosya-ve-klasor-mantigi-en-onemli-kisim"><span class="num">4</span>Dosya ve Klasör Mantığı (En Önemli Kısım)</h2>
     <p>Bir sayfanın ya da resmin açılmaması çoğu zaman kod hatasından değil, dosyanın yanlış klasöre kaydedilmesinden kaynaklanır.</p>
-    <p>Kural basittir: <strong>Her web projesi kendi klasöründe durur.</strong> O projeye ait bütün dosyalar (sayfalar, resimler) o klasörün içinde bulunur. Örnek bir düzen aşağıda verilmiştir:</p>
+    <p>Kural basittir: <strong>Her web projesi kendi klasöründe durur.</strong> O projeye ait bütün dosyalar (sayfalar, resimler) o klasörün içinde bulunur. Örnek bir düzen:</p>
     <figure class="diagram"><img alt="Örnek klasör düzeni: web_sitem klasörü içinde index.html ve içinde logo.png bulunan gorseller klasörü" src="images/dosya_klasor_yapisi.png" width="901" height="515" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Örnek klasör düzeni: web_sitem klasörü içinde index.html ve içinde logo.png bulunan gorseller klasörü</figcaption>
     </figure>
@@ -188,43 +181,25 @@
       <li><code class="inline">index.html</code> → sitenin <strong>ana sayfasıdır.</strong></li>
       <li><code class="inline">gorseller/</code> → resimler karışmasın diye ayrı bir klasörde tutulur.</li>
     </ul>
-    <h3 id="index-html-ve-varsayilan-sayfa">4.1. <code class="inline">index.html</code> ve Varsayılan Sayfa</h3>
-    <p>Bir siteye yalnızca adresini yazıp girdiğinizde (örneğin <code class="inline">www.ornek.com</code>), belirli bir dosya adı belirtmemiş olursunuz. Bu durumda sunucu, ilgili klasörde bir <strong>varsayılan sayfa (default page)</strong> arar ve bulduğu ilk sayfayı açar.</p>
-    <p>Sunucu bu sayfaları belirli bir <strong>sıraya</strong> göre arar. En yaygın varsayılan sayfa <code class="inline">index.html</code> dosyasıdır; ancak sunucunun kullandığı teknolojiye göre başka adlar da varsayılan sayfa olabilir:</p>
-    <div class="twrap">
-      <table>
-        <thead><tr><th>Dosya adı</th><th>Kullanıldığı teknoloji</th></tr></thead>
-        <tbody>
-          <tr><td><code class="inline">index.html</code> / <code class="inline">index.htm</code></td><td>Düz HTML siteleri (en yaygın)</td></tr>
-          <tr><td><code class="inline">index.php</code></td><td>PHP ile hazırlanan siteler</td></tr>
-          <tr><td><code class="inline">default.aspx</code></td><td>ASP.NET (Microsoft) siteleri</td></tr>
-          <tr><td><code class="inline">default.php</code> / <code class="inline">default.htm</code></td><td>Bazı sunucu yapılandırmaları</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>Buradan iki önemli sonuç çıkar:</p>
-    <ul>
-      <li>Bir sitenin çalışması için ana sayfanın adının <strong>mutlaka <code class="inline">index.html</code> olması zorunlu değildir.</strong> Sunucu, varsayılan sayfalardan hangisini önce bulursa onu açar. Yani <code class="inline">index.html</code> olmasa da site çalışabilir; sunucu sıradaki varsayılan sayfayı arar.</li>
-      <li>Eğer istenen adreste varsayılan sayfalardan <strong>hiçbiri bulunamazsa</strong>, sunucu ayarına göre bir hata sayfası (örneğin <strong>404 Sayfa Bulunamadı</strong> ya da <strong>403</strong>) gösterir veya klasördeki dosyaları listeler.</li>
-    </ul>
-    <div class="note"><span class="tag">Not</span><p><strong>404</strong>, "istenen sayfa sunucuda bulunamadı" anlamına gelen bir hata kodudur. Bu derste düz HTML kullanacağımız için ana sayfamızı <code class="inline">index.html</code> adıyla kaydedeceğiz; bu, en yaygın ve en güvenli tercihtir.</p></div>
+    <h3 id="index-html-ana-sayfa">4.1. <code class="inline">index.html</code>: Ana Sayfa</h3>
+    <p>Bir siteye yalnızca adresini yazarak girdiğinizde (örneğin <code class="inline">www.ornek.com</code>) bir dosya adı belirtmemiş olursunuz. Bu durumda sunucu klasördeki <strong>ana sayfayı</strong> açar. Ana sayfanın adı <code class="inline">index.html</code> olur; adres yazıldığında sunucu önce bu dosyayı arar. Bu yüzden sitenizin ana sayfasını <code class="inline">index.html</code> adıyla kaydedin.</p>
     <h3 id="isimlendirme-kurallari">4.2. İsimlendirme Kuralları</h3>
-    <p>Dosya ve klasör adlarında aşağıdaki kurallara uyunuz; aksi hâlde sayfanız veya resimleriniz bazı durumlarda açılmayabilir:</p>
+    <p>Dosya ve klasör adlarında aşağıdaki kurallara uyun; aksi hâlde sayfanız veya resimleriniz bazı durumlarda açılmayabilir:</p>
     <div class="twrap">
       <table>
         <thead><tr><th>Kural</th><th>Yanlış ❌</th><th>Doğru ✅</th></tr></thead>
         <tbody>
-          <tr><td>Türkçe karakter kullanmayınız (ç, ş, ı, ö, ü, ğ)</td><td><code class="inline">çiçekçi.html</code></td><td><code class="inline">cicekci.html</code></td></tr>
-          <tr><td>Boşluk kullanmayınız</td><td><code class="inline">ana sayfa.html</code></td><td><code class="inline">ana_sayfa.html</code> veya <code class="inline">anasayfa.html</code></td></tr>
-          <tr><td>Küçük harf tercih ediniz</td><td><code class="inline">Index.HTML</code></td><td><code class="inline">index.html</code></td></tr>
-          <tr><td>Uzantıyı doğru yazınız</td><td><code class="inline">index.htm l</code></td><td><code class="inline">index.html</code></td></tr>
+          <tr><td>Türkçe karakter kullanmayın (ç, ş, ı, ö, ü, ğ)</td><td><code class="inline">çiçekçi.html</code></td><td><code class="inline">cicekci.html</code></td></tr>
+          <tr><td>Boşluk kullanmayın</td><td><code class="inline">ana sayfa.html</code></td><td><code class="inline">ana_sayfa.html</code> veya <code class="inline">anasayfa.html</code></td></tr>
+          <tr><td>Küçük harf tercih edin</td><td><code class="inline">Index.HTML</code></td><td><code class="inline">index.html</code></td></tr>
+          <tr><td>Uzantıyı doğru yazın</td><td><code class="inline">index.htm l</code></td><td><code class="inline">index.html</code></td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note warn"><span class="tag">Kural</span><p>Boşluk yerine <strong>alt çizgi</strong> (<code class="inline">_</code>) kullanınız ve Türkçe harf kullanmayınız. Böyle adlandırılan dosyalar başka bir bilgisayara ya da sunucuya taşındığında da sorunsuz açılır.</p></div>
+    <div class="note warn"><span class="tag">Kural</span><p>Boşluk yerine <strong>alt çizgi</strong> (<code class="inline">_</code>) kullanın ve Türkçe harf kullanmayın. Böyle adlandırılan dosyalar başka bir bilgisayara ya da sunucuya taşındığında da sorunsuz açılır.</p></div>
 
     <h2 id="ilk-sayfa-index-html"><span class="num">5</span>İlk Sayfa: <code class="inline">index.html</code></h2>
-    <p>Şimdi ilk sayfayı oluşturalım. VS Code'da <code class="inline">web_sitem</code> klasörünü açınız, içinde <code class="inline">index.html</code> adında yeni bir dosya oluşturunuz ve aşağıdaki kodu yazınız:</p>
+    <p>Şimdi ilk sayfayı oluşturalım. VS Code'da <code class="inline">web_sitem</code> klasörünü açın, içinde <code class="inline">index.html</code> adında yeni bir dosya oluşturun ve aşağıdaki kodu yazın:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -239,12 +214,12 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Dosyayı kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>), ardından <strong>Go Live</strong> ile açınız. Tarayıcıda aşağıdaki sonucu görürsünüz:</p>
+    <p>Dosyayı kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>), ardından <strong>Go Live</strong> ile açın. Tarayıcıda aşağıdaki sonucu görürsünüz:</p>
     <figure class="diagram"><img alt="Tarayıcı sonucu: sayfada büyük &quot;Merhaba Dünya&quot; yazısı ve altında &quot;Bu benim ilk web sayfam.&quot; satırı" src="images/tarayici_merhaba.png" width="1200" height="240" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Tarayıcı sonucu: sayfada büyük "Merhaba Dünya" yazısı ve altında "Bu benim ilk web sayfam." satırı</figcaption>
     </figure>
     <h3 id="bu-kod-ne-yapiyor">5.1. Bu Kod Ne Yapıyor?</h3>
-    <p>Her satırın belirli bir görevi vardır. Bu kodun tamamını şimdiden ezberlemeniz beklenmemektedir; 2. haftada, <a href="html-iskeleti.html">HTML İskeleti ve Metin Etiketleri</a> konusunda, bu iskelet ayrıntılı olarak ele alınacaktır.</p>
+    <p>Her satırın belirli bir görevi vardır. Bu kodu şimdiden ezberlemeniz gerekmiyor; 2. haftada, <a href="html-iskeleti.html">HTML İskeleti ve Metin Etiketleri</a> konusunda, bu iskeleti ayrıntılı göreceğiz.</p>
     <div class="twrap">
       <table>
         <thead><tr><th>Satır</th><th>Görevi</th></tr></thead>
@@ -268,22 +243,22 @@
       <table>
         <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
         <tbody>
-          <tr><td>Dosyayı <code class="inline">.html</code> yerine <code class="inline">.txt</code> kaydetmek</td><td>Sayfa oluşmaz; kod düz yazı olarak (çoğu zaman Not Defteri'nde) açılır</td><td>Uzantının <code class="inline">.html</code> olduğundan emin olunuz</td></tr>
-          <tr><td>Etiketi kapatmayı unutmak (<code class="inline">&lt;h1&gt;</code> var, <code class="inline">&lt;/h1&gt;</code> yok)</td><td>Sonraki yazılar da başlık gibi büyük ve kalın görünür</td><td>Her açılan etiketi kapatınız</td></tr>
-          <tr><td>Klasör/dosya adında Türkçe harf veya boşluk</td><td>Sayfa/resim bazen açılmaz</td><td>Türkçe harf ve boşluk kullanmayınız</td></tr>
-          <tr><td><code class="inline">&lt;meta charset="utf-8"&gt;</code> yazmamak</td><td>Bazı sunucularda Türkçe harfler bozuk çıkar</td><td><code class="inline">&lt;head&gt;</code> içine bu satırı ekleyiniz</td></tr>
-          <tr><td>Dosyayı kaydetmeden Go Live yapmak</td><td>Değişiklik ekranda görünmez</td><td>Önce <code class="inline">Ctrl</code> + <code class="inline">S</code> ile kaydediniz</td></tr>
+          <tr><td>Dosyayı <code class="inline">.html</code> yerine <code class="inline">.txt</code> kaydetmek</td><td>Sayfa tarayıcıda açılmaz; kod düz yazı olarak (çoğu zaman Not Defteri'nde) açılır</td><td>Uzantının <code class="inline">.html</code> olduğundan emin olun</td></tr>
+          <tr><td>Etiketi kapatmayı unutmak (<code class="inline">&lt;h1&gt;</code> var, <code class="inline">&lt;/h1&gt;</code> yok)</td><td>Sonraki yazılar da başlık gibi büyük ve kalın görünür</td><td>Her açılan etiketi kapatın</td></tr>
+          <tr><td>Klasör veya dosya adında Türkçe harf ya da boşluk</td><td>Sayfa veya resim bazen açılmaz</td><td>Türkçe harf ve boşluk kullanmayın</td></tr>
+          <tr><td><code class="inline">&lt;meta charset="utf-8"&gt;</code> yazmamak</td><td>Bazı sunucularda Türkçe harfler bozuk çıkar</td><td><code class="inline">&lt;head&gt;</code> içine bu satırı ekleyin</td></tr>
+          <tr><td>Dosyayı kaydetmeden Go Live yapmak</td><td>Değişiklik ekranda görünmez</td><td>Önce <code class="inline">Ctrl</code> + <code class="inline">S</code> ile kaydedin</td></tr>
         </tbody>
       </table>
     </div>
 
     <h2 id="bu-haftanin-ozeti"><span class="num">7</span>Bu Haftanın Özeti</h2>
     <ul>
-      <li>Web; <strong>istemci</strong> (tarayıcı) ile <strong>sunucu</strong> arasındaki iletişimle çalışır. Sayfalar <strong>HTML</strong> (iskelet), <strong>CSS</strong> (görünüm) ve <strong>JavaScript</strong> (hareket) ile oluşturulur.</li>
+      <li>Web, <strong>istemci</strong> (tarayıcı) ile <strong>sunucu</strong> arasındaki iletişimle çalışır. Sayfalar <strong>HTML</strong> (iskelet), <strong>CSS</strong> (görünüm) ve <strong>JavaScript</strong> (davranış) ile oluşturulur.</li>
       <li><strong>Alan adı (domain)</strong> bir sitenin internetteki adresidir; <strong>barındırma (hosting)</strong> ise dosyaların sürekli açık bir sunucuda tutulup yayınlanmasıdır.</li>
       <li>Alan adı <strong>uzantıları</strong> sitenin türünü gösterir: <code class="inline">.com</code>, <code class="inline">.edu</code>, <code class="inline">.gov</code>, <code class="inline">.mil</code> ...</li>
       <li>Web sayfaları <strong>VS Code</strong> ile yazılır, <strong>Live Server</strong> ile tarayıcıda görüntülenir.</li>
-      <li>Her proje <strong>kendi klasöründe</strong> durur; ana sayfa genellikle <strong><code class="inline">index.html</code></strong> adıyla kaydedilir. Varsayılan sayfa bulunamazsa sunucu bir hata sayfası (örneğin <strong>404</strong>) gösterebilir.</li>
+      <li>Her proje <strong>kendi klasöründe</strong> durur. Ana sayfa <strong><code class="inline">index.html</code></strong> adıyla kaydedilir, çünkü adres yazıldığında sunucu önce bu dosyayı arar.</li>
       <li>Dosya ve klasör adlarında <strong>Türkçe karakter ve boşluk kullanılmaz.</strong></li>
     </ul>
 
@@ -298,7 +273,7 @@
           <li><b>d)</b> <code class="inline">main.css</code></li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">b</span>En yaygın varsayılan sayfa <code class="inline">index.html</code>'dir.</div>
+          <div class="ans"><span class="letter">b</span>Ana sayfa <code class="inline">index.html</code> adıyla kaydedilir; sunucu önce bu dosyayı arar.</div>
         </details>
       </li>
       <li>
@@ -352,7 +327,7 @@
     </ol>
 
     <h2 id="uygulamalar"><span class="num">9</span>Uygulamalar</h2>
-    <p><strong>Görev:</strong> Kendinizi tanıtan tek sayfalık bir web sayfası hazırlayınız. Sayfada bir başlık ve iki paragraf bulunsun.</p>
+    <p><strong>Görev:</strong> Kendinizi tanıtan tek sayfalık bir web sayfası hazırlayın. Sayfada bir başlık ve iki paragraf bulunsun.</p>
     <p><strong>Çözüm:</strong></p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
@@ -371,10 +346,10 @@
     </div>
     <p>Adımlar:</p>
     <ol>
-      <li><code class="inline">web_sitem</code> klasörünü VS Code'da açınız.</li>
-      <li><code class="inline">hakkimda.html</code> adında yeni bir dosya oluşturunuz (Türkçe harf ve boşluk kullanmadan).</li>
-      <li>Yukarıdaki kodu yazıp kaydediniz (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
-      <li>Go Live ile tarayıcıda açınız. Kendi adınızı ve bilgilerinizi yazarak içeriği değiştiriniz.</li>
+      <li><code class="inline">web_sitem</code> klasörünü VS Code'da açın.</li>
+      <li><code class="inline">hakkimda.html</code> adında yeni bir dosya oluşturun (Türkçe harf ve boşluk kullanmadan).</li>
+      <li>Yukarıdaki kodu yazıp kaydedin (<code class="inline">Ctrl</code> + <code class="inline">S</code>).</li>
+      <li>Go Live ile tarayıcıda açın. Kendi adınızı ve bilgilerinizi yazarak içeriği değiştirin.</li>
     </ol>
 
     <h2 id="sinif-uygulamasi"><span class="num">10</span>Sınıf Uygulaması</h2>
@@ -389,7 +364,7 @@
       <li><code class="inline">web_sitem</code> içinde, 3. haftada (<a href="baglantilar-ve-gorseller.html">Bağlantılar ve Görseller</a>) kullanmak üzere bir <strong><code class="inline">gorseller</code></strong> klasörü de oluşturun.</li>
     </ol>
     <p><strong>Beklenen sonuç:</strong> Tarayıcı sekmesinde başlığınız; sayfada adınız (büyük başlık) ve bölümünüz görünür. Türkçe harfler düzgün çıkar.</p>
-    <p><strong>İpuçları:</strong> Türkçe harfler için <code class="inline">&lt;head&gt;</code> içine <code class="inline">&lt;meta charset="utf-8"&gt;</code> eklemeyi unutmayın. Dosya/klasör adlarında Türkçe karakter ve boşluk kullanmayın.</p>
+    <p><strong>İpuçları:</strong> Türkçe harfler için <code class="inline">&lt;head&gt;</code> içine <code class="inline">&lt;meta charset="utf-8"&gt;</code> eklemeyi unutmayın. Dosya ve klasör adlarında Türkçe karakter ve boşluk kullanmayın.</p>
 
     <h2 id="notlar-ve-ipuclari"><span class="num">11</span>Notlar ve İpuçları</h2>
     <ul>
@@ -402,10 +377,10 @@
 
     <h2 id="calisma-sorulari"><span class="num">12</span>Çalışma Soruları</h2>
     <ol>
-      <li><code class="inline">index.html</code> sayfasındaki <code class="inline">&lt;h1&gt;</code> başlığını kendi adınızla değiştiriniz.</li>
-      <li>Sayfaya ikinci bir paragraf (<code class="inline">&lt;p&gt;</code>) ekleyiniz: en sevdiğiniz dersi yazınız.</li>
-      <li><code class="inline">&lt;title&gt;</code> etiketindeki yazıyı değiştiriniz ve tarayıcı sekmesinde nasıl değiştiğini gözlemleyiniz.</li>
-      <li><code class="inline">web_sitem</code> klasörünün içinde <code class="inline">iletisim.html</code> adında ikinci bir sayfa oluşturunuz; içine bir başlık ve telefon/e-posta bilgisi yazınız.</li>
+      <li><code class="inline">index.html</code> sayfasındaki <code class="inline">&lt;h1&gt;</code> başlığını kendi adınızla değiştirin.</li>
+      <li>Sayfaya ikinci bir paragraf (<code class="inline">&lt;p&gt;</code>) ekleyin: en sevdiğiniz dersi yazın.</li>
+      <li><code class="inline">&lt;title&gt;</code> etiketindeki yazıyı değiştirin ve tarayıcı sekmesinde nasıl değiştiğini gözlemleyin.</li>
+      <li><code class="inline">web_sitem</code> klasörünün içinde <code class="inline">iletisim.html</code> adında ikinci bir sayfa oluşturun; içine bir başlık ve telefon veya e-posta bilgisi yazın.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
@@ -435,7 +410,7 @@
     <div class="toc-title">Bu Sayfada</div>
     <nav class="toc" id="toc">
 <a href="#web-nasil-calisir"><span class="n">1</span>Web Nasıl Çalışır?</a>
-      <a href="#alan-adi-domain-barindirma-host-ve-uzant"><span class="n">2</span>Alan Adı (Domain), Barındırma (Host) ve Uzantılar</a>
+      <a href="#alan-adi-domain-barindirma-hosting-ve-uz"><span class="n">2</span>Alan Adı (Domain), Barındırma (Hosting) ve Uzantılar</a>
       <a href="#calisma-araclari"><span class="n">3</span>Çalışma Araçları</a>
       <a href="#dosya-ve-klasor-mantigi-en-onemli-kisim"><span class="n">4</span>Dosya ve Klasör Mantığı (En Önemli Kısım)</a>
       <a href="#ilk-sayfa-index-html"><span class="n">5</span>İlk Sayfa: <code class="inline">index.html</code></a>
