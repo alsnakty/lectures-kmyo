@@ -29,7 +29,7 @@
           <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
           <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
           <a href="baglantilar-ve-gorseller.html" class="etkin" aria-current="page"><span class="mh">3</span>Bağlantılar ve Görseller</a>
-          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler, Tablolar ve Div</a>
           <a href="formlar.html"><span class="mh">5</span>Formlar</a>
           <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
           <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
@@ -68,7 +68,7 @@
         <a href="#gorsel-ekleme"><span class="n">4</span>Görsel Ekleme: <code class="inline">&lt;img&gt;</code></a>
         <a href="#resmi-baglanti-haline-getirme"><span class="n">5</span>Resmi Bağlantı Hâline Getirme</a>
         <a href="#ornek-uc-sayfali-mini-site"><span class="n">6</span>Örnek: Üç Sayfalı Mini Site</a>
-        <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#sikca-yapilan-6-hata"><span class="n">7</span>Sıkça Yapılan 6 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
         <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
         <a href="#kendinizi-deneyin"><span class="n">10</span>Kendinizi Deneyin</a>
@@ -136,6 +136,17 @@
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;a href="https://www.google.com" target="_blank"&gt;Google (yeni sekme)&lt;/a&gt;</pre>
     </div>
+    <p><strong>E-posta bağlantısı:</strong> <code class="inline">href</code> değerine <code class="inline">mailto:</code> ve ardından e-posta adresi yazılır. Tıklanınca e-posta programında yeni bir ileti açılır; alıcı adresi hazır yazılı gelir.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="mailto:ahmet@mail.com"&gt;ahmet@mail.com&lt;/a&gt;</pre>
+    </div>
+    <p><strong>Telefon bağlantısı:</strong> <code class="inline">href</code> değerine <code class="inline">tel:</code> ve ardından numara, boşluk bırakmadan yazılır. Numaranın başına ülke kodu (<code class="inline">+90</code>) gelir, şehir kodundaki ilk <code class="inline">0</code> yazılmaz. Telefonda bu bağlantıya dokunulunca numara aranabilir. Sayfada görünen metni ise okunması kolay olsun diye boşluklu yazabilirsiniz.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="tel:+903220000000"&gt;0322 000 00 00&lt;/a&gt;</pre>
+    </div>
+    <div class="note"><span class="tag">Not</span><p><code class="inline">mailto:</code> ve <code class="inline">tel:</code> bağlantılarına tıklanınca ne açılacağı cihaza ve kurulu programlara bağlıdır. Bu bağlantılar en çok sitelerin iletişim sayfalarında kullanılır.</p></div>
 
     <h2 id="gorsel-ekleme"><span class="num">4</span>Görsel Ekleme: <code class="inline">&lt;img&gt;</code></h2>
     <p>Sayfaya resim eklemek için <code class="inline">&lt;img&gt;</code> etiketi kullanılır. Bu, tek (kapanışsız) bir etikettir ve iki temel özelliği vardır:</p>
@@ -158,6 +169,18 @@
 <pre class="language-xml">&lt;img src="gorseller/foto.jpg" alt="Kahve fincanı" width="300"&gt;</pre>
     </div>
     <div class="note"><span class="tag">Not</span><p>İçerik taşıyan resimlerde <code class="inline">alt</code> metnini boş bırakmayın. Resim bir sebeple açılmazsa kullanıcı en azından ne olduğunu okuyabilir; görme engelli kullanıcılar için de bu metin sesli okunur.</p></div>
+    <p><strong>Dosya biçimi:</strong> Web'de en sık kullanılan üç görsel biçimi şunlardır:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Biçim</th><th>Ne için kullanılır?</th><th>Özelliği</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">.jpg</code></td><td>Fotoğraflar</td><td>Fotoğrafı küçük bir dosyada saklar; saydam arka planı desteklemez.</td></tr>
+          <tr><td><code class="inline">.png</code></td><td>Logo, ekran görüntüsü, düz renkli çizimler</td><td>Yazılar ve keskin kenarlar bozulmaz; saydam arka planı destekler.</td></tr>
+          <tr><td><code class="inline">.svg</code></td><td>Logo ve simgeler</td><td>Çizim komutlarıyla tanımlanır; ne kadar büyütülürse büyütülsün bulanıklaşmaz.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn"><span class="tag">Dikkat</span><p>Telefonla çekilmiş bir fotoğraf birkaç MB olabilir. <code class="inline">width</code> resmi yalnızca ekranda küçültür; dosyanın tamamı yine indirilir ve sayfa yavaş açılır. Sayfaya koymadan önce resmin kendisini (örneğin Paint gibi bir programla) küçültün.</p></div>
 
     <h2 id="resmi-baglanti-haline-getirme"><span class="num">5</span>Resmi Bağlantı Hâline Getirme</h2>
     <p>Bir resmi, tıklanınca başka sayfaya götüren bir bağlantıya dönüştürmek için <code class="inline">&lt;img&gt;</code> etiketini <code class="inline">&lt;a&gt;</code> etiketinin <strong>içine</strong> yazarsınız.</p>
@@ -236,7 +259,8 @@
     &lt;hr&gt;
     &lt;h1&gt;İletişim&lt;/h1&gt;
     &lt;p&gt;Adres: Merkez Mahallesi, Adana&lt;/p&gt;
-    &lt;p&gt;Telefon: 0322 000 00 00&lt;/p&gt;
+    &lt;p&gt;Telefon: &lt;a href="tel:+903220000000"&gt;0322 000 00 00&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;E-posta: &lt;a href="mailto:bilgi@mail.com"&gt;bilgi@mail.com&lt;/a&gt;&lt;/p&gt;
     &lt;p&gt;
         Konumumuz için
         &lt;a href="https://www.google.com/maps" target="_blank"&gt;haritayı&lt;/a&gt;
@@ -245,9 +269,9 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Üç dosyayı <code class="inline">web_sitem</code> içinde açacağınız <code class="inline">mini_site</code> klasörüne, resmi de <code class="inline">mini_site/gorseller/</code> klasörüne kaydedin. Menüdeki bağlantılara tıklayarak sayfalar arasında gezebilirsiniz. Menüdeki bağlantılar site içi (göreli) bağlantılardır; <code class="inline">iletisim.html</code> içindeki harita bağlantısı ise dış (mutlak) bağlantıdır.</p>
+    <p>Üç dosyayı <code class="inline">web_sitem</code> içinde açacağınız <code class="inline">mini_site</code> klasörüne, resmi de <code class="inline">mini_site/gorseller/</code> klasörüne kaydedin. Menüdeki bağlantılara tıklayarak sayfalar arasında gezebilirsiniz. Menüdeki bağlantılar site içi (göreli) bağlantılardır; <code class="inline">iletisim.html</code> içindeki harita bağlantısı ise dış (mutlak) bağlantıdır. Aynı sayfadaki telefon ve e-posta bağlantıları <code class="inline">tel:</code> ve <code class="inline">mailto:</code> ile verilmiştir.</p>
 
-    <h2 id="sikca-yapilan-5-hata"><span class="num">7</span>Sıkça Yapılan 5 Hata</h2>
+    <h2 id="sikca-yapilan-6-hata"><span class="num">7</span>Sıkça Yapılan 6 Hata</h2>
     <div class="twrap">
       <table>
         <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
@@ -257,6 +281,7 @@
           <tr><td>Üst klasöre çıkmayı unutmak</td><td>Alt klasördeki sayfadan bağlantı kopar</td><td>Üst klasör için <code class="inline">../</code> kullanın</td></tr>
           <tr><td><code class="inline">alt</code> metnini boş bırakmak</td><td>Erişilebilirlik ve SEO zayıflar</td><td>Her resme anlamlı <code class="inline">alt</code> yazın</td></tr>
           <tr><td><code class="inline">href</code>'i unutmak (<code class="inline">&lt;a&gt;metin&lt;/a&gt;</code>)</td><td>Bağlantı tıklanamaz olur</td><td><code class="inline">&lt;a&gt;</code> etiketine mutlaka <code class="inline">href</code> ekleyin</td></tr>
+          <tr><td>E-posta adresini <code class="inline">mailto:</code> olmadan yazmak (<code class="inline">href="ahmet@mail.com"</code>)</td><td>Tarayıcı adresi dosya adı sanır; tıklanınca "Dosya bulunamadı" sayfası açılır</td><td>Başa <code class="inline">mailto:</code> ekleyin; telefon için <code class="inline">tel:</code></td></tr>
         </tbody>
       </table>
     </div>
@@ -266,8 +291,8 @@
       <li>Bağlantı <code class="inline">&lt;a href="hedef"&gt;metin&lt;/a&gt;</code> ile verilir; tarayıcı bağlantıyı <strong>mavi ve altı çizili</strong> gösterir.</li>
       <li>Yol iki türlüdür: <strong>göreli</strong> (o an bulunduğunuz dosyaya göre) ve <strong>mutlak</strong> (tam adres, <code class="inline">https://</code> ile başlar).</li>
       <li>Göreli yol: aynı klasör → <strong>dosya adı</strong>, alt klasör → <strong><code class="inline">klasör/dosya</code></strong>, üst klasör → <strong><code class="inline">../dosya</code></strong>.</li>
-      <li>Görsel <code class="inline">&lt;img src="yol" alt="metin"&gt;</code> ile eklenir. <code class="inline">alt</code> metni, resim açılmazsa görünür ve erişilebilirlik için önemlidir; <code class="inline">width</code> ile boyut ayarlanır.</li>
-      <li><code class="inline">target="_blank"</code> bağlantıyı <strong>yeni sekmede</strong> açar; <code class="inline">&lt;a&gt;</code> içine <code class="inline">&lt;img&gt;</code> koyarak resim <strong>bağlantı</strong> hâline getirilir.</li>
+      <li>Görsel <code class="inline">&lt;img src="yol" alt="metin"&gt;</code> ile eklenir. <code class="inline">alt</code> metni, resim açılmazsa görünür ve erişilebilirlik için önemlidir; <code class="inline">width</code> ile boyut ayarlanır. Fotoğraf için <code class="inline">.jpg</code>, logo için <code class="inline">.png</code> ya da <code class="inline">.svg</code> kullanılır.</li>
+      <li><code class="inline">target="_blank"</code> bağlantıyı <strong>yeni sekmede</strong> açar; <code class="inline">mailto:</code> <strong>e-posta</strong>, <code class="inline">tel:</code> <strong>telefon</strong> bağlantısı verir; <code class="inline">&lt;a&gt;</code> içine <code class="inline">&lt;img&gt;</code> koyarak resim <strong>bağlantı</strong> hâline getirilir.</li>
       <li>En sık hata <strong>yanlış yol ya da dosya adı</strong>dır; adları birebir ve Türkçe harf kullanmadan yazın.</li>
     </ul>
 
@@ -395,6 +420,28 @@
     <p><code class="inline">../</code> bir üst klasöre çıkmak demektir.</p>
       </div>
     </details>
+    <p><strong>6. (Kavram)</strong> Bir kafe sitesi için (1) dükkânın fotoğrafını, (2) arka planı saydam olan logoyu hangi dosya biçiminde kaydedersiniz? Neden?</p>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>(1) Fotoğraf için <code class="inline">.jpg</code>: fotoğrafı küçük bir dosyada saklar. (2) Logo için <code class="inline">.png</code> (logo çizim olarak hazırlandıysa <code class="inline">.svg</code>): <code class="inline">.jpg</code> saydam arka planı desteklemez, <code class="inline">.png</code> destekler.</p>
+      </div>
+    </details>
+    <p><strong>7. (Hata bulma)</strong> İletişim sayfasındaki şu iki bağlantıya tıklanınca e-posta programı ve arama ekranı açılmıyor, "Dosya bulunamadı" sayfası açılıyor. Neden? Düzeltin.</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="ahmet@mail.com"&gt;E-posta gönderin&lt;/a&gt;
+&lt;a href="0322 000 00 00"&gt;Bizi arayın&lt;/a&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>İki bağlantıda da başta <code class="inline">mailto:</code> ve <code class="inline">tel:</code> eksik. Bu yüzden tarayıcı adresleri bir dosya adı sanır ve o dosyayı bulamaz. Doğrusu:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;a href="mailto:ahmet@mail.com"&gt;E-posta gönderin&lt;/a&gt;
+&lt;a href="tel:+903220000000"&gt;Bizi arayın&lt;/a&gt;</pre>
+    </div>
+      </div>
+    </details>
 
     <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> İki sayfalık bir site yapın: <code class="inline">cicekci.html</code> ve <code class="inline">urunler.html</code>. Her iki sayfada da diğerine giden bir bağlantı bulunsun. <code class="inline">cicekci.html</code> sayfasına bir görsel ekleyin.</p>
@@ -452,7 +499,6 @@
 
     <h2 id="notlar-ve-ipuclari"><span class="num">13</span>Notlar ve İpuçları</h2>
     <ul>
-      <li><code class="inline">width</code>, resmi yalnızca ekranda küçültür; dosyanın boyutu değişmez. Büyük bir fotoğraf küçük gösterilse de tamamı indirilir. Sayfaya koymadan önce resmin kendisini küçültün.</li>
       <li>Çoğu sunucu büyük/küçük harfe duyarlıdır: <code class="inline">Foto.JPG</code> ile <code class="inline">foto.jpg</code> farklı dosyalardır. Kendi bilgisayarınızda çalışan bir resim ya da bağlantı, sunucuya yüklenince bu yüzden çalışmayabilir. Dosya adını <code class="inline">src</code> ve <code class="inline">href</code> içinde birebir aynı yazın.</li>
       <li><code class="inline">alt</code> metni resmi anlatmalıdır: <code class="inline">resim1</code> değil, <code class="inline">Kahve fincanı</code>.</li>
     </ul>
@@ -466,12 +512,15 @@
       <li>Bir dış siteye (<code class="inline">https://...</code>) <code class="inline">target="_blank"</code> ile bağlantı verip yeni sekmede açıldığını gözlemleyin.</li>
       <li><code class="inline">gorseller</code> klasörünün içine bir HTML sayfası koyup oradan <code class="inline">../index.html</code> ile ana sayfaya bağlantı verin; <code class="inline">../</code> olmadan çalışmadığını görün.</li>
       <li>Bir resmi <code class="inline">&lt;a&gt;</code> etiketi içine alarak tıklanabilir (bağlantılı) hâle getirin.</li>
+      <li><code class="inline">iletisim.html</code> sayfanıza <code class="inline">mailto:</code> ile bir e-posta bağlantısı, <code class="inline">tel:</code> ile bir telefon bağlantısı ekleyin.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
     <ul class="kaynakca">
       <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links" target="_blank" rel="noopener">MDN: Creating links</a> (İngilizce)</li>
       <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_images" target="_blank" rel="noopener">MDN: HTML images</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a" target="_blank" rel="noopener">MDN: The Anchor element (<code class="inline">tel:</code> bağlantıları)</a> (İngilizce)</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types" target="_blank" rel="noopener">MDN: Image file type and format guide</a> (İngilizce)</li>
     </ul>
 
     <div class="aside-card mobil">
@@ -488,7 +537,7 @@
       <a class="komsu-kart sonraki" href="listeler-ve-tablolar.html">
         <span class="yon">Sonraki konu →</span>
         <span class="kh">4. Hafta</span>
-        <span class="kb">Listeler ve Tablolar</span>
+        <span class="kb">Listeler, Tablolar ve Div</span>
       </a>
     </nav>
   </article>
@@ -502,7 +551,7 @@
       <a href="#gorsel-ekleme"><span class="n">4</span>Görsel Ekleme: <code class="inline">&lt;img&gt;</code></a>
       <a href="#resmi-baglanti-haline-getirme"><span class="n">5</span>Resmi Bağlantı Hâline Getirme</a>
       <a href="#ornek-uc-sayfali-mini-site"><span class="n">6</span>Örnek: Üç Sayfalı Mini Site</a>
-      <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#sikca-yapilan-6-hata"><span class="n">7</span>Sıkça Yapılan 6 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
       <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
       <a href="#kendinizi-deneyin"><span class="n">10</span>Kendinizi Deneyin</a>

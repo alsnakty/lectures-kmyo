@@ -29,7 +29,7 @@
           <a href="araclar-ve-ilk-sayfa.html"><span class="mh">1</span>Araçlar ve İlk Web Sayfası</a>
           <a href="html-iskeleti.html"><span class="mh">2</span>HTML İskeleti ve Metin Etiketleri</a>
           <a href="baglantilar-ve-gorseller.html"><span class="mh">3</span>Bağlantılar ve Görseller</a>
-          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler ve Tablolar</a>
+          <a href="listeler-ve-tablolar.html"><span class="mh">4</span>Listeler, Tablolar ve Div</a>
           <a href="formlar.html"><span class="mh">5</span>Formlar</a>
           <a href="css-giris.html"><span class="mh">6</span>CSS'e Giriş</a>
           <a href="kutu-modeli.html"><span class="mh">7</span>CSS Kutu Modeli</a>
@@ -67,20 +67,21 @@
         <a href="#class-ile-bicimlendirme"><span class="n">3</span>Class ile Biçimlendirme</a>
         <a href="#ornek-hazir-menu-ve-kart"><span class="n">4</span>Örnek: Hazır Menü ve Kart</a>
         <a href="#elle-yazmak-ile-bootstrap-yan-yana"><span class="n">5</span>Elle Yazmak ile Bootstrap Yan Yana</a>
-        <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
-        <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
-        <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-        <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
-        <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
-        <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
-        <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
-        <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
+        <a href="#hazir-kodu-kontrol-etmek-yapay-zeka-arac"><span class="n">6</span>Hazır Kodu Kontrol Etmek: Yapay Zekâ Araçları</a>
+        <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
+        <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
+        <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
+        <a href="#kendinizi-deneyin"><span class="n">10</span>Kendinizi Deneyin</a>
+        <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+        <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+        <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+        <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
         <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
       </nav>
     </details>
 
 <div class="note"><span class="tag">Hatırlatma</span><p>Harici stil dosyasını <code class="inline">&lt;link&gt;</code> ile bağlamayı 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda; göreli yolu ise 3. haftada, <a href="baglantilar-ve-gorseller.html">Bağlantılar ve Görseller</a> konusunda gördük. Bootstrap da aynı yolla bağlanan bir stil dosyasıdır.</p></div>
-    <div class="note"><span class="tag">Not</span><p>Bootstrap bu derste tanıtım olarak işlenir; final sınavı kapsamında değildir.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Final sınavında Bootstrap'in class'ları ve kullanım ayrıntıları sorulmaz; CSS framework'ün ve Bootstrap'in ne olduğunu ise bilmeniz gerekir.</p></div>
 
     <h2 id="css-framework-nedir"><span class="num">1</span>CSS Framework Nedir?</h2>
     <p>Bir mobilyayı sıfırdan yapmak için tahtayı kesmeniz, zımparalamanız, boyamanız gerekir. Hazır parçalarla satılan bir mobilyada ise parçalar kesilmiş ve boyanmıştır; siz yalnızca birleştirirsiniz. <strong>CSS framework</strong> de böyledir: menü, kart, düğme gibi sık kullanılan parçaların CSS'i <strong>önceden yazılmıştır</strong>. Siz yalnızca HTML'e doğru <strong>class</strong> adlarını verirsiniz.</p>
@@ -189,7 +190,51 @@
       </table>
     </div>
 
-    <h2 id="sikca-yapilan-5-hata"><span class="num">6</span>Sıkça Yapılan 5 Hata</h2>
+    <h2 id="hazir-kodu-kontrol-etmek-yapay-zeka-arac"><span class="num">6</span>Hazır Kodu Kontrol Etmek: Yapay Zekâ Araçları</h2>
+    <p>Bootstrap'in hazır class'ları gibi, yapay zekâ araçlarından da hazır kod alınabilir: bir araca "bir kafe sitesi için ana sayfa yaz" dediğinizde birkaç saniyede bir sayfa kodu verir. Bir hatanın nedenini sormak için de kullanılabilir. Ancak araç sizin klasörünüzü, dosya adlarınızı ve laboratuvarda internet olmadığını bilmez; bazen de yanlış kod yazar. Bu yüzden gelen kodu sayfanıza koymadan önce okuyup tarayıcıda denemeniz gerekir.</p>
+    <p>Bir yapay zekâ aracından şöyle bir kod geldiğini düşünün. Sizin resimleriniz <code class="inline">gorseller</code> klasöründe ve sayfanızda Bootstrap bağlı değil:</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="tr"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Kahve Dünyası&lt;/title&gt;
+    &lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap"&gt;
+    &lt;style&gt;
+        body { font-family: 'Poppins', sans-serif; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Kahve Dünyası&lt;/h1&gt;
+    &lt;img src="images/kahve.jpg" alt="Kahve fincanı" width="300"&gt;
+    &lt;p&gt;&lt;a href="menu.html" class="btn btn-primary"&gt;Menüyü İncele&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <p>Kod hatasız görünür ama bu sayfada üç sorun var:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Kodda</th><th>Sorun</th><th>Laboratuvarda sonuç</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">https://fonts.googleapis.com/...</code></td><td>Yazı tipi internetten çekilir</td><td>İnternet olmadığı için Poppins yüklenmez; sayfa yedek yazı tipiyle (<code class="inline">sans-serif</code>) açılır</td></tr>
+          <tr><td><code class="inline">src="images/kahve.jpg"</code></td><td>Sizin resimleriniz <code class="inline">gorseller</code> klasöründe</td><td>Resim yerine kırık resim simgesi ve <code class="inline">alt</code> metni görünür</td></tr>
+          <tr><td><code class="inline">class="btn btn-primary"</code></td><td>Bootstrap class'ı; sayfada Bootstrap bağlı değil</td><td>Düğme görünümü gelmez; sıradan, altı çizili bir bağlantı görünür</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Gelen kodu kullanmadan önce şu soruları sorun:</p>
+    <ol>
+      <li>Görsel ve sayfa yolları kendi klasörüme uyuyor mu? (<a href="baglantilar-ve-gorseller.html">Bağlantılar ve Görseller</a>, 3. hafta)</li>
+      <li>Kodda <code class="inline">https://</code> ile başlayan bir <code class="inline">&lt;link&gt;</code> var mı? Varsa internet olmayan bir bilgisayarda o dosya yüklenmez.</li>
+      <li>Tanımadığım class'lar var mı? Varsa bu class'ların CSS'i sayfama bağlı mı?</li>
+      <li><code class="inline">&lt;head&gt;</code> içinde viewport satırı var mı? (<a href="responsive-tasarim.html">Responsive Tasarım</a>, 12. hafta)</li>
+      <li>Her satırın ne yaptığını açıklayabiliyor muyum?</li>
+    </ol>
+    <div class="note warn"><span class="tag">Kural</span><p>Anlamadığınız kodu kullanmayın. Açıklayamadığınız bir satırı ders notlarında arayın ya da aracın kendisine "bu satır ne yapıyor?" diye sorun; cevabı da tarayıcıda deneyerek kontrol edin.</p></div>
+
+    <h2 id="sikca-yapilan-5-hata"><span class="num">7</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
       <table>
         <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
@@ -203,16 +248,17 @@
       </table>
     </div>
 
-    <h2 id="bu-haftanin-ozeti"><span class="num">7</span>Bu Haftanın Özeti</h2>
+    <h2 id="bu-haftanin-ozeti"><span class="num">8</span>Bu Haftanın Özeti</h2>
     <ul>
       <li><strong>CSS framework</strong>, sık kullanılan parçaların CSS'ini hazır veren bir dosyadır; en yaygınlarından biri <strong>Bootstrap</strong>'tir.</li>
       <li>Bootstrap, projenin içindeki <code class="inline">css/bootstrap.min.css</code> dosyası <code class="inline">&lt;link&gt;</code> ile bağlanarak eklenir; internet gerekmez.</li>
       <li>Bootstrap'te CSS kuralı yazılmaz; öğelere <strong>hazır class</strong> verilir (<code class="inline">navbar</code>, <code class="inline">card</code>, <code class="inline">btn btn-primary</code>).</li>
       <li>Class'ların altında bildiğiniz CSS vardır: <code class="inline">d-flex</code>, <code class="inline">display: flex</code> demektir.</li>
       <li>Kendi stiliniz Bootstrap'ten <strong>sonra</strong> yazılmalıdır; yoksa Bootstrap sizinkini ezer.</li>
+      <li>Yapay zekâ araçlarından gelen kodu kullanmadan önce <strong>yollarını</strong>, <code class="inline">https://</code> ile başlayan <strong>bağlantılarını</strong> ve <strong>class'larını</strong> kontrol edin; her satırını açıklayabilmelisiniz.</li>
     </ul>
 
-    <h2 id="konu-sonu-testi"><span class="num">8</span>Konu Sonu Testi</h2>
+    <h2 id="konu-sonu-testi"><span class="num">9</span>Konu Sonu Testi</h2>
     <ol class="quiz">
       <li>
         <p class="q">CSS framework nedir?</p>
@@ -276,7 +322,7 @@
       </li>
     </ol>
 
-    <h2 id="kendinizi-deneyin"><span class="num">9</span>Kendinizi Deneyin</h2>
+    <h2 id="kendinizi-deneyin"><span class="num">10</span>Kendinizi Deneyin</h2>
     <p>Cevabınızı önce kendiniz yazın (defterinize ya da VS Code'da bir dosyaya), sonra cevapla karşılaştırın. Kod okuma ve hata bulma sorularında cevabınızı tarayıcıda deneyerek de kontrol edebilirsiniz.</p>
     <p><strong>1. (Kavram)</strong> CSS framework nedir? Bootstrap kullanmanın bir kolaylığını ve bir dezavantajını yazın.</p>
     <details class="ansbox"><summary>Cevabı göster</summary>
@@ -303,8 +349,18 @@
     </div>
       </div>
     </details>
+    <p><strong>4. (Hata bulma)</strong> Bir yapay zekâ aracı Bootstrap'i sayfaya şu satırla bağladı. Sayfa evde düzgün görünüyor, laboratuvarda ise hiç biçimlenmiyor. Neden? Nasıl düzeltilir?</p>
+    <div class="code">
+      <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
+<pre class="language-xml">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"&gt;</pre>
+    </div>
+    <details class="ansbox"><summary>Cevabı göster</summary>
+      <div class="ans">
+    <p>Bootstrap dosyası internetten çekiliyor; laboratuvarda internet olmadığı için dosya yüklenmez ve sayfa biçimlenmez. Dosyayı projenin <code class="inline">css</code> klasörüne koyup göreli yolla bağlayın: <code class="inline">&lt;link rel="stylesheet" href="css/bootstrap.min.css"&gt;</code>.</p>
+      </div>
+    </details>
 
-    <h2 id="uygulamalar"><span class="num">10</span>Uygulamalar</h2>
+    <h2 id="uygulamalar"><span class="num">11</span>Uygulamalar</h2>
     <p><strong>Görev:</strong> Örnekteki sayfaya "Türk Kahvesi" adlı üçüncü bir kart ekleyin; bu kartın düğmesi <strong>yeşil</strong> olsun.</p>
     <p><strong>Çözüm:</strong> İkinci kartı kapatan <code class="inline">&lt;/div&gt;</code>'ten sonra, <code class="inline">d-flex</code> kutusunu kapatan <code class="inline">&lt;/div&gt;</code>'ten önce şu kart eklenir. Yeşil düğme için <code class="inline">btn-primary</code> yerine <code class="inline">btn-success</code> yazılır.</p>
     <div class="code">
@@ -324,7 +380,7 @@
       <li>Dosyayı tarayıcıda açın; üçüncü kartın yeşil düğmesini görün.</li>
     </ol>
 
-    <h2 id="sinif-uygulamasi"><span class="num">11</span>Sınıf Uygulaması</h2>
+    <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
     <p><strong>Senaryo:</strong> 10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda elle yazdığınız menüyü Bootstrap ile yeniden yapın ve iki sayfayı karşılaştırın.</p>
     <p><strong>Yapılacaklar:</strong></p>
     <ol>
@@ -337,14 +393,14 @@
     <p><strong>Beklenen sonuç:</strong> CSS kuralı yazmadan, yalnızca class'larla biçimlenmiş bir menü ve iki kart.</p>
     <p><strong>İpuçları:</strong> Sayfa hiç biçimlenmiyorsa önce <code class="inline">&lt;link&gt;</code>'teki yolu ve <code class="inline">rel="stylesheet"</code> yazısını kontrol edin. Birden fazla class arasına boşluk koyun.</p>
 
-    <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
+    <h2 id="notlar-ve-ipuclari"><span class="num">13</span>Notlar ve İpuçları</h2>
     <ul>
       <li>Bootstrap'in resmî belgeleri İngilizcedir; her bileşenin sayfasında kopyalanabilir örnek kodlar bulunur.</li>
       <li>Belgelerdeki menü örnekleri çoğu zaman <code class="inline">navbar-expand-lg</code> ile birlikte ayrı bir menü düğmesi (<code class="inline">navbar-toggler</code>) ve gizlenebilen bir bölüm (<code class="inline">collapse</code>) kullanır; dar ekranda bağlantılar gizlenir, yerine düğme görünür. Düğmenin çalışması için Bootstrap'in JavaScript dosyası (<code class="inline">bootstrap.bundle.min.js</code>) da sayfaya eklenmelidir. Bu haftanın örneğinde <code class="inline">navbar-expand</code> kullandığımız için JavaScript gerekmez.</li>
       <li>Bootstrap'i kullanmak için CSS'i bilmek yine gereklidir: bir şey beklendiği gibi görünmediğinde sorunu <code class="inline">F12</code> ile incelerken karşınıza bildiğiniz CSS kuralları çıkar.</li>
     </ul>
 
-    <h2 id="calisma-sorulari"><span class="num">13</span>Çalışma Soruları</h2>
+    <h2 id="calisma-sorulari"><span class="num">14</span>Çalışma Soruları</h2>
     <p>Soruları Sınıf Uygulamasında hazırladığınız <code class="inline">bootstrap_menu.html</code> sayfası üzerinde yapın.</p>
     <ol>
       <li>Düğmelerin class'ını <code class="inline">btn-primary</code> yerine <code class="inline">btn-success</code>, <code class="inline">btn-danger</code> ve <code class="inline">btn-warning</code> yapıp renkleri karşılaştırın.</li>
@@ -380,14 +436,15 @@
       <a href="#class-ile-bicimlendirme"><span class="n">3</span>Class ile Biçimlendirme</a>
       <a href="#ornek-hazir-menu-ve-kart"><span class="n">4</span>Örnek: Hazır Menü ve Kart</a>
       <a href="#elle-yazmak-ile-bootstrap-yan-yana"><span class="n">5</span>Elle Yazmak ile Bootstrap Yan Yana</a>
-      <a href="#sikca-yapilan-5-hata"><span class="n">6</span>Sıkça Yapılan 5 Hata</a>
-      <a href="#bu-haftanin-ozeti"><span class="n">7</span>Bu Haftanın Özeti</a>
-      <a href="#konu-sonu-testi"><span class="n">8</span>Konu Sonu Testi</a>
-      <a href="#kendinizi-deneyin"><span class="n">9</span>Kendinizi Deneyin</a>
-      <a href="#uygulamalar"><span class="n">10</span>Uygulamalar</a>
-      <a href="#sinif-uygulamasi"><span class="n">11</span>Sınıf Uygulaması</a>
-      <a href="#notlar-ve-ipuclari"><span class="n">12</span>Notlar ve İpuçları</a>
-      <a href="#calisma-sorulari"><span class="n">13</span>Çalışma Soruları</a>
+      <a href="#hazir-kodu-kontrol-etmek-yapay-zeka-arac"><span class="n">6</span>Hazır Kodu Kontrol Etmek: Yapay Zekâ Araçları</a>
+      <a href="#sikca-yapilan-5-hata"><span class="n">7</span>Sıkça Yapılan 5 Hata</a>
+      <a href="#bu-haftanin-ozeti"><span class="n">8</span>Bu Haftanın Özeti</a>
+      <a href="#konu-sonu-testi"><span class="n">9</span>Konu Sonu Testi</a>
+      <a href="#kendinizi-deneyin"><span class="n">10</span>Kendinizi Deneyin</a>
+      <a href="#uygulamalar"><span class="n">11</span>Uygulamalar</a>
+      <a href="#sinif-uygulamasi"><span class="n">12</span>Sınıf Uygulaması</a>
+      <a href="#notlar-ve-ipuclari"><span class="n">13</span>Notlar ve İpuçları</a>
+      <a href="#calisma-sorulari"><span class="n">14</span>Çalışma Soruları</a>
       <a href="#kaynakca"><span class="n">·</span>Kaynakça</a>
     </nav>
     <div class="aside-card">

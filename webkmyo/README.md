@@ -13,7 +13,7 @@ Sayfalar tarayıcıda açılır, kurulum gerektirmez.
 | 1 | [Araçlar ve İlk Web Sayfası](https://alsnakty.github.io/lectures-kmyo/webkmyo/araclar-ve-ilk-sayfa.html) |
 | 2 | [HTML İskeleti ve Metin Etiketleri](https://alsnakty.github.io/lectures-kmyo/webkmyo/html-iskeleti.html) |
 | 3 | [Bağlantılar ve Görseller](https://alsnakty.github.io/lectures-kmyo/webkmyo/baglantilar-ve-gorseller.html) |
-| 4 | [Listeler ve Tablolar](https://alsnakty.github.io/lectures-kmyo/webkmyo/listeler-ve-tablolar.html) |
+| 4 | [Listeler, Tablolar ve Div](https://alsnakty.github.io/lectures-kmyo/webkmyo/listeler-ve-tablolar.html) |
 | 5 | [Formlar](https://alsnakty.github.io/lectures-kmyo/webkmyo/formlar.html) |
 | 6 | [CSS'e Giriş](https://alsnakty.github.io/lectures-kmyo/webkmyo/css-giris.html) |
 | 7 | [CSS Kutu Modeli](https://alsnakty.github.io/lectures-kmyo/webkmyo/kutu-modeli.html) |
