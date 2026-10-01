@@ -24,7 +24,7 @@ Sayfalar tarayıcıda açılır, kurulum gerektirmez.
 | 13 | [Geçişler ve Küçük Dokunuşlar](https://alsnakty.github.io/lectures-kmyo/webkmyo/gecisler-ve-dokunuslar.html) |
 | 14 | [Bootstrap Tanıtımı](https://alsnakty.github.io/lectures-kmyo/webkmyo/bootstrap-tanitimi.html) |
 
-Sınav haftaları: 8. hafta vize · 15. hafta final. Tam plan ana sayfadadır.
+Sınav haftaları: 8. hafta vize · 16-17. hafta final. 15. hafta proje sunumları. Tam plan ana sayfadadır.
 
 Dönem projesi yönergesi: [proje-yonergesi.html](https://alsnakty.github.io/lectures-kmyo/webkmyo/proje-yonergesi.html)
 
