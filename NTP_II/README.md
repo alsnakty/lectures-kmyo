@@ -25,7 +25,8 @@ gerektirmez.
 | 14 | [Python ile Başka Neler Yapılır](neler-yapilir.html) |
 
 Sınav ve ara haftalar: 8. hafta vize · 9. hafta vize çözümü ve sınıf tekrarı ·
-15. hafta final. Tam plan ana sayfadadır.
+15. hafta genel tekrar ve proje sunumları · 16-17. haftalar final.
+Tam plan ana sayfadadır.
 
 Dönem projesi yönergesi: [NTP_II_Proje_Yonergesi.pdf](NTP_II_Proje_Yonergesi.pdf)
 
