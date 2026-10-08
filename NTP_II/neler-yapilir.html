@@ -182,8 +182,8 @@ arcade.run()</pre>
 <pre>from bs4 import BeautifulSoup
 
 html = """
-&lt;div class="duyuru"&gt;&lt;h2&gt;Kayıt tarihleri açıklandı&lt;/h2&gt;&lt;span class="tarih"&gt;2026-09-01&lt;/span&gt;&lt;/div&gt;
-&lt;div class="duyuru"&gt;&lt;h2&gt;Vize programı yayımlandı&lt;/h2&gt;&lt;span class="tarih"&gt;2026-11-10&lt;/span&gt;&lt;/div&gt;
+&lt;div class="duyuru"&gt;&lt;h2&gt;Kayıt tarihleri açıklandı&lt;/h2&gt;&lt;span class="tarih"&gt;1 Eylül&lt;/span&gt;&lt;/div&gt;
+&lt;div class="duyuru"&gt;&lt;h2&gt;Vize programı yayımlandı&lt;/h2&gt;&lt;span class="tarih"&gt;10 Kasım&lt;/span&gt;&lt;/div&gt;
 """
 
 soup = BeautifulSoup(html, "html.parser")
@@ -194,8 +194,8 @@ for duyuru in soup.find_all("div", class_="duyuru"):
     </div>
     <div class="term">
       <div class="thead">Çıktı</div>
-<pre>Duyuru: Kayıt tarihleri açıklandı | Tarih: 2026-09-01
-Duyuru: Vize programı yayımlandı | Tarih: 2026-11-10</pre>
+<pre>Duyuru: Kayıt tarihleri açıklandı | Tarih: 1 Eylül
+Duyuru: Vize programı yayımlandı | Tarih: 10 Kasım</pre>
     </div>
     <p><code class="inline">find_all</code> belirli etikete/sınıfa uyan tüm öğeleri, <code class="inline">find</code> ise ilkini bulur; <code class="inline">.text</code> ise öğenin içindeki yazıyı verir. Gerçek bir siteden veri çekerken önce sayfayı <code class="inline">requests</code> ile indirir, sonra aynı şekilde ayrıştırırsınız. Bazı siteler ise içeriğini JavaScript ile sonradan yükler; bu durumda <code class="inline">requests</code> boş sayfa görür. <strong>Selenium</strong>, gerçek bir tarayıcıyı (Chrome gibi) kod ile yöneterek bu sorunu çözer: sayfayı açar, butona tıklar, formu doldurur, sonra içeriği okur.</p>
     <div class="code">
