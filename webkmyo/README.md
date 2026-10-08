@@ -1,7 +1,7 @@
 # Web Arayüz Tasarımı (BDT249)
 
 Dersin haftalık konu anlatımları: HTML, CSS, Flexbox, responsive tasarım ve Bootstrap tanıtımı.
-Her sayfada kod örnekleri, tarayıcı ekran görüntüleri, tablolar ve konu sonu testi bulunur.
+Her sayfada kod örnekleri, tarayıcı çıktıları, tablolar ve konu sonu testi bulunur.
 Sayfalar tarayıcıda açılır, kurulum gerektirmez.
 
 **Site:** <https://alsnakty.github.io/lectures-kmyo/webkmyo/>
