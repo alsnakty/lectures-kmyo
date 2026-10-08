@@ -158,8 +158,15 @@
 &lt;h3&gt;Daha alt başlık&lt;/h3&gt;</pre>
     </div>
     <p>Tarayıcı bu başlıkları, numarası büyüdükçe (<code class="inline">&lt;h1&gt;</code>'den <code class="inline">&lt;h6&gt;</code>'ya doğru) daha küçük yazı ile gösterir:</p>
-    <figure class="diagram"><img alt="h1, h2 ve h3 başlıklarının giderek küçülen boyutlarla görünümü" src="images/basliklar_h1_h6.png" width="1200" height="269" loading="lazy" decoding="async" tabindex="0">
-      <figcaption aria-hidden="true">h1, h2 ve h3 başlıklarının giderek küçülen boyutlarla görünümü</figcaption>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="h1, h2 ve h3 başlıklarının giderek küçülen boyutlarla görünümü" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;h1&gt;En büyük başlık&lt;/h1&gt;
+&lt;h2&gt;Alt başlık&lt;/h2&gt;
+&lt;h3&gt;Daha alt başlık&lt;/h3&gt;
+"></iframe>
+      </div>
     </figure>
     <p>Başlıklar yazıyı büyütmek için değil, <strong>sayfayı anlamlı bölümlere ayırmak</strong> için kullanılır. Bir sayfada genellikle <strong>tek bir <code class="inline">&lt;h1&gt;</code></strong> bulunur (ana başlık); alt bölümler <code class="inline">&lt;h2&gt;</code>, onların da alt bölümleri <code class="inline">&lt;h3&gt;</code> ile devam eder.</p>
     <div class="note warn"><span class="tag">Kural</span><p>Yazıyı büyütmek veya küçültmek amacıyla başlık etiketi kullanmayın. Boyut ve görünüm ayarlarını 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda, <strong>CSS</strong> ile yapacağız. Başlık etiketi yalnızca "burası bir başlıktır" anlamı taşır.</p></div>
@@ -202,7 +209,7 @@
       </table>
     </div>
     <p>Tarayıcıdaki görünümleri şöyledir:</p>
-    <figure class="diagram"><img alt="Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri" src="images/metin_bicimlendirme.png" width="780" height="314" loading="lazy" decoding="async" tabindex="0">
+    <figure class="diagram"><img alt="Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri" src="images/metin_bicimlendirme.png" width="520" height="209" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">Normal, kalın, italik, altı çizili ve üstü çizili yazı örnekleri</figcaption>
     </figure>
     <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;b&gt;</code> ile <code class="inline">&lt;strong&gt;</code> her ikisi de yazıyı kalın gösterir; aradaki fark, <code class="inline">&lt;strong&gt;</code> etiketinin aynı zamanda "bu metin önemlidir" anlamını taşımasıdır. Aynı ilişki <code class="inline">&lt;i&gt;</code> ile <code class="inline">&lt;em&gt;</code> arasında da vardır. Bu derste ikisini de kalın ya da eğik yapmak için kullanabilirsiniz.</p></div>
@@ -237,8 +244,27 @@
 &lt;/html&gt;</pre>
     </div>
     <p>Kaydedip (<code class="inline">Ctrl</code> + <code class="inline">S</code>) tarayıcıda açtığınızda şu sonucu görürsünüz:</p>
-    <figure class="diagram"><img alt="Örnek sayfanın tarayıcı çıktısı: büyük başlık, alt başlık, yatay çizgi, paragraflar ve bir ara başlık" src="images/ornek_sayfa_ciktisi.png" width="1200" height="422" loading="lazy" decoding="async" tabindex="0">
-      <figcaption aria-hidden="true">Örnek sayfanın tarayıcı çıktısı: büyük başlık, alt başlık, yatay çizgi, paragraflar ve bir ara başlık</figcaption>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Örnek sayfanın tarayıcı çıktısı: büyük başlık, alt başlık, yatay çizgi, paragraflar ve bir ara başlık" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Hakkımda&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Ayşe Demir&lt;/h1&gt;
+    &lt;h2&gt;Bilgisayar Teknolojileri Öğrencisi&lt;/h2&gt;
+    &lt;hr&gt;
+    &lt;p&gt;Merhaba! Ben Ayşe. Çukurova Üniversitesi&#x27;nde okuyorum.&lt;/p&gt;
+    &lt;h3&gt;İlgi Alanlarım&lt;/h3&gt;
+    &lt;p&gt;Web tasarımı, grafik tasarım ve fotoğrafçılık ile ilgileniyorum.&lt;/p&gt;
+    &lt;!-- İletişim bilgileri ileride eklenecek --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
     </figure>
     <p><code class="inline">&lt;!-- İletişim bilgileri ileride eklenecek --&gt;</code> satırı bir yorum olduğu için sayfada <strong>görünmez.</strong></p>
 

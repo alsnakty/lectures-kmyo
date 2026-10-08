@@ -81,7 +81,7 @@
 
     <h2 id="listeler"><span class="num">1</span>Listeler</h2>
     <p>Listeler iki türlüdür ve her ikisinde de her madde <code class="inline">&lt;li&gt;</code> (list item) etiketiyle yazılır.</p>
-    <figure class="diagram"><img alt="Sırasız listede madde işareti, sıralı listede numara görünümü" src="images/liste_turleri.png" width="840" height="251" loading="lazy" decoding="async" tabindex="0">
+    <figure class="diagram"><img alt="Sırasız listede madde işareti, sıralı listede numara görünümü" src="images/liste_turleri.png" width="560" height="167" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">Sırasız listede madde işareti, sıralı listede numara görünümü</figcaption>
     </figure>
     <h3 id="sirasiz-liste">1.1. Sırasız Liste: <code class="inline">&lt;ul&gt;</code></h3>
@@ -95,6 +95,20 @@
     &lt;li&gt;Kiraz&lt;/li&gt;
 &lt;/ul&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Başlığın altında, her maddesinin başında madde işareti olan üç maddelik alışveriş listesinin tarayıcı çıktısı" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;h2&gt;Alışveriş Listesi&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Elma&lt;/li&gt;
+    &lt;li&gt;Armut&lt;/li&gt;
+    &lt;li&gt;Kiraz&lt;/li&gt;
+&lt;/ul&gt;
+"></iframe>
+      </div>
+    </figure>
     <h3 id="sirali-liste">1.2. Sıralı Liste: <code class="inline">&lt;ol&gt;</code></h3>
     <p>Maddelerin sırası önemliyse (adımlar, sıralama) <strong>sıralı liste</strong> kullanılır. Tarayıcı her maddeyi <strong>numaralandırır</strong>.</p>
     <div class="code">
@@ -106,6 +120,20 @@
     &lt;li&gt;Okula git&lt;/li&gt;
 &lt;/ol&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Başlığın altında 1, 2, 3 diye numaralanmış üç maddelik sıralı listenin tarayıcı çıktısı" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;h2&gt;Sabah Rutini&lt;/h2&gt;
+&lt;ol&gt;
+    &lt;li&gt;Uyan&lt;/li&gt;
+    &lt;li&gt;Kahvaltı yap&lt;/li&gt;
+    &lt;li&gt;Okula git&lt;/li&gt;
+&lt;/ol&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>Numara yerine harf veya Roma rakamı istiyorsanız <code class="inline">type</code> özelliğini kullanabilirsiniz:</p>
     <div class="twrap">
       <table>
@@ -125,6 +153,18 @@
     &lt;li&gt;İkinci&lt;/li&gt;
 &lt;/ol&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Maddeleri A ve B harfleriyle sıralanmış listenin tarayıcı çıktısı" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;ol type=&quot;A&quot;&gt;
+    &lt;li&gt;Birinci&lt;/li&gt;
+    &lt;li&gt;İkinci&lt;/li&gt;
+&lt;/ol&gt;
+"></iframe>
+      </div>
+    </figure>
     <h3 id="ic-ice-liste">1.3. İç İçe Liste</h3>
     <p>Bir maddenin altında alt maddeler olabilir. Bunun için <code class="inline">&lt;li&gt;</code> içine yeni bir liste yazılır:</p>
     <div class="code">
@@ -139,10 +179,27 @@
     &lt;li&gt;Sebzeler&lt;/li&gt;
 &lt;/ul&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="İçi dolu madde işaretli dış listede Meyveler maddesinin altında, içeri girintili ve içi boş daire işaretli iki maddelik iç listenin tarayıcı çıktısı" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;ul&gt;
+    &lt;li&gt;Meyveler
+        &lt;ul&gt;
+            &lt;li&gt;Elma&lt;/li&gt;
+            &lt;li&gt;Armut&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Sebzeler&lt;/li&gt;
+&lt;/ul&gt;
+"></iframe>
+      </div>
+    </figure>
 
     <h2 id="tablolar"><span class="num">2</span>Tablolar</h2>
     <p>Tablolar, verileri <strong>satır ve sütunlar</strong> hâlinde düzenler. Bir tablo satırlardan (<code class="inline">&lt;tr&gt;</code>), her satır da hücrelerden oluşur:</p>
-    <figure class="diagram"><img alt="Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi" src="images/tablo_yapisi.png" width="972" height="561" loading="lazy" decoding="async" tabindex="0">
+    <figure class="diagram"><img alt="Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi" src="images/tablo_yapisi.png" width="648" height="374" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">Tablonun parçaları: tr satır, th başlık hücresi, td veri hücresi</figcaption>
     </figure>
     <div class="twrap">
@@ -197,8 +254,47 @@
 &lt;/html&gt;</pre>
     </div>
     <p>Kaydedip tarayıcıda açtığınızda şu sonucu görürsünüz:</p>
-    <figure class="diagram"><img alt="Haftalık ders programı tablosunun tarayıcı çıktısı" src="images/ders_programi_tablo.png" width="1200" height="306" loading="lazy" decoding="async" tabindex="0">
-      <figcaption aria-hidden="true">Haftalık ders programı tablosunun tarayıcı çıktısı</figcaption>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Haftalık ders programı tablosunun tarayıcı çıktısı" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Ders Programı&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Haftalık Ders Programı&lt;/h1&gt;
+    &lt;table border=&quot;1&quot;&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Saat&lt;/th&gt;
+            &lt;th&gt;Pazartesi&lt;/th&gt;
+            &lt;th&gt;Salı&lt;/th&gt;
+            &lt;th&gt;Çarşamba&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;09:00&lt;/td&gt;
+            &lt;td&gt;Matematik&lt;/td&gt;
+            &lt;td&gt;Türkçe&lt;/td&gt;
+            &lt;td&gt;Fizik&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;10:00&lt;/td&gt;
+            &lt;td&gt;Web Tasarımı&lt;/td&gt;
+            &lt;td&gt;İngilizce&lt;/td&gt;
+            &lt;td&gt;Kimya&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;11:00&lt;/td&gt;
+            &lt;td&gt;Beden&lt;/td&gt;
+            &lt;td&gt;Tarih&lt;/td&gt;
+            &lt;td&gt;Biyoloji&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
     </figure>
     <div class="note"><span class="tag">Not</span><p><code class="inline">border="1"</code> özelliği hücrelerin <strong>kenarlıklarını</strong> gösterir; bu olmadan tablo çizgisiz görünür. <code class="inline">border="1"</code> HTML5'te eskimiş sayılır; tablonun görünümünü 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda CSS ile vereceğiz. O zamana kadar kenarlığı görmek için <strong>geçici olarak</strong> kullanıyoruz.</p></div>
 
@@ -230,8 +326,27 @@
 &lt;/div&gt;</pre>
     </div>
     <p>Bu kod tarayıcıda iki başlık ve iki liste olarak alt alta görünür; kutuların sınırları görünmez. Aşağıdaki görselde kutuları görebilmeniz için sınırlarını <strong>kesik çizgiyle</strong> gösterdik:</p>
-    <figure class="diagram"><img alt="İki div kutusu: her biri satırın tamamını kaplıyor, içlerinde birer başlık ve liste var" src="images/div_kutulari.png" width="840" height="405" loading="lazy" decoding="async" tabindex="0">
-      <figcaption aria-hidden="true">İki div kutusu: her biri satırın tamamını kaplıyor, içlerinde birer başlık ve liste var</figcaption>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="İki div kutusu: her biri satırın tamamını kaplıyor, içlerinde birer başlık ve liste var" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;div { display: flow-root; outline: 2px dashed #c0392b; outline-offset: -2px; }&lt;/style&gt;
+&lt;div&gt;
+    &lt;h2&gt;Kahvaltı&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Peynir&lt;/li&gt;
+        &lt;li&gt;Zeytin&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;h2&gt;Öğle Yemeği&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Mercimek çorbası&lt;/li&gt;
+        &lt;li&gt;Pilav&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+"></iframe>
+      </div>
     </figure>
     <p>Kutuların <strong>satırın tamamını</strong> kapladığına ve <strong>alt alta</strong> dizildiğine dikkat edin. Bu kutulara 7. haftada, <a href="kutu-modeli.html">CSS Kutu Modeli</a> konusunda kenarlık ve boşluk verecek; 10. haftada, <a href="flexbox-1.html">Flexbox 1</a> konusunda da onları yan yana dizeceğiz.</p>
     <h3 id="ic-ice">3.3. İç İçe <code class="inline">&lt;div&gt;</code></h3>
@@ -254,6 +369,30 @@
     &lt;/div&gt;
 &lt;/div&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür (kutuların sınırları kesik çizgiyle gösterildi):</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Dıştaki büyük kutunun içinde alt alta dizilmiş üç kutu: başlık, menü listesi ve çalışma saatleri" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;div { display: flow-root; outline: 2px dashed #c0392b; outline-offset: -2px; } body &gt; div { outline-offset: 4px; }&lt;/style&gt;
+&lt;div&gt;
+    &lt;div&gt;
+        &lt;h1&gt;Kahve Dünyası&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;h2&gt;Menümüz&lt;/h2&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Filtre kahve&lt;/li&gt;
+            &lt;li&gt;Türk kahvesi&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;p&gt;Her gün 08.00 - 22.00 arası açığız.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>İç içe yazarken iki kurala uyun:</p>
     <ul>
       <li><strong>Açılan her <code class="inline">&lt;div&gt;</code> kapatılır.</strong> En son açılan <code class="inline">&lt;div&gt;</code>, en önce kapatılır.</li>
@@ -523,6 +662,52 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Kenarlıklı üç ürünlük fiyat tablosu ve altında üç adımlı numaralı kek tarifi listesinin tarayıcı çıktısı" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Ürünler ve Tarif&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;fiyatlar&quot;&gt;
+        &lt;h1&gt;Fiyat Listesi&lt;/h1&gt;
+        &lt;table border=&quot;1&quot;&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Ürün&lt;/th&gt;
+                &lt;th&gt;Fiyat&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Ekmek&lt;/td&gt;
+                &lt;td&gt;15 TL&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Süt&lt;/td&gt;
+                &lt;td&gt;30 TL&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Yumurta&lt;/td&gt;
+                &lt;td&gt;60 TL&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;tarif&quot;&gt;
+        &lt;h2&gt;Kek Tarifi&lt;/h2&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Malzemeleri karıştırın.&lt;/li&gt;
+            &lt;li&gt;Kalıba dökün.&lt;/li&gt;
+            &lt;li&gt;Fırında 40 dakika pişirin.&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>Adımlar:</p>
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe <strong><code class="inline">fiyat_listesi.html</code></strong> adında yeni bir dosya oluşturun.</li>

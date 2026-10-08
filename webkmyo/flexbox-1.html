@@ -88,7 +88,7 @@
       <li><strong>Öğeler (flex items):</strong> Kapsayıcının <strong>doğrudan içindeki</strong> öğeler.</li>
     </ul>
     <p>Bir kutuyu flex kapsayıcısına çevirmek için ona <code class="inline">display: flex;</code> verilir. Bunu yaptığınız anda, içindeki öğeler <strong>alt alta değil, yan yana</strong> dizilir:</p>
-    <figure class="diagram"><img alt="display:block ile öğeler alt alta, display:flex ile yan yana dizilir" src="images/flex_temel.png" width="1080" height="326" loading="lazy" decoding="async" tabindex="0">
+    <figure class="diagram"><img alt="display:block ile öğeler alt alta, display:flex ile yan yana dizilir" src="images/flex_temel.png" width="720" height="217" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">display:block ile öğeler alt alta, display:flex ile yan yana dizilir</figcaption>
     </figure>
     <div class="code">
@@ -109,7 +109,7 @@
 
     <h2 id="justify-content-yatay-hizalama"><span class="num">3</span><code class="inline">justify-content</code> (Yatay Hizalama)</h2>
     <p><code class="inline">justify-content</code>, öğelerin kapsayıcının içinde <strong>yatayda</strong> nasıl dağıtılacağını belirler:</p>
-    <figure class="diagram"><img alt="justify-content değerleri: flex-start, center, flex-end, space-between, space-around" src="images/justify_content.png" width="840" height="734" loading="lazy" decoding="async" tabindex="0">
+    <figure class="diagram"><img alt="justify-content değerleri: flex-start, center, flex-end, space-between, space-around" src="images/justify_content.png" width="560" height="489" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">justify-content değerleri: flex-start, center, flex-end, space-between, space-around</figcaption>
     </figure>
     <div class="twrap">
@@ -134,7 +134,7 @@
 
     <h2 id="align-items-dikey-hizalama"><span class="num">4</span><code class="inline">align-items</code> (Dikey Hizalama)</h2>
     <p><code class="inline">align-items</code>, öğelerin kapsayıcının içinde <strong>dikeyde</strong> nasıl hizalanacağını belirler:</p>
-    <figure class="diagram"><img alt="align-items değerleri: flex-start, center, flex-end, stretch" src="images/align_items.png" width="1380" height="344" loading="lazy" decoding="async" tabindex="0">
+    <figure class="diagram"><img alt="align-items değerleri: flex-start, center, flex-end, stretch" src="images/align_items.png" width="920" height="229" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">align-items değerleri: flex-start, center, flex-end, stretch</figcaption>
     </figure>
     <div class="twrap">
@@ -203,8 +203,51 @@
 &lt;/html&gt;</pre>
     </div>
     <p>Tarayıcıdaki sonucu şöyledir:</p>
-    <figure class="diagram"><img alt="Navbar çıktısı: koyu bir çubukta solda sarı site adı, sağda beyaz menü bağlantıları" src="images/navbar_ciktisi.png" width="1200" height="240" loading="lazy" decoding="async" tabindex="0">
-      <figcaption aria-hidden="true">Navbar çıktısı: koyu bir çubukta solda sarı site adı, sağda beyaz menü bağlantıları</figcaption>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Navbar çıktısı: koyu bir çubukta solda sarı site adı, sağda beyaz menü bağlantıları" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Navbar&lt;/title&gt;
+    &lt;style&gt;
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            padding: 15px 25px;
+        }
+        .marka {
+            color: #f1c40f;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .baglantilar {
+            display: flex;
+            gap: 25px;
+        }
+        .baglantilar a {
+            color: white;
+            text-decoration: none;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav class=&quot;menu&quot;&gt;
+        &lt;div class=&quot;marka&quot;&gt;Kahve Dünyası&lt;/div&gt;
+        &lt;div class=&quot;baglantilar&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Ana Sayfa&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Hakkımda&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;Hizmetler&lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;İletişim&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
     </figure>
     <p>Burada iki yeni küçük ayrıntı kullandık:</p>
     <ul>

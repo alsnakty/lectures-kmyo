@@ -211,6 +211,36 @@
     });
   })();
 
+  /* ---------- 6a) canli kod ciktisi: iframe yuksekligi icerige esit ---------- */
+  (function () {
+    var cerceveler = hepsi("figure.cikti iframe");
+    if (!cerceveler.length) return;
+    function ayarla(f) {
+      var b;
+      try { b = f.contentDocument; } catch (e) { return; }
+      if (!b || !b.documentElement || b.readyState !== "complete") return;
+      var k = b.documentElement;
+      /* scrollHeight iframe'in kendi yuksekliginden kucuk olamaz (kuculmez);
+         <html>'in yuksekligi ise yalnizca icerige (body kenar boslugu dahil) baglidir.
+         Ikinci tur: ilk ayarda dikey kaydirma cubugu kalkinca genislik degisebilir. */
+      for (var tur = 0; tur < 2; tur++) {
+        var h = Math.ceil(k.getBoundingClientRect().height);
+        /* icerik yatayda tasarsa iframe icinde kaydirma cubugu cikar: onun yuksekligi eklenir */
+        if (k.scrollWidth > k.clientWidth) h += Math.max(0, f.contentWindow.innerHeight - k.clientHeight);
+        f.style.height = h + "px";
+      }
+    }
+    cerceveler.forEach(function (f) {
+      f.addEventListener("load", function () { ayarla(f); });
+      ayarla(f);
+    });
+    var bekleme = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(bekleme);
+      bekleme = setTimeout(function () { cerceveler.forEach(ayarla); }, 120);
+    });
+  })();
+
   /* ---------- 6b) yazdir dugmesi (Ctrl+P ile ayni yol; cevaplar 8. bolumde acilir) ---------- */
   hepsi(".yazdir-dugme").forEach(function (d) {
     d.addEventListener("click", function () { window.print(); });
@@ -243,7 +273,7 @@
   (function () {
     var acilanlar = [];
     function once() {
-      hepsi("img[loading=lazy]").forEach(function (i) { i.loading = "eager"; });
+      hepsi("img[loading=lazy], iframe[loading=lazy]").forEach(function (i) { i.loading = "eager"; });
       acilanlar = hepsi("details:not([open])");
       acilanlar.forEach(function (d) { d.setAttribute("open", ""); });
     }

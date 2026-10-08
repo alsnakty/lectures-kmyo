@@ -208,7 +208,7 @@
 
   /* ---- figure ---- */
   figure.diagram { margin: 26px 0; }
-  figure.diagram img, figure.diagram svg {
+  figure.diagram svg {
     display: block; width: 100%; height: auto;
     background: #fff; padding: 16px;
     border: 1px solid var(--line-strong); border-radius: 12px;
@@ -217,6 +217,29 @@
     margin-top: 10px; text-align: center;
     font-family: var(--mono); font-size: 12px; letter-spacing: .02em;
     color: var(--ink-faint);
+  }
+  /* PNG dogal boyutunda: buyutulmez, width ozniteligi piksel / 1.5 (build.img_isle);
+     ekran goruntusunun kendi gri cercevesi oldugu icin ikinci cerceve yok */
+  figure.diagram img { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+  /* canli kod ciktisi (iframe srcdoc): ust cubuk + sayfa, tek cerceve */
+  figure.cikti { margin: 26px 0; }
+  figure.cikti .pencere {
+    background: #fff; border: 1px solid var(--line-strong);
+    border-radius: 12px; overflow: hidden;
+  }
+  .cikti-bas {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 14px; background: #F1F1EE; border-bottom: 1px solid #DDDDD6;
+  }
+  .cikti-bas .lights { display: flex; gap: 6px; }
+  .cikti-bas .lights i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .cikti-bas .name {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em;
+    color: #5F6168; margin-left: 6px;
+  }
+  figure.cikti iframe {
+    display: block; width: 100%; height: 120px; border: 0; background: #fff;
+    color-scheme: light;
   }
 
   /* ---- callouts ---- */
@@ -625,7 +648,8 @@
     .code-head { border-bottom: 1px solid #ccc; }
     .code-head .lights { display: none; }
     .code-head .name { color: #333 !important; }
-    .note, .kart, .term, figure.diagram { break-inside: avoid; }
+    .note, .kart, .term, figure.diagram, figure.cikti { break-inside: avoid; }
+    .cikti-bas .lights { display: none; }
     h2, h3 { break-after: avoid; }
   }
   /* onay kutulu kontrol listesi: madde isareti yerine metindeki kutu */
