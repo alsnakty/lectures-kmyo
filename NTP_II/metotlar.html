@@ -88,7 +88,7 @@ araba1 = Araba('Mercedes C180', 'Siyah', 156)</pre>
     <p>Metot, aslında bir sınıfın içinde tanımlanmış bir fonksiyondur. Sıradan bir fonksiyondan tek farkı, bir nesneye ait olması ve o nesnenin verisine erişebilmesidir. Bir öğrencinin notlarını ekleyen, ortalamasını hesaplayan, bilgilerini ekrana yazan işlemler hep metot olarak yazılır. Böylece bir nesnenin verisi (özellikler) ile davranışları (metotlar) tek bir çatı altında toplanır. Nesne tabanlı programlamanın asıl gücü buradadır.</p>
 
     <h2 id="ilk-metot"><span class="num">2</span>İlk metot ve self</h2>
-    <p>Bir metodu, sınıfın içinde <code class="inline">def</code> ile tanımlarız ve ilk parametresi her zaman <code class="inline">self</code> olur. <code class="inline">self</code> sayesinde metot, "üzerinde çalıştığı nesnenin" verisine ulaşır.</p>
+    <p>Bir metodu, sınıfın içinde <code class="inline">def</code> ile tanımlarız ve ilk parametresine geleneksel olarak <code class="inline">self</code> adı verilir. <code class="inline">self</code> sayesinde metot, "üzerinde çalıştığı nesnenin" verisine ulaşır.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">ilk_metot.py</span></div>
 <pre>class Ogrenci:
@@ -450,9 +450,9 @@ s.arttir()</pre>
     <h2 id="kendi-basina"><span class="num">8</span>Çalışma soruları</h2>
     <p>Aşağıdaki soruları kendi başınıza çözün; çözümleri verilmemiştir.</p>
     <ol>
-      <li>Bir <code class="inline">Kedi</code> sınıfı yazınız; ad alsın. <code class="inline">ses_cikar</code> adlı bir metotla ekrana "Miyav!" yazsın.</li>
-      <li>Bir <code class="inline">Sepet</code> sınıfı yazınız; boş bir ürün listesiyle başlasın. <code class="inline">urun_ekle(ad)</code> metoduyla listeye ürün eklesin, <code class="inline">listele</code> metoduyla sepetteki tüm ürünleri yazsın.</li>
-      <li>Bir <code class="inline">Para</code> sınıfı yazınız; miktar ve birim (örneğin "TL") alsın. <code class="inline">__eq__</code> metoduyla iki para nesnesini, miktar ve birimleri aynıysa eşit kabul etsin. İki nesneyle test ediniz.</li>
+      <li>Bir <code class="inline">Kedi</code> sınıfı yazın; ad alsın. <code class="inline">ses_cikar</code> adlı bir metotla ekrana "Miyav!" yazsın.</li>
+      <li>Bir <code class="inline">Sepet</code> sınıfı yazın; boş bir ürün listesiyle başlasın. <code class="inline">urun_ekle(ad)</code> metoduyla listeye ürün eklesin, <code class="inline">listele</code> metoduyla sepetteki tüm ürünleri yazsın.</li>
+      <li>Bir <code class="inline">Para</code> sınıfı yazın; miktar ve birim (örneğin "TL") alsın. <code class="inline">__eq__</code> metoduyla iki para nesnesini, miktar ve birimleri aynıysa eşit kabul etsin. İki nesneyle test edin.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
@@ -482,7 +482,7 @@ s.arttir()</pre>
   </article>
 
   <aside>
-    <div class="toc-title">Bu Sayfada</div>
+    <div class="toc-title">Bu sayfada</div>
     <nav class="toc" id="toc">
 <a href="#metot"><span class="n">1</span>Metot nedir?</a>
       <a href="#ilk-metot"><span class="n">2</span>İlk metot ve self</a>

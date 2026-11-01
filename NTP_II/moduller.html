@@ -75,7 +75,7 @@
 
 <h2 id="nedir"><span class="num">1</span>Modül nedir, neden vardır?</h2>
     <p>Bir program büyüdükçe, her şeyi tek bir dosyaya yığmak zorlaşır. Üstelik kare kök almak, rastgele sayı üretmek, tarih hesaplamak gibi işleri her seferinde sıfırdan yazmak hem zaman kaybıdır hem de hataya açıktır. Bu işlerin pek çoğunu sizden önce birileri yazmış ve test etmiştir; tek yapmanız gereken onları kullanmaktır.</p>
-    <p>İşte bir <strong>modül</strong>, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Python "modüler" bir dil olarak tasarlanmıştır: belirli işleri yapan pek çok modül ya doğrudan Python'la birlikte gelir ya da dışarıdan eklenebilir. Bir modülü programınıza dahil etmek için <code class="inline">import</code> anahtar kelimesini kullanırsınız.</p>
+    <p>İşte bir <strong>modül</strong>, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Python "modüler" bir dil olarak tasarlanmıştır: belirli işleri yapan pek çok modül ya doğrudan Python'la birlikte gelir ya da dışarıdan eklenebilir. Bir modülü programınıza dâhil etmek için <code class="inline">import</code> anahtar kelimesini kullanırsınız.</p>
     <p>Modüllerin bize kazandırdığı şey nettir: hazır ve denenmiş kodu <strong>yeniden kullanırız</strong>, böylece tekerleği yeniden icat etmeyiz; kodumuzu konularına göre ayrı dosyalara bölerek <strong>düzenli</strong> tutarız; ve binlerce hazır fonksiyona erişerek işimizi <strong>hızlandırırız</strong>. Python'un kurulumla birlikte gelen bu hazır modüller bütününe <strong>standart kütüphane</strong> denir. <code class="inline">math</code>, <code class="inline">random</code>, <code class="inline">datetime</code> bunlardan yalnızca birkaçıdır.</p>
 
     <h2 id="import"><span class="num">2</span>import yöntemleri</h2>
@@ -126,7 +126,7 @@ liste = [1, 2, 3, 4, 5]
 random.shuffle(liste)                            <span class="c"># listeyi yerinde karıştırır</span>
 print(liste)</pre>
     </div>
-    <div class="note"><span class="tag">Not</span><p>Bu fonksiyonlar her çalıştırmada farklı sonuç verir; bu yüzden örnek çıktıları sabit yazmadık. <code class="inline">randint(1, 6)</code> aralığın <strong>her iki ucunu da</strong> (1 ve 6 dahil) içerir.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Bu fonksiyonlar her çalıştırmada farklı sonuç verir; bu yüzden örnek çıktıları sabit yazmadık. <code class="inline">randint(1, 6)</code> aralığın <strong>her iki ucunu da</strong> (1 ve 6 dâhil) içerir.</p></div>
     <p><code class="inline">datetime</code> modülü tarih ve saat işlemlerini yapar:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">datetime_ornek.py</span></div>
@@ -187,7 +187,7 @@ print(islemler.carp(4, 6))     <span class="c"># 24</span></pre>
     </div>
     <p><strong>3. Anaconda Navigator arayüzü ile.</strong> Komut yazmak istemeyenler için Anaconda Navigator uygulamasında <strong>Environments</strong> bölümünden paket adını aratıp kutucuğunu işaretleyerek fareyle de kurulum yapılabilir.</p>
     <p>Hangi yolu seçerseniz seçin, kurulum bittikten sonra modülü her zamanki gibi <code class="inline">import pandas</code> yazarak kullanırsınız.</p>
-    <div class="note"><span class="tag">Not</span><p>Anaconda kurulu bir bilgisayarda genellikle <code class="inline">conda install</code> (veya Navigator), sade Python kurulumunda ise <code class="inline">pip install</code> tercih edilir. Bir modülü kurmadan <code class="inline">import</code> etmeye çalışırsanız <code class="inline">ModuleNotFoundError</code> alırsınız. Bu, "önce kurman gerekiyor" demektir.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Anaconda kurulu bir bilgisayarda genellikle <code class="inline">conda install</code> (veya Navigator), sade Python kurulumunda ise <code class="inline">pip install</code> tercih edilir. Bir modülü kurmadan <code class="inline">import</code> etmeye çalışırsanız <code class="inline">ModuleNotFoundError</code> alırsınız. Bu, "önce kurmanız gerekiyor" demektir.</p></div>
 
     <hr class="hr">
 
@@ -226,7 +226,7 @@ for r in [1, 2, 5]:
     print("Yarıçap", r, "alan", round(m.pi * r ** 2, 2))</pre>
       </div>
     </details>
-    <h3 id="gorev-3">Görev 3: Kendi modülün</h3>
+    <h3 id="gorev-3">Görev 3: Kendi modülünüz</h3>
     <p><code class="inline">notlar_modulu.py</code> adında bir dosya oluşturup içine <code class="inline">ortalama(liste)</code> ve <code class="inline">durum(ort)</code> fonksiyonlarını yazın; <code class="inline">durum</code> 50 ve üstüne <code class="inline">"Geçti"</code>, altına <code class="inline">"Kaldı"</code> döndürsün. Aynı klasördeki ana programda modülü <code class="inline">import notlar_modulu</code> ile içe aktarıp Ali ve Mehmet için ortalamayı ve durumu yazdırın. Projede kodu dosyalara bölerken bu yapıyı kullanacaksınız.</p>
     <div class="term">
       <div class="thead">Beklenen çıktı</div>
@@ -258,7 +258,7 @@ for ad, notlar in [("Ali", [60, 75, 90]), ("Mehmet", [30, 45, 51])]:
     <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
     <ol class="quiz">
       <li>
-        <p class="q">Bir modülü programa dahil etmek için hangi anahtar kelime kullanılır?</p>
+        <p class="q">Bir modülü programa dâhil etmek için hangi anahtar kelime kullanılır?</p>
         <ul class="opts">
           <li><b>A)</b> <code class="inline">import</code></li>
           <li><b>B)</b> <code class="inline">include</code></li>
@@ -267,7 +267,7 @@ for ad, notlar in [("Ali", [60, 75, 90]), ("Mehmet", [30, 45, 51])]:
           <li><b>E)</b> <code class="inline">module</code></li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">A</span>Python'da modüller <code class="inline">import</code> anahtar kelimesiyle dahil edilir.</div>
+          <div class="ans"><span class="letter">A</span>Python'da modüller <code class="inline">import</code> anahtar kelimesiyle dâhil edilir.</div>
         </details>
       </li>
 
@@ -333,9 +333,9 @@ for ad, notlar in [("Ali", [60, 75, 90]), ("Mehmet", [30, 45, 51])]:
     <h2 id="kendi-basina"><span class="num">9</span>Çalışma soruları</h2>
     <p>Aşağıdaki soruları kendi başınıza çözün; çözümleri verilmemiştir.</p>
     <ol>
-      <li><code class="inline">datetime</code> modülünü kullanarak bugünün tarihini (gün, ay, yıl) ekrana yazdıran bir program yazınız.</li>
-      <li><code class="inline">random</code> modülünün <code class="inline">shuffle</code> fonksiyonunu kullanarak, 1'den 10'a kadar olan sayıların bulunduğu bir listeyi karıştırıp yazdıran bir program yazınız.</li>
-      <li><code class="inline">random</code> ve <code class="inline">math</code> modüllerini birlikte kullanınız: <code class="inline">random</code> ile 1-100 arası beş rastgele sayı üretip bir listeye koyunuz; ardından <code class="inline">math</code> modülünden yararlanarak bu sayıların karelerinin toplamının karekökünü hesaplayıp yazdırınız.</li>
+      <li><code class="inline">datetime</code> modülünü kullanarak bugünün tarihini (gün, ay, yıl) ekrana yazdıran bir program yazın.</li>
+      <li><code class="inline">random</code> modülünün <code class="inline">shuffle</code> fonksiyonunu kullanarak, 1'den 10'a kadar olan sayıların bulunduğu bir listeyi karıştırıp yazdıran bir program yazın.</li>
+      <li><code class="inline">random</code> ve <code class="inline">math</code> modüllerini birlikte kullanın: <code class="inline">random</code> ile 1-100 arası beş rastgele sayı üretip bir listeye koyun; ardından <code class="inline">math</code> modülünden yararlanarak bu sayıların karelerinin toplamının karekökünü hesaplayıp yazdırın.</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
@@ -366,7 +366,7 @@ for ad, notlar in [("Ali", [60, 75, 90]), ("Mehmet", [30, 45, 51])]:
   </article>
 
   <aside>
-    <div class="toc-title">Bu Sayfada</div>
+    <div class="toc-title">Bu sayfada</div>
     <nav class="toc" id="toc">
 <a href="#nedir"><span class="n">1</span>Modül nedir?</a>
       <a href="#import"><span class="n">2</span>import yöntemleri</a>

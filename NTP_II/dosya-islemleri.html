@@ -140,7 +140,7 @@ with open("test.txt", "a", encoding="utf-8") as f:
 <span class="ok"># Dosyada artık: "ikinci" ve "ucuncu"</span></pre>
     </div>
     <div class="note warn"><span class="tag">Dikkat</span><p><code class="inline">"w"</code> modunu var olan bir dosyaya yanlışlıkla uygularsanız, içindeki tüm veriyi <strong>geri dönüşü olmadan</strong> silersiniz. Veri eklemek istiyorsanız <code class="inline">"a"</code> kullanın.</p></div>
-    <p>Bunların dışında bilgi olarak bilinmesi gereken modlar da vardır: <code class="inline">"x"</code> yeni dosya oluşturur ama dosya zaten varsa hata verir; <code class="inline">"r+"</code> hem okuma hem yazmaya izin verir; <code class="inline">"rb"</code> ve <code class="inline">"wb"</code> ise resim, ses, video gibi metin olmayan dosyalar için kullanılan ikili (binary) modlardır.</p>
+    <p>Bunların dışında bilmeniz gereken başka modlar da vardır: <code class="inline">"x"</code> yeni dosya oluşturur ama dosya zaten varsa hata verir; <code class="inline">"r+"</code> hem okuma hem yazmaya izin verir; <code class="inline">"rb"</code> ve <code class="inline">"wb"</code> ise resim, ses, video gibi metin olmayan dosyalar için kullanılan ikili (binary) modlardır.</p>
 
     <h2 id="yazma"><span class="num">4</span>Dosyaya yazma</h2>
     <p><code class="inline">write()</code> metodu, verilen metni dosyaya yazar. Ancak <code class="inline">print()</code>'ten önemli bir farkı vardır: <strong>otomatik olarak alt satıra geçmez.</strong> Her yazıdan sonra alt satıra geçmek istiyorsak sonuna <code class="inline">\n</code> (yeni satır karakteri) eklemeliyiz.</p>
@@ -314,7 +314,6 @@ with open("isimler.txt", "w") as f:
       <figcaption>Python sözlüğü ile JSON dosyası arasındaki dönüşüm</figcaption>
     </figure>
     <p>Görseldeki en kritik ayrıntı: Python'daki <code class="inline">True</code>/<code class="inline">False</code>/<code class="inline">None</code>, JSON'da küçük harfli <code class="inline">true</code>/<code class="inline">false</code>/<code class="inline">null</code> olur. Bu çeviriyi <code class="inline">json</code> modülü sizin yerinize yapar.</p>
-    <p><code class="inline">import</code>, Python'un hazır araç dosyalarından (modüllerden) birini programa ekler; ayrıntısını 12. haftada, <a href="moduller.html">Modüller</a> konusunda göreceğiz.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">json_yazma.py</span></div>
 <pre>import json
@@ -579,9 +578,9 @@ with open("kayitlar.json", "r", encoding="utf-8") as f:
     <h2 id="kendi-basina"><span class="num">13</span>Çalışma soruları</h2>
     <p>Aşağıdaki soruları kendi başınıza çözün; çözümleri verilmemiştir.</p>
     <ol>
-      <li>Bir metin dosyasını okuyarak içindeki satır sayısını ve toplam kelime sayısını hesaplayıp ekrana yazdıran bir program yazınız.</li>
-      <li><code class="inline">kisiler.txt</code> dosyasında, kullanıcının girdiği ad-soyadı arayınız. Bulursanız ilgili satırı ekrana yazdırın; bulamazsanız "Kullanıcı bulunamadı." uyarısı veriniz.</li>
-      <li>Bir metin dosyasını okuyup içinde en sık geçen kelimeyi ve kaç kez geçtiğini bulan bir program yazınız. (Kelimeleri saymak için bir sözlük kullanabilirsiniz.)</li>
+      <li>Bir metin dosyasını okuyarak içindeki satır sayısını ve toplam kelime sayısını hesaplayıp ekrana yazdıran bir program yazın.</li>
+      <li><code class="inline">kisiler.txt</code> dosyasında, kullanıcının girdiği ad-soyadı arayın. Bulursanız ilgili satırı ekrana yazdırın; bulamazsanız "Kullanıcı bulunamadı." uyarısı verin.</li>
+      <li>Bir metin dosyasını okuyup içinde en sık geçen kelimeyi ve kaç kez geçtiğini bulan bir program yazın. (Kelimeleri saymak için bir sözlük kullanabilirsiniz.)</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
@@ -612,7 +611,7 @@ with open("kayitlar.json", "r", encoding="utf-8") as f:
   </article>
 
   <aside>
-    <div class="toc-title">Bu Sayfada</div>
+    <div class="toc-title">Bu sayfada</div>
     <nav class="toc" id="toc">
 <a href="#neden"><span class="n">1</span>Neden vardır?</a>
       <a href="#acma"><span class="n">2</span>Dosya açma: open()</a>

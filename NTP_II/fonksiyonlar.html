@@ -150,9 +150,9 @@ print(sonuc)             <span class="c"># 8</span></pre>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">konumsal.py</span></div>
 <pre>def personel_yazdir(ad, soyad, yas):
-    print("personelin adi :", ad)
-    print("personelin soyadı :", soyad)
-    print("personelin yas :", yas)
+    print("personelin adı:", ad)
+    print("personelin soyadı:", soyad)
+    print("personelin yaşı:", yas)
 
 personel_yazdir("ali", "kaya", 12)
 
@@ -160,9 +160,9 @@ personel_yazdir("ali", 12, "kaya")   <span class="no"># ⚠ sıra bozuk → yaş
     </div>
     <div class="term">
       <div class="thead">Çıktı (ilk çağrı)</div>
-<pre>personelin adi : ali
-personelin soyadı : kaya
-personelin yas : 12</pre>
+<pre>personelin adı: ali
+personelin soyadı: kaya
+personelin yaşı: 12</pre>
     </div>
     <p>Son satırda sıranın bozulduğuna dikkat edin: <code class="inline">12</code> artık <code class="inline">soyad</code>'a, <code class="inline">"kaya"</code> ise <code class="inline">yas</code>'a gitmiştir. Python bunu hata olarak görmez, çünkü teknik olarak geçerlidir; ama sonuç mantıksız olur. Bu karışıklıktan kurtulmanın yolu, argümanı <strong>parametre adıyla birlikte</strong> vermektir. <code class="inline">personel_yazdir(ad="ali", soyad="kaya", yas=12)</code> ile <code class="inline">personel_yazdir(ad="ali", yas=12, soyad="kaya")</code> aynı sonucu verir; isimli argümanda sıra önemini kaybeder.</p>
 
@@ -171,9 +171,9 @@ personelin yas : 12</pre>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">varsayilan.py</span></div>
 <pre>def personel_yazdir2(ad='ali', soyad='yılmaz', yas=12):
-    print("personelin adi :", ad)
-    print("personelin soyadı :", soyad)
-    print("personelin yas :", yas)
+    print("personelin adı:", ad)
+    print("personelin soyadı:", soyad)
+    print("personelin yaşı:", yas)
 
 personel_yazdir2()          <span class="c"># tüm varsayılanlar kullanılır</span>
 personel_yazdir2("mehmet")  <span class="c"># sadece ad değişir</span>
@@ -473,9 +473,9 @@ print(sonuc)</pre>
     <h2 id="kendi-basina"><span class="num">10</span>Çalışma soruları</h2>
     <p>Aşağıdaki soruları kendi başınıza çözün; çözümleri verilmemiştir.</p>
     <ol>
-      <li>Bir metni (string) tersine çeviren bir fonksiyon yazınız. (Örnek: <code class="inline">"1234abcd"</code> → <code class="inline">"dcba4321"</code>)</li>
-      <li>Bir metni alıp içindeki büyük ve küçük harf sayısını ayrı ayrı sayan bir fonksiyon yazınız. (Örnek: <code class="inline">'The quick Brow Fox'</code> → Büyük harf: 3, Küçük harf: 12)</li>
-      <li>Bir metnin palindrom olup olmadığını kontrol eden bir fonksiyon yazınız. (Palindrom, tersten okunduğunda da aynı olan ifadedir; örneğin "kayak".)</li>
+      <li>Bir metni (string) tersine çeviren bir fonksiyon yazın. (Örnek: <code class="inline">"1234abcd"</code> → <code class="inline">"dcba4321"</code>)</li>
+      <li>Bir metni alıp içindeki büyük ve küçük harf sayısını ayrı ayrı sayan bir fonksiyon yazın. (Örnek: <code class="inline">'The quick Brow Fox'</code> → Büyük harf: 3, Küçük harf: 12)</li>
+      <li>Bir metnin palindrom olup olmadığını kontrol eden bir fonksiyon yazın. (Palindrom, tersten okunduğunda da aynı olan ifadedir; örneğin "kayak".)</li>
     </ol>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
@@ -505,7 +505,7 @@ print(sonuc)</pre>
   </article>
 
   <aside>
-    <div class="toc-title">Bu Sayfada</div>
+    <div class="toc-title">Bu sayfada</div>
     <nav class="toc" id="toc">
 <a href="#neden"><span class="n">1</span>Neden vardır?</a>
       <a href="#tanimlama"><span class="n">2</span>Tanımlama</a>
