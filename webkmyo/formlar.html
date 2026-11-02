@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Formlar | Web Arayüz Tasarımı Ders Notları</title>
-<meta name="description" content="Kullanıcıdan bilgi toplayan form ögelerini (&lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;button&gt;) tanımak ve bunları bir araya getirerek bir iletişim formu...">
+<meta name="description" content="Kullanıcıdan bilgi toplayan form öğelerini (&lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;button&gt;) tanımak ve bunları bir araya getirerek bir iletişim formu...">
 <meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EW%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Formlar | Web Arayüz Tasarımı Ders Notları">
-<meta property="og:description" content="Kullanıcıdan bilgi toplayan form ögelerini (&lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;button&gt;) tanımak ve bunları bir araya getirerek bir iletişim formu...">
+<meta property="og:description" content="Kullanıcıdan bilgi toplayan form öğelerini (&lt;input&gt;, &lt;label&gt;, &lt;select&gt;, &lt;textarea&gt;, &lt;button&gt;) tanımak ve bunları bir araya getirerek bir iletişim formu...">
 <script id="tema-on">try{var t=localStorage.getItem("bdt249-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
 <link rel="stylesheet" href="css/vendor/github-dark.min.css">
 <link rel="stylesheet" href="css/ders.css">
@@ -63,7 +63,7 @@
       <summary>Bu sayfada</summary>
       <nav aria-label="Sayfa bölümleri">
   <a href="#form-nedir"><span class="n">1</span>Form Nedir?</a>
-        <a href="#form-ogeleri"><span class="n">2</span>Form Ögeleri</a>
+        <a href="#form-ogeleri"><span class="n">2</span>Form Öğeleri</a>
         <a href="#ornek-iletisim-formu"><span class="n">3</span>Örnek: İletişim Formu</a>
         <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
         <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
@@ -81,11 +81,11 @@
     <div class="note warn"><span class="tag">Önemli</span><p>Formdaki bilgilerin işlenmesi (kaydedilmesi, e-posta ile gönderilmesi) için bir <strong>sunucu tarafı (backend)</strong> gerekir. Bu derste backend yoktur; bu yüzden "Gönder" düğmesine bastığınızda veri hiçbir yere kaydedilmez. <strong>Amacımız formu doğru kodlamak ve görünümünü oluşturmaktır</strong>; çalışması beklenmez.</p></div>
 
     <h2 id="form-nedir"><span class="num">1</span>Form Nedir?</h2>
-    <p>Tüm form ögeleri <code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code> etiketleri arasında bulunur.</p>
+    <p>Tüm form öğeleri <code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code> etiketleri arasında bulunur.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;form&gt;
-    &lt;!-- Form ögeleri (input, select, button ...) buraya yazılır --&gt;
+    &lt;!-- Form öğeleri (input, select, button ...) buraya yazılır --&gt;
 &lt;/form&gt;</pre>
     </div>
     <p><code class="inline">&lt;form&gt;</code> etiketinin iki önemli özelliği vardır (backend olduğunda işe yararlar):</p>
@@ -93,7 +93,7 @@
       <li><code class="inline">action</code> → verinin <strong>nereye</strong> gönderileceği (bir sunucu adresi).</li>
       <li><code class="inline">method</code> → <strong>nasıl</strong> gönderileceği: <code class="inline">get</code> (adres çubuğunda görünür, arama gibi) veya <code class="inline">post</code> (adres çubuğunda görünmez, şifre gibi bilgiler için). <code class="inline">method</code> yazılmazsa form <code class="inline">get</code> ile gönderilir.</li>
     </ul>
-    <p>Bu derste backend olmadığı için <code class="inline">action</code> ve <code class="inline">method</code> yazmak zorunlu değildir; bunlar olmadan da form ögeleri sayfada görünür.</p>
+    <p>Bu derste backend olmadığı için <code class="inline">action</code> ve <code class="inline">method</code> yazmak zorunlu değildir; bunlar olmadan da form öğeleri sayfada görünür.</p>
     <h3 id="gonderim-yontemi-get-ve-post">1.1. Gönderim Yöntemi: GET ve POST</h3>
     <p>Form gönderildiğinde veriler sunucuya iki farklı yöntemle iletilebilir. Yöntem, <code class="inline">&lt;form&gt;</code> etiketinin <code class="inline">method</code> özelliği ile belirlenir. Örneklerdeki <code class="inline">&lt;input&gt;</code>, <code class="inline">name</code> ve <code class="inline">&lt;button&gt;</code> ayrıntısını 2. bölümde göreceğiz.</p>
     <p><strong>GET yöntemi:</strong> Veriler <strong>adresin (URL) sonuna</strong> eklenerek gönderilir; bu yüzden adres çubuğunda <strong>görünür</strong>. Az miktarda ve gizli olmayan veriler için uygundur; en yaygın örneği bir <strong>arama kutusudur</strong>.</p>
@@ -128,8 +128,8 @@
     <div class="note warn"><span class="tag">Dikkat</span><p>POST verileri gizlemez ya da şifrelemez; yalnızca adres çubuğunda göstermez. Verileri yolda koruyan, adresi <code class="inline">https://</code> ile başlayan güvenli bağlantıdır (HTTPS).</p></div>
     <div class="note"><span class="tag">Not</span><p>GET ve POST'un asıl işini yapabilmesi için <code class="inline">action</code> ile belirtilen sunucu tarafı dosyanın (örneğin <code class="inline">.php</code>) çalışıyor olması gerekir. Bu derste backend olmadığından bu dosyalar yoktur; yöntemleri burada yalnızca <strong>kavram olarak</strong> görüyoruz.</p></div>
 
-    <h2 id="form-ogeleri"><span class="num">2</span>Form Ögeleri</h2>
-    <p>En sık kullanılan form ögeleri tarayıcıda şöyle görünür:</p>
+    <h2 id="form-ogeleri"><span class="num">2</span>Form Öğeleri</h2>
+    <p>En sık kullanılan form öğeleri tarayıcıda şöyle görünür:</p>
     <figure class="diagram"><img alt="Metin kutusu, e-posta, açılır liste, çok satırlı metin, onay kutusu, radyo düğmesi ve düğme örnekleri" src="images/form_ogeleri.png" width="620" height="318" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">Metin kutusu, e-posta, açılır liste, çok satırlı metin, onay kutusu, radyo düğmesi ve düğme örnekleri</figcaption>
     </figure>
@@ -302,7 +302,7 @@
 
     <h2 id="bu-haftanin-ozeti"><span class="num">5</span>Bu Haftanın Özeti</h2>
     <ul>
-      <li>Tüm form ögeleri <strong><code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code></strong> arasında bulunur; <code class="inline">action</code> ve <code class="inline">method</code> verinin nereye ve nasıl gideceğini belirtir (backend gerektirir).</li>
+      <li>Tüm form öğeleri <strong><code class="inline">&lt;form&gt;</code> ... <code class="inline">&lt;/form&gt;</code></strong> arasında bulunur; <code class="inline">action</code> ve <code class="inline">method</code> verinin nereye ve nasıl gideceğini belirtir (backend gerektirir).</li>
       <li><strong>GET</strong> verileri adres çubuğunda (URL'de) gösterir; az miktardaki, gizli olmayan veriler (arama) için kullanılır. <strong>POST</strong> verileri adres çubuğunda göstermez; hassas ya da çok veri (şifre, giriş) için kullanılır.</li>
       <li><strong><code class="inline">&lt;input&gt;</code></strong> tek etikettir; <code class="inline">type</code> ile türü belirlenir: <code class="inline">text</code>, <code class="inline">email</code>, <code class="inline">password</code>, <code class="inline">number</code>, <code class="inline">date</code>, <code class="inline">checkbox</code>, <code class="inline">radio</code>, <code class="inline">submit</code> ...</li>
       <li><strong><code class="inline">&lt;label&gt;</code></strong>, alanın adını gösterir; <code class="inline">for</code> değeri alanın <code class="inline">id</code>'si ile aynı olmalıdır.</li>
@@ -314,7 +314,7 @@
     <h2 id="konu-sonu-testi"><span class="num">6</span>Konu Sonu Testi</h2>
     <ol class="quiz">
       <li>
-        <p class="q">Tüm form ögeleri hangi etiketin içine yazılır?</p>
+        <p class="q">Tüm form öğeleri hangi etiketin içine yazılır?</p>
         <ul class="opts">
           <li><b>a)</b> <code class="inline">&lt;input&gt;</code></li>
           <li><b>b)</b> <code class="inline">&lt;form&gt;</code></li>
@@ -322,7 +322,7 @@
           <li><b>d)</b> <code class="inline">&lt;head&gt;</code></li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">b</span>Tüm form ögeleri <code class="inline">&lt;form&gt;</code> içinde yer alır.</div>
+          <div class="ans"><span class="letter">b</span>Tüm form öğeleri <code class="inline">&lt;form&gt;</code> içinde yer alır.</div>
         </details>
       </li>
       <li>
@@ -584,7 +584,7 @@
     <div class="toc-title">Bu Sayfada</div>
     <nav class="toc" id="toc">
 <a href="#form-nedir"><span class="n">1</span>Form Nedir?</a>
-      <a href="#form-ogeleri"><span class="n">2</span>Form Ögeleri</a>
+      <a href="#form-ogeleri"><span class="n">2</span>Form Öğeleri</a>
       <a href="#ornek-iletisim-formu"><span class="n">3</span>Örnek: İletişim Formu</a>
       <a href="#sikca-yapilan-5-hata"><span class="n">4</span>Sıkça Yapılan 5 Hata</a>
       <a href="#bu-haftanin-ozeti"><span class="n">5</span>Bu Haftanın Özeti</a>
