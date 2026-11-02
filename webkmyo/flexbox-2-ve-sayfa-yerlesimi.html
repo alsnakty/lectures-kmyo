@@ -103,7 +103,8 @@
 <pre class="language-css">main  { flex: 2; }   /* iki pay alır (daha geniş) */
 aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
     </div>
-    <p>Yukarıdaki örnekte <code class="inline">main</code>, kalan alandan <code class="inline">aside</code>'ın <strong>iki katı</strong> pay alır; bu yüzden yaklaşık iki kat geniş olur (iki kutunun eşit <code class="inline">padding</code>'i paya dahil olmadığı için tam iki kat değildir). <code class="inline">flex: 1</code> verilen iki öğe ise <strong>eşit</strong> genişlikte olur.</p>
+    <p>Yukarıdaki örnekte <code class="inline">main</code>, kalan alandan <code class="inline">aside</code>'ın <strong>iki katı</strong> pay alır; bu yüzden yaklaşık iki kat geniş olur (iki kutunun eşit <code class="inline">padding</code>'i paya dâhil olmadığı için tam iki kat değildir). <code class="inline">flex: 1</code> verilen iki öğe ise <strong>eşit</strong> genişlikte olur.</p>
+    <p><code class="inline">aside</code>, ana içeriğin yanındaki yan içerik için kullanılan anlamlı bir etikettir. Ayrıntısını 2. bölümde göreceğiz.</p>
 
     <h2 id="ornek-klasik-site-iskeleti"><span class="num">2</span>Örnek: Klasik Site İskeleti</h2>
     <p>Şimdi semantik etiketleri ve Flexbox'ı birleştirip klasik bir site düzeni kuralım: üstte <code class="inline">header</code>, altında <code class="inline">nav</code>, ortada yan yana <code class="inline">main</code> + <code class="inline">aside</code>, en altta <code class="inline">footer</code>.</p>
@@ -177,10 +178,80 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Klasik site iskeletinin tarayıcı çıktısı: koyu üst bölüm, mavi menü, solda geniş ana içerik, sağda dar yan sütun ve koyu alt bilgi" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Site İskeleti&lt;/title&gt;
+    &lt;style&gt;
+        body { margin: 0; font-family: Arial, sans-serif; }
+        header {
+            background-color: #34495e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+            background-color: #3498db;
+            padding: 12px;
+        }
+        nav a { color: white; text-decoration: none; }
+        .govde { display: flex; }
+        main {
+            flex: 2;
+            background-color: #ecf0f1;
+            padding: 20px;
+        }
+        aside {
+            flex: 1;
+            background-color: #d5dbdb;
+            padding: 20px;
+        }
+        footer {
+            background-color: #34495e;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Kahve Dünyası&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;nav&gt;
+        &lt;a href=&quot;#&quot;&gt;Ana Sayfa&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;Hakkımda&lt;/a&gt;
+        &lt;a href=&quot;#&quot;&gt;İletişim&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;div class=&quot;govde&quot;&gt;
+        &lt;main&gt;
+            &lt;h2&gt;Hoş Geldiniz&lt;/h2&gt;
+            &lt;p&gt;Şehrin merkezinde sıcacık bir mola.&lt;/p&gt;
+        &lt;/main&gt;
+        &lt;aside&gt;
+            &lt;h3&gt;Duyurular&lt;/h3&gt;
+            &lt;p&gt;Hafta içi %10 indirim.&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+        &lt;p&gt;© 2026 Kahve Dünyası&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>Burada <code class="inline">.govde</code> bir flex kapsayıcısıdır; <code class="inline">main</code> (<code class="inline">flex: 2</code>) ve <code class="inline">aside</code> (<code class="inline">flex: 1</code>) yan yana <strong>iki sütun</strong> oluşturur ve genişlikleri yaklaşık 2:1 oranındadır. <code class="inline">main</code> ile <code class="inline">aside</code>'ı saran kutu yalnızca düzen için var, anlamsal bir görevi yok; bu yüzden burada <code class="inline">&lt;div&gt;</code> kullandık. <code class="inline">body</code>'ye <code class="inline">margin: 0</code> verdik ki header ve footer kenarlara tam otursun.</p>
 
     <h2 id="flex-wrap-alt-satira-gecme"><span class="num">3</span><code class="inline">flex-wrap</code>: Alt Satıra Geçme</h2>
-    <p>Flex kapsayıcısı, varsayılan olarak bütün öğeleri <strong>tek satırda</strong> tutar. Öğeler sığmadığında önce daralır; daha fazla daralamazlarsa yine de alt satıra geçmezler, sayfa yana taşar. Öğelerin sığmadığında <strong>alt satıra geçmesi</strong> için kapsayıcıya <code class="inline">flex-wrap: wrap;</code> verilir:</p>
+    <p>Flex kapsayıcısı, varsayılan olarak bütün öğeleri <strong>tek satırda</strong> tutar (<code class="inline">flex-wrap: nowrap</code>). Öğeler sığmadığında önce daralır; daha fazla daralamazlarsa yine de alt satıra geçmezler, sayfa yana taşar. Öğelerin sığmadığında <strong>alt satıra geçmesi</strong> için kapsayıcıya <code class="inline">flex-wrap: wrap;</code> verilir:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
 <pre class="language-css">.galeri {
@@ -244,7 +315,7 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Tarayıcıdaki sonucu şöyledir:</p>
+    <p>Tarayıcıdaki sonuç şöyledir:</p>
     <figure class="cikti">
       <div class="pencere">
         <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
@@ -291,7 +362,7 @@ aside { flex: 1; }   /* bir pay alır (daha dar) */</pre>
 "></iframe>
       </div>
     </figure>
-    <p>Üç kart <code class="inline">flex: 1</code> sayesinde <strong>eşit genişlikte</strong> yan yana dizildi; <code class="inline">gap</code> aralarında boşluk bıraktı. Bu genişlikte (800px) galeriye dördüncü bir kart eklerseniz dört kart bir satıra sığmaz: dördüncü kart alt satıra geçer ve <code class="inline">flex: 1</code> yüzünden o satırın tamamını kaplar.</p>
+    <p>Üç kart <code class="inline">flex: 1</code> sayesinde <strong>eşit genişlikte</strong> yan yana dizildi; <code class="inline">gap</code> aralarında boşluk bıraktı. Yaklaşık 800 piksel genişlikteki bir pencerede galeriye dördüncü bir kart eklerseniz dört kart bir satıra sığmaz: dördüncü kart alt satıra geçer ve <code class="inline">flex: 1</code> yüzünden o satırın tamamını kaplar. Telefon gibi dar ekranlarda ise <code class="inline">min-width: 200px</code> yüzünden kartlar zaten alt alta geçer.</p>
     <div class="note"><span class="tag">Not</span><p>Aynı galeri <strong>CSS Grid</strong> adlı başka bir yerleşim yöntemiyle de yapılabilir. Bu derste yerleşim için Flexbox yeterlidir.</p></div>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">5</span>Sıkça Yapılan 5 Hata</h2>
@@ -493,6 +564,46 @@ aside   { flex: 1; }
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Solda geniş ana içerik, sağda açık turuncu zeminli dar yan sütun" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;İki Sütunlu Sayfa&lt;/title&gt;
+    &lt;style&gt;
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .govde { display: flex; }
+        main {
+            flex: 3;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+        aside {
+            flex: 1;
+            background-color: #f4e1c1;
+            padding: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;govde&quot;&gt;
+        &lt;main&gt;
+            &lt;h2&gt;Blog Yazısı&lt;/h2&gt;
+            &lt;p&gt;Bu bölüm sayfanın ana içeriğidir.&lt;/p&gt;
+        &lt;/main&gt;
+        &lt;aside&gt;
+            &lt;h3&gt;Kategoriler&lt;/h3&gt;
+            &lt;p&gt;Haberler, Duyurular, İpuçları&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>Adımlar:</p>
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
@@ -524,7 +635,7 @@ aside   { flex: 1; }
     <p>Soruları Sınıf Uygulamasında hazırladığınız <code class="inline">iskelet.html</code> sayfası üzerinde yapın.</p>
     <ol>
       <li><code class="inline">main</code> ve <code class="inline">aside</code>'ın <code class="inline">flex</code> oranlarını deneyin (<code class="inline">2:1</code>, <code class="inline">3:1</code>, <code class="inline">1:1</code>).</li>
-      <li><code class="inline">flex-direction: column</code> kullanarak öğeleri alt alta dizin.</li>
+      <li><code class="inline">main</code> ile <code class="inline">aside</code>'ı saran kapsayıcıya (örnekteki <code class="inline">.govde</code>) <code class="inline">flex-direction: column</code> vererek öğeleri alt alta dizin.</li>
       <li>Galeriye dört, sonra altı kart ekleyip kartların alt satıra nasıl geçtiğini gözlemleyin.</li>
       <li>Galeriden <code class="inline">flex-wrap: wrap</code> satırını silip sayfayı daraltın; ne olduğunu gözlemleyin.</li>
     </ol>

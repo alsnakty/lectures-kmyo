@@ -104,6 +104,7 @@
       <li><code class="inline">color: brown;</code> → bir <strong>bildirim</strong>; <code class="inline">color</code> <strong>özellik</strong>, <code class="inline">brown</code> <strong>değer</strong>.</li>
       <li>Her bildirim <strong>noktalı virgül (<code class="inline">;</code>)</strong> ile biter; bildirimler süslü parantez <code class="inline">{ }</code> içine yazılır.</li>
     </ul>
+    <div class="note"><span class="tag">Not</span><p>HTML'de etiketin içine yazılan <code class="inline">href</code>, <code class="inline">src</code>, <code class="inline">class</code> gibi ayarlara da özellik (attribute) diyoruz. CSS'teki özellik (property) ise görünüm ayarıdır. İkisi farklı şeylerdir.</p></div>
 
     <h2 id="css-i-sayfaya-baglamanin-uc-yolu"><span class="num">2</span>CSS'i Sayfaya Bağlamanın Üç Yolu</h2>
     <h3 id="satir-ici-inline-stil">2.1. Satır İçi (Inline) Stil</h3>
@@ -124,7 +125,7 @@
 &lt;/head&gt;</pre>
     </div>
     <h3 id="harici-external-stil">2.3. Harici (External) Stil</h3>
-    <p>Stiller ayrı bir <code class="inline">.css</code> dosyasına yazılır ve HTML'e <code class="inline">&lt;link&gt;</code> ile bağlanır. <strong>Birden fazla sayfa</strong> aynı dosyayı kullanabilir; bu, profesyonel çalışmada tercih edilen yöntemdir.</p>
+    <p>Stiller ayrı bir <code class="inline">.css</code> dosyasına yazılır ve HTML'e <code class="inline">&lt;link&gt;</code> ile bağlanır. <strong>Birden fazla sayfa</strong> aynı dosyayı kullanabilir; bu, çok sayfalı sitelerde tercih edilen yöntemdir.</p>
     <p><code class="inline">style.css</code> dosyası:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">CSS</span></div>
@@ -147,7 +148,7 @@ p { color: gray; }</pre>
         <thead><tr><th>Seçici türü</th><th>CSS'te yazılışı</th><th>HTML'de</th><th>Kaç öğeyi etkiler?</th></tr></thead>
         <tbody>
           <tr><td><strong>Etiket</strong></td><td><code class="inline">p { }</code></td><td><code class="inline">&lt;p&gt;</code></td><td>O etiketten olan <strong>tüm</strong> öğeler</td></tr>
-          <tr><td><strong>Class (sınıf)</strong></td><td><code class="inline">.uyari { }</code></td><td><code class="inline">class="uyari"</code></td><td>Aynı sınıfı taşıyan <strong>birden çok</strong> öğe</td></tr>
+          <tr><td><strong>Class (sınıf)</strong></td><td><code class="inline">.uyari { }</code></td><td><code class="inline">class="uyari"</code></td><td>Aynı class'ı taşıyan <strong>birden çok</strong> öğe</td></tr>
           <tr><td><strong>Id (kimlik)</strong></td><td><code class="inline">#ustbilgi { }</code></td><td><code class="inline">id="ustbilgi"</code></td><td>Sayfada <strong>yalnızca bir</strong> öğe</td></tr>
         </tbody>
       </table>
@@ -171,8 +172,28 @@ p { color: gray; }</pre>
     &lt;p id="ustbilgi"&gt;Üst bilgi alanı.&lt;/p&gt;
 &lt;/body&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Üç paragraf: birincisi gri, ikincisi kırmızı, üçüncüsü lacivert" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;head&gt;
+    &lt;style&gt;
+        p { color: gray; }            /* tüm paragraflar */
+        .uyari { color: red; }        /* class=&quot;uyari&quot; olanlar */
+        #ustbilgi { color: navy; }    /* id=&quot;ustbilgi&quot; olan tek öğe */
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Normal paragraf.&lt;/p&gt;
+    &lt;p class=&quot;uyari&quot;&gt;Bu bir uyarıdır.&lt;/p&gt;
+    &lt;p id=&quot;ustbilgi&quot;&gt;Üst bilgi alanı.&lt;/p&gt;
+&lt;/body&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>Bir öğeye birden fazla kural uyarsa öncelik sırası <strong>id &gt; class &gt; etiket</strong> olur. Bu yüzden ikinci paragraf hem <code class="inline">p</code> hem <code class="inline">.uyari</code> kuralına uyduğu hâlde gri değil <strong>kırmızı</strong>, üçüncü paragraf ise <strong>lacivert</strong> görünür.</p>
-    <div class="note ok"><span class="tag">İpucu</span><p>Aynı stili birden çok seçiciye vermek için seçicileri <strong>virgülle</strong> ayırabilirsiniz: <code class="inline">h1, h2 { color: brown; }</code> hem <code class="inline">h1</code> hem <code class="inline">h2</code>'yi biçimlendirir.</p></div>
+    <div class="note ok"><span class="tag">İpucu</span><p>Aynı stili birden çok seçiciye vermek için seçicileri <strong>virgülle</strong> ayırabilirsiniz (buna <strong>grup seçici</strong> denir): <code class="inline">h1, h2 { color: brown; }</code> hem <code class="inline">h1</code> hem <code class="inline">h2</code>'yi biçimlendirir.</p></div>
 
     <h2 id="temel-gorunum-ozellikleri"><span class="num">4</span>Temel Görünüm Özellikleri</h2>
     <div class="twrap">
@@ -187,6 +208,7 @@ p { color: gray; }</pre>
         </tbody>
       </table>
     </div>
+    <p><code class="inline">font-family</code>'ye virgülle birden çok yazı tipi yazılabilir. İlki bilgisayarda bulunamazsa sıradaki kullanılır (ör. <code class="inline">Arial, sans-serif</code>).</p>
     <p><strong>Renkleri yazmanın iki yaygın yolu:</strong></p>
     <ul>
       <li><strong>Renk adı:</strong> <code class="inline">red</code>, <code class="inline">blue</code>, <code class="inline">green</code>, <code class="inline">white</code> ...</li>
@@ -194,7 +216,7 @@ p { color: gray; }</pre>
     </ul>
 
     <h2 id="ornek-bir-sayfayi-renklendirme"><span class="num">5</span>Örnek: Bir Sayfayı Renklendirme</h2>
-    <p>Şimdi sade bir sayfayı CSS ile biçimlendirelim. Aşağıdaki örnekte <strong>dahili stil</strong> kullanıyoruz; etiket (<code class="inline">body</code>, <code class="inline">h1</code>), class (<code class="inline">.vurgu</code>) ve id (<code class="inline">#alt-bilgi</code>) seçicilerinin üçünü de bir arada görüyorsunuz.</p>
+    <p>Şimdi sade bir sayfayı CSS ile biçimlendirelim. Aşağıdaki örnekte <strong>dahili stil</strong> kullanıyoruz; etiket (<code class="inline">body</code>, <code class="inline">h1</code>), class (<code class="inline">.vurgu</code>) ve id (<code class="inline">#alt-bilgi</code>) seçicilerinin üçünü de bir arada görebilirsiniz.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -241,7 +263,7 @@ p { color: gray; }</pre>
           <tr><td>Bildirim sonunda <code class="inline">;</code> unutmak</td><td>O bildirim ve ardından gelen bildirim uygulanmaz</td><td>Her bildirimi <code class="inline">;</code> ile bitirin</td></tr>
           <tr><td>Süslü parantezi <code class="inline">{ }</code> kapatmamak</td><td>Sonraki kurallar uygulanmaz</td><td>Açtığınız her <code class="inline">{</code>'yi <code class="inline">}</code> ile kapatın</td></tr>
           <tr><td>Class seçicide <code class="inline">.</code>, id seçicide <code class="inline">#</code> koymamak</td><td>Seçici çalışmaz</td><td>CSS'te <code class="inline">.sinif</code> ve <code class="inline">#kimlik</code> yazın</td></tr>
-          <tr><td>HTML'de <code class="inline">class=".uyari"</code> yazmak</td><td>Sınıf tanınmaz</td><td>HTML'de noktasız yazın: <code class="inline">class="uyari"</code></td></tr>
+          <tr><td>HTML'de <code class="inline">class=".uyari"</code> yazmak</td><td>Class tanınmaz</td><td>HTML'de noktasız yazın: <code class="inline">class="uyari"</code></td></tr>
           <tr><td>Aynı <code class="inline">id</code>'yi birden çok öğeye vermek</td><td>CSS ikisine de uygulanır, ama kod HTML kuralına aykırıdır ve başka yerlerde sorun çıkarır</td><td><code class="inline">id</code> benzersizdir; çok kullanım için <code class="inline">class</code> seçin</td></tr>
           <tr><td>Harici CSS'te <code class="inline">&lt;link&gt;</code> yolunu yanlış yazmak</td><td>Stil dosyası yüklenmez</td><td><code class="inline">href</code> yolunu (göreli yol) doğru yazın</td></tr>
         </tbody>
@@ -297,7 +319,7 @@ p { color: gray; }</pre>
         </details>
       </li>
       <li>
-        <p class="q">Sayfada <strong>yalnızca bir</strong> öğeye verilmesi gereken seçici hangisidir?</p>
+        <p class="q">Sayfada yalnızca <strong>tek bir öğeyi</strong> seçmek için kullanılan seçici hangisidir?</p>
         <ul class="opts">
           <li><b>a)</b> Etiket seçici</li>
           <li><b>b)</b> Class seçici</li>
@@ -380,9 +402,10 @@ p { color: gray; }</pre>
       <li>Özellik adı yanlış yazılmış. Doğrusu: <code class="inline">color</code></li>
       <li>HTML'de class adı noktasız yazılır. Doğrusu: <code class="inline">class="baslik"</code></li>
     </ol>
+    <p><strong>Not:</strong> <code class="inline">#</code>'siz renk ve birimsiz değer, sayfa <code class="inline">&lt;!DOCTYPE html&gt;</code> ile başladığında yok sayılır. DOCTYPE yazılmazsa tarayıcı eski uyumluluk moduna geçer ve bu ikisini uygular, kod çalışıyor gibi görünür. Bu yüzden her sayfanın başına DOCTYPE yazın.</p>
       </div>
     </details>
-    <p><strong>5. (Kod yazma)</strong> <code class="inline">style.css</code> adlı harici dosyaya şu kuralları yazın: sayfanın arka planı <code class="inline">#eeeeee</code>, yazı tipi Arial (yoksa tırnaksız herhangi bir yazı tipi); <code class="inline">h1</code> başlıkları ortalı ve lacivert. Ardından bu dosyayı HTML sayfasına bağlayan satırı ve nereye yazılacağını belirtin.</p>
+    <p><strong>5. (Kod yazma)</strong> <code class="inline">style.css</code> adlı harici dosyaya şu kuralları yazın: sayfanın arka planı <code class="inline">#eeeeee</code>, yazı tipi Arial (Arial yoksa sans-serif kullanılsın); <code class="inline">h1</code> başlıkları ortalı ve lacivert. Ardından bu dosyayı HTML sayfasına bağlayan satırı ve nereye yazılacağını belirtin.</p>
     <details class="ansbox"><summary>Cevabı göster</summary>
       <div class="ans">
     <div class="code">
@@ -434,6 +457,41 @@ h1 {
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Açık mavi zeminde ortalanmış mavi başlık, bir bölümü kırmızı yazılmış paragraf ve sarı zeminli not paragrafı" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Renkli Sayfam&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: #eaf4fb;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #1f6feb;
+            text-align: center;
+        }
+        .onemli {
+            color: #c0392b;
+        }
+        #not {
+            background-color: #fff3cd;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Web Tasarımı Notlarım&lt;/h1&gt;
+    &lt;p&gt;Bu ders &lt;span class=&quot;onemli&quot;&gt;çok önemli&lt;/span&gt; bir temel oluşturur.&lt;/p&gt;
+    &lt;p id=&quot;not&quot;&gt;Not: Her hafta uygulama yapmayı unutmayın.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>Adımlar:</p>
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
@@ -452,7 +510,7 @@ h1 {
       <li>Bir <strong>class</strong> (örn. <code class="inline">.vurgu</code>) tanımlayıp bir metne uygulayın.</li>
       <li>Bir <strong>id</strong> (örn. <code class="inline">#altbilgi</code>) tanımlayıp bir öğeye uygulayın.</li>
     </ol>
-    <p><strong>Beklenen sonuç:</strong> Sayfa artık renkli ve kendi yazı tipiyle görünüyor; bir metin <code class="inline">.vurgu</code> sınıfıyla öne çıkmış; bir öğe <code class="inline">#altbilgi</code> id'siyle biçimlendirilmiş. Tüm stiller ayrı dosyada.</p>
+    <p><strong>Beklenen sonuç:</strong> Sayfa artık renkli ve kendi yazı tipiyle görünüyor; bir metin <code class="inline">.vurgu</code> class'ıyla öne çıkmış; bir öğe <code class="inline">#altbilgi</code> id'siyle biçimlendirilmiş. Tüm stiller ayrı dosyada.</p>
     <p><strong>İpuçları:</strong> CSS'te class için <code class="inline">.</code>, id için <code class="inline">#</code> kullanın; HTML'de <code class="inline">class="vurgu"</code> (noktasız) yazın. <code class="inline">&lt;link&gt;</code>'in <code class="inline">href</code> yolunu doğru verin.</p>
 
     <h2 id="notlar-ve-ipuclari"><span class="num">12</span>Notlar ve İpuçları</h2>
@@ -467,7 +525,7 @@ h1 {
     <ol>
       <li><code class="inline">&lt;head&gt;</code> içine bir <code class="inline">&lt;style&gt;</code> ekleyerek <code class="inline">h1</code> rengini değiştirin.</li>
       <li><code class="inline">body</code> için bir <code class="inline">background-color</code> ve bir <code class="inline">font-family</code> belirleyin.</li>
-      <li>Bir paragrafa <code class="inline">class="onemli"</code> verip CSS'te <code class="inline">.onemli</code> sınıfını kırmızı yapın.</li>
+      <li>Bir paragrafa <code class="inline">class="onemli"</code> verip CSS'te <code class="inline">.onemli</code> class'ını kırmızı yapın.</li>
       <li>Bir öğeye <code class="inline">id</code> verip <code class="inline">#</code> seçicisiyle arka plan rengini değiştirin.</li>
       <li>Bir rengi önce <strong>adıyla</strong> (<code class="inline">red</code>), sonra <strong>HEX koduyla</strong> (<code class="inline">#ff0000</code>) yazıp aynı sonucu verdiğini gözlemleyin.</li>
       <li>Stillerinizi ayrı bir <code class="inline">style.css</code> dosyasına taşıyıp <code class="inline">&lt;link&gt;</code> ile bağlayarak <strong>harici</strong> stile çevirin.</li>

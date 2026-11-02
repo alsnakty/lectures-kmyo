@@ -104,10 +104,10 @@
         </tbody>
       </table>
     </div>
-    <div class="note"><span class="tag">Not</span><p>HTML büyük/küçük harfe <strong>duyarlı değildir</strong> (<code class="inline">&lt;P&gt;</code> ile <code class="inline">&lt;p&gt;</code> aynı anlama gelir). Ancak etiketler genellikle <strong>küçük harfle</strong> yazılır; siz de öyle yazın. Açtığınız her çift etiketi <strong>kapatmayı unutmayın.</strong></p></div>
+    <div class="note"><span class="tag">Not</span><p>HTML <strong>etiketleri</strong> büyük/küçük harfe <strong>duyarlı değildir</strong> (<code class="inline">&lt;P&gt;</code> ile <code class="inline">&lt;p&gt;</code> aynı anlama gelir). Ancak etiketler genellikle <strong>küçük harfle</strong> yazılır; siz de öyle yazın. Açtığınız her çift etiketi <strong>kapatmayı unutmayın.</strong></p></div>
 
     <h2 id="sayfanin-iskeleti"><span class="num">2</span>Sayfanın İskeleti</h2>
-    <p>Her HTML sayfası aynı temel iskelet üzerine kurulur. Aşağıdaki dört etiket, bir sayfanın "olmazsa olmaz" parçalarıdır:</p>
+    <p>Her HTML sayfası aynı temel iskelet üzerine kurulur. Aşağıdaki DOCTYPE bildirimi ve üç etiket, bir sayfanın "olmazsa olmaz" parçalarıdır:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!DOCTYPE html&gt;
@@ -179,6 +179,16 @@
 <pre class="language-xml">&lt;p&gt;Bu birinci paragraftır.&lt;/p&gt;
 &lt;p&gt;Bu ikinci paragraftır.&lt;/p&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="İki paragrafın tarayıcı çıktısı: aralarında boşluk bulunan iki ayrı satır" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;p&gt;Bu birinci paragraftır.&lt;/p&gt;
+&lt;p&gt;Bu ikinci paragraftır.&lt;/p&gt;
+"></iframe>
+      </div>
+    </figure>
     <div class="note warn"><span class="tag">Önemli</span><p>Tarayıcı, kodda arka arkaya bıraktığınız <strong>birden fazla boşluğu tek boşluk</strong> sayar; <strong>Enter ile yaptığınız satır atlamayı da bir boşluk sayar.</strong> Yani metni koddaki gibi alt satıra geçirmek için Enter'a basmanız yetmez; satırı <code class="inline">&lt;br&gt;</code>, paragrafı <code class="inline">&lt;p&gt;</code> etiketiyle oluşturmanız gerekir.</p></div>
     <h3 id="satir-kesme">4.2. Satır Kesme: <code class="inline">&lt;br&gt;</code></h3>
     <p>Aynı paragraf içinde bir alt satıra geçmek için <code class="inline">&lt;br&gt;</code> kullanılır. Tek (kapanışsız) bir etikettir.</p>
@@ -186,6 +196,15 @@
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;p&gt;Birinci satır&lt;br&gt;İkinci satır&lt;/p&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Aynı paragraf içinde br ile alt satıra geçen iki satır" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;p&gt;Birinci satır&lt;br&gt;İkinci satır&lt;/p&gt;
+"></iframe>
+      </div>
+    </figure>
     <h3 id="yatay-cizgi">4.3. Yatay Çizgi: <code class="inline">&lt;hr&gt;</code></h3>
     <p><code class="inline">&lt;hr&gt;</code>, sayfaya yatay bir çizgi çizer ve genellikle <strong>konu değişimini</strong> belirtmek için kullanılır. O da tek (kapanışsız) bir etikettir.</p>
     <div class="code">
@@ -194,6 +213,17 @@
 &lt;hr&gt;
 &lt;p&gt;Yeni bölüm...&lt;/p&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="İki paragrafın arasında sayfa genişliğinde yatay bir çizgi" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;p&gt;Giriş bölümü...&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Yeni bölüm...&lt;/p&gt;
+"></iframe>
+      </div>
+    </figure>
 
     <h2 id="metin-bicimlendirme-etiketleri"><span class="num">5</span>Metin Biçimlendirme Etiketleri</h2>
     <p>Metnin bir kısmını vurgulamak için aşağıdaki etiketler kullanılır:</p>
@@ -215,12 +245,22 @@
     <div class="note"><span class="tag">Not</span><p><code class="inline">&lt;b&gt;</code> ile <code class="inline">&lt;strong&gt;</code> her ikisi de yazıyı kalın gösterir; aradaki fark, <code class="inline">&lt;strong&gt;</code> etiketinin aynı zamanda "bu metin önemlidir" anlamını taşımasıdır. Aynı ilişki <code class="inline">&lt;i&gt;</code> ile <code class="inline">&lt;em&gt;</code> arasında da vardır. Bu derste ikisini de kalın ya da eğik yapmak için kullanabilirsiniz.</p></div>
 
     <h2 id="yorum-satiri"><span class="num">6</span>Yorum Satırı: <code class="inline">&lt;!-- --&gt;</code></h2>
-    <p>Yorumlar, kodun içine yazdığınız ama <strong>tarayıcıda görünmeyen</strong> notlardır. Kendinize hatırlatma bırakmak veya bir kod parçasını geçici olarak devre dışı bırakmak için kullanılır.</p>
+    <p>Yorum satırları, kodun içine yazdığınız ama <strong>tarayıcıda görünmeyen</strong> notlardır. Kendinize hatırlatma bırakmak veya bir kod parçasını geçici olarak devre dışı bırakmak için kullanılır.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;!-- Bu bir yorumdur, tarayıcıda görünmez --&gt;
 &lt;p&gt;Bu paragraf görünür.&lt;/p&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Sayfada yalnızca &quot;Bu paragraf görünür.&quot; paragrafı var, yorum satırı görünmüyor" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;!-- Bu bir yorumdur, tarayıcıda görünmez --&gt;
+&lt;p&gt;Bu paragraf görünür.&lt;/p&gt;
+"></iframe>
+      </div>
+    </figure>
 
     <h2 id="ornek-kendini-tanitan-sayfa"><span class="num">7</span>Örnek: Kendini Tanıtan Sayfa</h2>
     <p>Şimdi bu haftanın etiketlerini kullanarak kendini tanıtan bir sayfa hazırlayalım. VS Code'da <code class="inline">web_sitem</code> klasöründe <code class="inline">index.html</code> dosyasını açın ve şunu yazın:</p>
@@ -266,7 +306,7 @@
 "></iframe>
       </div>
     </figure>
-    <p><code class="inline">&lt;!-- İletişim bilgileri ileride eklenecek --&gt;</code> satırı bir yorum olduğu için sayfada <strong>görünmez.</strong></p>
+    <p><code class="inline">&lt;!-- İletişim bilgileri ileride eklenecek --&gt;</code> bir yorum satırı olduğu için sayfada <strong>görünmez.</strong></p>
 
     <h2 id="sikca-yapilan-5-hata"><span class="num">8</span>Sıkça Yapılan 5 Hata</h2>
     <div class="twrap">
@@ -274,7 +314,7 @@
         <thead><tr><th>Hata</th><th>Sonuç</th><th>Çözüm</th></tr></thead>
         <tbody>
           <tr><td>Çift etiketi kapatmamak (<code class="inline">&lt;b&gt;</code> var, <code class="inline">&lt;/b&gt;</code> yok)</td><td>Sonraki bütün yazılar kalın görünür</td><td>Her çift etiketi kapatın</td></tr>
-          <tr><td><code class="inline">&lt;br&gt;</code> ve <code class="inline">&lt;hr&gt;</code> için kapanış etiketi yazmak (<code class="inline">&lt;/br&gt;</code>)</td><td>Fazladan boş bir satır oluşur</td><td>Bunlar tek etikettir, kapanışları yoktur</td></tr>
+          <tr><td><code class="inline">&lt;br&gt;</code> için kapanış etiketi yazmak (<code class="inline">&lt;br&gt;&lt;/br&gt;</code>)</td><td>Fazladan bir satır sonu oluşur</td><td><code class="inline">&lt;br&gt;</code> tek etikettir, kapanışı yoktur</td></tr>
           <tr><td>Alt satıra geçmek için kodda Enter'a basmak</td><td>Tarayıcı satırı atlamaz</td><td>Satır için <code class="inline">&lt;br&gt;</code>, paragraf için <code class="inline">&lt;p&gt;</code> kullanın</td></tr>
           <tr><td>Yazıyı büyütmek için <code class="inline">&lt;h1&gt;</code> kullanmak</td><td>Anlam bozulur</td><td>Başlık yalnızca başlık için; boyut CSS ile ayarlanır</td></tr>
           <tr><td>İç içe etiketleri yanlış sırada kapatmak</td><td>Tarayıcı çoğu zaman kendisi düzeltir; ama kod karışır ve hata bulmak zorlaşır</td><td>En son açılan etiketi en önce kapatın</td></tr>
@@ -319,10 +359,10 @@
         </details>
       </li>
       <li>
-        <p class="q"><code class="inline">&lt;!-- ... --&gt;</code> etiketi ne işe yarar?</p>
+        <p class="q"><code class="inline">&lt;!-- ... --&gt;</code> ne işe yarar?</p>
         <ul class="opts">
           <li><b>a)</b> Başlık oluşturur</li>
-          <li><b>b)</b> Tarayıcıda görünmeyen yorum ekler</li>
+          <li><b>b)</b> Tarayıcıda görünmeyen yorum satırı ekler</li>
           <li><b>c)</b> Yatay çizgi çizer</li>
           <li><b>d)</b> Yazıyı kalın yapar</li>
         </ul>
@@ -443,12 +483,36 @@ yağmur var.</pre>
     &lt;p&gt;En sevdiğim film &lt;b&gt;Esaretin Bedeli&lt;/b&gt; filmidir.&lt;/p&gt;
     &lt;p&gt;Umut ve dostluk üzerine etkileyici bir hikâye anlatır.&lt;/p&gt;
     &lt;hr&gt;
-    &lt;h3&gt;Neden Sevdim?&lt;/h3&gt;
+    &lt;h2&gt;Neden Sevdim?&lt;/h2&gt;
     &lt;p&gt;Kurgusu ve sonu beni çok etkiledi.&lt;/p&gt;
     &lt;!-- İstenirse buraya yönetmen bilgisi eklenebilir --&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Film tanıtım sayfasının tarayıcı çıktısı: ana başlık, alt başlık, film adı kalın yazılmış paragraf, yatay çizgi ve ikinci bölüm" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;En Sevdiğim Film&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;En Sevdiğim Film&lt;/h1&gt;
+    &lt;h2&gt;Kısa Tanıtım&lt;/h2&gt;
+    &lt;p&gt;En sevdiğim film &lt;b&gt;Esaretin Bedeli&lt;/b&gt; filmidir.&lt;/p&gt;
+    &lt;p&gt;Umut ve dostluk üzerine etkileyici bir hikâye anlatır.&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;h2&gt;Neden Sevdim?&lt;/h2&gt;
+    &lt;p&gt;Kurgusu ve sonu beni çok etkiledi.&lt;/p&gt;
+    &lt;!-- İstenirse buraya yönetmen bilgisi eklenebilir --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>Adımlar:</p>
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe <code class="inline">film.html</code> adında yeni bir dosya oluşturun.</li>

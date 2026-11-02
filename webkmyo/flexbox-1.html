@@ -120,7 +120,7 @@
           <tr><td><code class="inline">center</code></td><td>Öğeleri <strong>ortalar</strong>.</td></tr>
           <tr><td><code class="inline">flex-end</code></td><td>Öğeleri <strong>sağa</strong> yaslar.</td></tr>
           <tr><td><code class="inline">space-between</code></td><td>İlk ve son öğeyi uçlara yaslar, <strong>aralara eşit boşluk</strong> koyar.</td></tr>
-          <tr><td><code class="inline">space-around</code></td><td>Her öğenin <strong>etrafına eşit boşluk</strong> koyar.</td></tr>
+          <tr><td><code class="inline">space-around</code></td><td>Her öğenin <strong>etrafına eşit boşluk</strong> koyar. Uçlardaki boşluk, öğeler arasındakinin yarısı kadardır.</td></tr>
         </tbody>
       </table>
     </div>
@@ -144,7 +144,7 @@
           <tr><td><code class="inline">flex-start</code></td><td>Öğeleri <strong>üste</strong> hizalar.</td></tr>
           <tr><td><code class="inline">center</code></td><td>Öğeleri <strong>dikeyde ortalar</strong>.</td></tr>
           <tr><td><code class="inline">flex-end</code></td><td>Öğeleri <strong>alta</strong> hizalar.</td></tr>
-          <tr><td><code class="inline">stretch</code></td><td>Öğeleri kutunun <strong>yüksekliğine kadar uzatır</strong> (varsayılan; öğeye <code class="inline">height</code> verilmemişse).</td></tr>
+          <tr><td><code class="inline">stretch</code></td><td>Öğeleri kutunun <strong>yüksekliğine kadar uzatır</strong>. Varsayılan değerdir. Öğeye <code class="inline">height</code> verilmişse öğe uzamaz.</td></tr>
         </tbody>
       </table>
     </div>
@@ -202,7 +202,7 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
-    <p>Tarayıcıdaki sonucu şöyledir:</p>
+    <p>Tarayıcıdaki sonuç şöyledir:</p>
     <figure class="cikti">
       <div class="pencere">
         <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
@@ -453,6 +453,42 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Açık gri kapsayıcının yatayda ve dikeyde ortasında yan yana üç mavi kutu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Flex Ortalama&lt;/title&gt;
+    &lt;style&gt;
+        .kapsayici {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            height: 200px;
+            background-color: #ecf0f1;
+        }
+        .kutu {
+            width: 80px;
+            height: 80px;
+            background-color: #3498db;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;kapsayici&quot;&gt;
+        &lt;div class=&quot;kutu&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;kutu&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;kutu&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>Adımlar:</p>
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
@@ -487,7 +523,7 @@
       <li><code class="inline">justify-content</code> değerini sırasıyla <code class="inline">center</code>, <code class="inline">flex-end</code>, <code class="inline">space-between</code>, <code class="inline">space-around</code> yapıp farkları gözlemleyin.</li>
       <li>Kapsayıcıya bir <code class="inline">height</code> verip <code class="inline">align-items</code> değerlerini (<code class="inline">flex-start</code>, <code class="inline">center</code>, <code class="inline">flex-end</code>) deneyin.</li>
       <li><code class="inline">justify-content: center</code> ve <code class="inline">align-items: center</code> ile tek bir kutuyu tam ortaya alın.</li>
-      <li>3. haftada, Bağlantılar ve Görseller konusunun Sınıf Uygulamasında yaptığınız sitenin sayfalarına (<code class="inline">index.html</code>, <code class="inline">hakkinda.html</code>) 5. bölümdeki gibi bir <strong>navbar</strong> ekleyin.</li>
+      <li>3. haftada, Bağlantılar ve Görseller konusunun Sınıf Uygulamasında yaptığınız sitenin sayfalarına (<code class="inline">index.html</code>, <code class="inline">hakkinda.html</code>) bu konunun 5. bölümündeki gibi bir <strong>navbar</strong> ekleyin.</li>
       <li>Navbar bağlantıları arasındaki boşluğu <code class="inline">gap</code> değerini değiştirerek ayarlayın.</li>
     </ol>
 

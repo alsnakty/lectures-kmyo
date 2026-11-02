@@ -43,7 +43,7 @@ css/ders.css                ortak stil
 css/vendor/                 highlight.js teması (github-dark) ve lisansı
 js/ders.js                  ortak betik
 js/vendor/                  highlight.js (HTML, CSS, JavaScript) ve lisansı
-images/                     ekran görüntüleri ve şemalar
+images/                     tarayıcı çıktıları ve şemalar
 ```
 
 Sayfalar saf HTML, CSS ve JavaScript ile yazılmıştır. Kod renklendirme için highlight.js'in

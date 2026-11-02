@@ -81,7 +81,7 @@
     </details>
 
 <div class="note"><span class="tag">Hatırlatma</span><p>Harici stil dosyasını <code class="inline">&lt;link&gt;</code> ile bağlamayı 6. haftada, <a href="css-giris.html">CSS'e Giriş</a> konusunda; göreli yolu ise 3. haftada, <a href="baglantilar-ve-gorseller.html">Bağlantılar ve Görseller</a> konusunda gördük. Bootstrap da aynı yolla bağlanan bir stil dosyasıdır.</p></div>
-    <div class="note"><span class="tag">Not</span><p>Final sınavında Bootstrap'in class'ları ve kullanım ayrıntıları sorulmaz; CSS framework'ün ve Bootstrap'in ne olduğunu ise bilmeniz gerekir.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Final sınavında Bootstrap'in class'ları ve kullanım ayrıntıları sorulmaz; CSS framework'ün ve Bootstrap'in ne olduğunu ise bilmeniz gerekir. Yapay zekâ araçlarıyla ilgili 6. bölüm final sınavında sorulmaz. Dönem projesinde Bootstrap kullanılmaz.</p></div>
 
     <h2 id="css-framework-nedir"><span class="num">1</span>CSS Framework Nedir?</h2>
     <p>Bir mobilyayı sıfırdan yapmak için tahtayı kesmeniz, zımparalamanız, boyamanız gerekir. Hazır parçalarla satılan bir mobilyada ise parçalar kesilmiş ve boyanmıştır; siz yalnızca birleştirirsiniz. <strong>CSS framework</strong> de böyledir: menü, kart, düğme gibi sık kullanılan parçaların CSS'i <strong>önceden yazılmıştır</strong>. Siz yalnızca HTML'e doğru <strong>class</strong> adlarını verirsiniz.</p>
@@ -174,7 +174,7 @@
     <p>Sayfada tek satır CSS yazmadık (kart genişliği dışında); menü, yuvarlak köşeli kartlar ve mavi düğmeler Bootstrap'in hazır class'larından geldi. Yazı tipinin de değiştiğine dikkat edin: Bootstrap, sayfaya kendi yazı tipi ayarını getirir.</p>
 
     <h2 id="elle-yazmak-ile-bootstrap-yan-yana"><span class="num">5</span>Elle Yazmak ile Bootstrap Yan Yana</h2>
-    <p>Aynı menü ve kartlar, soldaki sayfada 10. haftada (<a href="flexbox-1.html">Flexbox 1</a>) olduğu gibi <strong>elle yazılmış CSS</strong> ile, sağdaki sayfada <strong>Bootstrap</strong> ile yapıldı:</p>
+    <p>Aynı menü ve kartlar, soldaki sayfada 10. ve 11. haftalarda (Flexbox 1 ile Flexbox 2 ve Sayfa Yerleşimi) olduğu gibi <strong>elle yazılmış CSS</strong> ile, sağdaki sayfada <strong>Bootstrap</strong> ile yapıldı:</p>
     <figure class="diagram"><img alt="Solda elle yazılmış CSS ile menü ve kartlar, sağda aynı içeriğin Bootstrap ile yapılmış hâli" src="images/elle_ve_bootstrap.png" width="1307" height="296" loading="lazy" decoding="async" tabindex="0">
       <figcaption aria-hidden="true">Solda elle yazılmış CSS ile menü ve kartlar, sağda aynı içeriğin Bootstrap ile yapılmış hâli</figcaption>
     </figure>
@@ -250,7 +250,7 @@
 
     <h2 id="bu-haftanin-ozeti"><span class="num">8</span>Bu Haftanın Özeti</h2>
     <ul>
-      <li><strong>CSS framework</strong>, sık kullanılan parçaların CSS'ini hazır veren bir dosyadır; en yaygınlarından biri <strong>Bootstrap</strong>'tir.</li>
+      <li><strong>CSS framework</strong>, önceden yazılmış CSS kurallarından oluşan hazır bir kütüphanedir; en yaygınlarından biri <strong>Bootstrap</strong>'tir.</li>
       <li>Bootstrap, projenin içindeki <code class="inline">css/bootstrap.min.css</code> dosyası <code class="inline">&lt;link&gt;</code> ile bağlanarak eklenir; internet gerekmez.</li>
       <li>Bootstrap'te CSS kuralı yazılmaz; öğelere <strong>hazır class</strong> verilir (<code class="inline">navbar</code>, <code class="inline">card</code>, <code class="inline">btn btn-primary</code>).</li>
       <li>Class'ların altında bildiğiniz CSS vardır: <code class="inline">d-flex</code>, <code class="inline">display: flex</code> demektir.</li>
@@ -264,7 +264,7 @@
         <p class="q">CSS framework nedir?</p>
         <ul class="opts">
           <li><b>a)</b> Bir tarayıcı türü</li>
-          <li><b>b)</b> Sık kullanılan parçaların CSS'ini hazır veren dosya</li>
+          <li><b>b)</b> Önceden yazılmış CSS kurallarından oluşan hazır bir kütüphane</li>
           <li><b>c)</b> Bir resim düzenleme programı</li>
           <li><b>d)</b> HTML'in yeni sürümü</li>
         </ul>
@@ -327,7 +327,7 @@
     <p><strong>1. (Kavram)</strong> CSS framework nedir? Bootstrap kullanmanın bir kolaylığını ve bir dezavantajını yazın.</p>
     <details class="ansbox"><summary>Cevabı göster</summary>
       <div class="ans">
-    <p>CSS framework, önceden yazılmış hazır CSS kurallarından oluşan bir kütüphanedir; öğelere hazır class'lar verilerek biçimlendirme yapılır. Kolaylığı: menü, kart, düğme gibi bileşenler az kodla ve hızlıca hazırlanır. Dezavantajı: sayfalar birbirine benzer ve arkadaki CSS bilinmeden kullanılırsa sorunları çözmek zorlaşır.</p>
+    <p>CSS framework, önceden yazılmış CSS kurallarından oluşan hazır bir kütüphanedir; öğelere hazır class'lar verilerek biçimlendirme yapılır. Kolaylığı: menü, kart, düğme gibi bileşenler az kodla ve hızlıca hazırlanır. Dezavantajı: sayfalar birbirine benzer ve arkadaki CSS bilinmeden kullanılırsa sorunları çözmek zorlaşır.</p>
       </div>
     </details>
     <p><strong>2. (Kod yazma)</strong> <code class="inline">css</code> klasöründeki <code class="inline">bootstrap.min.css</code> dosyasını sayfaya internetsiz bağlayan satırı yazın. Bu satır nereye yazılır?</p>

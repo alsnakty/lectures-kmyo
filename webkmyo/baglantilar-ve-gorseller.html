@@ -83,7 +83,7 @@
 <p>Bağlantı (link), tıklandığında başka bir sayfaya ya da dosyaya götüren metin veya görseldir; web'i "ağ" yapan, sayfaların bu bağlantılarla birbirine örülmüş olmasıdır. Sayfaya resim ise <code class="inline">&lt;img&gt;</code> etiketiyle eklenir. İkisinde de tarayıcıya dosyanın yerini <strong>yol (path)</strong> ile bildiririz: yol bir harf bile yanlış yazılırsa bağlantı açılmaz, resim görünmez.</p>
 
     <h2 id="baglanti-link-nedir"><span class="num">1</span>Bağlantı (Link) Nedir?</h2>
-    <p>Bir bağlantı, tıklandığında başka bir sayfaya götüren metin ya da görseldir. Bağlantı <code class="inline">&lt;a&gt;</code> (anchor) etiketi ile oluşturulur. Gidilecek adres <code class="inline">href</code> özelliğine yazılır:</p>
+    <p>Bağlantı <code class="inline">&lt;a&gt;</code> (anchor) etiketi ile oluşturulur. Gidilecek adres <code class="inline">href</code> özelliğine yazılır:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;a href="hakkinda.html"&gt;Hakkımda&lt;/a&gt;</pre>
@@ -113,12 +113,12 @@
         <tbody>
           <tr><td><strong>Aynı klasörde</strong></td><td>doğrudan dosya adı</td><td><code class="inline">hakkinda.html</code></td></tr>
           <tr><td><strong>Alt klasörde</strong></td><td><code class="inline">klasör/dosya</code></td><td><code class="inline">gorseller/foto.jpg</code></td></tr>
-          <tr><td><strong>Üst klasörde</strong></td><td><code class="inline">../dosya</code></td><td><code class="inline">gorseller</code> içindeki bir sayfadan: <code class="inline">../index.html</code></td></tr>
+          <tr><td><strong>Üst klasörde</strong></td><td><code class="inline">../dosya</code></td><td><code class="inline">sayfalar</code> klasöründeki bir sayfadan: <code class="inline">../index.html</code></td></tr>
           <tr><td><strong>Başka bir sitede</strong></td><td>tam adres (mutlak)</td><td><code class="inline">https://www.google.com</code></td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note warn"><span class="tag">Kural</span><p><code class="inline">../</code> işareti "bir üst klasöre çık" demektir. Örneğin <code class="inline">gorseller</code> klasörünün içindeki bir sayfadan <code class="inline">index.html</code>'e bağlanmak için <code class="inline">../index.html</code> yazılır. En sık yapılan hata, dosya adını yanlış yazmak veya yolun başına gereksiz <code class="inline">/</code> koymaktır. Dosya ve klasör adlarını (1. haftada, <a href="araclar-ve-ilk-sayfa.html">Araçlar ve İlk Web Sayfası</a> konusunda görüldüğü gibi) Türkçe harf ve boşluk kullanmadan yazın.</p></div>
+    <div class="note warn"><span class="tag">Kural</span><p><code class="inline">../</code> işareti "bir üst klasöre çık" demektir. Örneğin <code class="inline">sayfalar</code> klasörünün içindeki bir sayfadan <code class="inline">index.html</code>'e bağlanmak için <code class="inline">../index.html</code> yazılır. En sık yapılan hata, dosya adını yanlış yazmak veya yolun başına gereksiz <code class="inline">/</code> koymaktır. Başında <code class="inline">/</code> olan yol sitenin köküne gider. Sayfayı dosyaya çift tıklayarak açtıysanız bu kök diskin köküdür ve bağlantı kırılır. Dosya ve klasör adlarını (1. haftada, <a href="araclar-ve-ilk-sayfa.html">Araçlar ve İlk Web Sayfası</a> konusunda görüldüğü gibi) Türkçe harf ve boşluk kullanmadan yazın.</p></div>
 
     <h2 id="baglanti-turleri"><span class="num">3</span>Bağlantı Türleri</h2>
     <p><strong>Site içi bağlantı (göreli yol):</strong> Kendi sayfalarınız arasında geçiş için.</p>
@@ -393,7 +393,7 @@
     <p>Sayfada 150 piksel genişliğinde logo resmi görünür. Resim bir bağlantının içinde olduğu için tıklanabilir; tıklanınca aynı sekmede <code class="inline">hakkinda.html</code> sayfası açılır.</p>
       </div>
     </details>
-    <p><strong>4. (Hata bulma)</strong> <code class="inline">index.html</code> ile aynı klasörde bir <code class="inline">gorseller</code> klasörü, onun içinde de <code class="inline">foto.jpg</code> ve <code class="inline">kedi.jpg</code> dosyaları var. Aşağıdaki kodda üç hata var. Bulun ve düzeltin.</p>
+    <p><strong>4. (Hata bulma)</strong> <code class="inline">index.html</code> ile aynı klasörde bir <code class="inline">gorseller</code> klasörü, onun içinde de <code class="inline">foto.jpg</code> ve <code class="inline">kedi.jpg</code> dosyaları var. Aşağıdaki kodda dört hata var. Bulun ve düzeltin.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">HTML</span></div>
 <pre class="language-xml">&lt;img src="foto.jpg"&gt;
@@ -403,7 +403,8 @@
     <details class="ansbox"><summary>Cevabı göster</summary>
       <div class="ans">
     <ol>
-      <li><code class="inline">foto.jpg</code> <code class="inline">gorseller</code> klasöründe olduğu için yol yanlış; ayrıca <code class="inline">alt</code> yok. Doğrusu: <code class="inline">&lt;img src="gorseller/foto.jpg" alt="Fotoğraf"&gt;</code></li>
+      <li><code class="inline">foto.jpg</code> <code class="inline">gorseller</code> klasöründe olduğu için yol yanlış. Doğrusu: <code class="inline">src="gorseller/foto.jpg"</code></li>
+      <li>Birinci resimde <code class="inline">alt</code> yok. Doğrusu: <code class="inline">&lt;img src="gorseller/foto.jpg" alt="Fotoğraf"&gt;</code></li>
       <li><code class="inline">scr</code> yanlış yazılmış, resim görünmez. Doğrusu: <code class="inline">src</code></li>
       <li><code class="inline">&lt;a&gt;</code> kapatılmamış; sayfanın geri kalanı da bağlantıya dönüşür. Doğrusu: <code class="inline">&lt;a href="hakkinda.html"&gt;Hakkımızda&lt;/a&gt;</code></li>
     </ol>
@@ -452,7 +453,7 @@
 &lt;html lang="tr"&gt;
 &lt;head&gt;
     &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;Ana Sayfa&lt;/title&gt;
+    &lt;title&gt;Çiçekçi Dükkânı&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;h1&gt;Çiçekçi Dükkânı&lt;/h1&gt;
@@ -482,7 +483,7 @@
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe iki dosyayı oluşturun.</li>
       <li><code class="inline">gorseller</code> klasörüne bir resim koyup adını <code class="inline">cicek.jpg</code> yapın (veya <code class="inline">src</code>'yi kendi resminizin adına göre değiştirin).</li>
-      <li>Dosyayı tarayıcıda açarak bağlantıların iki sayfa arasında çalıştığını deneyin.</li>
+      <li>Dosyaları tarayıcıda açarak bağlantıların iki sayfa arasında çalıştığını deneyin.</li>
     </ol>
 
     <h2 id="sinif-uygulamasi"><span class="num">12</span>Sınıf Uygulaması</h2>
@@ -510,7 +511,7 @@
       <li><code class="inline">index.html</code> sayfanıza kendi seçtiğiniz bir resmi <code class="inline">&lt;img&gt;</code> ile ekleyip <code class="inline">alt</code> metnini yazın.</li>
       <li>Resmin genişliğini <code class="inline">width="200"</code> yaparak boyutunu küçültün.</li>
       <li>Bir dış siteye (<code class="inline">https://...</code>) <code class="inline">target="_blank"</code> ile bağlantı verip yeni sekmede açıldığını gözlemleyin.</li>
-      <li><code class="inline">gorseller</code> klasörünün içine bir HTML sayfası koyup oradan <code class="inline">../index.html</code> ile ana sayfaya bağlantı verin; <code class="inline">../</code> olmadan çalışmadığını görün.</li>
+      <li>Bir <code class="inline">sayfalar</code> klasörü açıp içine bir HTML sayfası koyun. Oradan <code class="inline">../index.html</code> ile ana sayfaya bağlantı verin; <code class="inline">../</code> olmadan çalışmadığını görün.</li>
       <li>Bir resmi <code class="inline">&lt;a&gt;</code> etiketi içine alarak tıklanabilir (bağlantılı) hâle getirin.</li>
       <li><code class="inline">iletisim.html</code> sayfanıza <code class="inline">mailto:</code> ile bir e-posta bağlantısı, <code class="inline">tel:</code> ile bir telefon bağlantısı ekleyin.</li>
     </ol>

@@ -132,6 +132,7 @@
 }</pre>
     </div>
     <p>Çizgi türleri arasında <code class="inline">solid</code> (düz), <code class="inline">dashed</code> (kesik), <code class="inline">dotted</code> (noktalı) bulunur. Çizgi türünü yazmazsanız kenarlık görünmez; kalınlığı yazmazsanız tarayıcı orta kalınlıkta (3 piksel) bir çizgi çizer.</p>
+    <div class="note warn"><span class="tag">Önemli (kutu büyür)</span><p>Bir kutunun ekranda kapladığı toplam genişlik yalnızca <code class="inline">width</code> değildir; <strong>padding ve border de eklenir.</strong> Örneğin <code class="inline">width: 200px</code> + <code class="inline">padding: 20px</code> + <code class="inline">border: 2px solid #333</code>, kutunun toplam genişliğini <code class="inline">244px</code> yapar (200 + iki yandan 20'şer padding + iki yandan 2'şer border). Bunu unutmak, sık yaşanan bir yerleşim sorununa yol açar. Bu hesap tarayıcının varsayılan davranışıdır; <code class="inline">box-sizing: border-box</code> yazılırsa padding ve border <code class="inline">width</code>'in içinde kalır.</p></div>
 
     <h2 id="margin-dis-bosluk"><span class="num">5</span><code class="inline">margin</code> (Dış Boşluk)</h2>
     <p>Kutunun <strong>dışında</strong>, komşu öğelerle arasında boşluk bırakır. Yazım biçimi <code class="inline">padding</code> ile aynıdır (bir, iki, üç veya dört değer).</p>
@@ -143,7 +144,6 @@
 }</pre>
     </div>
     <div class="note ok"><span class="tag">İpucu</span><p>Genişliği belirli bir kutuyu sayfada <strong>yatay olarak ortalamak</strong> için <code class="inline">margin: 0 auto;</code> kullanılır. <code class="inline">auto</code>, sağ ve sol boşluğu eşitleyerek kutuyu ortaya alır.</p></div>
-    <div class="note warn"><span class="tag">Önemli (kutu büyür)</span><p>Bir kutunun ekranda kapladığı toplam genişlik yalnızca <code class="inline">width</code> değildir; <strong>padding ve border de eklenir.</strong> Örneğin <code class="inline">width: 200px</code> + <code class="inline">padding: 20px</code> + <code class="inline">border: 2px solid #333</code>, kutunun toplam genişliğini <code class="inline">244px</code> yapar (200 + iki yandan 20'şer padding + iki yandan 2'şer border). Bunu unutmak, sık yaşanan bir yerleşim sorununa yol açar. Bu hesap tarayıcının varsayılan davranışıdır; <code class="inline">box-sizing: border-box</code> yazılırsa padding ve border <code class="inline">width</code>'in içinde kalır.</p></div>
 
     <h2 id="kutu-modelini-tarayicida-inceleme-devtoo"><span class="num">6</span>Kutu Modelini Tarayıcıda İnceleme (DevTools)</h2>
     <p>Kutu modelini gözle görmek, anlamayı çok kolaylaştırır. Tarayıcının <strong>Geliştirici Araçları (DevTools)</strong> bunu size renkli bir şema olarak gösterir:</p>
@@ -152,7 +152,7 @@
       <li>Açılan panelde <strong>Öğeler (Elements)</strong> sekmesinde bir öğe seçin.</li>
       <li>Sağdaki ya da alttaki bölümde, <strong>kutu modeli şemasında</strong> o öğenin <code class="inline">margin</code>, <code class="inline">border</code>, <code class="inline">padding</code> ve <code class="inline">content</code> değerlerini <strong>piksel piksel</strong> görürsünüz.</li>
     </ol>
-    <div class="note"><span class="tag">Not</span><p>Edge ve Chrome'da bu şemada katmanlar renklerle ayrılır: içerik <strong>mavi</strong>, padding <strong>yeşil</strong>, border <strong>sarı</strong>, margin <strong>turuncu</strong>. Fareyi öğe üzerine getirdiğinizde bu katmanlar sayfada da renklenir. Kutu modelini kâğıt üzerinde anlamak zor gelirse, DevTools ile canlı olarak incelemek en iyi yoldur.</p></div>
+    <div class="note"><span class="tag">Not</span><p>Edge ve Chrome'da bu şemada katmanlar renklerle ayrılır: içerik <strong>mavi</strong>, padding <strong>yeşil</strong>, border <strong>sarı</strong>, margin <strong>turuncu</strong>. Fareyi öğe üzerine getirdiğinizde bu katmanlar sayfada da renklenir. Kutu modelini kâğıt üzerinde anlamak zor gelirse, DevTools ile canlı olarak incelemek en iyi yoldur. Kutu modeli şemasındaki (1. bölüm) renkler DevTools'takilerle aynı değildir.</p></div>
 
     <h2 id="ornek-kart-tasarimi"><span class="num">7</span>Örnek: Kart Tasarımı</h2>
     <p>Şimdi kutu modelini kullanarak bir <strong>kart</strong> yapalım. Kartları oluşturmak için 4. haftada, <a href="listeler-ve-tablolar.html">Listeler, Tablolar ve Div</a> konusunda gördüğümüz <code class="inline">&lt;div&gt;</code> etiketini kullanacağız.</p>
@@ -437,6 +437,46 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
     </div>
+    <p>Tarayıcıda şöyle görünür:</p>
+    <figure class="cikti">
+      <div class="pencere">
+        <div class="cikti-bas"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">Tarayıcı çıktısı</span></div>
+        <iframe sandbox="allow-same-origin" loading="lazy" title="Açık gri zeminde mavi kenarlıklı ürün kartı: ortalanmış ürün adı ve yeşil fiyat" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Ürün Kartı&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .urun {
+            width: 200px;
+            background-color: white;
+            border: 2px solid #3498db;
+            padding: 15px;
+            margin: 20px;
+            text-align: center;
+        }
+        .urun h3 {
+            color: #2c3e50;
+        }
+        .urun .fiyat {
+            color: #27ae60;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;urun&quot;&gt;
+        &lt;h3&gt;Filtre Kahve&lt;/h3&gt;
+        &lt;p class=&quot;fiyat&quot;&gt;45 TL&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+      </div>
+    </figure>
     <p>Adımlar:</p>
     <ol>
       <li><code class="inline">web_sitem</code> klasöründe yeni bir <code class="inline">.html</code> dosyası oluşturun.</li>
@@ -461,6 +501,7 @@
     <ul>
       <li>Tarayıcı <code class="inline">body</code>'ye varsayılan olarak 8 piksel <code class="inline">margin</code> verir. Sayfanın kenarındaki küçük boşluğun sebebi budur; <code class="inline">body { margin: 0; }</code> ile kaldırılabilir.</li>
       <li><code class="inline">margin: 0 auto;</code> ile ortalama için kutunun bir <code class="inline">width</code> değeri olmalıdır. Genişlik verilmezse kutu zaten satırın tamamını kaplar ve ortalanmış görünmez.</li>
+      <li>Alt alta duran iki kutunun üst ve alt <code class="inline">margin</code>'leri toplanmaz, büyük olan geçerli olur (30px + 30px → 30px). Yan yana duran kutularda ve Flexbox içinde ise toplanır.</li>
     </ul>
 
     <h2 id="calisma-sorulari"><span class="num">15</span>Çalışma Soruları</h2>
