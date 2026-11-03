@@ -119,6 +119,35 @@
       </table>
     </div>
     <div class="note warn"><span class="tag">Kural</span><p><code class="inline">../</code> işareti "bir üst klasöre çık" demektir. Örneğin <code class="inline">sayfalar</code> klasörünün içindeki bir sayfadan <code class="inline">index.html</code>'e bağlanmak için <code class="inline">../index.html</code> yazılır. En sık yapılan hata, dosya adını yanlış yazmak veya yolun başına gereksiz <code class="inline">/</code> koymaktır. Başında <code class="inline">/</code> olan yol sitenin köküne gider. Sayfayı dosyaya çift tıklayarak açtıysanız bu kök diskin köküdür ve bağlantı kırılır. Dosya ve klasör adlarını (1. haftada, <a href="araclar-ve-ilk-sayfa.html">Araçlar ve İlk Web Sayfası</a> konusunda görüldüğü gibi) Türkçe harf ve boşluk kullanmadan yazın.</p></div>
+<figure class="demo" data-demo="yol-bulucu" aria-label="Göreli yol için etkileşimli deneme alanı">
+  <div class="demo-bas"><span class="etiket">DENEYİN</span><span class="ad">göreli yol: bulunduğunuz sayfayı ve hedefi seçin</span></div>
+  <div class="demo-govde">
+    <div class="demo-ayar">
+      <label class="demo-secim"><span>Şu an buradayım</span><select data-yb="bas"><option value="index.html">index.html</option><option value="hakkinda.html">hakkinda.html</option><option value="iletisim.html">iletisim.html</option><option value="sayfalar/urunler.html" selected>sayfalar/urunler.html</option></select></label>
+      <label class="demo-secim"><span>Buraya ulaşmak istiyorum</span><select data-yb="hedef"><option value="index.html">index.html</option><option value="hakkinda.html">hakkinda.html</option><option value="iletisim.html">iletisim.html</option><option value="gorseller/foto.jpg">gorseller/foto.jpg</option><option value="gorseller/logo.png" selected>gorseller/logo.png</option><option value="sayfalar/urunler.html">sayfalar/urunler.html</option></select></label>
+      <p class="yb-anahtar"><span class="yb-bas">buradasınız</span> <span class="yb-hedef">hedef</span></p>
+    </div>
+    <div class="demo-sahne">
+      <ul class="yb-agac" aria-label="Klasör yapısı">
+        <li class="yb-d0 yb-klasor" data-yol="">mini_site/</li>
+        <li class="yb-d1" data-yol="index.html">index.html</li>
+        <li class="yb-d1" data-yol="hakkinda.html">hakkinda.html</li>
+        <li class="yb-d1" data-yol="iletisim.html">iletisim.html</li>
+        <li class="yb-d1 yb-klasor" data-yol="gorseller/">gorseller/</li>
+        <li class="yb-d2" data-yol="gorseller/foto.jpg">foto.jpg</li>
+        <li class="yb-d2" data-yol="gorseller/logo.png">logo.png</li>
+        <li class="yb-d1 yb-klasor" data-yol="sayfalar/">sayfalar/</li>
+        <li class="yb-d2" data-yol="sayfalar/urunler.html">urunler.html</li>
+      </ul>
+    </div>
+    <div class="demo-sonuc" aria-live="polite">
+      <div>Göreli yol: <b data-yb="yol">../gorseller/logo.png</b></div>
+      <div class="formul" data-yb="adim"></div>
+      <div class="demo-kod" data-yb="kod"></div>
+    </div>
+  </div>
+</figure>
+<p class="demo-not">Aynı klasör yapısını VS Code'da kurup bu yolu kendi sayfanızda deneyin.</p>
 
     <h2 id="baglanti-turleri"><span class="num">3</span>Bağlantı Türleri</h2>
     <p><strong>Site içi bağlantı (göreli yol):</strong> Kendi sayfalarınız arasında geçiş için.</p>

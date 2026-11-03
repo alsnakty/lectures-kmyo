@@ -144,6 +144,33 @@
 }</pre>
     </div>
     <div class="note ok"><span class="tag">İpucu</span><p>Genişliği belirli bir kutuyu sayfada <strong>yatay olarak ortalamak</strong> için <code class="inline">margin: 0 auto;</code> kullanılır. <code class="inline">auto</code>, sağ ve sol boşluğu eşitleyerek kutuyu ortaya alır.</p></div>
+<figure class="demo" data-demo="kutu-modeli" aria-label="Kutu modeli için etkileşimli deneme alanı">
+  <div class="demo-bas"><span class="etiket">DENEYİN</span><span class="ad">kutu modeli: değerleri değiştirin, kutu büyüsün</span></div>
+  <div class="demo-govde">
+    <div class="demo-ayar">
+      <label>width <input type="range" data-km="w" min="80" max="260" step="10" value="200"><output data-km="wo">200px</output></label>
+      <label>padding <input type="range" data-km="p" min="0" max="40" step="1" value="20"><output data-km="po">20px</output></label>
+      <label>border <input type="range" data-km="b" min="0" max="12" step="1" value="2"><output data-km="bo">2px</output></label>
+      <label>margin <input type="range" data-km="m" min="0" max="40" step="1" value="30"><output data-km="mo">30px</output></label>
+      <div class="demo-kod" data-km="kod"></div>
+    </div>
+    <div class="demo-sahne" data-km="sahne">
+      <div class="km-margin" data-km="margin"><span class="km-ad">margin</span>
+        <div class="km-border" data-km="border"><span class="km-ad">border</span>
+          <div class="km-padding" data-km="padding"><span class="km-ad">padding</span>
+            <div class="km-icerik" data-km="icerik">içerik</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-sonuc" aria-live="polite">
+      <div>Ekranda kaplanan genişlik: <b data-km="toplam">244px</b></div>
+      <div class="formul" data-km="formul"></div>
+      <div class="formul" data-km="dis"></div>
+    </div>
+  </div>
+</figure>
+<p class="demo-not">Şimdi aynı kuralları kendi <code class="inline">style.css</code> dosyanızda yazıp sonucu tarayıcıda karşılaştırın.</p>
 
     <h2 id="kutu-modelini-tarayicida-inceleme-devtoo"><span class="num">6</span>Kutu Modelini Tarayıcıda İnceleme (DevTools)</h2>
     <p>Kutu modelini gözle görmek, anlamayı çok kolaylaştırır. Tarayıcının <strong>Geliştirici Araçları (DevTools)</strong> bunu size renkli bir şema olarak gösterir:</p>

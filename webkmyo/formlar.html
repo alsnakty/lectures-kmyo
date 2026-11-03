@@ -127,6 +127,23 @@
     </div>
     <div class="note warn"><span class="tag">Dikkat</span><p>POST verileri gizlemez ya da şifrelemez; yalnızca adres çubuğunda göstermez. Verileri yolda koruyan, adresi <code class="inline">https://</code> ile başlayan güvenli bağlantıdır (HTTPS).</p></div>
     <div class="note"><span class="tag">Not</span><p>GET ve POST'un asıl işini yapabilmesi için <code class="inline">action</code> ile belirtilen sunucu tarafı dosyanın (örneğin <code class="inline">.php</code>) çalışıyor olması gerekir. Bu derste backend olmadığından bu dosyalar yoktur; yöntemleri burada yalnızca <strong>kavram olarak</strong> görüyoruz.</p></div>
+<figure class="demo" data-demo="get-post" aria-label="GET ve POST için etkileşimli deneme alanı">
+  <div class="demo-bas"><span class="etiket">DENEYİN</span><span class="ad">get ve post: aynı formu iki yöntemle gönderin</span></div>
+  <div class="demo-govde">
+    <form class="gp-form" data-gp="form" novalidate>
+      <div class="gp-alan"><label for="demo-gp-ad">Ad</label><input type="text" id="demo-gp-ad" data-gp="ad" value="Ali" autocomplete="off"></div>
+      <div class="gp-alan"><label for="demo-gp-sifre">Şifre</label><input type="password" id="demo-gp-sifre" data-gp="sifre" value="1234" autocomplete="off"></div>
+      <fieldset class="gp-yontem"><legend>method</legend><label for="demo-gp-get"><input type="radio" id="demo-gp-get" name="demo-gp-yontem" value="get" checked> get</label><label for="demo-gp-post"><input type="radio" id="demo-gp-post" name="demo-gp-yontem" value="post"> post</label></fieldset>
+      <div class="gp-satir"><button type="submit" class="demo-dugme">Gönder</button><span class="demo-uyari" data-gp="uyari"></span></div>
+    </form>
+    <div class="gp-sag">
+      <div class="gp-cubuk"><span class="gp-cubuk-et">Adres çubuğu</span><div class="gp-adres" data-gp="adres">iletisim.html</div></div>
+      <div class="gp-istek" data-gp="istek" hidden><span class="gp-cubuk-et">İsteğin gövdesi (adres çubuğunda görünmez)</span><div class="gp-adres" data-gp="govde"></div></div>
+    </div>
+    <div class="demo-sonuc" aria-live="polite"><div data-gp="sonuc">Bir yöntem seçip Gönder düğmesine tıklayın.</div></div>
+  </div>
+</figure>
+<p class="demo-not">Kendi formunuzda method'u get yapıp gönderin ve adres çubuğuna bakın.</p>
 
     <h2 id="form-ogeleri"><span class="num">2</span>Form Öğeleri</h2>
     <p>En sık kullanılan form öğeleri tarayıcıda şöyle görünür:</p>
