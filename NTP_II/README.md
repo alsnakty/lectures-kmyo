@@ -1,7 +1,5 @@
 # Nesne Tabanlı Programlama II
 
-Karaisalı Meslek Yüksekokulu · Bilgisayar Programcılığı
-
 Dersin haftalık konu anlatımları. Her sayfa tek başına okunabilir; kod örnekleri,
 tablolar, şemalar ve konu sonu testi içerir. Sayfalar tarayıcıda açılır, kurulum
 gerektirmez.
@@ -53,6 +51,7 @@ css/vendor/                 highlight.js teması (github-dark; github da yedekte
 js/ders.js                  ortak betik
 js/vendor/                  highlight.js (yalnızca Python derlemesi) ve lisansı
 images/                     şemalar
+fonts/                      yazı tipleri (Oswald, Roboto Slab) ve lisansları
 NTP_II_Proje_Yonergesi.pdf  dönem projesi yönergesi
 ```
 

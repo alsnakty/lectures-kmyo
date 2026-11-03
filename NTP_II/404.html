@@ -5,83 +5,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sayfa bulunamadı | NTP II Ders Notları</title>
 <meta name="description" content="Aradığınız sayfa bulunamadı. Adres yanlış yazılmış ya da sayfa taşınmış olabilir. Aşağıdaki listeden konuya doğrudan gidebilirsiniz.">
-<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%235A4BD4%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#FFEFD4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#221E18" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%23345C00%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sayfa bulunamadı | NTP II Ders Notları">
 <meta property="og:description" content="Aradığınız sayfa bulunamadı. Adres yanlış yazılmış ya da sayfa taşınmış olabilir. Aşağıdaki listeden konuya doğrudan gidebilirsiniz.">
 <meta name="robots" content="noindex">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
 <style>
+/* yerel yazi tipleri (dis baglanti yok): Oswald 700, Roboto Slab 400/700; latin + latin-ext */
+@font-face {
+  font-family: "Oswald"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/fonts/oswald-latin-ext-700-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Oswald"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/fonts/oswald-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Roboto Slab"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("/fonts/roboto-slab-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Roboto Slab"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("/fonts/roboto-slab-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Roboto Slab"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/fonts/roboto-slab-latin-ext-700-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Roboto Slab"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/fonts/roboto-slab-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
   :root {
-    --bg: #FBFBF8;
-    --surface: #FFFFFF;
-    --surface-2: #F4F4EF;
-    --ink: #1C1E22;
-    --ink-soft: #55585F;
-    --ink-faint: #8A8D94;
-    --line: #E6E5DE;
-    --line-strong: #D6D5CC;
-    --accent: #5A4BD4;
-    --accent-soft: #EEEBFB;
-    --ok: #2E8A5F;
-    --ok-soft: #E6F3EC;
-    --err: #C8394F;
-    --err-soft: #FBECEE;
-    --warn: #B77518;
-    --warn-soft: #FBF1E1;
-    --code-bg: #1B1D23;
-    --code-ink: #E8E8EA;
-    --code-mut: #8D919C;
-    --term-bg: #14161B;
+    --bg: #FFEFD4; --surface: #FFF9F5; --surface-2: #FBE7C3;
+    --ink: #2E2A24; --ink-soft: #4A453D; --ink-faint: #6B6457;
+    --line: #E8D5B5; --line-strong: #D9C29C;
+    --accent: #345C00; --accent-soft: #E6EDD5; --accent-2: #0D7680;
+    --ok: #1F6E48; --ok-soft: #E9F0DA; --err: #B0283F; --err-soft: #FBE3DA;
+    --warn: #8A5508; --warn-soft: #FBE6C4;
+    --bar-bg: var(--bg); --bar-line: #2E2A24; --bar-shadow: 0 2px 4px rgba(46, 42, 36, .10), 0 6px 14px rgba(46, 42, 36, .12);
+    --code-bg: #1B1D23; --code-ink: #E8E8EA; --code-mut: #8D919C; --term-bg: #14161B;
 
     --mono: ui-monospace, "Cascadia Code", "Cascadia Mono", "Consolas", "SFMono-Regular", monospace;
-    --sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --serif: "Roboto Slab", Georgia, "Times New Roman", serif;
+    --display: "Oswald", "Arial Narrow", Impact, sans-serif;
+    --sans: var(--serif);
 
     --maxw: 1200px;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #101216;
-      --surface: #171A1F;
-      --surface-2: #1D2027;
-      --ink: #E9EAEC;
-      --ink-soft: #A9ADB6;
-      --ink-faint: #767A83;
-      --line: #262A31;
-      --line-strong: #333844;
-      --accent: #9D91F0;
-      --accent-soft: #21203A;
-      --ok: #5BC08D;
-      --ok-soft: #16281F;
-      --err: #E97485;
-      --err-soft: #2C1A1E;
-      --warn: #D9A24E;
-      --warn-soft: #2A2113;
-      --code-bg: #0C0E12;
-      --code-ink: #E8E8EA;
-      --code-mut: #7B808C;
-      --term-bg: #0A0B0F;
+      --bg: #1A1712; --surface: #221E18; --surface-2: #2B261E;
+      --ink: #D4C8B1; --ink-soft: #B3A68F; --ink-faint: #8F836F;
+      --line: #332D24; --line-strong: #463E32;
+      --accent: #9BC25A; --accent-soft: #28321A; --accent-2: #5FC0C8;
+      --ok: #6CC795; --ok-soft: #18291E; --err: #EE8290; --err-soft: #33201E;
+      --warn: #E0AA55; --warn-soft: #33271A;
+      --bar-bg: var(--surface); --bar-line: var(--line); --bar-shadow: 0 2px 4px rgba(0, 0, 0, .35), 0 6px 16px rgba(0, 0, 0, .40);
+      --code-bg: #0C0E12; --code-ink: #E8E8EA; --code-mut: #7B808C; --term-bg: #0A0B0F;
     }
   }
   :root[data-theme="light"] {
-    --bg: #FBFBF8; --surface: #FFFFFF; --surface-2: #F4F4EF;
-    --ink: #1C1E22; --ink-soft: #55585F; --ink-faint: #8A8D94;
-    --line: #E6E5DE; --line-strong: #D6D5CC;
-    --accent: #5A4BD4; --accent-soft: #EEEBFB;
-    --ok: #2E8A5F; --ok-soft: #E6F3EC; --err: #C8394F; --err-soft: #FBECEE;
-    --warn: #B77518; --warn-soft: #FBF1E1;
+    --bg: #FFEFD4; --surface: #FFF9F5; --surface-2: #FBE7C3;
+    --ink: #2E2A24; --ink-soft: #4A453D; --ink-faint: #6B6457;
+    --line: #E8D5B5; --line-strong: #D9C29C;
+    --accent: #345C00; --accent-soft: #E6EDD5; --accent-2: #0D7680;
+    --ok: #1F6E48; --ok-soft: #E9F0DA; --err: #B0283F; --err-soft: #FBE3DA;
+    --warn: #8A5508; --warn-soft: #FBE6C4;
+    --bar-bg: var(--bg); --bar-line: #2E2A24; --bar-shadow: 0 2px 4px rgba(46, 42, 36, .10), 0 6px 14px rgba(46, 42, 36, .12);
     --code-bg: #1B1D23; --code-ink: #E8E8EA; --code-mut: #8D919C; --term-bg: #14161B;
   }
   :root[data-theme="dark"] {
-    --bg: #101216; --surface: #171A1F; --surface-2: #1D2027;
-    --ink: #E9EAEC; --ink-soft: #A9ADB6; --ink-faint: #767A83;
-    --line: #262A31; --line-strong: #333844;
-    --accent: #9D91F0; --accent-soft: #21203A;
-    --ok: #5BC08D; --ok-soft: #16281F; --err: #E97485; --err-soft: #2C1A1E;
-    --warn: #D9A24E; --warn-soft: #2A2113;
+    --bg: #1A1712; --surface: #221E18; --surface-2: #2B261E;
+    --ink: #D4C8B1; --ink-soft: #B3A68F; --ink-faint: #8F836F;
+    --line: #332D24; --line-strong: #463E32;
+    --accent: #9BC25A; --accent-soft: #28321A; --accent-2: #5FC0C8;
+    --ok: #6CC795; --ok-soft: #18291E; --err: #EE8290; --err-soft: #33201E;
+    --warn: #E0AA55; --warn-soft: #33271A;
+    --bar-bg: var(--surface); --bar-line: var(--line); --bar-shadow: 0 2px 4px rgba(0, 0, 0, .35), 0 6px 16px rgba(0, 0, 0, .40);
     --code-bg: #0C0E12; --code-ink: #E8E8EA; --code-mut: #7B808C; --term-bg: #0A0B0F;
   }
 
@@ -90,17 +102,18 @@
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: var(--sans);
-    line-height: 1.6;
+    font-family: var(--serif);
+    line-height: 1.8;
     -webkit-font-smoothing: antialiased;
   }
 
   /* ---- top bar ---- */
   .topbar {
     position: sticky; top: 0; z-index: 20;
-    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    background: color-mix(in srgb, var(--bar-bg) 88%, transparent);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--bar-line);
+    box-shadow: var(--bar-shadow);   /* hafif kabartma: bant sayfanin ustunde durur */
   }
   .topbar-inner {
     max-width: var(--maxw); margin: 0 auto;
@@ -109,8 +122,8 @@
   }
   .brand {
     display: flex; align-items: center; gap: 10px;
-    font-family: var(--mono); font-size: 14px; font-weight: 600;
-    letter-spacing: .02em; color: var(--ink);
+    font-family: var(--display); font-size: 17px; font-weight: 700;
+    letter-spacing: .01em; color: var(--ink);
   }
   .brand .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
   .brand .muted { color: var(--ink-faint); font-weight: 500; }
@@ -138,14 +151,18 @@
   /* ---- article ---- */
   article { min-width: 0; }
   .eyebrow {
-    font-family: var(--mono); font-size: 12px; font-weight: 600;
-    letter-spacing: .12em; text-transform: uppercase;
+    font-family: var(--display); font-size: 13px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
     color: var(--accent);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--display); font-weight: 700;
+    line-height: 1.35; letter-spacing: -0.5px;
   }
   h1 {
     font-size: clamp(30px, 4.4vw, 42px);
-    line-height: 1.12; margin: 12px 0 14px;
-    letter-spacing: -0.02em; text-wrap: balance;
+    line-height: 1.35; margin: 12px 0 14px;
+    letter-spacing: -1px; text-wrap: balance;
     font-weight: 700;
   }
   .lede {
@@ -153,7 +170,7 @@
     max-width: 62ch; margin: 0 0 8px;
   }
   article h2 {
-    font-size: 25px; letter-spacing: -0.01em;
+    font-size: 27px;
     margin: 52px 0 4px; scroll-margin-top: 84px;
     text-wrap: balance;
   }
@@ -162,7 +179,7 @@
     color: var(--accent); margin-right: 12px;
   }
   article h3 {
-    font-size: 18px; margin: 34px 0 2px; color: var(--ink);
+    font-size: 19px; margin: 34px 0 2px; color: var(--ink);
     scroll-margin-top: 84px;
   }
   article p { max-width: 66ch; margin: 14px 0; }
@@ -245,8 +262,8 @@
     border-left: 3px solid var(--accent);
   }
   .note .tag {
-    font-family: var(--mono); font-size: 11px; font-weight: 700;
-    letter-spacing: .08em; text-transform: uppercase;
+    font-family: var(--display); font-size: 12px; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
     padding: 3px 8px; border-radius: 5px;
     background: var(--accent-soft); color: var(--accent);
     white-space: nowrap;
@@ -263,8 +280,8 @@
   th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
   thead th {
     background: var(--surface-2); color: var(--ink-soft);
-    font-family: var(--mono); font-size: 12px; letter-spacing: .03em;
-    font-weight: 600; text-transform: uppercase;
+    font-family: var(--display); font-size: 12.5px; letter-spacing: .05em;
+    font-weight: 700; text-transform: uppercase;
   }
   tbody tr:last-child td { border-bottom: 0; }
   td code, th code { font-family: var(--mono); font-size: .9em; }
@@ -277,8 +294,8 @@
     align-self: start;
   }
   .toc-title {
-    font-family: var(--mono); font-size: 11px; font-weight: 600;
-    letter-spacing: .14em; text-transform: uppercase;
+    font-family: var(--display); font-size: 12px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
     color: var(--ink-faint); padding: 0 0 10px 14px;
     border-bottom: 1px solid var(--line); margin-bottom: 8px;
   }
@@ -298,7 +315,7 @@
     border: 1px solid var(--line); border-radius: 10px;
     background: var(--surface);
   }
-  .aside-card .k { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .aside-card .k { font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
   .aside-card p { margin: 6px 0 0; font-size: 13px; color: var(--ink-soft); }
 
   nav.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
@@ -314,8 +331,8 @@
   ol.quiz > li::before {
     content: "Soru " counter(q);
     display: block; margin-bottom: 10px;
-    font-family: var(--mono); font-size: 11px; font-weight: 700;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--accent);
+    font-family: var(--display); font-size: 12px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--accent);
   }
   .quiz .q { max-width: none; margin: 0; font-weight: 600; }
   ul.opts { list-style: none; padding: 0; margin: 14px 0 0;
@@ -328,7 +345,7 @@
   details.ansbox { margin-top: 16px; border-top: 1px dashed var(--line-strong); padding-top: 14px; }
   details.ansbox summary {
     cursor: pointer; list-style: none; width: fit-content;
-    font-family: var(--mono); font-size: 12.5px; font-weight: 600;
+    font-family: var(--display); font-size: 14px; font-weight: 700;
     letter-spacing: .03em; color: var(--accent);
     display: inline-flex; align-items: center; gap: 8px;
     padding: 4px 2px;
@@ -376,7 +393,7 @@
     position: absolute; left: -9999px; top: 0; z-index: 100;
     background: var(--accent); color: var(--surface);
     padding: 10px 16px; border-radius: 0 0 8px 0;
-    font-family: var(--mono); font-size: 13px; text-decoration: none;
+    font-family: var(--display); font-size: 14px; font-weight: 700; text-decoration: none;
   }
   .atla:focus { left: 0; }
 
@@ -389,22 +406,24 @@
   .konu-menu > summary {
     list-style: none; cursor: pointer;
     display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--mono); font-size: 12.5px; font-weight: 600;
-    color: var(--ink-soft); background: var(--surface);
-    border: 1px solid var(--line-strong); border-radius: 8px;
+    font-family: var(--display); font-size: 14px; font-weight: 700; letter-spacing: .02em;
+    color: var(--accent); background: var(--accent-soft);
+    border: 1px solid var(--accent); border-radius: 8px;
     padding: 7px 12px; min-height: 34px; box-sizing: border-box;
   }
   .konu-menu > summary::-webkit-details-marker { display: none; }
-  .konu-menu > summary:hover { color: var(--ink); border-color: var(--accent); }
+  /* uzerine gelince ve menu acikken dolu vurgu */
+  .konu-menu > summary:hover, .konu-menu[open] > summary { color: var(--surface); background: var(--accent); }
   .konu-menu > summary:focus-visible, .tema-dugme:focus-visible, .yazdir-dugme:focus-visible,
   .yukari:focus-visible, .kopyala:focus-visible, .kutu .kapat:focus-visible,
   .toc-mobil > summary:focus-visible, .komsu-kart:focus-visible,
   footer.alt a:focus-visible, .atla:focus-visible {
     outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px;
   }
-  .mn-ikon { display: none; width: 16px; height: 2px; background: currentColor; position: relative; }
+  /* menu simgesi: genis ekranda yazinin solunda, dar ekranda tek basina */
+  .mn-ikon { display: block; order: -1; width: 14px; height: 2px; background: currentColor; position: relative; }
   .mn-ikon::before, .mn-ikon::after {
-    content: ""; position: absolute; left: 0; width: 16px; height: 2px; background: currentColor;
+    content: ""; position: absolute; left: 0; width: 14px; height: 2px; background: currentColor;
   }
   .mn-ikon::before { top: -5px; }
   .mn-ikon::after { top: 5px; }
@@ -452,8 +471,8 @@
   }
   .toc-mobil > summary {
     list-style: none; cursor: pointer; padding: 12px 16px;
-    font-family: var(--mono); font-size: 12px; font-weight: 700;
-    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft);
+    font-family: var(--display); font-size: 13px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft);
     display: flex; align-items: center; justify-content: space-between;
   }
   .toc-mobil > summary::-webkit-details-marker { display: none; }
@@ -547,17 +566,17 @@
   }
   .komsu-kart:hover { border-color: var(--accent); transform: translateY(-2px); }
   .komsu-kart.sonraki { text-align: right; grid-column: 2; }
-  .komsu-kart .yon { font-family: var(--mono); font-size: 11.5px; font-weight: 700;
-                     letter-spacing: .06em; color: var(--accent); }
+  .komsu-kart .yon { font-family: var(--display); font-size: 13px; font-weight: 700;
+                     letter-spacing: .04em; color: var(--accent); }
   .komsu-kart .kh { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
-  .komsu-kart .kb { font-size: 15.5px; font-weight: 600; color: var(--ink); }
+  .komsu-kart .kb { font-family: var(--display); font-size: 17px; font-weight: 700; letter-spacing: -0.3px; color: var(--ink); }
 
   /* ---- alt bilgi ---- */
   footer.alt { border-top: 1px solid var(--line); margin-top: 64px; background: var(--surface); }
   .alt-ic {
     max-width: var(--maxw); margin: 0 auto; padding: 22px 32px;
     display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px;
-    font-family: var(--sans); font-size: 13.5px; line-height: 1.5; color: var(--ink-soft);
+    font-family: var(--serif); font-size: 13.5px; line-height: 1.6; color: var(--ink-soft);
   }
   .alt-sol, .alt-bag { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin: 0; max-width: none; }
   .alt-ic .alt-ad { font-weight: 600; }
@@ -589,11 +608,14 @@
     .mn-yazi { display: none; }
     .mn-ikon { display: block; }
     .konu-menu > summary { padding: 7px 10px; }
+    /* mobilde ust barda ders kodu yok, yalniz konu adi (koyu, kalin) */
+    .brand .kod, .brand .ayrac { display: none; }
+    .brand .muted { color: var(--ink); font-weight: 700; }
     .konu-listesi { position: fixed; right: 12px; left: 12px; top: 62px; min-width: 0; }
     figure.diagram img + figcaption::after,
     figure.diagram svg + figcaption::after {
       content: "Büyütmek için dokunun"; display: block; margin-top: 5px;
-      font-family: var(--sans); font-size: 11.5px; color: var(--accent);
+      font-family: var(--serif); font-size: 11.5px; color: var(--accent);
     }
   }
   /* dar ekranda ust bardaki sayfa adi tek satirda kalir, sigmazsa uc noktayla kisalir */
@@ -614,12 +636,12 @@
   @media print {
     /* ekranda koyu tema secili olsa bile kagida acik tema renkleriyle basilir */
     :root, :root[data-theme] {
-      --bg: #FFFFFF; --surface: #FFFFFF; --surface-2: #F4F4EF;
-      --ink: #1C1E22; --ink-soft: #3A3D44; --ink-faint: #6B6E75;
-      --line: #D6D5CC; --line-strong: #B9B8AE;
-      --accent: #5A4BD4; --accent-soft: #EEEBFB;
-      --ok: #2E8A5F; --ok-soft: #E6F3EC; --err: #C8394F; --err-soft: #FBECEE;
-      --warn: #B77518; --warn-soft: #FBF1E1;
+      --bg: #FFFFFF; --surface: #FFFFFF; --surface-2: #F6EEDF;
+      --ink: #2E2A24; --ink-soft: #3F3A33; --ink-faint: #6B6457;
+      --line: #D9C29C; --line-strong: #BFA77E;
+      --accent: #345C00; --accent-soft: #E6EDD5; --accent-2: #0D7680;
+      --ok: #1F6E48; --ok-soft: #E9F0DA; --err: #B0283F; --err-soft: #FBE3DA;
+      --warn: #8A5508; --warn-soft: #FBE6C4;
       color-scheme: light;
     }
     .topbar, .crumbs, aside, .toc-mobil, .komsu, footer.alt,
@@ -648,7 +670,7 @@
   .shell.tek-sutun { grid-template-columns: minmax(0, 1fr); }
   a.geri {
     display: inline-block; margin: 8px 0 0;
-    font-family: var(--mono); font-size: 13.5px; font-weight: 600;
+    font-family: var(--display); font-size: 15px; font-weight: 700; letter-spacing: .03em;
     color: var(--accent); text-decoration: none;
   }
   a.geri:hover { text-decoration: underline; }
@@ -664,7 +686,7 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="/index.html"><span class="dot"></span>NTP&nbsp;II <span class="muted">/ Ders Notları</span></a>
+    <a class="brand" href="/index.html"><span class="dot"></span><span class="kod">NTP&nbsp;II</span> <span class="muted"><span class="ayrac">/ </span>Ders Notları</span></a>
     <div class="ust-araclar">
       <button class="tema-dugme" type="button" aria-label="Koyu temaya geç">
         <svg class="ay" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
