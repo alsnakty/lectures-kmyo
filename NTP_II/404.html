@@ -53,6 +53,7 @@
     --accent: #345C00; --accent-soft: #E6EDD5; --accent-2: #0D7680;
     --ok: #1F6E48; --ok-soft: #E9F0DA; --err: #B0283F; --err-soft: #FBE3DA;
     --warn: #8A5508; --warn-soft: #FBE6C4;
+    --proje-line: var(--accent); --proje-bg: var(--accent-soft);
     --bar-bg: var(--bg); --bar-line: #2E2A24; --bar-shadow: 0 2px 4px rgba(46, 42, 36, .10), 0 6px 14px rgba(46, 42, 36, .12);
     --code-bg: #1B1D23; --code-ink: #E8E8EA; --code-mut: #8D919C; --term-bg: #14161B;
 
@@ -68,10 +69,11 @@
     :root {
       --bg: #1A1712; --surface: #221E18; --surface-2: #2B261E;
       --ink: #D4C8B1; --ink-soft: #B3A68F; --ink-faint: #8F836F;
-      --line: #332D24; --line-strong: #463E32;
+      --line: #41392D; --line-strong: #574C3E;
       --accent: #9BC25A; --accent-soft: #28321A; --accent-2: #5FC0C8;
       --ok: #6CC795; --ok-soft: #18291E; --err: #EE8290; --err-soft: #33201E;
       --warn: #E0AA55; --warn-soft: #33271A;
+    --proje-line: color-mix(in srgb, var(--accent) 45%, var(--line-strong)); --proje-bg: var(--surface);
       --bar-bg: var(--surface); --bar-line: var(--line); --bar-shadow: 0 2px 4px rgba(0, 0, 0, .35), 0 6px 16px rgba(0, 0, 0, .40);
       --code-bg: #0C0E12; --code-ink: #E8E8EA; --code-mut: #7B808C; --term-bg: #0A0B0F;
     }
@@ -83,16 +85,18 @@
     --accent: #345C00; --accent-soft: #E6EDD5; --accent-2: #0D7680;
     --ok: #1F6E48; --ok-soft: #E9F0DA; --err: #B0283F; --err-soft: #FBE3DA;
     --warn: #8A5508; --warn-soft: #FBE6C4;
+    --proje-line: var(--accent); --proje-bg: var(--accent-soft);
     --bar-bg: var(--bg); --bar-line: #2E2A24; --bar-shadow: 0 2px 4px rgba(46, 42, 36, .10), 0 6px 14px rgba(46, 42, 36, .12);
     --code-bg: #1B1D23; --code-ink: #E8E8EA; --code-mut: #8D919C; --term-bg: #14161B;
   }
   :root[data-theme="dark"] {
     --bg: #1A1712; --surface: #221E18; --surface-2: #2B261E;
     --ink: #D4C8B1; --ink-soft: #B3A68F; --ink-faint: #8F836F;
-    --line: #332D24; --line-strong: #463E32;
+    --line: #41392D; --line-strong: #574C3E;
     --accent: #9BC25A; --accent-soft: #28321A; --accent-2: #5FC0C8;
     --ok: #6CC795; --ok-soft: #18291E; --err: #EE8290; --err-soft: #33201E;
     --warn: #E0AA55; --warn-soft: #33271A;
+    --proje-line: color-mix(in srgb, var(--accent) 45%, var(--line-strong)); --proje-bg: var(--surface);
     --bar-bg: var(--surface); --bar-line: var(--line); --bar-shadow: 0 2px 4px rgba(0, 0, 0, .35), 0 6px 16px rgba(0, 0, 0, .40);
     --code-bg: #0C0E12; --code-ink: #E8E8EA; --code-mut: #7B808C; --term-bg: #0A0B0F;
   }
@@ -106,6 +110,7 @@
     line-height: 1.8;
     -webkit-font-smoothing: antialiased;
   }
+  ::selection { background: #FFD45E; color: #2E2A24; }
 
   /* ---- top bar ---- */
   .topbar {
@@ -166,7 +171,7 @@
     font-weight: 700;
   }
   .lede {
-    font-size: 18px; color: var(--ink-soft);
+    font-size: clamp(18px, 16px + 0.35vw, 20px); color: var(--ink-soft);
     max-width: 62ch; margin: 0 0 8px;
   }
   article h2 {
@@ -182,6 +187,7 @@
     font-size: 19px; margin: 34px 0 2px; color: var(--ink);
     scroll-margin-top: 84px;
   }
+  article { font-size: clamp(16px, 15px + 0.25vw, 18px); }
   article p { max-width: 66ch; margin: 14px 0; }
   article p, article li { color: var(--ink); }
   article p, article li, .note p, th, td { overflow-wrap: break-word; }
@@ -585,7 +591,11 @@
   @media (max-width: 639.98px) {
     .alt-ic { flex-direction: column; align-items: flex-start; }
   }
-  article p a, article li a { color: var(--accent); text-underline-offset: 2px; }
+  article p a, article li a {
+    color: inherit; text-decoration: underline;
+    text-decoration-thickness: 1px; text-underline-offset: 3px;
+  }
+  article p a:hover, article li a:hover { color: var(--accent); }
 
   /* ---- yukari cik ---- */
   .yukari {
@@ -711,9 +721,9 @@
           <a href="/hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
           <a href="/dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
           <a href="/siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
-          <a href="/metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="/metotlar.html"><span class="mh">7</span>Metotlar ve Özel Metotlar</a>
           <a href="/kalitim.html"><span class="mh">10</span>Kalıtım</a>
-          <a href="/polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="/polimorfizm.html"><span class="mh">11</span>Çok Biçimlilik, Kapsülleme ve Soyutlama</a>
           <a href="/moduller.html"><span class="mh">12</span>Modüller</a>
           <a href="/veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
           <a href="/neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>

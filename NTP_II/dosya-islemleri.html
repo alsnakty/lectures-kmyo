@@ -31,9 +31,9 @@
           <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
           <a href="dosya-islemleri.html" class="etkin" aria-current="page"><span class="mh">4-5</span>Dosya İşlemleri</a>
           <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
-          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Özel Metotlar</a>
           <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
-          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Çok Biçimlilik, Kapsülleme ve Soyutlama</a>
           <a href="moduller.html"><span class="mh">12</span>Modüller</a>
           <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
@@ -68,7 +68,7 @@
         <a href="#okuma"><span class="n">5</span>Dosyadan okuma</a>
         <a href="#with"><span class="n">6</span>with bloğu</a>
         <a href="#imlec"><span class="n">7</span>Dosya imleci</a>
-        <a href="#hata"><span class="n">8</span>Hata yönetimi ve encoding</a>
+        <a href="#hata"><span class="n">8</span>Hata yönetimi ve Türkçe karakter</a>
         <a href="#json"><span class="n">9</span>JSON dosyaları</a>
         <a href="#karar"><span class="n">10</span>Karar tablosu</a>
         <a href="#kendin-yaz"><span class="n">11</span>Kendiniz yazın</a>
@@ -119,7 +119,7 @@ dosya.close()                                       <span class="c"># dosyayı k
         </tbody>
       </table>
     </div>
-    <figure class="diagram"><img alt="r, w ve a modlarının dosya üzerindeki etkisi" src="images/dosya_modlari.png" width="1230" height="600" loading="lazy" decoding="async" tabindex="0">
+    <figure class="diagram"><img alt="r, w ve a modlarının dosya üzerindeki etkisi" src="images/dosya_modlari.png" width="1230" height="640" loading="lazy" decoding="async" tabindex="0">
       <figcaption><code>r</code>, <code>w</code> ve <code>a</code> modlarının dosya üzerindeki etkisi</figcaption>
     </figure>
     <p>Görsel en kritik ayrımı gösterir: <strong><code class="inline">"w"</code> modu mevcut içeriği tamamen siler</strong>, <code class="inline">"a"</code> modu ise korur ve sonuna ekler.</p>
@@ -205,8 +205,8 @@ Mersin</pre>
       <table>
         <thead><tr><th>Metot</th><th>Ne döndürür</th><th>Ne zaman kullanılır</th></tr></thead>
         <tbody>
-          <tr><td><code>read()</code></td><td>Tek string (tüm dosya)</td><td>Dosya küçük ve tümünü birden işleyeceksek</td></tr>
-          <tr><td><code>readline()</code></td><td>Tek satır (string)</td><td>Satırları teker teker, kontrollü okumak istiyorsak</td></tr>
+          <tr><td><code>read()</code></td><td>Tek metin (string), tüm dosya</td><td>Dosya küçük ve tümünü birden işleyeceksek</td></tr>
+          <tr><td><code>readline()</code></td><td>Tek satır (metin)</td><td>Satırları teker teker, kontrollü okumak istiyorsak</td></tr>
           <tr><td><code>readlines()</code></td><td>Satırların listesi</td><td>Satırlara liste gibi (indeksle) erişmek istiyorsak</td></tr>
           <tr><td><code>for satir in f</code></td><td>Her turda bir satır</td><td><strong>Çoğu durumda en iyisi</strong>; büyük dosyalarda da güvenli</td></tr>
         </tbody>
@@ -269,7 +269,7 @@ with open("kisiler.txt", "r+", encoding="utf-8") as f:
     f.seek(0)
     f.writelines(satirlar)             <span class="c"># listeyi geri yaz</span></pre>
     </div>
-    <div class="note warn"><span class="tag">Uyarı</span><p><code class="inline">tell()</code> ve <code class="inline">seek()</code> <strong>bayt</strong> sayar, karakter değil; Türkçe karakterler UTF-8'de 2 bayt yer kaplar. Ayrıca <code class="inline">"r+"</code> ile geri yazarken yeni içerik eskisinden <strong>kısaysa</strong> dosyanın sonunda eski karakterlerden artıklar kalabilir; bunu önlemek için yazımdan sonra <code class="inline">f.truncate()</code> çağırabilirsiniz.</p></div>
+    <div class="note warn"><span class="tag">Dikkat</span><p><code class="inline">tell()</code> ve <code class="inline">seek()</code> <strong>bayt</strong> sayar, karakter değil; Türkçe karakterler UTF-8'de 2 bayt yer kaplar. Ayrıca <code class="inline">"r+"</code> ile geri yazarken yeni içerik eskisinden <strong>kısaysa</strong> dosyanın sonunda eski karakterlerden artıklar kalabilir; bunu önlemek için yazımdan sonra <code class="inline">f.truncate()</code> çağırabilirsiniz.</p></div>
 
     <h2 id="hata"><span class="num">8</span>Hata yönetimi ve Türkçe karakter</h2>
     <p>Dosya işlemleri başarısız olabilir: dosya yoktur, izniniz yoktur ya da disk doludur. Bu yüzden dosya kodları, hata yönetimi (<code class="inline">try/except</code>) ile çok iyi anlaşır. Var olmayan bir dosyayı <code class="inline">"r"</code> modunda açmaya çalışmak <code class="inline">FileNotFoundError</code> fırlatır:</p>
@@ -281,7 +281,7 @@ with open("kisiler.txt", "r+", encoding="utf-8") as f:
 except FileNotFoundError:
     print("Dosya bulunamadı.")</pre>
     </div>
-    <p>Alternatif olarak <code class="inline">os</code> modülüyle dosyanın var olup olmadığını açmadan önce de kontrol edebilirsiniz: <code class="inline">if os.path.exists("sehirler.txt"):</code>. Genel kural şudur: "önce kontrol et" yerine "dene, hata olursa yakala" çoğu zaman daha güvenlidir; çünkü kontrol ettiğiniz an ile dosyayı açtığınız an arasında dosya silinebilir. <code class="inline">import</code>, Python'un hazır araç dosyalarından (modüllerden) birini programa ekler; ayrıntısını 12. haftada, <a href="moduller.html">Modüller</a> konusunda göreceğiz.</p>
+    <p>Alternatif olarak <code class="inline">os</code> modülüyle dosyanın var olup olmadığını açmadan önce de kontrol edebilirsiniz: <code class="inline">if os.path.exists("sehirler.txt"):</code>. Genel kural şudur: "önce kontrol et" yerine "dene, hata olursa yakala" çoğu zaman daha güvenlidir; çünkü kontrol ettiğiniz an ile dosyayı açtığınız an arasında dosya silinebilir. <code class="inline">import</code>, Python'un hazır araç dosyalarından (modüllerden) birini programa ekler; ayrıntısını <a href="moduller.html">Modüller</a> (12. hafta) konusunda göreceğiz.</p>
     <p>Türkçe karakterler (ç, ğ, ı, ö, ş, ü ve büyük hâlleri) bazı sistemlerde bozuk görünebilir veya <code class="inline">UnicodeDecodeError</code> hatası verebilir. Çözüm, dosyayı açarken <code class="inline">encoding="utf-8"</code> belirtmektir.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">encoding.py</span></div>
@@ -296,7 +296,7 @@ with open("isimler.txt", "w") as f:
     <div class="note warn"><span class="tag">Kural</span><p>Türkçe içerikli dosyalarda <strong>her zaman</strong> <code class="inline">encoding="utf-8"</code> kullanın. Bu, hem okurken hem yazarken alışkanlık hâline getirilmesi gereken bir ayardır.</p></div>
 
     <h2 id="json"><span class="num">9</span>JSON dosyaları: yapılı veri saklama</h2>
-    <p>Şimdiye kadar düz metin (<code class="inline">.txt</code>) dosyalarıyla çalıştık. Ama gerçek programlar genellikle <strong>yapılı</strong> veri saklar: bir öğrencinin adı, yaşı, aldığı dersler ve mezuniyet durumu hep birlikte. Ürün bilgilerini virgülle ayırıp <code class="inline">.txt</code> dosyasında tuttuğunuzu düşünün; okurken her satırı <code class="inline">split(",")</code> ile elle ayrıştırmanız gerekir, <strong>her şey string olur</strong>, bir alanın içinde virgül geçerse ayrıştırma bozulur ve iç içe veriyi saklamak neredeyse imkânsızdır.</p>
+    <p>Şimdiye kadar düz metin (<code class="inline">.txt</code>) dosyalarıyla çalıştık. Ama gerçek programlar genellikle <strong>yapılı</strong> veri saklar: bir öğrencinin adı, yaşı, aldığı dersler ve mezuniyet durumu hep birlikte. Ürün bilgilerini virgülle ayırıp <code class="inline">.txt</code> dosyasında tuttuğunuzu düşünün; okurken her satırı <code class="inline">split(",")</code> ile elle ayrıştırmanız gerekir, <strong>her şey metin olur</strong>, bir alanın içinde virgül geçerse ayrıştırma bozulur ve iç içe veriyi saklamak neredeyse imkânsızdır.</p>
     <p><strong>JSON</strong> (JavaScript Object Notation), verinin insan tarafından okunabilir, yapılı ve dilden bağımsız bir biçimde saklandığı metin formatıdır ve bu sorunların hepsini çözer. Python sözlüklerine ve listelerine çok benzer göründüğü için öğrenmesi kolaydır. Hava durumu, harita, ödeme gibi neredeyse tüm web servisleri veriyi JSON olarak gönderir; VS Code'un <code class="inline">settings.json</code>'ı gibi sayısız ayar dosyası da JSON'dır.</p>
     <div class="twrap">
       <table>
@@ -304,12 +304,12 @@ with open("isimler.txt", "w") as f:
         <tbody>
           <tr><td><code>json.dump(veri, dosya)</code></td><td>Python nesnesini <strong>dosyaya</strong> yazar</td></tr>
           <tr><td><code>json.load(dosya)</code></td><td><strong>Dosyadan</strong> okuyup Python nesnesine çevirir</td></tr>
-          <tr><td><code>json.dumps(veri)</code></td><td>Python nesnesini bir <strong>string'e</strong> çevirir</td></tr>
-          <tr><td><code>json.loads(metin)</code></td><td>Bir JSON <strong>string'ini</strong> Python nesnesine çevirir</td></tr>
+          <tr><td><code>json.dumps(veri)</code></td><td>Python nesnesini bir <strong>metne</strong> çevirir</td></tr>
+          <tr><td><code>json.loads(metin)</code></td><td>Bir JSON <strong>metnini</strong> Python nesnesine çevirir</td></tr>
         </tbody>
       </table>
     </div>
-    <p>Aklınızda tutması kolay olsun: sonundaki <strong><code class="inline">s</code> "string"</strong> demektir.</p>
+    <p>Aklınızda tutması kolay olsun: sonundaki <strong><code class="inline">s</code> "string" (metin)</strong> demektir.</p>
     <figure class="diagram"><img alt="Python sözlüğü ile JSON dosyası arasındaki json.dump / json.load dönüşümü ve tip eşlemesi" src="images/json_donusum.png" width="1230" height="705" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Python sözlüğü ile JSON dosyası arasındaki dönüşüm</figcaption>
     </figure>
@@ -353,8 +353,8 @@ print(veri["ad"])        <span class="c"># Şükrü</span>
 print(veri["dersler"])   <span class="c"># ['Python', 'Veritabanı']</span>
 print(veri["mezun"])     <span class="c"># False  (tekrar Python bool'una döndü)</span></pre>
     </div>
-    <p>Dikkat edin: <code class="inline">json.load()</code> bize <strong>gerçek bir sözlük</strong> döndürdü. Düz metindeki gibi <code class="inline">split()</code> ile uğraşmadık; veriye doğrudan anahtarıyla eriştik ve tipler korundu. JSON bazen bir dosyada değil, bir <strong>string</strong> içinde gelir (örneğin bir web API'sinden); o zaman <code class="inline">json.dumps()</code> ve <code class="inline">json.loads()</code> kullanılır.</p>
-    <div class="note ok"><span class="tag">Özet</span><p><code class="inline">.txt</code> insan için basit notlar tutmaya uygundur; <strong><code class="inline">.json</code> ise programlar arasında yapılı veri taşımanın standart yoludur.</strong> Bir veriyi daha sonra programınızda yeniden kullanacaksanız (ayarlar, kayıtlar, API verisi), JSON neredeyse her zaman doğru tercihtir.</p></div>
+    <p>Dikkat edin: <code class="inline">json.load()</code> bize <strong>gerçek bir sözlük</strong> döndürdü. Düz metindeki gibi <code class="inline">split()</code> ile uğraşmadık; veriye doğrudan anahtarıyla eriştik ve tipler korundu. JSON bazen bir dosyada değil, bir <strong>metin</strong> içinde gelir (örneğin bir web API'sinden); o zaman <code class="inline">json.dumps()</code> ve <code class="inline">json.loads()</code> kullanılır.</p>
+    <div class="note"><span class="tag">Özet</span><p><code class="inline">.txt</code> insan için basit notlar tutmaya uygundur; <strong><code class="inline">.json</code> ise programlar arasında yapılı veri taşımanın standart yoludur.</strong> Bir veriyi daha sonra programınızda yeniden kullanacaksanız (ayarlar, kayıtlar, API verisi), JSON neredeyse her zaman doğru tercihtir.</p></div>
 
     <hr class="hr">
 
@@ -519,7 +519,7 @@ with open("kayitlar.json", "r", encoding="utf-8") as f:
       <li>
         <p class="q"><code class="inline">f.readlines()</code> metodu ne döndürür?</p>
         <ul class="opts">
-          <li><b>A)</b> Dosyanın tamamını tek bir string olarak</li>
+          <li><b>A)</b> Dosyanın tamamını tek bir metin olarak</li>
           <li><b>B)</b> Satırların bulunduğu bir liste</li>
           <li><b>C)</b> Sadece ilk satırı</li>
           <li><b>D)</b> Satır sayısını (sayı)</li>
@@ -562,7 +562,7 @@ with open("kayitlar.json", "r", encoding="utf-8") as f:
         <p class="q"><code class="inline">json.load(f)</code> bir JSON dosyasını okuduğunda Python tarafında genellikle hangi tipte veri döndürür?</p>
         <ul class="opts">
           <li><b>A)</b> Sözlük (dict) ya da liste gibi yapılı bir nesne</li>
-          <li><b>B)</b> Her zaman string</li>
+          <li><b>B)</b> Her zaman metin</li>
           <li><b>C)</b> Her zaman sayı</li>
           <li><b>D)</b> Dosya nesnesi</li>
           <li><b>E)</b> Hiçbir şey döndürmez</li>
@@ -620,7 +620,7 @@ with open("kayitlar.json", "r", encoding="utf-8") as f:
       <a href="#okuma"><span class="n">5</span>Dosyadan okuma</a>
       <a href="#with"><span class="n">6</span>with bloğu</a>
       <a href="#imlec"><span class="n">7</span>Dosya imleci</a>
-      <a href="#hata"><span class="n">8</span>Hata yönetimi ve encoding</a>
+      <a href="#hata"><span class="n">8</span>Hata yönetimi ve Türkçe karakter</a>
       <a href="#json"><span class="n">9</span>JSON dosyaları</a>
       <a href="#karar"><span class="n">10</span>Karar tablosu</a>
       <a href="#kendin-yaz"><span class="n">11</span>Kendiniz yazın</a>

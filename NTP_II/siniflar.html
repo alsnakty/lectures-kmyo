@@ -31,9 +31,9 @@
           <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
           <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
           <a href="siniflar.html" class="etkin" aria-current="page"><span class="mh">6</span>Sınıflara Giriş</a>
-          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Özel Metotlar</a>
           <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
-          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Çok Biçimlilik, Kapsülleme ve Soyutlama</a>
           <a href="moduller.html"><span class="mh">12</span>Modüller</a>
           <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
@@ -55,7 +55,7 @@
 <div class="shell">
   <article id="icerik">
     <div class="eyebrow">Konu Anlatımı · 6. Hafta</div>
-    <h1>Sınıflar, Nesneler ve __init__</h1>
+    <h1>Sınıflara Giriş: Sınıflar, Nesneler ve __init__</h1>
     <p class="lede">Nesne tabanlı programlama, gerçek dünyadaki bir varlığı (öğrenci, araba, banka hesabı) hem verisiyle hem davranışıyla tek bir bütün olarak modellememizi sağlar. Bu sayfa <code class="inline">class</code> ile sınıf tanımlamayı, nesne oluşturmayı ve <code class="inline">__init__</code> ile <code class="inline">self</code>'i anlatır.</p>
 
     <details class="toc-mobil">
@@ -83,7 +83,7 @@ print(type(liste))    <span class="c"># &lt;class 'list'&gt;</span></pre>
     </div>
     <p><code class="inline">type(liste)</code> size <code class="inline">list</code> der; yani <code class="inline">liste</code>, <code class="inline">list</code> adındaki sınıfın bir <strong>örneğidir (nesnesidir)</strong>. <code class="inline">liste.append(6)</code> ya da <code class="inline">liste.sort()</code> yazabilmenizin sebebi de budur: <code class="inline">append</code> ve <code class="inline">sort</code>, <code class="inline">list</code> sınıfının metotlarıdır. Bu bölümde öğreneceğimiz şey, işte bu hazır sınıflar gibi <strong>kendi sınıflarımızı</strong> yazmaktır.</p>
     <div class="note"><span class="tag">Kurabiye Kalıbı</span><p>Bir <strong>sınıfı</strong> kurabiye kalıbı gibi düşünün: kalıp, kurabiyenin nasıl olacağını tanımlar ama kendisi yenilebilir bir kurabiye değildir. <strong>Nesne</strong> ise o kalıptan üretilen somut kurabiyedir. Bir kalıptan istediğiniz kadar kurabiye çıkarabilirsiniz; her biri aynı biçimdedir ama biri çikolatalı, biri sade olabilir.</p></div>
-    <figure class="diagram"><img alt="Sınıf bir kalıptır; nesneler o kalıptan üretilir ve her biri kendi verisine sahiptir" src="images/sinif_vs_nesne.png" width="1230" height="660" loading="lazy" decoding="async" tabindex="0">
+    <figure class="diagram"><img alt="Sınıf bir kalıptır; nesneler o kalıptan üretilir ve her biri kendi verisine sahiptir" src="images/sinif_vs_nesne.png" width="1230" height="640" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Sınıf kalıptır, nesneler o kalıptan üretilir</figcaption>
     </figure>
     <p>Görselde <code class="inline">Araba</code> sınıfı kalıptır; <code class="inline">araba1</code>, <code class="inline">araba2</code>, <code class="inline">araba3</code> ise bu kalıptan üretilmiş, her biri kendi verisini taşıyan nesnelerdir. Kalıbı bir kez yazarız, ondan dilediğimiz kadar nesne üretiriz.</p>
@@ -109,7 +109,7 @@ print(arabam.renk)      <span class="c"># Gümüş</span></pre>
     <p><code class="inline">__init__</code>, Python'da özel bir metottur ve bir nesne oluşturulduğu anda <strong>otomatik olarak</strong> çalışır. Görevi, yeni doğan nesneye başlangıç verilerini yerleştirmektir. Sayesinde her nesneye kendine özgü değerler verebiliriz; artık tüm arabalar aynı olmak zorunda değildir. İsmi iki alt çizgiyle başlayıp iki alt çizgiyle biter; bu tür özel metotlara "dunder" (double underscore) metotlar denir ve Python bunları belirli durumlarda kendisi çağırır.</p>
     <div class="note"><span class="tag">Not</span><p>Teknik olarak nesneyi oluşturan <code class="inline">__new__</code> metodudur; <code class="inline">__init__</code> oluşturulan nesneyi başlatır. Günlük kullanımda <code class="inline">__init__</code>'e yapıcı metot denir.</p></div>
     <p><code class="inline">__init__</code> metodunun ilk parametresine geleneksel olarak <code class="inline">self</code> adı verilir. <code class="inline">self</code>, üzerinde çalışılan <strong>nesnenin kendisini</strong> temsil eder. Yani <code class="inline">self.model = model</code> yazdığınızda, "şu an oluşturulan nesnenin <code class="inline">model</code> özelliğine, dışarıdan gelen <code class="inline">model</code> değerini ata" demiş olursunuz. <code class="inline">self</code> sayesinde her nesne kendi verisini kendi içinde tutar.</p>
-    <figure class="diagram"><img alt="class, __init__, self ve self.model = model satırının anatomisi" src="images/init_self_anatomi.png" width="1230" height="593" loading="lazy" decoding="async" tabindex="0">
+    <figure class="diagram"><img alt="class, __init__, self ve self.model = model satırının anatomisi" src="images/init_self_anatomi.png" width="1230" height="600" loading="lazy" decoding="async" tabindex="0">
       <figcaption>Yapıcı metodun anatomisi ve <code>self</code>'in rolü</figcaption>
     </figure>
     <div class="code">
@@ -184,7 +184,7 @@ print(araba1.beygir_gucu)    <span class="c"># 180</span></pre>
 
     <hr class="hr">
 
-        <div class="note warn"><span class="tag">Sık yapılan hatalar</span><div>
+        <div class="note warn"><span class="tag">Dikkat</span><div>
       <p><strong>(a) <code class="inline">__init__</code> içinde <code class="inline">self</code>'i unutmak.</strong></p>
       <div class="code">
         <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">hatali.py</span></div>
@@ -263,7 +263,7 @@ print(film2.ad, film2.yil, film2.sure, "dk")</pre>
       </div>
     </details>
     <h3 id="gorev-2">Görev 2: Depodaki ürünlerin değeri</h3>
-    <p>Ad, fiyat ve stok adedini alan bir <code class="inline">Urun</code> sınıfı yazın; <code class="inline">__init__</code> içinde ürünün toplam değerini (<code class="inline">fiyat * stok</code>) de <code class="inline">deger</code> özelliği olarak hesaplayın. Üç ürünü bir listede tutup her birinin adını ve değerini yazdırın, en sonda depodaki toplam değeri gösterin. Not: Stok sonradan değişirse <code class="inline">deger</code> kendiliğinden güncellenmez. Bunu 7. haftada, <a href="metotlar.html">Metotlar</a> konusunda, sınıfın içine değeri her çağrıldığında yeniden hesaplayan bir metot yazarak çözeceğiz.</p>
+    <p>Ad, fiyat ve stok adedini alan bir <code class="inline">Urun</code> sınıfı yazın; <code class="inline">__init__</code> içinde ürünün toplam değerini (<code class="inline">fiyat * stok</code>) de <code class="inline">deger</code> özelliği olarak hesaplayın. Üç ürünü bir listede tutup her birinin adını ve değerini yazdırın, en sonda depodaki toplam değeri gösterin. Not: Stok sonradan değişirse <code class="inline">deger</code> kendiliğinden güncellenmez. Bunu <a href="metotlar.html">Metotlar ve Özel Metotlar</a> (7. hafta) konusunda, sınıfın içine değeri her çağrıldığında yeniden hesaplayan bir metot yazarak çözeceğiz.</p>
     <div class="term">
       <div class="thead">Beklenen çıktı</div>
 <pre>Defter 1000
@@ -292,7 +292,7 @@ print("Depodaki toplam değer:", toplam)</pre>
       </div>
     </details>
     <h3 id="gorev-3">Görev 3: Nesneleri JSON'a hazırlama</h3>
-    <p>Ad, numara ve bölüm alan bir <code class="inline">Ogrenci</code> sınıfı yazın. İki öğrenci nesnesini, özelliklerinden birer sözlük oluşturarak bir listeye dönüştürün ve <code class="inline">json.dumps(liste, ensure_ascii=False)</code> ile metne çevirip yazdırın (JSON, Dosya İşlemleri konusu, 4-5. hafta). Projede sınıf nesnelerini dosyaya kaydederken bu dönüşümü kullanacaksınız.</p>
+    <p>Ad, numara ve bölüm alan bir <code class="inline">Ogrenci</code> sınıfı yazın. İki öğrenci nesnesini, özelliklerinden birer sözlük oluşturarak bir listeye dönüştürün ve <code class="inline">json.dumps(liste, ensure_ascii=False)</code> ile metne çevirip yazdırın. JSON'u Dosya İşlemleri (4-5. hafta) konusunda görmüştük. Projede sınıf nesnelerini dosyaya kaydederken bu dönüşümü kullanacaksınız.</p>
     <div class="term">
       <div class="thead">Beklenen çıktı</div>
 <pre>[{"ad": "Ali", "numara": 101, "bolum": "Bilgisayar"}, {"ad": "Zeynep", "numara": 102, "bolum": "Elektronik"}]</pre>
@@ -470,8 +470,8 @@ print(a.deger, b.deger)</pre>
     </ul>
 
     <div class="aside-card mobil">
-      <div class="k">Dizi bilgisi</div>
-      <p>Bu, dört haftalık Sınıflar dizisinin ilk konusudur. Sırada metotlar ve dunder metotlar (7. hafta), kalıtım (10. hafta), polimorfizm ve kapsülleme (11. hafta) var.</p>
+      <div class="k">Sınıf konuları</div>
+      <p>Bu, dört haftalık Sınıflar dizisinin ilk konusudur. Sırada Metotlar ve Özel Metotlar (7. hafta), Kalıtım (10. hafta) ile Çok Biçimlilik, Kapsülleme ve Soyutlama (11. hafta) konuları var.</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -483,7 +483,7 @@ print(a.deger, b.deger)</pre>
       <a class="komsu-kart sonraki" href="metotlar.html">
         <span class="yon">Sonraki konu →</span>
         <span class="kh">7. Hafta</span>
-        <span class="kb">Metotlar ve Dunder</span>
+        <span class="kb">Metotlar ve Özel Metotlar</span>
       </a>
     </nav>
   </article>
@@ -501,8 +501,8 @@ print(a.deger, b.deger)</pre>
       <a href="#kendi-basina"><span class="n">8</span>Çalışma soruları</a>
     </nav>
     <div class="aside-card">
-      <div class="k">Dizi bilgisi</div>
-      <p>Bu, dört haftalık Sınıflar dizisinin ilk konusudur. Sırada metotlar ve dunder metotlar (7. hafta), kalıtım (10. hafta), polimorfizm ve kapsülleme (11. hafta) var.</p>
+      <div class="k">Sınıf konuları</div>
+      <p>Bu, dört haftalık Sınıflar dizisinin ilk konusudur. Sırada Metotlar ve Özel Metotlar (7. hafta), Kalıtım (10. hafta) ile Çok Biçimlilik, Kapsülleme ve Soyutlama (11. hafta) konuları var.</p>
     </div>
   </aside>
 </div>

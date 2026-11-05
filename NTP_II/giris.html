@@ -21,7 +21,7 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="index.html"><span class="dot"></span><span class="kod">NTP&nbsp;II</span> <span class="muted"><span class="ayrac">/ </span>Python ile Neler Yapılır</span></a>
+    <a class="brand" href="index.html"><span class="dot"></span><span class="kod">NTP&nbsp;II</span> <span class="muted"><span class="ayrac">/ </span>Giriş: Python ile Neler Yapılır</span></a>
     <div class="ust-araclar">
       <details class="konu-menu">
         <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
@@ -31,9 +31,9 @@
           <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
           <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
           <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
-          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Özel Metotlar</a>
           <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
-          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Çok Biçimlilik, Kapsülleme ve Soyutlama</a>
           <a href="moduller.html"><span class="mh">12</span>Modüller</a>
           <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
@@ -50,13 +50,13 @@
   </div>
 </header>
 
-<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Python ile Neler Yapılır</span></div>
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Giriş: Python ile Neler Yapılır</span></div>
 
 <div class="shell">
   <article id="icerik">
     <div class="eyebrow">Konu Anlatımı · 1. Hafta</div>
-    <h1>Derse Giriş: Python ile Neler Yapılır?</h1>
-    <p class="lede">Dönemin ilk haftasında Python'un dört farklı dünyasına kısa bir tur atıyoruz: masaüstü uygulamaları, oyun geliştirme, web'den veri toplama ve web/sunucu geliştirme. Amaç bunları öğrenmek değil, var olduklarını bilmek, ve dönem projenizin konusunu seçerken nereye bakabileceğinizi görmek.</p>
+    <h1>Giriş: Python ile Neler Yapılır?</h1>
+    <p class="lede">Dönemin ilk haftasında Python'un dört farklı dünyasına kısa bir tur atıyoruz: masaüstü uygulamaları, oyun geliştirme, web'den veri toplama ve web/sunucu geliştirme. Amaç bunları öğrenmek değil, var olduklarını bilmek ve dönem projenizin konusunu seçerken nereye bakabileceğinizi görmek.</p>
 
     <details class="toc-mobil">
       <summary>Bu sayfada</summary>
@@ -197,7 +197,7 @@ for duyuru in soup.find_all("div", class_="duyuru"):
 <pre>Duyuru: Kayıt tarihleri açıklandı | Tarih: 1 Eylül
 Duyuru: Vize programı yayımlandı | Tarih: 10 Kasım</pre>
     </div>
-    <p><code class="inline">find_all</code> belirli etikete/sınıfa uyan tüm öğeleri, <code class="inline">find</code> ise ilkini bulur; <code class="inline">.text</code> ise öğenin içindeki yazıyı verir. Gerçek bir siteden veri çekerken önce sayfayı <code class="inline">requests</code> ile indirir, sonra aynı şekilde ayrıştırırsınız. Bazı siteler ise içeriğini JavaScript ile sonradan yükler; bu durumda <code class="inline">requests</code> boş sayfa görür. <strong>Selenium</strong>, gerçek bir tarayıcıyı (Chrome gibi) kod ile yöneterek bu sorunu çözer: sayfayı açar, butona tıklar, formu doldurur, sonra içeriği okur.</p>
+    <p><code class="inline">find_all</code> belirli etikete/sınıfa uyan tüm öğeleri, <code class="inline">find</code> ise ilkini bulur; <code class="inline">.text</code> ise öğenin içindeki yazıyı verir. Gerçek bir siteden veri çekerken önce sayfayı <code class="inline">requests</code> ile indirir, sonra aynı şekilde ayrıştırırsınız. Bazı siteler ise içeriğini JavaScript ile sonradan yükler; bu durumda <code class="inline">requests</code> boş sayfa görür. <strong>Selenium</strong>, gerçek bir tarayıcıyı (Chrome gibi) kod ile yöneterek bu sorunu çözer: sayfayı açar, düğmeye tıklar, formu doldurur, sonra içeriği okur.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">selenium_ornek.py</span></div>
 <pre>from selenium import webdriver
@@ -212,7 +212,7 @@ for b in basliklar:
 
 surucu.quit()</pre>
     </div>
-    <div class="note warn"><span class="tag">Etik ve yasal</span><p>Web scraping güçlü bir araçtır ama sorumlulukla kullanılmalıdır. Bir siteyi kazımadan önce o sitenin <strong>kullanım şartlarını</strong> ve <code class="inline">robots.txt</code> dosyasını kontrol edin; kişisel verileri toplamaktan kaçının; siteye çok sık istek göndererek sunucusunu yormayın. Çoğu site makul ve saygılı kullanıma açıktır; ama izinsiz, aşırı veya ticari kötüye kullanım hem etik dışıdır hem de yasal sorun doğurabilir.</p></div>
+    <div class="note warn"><span class="tag">Dikkat</span><p>Web scraping güçlü bir araçtır ama sorumlulukla kullanılmalıdır. Bir siteyi kazımadan önce o sitenin <strong>kullanım şartlarını</strong> ve <code class="inline">robots.txt</code> dosyasını kontrol edin; kişisel verileri toplamaktan kaçının; siteye çok sık istek göndererek sunucusunu yormayın. Çoğu site makul ve saygılı kullanıma açıktır; ama izinsiz, aşırı veya ticari kötüye kullanım hem etik dışıdır hem de yasal sorun doğurabilir.</p></div>
     <div class="note"><span class="tag">Nereye bakmalı</span><p>crummy.com/software/BeautifulSoup, selenium.dev.</p></div>
 
     <h2 id="web"><span class="num">5</span>Web sitesi ve API geliştirme</h2>
@@ -230,7 +230,7 @@ def ana_sayfa():
 app.run(debug=True)       <span class="c"># sunucuyu başlat</span></pre>
     </div>
     <p>Buradaki <code class="inline">@app.route("/")</code>, daha önce görmediğimiz bir yapı: bir <strong>dekoratör</strong>. "Birisi <code class="inline">/</code> adresini ziyaret ederse, hemen altındaki fonksiyonu çalıştır" anlamına gelir (<code class="inline">pip install flask</code>).</p>
-    <p><strong>Django</strong>, büyük ve kurumsal projeler için "her şey dâhil" bir çerçevedir; veritabanı yönetimi, kullanıcı girişi, yönetim paneli gibi pek çok şey hazır gelir. <strong>FastAPI</strong> ise özellikle <strong>API</strong> (uygulamaların birbiriyle veri alışverişi yaptığı arayüzler) yazmak için tasarlanmış, modern ve hızlı bir çerçevedir; otomatik dokümantasyon üretmesiyle ünlüdür:</p>
+    <p><strong>Django</strong>, büyük ve kurumsal projeler için "her şey dâhil" bir çerçevedir; veritabanı yönetimi, kullanıcı girişi, yönetim paneli gibi pek çok şey hazır gelir. <strong>FastAPI</strong> ise özellikle <strong>API</strong> (uygulamaların birbiriyle veri alışverişi yaptığı arayüzler) yazmak için tasarlanmış, modern ve hızlı bir çerçevedir; otomatik belge üretmesiyle ünlüdür:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">django_gorunum.py</span></div>
 <pre><span class="c"># Bir Django projesinin views.py dosyasında yer alır; tek başına çalıştırılmaz</span>
@@ -278,7 +278,7 @@ def ana_sayfa():
         </tbody>
       </table>
     </div>
-    <div class="note warn"><span class="tag">Ders kuralı</span><p>Yapay zekâdan yardım alabilirsiniz; ancak teslim ettiğiniz kodu <strong>kendiniz anlamalı ve açıklayabilmelisiniz.</strong> Proje sunumunda kodunuzun nasıl çalıştığını açıklamanız beklenir; "yapay zekâ yazdı, ben bilmiyorum" geçerli bir cevap değildir. Yapay zekâ, sizin yerinize düşünen değil, size yardımcı olan bir araçtır.</p></div>
+    <div class="note warn"><span class="tag">Kural</span><p>Yapay zekâdan yardım alabilirsiniz; ancak teslim ettiğiniz kodu <strong>kendiniz anlamalı ve açıklayabilmelisiniz.</strong> Proje sunumunda kodunuzun nasıl çalıştığını açıklamanız beklenir; "yapay zekâ yazdı, ben bilmiyorum" geçerli bir cevap değildir. Yapay zekâ, sizin yerinize düşünen değil, size yardımcı olan bir araçtır.</p></div>
 
     <hr class="hr">
 
@@ -293,7 +293,7 @@ def ana_sayfa():
 
     <div class="aside-card mobil">
       <div class="k">Dönem projesi</div>
-      <p>Proje yönergesi 1. hafta dağıtılır. Proje konusu <strong>4. haftada</strong> onaylanır; teslim ve sunumlar <strong>9. haftadan itibaren</strong> yapılır. Bu sayfadaki alanlar konu seçerken fikir verir.</p>
+      <p>Proje yönergesi 1. haftada dağıtılır. Proje konusu <strong>4. haftada</strong> onaylanır; teslim ve sunumlar <strong>9. haftadan itibaren</strong> yapılır. Bu sayfadaki alanlar konu seçerken fikir verir.</p>
     </div>
 
     <nav class="komsu" aria-label="Konular arası gezinme">
@@ -317,7 +317,7 @@ def ana_sayfa():
     </nav>
     <div class="aside-card">
       <div class="k">Dönem projesi</div>
-      <p>Proje yönergesi 1. hafta dağıtılır. Proje konusu <strong>4. haftada</strong> onaylanır; teslim ve sunumlar <strong>9. haftadan itibaren</strong> yapılır. Bu sayfadaki alanlar konu seçerken fikir verir.</p>
+      <p>Proje yönergesi 1. haftada dağıtılır. Proje konusu <strong>4. haftada</strong> onaylanır; teslim ve sunumlar <strong>9. haftadan itibaren</strong> yapılır. Bu sayfadaki alanlar konu seçerken fikir verir.</p>
     </div>
   </aside>
 </div>

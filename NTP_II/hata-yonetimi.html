@@ -31,9 +31,9 @@
           <a href="hata-yonetimi.html" class="etkin" aria-current="page"><span class="mh">3</span>Hata Yönetimi</a>
           <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
           <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
-          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Özel Metotlar</a>
           <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
-          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Çok Biçimlilik, Kapsülleme ve Soyutlama</a>
           <a href="moduller.html"><span class="mh">12</span>Modüller</a>
           <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
@@ -111,7 +111,7 @@ Traceback (most recent call last):
     </div>
     <p><code class="inline">"Program bitti"</code> satırı hiç çalışmadı. Program ortasında, kontrolsüz bir şekilde durdu. Hata yönetiminin amacı bu kontrolsüz duruşu önlemektir.</p>
 
-    <h3 id="tipler">2.1 Sık karşılaşılan hata türleri</h3>
+    <h3 id="tipler">2.1 Sık karşılaşılan hata tipleri</h3>
     <div class="twrap">
       <table>
         <thead><tr><th>Hata tipi</th><th>Ne zaman oluşur</th><th>Örnek</th></tr></thead>
@@ -248,7 +248,7 @@ yas_kontrol(-3)      <span class="no"># ValueError: Yaş negatif olamaz!</span><
           <tr><td>Riskli işlem başarılı olursa devamında bir şey yapacağım</td><td><code>else</code> bloğu</td></tr>
           <tr><td>Hata olsa da olmasa da çalışacak kod var</td><td><code>finally</code> bloğu</td></tr>
           <tr><td>Uygunsuz değer gelince hata oluşturmak istiyorum</td><td><code>raise</code></td></tr>
-          <tr><td>Hata bir yazım hatası (SyntaxError)</td><td>try/except değil, <strong>kodu düzelt</strong></td></tr>
+          <tr><td>Hata bir yazım hatası (SyntaxError)</td><td>try/except değil, <strong>kodu düzeltmek</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -365,7 +365,7 @@ except ZeroDivisionError:
           <li><b>E)</b> <code class="inline">ValueError</code></li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">E</span><code class="inline">"merhaba"</code> bir string olarak doğru tiptedir ama sayıya çevrilemeyecek bir değerdir; bu yüzden <code class="inline">ValueError</code> oluşur.</div>
+          <div class="ans"><span class="letter">E</span><code class="inline">"merhaba"</code> bir metin (string) olarak doğru tiptedir ama sayıya çevrilemeyecek bir değerdir; bu yüzden <code class="inline">ValueError</code> oluşur.</div>
         </details>
       </li>
 

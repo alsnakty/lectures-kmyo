@@ -15,9 +15,9 @@ gerektirmez.
 | 3 | [Hata Yönetimi](hata-yonetimi.html) |
 | 4-5 | [Dosya İşlemleri](dosya-islemleri.html) |
 | 6 | [Sınıflara Giriş](siniflar.html) |
-| 7 | [Metotlar ve Dunder](metotlar.html) |
+| 7 | [Metotlar ve Özel Metotlar](metotlar.html) |
 | 10 | [Kalıtım](kalitim.html) |
-| 11 | [Polimorfizm ve Kapsülleme](polimorfizm.html) |
+| 11 | [Çok Biçimlilik, Kapsülleme ve Soyutlama](polimorfizm.html) |
 | 12 | [Modüller](moduller.html) |
 | 13 | [Veri Kütüphaneleri](veri-kutuphaneleri.html) |
 | 14 | [Python ile Başka Neler Yapılır](neler-yapilir.html) |

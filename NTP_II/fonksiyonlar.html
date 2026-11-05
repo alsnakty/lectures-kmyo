@@ -31,9 +31,9 @@
           <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
           <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
           <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
-          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Özel Metotlar</a>
           <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
-          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Çok Biçimlilik, Kapsülleme ve Soyutlama</a>
           <a href="moduller.html"><span class="mh">12</span>Modüller</a>
           <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
@@ -83,12 +83,12 @@
       <table>
         <thead><tr><th>Tür</th><th>Açıklama</th><th>Örnekler</th></tr></thead>
         <tbody>
-          <tr><td><strong>Gömülü Fonksiyonlar</strong><br>(built-in functions)</td><td>Python'un hazır olarak sunduğu fonksiyonlar</td><td><code>print()</code>, <code>type()</code>, <code>len()</code>, <code>int()</code>, <code>range()</code></td></tr>
+          <tr><td><strong>Yerleşik Fonksiyonlar</strong><br>(built-in functions)</td><td>Python'un hazır olarak sunduğu fonksiyonlar</td><td><code>print()</code>, <code>type()</code>, <code>len()</code>, <code>int()</code>, <code>range()</code></td></tr>
           <tr><td><strong>Kullanıcı Tanımlı Fonksiyonlar</strong><br>(user-defined functions)</td><td>Programcının kendi ihtiyacına göre <code>def</code> ile yazdığı fonksiyonlar</td><td><code>topla()</code>, <code>selamla()</code>, <code>alan_hesapla()</code></td></tr>
         </tbody>
       </table>
     </div>
-    <p><code class="inline">print()</code> ya da <code class="inline">len()</code> gibi gömülü fonksiyonları çağırmak için onları tanımlamanıza gerek yoktur; Python sizin için hazır vermiştir. Bu bölümde öğreneceğimiz şey ise ikinci gruptur: <strong>kendi fonksiyonlarımızı nasıl yazacağımız.</strong></p>
+    <p><code class="inline">print()</code> ya da <code class="inline">len()</code> gibi yerleşik fonksiyonları çağırmak için onları tanımlamanıza gerek yoktur; Python sizin için hazır vermiştir. Bu bölümde öğreneceğimiz şey ise ikinci gruptur: <strong>kendi fonksiyonlarımızı nasıl yazacağımız.</strong></p>
     <div class="note"><span class="tag">Kahve Makinesi</span><p>Makineyi bir kez kurarsınız; sonra her kahve istediğinizde sıfırdan bir makine yapmazsınız, sadece düğmeye basarsınız. İçinde suyun nasıl ısıtıldığını bilmek zorunda değilsiniz. Düğmeye basmak fonksiyonu çağırmak, koyduğunuz malzeme parametre, çıkan kahve ise geri dönüş değeridir.</p></div>
 
     <h2 id="tanimlama"><span class="num">2</span>Fonksiyonların tanımlanması</h2>
@@ -263,7 +263,7 @@ print(og_numarasi)          <span class="c"># 20211122121</span>
 numara_degistir()           <span class="c"># 123</span>
 print(og_numarasi)          <span class="c"># 123  (artık global de değişti!)</span></pre>
     </div>
-    <div class="note ok"><span class="tag">Pratik kural</span><p>Mümkün olduğunca <code class="inline">global</code> kullanmaktan kaçının. Fonksiyona parametreyle veri verip <code class="inline">return</code> ile sonuç almak çok daha temiz, anlaşılır ve hataya kapalı bir yaklaşımdır.</p></div>
+    <div class="note ok"><span class="tag">İpucu</span><p>Mümkün olduğunca <code class="inline">global</code> kullanmaktan kaçının. Fonksiyona parametreyle veri verip <code class="inline">return</code> ile sonuç almak çok daha temiz, anlaşılır ve hataya kapalı bir yaklaşımdır.</p></div>
 
     <hr class="hr">
 
@@ -272,12 +272,12 @@ print(og_numarasi)          <span class="c"># 123  (artık global de değişti!)
       <table>
         <thead><tr><th>Durum</th><th>Önerilen yapı</th></tr></thead>
         <tbody>
-          <tr><td>Bir değeri hesaplayıp başka yerde kullanacağım</td><td><code>return</code> kullan</td></tr>
-          <tr><td>Sadece ekrana bir şey yazdıracağım</td><td><code>print</code> kullan (void fonksiyon)</td></tr>
-          <tr><td>Hem hesap yapıp hem ekrana göstermek istiyorum</td><td><code>return</code> ile döndür, çağıran yerde <code>print</code> et</td></tr>
+          <tr><td>Bir değeri hesaplayıp başka yerde kullanacağım</td><td><code>return</code> kullanmak</td></tr>
+          <tr><td>Sadece ekrana bir şey yazdıracağım</td><td><code>print</code> kullanmak (void fonksiyon)</td></tr>
+          <tr><td>Hem hesap yapıp hem ekrana göstermek istiyorum</td><td><code>return</code> ile döndürüp çağıran yerde <code>print</code> ile yazdırmak</td></tr>
           <tr><td>Bir parametrenin çoğu zaman aynı değeri olacak</td><td>varsayılan parametre</td></tr>
-          <tr><td>Fonksiyon kontrolde erken çıkmalı</td><td><code>return</code> ile çık</td></tr>
-          <tr><td>Global değişkeni değiştirmem gerekiyor</td><td><code>global</code> yerine <code>return</code> ile döndür, dışarıda yeniden ata</td></tr>
+          <tr><td>Fonksiyon kontrolde erken çıkmalı</td><td><code>return</code> ile çıkmak</td></tr>
+          <tr><td>Global değişkeni değiştirmem gerekiyor</td><td><code>global</code> yerine <code>return</code> ile döndürüp dışarıda yeniden atamak</td></tr>
         </tbody>
       </table>
     </div>

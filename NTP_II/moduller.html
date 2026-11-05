@@ -31,9 +31,9 @@
           <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
           <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
           <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
-          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Özel Metotlar</a>
           <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
-          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Çok Biçimlilik, Kapsülleme ve Soyutlama</a>
           <a href="moduller.html" class="etkin" aria-current="page"><span class="mh">12</span>Modüller</a>
           <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
           <a href="neler-yapilir.html"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
@@ -74,8 +74,8 @@
     </details>
 
 <h2 id="nedir"><span class="num">1</span>Modül nedir, neden vardır?</h2>
-    <p>Bir program büyüdükçe, her şeyi tek bir dosyaya yığmak zorlaşır. Üstelik kare kök almak, rastgele sayı üretmek, tarih hesaplamak gibi işleri her seferinde sıfırdan yazmak hem zaman kaybıdır hem de hataya açıktır. Bu işlerin pek çoğunu sizden önce birileri yazmış ve test etmiştir; tek yapmanız gereken onları kullanmaktır.</p>
-    <p>İşte bir <strong>modül</strong>, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Python "modüler" bir dil olarak tasarlanmıştır: belirli işleri yapan pek çok modül ya doğrudan Python'la birlikte gelir ya da dışarıdan eklenebilir. Bir modülü programınıza dâhil etmek için <code class="inline">import</code> anahtar kelimesini kullanırsınız.</p>
+    <p>Bir program büyüdükçe, her şeyi tek bir dosyaya yığmak zorlaşır. Üstelik karekök almak, rastgele sayı üretmek, tarih hesaplamak gibi işleri her seferinde sıfırdan yazmak hem zaman kaybıdır hem de hataya açıktır. Bu işlerin pek çoğunu sizden önce birileri yazmış ve test etmiştir; tek yapmanız gereken onları kullanmaktır.</p>
+    <p>İşte bir <strong>modül</strong>, içinde hazır fonksiyonlar, sınıflar ve değişkenler barındıran, yeniden kullanılabilir bir kod dosyasıdır. Python "modüler" bir dil olarak tasarlanmıştır: belirli işleri yapan pek çok modül ya doğrudan Python'la birlikte gelir ya da dışarıdan eklenebilir. Bir modülü programınıza içe aktarmak için <code class="inline">import</code> anahtar kelimesini kullanırsınız.</p>
     <p>Modüllerin bize kazandırdığı şey nettir: hazır ve denenmiş kodu <strong>yeniden kullanırız</strong>, böylece tekerleği yeniden icat etmeyiz; kodumuzu konularına göre ayrı dosyalara bölerek <strong>düzenli</strong> tutarız; ve binlerce hazır fonksiyona erişerek işimizi <strong>hızlandırırız</strong>. Python'un kurulumla birlikte gelen bu hazır modüller bütününe <strong>standart kütüphane</strong> denir. <code class="inline">math</code>, <code class="inline">random</code>, <code class="inline">datetime</code> bunlardan yalnızca birkaçıdır.</p>
 
     <h2 id="import"><span class="num">2</span>import yöntemleri</h2>
@@ -100,15 +100,15 @@ sayi = randint(1, 50)          <span class="c"># random.randint değil, doğruda
       <figcaption>Üç içe aktarma yöntemi ve kullanım biçimleri</figcaption>
     </figure>
     <p>Hangisini ne zaman kullanmalı? Modülden çok sayıda fonksiyon kullanacaksanız <code class="inline">import math</code> (tüm modül) en okunaklısıdır. Yalnızca bir-iki fonksiyon kullanacaksanız <code class="inline">from math import sqrt</code> daha pratiktir. Ad uzunsa ya da çakışma varsa <code class="inline">import ... as ...</code> işinizi görür.</p>
-    <div class="note warn"><span class="tag">Kaçının</span><p><code class="inline">from math import *</code> yazımı modüldeki <strong>her şeyi</strong> isim alanınıza döker. Bu, hangi adın nereden geldiğini belirsizleştirir ve farklı modüllerdeki aynı isimli fonksiyonların birbirini ezmesine yol açabilir. Genel kural: <code class="inline">import *</code> kullanmayın.</p></div>
+    <div class="note warn"><span class="tag">Dikkat</span><p><code class="inline">from math import *</code> yazımı modüldeki <strong>her şeyi</strong> isim alanınıza döker. Bu, hangi adın nereden geldiğini belirsizleştirir ve farklı modüllerdeki aynı isimli fonksiyonların birbirini ezmesine yol açabilir. Genel kural: <code class="inline">import *</code> kullanmayın.</p></div>
 
     <h2 id="standart"><span class="num">3</span>Sık kullanılan standart kütüphane modülleri</h2>
-    <p><code class="inline">math</code> modülü; kare kök, faktöriyel, üs, trigonometri gibi matematiksel fonksiyonları ve <code class="inline">pi</code> gibi sabitleri içerir:</p>
+    <p><code class="inline">math</code> modülü; karekök, faktöriyel, üs, trigonometri gibi matematiksel fonksiyonları ve <code class="inline">pi</code> gibi sabitleri içerir:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">math_ornek.py</span></div>
 <pre>import math
 
-print(math.sqrt(16))        <span class="c"># 4.0  (kare kök)</span>
+print(math.sqrt(16))        <span class="c"># 4.0  (karekök)</span>
 print(math.factorial(5))    <span class="c"># 120  (faktöriyel)</span>
 print(math.pi)              <span class="c"># 3.141592653589793</span>
 print(math.ceil(4.2))       <span class="c"># 5    (yukarı yuvarlama)</span>
@@ -119,7 +119,7 @@ print(math.floor(4.8))      <span class="c"># 4    (aşağı yuvarlama)</span></
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">random_ornek.py</span></div>
 <pre>import random
 
-print(random.randint(1, 6))                      <span class="c"># 1-6 arası rastgele tamsayı (zar)</span>
+print(random.randint(1, 6))                      <span class="c"># 1-6 arası rastgele tam sayı (zar)</span>
 print(random.choice(['elma', 'armut', 'kiraz'])) <span class="c"># listeden rastgele bir öğe</span>
 
 liste = [1, 2, 3, 4, 5]
@@ -258,7 +258,7 @@ for ad, notlar in [("Ali", [60, 75, 90]), ("Mehmet", [30, 45, 51])]:
     <p>Aşağıdaki beş soruyu kendiniz çözün. Her sorunun altındaki <em>Cevabı göster</em> satırına tıklayınca doğru cevap ve açıklaması açılır.</p>
     <ol class="quiz">
       <li>
-        <p class="q">Bir modülü programa dâhil etmek için hangi anahtar kelime kullanılır?</p>
+        <p class="q">Bir modülü programa içe aktarmak için hangi anahtar kelime kullanılır?</p>
         <ul class="opts">
           <li><b>A)</b> <code class="inline">import</code></li>
           <li><b>B)</b> <code class="inline">include</code></li>
@@ -267,12 +267,12 @@ for ad, notlar in [("Ali", [60, 75, 90]), ("Mehmet", [30, 45, 51])]:
           <li><b>E)</b> <code class="inline">module</code></li>
         </ul>
         <details class="ansbox"><summary>Cevabı göster</summary>
-          <div class="ans"><span class="letter">A</span>Python'da modüller <code class="inline">import</code> anahtar kelimesiyle dâhil edilir.</div>
+          <div class="ans"><span class="letter">A</span>Python'da modüller <code class="inline">import</code> anahtar kelimesiyle içe aktarılır.</div>
         </details>
       </li>
 
       <li>
-        <p class="q"><code class="inline">import math</code> yaptıktan sonra kare kök fonksiyonu nasıl çağrılır?</p>
+        <p class="q"><code class="inline">import math</code> yaptıktan sonra karekök fonksiyonu nasıl çağrılır?</p>
         <ul class="opts">
           <li><b>A)</b> <code class="inline">sqrt(16)</code></li>
           <li><b>B)</b> <code class="inline">math:sqrt(16)</code></li>
@@ -355,7 +355,7 @@ for ad, notlar in [("Ali", [60, 75, 90]), ("Mehmet", [30, 45, 51])]:
       <a class="komsu-kart onceki" href="polimorfizm.html">
         <span class="yon">← Önceki konu</span>
         <span class="kh">11. Hafta</span>
-        <span class="kb">Polimorfizm ve Kapsülleme</span>
+        <span class="kb">Çok Biçimlilik, Kapsülleme ve Soyutlama</span>
       </a>
       <a class="komsu-kart sonraki" href="veri-kutuphaneleri.html">
         <span class="yon">Sonraki konu →</span>

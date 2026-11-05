@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Python ile Neler Yapılır | NTP II Ders Notları</title>
+<title>Python ile Başka Neler Yapılır | NTP II Ders Notları</title>
 <meta name="description" content="Bu sayfa Python&#x27;un dört farklı dünyasına kısa bir tur atar: masaüstü uygulamaları, oyun geliştirme, web&#x27;den veri toplama ve web/sunucu geliştirme. Amaç...">
 <meta name="theme-color" content="#FFEFD4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#221E18" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%2715%27%20fill%3D%27%23345C00%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2721.5%27%20text-anchor%3D%27middle%27%20font-family%3D%27ui-monospace%2CConsolas%2Cmonospace%27%20font-size%3D%2715%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%3EII%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python ile Neler Yapılır | NTP II Ders Notları">
+<meta property="og:title" content="Python ile Başka Neler Yapılır | NTP II Ders Notları">
 <meta property="og:description" content="Bu sayfa Python&#x27;un dört farklı dünyasına kısa bir tur atar: masaüstü uygulamaları, oyun geliştirme, web&#x27;den veri toplama ve web/sunucu geliştirme. Amaç...">
 <script id="tema-on">try{var t=localStorage.getItem("ntp2-tema");if(t){document.documentElement.setAttribute("data-theme",t)}}catch(e){}</script>
 <link rel="stylesheet" href="css/vendor/github-dark.min.css">
@@ -21,7 +21,7 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="index.html"><span class="dot"></span><span class="kod">NTP&nbsp;II</span> <span class="muted"><span class="ayrac">/ </span>Python ile Neler Yapılır</span></a>
+    <a class="brand" href="index.html"><span class="dot"></span><span class="kod">NTP&nbsp;II</span> <span class="muted"><span class="ayrac">/ </span>Python ile Başka Neler Yapılır</span></a>
     <div class="ust-araclar">
       <details class="konu-menu">
         <summary aria-label="Konular menüsü"><span class="mn-yazi">Konular</span><span class="mn-ikon" aria-hidden="true"></span></summary>
@@ -31,9 +31,9 @@
           <a href="hata-yonetimi.html"><span class="mh">3</span>Hata Yönetimi</a>
           <a href="dosya-islemleri.html"><span class="mh">4-5</span>Dosya İşlemleri</a>
           <a href="siniflar.html"><span class="mh">6</span>Sınıflara Giriş</a>
-          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Dunder</a>
+          <a href="metotlar.html"><span class="mh">7</span>Metotlar ve Özel Metotlar</a>
           <a href="kalitim.html"><span class="mh">10</span>Kalıtım</a>
-          <a href="polimorfizm.html"><span class="mh">11</span>Polimorfizm ve Kapsülleme</a>
+          <a href="polimorfizm.html"><span class="mh">11</span>Çok Biçimlilik, Kapsülleme ve Soyutlama</a>
           <a href="moduller.html"><span class="mh">12</span>Modüller</a>
           <a href="veri-kutuphaneleri.html"><span class="mh">13</span>Veri Kütüphaneleri</a>
           <a href="neler-yapilir.html" class="etkin" aria-current="page"><span class="mh">14</span>Python ile Başka Neler Yapılır</a>
@@ -50,7 +50,7 @@
   </div>
 </header>
 
-<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Python ile Neler Yapılır</span></div>
+<div class="crumbs"><a href="index.html">Ders Notları</a> &nbsp;›&nbsp; Python &nbsp;›&nbsp; <span>Python ile Başka Neler Yapılır</span></div>
 
 <div class="shell">
   <article id="icerik">
@@ -171,7 +171,7 @@ class Oyun(arcade.Window):
 oyun = Oyun()
 arcade.run()</pre>
     </div>
-    <p>Burada 6. ve 10. haftalarda öğrendiğimiz <strong>sınıf</strong> ve <strong>kalıtım</strong> kavramlarını görüyorsunuz: <code class="inline">Oyun</code> sınıfı <code class="inline">arcade.Window</code>'dan miras alıyor (hazır pencere sınıfının tüm özelliklerini devralıyor) ve <code class="inline">on_draw</code> metodunu override ediyor (devraldığı çizim metodunu kendi çizimiyle yeniden yazıyor). Yani OOP bilginiz burada doğrudan işe yarıyor. Basit 3D prototipleri için ise <strong>Ursina</strong> kullanılır.</p>
+    <p>Burada 6. ve 10. haftalarda öğrendiğimiz <strong>sınıf</strong> ve <strong>kalıtım</strong> kavramlarını görüyorsunuz: <code class="inline">Oyun</code> sınıfı <code class="inline">arcade.Window</code>'dan miras alıyor (hazır pencere sınıfının tüm özellikleri ona geçiyor) ve <code class="inline">on_draw</code> metodunu override ediyor (miras aldığı çizim metodunu kendi çizimiyle yeniden yazıyor). Yani NTP bilginiz burada doğrudan işe yarıyor. Basit 3D prototipleri için ise <strong>Ursina</strong> kullanılır.</p>
     <div class="note"><span class="tag">Nereye bakmalı</span><p>pygame.org, api.arcade.academy, ursinaengine.org.</p></div>
 
     <h2 id="scraping"><span class="num">4</span>Web'den veri toplama (web scraping)</h2>
@@ -197,7 +197,7 @@ for duyuru in soup.find_all("div", class_="duyuru"):
 <pre>Duyuru: Kayıt tarihleri açıklandı | Tarih: 1 Eylül
 Duyuru: Vize programı yayımlandı | Tarih: 10 Kasım</pre>
     </div>
-    <p><code class="inline">find_all</code> belirli etikete/sınıfa uyan tüm öğeleri, <code class="inline">find</code> ise ilkini bulur; <code class="inline">.text</code> ise öğenin içindeki yazıyı verir. Gerçek bir siteden veri çekerken önce sayfayı <code class="inline">requests</code> ile indirir, sonra aynı şekilde ayrıştırırsınız. Bazı siteler ise içeriğini JavaScript ile sonradan yükler; bu durumda <code class="inline">requests</code> boş sayfa görür. <strong>Selenium</strong>, gerçek bir tarayıcıyı (Chrome gibi) kod ile yöneterek bu sorunu çözer: sayfayı açar, butona tıklar, formu doldurur, sonra içeriği okur.</p>
+    <p><code class="inline">find_all</code> belirli etikete/sınıfa uyan tüm öğeleri, <code class="inline">find</code> ise ilkini bulur; <code class="inline">.text</code> ise öğenin içindeki yazıyı verir. Gerçek bir siteden veri çekerken önce sayfayı <code class="inline">requests</code> ile indirir, sonra aynı şekilde ayrıştırırsınız. Bazı siteler ise içeriğini JavaScript ile sonradan yükler; bu durumda <code class="inline">requests</code> boş sayfa görür. <strong>Selenium</strong>, gerçek bir tarayıcıyı (Chrome gibi) kod ile yöneterek bu sorunu çözer: sayfayı açar, düğmeye tıklar, formu doldurur, sonra içeriği okur.</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">selenium_ornek.py</span></div>
 <pre>from selenium import webdriver
@@ -212,7 +212,7 @@ for b in basliklar:
 
 surucu.quit()</pre>
     </div>
-    <div class="note warn"><span class="tag">Etik ve yasal</span><p>Web scraping güçlü bir araçtır ama sorumlulukla kullanılmalıdır. Bir siteyi kazımadan önce o sitenin <strong>kullanım şartlarını</strong> ve <code class="inline">robots.txt</code> dosyasını kontrol edin; kişisel verileri toplamaktan kaçının; siteye çok sık istek göndererek sunucusunu yormayın. Çoğu site makul ve saygılı kullanıma açıktır; ama izinsiz, aşırı veya ticari kötüye kullanım hem etik dışıdır hem de yasal sorun doğurabilir.</p></div>
+    <div class="note warn"><span class="tag">Dikkat</span><p>Web scraping güçlü bir araçtır ama sorumlulukla kullanılmalıdır. Bir siteyi kazımadan önce o sitenin <strong>kullanım şartlarını</strong> ve <code class="inline">robots.txt</code> dosyasını kontrol edin; kişisel verileri toplamaktan kaçının; siteye çok sık istek göndererek sunucusunu yormayın. Çoğu site makul ve saygılı kullanıma açıktır; ama izinsiz, aşırı veya ticari kötüye kullanım hem etik dışıdır hem de yasal sorun doğurabilir.</p></div>
     <div class="note"><span class="tag">Nereye bakmalı</span><p>crummy.com/software/BeautifulSoup, selenium.dev.</p></div>
 
     <h2 id="web"><span class="num">5</span>Web sitesi ve API geliştirme</h2>
@@ -230,7 +230,7 @@ def ana_sayfa():
 app.run(debug=True)       <span class="c"># sunucuyu başlat</span></pre>
     </div>
     <p>Buradaki <code class="inline">@app.route("/")</code>, daha önce görmediğimiz bir yapı: bir <strong>dekoratör</strong>. "Birisi <code class="inline">/</code> adresini ziyaret ederse, hemen altındaki fonksiyonu çalıştır" anlamına gelir (<code class="inline">pip install flask</code>).</p>
-    <p><strong>Django</strong>, büyük ve kurumsal projeler için "her şey dâhil" bir çerçevedir; veritabanı yönetimi, kullanıcı girişi, yönetim paneli gibi pek çok şey hazır gelir. <strong>FastAPI</strong> ise özellikle <strong>API</strong> (uygulamaların birbiriyle veri alışverişi yaptığı arayüzler) yazmak için tasarlanmış, modern ve hızlı bir çerçevedir; otomatik dokümantasyon üretmesiyle ünlüdür:</p>
+    <p><strong>Django</strong>, büyük ve kurumsal projeler için "her şey dâhil" bir çerçevedir; veritabanı yönetimi, kullanıcı girişi, yönetim paneli gibi pek çok şey hazır gelir. <strong>FastAPI</strong> ise özellikle <strong>API</strong> (uygulamaların birbiriyle veri alışverişi yaptığı arayüzler) yazmak için tasarlanmış, modern ve hızlı bir çerçevedir; otomatik belge üretmesiyle ünlüdür:</p>
     <div class="code">
       <div class="code-head"><span class="lights"><i class="l1"></i><i class="l2"></i><i class="l3"></i></span><span class="name">django_gorunum.py</span></div>
 <pre><span class="c"># Bir Django projesinin views.py dosyasında yer alır; tek başına çalıştırılmaz</span>
@@ -278,11 +278,11 @@ def ana_sayfa():
         </tbody>
       </table>
     </div>
-    <div class="note warn"><span class="tag">Ders kuralı</span><p>Yapay zekâdan yardım alabilirsiniz; ancak teslim ettiğiniz kodu <strong>kendiniz anlamalı ve açıklayabilmelisiniz.</strong> Proje sunumunda kodunuzun nasıl çalıştığını açıklamanız beklenir; "yapay zekâ yazdı, ben bilmiyorum" geçerli bir cevap değildir. Yapay zekâ, sizin yerinize düşünen değil, size yardımcı olan bir araçtır.</p></div>
+    <div class="note warn"><span class="tag">Kural</span><p>Yapay zekâdan yardım alabilirsiniz; ancak teslim ettiğiniz kodu <strong>kendiniz anlamalı ve açıklayabilmelisiniz.</strong> Proje sunumunda kodunuzun nasıl çalıştığını açıklamanız beklenir; "yapay zekâ yazdı, ben bilmiyorum" geçerli bir cevap değildir. Yapay zekâ, sizin yerinize düşünen değil, size yardımcı olan bir araçtır.</p></div>
 
     <hr class="hr">
 
-    <div class="note"><span class="tag">Özet</span><p>14. hafta bir keşif turudur; hiçbirini ezberlemeniz gerekmiyor, "şu işi Python'la şu kütüphane yapar" eşleşmesini kavramak yeterli. OOP bilginiz burada doğrudan işe yarıyor. Tkinter dışındaki kütüphaneler Python'la gelmez, <code class="inline">pip</code> ile kurulur. Bu kodlar konsol programı değildir; ayrı bir pencere açar ya da sunucu başlatır.</p></div>
+    <div class="note"><span class="tag">Özet</span><p>14. hafta bir keşif turudur; hiçbirini ezberlemeniz gerekmiyor, "şu işi Python'la şu kütüphane yapar" eşleşmesini kavramak yeterli. NTP bilginiz burada doğrudan işe yarıyor. Tkinter dışındaki kütüphaneler Python'la gelmez, <code class="inline">pip</code> ile kurulur. Bu kodlar konsol programı değildir; ayrı bir pencere açar ya da sunucu başlatır.</p></div>
 
     <h2 id="kaynakca" class="kaynakca">Kaynakça</h2>
     <ul class="kaynakca">
